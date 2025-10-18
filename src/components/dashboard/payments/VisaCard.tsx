@@ -4,8 +4,10 @@ import { FaCreditCard } from 'react-icons/fa';
 import Popup from '@/components/shared/Popup';
 import ActionPopup from '@/components/shared/ActionPopup';
 import ActionButtons from '@/components/shared/ActionButtons';
+import { useTranslations } from 'next-intl';
 
 export default function VisaCard() {
+    const t = useTranslations('dashboard.paymentMethods.card');
     const [showDeletePopup, setShowDeletePopup] = useState(false);
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [cardHolder, setCardHolder] = useState('John Anderson');
@@ -32,7 +34,7 @@ export default function VisaCard() {
                     <div className="flex flex-col gap-1">
                         <p className="text-base font-semibold text-dark leading-tight">Visa</p>
                         <p className="text-sm text-input">•••• •••• •••• 4242</p>
-                        <p className="text-sm text-placeholder">Expires 12/25 • {cardHolder}</p>
+                        <p className="text-sm text-placeholder">{t('expires')} 12/25 • {cardHolder}</p>
                     </div>
                 </div>
 
@@ -53,7 +55,7 @@ export default function VisaCard() {
                         />
                     </div>
                     <div className="text-xs bg-lighter py-[2px] px-2 w-fit text-secondary rounded-full flex-center">
-                        <span>Default</span>
+                        <span>{t('default')}</span>
                     </div>
                 </div>
             </div>
@@ -62,28 +64,26 @@ export default function VisaCard() {
             <Popup show={showDeletePopup} onClose={() => setShowDeletePopup(false)}>
                 <ActionPopup
                     onCancel={() => setShowDeletePopup(false)}
-                    onAction={handleDelete}
-                    title="Deleting"
-                    subtitle="Are you sure you want to remove this Visa card?"
+                    onAction={() => setShowDeletePopup(false)}
+                    title={t('deleteTitle')}
+                    subtitle={t('deleteSubtitle')}
                     MainIcon={FaCreditCard}
                     mainIconColor="#EA2323"
-                    note="This action cannot be undone."
-                    actionText="Delete"
-                    cancelText="Cancel"
+                    note={t('deleteNote')}
+                    actionText={t('delete')}
+                    cancelText={t('cancel')}
                 />
             </Popup>
 
             {/* Edit Popup */}
             <Popup show={showEditPopup} onClose={() => setShowEditPopup(false)}>
                 <div className="space-y-6 md:min-w-lg lg:min-w-xl mx-auto">
-                    <h2 className="text-lg font-semibold text-dark">Edit Card Holder</h2>
-
-
+                    <h2 className="text-lg font-semibold text-dark">{t('editTitle')}</h2>
                     <ActionButtons
-                        onAction={handleEditSave}
+                        onAction={() => setShowEditPopup(false)}
                         onCancel={() => setShowEditPopup(false)}
-                        actionText="Save Changes"
-                        cancelText="Discard"
+                        actionText={t('save')}
+                        cancelText={t('discard')}
                         isDisabled={!cardHolder.trim()}
                     />
                 </div>

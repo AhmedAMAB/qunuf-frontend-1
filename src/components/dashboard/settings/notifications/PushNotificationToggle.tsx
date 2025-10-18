@@ -1,14 +1,17 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function PushNotificationToggle() {
     const [openNotifications, setOpenNotifications] = useState(true)
+    const t = useTranslations('dashboard.notification');
+
     return (
         <div className="rounded-[20px] p-6 md:p-7 bg-[#6161F126]">
             <div className="flex items-center justify-between">
                 <p className="text-base text-gray-800 font-bold">
-                    🔔 Turn on push notifications
+                    🔔 {t('pushToggle')}
                 </p>
 
                 {/* Flowbite toggle */}

@@ -18,7 +18,8 @@
                 "placeholder": "أدخل كلمة المرور"
             },
             "send": "إرسال"
-        }
+        },
+        "search": "إبحث..."
     },
     "header": {
         "logo": "قنوف",
@@ -412,9 +413,6 @@
         }
     },
     "dashboard": {
-        "notification": {
-            "title": "آخر الإشعارات"
-        },
         "header": {
             "greeting": "مرحبًا، {name}!",
             "description": "استكشاف المعلومات والنشاطات"
@@ -432,6 +430,170 @@
             "notifications": "الإشعارات",
             "chat": "المحادثات",
             "logout": "تسجيل الخروج"
+        },
+        "notification": {
+            "title": "آخر الإشعارات",
+            "notifications": "الإشعارات",
+            "seeMore": "رؤية المزيد",
+            "accountSettings": "إعدادات الحساب",
+            "overview": "نظرة عامة",
+            "pushToggle": "🔔 فعّل إشعارات الدفع"
+        },
+        "filter": {
+            "export": {
+                "trigger": "تصدير اكسل",
+                "scope": "نطاق التصدير",
+                "currentTable": "الجدول الحالي",
+                "moreData": "بيانات إضافية",
+                "maxRows": "أقصى عدد للصفوف",
+                "export": "تصدير",
+                "exporting": "جارٍ التصدير...",
+                "cancel": "إلغاء"
+            },
+            "container": {
+                "filter": "تصفية"
+            }
+        },
+        "table": {
+            "noRows": "لا توجد بيانات لعرضها",
+            "errorTitle": "عذرًا، حدث خطأ",
+            "errorMessage": "حدث خطأ أثناء تحميل البيانات",
+            "retry": "إعادة المحاولة"
+        },
+        "pagination": {
+            "firstPage": "الصفحة الأولى",
+            "previous": "السابق",
+            "next": "التالي",
+            "lastPage": "الصفحة الأخيرة",
+            "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل"
+        },
+        "contracts": {
+            "viewContract": "عرض العقد",
+            "noContractAvailable": "لا يوجد عقد متاح",
+            "contractTitle": "العقد",
+            "contractPage": "صفحة العقد",
+            "noImagesFallback": "لا توجد صور للعقد",
+            "renewTitle": "تجديد العقد",
+            "renewSubtitle": "هل أنت متأكد أنك تريد تجديد العقد؟",
+            "terminateTitle": "إنهاء",
+            "terminateSubtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
+            "terminateNote": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك",
+            "cancel": "إلغاء",
+            "renew": "تجديد",
+            "terminate": "إنهاء",
+            "table": {
+                "property": "العقار",
+                "status": "الحالة",
+                "free": "متاح",
+                "reserved": "محجوز",
+                "startBooking": "تاريخ البدء",
+                "endBooking": "تاريخ الانتهاء",
+                "published": "تاريخ النشر",
+                "price": "السعر",
+                "contract": "العقد",
+                "location": "الموقع",
+                "renewContract": "تجديد العقد",
+                "terminateContract": "إنهاء العقد",
+                "searchPlaceholder": "ابحث في العقود..."
+            }
+        },
+        "payments": {
+            "transactionId": "معرّف المعاملة",
+            "property": "العقار",
+            "propertyAddress": "عنوان العقار",
+            "propertyType": "نوع العقار",
+            "apartment": "شقة",
+            "house": "منزل",
+            "price": "السعر",
+            "date": "التاريخ",
+            "title": "المدفوعات والمستحقات",
+            "accountSettings": "إعدادات الحساب",
+            "totalEarnings": "إجمالي الأرباح",
+            "pendingPayments": "المدفوعات المعلقة"
+        },
+        "paymentMethods": {
+            "title": "طرق الدفع المحفوظة",
+            "accountsTab": "حسابات الدفع",
+            "transactionsTab": "سجل المعاملات",
+            "recentAccounts": "حسابات الدفع الأخيرة",
+            "addMethod": "إضافة طريقة",
+            "addCardHolder": "إضافة حامل البطاقة",
+            "recentTransactions": "المعاملات الأخيرة",
+            "card": {
+                "expires": "تنتهي في",
+                "edit": "تعديل البطاقة",
+                "delete": "حذف البطاقة",
+                "default": "افتراضي",
+                "deleteTitle": "جارٍ الحذف",
+                "deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
+                "deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
+                "cancel": "إلغاء",
+                "editTitle": "تعديل حامل البطاقة",
+                "save": "حفظ التغييرات",
+                "discard": "تجاهل"
+            }
+        },
+        "account": {
+            "title": "المعلومات الشخصية",
+            "notProvided": "غير متوفر",
+            "settings": "إعدادات الحساب",
+            "fullName": "الاسم الكامل",
+            "email": "عنوان البريد الإلكتروني",
+            "phone": "رقم الهاتف",
+            "phonePlaceholder": "أضف رقمًا ليتواصل معك الضيوف المؤكدون وAirbnb. يمكنك إضافة أرقام أخرى وتحديد كيفية استخدامها.",
+            "nationalId": "الرقم القومي",
+            "address": "العنوان",
+            "update": "تحديث",
+            "cancel": "الغاء",
+            "edit": "تعديل"
+        },
+        "support": {
+            "senderName": "دعم قنوف",
+            "lastMessage": "أخبرنا كيف يمكننا مساعدتك.",
+            "welcomeMessage": "مرحبًا بك في دعم قنوف! كيف يمكننا مساعدتك اليوم؟"
+        },
+        "renewRequest": {
+            "reviews": "تقييم",
+            "priceDetails": "تفاصيل السعر",
+            "forOneMonth": "لشهر واحد",
+            "longStayDiscount": "خصم الإقامة الطويلة",
+            "totalUsd": "الإجمالي (دولار أمريكي)",
+            "cancel": "إلغاء",
+            "renew": "تجديد"
+        },
+        "settings": {
+            "root": {
+                "account": "الحساب",
+                "personalInfo": {
+                    "title": "المعلومات الشخصية",
+                    "description": "أدخل بياناتك الشخصية وكيفية التواصل معك"
+                },
+                "notifications": {
+                    "title": "الإشعارات",
+                    "description": "اختر تفضيلات الإشعارات وطريقة التواصل"
+                },
+                "payments": {
+                    "title": "المدفوعات والمستحقات",
+                    "description": "راجع المدفوعات والقسائم وبطاقات الهدايا"
+                }
+            }
+        },
+        "chats": {
+            "messages": "الرسائل",
+            "noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
+            "selectConversation": "اختر محادثة لبدء المراسلة"
+        },
+        "tenant": {
+            "root": {
+                "reservedProperty": "العقار المحجوز",
+                "increase": "زيادة بنسبة {value}٪",
+                "fromLastWeek": "من الأسبوع الماضي",
+                "totalPaymentAmount": "إجمالي مبلغ الدفع",
+                "newListing": "{value} إعلان جديد",
+                "inThisWeek": "في هذا الأسبوع",
+                "lastRentedProperties": "آخر العقارات المؤجرة",
+                "seeAll": "عرض الكل"
+            }
         }
     }
 }

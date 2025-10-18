@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounce } from '@/hooks/useDebounce';
 import KeywordSearch from './KeywordSearch';
 import { updateUrlParams } from '@/utils/helpers';
+import { useTranslations } from 'next-intl';
 
 type Props = {
     value: string;
@@ -16,6 +17,7 @@ export default function SearchField({ value, onChange, searchPlaceholder }: Prop
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
+    const t = useTranslations('comman')
 
     const debouncedValue = useDebounce(value);
 
@@ -32,5 +34,5 @@ export default function SearchField({ value, onChange, searchPlaceholder }: Prop
         }
     }, [debouncedValue]);
 
-    return <KeywordSearch value={value} onChange={onChange} searchPlaceholder={searchPlaceholder} />;
+    return <KeywordSearch value={value} onChange={onChange} searchPlaceholder={searchPlaceholder ?? t('search')} />;
 }

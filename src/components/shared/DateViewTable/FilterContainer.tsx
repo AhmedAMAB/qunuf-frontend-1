@@ -24,6 +24,7 @@ import { useState } from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { IconType } from 'react-icons';
 import TableActions from './TableActions';
+import { useTranslations } from 'next-intl';
 
 export type actionButton = {
     show?: boolean;
@@ -45,7 +46,7 @@ export default function FilterContainer({
     actionButton = { show: false }
 }: Props) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-
+    const t = useTranslations('dashboard.filter.container');
     const {
         search,
         setSearch,
@@ -62,14 +63,14 @@ export default function FilterContainer({
                     className="me-auto inline-flex  lg:hidden bg-primary hover:bg-primary-hover py-2 px-4 text-white gap-1 items-center justify-center rounded-[8px] transition-colors duration-200 "
                 >
                     <CiFilter size={20} className='shrink-0' />
-                    <span className='text-base'>Filter</span>
+                    <span className="text-base">{t('filter')}</span>
                 </button>
 
                 <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} className='flex-1'
                     title={
                         <div className='text-primary flex items-center gap-1'>
                             <CiFilter size={20} className='shrink-0' />
-                            <span className='text-lg'>Filter</span>
+                            <span className="text-lg">{t('filter')}</span>
                         </div>
                     }>
 

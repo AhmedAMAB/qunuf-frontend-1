@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IconType } from "react-icons";
-import { Color } from "maplibre-gl";
+
 import ActionButtons from "./ActionButtons";
 
 interface ActionPopupProps {
@@ -57,8 +55,8 @@ export default function ActionPopup({
             <ActionButtons
                 onAction={onCancel}
                 onCancel={onAction}
-                actionText="Save Changes"
-                cancelText="Discard"
+                actionText={cancelText}
+                cancelText={actionText}
                 isDisabled={false}
             />
         </div>

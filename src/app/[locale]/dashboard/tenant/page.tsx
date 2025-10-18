@@ -5,6 +5,8 @@ import { IoIosTrendingUp } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
 import PropertyCard from "../PropertCard";
 import TenantContractDataView from "@/components/dashboard/tenant/TenantContractDataView";
+import { getTranslations } from "next-intl/server";
+import { getDashboardHref } from "@/utils/dashboardPaths";
 
 
 const properties = [
@@ -61,42 +63,52 @@ const properties = [
 
 
 export default async function TenantPage() {
+    const t = await getTranslations('dashboard.tenant.root');
+
     return (
         <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <StatCard
                     icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label="Reserved Property"
+                    label={t('reservedProperty')}
                     value={111}
-                    trend="10% Increase"
+                    trend={t('increase', {
+                        value: 10
+                    })}
                     trendColor="rgba(76,108,90,0.1)"
                     trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext="from last week"
+                    subtext={t('fromLastWeek')}
                 />
 
                 <StatCard
                     icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label="Reserved Property"
+                    label={t('reservedProperty')}
                     value={111}
-                    trend="10% Increase"
+                    trend={t('increase', {
+                        value: 10
+                    })}
                     trendColor="rgba(76,108,90,0.1)"
                     trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext="from last week"
+                    subtext={t('fromLastWeek')}
                 />
 
                 <StatCard
-                    icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]s" />}
-                    label="Total Payment Amount"
+                    icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
+                    label={t('totalPaymentAmount')}
                     value="$20"
-                    trend="1 new listing"
+                    trend={t('newListing', {
+                        value: 2
+                    })}
                     trendColor="rgba(76,108,90,0.1)"
-                    subtext="in this week"
+                    subtext={t('inThisWeek')}
                 />
             </div>
+
             <DashboardCard
-                title="Last Rented Properties"
-                linkLabel="See All"
-                linkHref="/properties/rented"
+                title={t('lastRentedProperties')}
+                linkLabel={t('seeAll')}
+                linkHref={getDashboardHref('tenant', 'contracts')}
+                className="max-h-[620px] overflow-y-auto thin-scrollbar"
             >
                 <div className="divide-y divide-gray-200">
                     {properties.map((property, index) => (
@@ -104,7 +116,6 @@ export default async function TenantPage() {
                     ))}
                 </div>
             </DashboardCard>
-
         </div>
     );
 }

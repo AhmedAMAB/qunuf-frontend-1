@@ -1,21 +1,21 @@
 'use client'
 
-import { PaymentColumns } from "@/constants/dashboard/paymentConstants";
 import { usePayments } from "@/hooks/usePayments";
 import { PaymentRow } from "@/types/dashboard/payment";
 import DataView from "../shared/DateViewTable/DataView";
+import { getPaymentColumns } from "@/constants/dashboard/paymentConstants";
+import { useTranslations } from "next-intl";
 
 
 export default function PaymentsDataView() {
     const { getRows } = usePayments();
-
+    const t = useTranslations('dashboard.payments');
     return (
         <DataView<PaymentRow>
-            columns={PaymentColumns}
+            columns={getPaymentColumns(t)}
             getRows={getRows}
             showActions={false}
             pageSize={10}
-            searchPlaceholder="Search payments..."
         />
     );
 }

@@ -30,7 +30,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
                     <div className="py-[21px] flex justify-between items-center h-[98px] sm:h-[107px] md:h-[112px]">
                         <button
                             onClick={toggleSubHeader}
-                            className={`lg:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary/30 ${subHeaderOpen ? "bg-gray-100" : ""}`}
+                            className={`lg:hidden p-2 rounded-[6px] ${subHeaderOpen ? "bg-gray-100" : ""}`}
                             aria-label="فتح القائمة الجانبية"
                         >
                             <RxDotsHorizontal className="text-xl text-primary" />
@@ -62,7 +62,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 
                         <button
                             onClick={onOpenSidebar}
-                            className="lg:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            className="lg:hidden p-2  focus:outline-none rounded-[6px]"
                             aria-label="فتح القائمة الجانبية"
                         >
                             <FaBars className="text-xl text-primary" />

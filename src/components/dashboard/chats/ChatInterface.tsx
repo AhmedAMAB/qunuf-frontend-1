@@ -8,6 +8,7 @@ import { MdFilterList } from "react-icons/md";
 import DesktopChatPanel from "./DesktopChatPanel";
 import MobileChatPanel from "./MobileChatPanel";
 import { Message, User } from "@/types/dashboard/chat";
+import { useTranslations } from "next-intl";
 
 
 interface ChatInterfaceProps {
@@ -21,6 +22,7 @@ export default function ChatInterface({
     messagesMap,
     onUpdateMessages,
 }: ChatInterfaceProps) {
+    const t = useTranslations('dashboard.chats');
 
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -57,7 +59,7 @@ export default function ChatInterface({
             <div className=" md:col-span-6 lg:col-span-5 xl:col-span-4">
                 <div className="">
                     <div className="flex justify-between pb-4 items-center border-b border-b-gray">
-                        <h2 className="text-lg font-bold text-center text-gray-800">Messages</h2>
+                        <h2 className="text-lg font-bold text-center text-gray-800">{t('messages')}</h2>
                         <MdFilterList size={24} className="text-secondary" />
                     </div>
                     <div className="space-y-4 overflow-auto h-[calc(100vh-240px)] thin-scrollbar border-e border-gray">

@@ -10,7 +10,7 @@ interface SettingsCardProps {
 
 export default function SettingsCard({ title, description, href, icon: Icon }: SettingsCardProps) {
     const CardContent = (
-        <div className="flex flex-col items-start gap-4 p-4 md:p-5 rounded-xl border border-gray-200 bg-card-bg shadow-sm">
+        <div className="flex flex-col items-start gap-4 p-4 md:p-5 rounded-xl border border-gray-200 bg-card-bg shadow-sm h-full">
             {/* Icon */}
             <div className="flex items-center justify-center rounded-full text-primary bg-dashboard-bg p-2">
                 <Icon size={28} className="shrink-0 w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />

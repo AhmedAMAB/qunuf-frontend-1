@@ -2,15 +2,10 @@
 
 import React from 'react';
 import { generatePagination } from '@/utils/helpers';
-import {
-    MdFirstPage,
-    MdLastPage,
-    MdChevronLeft,
-    MdChevronRight,
-} from 'react-icons/md';
 import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 import { LuArrowLeftToLine, LuArrowRightToLine } from 'react-icons/lu';
 import PaginationButton from './PaginationButton';
+import { useTranslations } from 'next-intl';
 
 interface PaginationProps {
     currentPage: number;
@@ -19,22 +14,23 @@ interface PaginationProps {
 }
 
 export default function Pagination({ currentPage, pageCount, onPageChange }: PaginationProps) {
+    const t = useTranslations('dashboard.pagination');
     if (pageCount <= 1) return null;
 
     return (
         <div className="flex text-nowrap lg:justify-center items-center gap-2">
             {/* First Page */}
             <PaginationButton
-                label="First Page"
-                icon={<LuArrowLeftToLine size={20} />}
+                label={t('firstPage')}
+                icon={<LuArrowLeftToLine size={20} className='rtl:rotate-180' />}
                 isDisabled={currentPage === 1}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(1)}
             />
             {/* Previous Page */}
             <PaginationButton
-                label="Previous"
-                icon={<GoArrowLeft size={20} />}
+                label={t('previous')}
+                icon={<GoArrowLeft size={20} className='rtl:rotate-180' />}
                 isDisabled={currentPage === 1}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(currentPage > 1 ? currentPage - 1 : 1)}
@@ -62,9 +58,9 @@ export default function Pagination({ currentPage, pageCount, onPageChange }: Pag
 
             {/* Next Page */}
             <PaginationButton
-                label="Next"
+                label={t('next')}
                 iconPosition='right'
-                icon={<GoArrowRight size={20} />}
+                icon={<GoArrowRight size={20} className='rtl:rotate-180' />}
                 isDisabled={currentPage === pageCount}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(currentPage < pageCount ? currentPage + 1 : pageCount)}
@@ -72,9 +68,9 @@ export default function Pagination({ currentPage, pageCount, onPageChange }: Pag
 
             {/* Last Page */}
             <PaginationButton
-                label="Last Page"
+                label={t('lastPage')}
                 iconPosition='right'
-                icon={<LuArrowRightToLine size={20} />}
+                icon={<LuArrowRightToLine size={20} className='rtl:rotate-180' />}
                 isDisabled={currentPage === pageCount}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(pageCount)}

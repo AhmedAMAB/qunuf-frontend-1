@@ -1,34 +1,28 @@
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import EditableField from "@/components/dashboard/EditableField";
 import BreadcrumbsHeader from "@/components/shared/BreadcrumbsHeader";
+import { useTranslations } from "next-intl";
 
 
 export default function AccountPage() {
+    const t = useTranslations('dashboard.account');
+
     return (
         <div>
             <BreadcrumbsHeader
-                title="Personal info"
+                title={t('title')}
                 breadcrumbs={[
-                    { label: "Account Settings", href: `/dashboard/tenant/settings` },
-                    { label: "Personal info" },
+                    { label: t('settings'), href: `/dashboard/tenant/settings` },
+                    { label: t('title') },
                 ]}
             />
-
-
             <DashboardCard>
-                <EditableField label="Full Name" value="Peter Griffin" />
-                <EditableField label="Email address" placeholder="h***o@designdrops.op" />
-                <EditableField
-                    label="Phone Number"
-                    placeholder="Add a number so confirmed guests and Airbnb can get in touch. You can add other numbers and choose how they’re used."
-                />
-                <EditableField label="National ID" />
-                <EditableField label="Address" />
+                <EditableField label={t('fullName')} value="Peter Griffin" />
+                <EditableField label={t('email')} placeholder="h***o@designdrops.op" />
+                <EditableField label={t('phone')} placeholder={t('phonePlaceholder')} />
+                <EditableField label={t('nationalId')} />
+                <EditableField label={t('address')} />
             </DashboardCard>
-
-
-
-
         </div>
     );
 }

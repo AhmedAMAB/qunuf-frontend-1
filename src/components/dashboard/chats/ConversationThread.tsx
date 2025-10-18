@@ -1,4 +1,5 @@
 import { Message } from "@/types/dashboard/chat";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { BsSendFill } from "react-icons/bs";
@@ -22,6 +23,7 @@ export default function ConversationThread({
 }: ConversationThreadProps) {
     const [message, setMessgae] = useState<string>('');
     const bottomRef = useRef<HTMLDivElement>(null);
+    const t = useTranslations('dashboard.chats');
 
     // Scroll to bottom when messages change
     useEffect(() => {
@@ -56,7 +58,7 @@ export default function ConversationThread({
                 {/* Messages */}
                 {messages.length === 0 ? (
                     <div className="flex items-center justify-center h-full text-gray-500 font-medium text-base">
-                        No messages yet. Start the conversation!
+                        {t('noMessages')}
                     </div>
                 ) : (
                     <div className="space-y-2">

@@ -18,7 +18,8 @@
                 "placeholder": "Enter your password"
             },
             "send": "Send"
-        }
+        },
+        "search": "Search..."
     },
     "header": {
         "logo": "QUNUF",
@@ -412,9 +413,6 @@
         }
     },
     "dashboard": {
-        "notification": {
-            "title": "Last Notifications"
-        },
         "header": {
             "greeting": "Hello, {name}!",
             "description": "Explore information and activity"
@@ -432,6 +430,170 @@
             "notifications": "Notifications",
             "chat": "Chats",
             "logout": "Logout"
+        },
+        "filter": {
+            "export": {
+                "trigger": "Export Excel",
+                "scope": "Export Scope",
+                "currentTable": "Current Table",
+                "moreData": "More Data",
+                "maxRows": "Max Rows",
+                "export": "Export",
+                "exporting": "Exporting...",
+                "cancel": "Cancel"
+            },
+            "container": {
+                "filter": "Filter"
+            }
+        },
+        "table": {
+            "noRows": "No data available",
+            "errorTitle": "Oops, something went wrong",
+            "errorMessage": "An error occurred while loading the data",
+            "retry": "Retry"
+        },
+        "pagination": {
+            "firstPage": "First Page",
+            "previous": "Previous",
+            "next": "Next",
+            "lastPage": "Last Page",
+            "showingEntries": "Showing {start} to {end} of {total} entries"
+        },
+        "notification": {
+            "title": "Last Notifications",
+            "notifications": "Notifications",
+            "seeMore": "See More",
+            "accountSettings": "Account Settings",
+            "overview": "Overview",
+            "pushToggle": "Turn on push notifications"
+        },
+        "contracts": {
+            "viewContract": "View Contract",
+            "noContractAvailable": "No Contract Available",
+            "contractTitle": "Contract",
+            "contractPage": "Contract page",
+            "noImagesFallback": "No contract images available",
+            "renewTitle": "Renew Contract",
+            "renewSubtitle": "You sure that you want to renew the contract",
+            "terminateTitle": "Terminate",
+            "terminateSubtitle": "You sure that you want to terminate the contract",
+            "terminateNote": "Note: When you terminate the contract, you will not restore your money",
+            "cancel": "Cancel",
+            "renew": "Renew",
+            "terminate": "Terminate",
+            "table": {
+                "property": "Property",
+                "status": "Status",
+                "free": "Free",
+                "reserved": "Reserved",
+                "startBooking": "Start Booking",
+                "endBooking": "End Booking",
+                "published": "Published",
+                "price": "Price",
+                "contract": "Contract",
+                "location": "Location",
+                "renewContract": "Renew Contract",
+                "terminateContract": "Terminate Contract",
+                "searchPlaceholder": "Search contracts..."
+            }
+        },
+        "payments": {
+            "transactionId": "Transaction ID",
+            "property": "Property",
+            "propertyAddress": "Property Address",
+            "propertyType": "Property Type",
+            "apartment": "Apartment",
+            "house": "House",
+            "price": "Price",
+            "date": "Date",
+            "title": "Payments & Payouts",
+            "accountSettings": "Account Settings",
+            "totalEarnings": "Total Earnings",
+            "pendingPayments": "Pending Payments"
+        },
+        "paymentMethods": {
+            "title": "Saved Payment Methods",
+            "accountsTab": "Payment Accounts",
+            "transactionsTab": "Transaction History",
+            "recentAccounts": "Recent Payment Accounts",
+            "addMethod": "Add Method",
+            "addCardHolder": "Add Card Holder",
+            "recentTransactions": "Recent Transactions",
+            "card": {
+                "expires": "Expires",
+                "edit": "Edit card",
+                "delete": "Delete card",
+                "default": "Default",
+                "deleteTitle": "Deleting",
+                "deleteSubtitle": "Are you sure you want to remove this Visa card?",
+                "deleteNote": "This action cannot be undone.",
+                "cancel": "Cancel",
+                "editTitle": "Edit Card Holder",
+                "save": "Save Changes",
+                "discard": "Discard"
+            }
+        },
+        "account": {
+            "title": "Personal info",
+            "notProvided": "Personal info",
+            "settings": "Account Settings",
+            "fullName": "Full Name",
+            "email": "Email address",
+            "phone": "Phone Number",
+            "phonePlaceholder": "Add a number so confirmed guests and Airbnb can get in touch. You can add other numbers and choose how they’re used.",
+            "nationalId": "National ID",
+            "address": "Address",
+            "update": "Update",
+            "cancel": "Cancel",
+            "edit": "Edit"
+        },
+        "support": {
+            "senderName": "Qunuf Support",
+            "lastMessage": "Let us know how we can assist you.",
+            "welcomeMessage": "Welcome to Qunuf Support! How can we help you today?"
+        },
+        "renewRequest": {
+            "reviews": "reviews",
+            "priceDetails": "Price details",
+            "forOneMonth": "For one Month",
+            "longStayDiscount": "Long stay discount",
+            "totalUsd": "Total (USD)",
+            "cancel": "Cancel",
+            "renew": "Renew"
+        },
+        "settings": {
+            "root": {
+                "account": "Account",
+                "personalInfo": {
+                    "title": "Personal Info",
+                    "description": "Provide personal details and how we can reach you"
+                },
+                "notifications": {
+                    "title": "Notifications",
+                    "description": "Choose notification preferences and how you want to be contacted"
+                },
+                "payments": {
+                    "title": "Payments & payouts",
+                    "description": "Review payments, payouts, coupons, and gift cards"
+                }
+            }
+        },
+        "chats": {
+            "messages": "Messages",
+            "noMessages": "No messages yet. Start the conversation!",
+            "selectConversation": "Select a conversation to start messaging"
+        },
+        "tenant": {
+            "root": {
+                "reservedProperty": "Reserved Property",
+                "increase": "{value}% Increase",
+                "fromLastWeek": "from last week",
+                "totalPaymentAmount": "Total Payment Amount",
+                "newListing": "{value} new listing",
+                "inThisWeek": "in this week",
+                "lastRentedProperties": "Last Rented Properties",
+                "seeAll": "See All"
+            }
         }
     }
 }

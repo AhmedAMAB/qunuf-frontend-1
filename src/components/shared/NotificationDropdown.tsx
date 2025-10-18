@@ -89,7 +89,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
                     ))}
                     <div className="flex justify-center mt-2">
                         <Link href={getHref('notifications')} className="text-sm text-secondary text-center ">
-                            Show More
+                            {t('seeMore')}
                         </Link>
                     </div>
                 </div>

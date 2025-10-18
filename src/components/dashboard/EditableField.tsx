@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Popup from '../shared/Popup';
 import TextInput from '../shared/forms/TextInput';
 import SecondaryButton from '../shared/buttons/SecondaryButton';
+import { useTranslations } from 'next-intl';
 
 
 interface EditableFieldProps {
@@ -14,7 +15,7 @@ interface EditableFieldProps {
 export default function EditableField({ label, value = '', placeholder }: EditableFieldProps) {
     const [showPopup, setShowPopup] = useState(false);
     const [inputValue, setInputValue] = useState(value);
-
+    const t = useTranslations('dashboard.account');
     const handleOpen = () => {
         setInputValue(value); // reset to original value
         setShowPopup(true);
@@ -35,12 +36,12 @@ export default function EditableField({ label, value = '', placeholder }: Editab
                     onClick={handleOpen}
                     className="text-primary underline focus:outline-none"
                 >
-                    Edit
+                    {t('edit')}
                 </button>
             </div>
 
             <div className="text-sm font-medium text-input ">
-                {value || <span className="text-muted">{placeholder ?? "Not provided"}</span>}
+                {value || <span className="text-muted">{placeholder ?? t('notProvided')}</span>}
             </div>
 
             <Popup
@@ -62,14 +63,14 @@ export default function EditableField({ label, value = '', placeholder }: Editab
                             className="bg-secondary hover:bg-secondary-hover text-white py-2 lg:py-3 w-full sm:w-[323px]"
                             disabled={!inputValue.trim()}
                         >
-                            Update
+                            {t('update')}
                         </SecondaryButton>
 
                         <SecondaryButton
                             onClick={handleClose}
                             className="bg-[#F5F6F8] hover:bg-[#E9EAEC] text-[#B3B3B3] py-2 lg:py-3 w-full sm:w-[323px]"
                         >
-                            Cancel
+                            {t('cancel')}
                         </SecondaryButton>
                     </div>
                 </div>

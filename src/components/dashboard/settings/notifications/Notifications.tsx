@@ -7,24 +7,27 @@ import { getDashboardHref } from "@/utils/dashboardPaths";
 import Link from "next/link";
 import { FaRegNewspaper } from "react-icons/fa";
 import DashboardCard from "../../DashboardCard";
+import { useTranslations } from "next-intl";
 
 
 export default function Notifications() {
     const { getHref } = useDashboardHref();
+    const t = useTranslations('dashboard.notification');
+
     return (
         <div>
             <BreadcrumbsHeader
-                title="Notifications"
+                title={t('title')}
                 breadcrumbs={[
-                    { label: "Account Settings", href: getHref('settings') },
-                    { label: "Notifications" },
+                    { label: t('accountSettings'), href: getHref('settings') },
+                    { label: t('notifications') },
                 ]}
             />
 
             <PushNotificationToggle />
             <DashboardCard className="mt-4">
                 <h1 className="border-b-2 border-b-notification font-bold pb-3  w-fit">
-                    Overview
+                    {t('overview')}
                 </h1>
                 <div className="mt-10">
                     <Link href={getHref('chats', { chat: 1 })}>

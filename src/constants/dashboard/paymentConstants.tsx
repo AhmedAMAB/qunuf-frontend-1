@@ -3,45 +3,51 @@ import { PropertyCell } from "@/components/shared/properties/PropertyCell";
 import { PaymentRow } from "@/types/dashboard/payment";
 import { TableColumnType } from "@/types/table";
 import { format } from "date-fns";
+import { useTranslations } from "next-intl";
 
-export const PaymentColumns: TableColumnType<PaymentRow>[] = [
-    {
-        key: "id",
-        label: "Transaction ID",
-    },
-    {
-        key: "property",
-        label: "Property",
-        cell(value) {
-            return <PropertyCell {...value} />;
+
+export const getPaymentColumns = (t: ReturnType<typeof useTranslations>): TableColumnType<PaymentRow>[] => {
+
+
+    return [
+        {
+            key: 'id',
+            label: t('transactionId'),
         },
-    },
-    {
-        key: "address",
-        label: "Property Address",
-        cell(value) {
-            return value;
+        {
+            key: 'property',
+            label: t('property'),
+            cell(value) {
+                return <PropertyCell {...value} />;
+            },
         },
-    },
-    {
-        key: "type",
-        label: "Property Type",
-        cell(value) {
-            return value;
+        {
+            key: 'address',
+            label: t('propertyAddress'),
+            cell(value) {
+                return value;
+            },
         },
-    },
-    {
-        key: "price",
-        label: "Price",
-        cell(value) {
-            return `${value.toLocaleString()} $`;
+        {
+            key: 'type',
+            label: t('propertyType'),
+            cell(value) {
+                return t(value === 'Apartment' ? 'apartment' : 'house');
+            },
         },
-    },
-    {
-        key: "date",
-        label: "Date",
-        cell(value) {
-            return format(new Date(value), "dd MMM yyyy");
+        {
+            key: 'price',
+            label: t('price'),
+            cell(value) {
+                return `${value.toLocaleString()} $`;
+            },
         },
-    },
-];
+        {
+            key: 'date',
+            label: t('date'),
+            cell(value) {
+                return format(new Date(value), 'dd MMM yyyy');
+            },
+        },
+    ];
+}

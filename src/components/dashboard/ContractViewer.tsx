@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Popup from "../shared/Popup";
 import { PiDownloadBold } from "react-icons/pi";
+import { useTranslations } from "next-intl";
 
 type ContractImage = {
     src: string;
@@ -15,7 +16,7 @@ interface ContractViewerProps {
 export default function ContractViewer({ images }: ContractViewerProps) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
-
+    const t = useTranslations('dashboard.contracts');
     function handleOnClose() {
         setMenuOpen(false);
         setSelectedIndex(0); // reset to first image when closing
@@ -30,7 +31,7 @@ export default function ContractViewer({ images }: ContractViewerProps) {
                 onClick={() => hasImages && setMenuOpen(true)}
                 disabled={!hasImages}
             >
-                {hasImages ? "View Contract" : "No Contract Available"}
+                {hasImages ? t('viewContract') : t('noContractAvailable')}
             </button>
 
             <Popup
@@ -38,7 +39,7 @@ export default function ContractViewer({ images }: ContractViewerProps) {
                 show={menuOpen}
                 headerContent={
                     <header className="flex justify-between items-center">
-                        <p className="text-secondary text-2xl">Contract</p>
+                        <p className="text-secondary text-2xl">{t('contractTitle')}</p>
                         {hasImages && (
                             <a
                                 href={images[selectedIndex].src}
@@ -93,7 +94,7 @@ export default function ContractViewer({ images }: ContractViewerProps) {
                         </>
                     ) : (
                         <div className="flex-1 flex justify-center items-center text-gray-500 text-lg">
-                            No contract images available
+                            {t('noImagesFallback')}
                         </div>
                     )}
                 </div>

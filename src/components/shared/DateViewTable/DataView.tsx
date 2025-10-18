@@ -110,16 +110,8 @@ export default function DataView<T = Record<string, any>>({
                     />
                 )}
 
-                {totalRowsCount > 0 && (
-                    <div className="flex justify-between flex-col-reverse flex-nowrap lg:flex-row lg:items-center gap-3 pt-5 lg:pt-7 mb-2">
-                        {pageCount > 1 ? <TablePagination pageCount={pageCount} /> : <div></div>}
-                        <span className="text-sm text-dark lg:text-nowrap">
-                            Showing {startEntry} to {endEntry} of {totalRowsCount} entries
-                        </span>
-                    </div>
-                )}
+                <TablePagination pageCount={pageCount} pageSize={pageSize} totalRowsCount={totalRowsCount} />
             </div>
         </DashboardCard>
-
     );
 }
