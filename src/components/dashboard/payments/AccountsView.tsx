@@ -40,8 +40,8 @@ export default function AccountsView() {
                     <ActionButtons
                         onAction={handleAddSave}
                         onCancel={() => setShowAddPopup(false)}
-                        actionText="Save Changes"
-                        cancelText="Discard"
+                        actionText={t('save')}
+                        cancelText={t('discard')}
                         isDisabled={false}
                     />
                 </div>

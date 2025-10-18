@@ -519,6 +519,8 @@
             "addMethod": "Add Method",
             "addCardHolder": "Add Card Holder",
             "recentTransactions": "Recent Transactions",
+            "save": "Save Changes",
+            "discard": "Discard",
             "card": {
                 "expires": "Expires",
                 "edit": "Edit card",
@@ -528,9 +530,7 @@
                 "deleteSubtitle": "Are you sure you want to remove this Visa card?",
                 "deleteNote": "This action cannot be undone.",
                 "cancel": "Cancel",
-                "editTitle": "Edit Card Holder",
-                "save": "Save Changes",
-                "discard": "Discard"
+                "editTitle": "Edit Card Holder"
             }
         },
         "account": {

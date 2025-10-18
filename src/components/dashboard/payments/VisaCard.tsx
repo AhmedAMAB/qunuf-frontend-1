@@ -7,7 +7,7 @@ import ActionButtons from '@/components/shared/ActionButtons';
 import { useTranslations } from 'next-intl';
 
 export default function VisaCard() {
-    const t = useTranslations('dashboard.paymentMethods.card');
+    const t = useTranslations('dashboard.paymentMethods');
     const [showDeletePopup, setShowDeletePopup] = useState(false);
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [cardHolder, setCardHolder] = useState('John Anderson');
@@ -34,7 +34,7 @@ export default function VisaCard() {
                     <div className="flex flex-col gap-1">
                         <p className="text-base font-semibold text-dark leading-tight">Visa</p>
                         <p className="text-sm text-input">•••• •••• •••• 4242</p>
-                        <p className="text-sm text-placeholder">{t('expires')} 12/25 • {cardHolder}</p>
+                        <p className="text-sm text-placeholder">{t('card.expires')} 12/25 • {cardHolder}</p>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@ export default function VisaCard() {
                         />
                     </div>
                     <div className="text-xs bg-lighter py-[2px] px-2 w-fit text-secondary rounded-full flex-center">
-                        <span>{t('default')}</span>
+                        <span>{t('card.default')}</span>
                     </div>
                 </div>
             </div>
@@ -65,13 +65,13 @@ export default function VisaCard() {
                 <ActionPopup
                     onCancel={() => setShowDeletePopup(false)}
                     onAction={() => setShowDeletePopup(false)}
-                    title={t('deleteTitle')}
-                    subtitle={t('deleteSubtitle')}
+                    title={t('card.deleteTitle')}
+                    subtitle={t('card.deleteSubtitle')}
                     MainIcon={FaCreditCard}
                     mainIconColor="#EA2323"
-                    note={t('deleteNote')}
-                    actionText={t('delete')}
-                    cancelText={t('cancel')}
+                    note={t('card.deleteNote')}
+                    actionText={t('card.delete')}
+                    cancelText={t('card.cancel')}
                 />
             </Popup>
 
