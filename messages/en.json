@@ -649,6 +649,28 @@
                 "topRented": "Top Rented Properties",
                 "recentTransactions": "Recent Transactions"
             }
+        },
+        "properties": {
+            "delete": {
+                "title": "Delete Property",
+                "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
+                "actionText": "Delete"
+            },
+            "cancel": "Cancel",
+            "table": {
+                "property": "Property",
+                "status": "Status",
+                "free": "Free",
+                "online": "Online",
+                "offline": "Offline",
+                "booked": "Booked",
+                "published": "Published",
+                "price": "Price",
+                "location": "Location",
+                "deleteProperty": "Delete Property",
+                "editProperty": "Edit Property",
+                "addProperty": "Add Property"
+            }
         }
     }
 }

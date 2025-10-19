@@ -649,6 +649,28 @@
                 "topRented": "أكثر العقارات تأجيرًا",
                 "recentTransactions": "المعاملات الأخيرة"
             }
+        },
+        "properties": {
+            "delete": {
+                "title": "حذف العقار",
+                "subtitle": "هل أنت متأكد أنك تريد حذف هذا العقار؟ لا يمكن التراجع عن هذا الإجراء.",
+                "actionText": "حذف"
+            },
+            "cancel": "إلغاء",
+            "table": {
+                "property": "العقار",
+                "status": "الحالة",
+                "free": "متاح",
+                "online": "معروض",
+                "offline": "غير معروض",
+                "booked": "محجوز",
+                "published": "تاريخ النشر",
+                "price": "السعر",
+                "location": "الموقع",
+                "deleteProperty": "حذف العقار",
+                "editProperty": "تعديل العقار",
+                "addProperty": "إضافة عقار"
+            }
         }
     }
 }

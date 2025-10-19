@@ -5,7 +5,7 @@ import DataView from "@/components/shared/DateViewTable/DataView";
 import { MenuActionItem } from "@/components/shared/DateViewTable/MenuActionList";
 import { useTenantContracts } from "@/hooks/dashboard/tenant/useTenantContracts";
 import { TenantContractRow } from "@/types/dashboard/tenant";
-import { FaFileExcel, FaRegNewspaper } from "react-icons/fa";
+import { FaFileExcel, FaHome, FaRegNewspaper } from "react-icons/fa";
 import { RiIndeterminateCircleLine } from "react-icons/ri";
 import { TbContract } from "react-icons/tb";
 import { TenantContractColumns } from '@/constants/dashboard/tenant/tenantContracts'
@@ -105,7 +105,7 @@ function DeleteContractPopup({ onClose }: { onClose: () => void }) {
         <ActionPopup
             title={t('delete.title')}
             subtitle={t('delete.subtitle')}
-            MainIcon={FaFileExcel}
+            MainIcon={FaHome}
             mainIconColor="#FD5257"
             cancelText={t('cancel')}
             actionText={t('delete.actionText')}
