@@ -7,7 +7,7 @@ import ActionButtons from '@/components/shared/ActionButtons';
 import { useTranslations } from 'next-intl';
 
 export default function VisaCard() {
-    const t = useTranslations('dashboard.paymentMethods');
+    const t = useTranslations('dashboard.payments.paymentMethods');
     const [showDeletePopup, setShowDeletePopup] = useState(false);
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [cardHolder, setCardHolder] = useState('John Anderson');
@@ -78,7 +78,7 @@ export default function VisaCard() {
             {/* Edit Popup */}
             <Popup show={showEditPopup} onClose={() => setShowEditPopup(false)}>
                 <div className="space-y-6 md:min-w-lg lg:min-w-xl mx-auto">
-                    <h2 className="text-lg font-semibold text-dark">{t('editTitle')}</h2>
+                    <h2 className="text-lg font-semibold text-dark">{t('card.editTitle')}</h2>
                     <ActionButtons
                         onAction={() => setShowEditPopup(false)}
                         onCancel={() => setShowEditPopup(false)}

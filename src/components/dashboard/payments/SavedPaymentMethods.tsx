@@ -9,7 +9,7 @@ type TabKey = 'accounts' | 'transactions';
 
 export default function SavedPaymentMethods() {
     const [activeTab, setActiveTab] = useState<TabKey>('accounts');
-    const t = useTranslations('dashboard.paymentMethods');
+    const t = useTranslations('dashboard.payments.paymentMethods');
 
     return (
         <div className="col-span-1 sm:col-span-12 lg:col-span-8">

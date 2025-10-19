@@ -19,7 +19,7 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     root: '',
     contracts: '/contracts',
     renewRequests: '/renew-requests',
-    paymentHistory: '/payments',
+    paymentHistory: '/payments-history',
     properties: '/properties',
     revenue: '/revenue',
     settings: '/settings',

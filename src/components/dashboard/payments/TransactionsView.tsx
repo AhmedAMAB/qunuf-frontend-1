@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import RentalIncomeCard from "./RentalIncomeCard";
 
 export default function TransactionsView() {
-    const t = useTranslations('dashboard.paymentMethods');
+    const t = useTranslations('dashboard.payments.paymentMethods');
 
     return (
         <>

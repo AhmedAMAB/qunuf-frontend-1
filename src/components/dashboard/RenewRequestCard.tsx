@@ -51,7 +51,7 @@ export default function RenewRequestCard({ data, onCancel, onRenew }: RenewReque
             <div className="p-4 border-b border-gray-200">
                 <h3 className="text-lg font-semibold text-dark mb-2">{t('priceDetails')}</h3>
                 <div className="flex justify-between text-sm text-gray-700 mb-1">
-                    <span className="underline">For one Month</span>
+                    <span className="underline">{t('forOneMonth')}</span>
                     <span>${data.price.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-700">

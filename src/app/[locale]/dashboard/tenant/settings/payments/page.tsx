@@ -1,6 +1,7 @@
 import SavedPaymentMethods from "@/components/dashboard/payments/SavedPaymentMethods";
 import SettingsCard from "@/components/dashboard/settings/SettingsCard";
 import BreadcrumbsHeader from "@/components/shared/BreadcrumbsHeader";
+import { getDashboardHref } from "@/utils/dashboardPaths";
 import { useTranslations } from "next-intl";
 import { MdOutlinePayment } from "react-icons/md";
 import { RiFundsBoxLine } from "react-icons/ri";
@@ -14,7 +15,7 @@ export default function PaymentsPage() {
             <BreadcrumbsHeader
                 title={t('title')}
                 breadcrumbs={[
-                    { label: t('accountSettings'), href: `/dashboard/tenant/settings` },
+                    { label: t('accountSettings'), href: getDashboardHref('tenant', 'settings') },
                     { label: t('title') },
                 ]}
             />

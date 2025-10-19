@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 export default function PaymentsDataView() {
     const { getRows } = usePayments();
-    const t = useTranslations('dashboard.payments');
+    const t = useTranslations('dashboard.payments.table');
     return (
         <DataView<PaymentRow>
             columns={getPaymentColumns(t)}

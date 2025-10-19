@@ -62,7 +62,7 @@ export default function ChatInterface({
                         <h2 className="text-lg font-bold text-center text-gray-800">{t('messages')}</h2>
                         <MdFilterList size={24} className="text-secondary" />
                     </div>
-                    <div className="space-y-4 overflow-auto h-[calc(100vh-240px)] thin-scrollbar border-e border-gray">
+                    <div className="space-y-4 overflow-auto h-[calc(100vh-240px)] thin-scrollbar max-md:border-none border-e border-gray">
                         {users?.map((user) => (
                             <ChatPreviewCard
                                 key={user.id}

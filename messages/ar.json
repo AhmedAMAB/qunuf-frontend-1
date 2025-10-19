@@ -498,39 +498,41 @@
             }
         },
         "payments": {
-            "transactionId": "معرّف المعاملة",
-            "property": "العقار",
-            "propertyAddress": "عنوان العقار",
-            "propertyType": "نوع العقار",
-            "apartment": "شقة",
-            "house": "منزل",
-            "price": "السعر",
-            "date": "التاريخ",
             "title": "المدفوعات والمستحقات",
             "accountSettings": "إعدادات الحساب",
             "totalEarnings": "إجمالي الأرباح",
-            "pendingPayments": "المدفوعات المعلقة"
-        },
-        "paymentMethods": {
-            "title": "طرق الدفع المحفوظة",
-            "accountsTab": "حسابات الدفع",
-            "transactionsTab": "سجل المعاملات",
-            "recentAccounts": "حسابات الدفع الأخيرة",
-            "addMethod": "إضافة طريقة",
-            "addCardHolder": "إضافة حامل البطاقة",
-            "recentTransactions": "المعاملات الأخيرة",
-            "save": "حفظ التغييرات",
-            "discard": "تجاهل",
-            "card": {
-                "expires": "تنتهي في",
-                "edit": "تعديل البطاقة",
-                "delete": "حذف البطاقة",
-                "default": "افتراضي",
-                "deleteTitle": "جارٍ الحذف",
-                "deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
-                "deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
-                "cancel": "إلغاء",
-                "editTitle": "تعديل حامل البطاقة"
+            "pendingPayments": "المدفوعات المعلقة",
+            "table": {
+                "transactionId": "معرّف المعاملة",
+                "property": "العقار",
+                "propertyAddress": "عنوان العقار",
+                "propertyType": "نوع العقار",
+                "apartment": "شقة",
+                "house": "منزل",
+                "price": "السعر",
+                "date": "التاريخ"
+            },
+            "paymentMethods": {
+                "title": "طرق الدفع المحفوظة",
+                "accountsTab": "حسابات الدفع",
+                "transactionsTab": "سجل المعاملات",
+                "recentAccounts": "حسابات الدفع الأخيرة",
+                "addMethod": "إضافة طريقة",
+                "addCardHolder": "إضافة حامل البطاقة",
+                "recentTransactions": "المعاملات الأخيرة",
+                "save": "حفظ التغييرات",
+                "discard": "تجاهل",
+                "card": {
+                    "expires": "تنتهي في",
+                    "edit": "تعديل البطاقة",
+                    "delete": "حذف البطاقة",
+                    "default": "افتراضي",
+                    "deleteTitle": "جارٍ الحذف",
+                    "deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
+                    "deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
+                    "cancel": "إلغاء",
+                    "editTitle": "تعديل بيانات البطاقة"
+                }
             }
         },
         "account": {
@@ -581,6 +583,7 @@
         "chats": {
             "messages": "الرسائل",
             "noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
+            "typeMessage": "اكتب رسالة",
             "selectConversation": "اختر محادثة لبدء المراسلة"
         },
         "tenant": {

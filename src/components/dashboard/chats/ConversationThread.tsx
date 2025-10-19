@@ -110,7 +110,7 @@ export default function ConversationThread({
                 <div className="flex items-center gap-5 flex-1">
                     <input
                         type="text"
-                        placeholder="Type a message"
+                        placeholder={t('typeMessage')}
                         value={message}
                         onChange={(e) => setMessgae(e.target.value)}
                         className="p-3 border border-gray rounded-full focus:outline-0 w-full"

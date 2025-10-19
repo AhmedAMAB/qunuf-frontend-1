@@ -498,39 +498,41 @@
             }
         },
         "payments": {
-            "transactionId": "Transaction ID",
-            "property": "Property",
-            "propertyAddress": "Property Address",
-            "propertyType": "Property Type",
-            "apartment": "Apartment",
-            "house": "House",
-            "price": "Price",
-            "date": "Date",
             "title": "Payments & Payouts",
             "accountSettings": "Account Settings",
             "totalEarnings": "Total Earnings",
-            "pendingPayments": "Pending Payments"
-        },
-        "paymentMethods": {
-            "title": "Saved Payment Methods",
-            "accountsTab": "Payment Accounts",
-            "transactionsTab": "Transaction History",
-            "recentAccounts": "Recent Payment Accounts",
-            "addMethod": "Add Method",
-            "addCardHolder": "Add Card Holder",
-            "recentTransactions": "Recent Transactions",
-            "save": "Save Changes",
-            "discard": "Discard",
-            "card": {
-                "expires": "Expires",
-                "edit": "Edit card",
-                "delete": "Delete card",
-                "default": "Default",
-                "deleteTitle": "Deleting",
-                "deleteSubtitle": "Are you sure you want to remove this Visa card?",
-                "deleteNote": "This action cannot be undone.",
-                "cancel": "Cancel",
-                "editTitle": "Edit Card Holder"
+            "pendingPayments": "Pending Payments",
+            "table": {
+                "transactionId": "Transaction ID",
+                "property": "Property",
+                "propertyAddress": "Property Address",
+                "propertyType": "Property Type",
+                "apartment": "Apartment",
+                "house": "House",
+                "price": "Price",
+                "date": "Date"
+            },
+            "paymentMethods": {
+                "title": "Saved Payment Methods",
+                "accountsTab": "Payment Accounts",
+                "transactionsTab": "Transaction History",
+                "recentAccounts": "Recent Payment Accounts",
+                "addMethod": "Add Method",
+                "addCardHolder": "Add Card Holder",
+                "recentTransactions": "Recent Transactions",
+                "save": "Save Changes",
+                "discard": "Discard",
+                "card": {
+                    "expires": "Expires",
+                    "edit": "Edit card",
+                    "delete": "Delete card",
+                    "default": "Default",
+                    "deleteTitle": "Deleting",
+                    "deleteSubtitle": "Are you sure you want to remove this Visa card?",
+                    "deleteNote": "This action cannot be undone.",
+                    "cancel": "Cancel",
+                    "editTitle": "Edit Card Information"
+                }
             }
         },
         "account": {
@@ -581,6 +583,7 @@
         "chats": {
             "messages": "Messages",
             "noMessages": "No messages yet. Start the conversation!",
+            "typeMessage": "Type a message",
             "selectConversation": "Select a conversation to start messaging"
         },
         "tenant": {

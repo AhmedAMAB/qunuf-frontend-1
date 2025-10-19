@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 
 export default function AccountsView() {
     const [showAddPopup, setShowAddPopup] = useState(false);
-    const t = useTranslations('dashboard.paymentMethods');
+    const t = useTranslations('dashboard.payments.paymentMethods');
 
     const handleAddSave = () => {
         // TODO: trigger save logic
