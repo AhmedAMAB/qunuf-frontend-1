@@ -25,10 +25,10 @@ export default function VisaCard() {
     return (
         <>
             {/* Card */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-5 md:p-6 rounded-xl border border-lightGold shadow-sm">
+            <div className="bg-card-bg flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-5 md:p-6 rounded-xl">
                 {/* Left */}
                 <div className="flex gap-4 items-start sm:items-center">
-                    <div className="bg-lighter w-[45px] h-[45px] flex-center rounded-[8px] shrink-0">
+                    <div className="bg-dashboard-bg w-[45px] h-[45px] flex-center rounded-[8px] shrink-0">
                         <span className="text-primary font-bold">VISA</span>
                     </div>
                     <div className="flex flex-col gap-1">

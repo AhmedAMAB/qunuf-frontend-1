@@ -5,7 +5,7 @@ interface StatCardProps {
     label: string;
     value: number | string;
     trend?: string;
-    trendColor: string; // hex or rgba
+    trendColor?: string; // hex or rgba
     trendIcon?: ReactNode;
     subtext?: string;
 }
@@ -14,7 +14,7 @@ export default function StatCard({
     label,
     value,
     trend,
-    trendColor,
+    trendColor = 'rgba(76,108,90,0.1)',
     trendIcon,
     subtext,
 }: StatCardProps) {

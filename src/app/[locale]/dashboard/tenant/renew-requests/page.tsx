@@ -1,10 +1,10 @@
-import RenewRequests from "@/components/dashboard/RenewRequests";
+import TenantRenewRequests from "@/components/dashboard/tenant/TenantRenewRequests";
 
 export default function RenewRequestsPage() {
 
     return (
         <div>
-            <RenewRequests />
+            <TenantRenewRequests />
         </div>
 
     )

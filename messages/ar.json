@@ -19,6 +19,20 @@
             },
             "send": "إرسال"
         },
+        "months": [
+            "يناير",
+            "فبراير",
+            "مارس",
+            "أبريل",
+            "مايو",
+            "يونيو",
+            "يوليو",
+            "أغسطس",
+            "سبتمبر",
+            "أكتوبر",
+            "نوفمبر",
+            "ديسمبر"
+        ],
         "search": "إبحث..."
     },
     "header": {
@@ -413,6 +427,15 @@
         }
     },
     "dashboard": {
+        "statistics": {
+            "increase": "زيادة بنسبة {value}٪",
+            "fromLastWeek": "من الأسبوع الماضي",
+            "newListing": "{value} إعلان جديد",
+            "inThisWeek": "في هذا الأسبوع",
+            "seeAll": "عرض الكل",
+            "rentedAnalytics": "تحليلات الإيجارات",
+            "rentedProperties": "العقارات المحجوزة"
+        },
         "header": {
             "greeting": "مرحبًا، {name}!",
             "description": "استكشاف المعلومات والنشاطات"
@@ -473,14 +496,23 @@
             "contractTitle": "العقد",
             "contractPage": "صفحة العقد",
             "noImagesFallback": "لا توجد صور للعقد",
-            "renewTitle": "تجديد العقد",
-            "renewSubtitle": "هل أنت متأكد أنك تريد تجديد العقد؟",
-            "terminateTitle": "إنهاء",
-            "terminateSubtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
-            "terminateNote": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك",
             "cancel": "إلغاء",
-            "renew": "تجديد",
-            "terminate": "إنهاء",
+            "renew": {
+                "actionText": "تجديد",
+                "title": "تجديد العقد",
+                "subtitle": "هل أنت متأكد أنك تريد تجديد العقد؟"
+            },
+            "terminate": {
+                "actionText": "إنهاء",
+                "title": "إنهاء",
+                "subtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
+                "note": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك"
+            },
+            "delete": {
+                "actionText": "مسح",
+                "title": "مسح",
+                "subtitle": "هل أنت متأكد أنك تريد مسح العقد؟"
+            },
             "table": {
                 "property": "العقار",
                 "status": "الحالة",
@@ -494,7 +526,10 @@
                 "location": "الموقع",
                 "renewContract": "تجديد العقد",
                 "terminateContract": "إنهاء العقد",
-                "searchPlaceholder": "ابحث في العقود..."
+                "deleteContract": "مسح العقد",
+                "editContract": "تعديل العقد",
+                "searchPlaceholder": "ابحث في العقود...",
+                "addProperty": "إضافة عقار"
             }
         },
         "payments": {
@@ -561,7 +596,10 @@
             "longStayDiscount": "خصم الإقامة الطويلة",
             "totalUsd": "الإجمالي (دولار أمريكي)",
             "cancel": "إلغاء",
-            "renew": "تجديد"
+            "renew": "تجديد",
+            "disAgree": "غير موافق",
+            "agree": "موافق",
+            "requestToRenew": "طلب تجديد"
         },
         "settings": {
             "root": {
@@ -589,13 +627,27 @@
         "tenant": {
             "root": {
                 "reservedProperty": "العقار المحجوز",
-                "increase": "زيادة بنسبة {value}٪",
-                "fromLastWeek": "من الأسبوع الماضي",
                 "totalPaymentAmount": "إجمالي مبلغ الدفع",
-                "newListing": "{value} إعلان جديد",
-                "inThisWeek": "في هذا الأسبوع",
-                "lastRentedProperties": "آخر العقارات المؤجرة",
-                "seeAll": "عرض الكل"
+                "lastRentedProperties": "آخر العقارات المؤجرة"
+            }
+        },
+        "landlord": {
+            "root": {
+                "totalProperties": "إجمالي العقارات",
+                "totalReviews": "إجمالي التقييمات",
+                "freeProperties": "العقارات المتاحة",
+                "RentedProperties": "العقارات المؤجرة",
+                "topRentedProperties": "أكثر العقارات تأجيرًا"
+            },
+            "revenue": {
+                "week": "أسبوع",
+                "month": "شهر",
+                "year": "سنة",
+                "rentalIncome": "إيرادات الإيجار",
+                "totalReserved": "إجمالي العقارات المحجوزة",
+                "totalFree": "إجمالي العقارات المتاحة",
+                "topRented": "أكثر العقارات تأجيرًا",
+                "recentTransactions": "المعاملات الأخيرة"
             }
         }
     }

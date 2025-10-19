@@ -11,6 +11,7 @@ import { getDashboardHref } from '@/utils/dashboardPaths';
 
 export type SidebarLink = {
     href: string;
+    // key used to get translations
     key: string;
     Icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
@@ -25,13 +26,13 @@ const tenantLinks: SidebarLink[] = [
 
 const landlordLinks: SidebarLink[] = [
     { href: getDashboardHref('landlord', 'root'), key: 'dashboard', Icon: LuLayoutDashboard },
-    { href: getDashboardHref('landlord', 'contracts'), key: 'rentalsContracts', Icon: TbContract },
+    { href: getDashboardHref('landlord', 'contracts'), key: 'contracts', Icon: TbContract },
     { href: getDashboardHref('landlord', 'properties'), key: 'properties', Icon: PiBuildingApartment },
-    { href: getDashboardHref('tenant', 'renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck },
-    { href: getDashboardHref('tenant', 'revenueSummary'), key: 'revenueSummary', Icon: IoAnalytics },
+    { href: getDashboardHref('landlord', 'renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck },
+    { href: getDashboardHref('landlord', 'revenueSummary'), key: 'revenueSummary', Icon: IoAnalytics },
 ];
 
-
+// sidebar links per role
 export const dashboardItems: Record<Role, SidebarLink[]> = {
     tenant: tenantLinks,
     landlord: landlordLinks,

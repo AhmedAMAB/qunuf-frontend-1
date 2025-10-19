@@ -19,6 +19,20 @@
             },
             "send": "Send"
         },
+        "months": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+        ],
         "search": "Search..."
     },
     "header": {
@@ -413,6 +427,15 @@
         }
     },
     "dashboard": {
+        "statistics": {
+            "increase": "{value}% Increase",
+            "fromLastWeek": "from last week",
+            "newListing": "{value} new listing",
+            "inThisWeek": "in this week",
+            "seeAll": "See All",
+            "rentedAnalytics": "Rented Analytics",
+            "rentedProperties": "Rented Properties"
+        },
         "header": {
             "greeting": "Hello, {name}!",
             "description": "Explore information and activity"
@@ -473,14 +496,23 @@
             "contractTitle": "Contract",
             "contractPage": "Contract page",
             "noImagesFallback": "No contract images available",
-            "renewTitle": "Renew Contract",
-            "renewSubtitle": "You sure that you want to renew the contract",
-            "terminateTitle": "Terminate",
-            "terminateSubtitle": "You sure that you want to terminate the contract",
-            "terminateNote": "Note: When you terminate the contract, you will not restore your money",
+            "renew": {
+                "actionText": "renew",
+                "title": "Renew Contract",
+                "subtitle": "You sure that you want to renew the contract"
+            },
+            "terminate": {
+                "actionText": "Terminate",
+                "title": "Terminate",
+                "subtitle": "You sure that you want to terminate the contract",
+                "note": "Note: When you terminate the contract, you will not restore your money"
+            },
+            "delete": {
+                "actionText": "Delete",
+                "title": "Delete",
+                "subtitle": "You sure that you want to delete the contract"
+            },
             "cancel": "Cancel",
-            "renew": "Renew",
-            "terminate": "Terminate",
             "table": {
                 "property": "Property",
                 "status": "Status",
@@ -494,7 +526,10 @@
                 "location": "Location",
                 "renewContract": "Renew Contract",
                 "terminateContract": "Terminate Contract",
-                "searchPlaceholder": "Search contracts..."
+                "deleteContract": "Delete Contract",
+                "editContract": "Edit Contract",
+                "searchPlaceholder": "Search contracts...",
+                "addProperty": "Add Property"
             }
         },
         "payments": {
@@ -561,7 +596,10 @@
             "longStayDiscount": "Long stay discount",
             "totalUsd": "Total (USD)",
             "cancel": "Cancel",
-            "renew": "Renew"
+            "renew": "Renew",
+            "disAgree": "DisAgree",
+            "agree": "Agree",
+            "requestToRenew": "Request to Renew"
         },
         "settings": {
             "root": {
@@ -589,13 +627,27 @@
         "tenant": {
             "root": {
                 "reservedProperty": "Reserved Property",
-                "increase": "{value}% Increase",
-                "fromLastWeek": "from last week",
                 "totalPaymentAmount": "Total Payment Amount",
-                "newListing": "{value} new listing",
-                "inThisWeek": "in this week",
-                "lastRentedProperties": "Last Rented Properties",
-                "seeAll": "See All"
+                "lastRentedProperties": "Last Rented Properties"
+            }
+        },
+        "landlord": {
+            "root": {
+                "totalProperties": "Total Properties",
+                "totalReviews": "Total Reviews",
+                "freeProperties": "Free Properties",
+                "RentedProperties": "Rented Properties",
+                "topRentedProperties": "Top Rented Properties"
+            },
+            "revenue": {
+                "week": "Week",
+                "month": "Month",
+                "year": "Year",
+                "rentalIncome": "Rental Income",
+                "totalReserved": "Total Reserved Property",
+                "totalFree": "Total Free Properties",
+                "topRented": "Top Rented Properties",
+                "recentTransactions": "Recent Transactions"
             }
         }
     }

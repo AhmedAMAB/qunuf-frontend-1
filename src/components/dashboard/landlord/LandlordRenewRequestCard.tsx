@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
-import SecondaryButton from "../shared/buttons/SecondaryButton";
+import SecondaryButton from "../../shared/buttons/SecondaryButton";
 import { useTranslations } from "next-intl";
 
 export interface RenewRequestData {
@@ -47,24 +47,8 @@ export default function RenewRequestCard({ data, onCancel, onRenew }: RenewReque
                 </div>
             </div>
 
-            {/* Price Details */}
-            <div className="p-4 border-b border-gray-200">
-                <h3 className="text-lg font-semibold text-dark mb-2">{t('priceDetails')}</h3>
-                <div className="flex justify-between text-sm text-gray-700 mb-1">
-                    <span className="underline">{t('forOneMonth')}</span>
-                    <span>${data.price.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between text-sm text-gray-700">
-                    <span className="underline">{t('longStayDiscount')}</span>
-                    <span>-${data.discount.toLocaleString()}</span>
-                </div>
-            </div>
+            <h3 className="text-lg font-semibold text-dark mb-2 px-4">{t('requestToRenew')} {t('forOneMonth')}</h3>
 
-            {/* Total */}
-            <div className="p-4 flex justify-between items-center">
-                <span className="font-semibold text-dark">{t('totalUsd')}</span>
-                <span className="font-bold text-lg text-dark">${data.total.toLocaleString()}</span>
-            </div>
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 items-center mt-6 p-4">
@@ -72,14 +56,14 @@ export default function RenewRequestCard({ data, onCancel, onRenew }: RenewReque
                     className="border border-gray-500 text-gray-700 w-full sm:w-auto sm:flex-1 max-w-[320px] hover:bg-gray"
                     onClick={onCancel}
                 >
-                    {t('cancel')}
+                    {t('disAgree')}
                 </SecondaryButton>
 
                 <SecondaryButton
                     className="bg-secondary hover:bg-secondary-hover text-white w-full sm:w-auto sm:flex-1 max-w-[320px]"
                     onClick={onRenew}
                 >
-                    {t('renew')}
+                    {t('agree')}
                 </SecondaryButton>
             </div>
         </div>

@@ -1,8 +1,8 @@
 'use client'
 
-import RenewRequestCard, { RenewRequestData } from "./RenewRequestCard";
+import LandlordRenewRequestCard, { RenewRequestData } from "./LandlordRenewRequestCard";
 
-export default function RenewRequests() {
+export default function LandlordRenewRequests() {
 
     const requests: RenewRequestData[] = [
         {
@@ -71,7 +71,7 @@ export default function RenewRequests() {
             >
                 {requests.map((req, idx) => {
 
-                    return <RenewRequestCard
+                    return <LandlordRenewRequestCard
                         key={idx}
                         data={req}
                         onCancel={() => console.log("Cancel request", idx)}

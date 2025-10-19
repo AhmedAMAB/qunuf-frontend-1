@@ -13,7 +13,8 @@ export type DashboardPathKey =
     | 'payments'
     | 'support'
     | 'chats'
-    | 'revenueSummary';
+    | 'revenueSummary'
+    | 'addProperty';
 
 export const dashboardPaths: Record<DashboardPathKey, string> = {
     root: '',
@@ -29,6 +30,7 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     support: '/support',
     chats: '/chats',
     revenueSummary: '/revenue-summary',
+    addProperty: '/properties/add',
 };
 
 
