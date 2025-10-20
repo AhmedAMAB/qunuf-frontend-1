@@ -8,6 +8,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useLocale } from 'next-intl';
+import ImageLightbox from './ImageLightbox';
 
 
 type Props = {
@@ -128,23 +129,8 @@ const ImageGallery: React.FC<Props> = ({ images, userImage, price, title }) => {
                 </div>
 
                 {/* Lightbox */}
-                {lightboxOpen && (
-                    <div
-                        className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center"
-                        onClick={() => setLightboxOpen(false)}
-                    >
-                        <span className="absolute top-6 right-8 text-white text-4xl cursor-pointer">&times;</span>
-                        <div className="relative w-[90vw] h-[90vh]">
-                            <Image
-                                src={sortedImages[activeIndex].imagePath}
-                                alt="Lightbox"
-                                fill
-                                className="object-contain"
-                                sizes="90vw"
-                            />
-                        </div>
-                    </div>
-                )}
+                <ImageLightbox open={lightboxOpen} onClose={() => setLightboxOpen(false)} url={sortedImages[activeIndex].imagePath} />
+
             </div>
         </section >
     );

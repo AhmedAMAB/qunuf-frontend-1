@@ -96,6 +96,22 @@ export type FilterState = {
     yearBuiltMax: number;
 };
 
+export const featureKeys = [
+    "airConditioning",
+    "assistedLiving",
+    "disabilityAccess",
+    "controlledAccess",
+    "cableReady",
+    "availableNow",
+    "college",
+    "corporate",
+    "elevator",
+    "extraStorage",
+    "highSpeedInternet",
+    "garage",
+    "petAllowed",
+] as const;
+
 export const PropertyColumns = (t: ReturnType<typeof useTranslations>): TableColumnType<PropertyRow>[] => [
     {
         key: 'property',

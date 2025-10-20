@@ -3,6 +3,7 @@ interface TextInputProps {
     placeholder?: string;
     value?: string;
     type?: string
+    className?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -11,10 +12,12 @@ export default function TextInput({
     placeholder,
     value,
     type = 'text',
+    className,
     onChange,
 }: TextInputProps) {
     return (
-        <div className="flex flex-col gap-2 w-full">
+
+        <div className={`flex flex-col gap-2 w-full ${className}`}>
             <label
                 className="text-input font-medium text-[14px] leading-[20px]"
                 style={{ fontWeight: 500 }}

@@ -17,6 +17,31 @@
                 "label": "Password",
                 "placeholder": "Enter your password"
             },
+            "locationInput": {
+                "fetching": "Fetching address...",
+                "addressPrefix": "Address:",
+                "selectedLocation": "Selected location:",
+                "latitude": "Latitude",
+                "longitude": "Longitude",
+                "latitudePlaceholder": "e.g. {lat}",
+                "longitudePlaceholder": "e.g. {lng}",
+                "invalidInput": "Invalid input. Please enter valid numbers.",
+                "latRangeError": "Latitude must be between -90 and 90.",
+                "lngRangeError": "Longitude must be between -180 and 180.",
+                "unknownAddress": "Unknown address",
+                "addressFetchError": "Failed to fetch address"
+            },
+            "uploader": {
+                "dragLabel": "Drag and drop",
+                "orLabel": "or",
+                "chooseFiles": "Choose files",
+                "primaryFile": "Primary file",
+                "setAsPrimary": "Set as primary",
+                "rules": {
+                    "maxSize": "Max file size {size}MB",
+                    "maxFiles": "Max {count} files"
+                }
+            },
             "send": "Send"
         },
         "months": [
@@ -223,9 +248,17 @@
                 "title": "Rental Period",
                 "options": "{option, select, yearly {Yearly} monthly {Monthly} other {Unknown}}"
             },
+            "categories": {
+                "title": "Category",
+                "options": "{option, select, education {Education} hospital {Hospital} shopping {Shopping} other {Other}}"
+            },
             "propertyType": {
                 "title": "Property Type",
                 "options": "{option, select, residential {Residential} commercial {Commercial} other {Unknown}}"
+            },
+            "rentType": {
+                "title": "Rent Type",
+                "options": "{option, select, monthly {Monthly} yearly {Yearly} other {Other}}"
             },
             "furnishedType": {
                 "title": "Furnished Type",
@@ -670,6 +703,29 @@
                 "deleteProperty": "Delete Property",
                 "editProperty": "Edit Property",
                 "addProperty": "Add Property"
+            },
+            "form": {
+                "title": "Apartment Title",
+                "size": "Size (m²)",
+                "price": "Price per month",
+                "rentType": "Rent Type",
+                "propertyType": "Property Type",
+                "bathrooms": "Bathrooms",
+                "bedrooms": "Bedrooms",
+                "garage": "Garage size",
+                "description": "Description",
+                "additionalDetails": "Additional Details",
+                "location": "Location",
+                "selectLocation": "Select Location",
+                "nearby": "What’s nearby",
+                "placeName": "Place Name",
+                "distance": "Distance (km)",
+                "addNearby": "+ Add Nearby Place",
+                "distanceUnit": "km",
+                "placeNamePlaceholder": "Enter place name",
+                "distancePlaceholder": "Enter distance",
+                "categoryPlaceholder": "Select category",
+                "save": "Save"
             }
         }
     }

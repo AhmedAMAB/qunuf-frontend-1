@@ -16,6 +16,7 @@ type SelectProps = {
     className?: string;
     dir?: "ltr" | "rtl";
     value?: Option | null;
+    triggerClassName?: string;
     onChange?: (opt: Option) => void;
 };
 
@@ -25,6 +26,7 @@ export default function SelectInput({
     placeholder = "اختر",
     dir = "ltr",
     value,
+    triggerClassName = '',
     onChange,
 }: SelectProps) {
     const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +43,7 @@ export default function SelectInput({
             {/* Trigger */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between rounded-md  py-[14px] px-4 gap-2 cursor-pointer  bg-[#F6F6F6]"
+                className={`flex items-center justify-between rounded-md  py-[14px] px-4 gap-2 cursor-pointer  bg-[#F6F6F6] ${triggerClassName}`}
             >
                 {/* Text */}
                 <span className="font-normal text-[16px] leading-[20px] text-dark">

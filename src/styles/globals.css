@@ -191,6 +191,17 @@ body {
     }
 
   }
+
+  @media (width >=48rem) {
+
+    .full-textarea {
+      height: 100%;
+    }
+
+    .full-textarea textarea {
+      height: 100%;
+    }
+  }
 }
 
 

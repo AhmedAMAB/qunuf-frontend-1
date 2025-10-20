@@ -17,6 +17,31 @@
                 "label": "كلمة المرور",
                 "placeholder": "أدخل كلمة المرور"
             },
+            "locationInput": {
+                "fetching": "جاري جلب العنوان...",
+                "addressPrefix": "العنوان:",
+                "selectedLocation": "الموقع المحدد:",
+                "latitude": "خط العرض (Latitude)",
+                "longitude": "خط الطول (Longitude)",
+                "latitudePlaceholder": "مثال: {lat}",
+                "longitudePlaceholder": "مثال: {lng}",
+                "invalidInput": "المدخلات غير صالحة، يرجى إدخال أرقام صحيحة",
+                "latRangeError": "خط العرض يجب أن يكون بين -90 و 90",
+                "lngRangeError": "خط الطول يجب أن يكون بين -180 و 180",
+                "unknownAddress": "عنوان غير معروف",
+                "addressFetchError": "تعذر جلب العنوان"
+            },
+            "uploader": {
+                "dragLabel": "اسحب وأفلت",
+                "orLabel": "أو",
+                "chooseFiles": "اختر ملفات",
+                "primaryFile": "الملف الأساسي",
+                "setAsPrimary": "تعيين كملف أساسي",
+                "rules": {
+                    "maxSize": "الحد الأقصى لحجم الملف {size}MB",
+                    "maxFiles": "الحد الأقصى {count} ملفات"
+                }
+            },
             "send": "إرسال"
         },
         "months": [
@@ -226,6 +251,14 @@
             "propertyType": {
                 "title": "نوع العقار",
                 "options": "{option, select, residential {سكني} commercial {تجاري} other {غير معروف}}"
+            },
+            "rentType": {
+                "title": "Rent Type",
+                "options": "{option, select, monthly {شهرياً} yearly {سنوياً} other {غير معروف}}"
+            },
+            "categories": {
+                "title": "الفئة",
+                "options": "{option, select, education {تعليمي} hospital {مستشفى} shopping {تسوق} other {أخرى}}"
             },
             "furnishedType": {
                 "title": "نوع التأثيث",
@@ -670,6 +703,35 @@
                 "deleteProperty": "حذف العقار",
                 "editProperty": "تعديل العقار",
                 "addProperty": "إضافة عقار"
+            },
+            "form": {
+                "title": "عنوان الشقة",
+                "size": "المساحة (م²)",
+                "price": "السعر الشهري",
+                "rentType": "نوع الإيجار",
+                "propertyType": "نوع العقار",
+                "bathrooms": "عدد الحمامات",
+                "bedrooms": "عدد غرف النوم",
+                "garage": "حجم المرآب",
+                "description": "الوصف",
+                "additionalDetails": "تفاصيل إضافية",
+                "location": "الموقع",
+                "selectLocation": "اختر الموقع",
+                "nearby": "الأماكن القريبة",
+                "placeName": "اسم المكان",
+                "distance": "المسافة (كم)",
+                "addNearby": "+ إضافة مكان قريب",
+                "distanceUnit": "كم",
+                "placeNamePlaceholder": "أدخل اسم المكان",
+                "distancePlaceholder": "أدخل المسافة",
+                "categoryPlaceholder": "اختر الفئة",
+                "categories": {
+                    "education": "تعليمي",
+                    "hospital": "مستشفى",
+                    "shopping": "تسوق",
+                    "other": "أخرى"
+                },
+                "save": "حفظ"
             }
         }
     }

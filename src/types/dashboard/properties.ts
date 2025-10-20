@@ -1,6 +1,7 @@
 
 
 export type PropertyStatus = 'free' | 'online' | 'offline' | 'booked'
+
 export type PropertyRow = {
     id: string;
     property: {
@@ -19,3 +20,24 @@ export type PropertyRow = {
     }[];
     location: string;
 };
+
+
+export type CategoryType = 'education' | 'hospital' | 'shopping';
+export type PropertyType = 'residential' | 'commercial';
+export type RentType = 'monthly' | 'yearly';
+export type FurnishedType = 'furnished' | 'unfurnished';
+export type FeatureType =
+    | 'airConditioning'
+    | 'assistedLiving'
+    | 'disabilityAccess'
+    | 'controlledAccess'
+    | 'cableReady'
+    | 'availableNow'
+    | 'college'
+    | 'corporate'
+    | 'elevator'
+    | 'extraStorage'
+    | 'highSpeedInternet'
+    | 'garage'
+    | 'petAllowed'
+    ;
