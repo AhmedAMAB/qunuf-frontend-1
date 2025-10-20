@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import React, { ComponentType, ReactElement, useState } from 'react';
 import Popup from '../Popup';
 import { IconType } from 'react-icons';

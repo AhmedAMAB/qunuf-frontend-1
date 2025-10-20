@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Logo from "../Logo";
 import SocialIcons from "./SocialIcons";
 import { useTranslations } from "next-intl";

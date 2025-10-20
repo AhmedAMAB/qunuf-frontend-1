@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { useRouter } from 'next/navigation';
 
 export default function NotFound() {

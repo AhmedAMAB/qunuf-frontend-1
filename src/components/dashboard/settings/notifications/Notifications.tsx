@@ -4,7 +4,7 @@ import PushNotificationToggle from "@/components/dashboard/settings/notification
 import BreadcrumbsHeader from "@/components/shared/BreadcrumbsHeader";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { getDashboardHref } from "@/utils/dashboardPaths";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { FaRegNewspaper } from "react-icons/fa";
 import DashboardCard from "../../DashboardCard";
 import { useTranslations } from "next-intl";

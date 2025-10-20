@@ -2,7 +2,7 @@ import { actionButton } from "./FilterContainer";
 import ExportExel from '../ExportExel';
 import SecondaryButton from '../buttons/SecondaryButton';
 import Tooltip from '../Tooltip';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 
 export default function TableActions({ actionButton }: { actionButton: actionButton }) {
     const MobileIcon = actionButton.MobileIcon;

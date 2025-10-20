@@ -1,6 +1,6 @@
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 type SocialIconsProps = {
     primary?: boolean;

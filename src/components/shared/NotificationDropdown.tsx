@@ -3,7 +3,7 @@ import Dropdown, { MenuProps, TriggerProps } from "./Dropdown";
 import { FaRegNewspaper } from "react-icons/fa";
 import PingIndicator from "./PingIndicator";
 import { useTranslations } from "use-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 
 

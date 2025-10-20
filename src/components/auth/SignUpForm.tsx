@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import TextInput from '../shared/forms/TextInput';
 import PasswordInput from '../shared/forms/PasswordInput';
 import SecondaryButton from '../shared/buttons/SecondaryButton';

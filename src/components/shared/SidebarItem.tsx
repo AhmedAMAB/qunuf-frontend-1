@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ComponentType, ReactNode, SVGProps } from "react";
 import Tooltip from "./Tooltip";
 import PrimaryButton from "./buttons/PrimaryButton";

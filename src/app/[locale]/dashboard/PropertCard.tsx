@@ -1,6 +1,6 @@
 import CircularRating from "@/components/shared/CircularRating";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 interface PropertyCardProps {
     imageSrc: string;

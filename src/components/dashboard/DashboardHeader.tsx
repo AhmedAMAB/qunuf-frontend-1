@@ -1,7 +1,7 @@
 import { FaBars } from "react-icons/fa";
 import NotificationDropdown from "../shared/NotificationDropdown";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import PingIndicator from "../shared/PingIndicator";
 import LocaleSwitcher from "../shared/LocaleSwitcher";
 import { GrLanguage } from "react-icons/gr";
