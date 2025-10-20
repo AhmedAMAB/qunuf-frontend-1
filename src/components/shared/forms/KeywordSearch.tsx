@@ -7,6 +7,7 @@ interface KeywordSearchProps {
     onChange: (val: string) => void;
     searchPlaceholder?: string;
     inputRef?: React.RefObject<HTMLInputElement | null>;  // ✅ ref كـ prop عادي
+    className?: string
 }
 
 export default function KeywordSearch({
@@ -14,9 +15,10 @@ export default function KeywordSearch({
     onChange,
     searchPlaceholder = 'ابحث...',
     inputRef,
+    className
 }: KeywordSearchProps) {
     return (
-        <div className="flex items-center justify-between rounded-[8px] border border-dark px-3 py-2 w-full  md:max-w-[310px]">
+        <div className={`flex items-center justify-between rounded-[8px] border border-dark px-3 py-2 w-full  md:max-w-[310px] ${className}`}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"

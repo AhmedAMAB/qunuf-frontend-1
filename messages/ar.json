@@ -719,6 +719,10 @@
                 "repair": "الإصلاح",
                 "taxes": "الضرائب",
                 "saving": "الادخار"
+            },
+            "contactUs": {
+                "title": "رسائل اتصل بنا",
+                "searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني أو رقم الهاتف"
             }
         },
         "properties": {

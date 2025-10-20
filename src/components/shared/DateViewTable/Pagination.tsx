@@ -18,7 +18,7 @@ export default function Pagination({ currentPage, pageCount, onPageChange }: Pag
     if (pageCount <= 1) return null;
 
     return (
-        <div className="flex text-nowrap lg:justify-center items-center gap-2">
+        <div className="flex text-nowrap lg:justify-center items-center flex-wrap gap-2">
             {/* First Page */}
             <PaginationButton
                 label={t('firstPage')}

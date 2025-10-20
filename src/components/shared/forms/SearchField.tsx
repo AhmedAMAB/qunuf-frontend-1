@@ -11,9 +11,10 @@ type Props = {
     value: string;
     onChange: (val: string) => void;
     searchPlaceholder?: string;
+    className?: string;
 };
 
-export default function SearchField({ value, onChange, searchPlaceholder }: Props) {
+export default function SearchField({ value, onChange, searchPlaceholder, className }: Props) {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
@@ -34,5 +35,5 @@ export default function SearchField({ value, onChange, searchPlaceholder }: Prop
         }
     }, [debouncedValue]);
 
-    return <KeywordSearch value={value} onChange={onChange} searchPlaceholder={searchPlaceholder ?? t('search')} />;
+    return <KeywordSearch value={value} onChange={onChange} searchPlaceholder={searchPlaceholder ?? t('search')} className={className} />;
 }

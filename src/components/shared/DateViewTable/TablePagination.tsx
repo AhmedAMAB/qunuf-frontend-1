@@ -31,7 +31,7 @@ export default function TablePagination({ pageCount, pageSize, totalRowsCount }:
 
     return (
         totalRowsCount > 0 && (
-            <div className="flex justify-between flex-col-reverse flex-nowrap lg:flex-row lg:items-center gap-3 pt-5 lg:pt-7 mb-2">
+            <div className="flex justify-between flex-col-reverse flex-nowrap lg:flex-row lg:items-center gap-3 pt-5 lg:pt-7 mb-2 w-full">
                 {pageCount > 1 ? <Pagination
                     currentPage={currentPage}
                     pageCount={pageCount}

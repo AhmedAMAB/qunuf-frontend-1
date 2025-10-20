@@ -719,6 +719,10 @@
                 "repair": "Repair",
                 "taxes": "Taxes",
                 "saving": "Saving"
+            },
+            "contactUs": {
+                "title": "Contact Us Messages",
+                "searchPlaceholder": "Search by name, email, or phone"
             }
         },
         "properties": {
