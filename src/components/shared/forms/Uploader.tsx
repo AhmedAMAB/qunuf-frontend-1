@@ -5,6 +5,7 @@ import { Control, Controller } from 'react-hook-form';
 import FilePreviewItem from './FilePreviewItem';
 import { BsCloudArrowUp } from 'react-icons/bs';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 type UploaderProps = {
     control: Control<any>;
@@ -31,16 +32,19 @@ export default function Uploader({
 }: UploaderProps) {
     const t = useTranslations("comman.form.uploader");
 
+
     return (
         <Controller
             name={name}
             control={control}
             render={({ field }) => {
-                const currentFiles: FileItem[] = allowMultiple
-                    ? (field.value as FileItem[] || [])
+                const currentFiles: FileItem[] = Array.isArray(field.value)
+                    ? field.value
                     : field.value
-                        ? [field.value as FileItem]
+                        ? [field.value]
                         : [];
+
+
 
                 const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
@@ -81,6 +85,7 @@ export default function Uploader({
                     field.onChange(updated);
                 };
 
+                const isOneImage = !allowMultiple;
 
                 return (
                     <div className="col-span-12"
@@ -96,7 +101,7 @@ export default function Uploader({
                         </label>}
 
                         {/* Dropzone */}
-                        <div className="flex items-center justify-center border-dashed border-gray-400 rounded-[8px] w-full">
+                        <div className="relative overflow-hidden flex items-center justify-center border-dashed border-gray-400 rounded-[8px] w-full">
                             <label
                                 htmlFor={`${name}-dropzone`}
                                 className="flex flex-col items-center justify-center w-full cursor-pointer  border-gray-400 rounded-[8px] border border-dashed"
@@ -127,10 +132,18 @@ export default function Uploader({
                                     className="hidden"
                                     onChange={handleFiles}
                                 />
+                                {isOneImage && currentFiles.length === 1 && (
+                                    <Image
+                                        src={currentFiles[0].url}
+                                        alt="Preview"
+                                        fill
+                                        className="absolute inset-0 object-cover rounded-[8px]"
+                                    />
+                                )}
                             </label>
                         </div>
 
-                        {currentFiles.length > 0 && (
+                        {!isOneImage && currentFiles.length > 0 && (
                             <div className="grid grid-cols-1 xs:!grid-cols-2 md:!grid-cols-3 lg:!grid-cols-4 gap-4 mt-6">
                                 {currentFiles.map((file: FileItem | string, idx: number) => (
                                     <FilePreviewItem

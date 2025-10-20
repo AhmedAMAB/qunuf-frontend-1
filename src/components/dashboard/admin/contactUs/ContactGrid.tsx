@@ -4,6 +4,7 @@ import { MessageCard } from "./MessageCard";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import TablePagination from "@/components/shared/DateViewTable/TablePagination";
+import SectionHeading from "../../SectionHeading";
 
 
 const mockedMessages = [
@@ -77,9 +78,7 @@ export default function ContactGrid() {
         <div className="space-y-6">
             {/* Header */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <h1 className="font-bold  text-[28px] sm:text-[32px] md:text-[34px] leading-[100%] tracking-[0%] text-dark">
-                    {t('title')}
-                </h1>
+                <SectionHeading title={t('title')} />
                 <SearchField
                     value={search}
                     onChange={setSearch}

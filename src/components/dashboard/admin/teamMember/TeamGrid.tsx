@@ -6,6 +6,7 @@ import { TeamMemberCard } from './TeamMemberCard';
 import Popup from '@/components/shared/Popup';
 import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
 import TeamMemberForm from './TeamMemberForm';
+import SectionHeading from '../../SectionHeading';
 
 const mockedTeam = [
     {
@@ -55,9 +56,7 @@ export default function TeamGrid() {
         <div className="space-y-6">
             {/* Header */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <h1 className="font-bold text-[28px] sm:text-[32px] md:text-[34px] leading-[100%] tracking-[0%] text-dark">
-                    {t('title')}
-                </h1>
+                <SectionHeading title={t('title')} />
                 <SecondaryButton
                     onClick={() => setShowAdd(true)}
                     className="bg-secondary hover:bg-secondary-hover font-semibold text-lighter sm:!py-2"

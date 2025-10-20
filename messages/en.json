@@ -7,7 +7,8 @@
     },
     "comman": {
         "datePlaceholder": "Select Date Range",
-        "cancel": "إلغاء",
+        "cancel": "Cancel",
+        "save": "Save",
         "form": {
             "email": {
                 "label": "Email Address",
@@ -750,6 +751,26 @@
                 "cancel": "Cancel",
                 "addAction": "Add Member",
                 "editAction": "Save Changes"
+            },
+            "about": {
+                "title": "About Us Content",
+                "vision": {
+                    "title": "Our Vision"
+                },
+                "goals": {
+                    "title": "Our Goals"
+                },
+                "missions": {
+                    "title": "Our Missions"
+                },
+                "edit": "Edit",
+                "form": {
+                    "title": "Title",
+                    "message": "Message",
+                    "messagePlaceholder": "Enter section message",
+                    "cancel": "Cancel",
+                    "save": "Save Changes"
+                }
             }
         }
     },
