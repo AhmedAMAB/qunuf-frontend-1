@@ -77,7 +77,7 @@ export default function ContactGrid() {
         <div className="space-y-6">
             {/* Header */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <h1 className="font-bold text-[34px] leading-[100%] tracking-[0%] text-dark">
+                <h1 className="font-bold  text-[28px] sm:text-[32px] md:text-[34px] leading-[100%] tracking-[0%] text-dark">
                     {t('title')}
                 </h1>
                 <SearchField

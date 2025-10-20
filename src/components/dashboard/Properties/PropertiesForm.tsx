@@ -38,7 +38,6 @@ export default function PropertiesForm({ initialData }: { initialData?: Properti
     const tCategories = useTranslations("property.filter");
     const tUploader = useTranslations("comman.form.uploader");
 
-    console.log(initialData)
 
     const { handleSubmit, control } = useForm<PropertiesFormType>({
         defaultValues: initialData || {

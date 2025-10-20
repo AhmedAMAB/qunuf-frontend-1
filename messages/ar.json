@@ -723,6 +723,33 @@
             "contactUs": {
                 "title": "رسائل اتصل بنا",
                 "searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني أو رقم الهاتف"
+            },
+            "team": {
+                "title": "أعضاء الفريق",
+                "add": "إضافة عضو جديد",
+                "edit": "تعديل العضو",
+                "deleteTitle": "حذف",
+                "formText": "عرض النموذج",
+                "delete": {
+                    "title": "حذف عضو الفريق",
+                    "subtitle": "هل أنت متأكد أنك تريد إزالة هذا العضو من الفريق؟",
+                    "actionText": "حذف",
+                    "cancel": "إلغاء"
+                },
+                "form": {
+                    "form": "نموذج عضو الفريق",
+                    "name": "الاسم",
+                    "email": "البريد الإلكتروني",
+                    "phone": "رقم الهاتف",
+                    "namePlaceholder": "أدخل الاسم الكامل",
+                    "emailPlaceholder": "أدخل البريد الإلكتروني",
+                    "phonePlaceholder": "أدخل رقم الهاتف",
+                    "upload": "رفع صورة",
+                    "noFile": "لم يتم اختيار ملف"
+                },
+                "cancel": "إلغاء",
+                "addAction": "إضافة عضو",
+                "editAction": "حفظ التعديلات"
             }
         },
         "properties": {

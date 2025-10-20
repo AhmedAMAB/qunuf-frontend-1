@@ -723,52 +723,79 @@
             "contactUs": {
                 "title": "Contact Us Messages",
                 "searchPlaceholder": "Search by name, email, or phone"
+            },
+            "team": {
+                "title": "Team Members",
+                "add": "Add Team Member",
+                "edit": "Edit Team Member",
+                "deleteTitle": "Delete",
+                "formText": "Show Form",
+                "delete": {
+                    "title": "Delete Team Member",
+                    "subtitle": "Are you sure you want to remove this member from your team?",
+                    "actionText": "Delete",
+                    "cancel": "Cancel"
+                },
+                "form": {
+                    "form": "Team Member Form",
+                    "name": "Name",
+                    "email": "Email",
+                    "phone": "Phone Number",
+                    "namePlaceholder": "Enter full name",
+                    "emailPlaceholder": "Enter email address",
+                    "phonePlaceholder": "Enter phone number",
+                    "upload": "Upload Image",
+                    "noFile": "No file chosen"
+                },
+                "cancel": "Cancel",
+                "addAction": "Add Member",
+                "editAction": "Save Changes"
             }
+        }
+    },
+    "properties": {
+        "delete": {
+            "title": "Delete Property",
+            "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
+            "actionText": "Delete"
         },
-        "properties": {
-            "delete": {
-                "title": "Delete Property",
-                "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
-                "actionText": "Delete"
-            },
-            "cancel": "Cancel",
-            "table": {
-                "property": "Property",
-                "status": "Status",
-                "free": "Free",
-                "online": "Online",
-                "offline": "Offline",
-                "booked": "Booked",
-                "published": "Published",
-                "price": "Price",
-                "location": "Location",
-                "deleteProperty": "Delete Property",
-                "editProperty": "Edit Property",
-                "addProperty": "Add Property"
-            },
-            "form": {
-                "title": "Apartment Title",
-                "size": "Size (m²)",
-                "price": "Price per month",
-                "rentType": "Rent Type",
-                "propertyType": "Property Type",
-                "bathrooms": "Bathrooms",
-                "bedrooms": "Bedrooms",
-                "garage": "Garage size",
-                "description": "Description",
-                "additionalDetails": "Additional Details",
-                "location": "Location",
-                "selectLocation": "Select Location",
-                "nearby": "What’s nearby",
-                "placeName": "Place Name",
-                "distance": "Distance (km)",
-                "addNearby": "+ Add Nearby Place",
-                "distanceUnit": "km",
-                "placeNamePlaceholder": "Enter place name",
-                "distancePlaceholder": "Enter distance",
-                "categoryPlaceholder": "Select category",
-                "save": "Save"
-            }
+        "cancel": "Cancel",
+        "table": {
+            "property": "Property",
+            "status": "Status",
+            "free": "Free",
+            "online": "Online",
+            "offline": "Offline",
+            "booked": "Booked",
+            "published": "Published",
+            "price": "Price",
+            "location": "Location",
+            "deleteProperty": "Delete Property",
+            "editProperty": "Edit Property",
+            "addProperty": "Add Property"
+        },
+        "form": {
+            "title": "Apartment Title",
+            "size": "Size (m²)",
+            "price": "Price per month",
+            "rentType": "Rent Type",
+            "propertyType": "Property Type",
+            "bathrooms": "Bathrooms",
+            "bedrooms": "Bedrooms",
+            "garage": "Garage size",
+            "description": "Description",
+            "additionalDetails": "Additional Details",
+            "location": "Location",
+            "selectLocation": "Select Location",
+            "nearby": "What’s nearby",
+            "placeName": "Place Name",
+            "distance": "Distance (km)",
+            "addNearby": "+ Add Nearby Place",
+            "distanceUnit": "km",
+            "placeNamePlaceholder": "Enter place name",
+            "distancePlaceholder": "Enter distance",
+            "categoryPlaceholder": "Select category",
+            "save": "Save"
         }
     }
 }

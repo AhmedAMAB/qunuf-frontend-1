@@ -32,7 +32,7 @@ export function MessageCard({ userName, phone, email, description }: MessageCard
                 <div className="bg-secondary shrink-0 rounded-[12px] w-9 h-9 flex items-center justify-center text-white">
                     <FaPhone size={16} className='shrink-0' />
                 </div>
-                <span className="text-dark ">{phone}</span>
+                <span className="text-dark " dir='ltr'>{phone}</span>
             </div>
 
             {/* Email */}
