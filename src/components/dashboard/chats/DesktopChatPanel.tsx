@@ -17,7 +17,7 @@ export default function DesktopChatPanel({
     handleSendMessage,
 }: DesktopChatPanelProps) {
     return (
-        <div className="hidden md:block md:col-span-6 lg:col-span-7 xl:col-span-8 bg-white relative">
+        <div className="hidden md:block md:col-span-6 lg:col-span-7 xl:col-span-8 bg-white  rounded-[8px] relative">
             {selectedUser ? (
                 <ConversationThread
                     className="h-full overflow-hidden px-4 py-6"

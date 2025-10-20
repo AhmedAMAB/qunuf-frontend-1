@@ -57,12 +57,12 @@ export default function ChatInterface({
         <div className="flex-1  grid grid-cols-1 md:grid-cols-12 mx-auto px-4 py-6  gap-6 h-full">
             {/* Sidebar */}
             <div className=" md:col-span-6 lg:col-span-5 xl:col-span-4">
-                <div className="">
+                <div className="bg-card-bg rounded-[8px] p-4">
                     <div className="flex justify-between pb-4 items-center border-b border-b-gray">
                         <h2 className="text-lg font-bold text-center text-gray-800">{t('messages')}</h2>
                         <MdFilterList size={24} className="text-secondary" />
                     </div>
-                    <div className="space-y-4 overflow-auto h-[calc(100vh-240px)] thin-scrollbar max-md:border-none border-e border-gray">
+                    <div className=" space-y-4 overflow-auto h-[calc(100vh-256px)] thin-scrollbar max-md:border-none border-e border-gray">
                         {users?.map((user) => (
                             <ChatPreviewCard
                                 key={user.id}

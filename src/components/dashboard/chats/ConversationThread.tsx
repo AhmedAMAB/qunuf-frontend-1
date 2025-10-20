@@ -39,11 +39,11 @@ export default function ConversationThread({
     }
 
     return (
-        <div className={`relative ${className}`}>
+        <div className={`relative rounded-[8px] bg-card-bg p ${className}`}>
             {/* Scrollable Message Area */}
             {/* Header */}
             <div className="flex items-center gap-4">
-                <div className="shrink-0 w-14 h-14 relative rounded-full overflow-hidden">
+                <div className="shrink-0 w-14 h-14 relative rounded-full overflow-hidden mb-2">
                     <Image
                         src={participant.imageSrc}
                         alt={`${participant.name}'s profile`}
@@ -106,14 +106,14 @@ export default function ConversationThread({
             </div>
 
             {/* Input */}
-            <div className="flex items-end mt-auto absolute bottom-8 start-4 end-4 md:bottom-0 md:start-0 md:end-0 bg-white">
+            <div className="flex items-end mt-auto absolute bottom-8 start-4 end-4 md:bottom-2 md:start-0 md:end-0 bg-card-bg p">
                 <div className="flex items-center gap-5 flex-1">
                     <input
                         type="text"
                         placeholder={t('typeMessage')}
                         value={message}
                         onChange={(e) => setMessgae(e.target.value)}
-                        className="p-3 border border-gray rounded-full focus:outline-0 w-full"
+                        className="bg-dashboard-bg p-3 border border-gray rounded-full focus:outline-0 w-full"
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
                                 handleSendMessage(message);

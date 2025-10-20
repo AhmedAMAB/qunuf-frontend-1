@@ -68,7 +68,7 @@ export default async function landlordPage() {
     ]);
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-4 h-full">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 <StatCard
                     icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
