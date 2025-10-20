@@ -12,5 +12,6 @@ export function useRoleFromPath(): Role {
         return role;
     }
 
+
     return 'tenant';
 }

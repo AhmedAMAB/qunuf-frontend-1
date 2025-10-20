@@ -133,7 +133,7 @@ const users = [
 ];
 
 
-export default function TenentChats() {
+export default function Chats() {
     const [messagesMap, setMessagesMap] = useState<Record<number, Message[]>>(messagesByUserId);
 
     return <ChatInterface

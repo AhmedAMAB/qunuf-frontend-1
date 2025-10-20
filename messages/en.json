@@ -485,6 +485,10 @@
             "revenueSummary": "Revenue Summary",
             "notifications": "Notifications",
             "chat": "Chats",
+            "contactUs": "Contact Us",
+            "teamMembers": "Team Members",
+            "blogs": "Blogs",
+            "aboutUs": "About Us",
             "logout": "Logout"
         },
         "filter": {

@@ -485,6 +485,10 @@
             "revenueSummary": "ملخص الإيرادات",
             "notifications": "الإشعارات",
             "chat": "المحادثات",
+            "contactUs": "اتصل بنا",
+            "teamMembers": "أعضاء الفريق",
+            "blogs": "المدونة",
+            "aboutUs": "من نحن",
             "logout": "تسجيل الخروج"
         },
         "notification": {

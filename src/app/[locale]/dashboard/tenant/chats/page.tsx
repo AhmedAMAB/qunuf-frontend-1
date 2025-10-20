@@ -1,10 +1,10 @@
-import TenentChats from "@/components/dashboard/tenant/TenentChats";
+import Chats from "@/components/dashboard/tenant/Chats";
 
 
 export default function ChatsPage() {
     return (
         <div className="container">
-            <TenentChats />
+            <Chats />
         </div>
     );
 }

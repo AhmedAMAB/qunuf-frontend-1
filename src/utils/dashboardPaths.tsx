@@ -14,7 +14,11 @@ export type DashboardPathKey =
     | 'support'
     | 'chats'
     | 'revenueSummary'
-    | 'addProperty';
+    | 'addProperty'
+    | 'contactUs'
+    | 'teamMembers'
+    | 'blogs'
+    | 'aboutUs';
 
 export const dashboardPaths: Record<DashboardPathKey, string> = {
     root: '',
@@ -31,6 +35,10 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     chats: '/chats',
     revenueSummary: '/revenue-summary',
     addProperty: '/properties/add',
+    contactUs: '/contact-us',
+    teamMembers: '/team-members',
+    blogs: '/blogs',
+    aboutUs: '/about-us',
 };
 
 
@@ -39,6 +47,7 @@ export function getDashboardHref(
     key: DashboardPathKey,
     query?: Record<string, string | number | boolean>
 ): string {
+
     const basePath = `/dashboard/${role}${dashboardPaths[key]}`;
 
     if (!query) return basePath;
