@@ -58,6 +58,15 @@
             "نوفمبر",
             "ديسمبر"
         ],
+        "weekdays": [
+            "الاثنين",
+            "الثلاثاء",
+            "الأربعاء",
+            "الخميس",
+            "الجمعة",
+            "السبت",
+            "الأحد"
+        ],
         "search": "إبحث..."
     },
     "header": {
@@ -467,7 +476,9 @@
             "inThisWeek": "في هذا الأسبوع",
             "seeAll": "عرض الكل",
             "rentedAnalytics": "تحليلات الإيجارات",
-            "rentedProperties": "العقارات المحجوزة"
+            "rentedProperties": "العقارات المحجوزة",
+            "costBreakdown": "تفصيل التكاليف",
+            "reportSales": "تقرير المبيعات"
         },
         "header": {
             "greeting": "مرحبًا، {name}!",
@@ -685,6 +696,29 @@
                 "totalFree": "إجمالي العقارات المتاحة",
                 "topRented": "أكثر العقارات تأجيرًا",
                 "recentTransactions": "المعاملات الأخيرة"
+            }
+        },
+        "admin": {
+            "root": {
+                "totalProperties": "إجمالي العقارات",
+                "freeProperties": "العقارات المتاحة",
+                "rentedProperties": "العقارات المؤجرة",
+                "lastTransactions": "آخر المعاملات",
+                "maintenanceRequests": "طلبات الصيانه"
+            },
+            "maintenance": {
+                "requestId": "رقم الطلب",
+                "type": {
+                    "Electrical": "كهرباء",
+                    "Plumbing": "سباكة",
+                    "HVAC": "تكييف"
+                }
+            },
+            "costBreakdown": {
+                "maintenance": "الصيانة",
+                "repair": "الإصلاح",
+                "taxes": "الضرائب",
+                "saving": "الادخار"
             }
         },
         "properties": {

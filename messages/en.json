@@ -58,6 +58,15 @@
             "Nov",
             "Dec"
         ],
+        "weekdays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ],
         "search": "Search..."
     },
     "header": {
@@ -467,7 +476,9 @@
             "inThisWeek": "in this week",
             "seeAll": "See All",
             "rentedAnalytics": "Rented Analytics",
-            "rentedProperties": "Rented Properties"
+            "rentedProperties": "Rented Properties",
+            "costBreakdown": "Cost Breakdown",
+            "reportSales": "Report Sales"
         },
         "header": {
             "greeting": "Hello, {name}!",
@@ -685,6 +696,29 @@
                 "totalFree": "Total Free Properties",
                 "topRented": "Top Rented Properties",
                 "recentTransactions": "Recent Transactions"
+            }
+        },
+        "admin": {
+            "root": {
+                "totalProperties": "Total Properties",
+                "freeProperties": "Free Properties",
+                "rentedProperties": "Rented Properties",
+                "lastTransactions": "Last Transactions",
+                "maintenanceRequests": "Maintenance Requests"
+            },
+            "maintenance": {
+                "requestId": "Request ID",
+                "type": {
+                    "Electrical": "Electrical",
+                    "Plumbing": "Plumbing",
+                    "HVAC": "HVAC"
+                }
+            },
+            "costBreakdown": {
+                "maintenance": "Maintenance",
+                "repair": "Repair",
+                "taxes": "Taxes",
+                "saving": "Saving"
             }
         },
         "properties": {

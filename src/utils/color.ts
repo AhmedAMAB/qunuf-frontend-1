@@ -25,3 +25,20 @@ export function createGradiant(ctx: ScriptableContext<'line'>, lineColor: string
     gradient.addColorStop(1, bgGradient.to);
     return gradient;
 }
+
+export function createDiagonalPattern(color = '#000', bg = '#fff', size = 10) {
+
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d')!;
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, size, size);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, size);
+    ctx.lineTo(size, 0);
+    ctx.stroke();
+    return ctx.createPattern(canvas, 'repeat')!;
+}
