@@ -15,7 +15,7 @@ const blogBlocks = [
         imageUrl: '/blogs/blog-1.jpg',
         title: 'Lorem Ipsum is simply dummy text',
         description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et odit, minus, nostrum nobis...',
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et odit, minus, nostrum nobis',
         date: '2023-03-16',
     },
     {
@@ -23,7 +23,7 @@ const blogBlocks = [
         imageUrl: '/blogs/blog-2.jpg',
         title: 'Another Blog Title',
         description:
-            'Dolorem accusamus quis eligendi! Lorem Ipsum is simply dummy text of the printing...',
+            'Dolorem accusamus quis eligendi! Lorem Ipsum is simply dummy text of the printing',
         date: new Date(),
     },
     {
@@ -31,7 +31,7 @@ const blogBlocks = [
         imageUrl: '/blogs/blog-3.jpg',
         title: 'New Insights into Real Estate Trends',
         description:
-            'Discover how market shifts and digital platforms are reshaping property investment in 2025...',
+            'Discover how market shifts and digital platforms are reshaping property investment in 2025',
         date: '2025-10-21',
     },
 ];
