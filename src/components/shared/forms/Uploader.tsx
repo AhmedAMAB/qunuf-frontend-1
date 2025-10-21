@@ -6,6 +6,7 @@ import FilePreviewItem from './FilePreviewItem';
 import { BsCloudArrowUp } from 'react-icons/bs';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 type UploaderProps = {
     control: Control<any>;
@@ -31,8 +32,9 @@ export default function Uploader({
     maxFiles = 10,
 }: UploaderProps) {
     const t = useTranslations("comman.form.uploader");
-
-
+    // generate a stable unique id per Uploader instance
+    const idRef = useRef(`${name}-dropzone-${Math.random().toString(36).slice(2)}`);
+    const inputId = idRef.current;
     return (
         <Controller
             name={name}
@@ -44,7 +46,6 @@ export default function Uploader({
                         ? [field.value]
                         : [];
 
-                console.log('currentFiles', currentFiles)
 
                 const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
@@ -96,14 +97,14 @@ export default function Uploader({
                         }}
                         onDragOver={(e) => e.preventDefault()}>
                         {/* Label */}
-                        {label && <label htmlFor={`${name}-dropzone`} className="text-xl font-medium block mb-3">
+                        {label && <label htmlFor={inputId} className="text-xl font-medium block mb-3">
                             {label}
                         </label>}
 
                         {/* Dropzone */}
                         <div className="relative overflow-hidden flex items-center justify-center border-dashed border-gray-400 rounded-[8px] w-full">
                             <label
-                                htmlFor={`${name}-dropzone`}
+                                htmlFor={inputId}
                                 className="relative  flex flex-col items-center justify-center w-full cursor-pointer  border-gray-400 rounded-[8px] border border-dashed"
                             >
                                 <span className="flex flex-col items-center justify-center py-6">
@@ -125,7 +126,7 @@ export default function Uploader({
                                     </span>
                                 </span>
                                 <input
-                                    id={`${name}-dropzone`}
+                                    id={inputId}
                                     type="file"
                                     multiple={allowMultiple}
                                     accept={accept}
@@ -136,7 +137,6 @@ export default function Uploader({
                                     currentFiles.length === 1 &&
                                     currentFiles[0].url?.trim() && (
                                         <Image
-                                            key={currentFiles[0].url} // 👈 force re-render when URL changes
                                             src={currentFiles[0].url}
                                             alt="Preview"
                                             fill

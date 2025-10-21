@@ -11,7 +11,7 @@ import BlogEditForm from './BlogEditForm';
 
 interface BlogContentCardProps {
     block: {
-        key: string;
+        id: string;
         imageUrl: string;
         title: string;
         description: string;
@@ -20,7 +20,6 @@ interface BlogContentCardProps {
 }
 
 export default function BlogContentCard({ block }: BlogContentCardProps) {
-    const t = useTranslations('dashboard.admin.blog');
     const [showPopup, setShowPopup] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
 
@@ -86,6 +85,7 @@ export default function BlogContentCard({ block }: BlogContentCardProps) {
             {/* Popup */}
             <Popup
                 show={showPopup}
+
                 onClose={() => setShowPopup(false)}
                 className="w-full md:w-[540px]"
                 headerContent={
@@ -95,7 +95,7 @@ export default function BlogContentCard({ block }: BlogContentCardProps) {
                 }
             >
                 <BlogEditForm
-                    key={block.key}
+
                     initialData={{
                         title: block.title,
                         description: block.description,

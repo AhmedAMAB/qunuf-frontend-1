@@ -11,7 +11,7 @@ import BlogEditForm, { BlogFormType } from "./BlogEditForm";
 
 const blogBlocks = [
     {
-        key: 'blog-1',
+        id: '1',
         imageUrl: '/blogs/blog-1.jpg',
         title: 'Lorem Ipsum is simply dummy text',
         description:
@@ -19,7 +19,7 @@ const blogBlocks = [
         date: '2023-03-16',
     },
     {
-        key: 'blog-2',
+        id: '2',
         imageUrl: '/blogs/blog-2.jpg',
         title: 'Another Blog Title',
         description:
@@ -27,7 +27,7 @@ const blogBlocks = [
         date: new Date(),
     },
     {
-        key: 'blog-3',
+        id: '3',
         imageUrl: '/blogs/blog-3.jpg',
         title: 'New Insights into Real Estate Trends',
         description:
@@ -53,12 +53,13 @@ export default function BlogsGrid() {
             </div>
 
             <div className="space-y-4">
-                {blogBlocks.map((block) => (
-                    <BlogContentCard key={block.key} block={block} />
+                {blogBlocks.map((block, index) => (
+                    <BlogContentCard key={index} block={block} />
                 ))}
             </div>
 
             <Popup
+
                 show={showAdd}
                 onClose={() => setShowAdd(false)}
                 className="w-full md:w-[540px]"
@@ -69,6 +70,7 @@ export default function BlogsGrid() {
                 }
             >
                 <BlogEditForm
+
                     onCancel={() => setShowAdd(false)}
                     onAction={(data: BlogFormType) => {
                         console.log('New blog added:', data);
