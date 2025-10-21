@@ -14,10 +14,11 @@ export default function TextInput({
     type = 'text',
     className,
     onChange,
+    ...props
 }: TextInputProps) {
     return (
 
-        <div className={`flex flex-col gap-2 w-full ${className}`}>
+        <div className={`flex flex-col gap-2 w-full ${className}`} {...props}>
             <label
                 className="text-input font-medium text-[14px] leading-[20px]"
                 style={{ fontWeight: 500 }}

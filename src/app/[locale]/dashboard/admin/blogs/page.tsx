@@ -1,9 +1,11 @@
 
+import BlogsGrid from "@/components/dashboard/admin/blogs/BlogsGrid";
+
 
 export default function BlogsPage() {
   return (
     <div>
-      BlogsPage
+      <BlogsGrid />
     </div>
   );
 }

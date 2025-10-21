@@ -752,6 +752,26 @@
                 "addAction": "إضافة عضو",
                 "editAction": "حفظ التعديلات"
             },
+            "blog": {
+                "title": "المدونات",
+                "add": "إضافة مدونة",
+                "delete": {
+                    "title": "حذف المدونة",
+                    "subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
+                    "cancel": "إلغاء",
+                    "actionText": "حذف"
+                },
+                "form": {
+                    "title": "عنوان المدونة",
+                    "titlePlaceholder": "أدخل عنوان المدونة",
+                    "description": "الوصف",
+                    "descriptionPlaceholder": "اكتب محتوى المدونة...",
+                    "date": "تاريخ النشر",
+                    "datePlaceholder": "اختر التاريخ",
+                    "cancel": "إلغاء",
+                    "actionText": "حفظ"
+                }
+            },
             "about": {
                 "title": "محتوي صفحة من نحن",
                 "vision": {

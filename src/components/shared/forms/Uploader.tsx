@@ -44,7 +44,7 @@ export default function Uploader({
                         ? [field.value]
                         : [];
 
-
+                console.log('currentFiles', currentFiles)
 
                 const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
@@ -104,7 +104,7 @@ export default function Uploader({
                         <div className="relative overflow-hidden flex items-center justify-center border-dashed border-gray-400 rounded-[8px] w-full">
                             <label
                                 htmlFor={`${name}-dropzone`}
-                                className="flex flex-col items-center justify-center w-full cursor-pointer  border-gray-400 rounded-[8px] border border-dashed"
+                                className="relative  flex flex-col items-center justify-center w-full cursor-pointer  border-gray-400 rounded-[8px] border border-dashed"
                             >
                                 <span className="flex flex-col items-center justify-center py-6">
                                     <BsCloudArrowUp size={60} />
@@ -132,14 +132,17 @@ export default function Uploader({
                                     className="hidden"
                                     onChange={handleFiles}
                                 />
-                                {isOneImage && currentFiles.length === 1 && (
-                                    <Image
-                                        src={currentFiles[0].url}
-                                        alt="Preview"
-                                        fill
-                                        className="absolute inset-0 object-cover rounded-[8px]"
-                                    />
-                                )}
+                                {isOneImage &&
+                                    currentFiles.length === 1 &&
+                                    currentFiles[0].url?.trim() && (
+                                        <Image
+                                            key={currentFiles[0].url} // 👈 force re-render when URL changes
+                                            src={currentFiles[0].url}
+                                            alt="Preview"
+                                            fill
+                                            className="absolute inset-0 object-cover rounded-[8px]"
+                                        />
+                                    )}
                             </label>
                         </div>
 

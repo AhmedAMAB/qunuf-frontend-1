@@ -175,8 +175,8 @@ export default async function AdminPage() {
                     className="max-h-[620px] overflow-y-auto thin-scrollbar">
                     <div className="divide-y divide-gray-300">
 
-                        {transactions.map((tx) => (
-                            <RentedPropertyCard key={tx.id} {...tx} />
+                        {transactions.map((tx, index) => (
+                            <RentedPropertyCard key={index} {...tx} />
                         ))}
                     </div>
                 </DashboardCard>
