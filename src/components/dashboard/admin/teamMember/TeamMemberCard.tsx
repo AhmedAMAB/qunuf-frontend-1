@@ -23,7 +23,7 @@ export function TeamMemberCard({ name, phone, email, imageUrl }: TeamMemberCardP
 
   return (
     <>
-      <div className="relative bg-lighter rounded-[14px] p-4 w-full max-w-xs mx-auto flex flex-col items-center gap-4 pb-6 md:pb-10">
+      <div className="relative bg-card-bg rounded-[14px] p-4 w-full max-w-xs mx-auto flex flex-col items-center gap-4 pb-6 md:pb-10">
         {/* Edit Icon */}
         <button
           onClick={() => setShowEdit(true)}

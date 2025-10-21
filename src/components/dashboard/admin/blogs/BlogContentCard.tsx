@@ -31,7 +31,7 @@ export default function BlogContentCard({ block }: BlogContentCardProps) {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row max-md:items-center gap-5 md:gap-7 lg:gap-10 bg-lighter rounded-[14px] p-3 w-full mx-auto">
+            <div className="flex flex-col md:flex-row max-md:items-center gap-5 md:gap-7 lg:gap-10 bg-card-bg rounded-[14px] p-3 w-full mx-auto">
                 {/* Image */}
                 <div className="w-[250px] h-[250px] rounded-[12px] overflow-hidden shrink-0">
                     <Image

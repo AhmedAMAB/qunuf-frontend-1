@@ -18,7 +18,7 @@ export function MessageCard({ userName, phone, email, description }: MessageCard
         .toUpperCase();
 
     return (
-        <div className="relative bg-lighter rounded-[14px] p-4 w-full max-w-sm mx-auto flex flex-col items-center gap-4">
+        <div className="relative bg-card-bg rounded-[14px] p-4 w-full max-w-sm mx-auto flex flex-col items-center gap-4">
             <div className='flex-center absolute top-2 end-2 bg-light w-[44px] h-[44px] rounded-[12px]' >
                 <MdAttachEmail size={24} className='text-dark' />
             </div>

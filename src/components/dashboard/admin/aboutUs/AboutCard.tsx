@@ -23,7 +23,7 @@ export default function AboutCard({ block }: AboutCardProps) {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row items-center bg-lighter rounded-[14px] p-3 w-full mx-auto">
+            <div className="flex flex-col md:flex-row items-center bg-card-bg rounded-[14px] p-3 w-full mx-auto">
                 {/* Image */}
                 <div className="w-[250px] h-[250px] rounded-[12px] overflow-hidden shrink-0">
                     <Image
