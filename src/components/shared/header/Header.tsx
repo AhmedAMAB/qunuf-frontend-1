@@ -1,146 +1,149 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { useNormalizedPath } from "@/hooks/useNormalizedPath";
-import { Link } from "@/i18n/navigation";
-import { useOutsideClick } from "@/hooks/useOutsideClick";
-import LocaleSwitcher from "../LocaleSwitcher";
-import { useTranslations } from "next-intl";
-import Logo from "../Logo";
-import SecondaryButton from "../buttons/SecondaryButton";
-
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNormalizedPath } from '@/hooks/useNormalizedPath';
+import { Link } from '@/i18n/navigation';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import LocaleSwitcher from '../LocaleSwitcher';
+import { useTranslations } from 'next-intl';
+import Logo from '../Logo';
+import SecondaryButton from '../buttons/SecondaryButton';
 
 export default function Header() {
-    const { normalizedPath } = useNormalizedPath();
-    const t = useTranslations("header");
-    const [isSticky, setIsSticky] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
+  const { normalizedPath } = useNormalizedPath();
+  const t = useTranslations('header');
 
-    const headerRef = useRef<HTMLDivElement>(null);
-    const menuRef = useRef<HTMLDivElement>(null);
-    const toggleRef = useRef<HTMLButtonElement>(null);
+  const [isPinned, setIsPinned] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    // Close menu when clicking outside
-    useOutsideClick([menuRef, toggleRef], () => setMenuOpen(false));
+  const headerRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
-    // Sticky header on scroll
-    useEffect(() => {
-        const handleFixed = () => {
-            const isXL = window.innerWidth >= 1280;
-            const threshold = isXL ? 18 : 0;
-            setIsSticky(window.scrollY > threshold);
-        };
-        handleFixed();
-        window.addEventListener("scroll", handleFixed);
-        window.addEventListener("resize", handleFixed);
-        return () => {
-            window.removeEventListener("scroll", handleFixed)
-            window.removeEventListener("resize", handleFixed)
-        };
-    }, []);
+  useOutsideClick([menuRef, toggleRef], () => setMenuOpen(false));
 
-    const navLinks = [
-        { label: t("nav.home"), href: "/" },
-        { label: t("nav.realEstate"), href: "/properties" },
-        { label: t("nav.blog"), href: "/blog" },
-        { label: t("nav.about"), href: "/about" },
-        { label: t("nav.contact"), href: "/contact" },
-        { label: t("nav.dashboard"), href: "/dashboard" },
-    ];
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setIsPinned(y > 16);
+      if (Math.abs(y - lastY) > 8) {
+        setIsHidden(y > lastY && y > 80);
+        lastY = y;
+      }
+    };
+    const onResize = () => setIsPinned(window.scrollY > 16);
 
-    return (
-        <header
-            id="main-header"
-            ref={headerRef}
-            className={`fixed xl:absolute left-0 w-full z-50 top-0 xl:top-[18px]  transition-colors ${isSticky ? "!fixed !top-0 left-0 w-full md:backdrop-blur-md md:bg-white/60 md:shadow-md z-50" : ""}`}>
-            <div className={`w-full xl:max-w-[1208px] mx-auto flex items-center justify-between gap-4 transition-colors ${isSticky ? 'max-md:bg-white' : 'bg-[#FAFAFA]'} xl:rounded-full px-5 lg:px-8  py-3 md:py-5`}>
-                {/* Logo */}
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
-                <Logo />
+  const onKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') setMenuOpen(false);
+  }, []);
+  useEffect(() => {
+    if (menuOpen) window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen, onKeyDown]);
 
-                {/* Desktop nav */}
-                <nav className="navbar hidden md:flex items-center gap-4 sm:gap-5 lg:gap-7 text-base sm:text-lg md:text-xl text-dark font-bold">
-                    {navLinks.map(({ label, href }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className={`nav-item hover:text-secondary text-[15px] lg:text-[16px] pb-1 xl:text-lg 
-                                ${normalizedPath === href ? "text-secondary border-b-[3px] border-b-secondary" : ""}`}
-                        >
-                            {label}
-                        </Link>
-                    ))}
-                </nav>
+  const navLinks = [
+    { label: t('nav.home'), href: '/' },
+    { label: t('nav.realEstate'), href: '/properties' },
+    { label: t('nav.blog'), href: '/blog' },
+    { label: t('nav.about'), href: '/about' },
+    { label: t('nav.contact'), href: '/contact' },
+    { label: t('nav.dashboard'), href: '/dashboard' },
+  ];
 
-                {/* Language (desktop) */}
-                <div className="flex items-center gap-2 ">
-                    <SecondaryButton href="/sign-in" className="bg-secondary hover:bg-secondary-hover text-white">
-                        {t("nav.login")}
-                    </SecondaryButton>
-                    <LocaleSwitcher />
+  // Typography upgrades via classes
+  const linkBase = 'relative inline-flex items-center font-medium tracking-[0.01em] text-[15px] md:text-[16px] xl:text-[17px] ' + 'transition-colors outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2';
+  const linkActive = 'text-slate-900 after:absolute after:-bottom-1 after:start-0 after:h-[2px] after:w-full after:bg-secondary after:rounded-full';
+  const linkIdle = 'text-slate-900 hover:text-slate-700';
 
-                    {/* Mobile controls */}
-                    <button
-                        ref={toggleRef}
-                        id="menu-toggle"
-                        aria-controls="mobile-menu"
-                        onClick={() => setMenuOpen((prev) => !prev)}
-                        className="md:hidden rounded-md border border-transparent transition-transform duration-300 ease-in-out"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className={`h-6 w-6 transform transition-transform duration-300 ease-in-out ${menuOpen ? "rotate-90" : "rotate-0"
-                                }`}
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            {menuOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            )}
-                        </svg>
-                    </button>
+  return (
+    <header id='main-header' ref={headerRef} className={['fixed left-0 top-0 md:!top-4 z-50 w-full transition-transform duration-300 will-change-transform', isHidden ? '-translate-y-[100px]' : 'translate-y-0'].join(' ')} aria-label={t('aria.mainNav', { default: 'Main navigation' })}>
+      <div
+        className={[
+          'mx-auto flex w-full items-center justify-between gap-4 px-5 lg:px-8 md:py-4 py-3',
+          'xl:max-w-[1208px] xl:rounded-2xl',
+          'transition-all duration-300',
+          // More transparent, stronger blur + hairline border
+          isPinned ? 'rtl:ml-auto ltr:mr-auto max-w-5xl rounded-2xl border border-white/20 bg-white shadow-xl shadow-slate-900/5 ring-1 ring-black/5 backdrop-blur supports-[backdrop-filter]:bg-white/80' : 'rtl:ml-auto ltr:mr-auto max-w-5xl rounded-2xl border border-white/20 bg-white/70 shadow-lg shadow-slate-900/5 ring-1 ring-black/5 backdrop-blur-sm supports-[backdrop-filter]:bg-white/80',
+        ].join(' ')}>
+        {/* Logo */}
+        <div className='shrink-0'>
+          <Logo />
+        </div>
 
-                </div>
-            </div>
+        {/* Desktop nav */}
+        <nav className='navbar me-auto ms-6 hidden md:flex items-center gap-5 lg:gap-7' aria-label={t('aria.primary', { default: 'Primary' })}>
+          {navLinks.map(({ label, href }) => {
+            const active = normalizedPath === href;
+            return (
+              <Link key={href} href={href} className={[linkBase, active ? linkActive : linkIdle, 'leading-6'].join(' ')} aria-current={active ? 'page' : undefined}>
+                <span className='pb-1'>{label}</span>
+              </Link>
+            );
+          })}
+        </nav>
 
-            {/* Mobile menu */}
-            <div
-                id="mobile-menu"
-                ref={menuRef}
-                className={`md:hidden p-4 absolute top-full left-0 w-full overflow-hidden transition-all duration-500 ease-in-out ${menuOpen
-                    ? "opacity-100 translate-y-0 pointer-events-auto bg-[#FAFAFA] shadow-lg"
-                    : "opacity-0 -translate-y-4 pointer-events-none bg-[#FAFAFA] shadow-lg"
-                    }`}
-            >
+        {/* Actions */}
+        <div className='flex items-center gap-2'>
+          <SecondaryButton href='/sign-in' className='bg-secondary hover:bg-secondary-hover text-white focus-visible:ring-2 focus-visible:ring-secondary/70 focus-visible:ring-offset-2 text-[14px] md:text-[15px] font-semibold'>
+            {t('nav.login')}
+          </SecondaryButton>
+          <LocaleSwitcher />
 
-                <nav className={`flex flex-col transition-all duration-500 text-[#212529] divide-y divide-gray-200`}>
-                    {navLinks.map(({ label, href }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            onClick={() => setMenuOpen(false)}
-                            className={`mobile-navitem block py-3 px-3  font-medium hover:text-secondary transition-colors 
-                                ${normalizedPath === href ? "text-secondary" : ""}`}
-                        >
-                            {label}
-                        </Link>
-                    ))}
-                </nav>
-            </div>
+          {/* Mobile toggle */}
+          <button ref={toggleRef} id='menu-toggle' aria-controls='mobile-menu' aria-expanded={menuOpen} onClick={() => setMenuOpen(prev => !prev)} className='md:hidden rounded-md p-2 text-slate-800/90 hover:bg-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 transition'>
+            <svg xmlns='http://www.w3.org/2000/svg' className={['h-6 w-6 transition-transform duration-300 ease-in-out', menuOpen ? 'rotate-90' : 'rotate-0'].join(' ')} fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
+              {menuOpen ? <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' /> : <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16M4 18h16' />}
+            </svg>
+          </button>
+        </div>
+      </div>
 
-        </header>
-    );
+      {/* Mobile drawer + backdrop */}
+      <div id='mobile-menu' className={['md:hidden fixed inset-x-0 top-0 z-40', 'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none', menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'].join(' ')} aria-hidden={!menuOpen}>
+        {/* Backdrop */}
+        <div className={['fixed inset-0 bg-slate-900/40 backdrop-blur-[2px]', 'transition-opacity duration-300 motion-reduce:transition-none', menuOpen ? 'opacity-100' : 'opacity-0'].join(' ')} onClick={() => setMenuOpen(false)} />
+        {/* Drawer panel */}
+        <div ref={menuRef} className={['fixed inset-x-0 top-0 origin-top rounded-b-2xl', 'bg-white shadow-xl ring-1 ring-black/5', 'pt-[calc(env(safe-area-inset-top)+12px)] pb-4', 'transition-transform duration-300 ease-out motion-reduce:transition-none', menuOpen ? 'translate-y-0' : '-translate-y-4'].join(' ')}>
+          <div className='flex items-center justify-between px-4'>
+            <Logo />
+            <button onClick={() => setMenuOpen(false)} className='rounded-md p-2 text-slate-600 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2' aria-label={t('aria.closeMenu', { default: 'Close menu' })}>
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5' viewBox='0 0 24 24' fill='none' stroke='currentColor'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
+              </svg>
+            </button>
+          </div>
+
+          <nav className='mt-2 divide-y divide-slate-100 text-[#1f2937]' aria-label={t('aria.primaryMobile', { default: 'Primary mobile' })}>
+            {navLinks.map(({ label, href }) => {
+              const active = normalizedPath === href;
+              return (
+                <Link key={href} href={href} onClick={() => setMenuOpen(false)} className={['block px-4 py-3 text-[16px] font-medium tracking-[0.01em] transition-colors', active ? 'text-secondary' : 'text-slate-700 hover:text-slate-900'].join(' ')} aria-current={active ? 'page' : undefined}>
+                  {label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className='px-4 pt-3'>
+            <SecondaryButton href='/sign-in' className='w-full bg-secondary hover:bg-secondary-hover text-white focus-visible:ring-2 focus-visible:ring-secondary/70 focus-visible:ring-offset-2 text-[15px] font-semibold'>
+              {t('nav.login')}
+            </SecondaryButton>
+          </div>
+
+          <div className='h-[env(safe-area-inset-bottom)]' />
+        </div>
+      </div>
+    </header>
+  );
 }

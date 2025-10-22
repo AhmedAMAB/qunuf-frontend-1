@@ -1,842 +1,833 @@
 {
-    "root": {
-        "siteName": "Real State",
-        "logo": "QUNUF",
-        "description": "Discover, list, and manage properties with Real State.",
-        "lang": "عربي"
-    },
-    "comman": {
-        "datePlaceholder": "Select Date Range",
-        "cancel": "Cancel",
-        "save": "Save",
-        "form": {
-            "email": {
-                "label": "Email Address",
-                "placeholder": "Enter your email address"
-            },
-            "password": {
-                "label": "Password",
-                "placeholder": "Enter your password"
-            },
-            "locationInput": {
-                "fetching": "Fetching address...",
-                "addressPrefix": "Address:",
-                "selectedLocation": "Selected location:",
-                "latitude": "Latitude",
-                "longitude": "Longitude",
-                "latitudePlaceholder": "e.g. {lat}",
-                "longitudePlaceholder": "e.g. {lng}",
-                "invalidInput": "Invalid input. Please enter valid numbers.",
-                "latRangeError": "Latitude must be between -90 and 90.",
-                "lngRangeError": "Longitude must be between -180 and 180.",
-                "unknownAddress": "Unknown address",
-                "addressFetchError": "Failed to fetch address"
-            },
-            "uploader": {
-                "dragLabel": "Drag and drop",
-                "orLabel": "or",
-                "chooseFiles": "Choose files",
-                "primaryFile": "Primary file",
-                "setAsPrimary": "Set as primary",
-                "rules": {
-                    "maxSize": "Max file size {size}MB",
-                    "maxFiles": "Max {count} files"
-                }
-            },
-            "send": "Send"
-        },
-        "months": [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
-        ],
-        "weekdays": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-        ],
-        "search": "Search..."
-    },
-    "header": {
-        "logo": "QUNUF",
-        "nav": {
-            "home": "Home",
-            "about": "About Us",
-            "realEstate": "Property",
-            "blog": "Blogs",
-            "contact": "Contact Us",
-            "dashboard": "Dashboard",
-            "login": "Sign in"
+  "root": {
+    "siteName": "Real State",
+    "logo": "QUNUF",
+    "description": "Discover, list, and manage properties with Real State.",
+    "lang": "عربي"
+  },
+  "comman": {
+    "datePlaceholder": "Select Date Range",
+    "cancel": "Cancel",
+    "save": "Save",
+    "form": {
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "locationInput": {
+        "fetching": "Fetching address...",
+        "addressPrefix": "Address:",
+        "selectedLocation": "Selected location:",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "latitudePlaceholder": "e.g. {lat}",
+        "longitudePlaceholder": "e.g. {lng}",
+        "invalidInput": "Invalid input. Please enter valid numbers.",
+        "latRangeError": "Latitude must be between -90 and 90.",
+        "lngRangeError": "Longitude must be between -180 and 180.",
+        "unknownAddress": "Unknown address",
+        "addressFetchError": "Failed to fetch address"
+      },
+      "uploader": {
+        "dragLabel": "Drag and drop",
+        "orLabel": "or",
+        "chooseFiles": "Choose files",
+        "primaryFile": "Primary file",
+        "setAsPrimary": "Set as primary",
+        "rules": {
+          "maxSize": "Max file size {size}MB",
+          "maxFiles": "Max {count} files"
         }
+      },
+      "send": "Send"
     },
-    "homePage": {
-        "hero": {
-            "heading": "Designing Your\nNext Chapter",
-            "clients": "{count}+ Happy Clients"
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "search": "Search..."
+  },
+  "header": {
+    "logo": "QUNUF",
+    "nav": {
+      "home": "Home",
+      "about": "About Us",
+      "realEstate": "Property",
+      "blog": "Blogs",
+      "contact": "Contact Us",
+      "dashboard": "Dashboard",
+      "login": "Sign in"
+    }
+  },
+  "homePage": {
+    "hero": {
+      "heading": "Designing Your\nNext Chapter",
+      "badge": "Find your next property",
+      "subcopy": "Browse verified listings from trusted agents across Egypt.",
+      "ratingLabel": "Average rating",
+      "clients": "{count}+ happy clients"
+    },
+    "filters": {
+      "aria": {
+        "search": "Property search",
+        "openFilters": "Open all filters"
+      },
+      "helper": {
+        "noFees": "No extra fees",
+        "verified": "Verified listings",
+        "instant": "Instant search"
+      },
+      "labels": {
+        "location": "Location",
+        "propertyType": "Property Type",
+        "category": "Category"
+      },
+      "options": {
+        "locations": {
+          "cairo": "Cairo",
+          "alex": "Alexandria",
+          "giza": "Giza"
         },
-        "filters": {
-            "labels": {
-                "location": "Location",
-                "propertyType": "Property Type",
-                "category": "Category"
-            },
-            "options": {
-                "locations": {
-                    "cairo": "Cairo",
-                    "alex": "Alexandria",
-                    "giza": "Giza"
-                },
-                "propertyTypes": {
-                    "apartment": "Apartment",
-                    "villa": "Villa",
-                    "duplex": "Duplex"
-                },
-                "categories": {
-                    "furnished": "Furnished",
-                    "unfurnished": "Unfurnished"
-                }
-            },
-            "search": "Search",
-            "adjustments": "Filters"
+        "propertyTypes": {
+          "apartment": "Apartment",
+          "villa": "Villa",
+          "duplex": "Duplex"
         },
-        "recentProperties": {
-            "title": "Lates property",
-            "description": "We have completed several housing, villa and property orders with our professional team, at costs that suit you"
-        },
-        "propertyCategory": {
-            "title": "Property Category",
-            "description": "Lörem ipsum päde hypertropi eller mitin antir evis ofäns i jonin som pseudonäning. Manat preber. Pös vil gigana: nisöbel på igt. ",
-            "filters": {
-                "house": "House",
-                "realEstate": "Real Estate",
-                "apartment": "Apartment"
-            }
-        },
-        "basedOnLocationSection": {
-            "title": "Based on your location",
-            "description": "Start discover your liking future home",
-            "yearly": "Yearly",
-            "monthly": "Monthly",
-            "rent": "Rent",
-            "bathrooms": "Bathrooms",
-            "guests": "Guests",
-            "bedrooms": "Bedrooms"
-        },
-        "features": {
-            "mainTitle": "The Perfect Place to Manage Your Property",
-            "mainDescription": "Work with the best suite of property management tools on the market.",
-            "card1": {
-                "title": "Advertise Your Rental",
-                "description": "Connect with more than 75 million renters looking for new homes using our comprehensive marketing platform.",
-                "button": "List Your Property"
-            },
-            "card2": {
-                "title": "Lease 100% Online",
-                "description": "Accept applications, process rent payments online, and sign digital leases all powered on a single platform.",
-                "button": "Find Out More"
-            }
-        },
-        "contactUs": {
-            "title": "Subscribe Our Newsletter",
-            "description": "Lorem ipsum dolor sit amet consectetur. Feugiat ut aliquet sit pellentesque sollicitudin. Egestas faucibus lacus diam in senectus consectetur. Mattis elit adipiscing quisque tellus scelerisque vehicula ante nunc.",
-            "placeholder": "Enter your email",
-            "button": "Get a Quote"
+        "categories": {
+          "furnished": "Furnished",
+          "unfurnished": "Unfurnished"
         }
+      },
+      "search": "Search",
+      "adjustments": "Filters"
     },
+    "recentProperties": {
+      "title": "Lates property",
+      "description": "We have completed several housing, villa and property orders with our professional team, at costs that suit you"
+    },
+    "propertyCategory": {
+      "title": "Property Category",
+      "description": "Lörem ipsum päde hypertropi eller mitin antir evis ofäns i jonin som pseudonäning. Manat preber. Pös vil gigana: nisöbel på igt. ",
+      "filters": {
+        "house": "House",
+        "realEstate": "Real Estate",
+        "apartment": "Apartment"
+      }
+    },
+    "basedOnLocationSection": {
+      "title": "Based on your location",
+      "description": "Start discover your liking future home",
+      "yearly": "Yearly",
+      "monthly": "Monthly",
+      "rent": "Rent",
+      "bathrooms": "Bathrooms",
+      "guests": "Guests",
+      "bedrooms": "Bedrooms"
+    },
+    "features": {
+      "mainTitle": "The Perfect Place to Manage Your Property",
+      "mainDescription": "Work with the best suite of property management tools on the market.",
+      "card1": {
+        "title": "Advertise Your Rental",
+        "description": "Connect with more than 75 million renters looking for new homes using our comprehensive marketing platform.",
+        "button": "List Your Property"
+      },
+      "card2": {
+        "title": "Lease 100% Online",
+        "description": "Accept applications, process rent payments online, and sign digital leases all powered on a single platform.",
+        "button": "Find Out More"
+      }
+    },
+    "contactUs": {
+      "title": "Subscribe Our Newsletter",
+      "description": "Lorem ipsum dolor sit amet consectetur. Feugiat ut aliquet sit pellentesque sollicitudin. Egestas faucibus lacus diam in senectus consectetur. Mattis elit adipiscing quisque tellus scelerisque vehicula ante nunc.",
+      "placeholder": "Enter your email",
+      "button": "Get a Quote"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Us",
+      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "seeMore": "See More"
+    },
+    "header": "About us",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
+      "button": "View More"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
+      "button": "Discover"
+    },
+    "goals": {
+      "title": "Our Goals",
+      "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
+      "button": "Learn More"
+    },
+    "team": {
+      "header": "Our Team"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contatc Us",
+      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "seeMore": "See More"
+    },
+    "information": {
+      "title": "Contatc Us",
+      "header": "Contact Information",
+      "subtitle": "Say something to start a live chat!",
+      "location": "132 Dartmouth Street Boston, Massachusetts 02156 United States"
+    },
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "subjectTitle": "Select Subject?",
+      "subjects": {
+        "general": "General Inquiry",
+        "support": "Support",
+        "sales": "Sales",
+        "partnership": "Partnership"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Write your message..",
+      "send": "Send Message"
+    }
+  },
+  "blogs": {
+    "hero": {
+      "title": "Blogs",
+      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "seeMore": "See More"
+    },
+    "recent": {
+      "title": "Our Recent Blogs",
+      "readMore": "Read More"
+    }
+  },
+  "property": {
+    "hero": {
+      "title": "Property",
+      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "seeMore": "See More"
+    },
+    "filter": {
+      "header": "Filtered Properties",
+      "title": "Filters",
+      "subtitle": "Property Filter",
+      "reset": "Reset all",
+      "location": {
+        "title": "Location",
+        "options": "{option, select, all {Any area} cairo {Cairo} alexandria {Alexandria} giza {Giza} other {Unknown}}"
+      },
+      "subtype": {
+        "title": "Subtype",
+        "residential": {
+          "options": "{option, select, condo {Condo} multiFamily {Multi-family} townhomes {Townhomes} singleFamily {Single-Family} other {Unknown}}"
+        },
+        "commercial": {
+          "options": "{option, select, office {Office} retail {Retail} warehouse {Warehouse} industrial {Industrial} other {Unknown}}"
+        }
+      },
+      "bedrooms": {
+        "title": "Bedrooms",
+        "options": "{option, select, any {Any} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {Unknown}}"
+      },
+      "bathrooms": {
+        "title": "Bathrooms",
+        "options": "{option, select, any {Any} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {Unknown}}"
+      },
+      "rentalPeriod": {
+        "title": "Rental Period",
+        "options": "{option, select, yearly {Yearly} monthly {Monthly} other {Unknown}}"
+      },
+      "categories": {
+        "title": "Category",
+        "options": "{option, select, education {Education} hospital {Hospital} shopping {Shopping} other {Other}}"
+      },
+      "propertyType": {
+        "title": "Property Type",
+        "options": "{option, select, residential {Residential} commercial {Commercial} other {Unknown}}"
+      },
+      "rentType": {
+        "title": "Rent Type",
+        "options": "{option, select, monthly {Monthly} yearly {Yearly} other {Other}}"
+      },
+      "furnishedType": {
+        "title": "Furnished Type",
+        "options": "{option, select, furnished {Furnished} unfurnished {Unfurnished} other {Unknown}}"
+      },
+      "features": {
+        "title": "Features",
+        "options": "{option, select, airConditioning {Air conditioning} assistedLiving {Assisted living} disabilityAccess {Disability Access} controlledAccess {Controlled access} cableReady {Cable Ready} availableNow {Available now} college {College} corporate {Corporate} elevator {Elevator} extraStorage {Extra Storage} highSpeedInternet {High speed internet} garage {Garage} petAllowed {Pet allowed} other {Unknown}}"
+      },
+      "priceRange": "Price range",
+      "squareFeet": "Square feet",
+      "yearBuilt": "Year Built"
+    },
+    "grid": {
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "totalArea": "Total area",
+      "garages": "Garages"
+    },
+    "details": {
+      "bookingNow": "Booking Now",
+      "description": "Description",
+      "additionalDetails": "Additional Details",
+      "location": "Location",
+      "education": "Education",
+      "healthAndMedical": "Health & Medical",
+      "propertyDetails": "Property Details",
+      "propertyFeatures": "Property Features",
+      "seeMore": "See More"
+    }
+  },
+  "bookings": {
+    "title": "Getting Started",
+    "step1": {
+      "title": "Booking Information",
+      "subtitle": "Please fill up the blank fields below",
+      "plans": {
+        "business": {
+          "title": "Business",
+          "price": "$40.00",
+          "description": "Electricity, water, gas, and internet bills are included in this plan and are prepaid, ensuring that all essential utilities are covered.",
+          "button": "Choose Plan"
+        },
+        "professional": {
+          "title": "Professional",
+          "price": "$30.00",
+          "description": "Electricity, water, gas, and internet bills are included in this plan and are prepaid, ensuring that all essential utilities are covered.",
+          "button": "Choose Plan"
+        }
+      },
+      "pickDate": "Pick a Date",
+      "payment": {
+        "prefix": "You will pay "
+      },
+      "confirm": "Book Now",
+      "cancel": "Cancel"
+    },
+    "step2": {
+      "title": "Booking Contract",
+      "subtitle": "Please fill up the Info For Contract",
+      "sectionTitle": "Tenant Information",
+      "fields": {
+        "fullName": {
+          "label": "Tenant Full Name",
+          "placeholder": "Enter full name"
+        },
+        "phone": {
+          "label": "Tenant Phone Number",
+          "placeholder": "Enter phone number"
+        },
+        "nationalId": {
+          "label": "National ID",
+          "placeholder": "Enter national ID"
+        },
+        "billingAddress": {
+          "label": "Billing Address",
+          "placeholder": "Enter billing address"
+        },
+        "address": {
+          "label": "Address",
+          "placeholder": "Enter address"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter email"
+        }
+      },
+      "confirm": "Generate Contract",
+      "cancel": "Cancel"
+    },
+    "step3": {
+      "title": "Payment",
+      "subtitle": "Kindly follow the instructions below",
+      "summary": {
+        "realEstate": "Booking Real Estate:",
+        "reservation": "Reservation for 1 month on Business Plan",
+        "total": {
+          "prefix": "Total: ",
+          "amount": "$400 USD"
+        }
+      },
+      "fields": {
+        "cardNumber": {
+          "label": "Card Number",
+          "placeholder": "Payment card number"
+        },
+        "bank": {
+          "label": "Bank",
+          "placeholder": "Select Bank"
+        },
+        "expDate": {
+          "label": "Exp Date",
+          "placeholder": "Validation date"
+        },
+        "cvv": {
+          "label": "CVV",
+          "placeholder": "Beside the card"
+        }
+      },
+      "confirm": "Pay Now",
+      "cancel": "Cancel"
+    },
+    "step4": {
+      "title": "Yay! Payment Completed",
+      "imageAlt": "Payment Completed",
+      "message": {
+        "line1": "Please check your email & phone message.",
+        "line2": "We have sent all the information."
+      },
+      "homeLink": "Go to Home Page"
+    }
+  },
+  "auth": {
+    "roleSelector": {
+      "tenant": {
+        "title": "Tenant",
+        "description": "Find a place & pay rent online."
+      },
+      "landlord": {
+        "title": "Landlord",
+        "description": "Accept rent online & manage rental."
+      }
+    },
+    "signIn": {
+      "title": "Welcome back!",
+      "subtitle": "Login to access all your data",
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "forgotPassword": "Forgot your password?",
+      "login": "Login",
+      "noAccount": "Don’t have an account?",
+      "register": "Register"
+    },
+    "signUp": {
+      "title": "Welcome to QUNUF",
+      "subtitle": "Kindly fill in your details below to create an account",
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "register": "Register with us",
+      "haveAccount": "Already have an account?",
+      "login": "Login"
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "backToLogin": "Back to login page"
+    }
+  },
+  "footer": {
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "about": {
-        "hero": {
-            "title": "About Us",
-            "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
-            "seeMore": "See More"
-        },
-        "header": "About us",
-        "mission": {
-            "title": "Our Mission",
-            "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
-            "button": "View More"
-        },
-        "vision": {
-            "title": "Our Vision",
-            "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
-            "button": "Discover"
-        },
-        "goals": {
-            "title": "Our Goals",
-            "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
-            "button": "Learn More"
-        },
-        "team": {
-            "header": "Our Team"
-        }
+      "title": "About",
+      "menu": "Menu",
+      "features": "Features",
+      "blogs": "News & Blogs",
+      "support": "Help & Support"
+    },
+    "company": {
+      "title": "Company",
+      "how": "How We Work",
+      "terms": "Terms of Service",
+      "pricing": "Pricing",
+      "faq": "FAQ"
     },
     "contact": {
-        "hero": {
-            "title": "Contatc Us",
-            "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
-            "seeMore": "See More"
-        },
-        "information": {
-            "title": "Contatc Us",
-            "header": "Contact Information",
-            "subtitle": "Say something to start a live chat!",
-            "location": "132 Dartmouth Street Boston, Massachusetts 02156 United States"
-        },
-        "form": {
-            "firstName": "First Name",
-            "lastName": "Last Name",
-            "email": "Email",
-            "phone": "Phone Number",
-            "subjectTitle": "Select Subject?",
-            "subjects": {
-                "general": "General Inquiry",
-                "support": "Support",
-                "sales": "Sales",
-                "partnership": "Partnership"
-            },
-            "message": "Message",
-            "messagePlaceholder": "Write your message..",
-            "send": "Send Message"
-        }
+      "title": "Contact Us",
+      "address": "Akshaya Nagar 1st Block 1st Cross, Ramurthy Nagar, Bangalore 560016"
+    }
+  },
+  "dashboard": {
+    "statistics": {
+      "increase": "{value}% Increase",
+      "fromLastWeek": "from last week",
+      "newListing": "{value} new listing",
+      "inThisWeek": "in this week",
+      "seeAll": "See All",
+      "rentedAnalytics": "Rented Analytics",
+      "rentedProperties": "Rented Properties",
+      "costBreakdown": "Cost Breakdown",
+      "reportSales": "Report Sales"
     },
-    "blogs": {
-        "hero": {
-            "title": "Blogs",
-            "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
-            "seeMore": "See More"
-        },
-        "recent": {
-            "title": "Our Recent Blogs",
-            "readMore": "Read More"
-        }
+    "header": {
+      "greeting": "Hello, {name}!",
+      "description": "Explore information and activity"
     },
-    "property": {
-        "hero": {
-            "title": "Property",
-            "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
-            "seeMore": "See More"
-        },
-        "filter": {
-            "header": "Filtered Properties",
-            "title": "Filters",
-            "subtitle": "Property Filter",
-            "reset": "Reset all",
-            "location": {
-                "title": "Location",
-                "options": "{option, select, all {Any area} cairo {Cairo} alexandria {Alexandria} giza {Giza} other {Unknown}}"
-            },
-            "subtype": {
-                "title": "Subtype",
-                "residential": {
-                    "options": "{option, select, condo {Condo} multiFamily {Multi-family} townhomes {Townhomes} singleFamily {Single-Family} other {Unknown}}"
-                },
-                "commercial": {
-                    "options": "{option, select, office {Office} retail {Retail} warehouse {Warehouse} industrial {Industrial} other {Unknown}}"
-                }
-            },
-            "bedrooms": {
-                "title": "Bedrooms",
-                "options": "{option, select, any {Any} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {Unknown}}"
-            },
-            "bathrooms": {
-                "title": "Bathrooms",
-                "options": "{option, select, any {Any} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {Unknown}}"
-            },
-            "rentalPeriod": {
-                "title": "Rental Period",
-                "options": "{option, select, yearly {Yearly} monthly {Monthly} other {Unknown}}"
-            },
-            "categories": {
-                "title": "Category",
-                "options": "{option, select, education {Education} hospital {Hospital} shopping {Shopping} other {Other}}"
-            },
-            "propertyType": {
-                "title": "Property Type",
-                "options": "{option, select, residential {Residential} commercial {Commercial} other {Unknown}}"
-            },
-            "rentType": {
-                "title": "Rent Type",
-                "options": "{option, select, monthly {Monthly} yearly {Yearly} other {Other}}"
-            },
-            "furnishedType": {
-                "title": "Furnished Type",
-                "options": "{option, select, furnished {Furnished} unfurnished {Unfurnished} other {Unknown}}"
-            },
-            "features": {
-                "title": "Features",
-                "options": "{option, select, airConditioning {Air conditioning} assistedLiving {Assisted living} disabilityAccess {Disability Access} controlledAccess {Controlled access} cableReady {Cable Ready} availableNow {Available now} college {College} corporate {Corporate} elevator {Elevator} extraStorage {Extra Storage} highSpeedInternet {High speed internet} garage {Garage} petAllowed {Pet allowed} other {Unknown}}"
-            },
-            "priceRange": "Price range",
-            "squareFeet": "Square feet",
-            "yearBuilt": "Year Built"
-        },
-        "grid": {
-            "bedrooms": "Bedrooms",
-            "bathrooms": "Bathrooms",
-            "totalArea": "Total area",
-            "garages": "Garages"
-        },
-        "details": {
-            "bookingNow": "Booking Now",
-            "description": "Description",
-            "additionalDetails": "Additional Details",
-            "location": "Location",
-            "education": "Education",
-            "healthAndMedical": "Health & Medical",
-            "propertyDetails": "Property Details",
-            "propertyFeatures": "Property Features",
-            "seeMore": "See More"
-        }
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "contracts": "Contracts",
+      "renewRequests": "Renew Requests",
+      "settings": "Account Setting",
+      "paymentHistory": "Payment History",
+      "support": "Customer Support",
+      "rentalsContracts": "Rentals & Contracts",
+      "properties": "Properties",
+      "revenueSummary": "Revenue Summary",
+      "notifications": "Notifications",
+      "chat": "Chats",
+      "contactUs": "Contact Us",
+      "teamMembers": "Team Members",
+      "blogs": "Blogs",
+      "aboutUs": "About Us",
+      "logout": "Logout"
     },
-    "bookings": {
-        "title": "Getting Started",
-        "step1": {
-            "title": "Booking Information",
-            "subtitle": "Please fill up the blank fields below",
-            "plans": {
-                "business": {
-                    "title": "Business",
-                    "price": "$40.00",
-                    "description": "Electricity, water, gas, and internet bills are included in this plan and are prepaid, ensuring that all essential utilities are covered.",
-                    "button": "Choose Plan"
-                },
-                "professional": {
-                    "title": "Professional",
-                    "price": "$30.00",
-                    "description": "Electricity, water, gas, and internet bills are included in this plan and are prepaid, ensuring that all essential utilities are covered.",
-                    "button": "Choose Plan"
-                }
-            },
-            "pickDate": "Pick a Date",
-            "payment": {
-                "prefix": "You will pay "
-            },
-            "confirm": "Book Now",
-            "cancel": "Cancel"
-        },
-        "step2": {
-            "title": "Booking Contract",
-            "subtitle": "Please fill up the Info For Contract",
-            "sectionTitle": "Tenant Information",
-            "fields": {
-                "fullName": {
-                    "label": "Tenant Full Name",
-                    "placeholder": "Enter full name"
-                },
-                "phone": {
-                    "label": "Tenant Phone Number",
-                    "placeholder": "Enter phone number"
-                },
-                "nationalId": {
-                    "label": "National ID",
-                    "placeholder": "Enter national ID"
-                },
-                "billingAddress": {
-                    "label": "Billing Address",
-                    "placeholder": "Enter billing address"
-                },
-                "address": {
-                    "label": "Address",
-                    "placeholder": "Enter address"
-                },
-                "email": {
-                    "label": "Email",
-                    "placeholder": "Enter email"
-                }
-            },
-            "confirm": "Generate Contract",
-            "cancel": "Cancel"
-        },
-        "step3": {
-            "title": "Payment",
-            "subtitle": "Kindly follow the instructions below",
-            "summary": {
-                "realEstate": "Booking Real Estate:",
-                "reservation": "Reservation for 1 month on Business Plan",
-                "total": {
-                    "prefix": "Total: ",
-                    "amount": "$400 USD"
-                }
-            },
-            "fields": {
-                "cardNumber": {
-                    "label": "Card Number",
-                    "placeholder": "Payment card number"
-                },
-                "bank": {
-                    "label": "Bank",
-                    "placeholder": "Select Bank"
-                },
-                "expDate": {
-                    "label": "Exp Date",
-                    "placeholder": "Validation date"
-                },
-                "cvv": {
-                    "label": "CVV",
-                    "placeholder": "Beside the card"
-                }
-            },
-            "confirm": "Pay Now",
-            "cancel": "Cancel"
-        },
-        "step4": {
-            "title": "Yay! Payment Completed",
-            "imageAlt": "Payment Completed",
-            "message": {
-                "line1": "Please check your email & phone message.",
-                "line2": "We have sent all the information."
-            },
-            "homeLink": "Go to Home Page"
-        }
+    "filter": {
+      "export": {
+        "trigger": "Export Excel",
+        "scope": "Export Scope",
+        "currentTable": "Current Table",
+        "moreData": "More Data",
+        "maxRows": "Max Rows",
+        "export": "Export",
+        "exporting": "Exporting...",
+        "cancel": "Cancel"
+      },
+      "container": {
+        "filter": "Filter"
+      }
     },
-    "auth": {
-        "roleSelector": {
-            "tenant": {
-                "title": "Tenant",
-                "description": "Find a place & pay rent online."
-            },
-            "landlord": {
-                "title": "Landlord",
-                "description": "Accept rent online & manage rental."
-            }
-        },
-        "signIn": {
-            "title": "Welcome back!",
-            "subtitle": "Login to access all your data",
-            "email": {
-                "label": "Email Address",
-                "placeholder": "Enter your email address"
-            },
-            "password": {
-                "label": "Password",
-                "placeholder": "Enter your password"
-            },
-            "forgotPassword": "Forgot your password?",
-            "login": "Login",
-            "noAccount": "Don’t have an account?",
-            "register": "Register"
-        },
-        "signUp": {
-            "title": "Welcome to QUNUF",
-            "subtitle": "Kindly fill in your details below to create an account",
-            "email": {
-                "label": "Email Address",
-                "placeholder": "Enter your email address"
-            },
-            "password": {
-                "label": "Password",
-                "placeholder": "Enter your password"
-            },
-            "register": "Register with us",
-            "haveAccount": "Already have an account?",
-            "login": "Login"
-        },
-        "forgotPassword": {
-            "title": "Reset your password",
-            "backToLogin": "Back to login page"
-        }
+    "table": {
+      "noRows": "No data available",
+      "errorTitle": "Oops, something went wrong",
+      "errorMessage": "An error occurred while loading the data",
+      "retry": "Retry"
     },
-    "footer": {
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        "about": {
-            "title": "About",
-            "menu": "Menu",
-            "features": "Features",
-            "blogs": "News & Blogs",
-            "support": "Help & Support"
-        },
-        "company": {
-            "title": "Company",
-            "how": "How We Work",
-            "terms": "Terms of Service",
-            "pricing": "Pricing",
-            "faq": "FAQ"
-        },
-        "contact": {
-            "title": "Contact Us",
-            "address": "Akshaya Nagar 1st Block 1st Cross, Ramurthy Nagar, Bangalore 560016"
-        }
+    "pagination": {
+      "firstPage": "First Page",
+      "previous": "Previous",
+      "next": "Next",
+      "lastPage": "Last Page",
+      "showingEntries": "Showing {start} to {end} of {total} entries"
     },
-    "dashboard": {
-        "statistics": {
-            "increase": "{value}% Increase",
-            "fromLastWeek": "from last week",
-            "newListing": "{value} new listing",
-            "inThisWeek": "in this week",
-            "seeAll": "See All",
-            "rentedAnalytics": "Rented Analytics",
-            "rentedProperties": "Rented Properties",
-            "costBreakdown": "Cost Breakdown",
-            "reportSales": "Report Sales"
+    "notification": {
+      "title": "Last Notifications",
+      "notifications": "Notifications",
+      "seeMore": "See More",
+      "accountSettings": "Account Settings",
+      "overview": "Overview",
+      "pushToggle": "Turn on push notifications"
+    },
+    "contracts": {
+      "viewContract": "View Contract",
+      "noContractAvailable": "No Contract Available",
+      "contractTitle": "Contract",
+      "contractPage": "Contract page",
+      "noImagesFallback": "No contract images available",
+      "renew": {
+        "actionText": "renew",
+        "title": "Renew Contract",
+        "subtitle": "You sure that you want to renew the contract"
+      },
+      "terminate": {
+        "actionText": "Terminate",
+        "title": "Terminate",
+        "subtitle": "You sure that you want to terminate the contract",
+        "note": "Note: When you terminate the contract, you will not restore your money"
+      },
+      "delete": {
+        "actionText": "Delete",
+        "title": "Delete",
+        "subtitle": "You sure that you want to delete the contract"
+      },
+      "cancel": "Cancel",
+      "table": {
+        "property": "Property",
+        "status": "Status",
+        "free": "Free",
+        "reserved": "Reserved",
+        "startBooking": "Start Booking",
+        "endBooking": "End Booking",
+        "published": "Published",
+        "price": "Price",
+        "contract": "Contract",
+        "location": "Location",
+        "renewContract": "Renew Contract",
+        "terminateContract": "Terminate Contract",
+        "deleteContract": "Delete Contract",
+        "editContract": "Edit Contract",
+        "searchPlaceholder": "Search contracts...",
+        "addProperty": "Add Property"
+      }
+    },
+    "payments": {
+      "title": "Payments & Payouts",
+      "accountSettings": "Account Settings",
+      "totalEarnings": "Total Earnings",
+      "pendingPayments": "Pending Payments",
+      "table": {
+        "transactionId": "Transaction ID",
+        "property": "Property",
+        "propertyAddress": "Property Address",
+        "propertyType": "Property Type",
+        "apartment": "Apartment",
+        "house": "House",
+        "price": "Price",
+        "date": "Date"
+      },
+      "paymentMethods": {
+        "title": "Saved Payment Methods",
+        "accountsTab": "Payment Accounts",
+        "transactionsTab": "Transaction History",
+        "recentAccounts": "Recent Payment Accounts",
+        "addMethod": "Add Method",
+        "addCardHolder": "Add Card Holder",
+        "recentTransactions": "Recent Transactions",
+        "save": "Save Changes",
+        "discard": "Discard",
+        "card": {
+          "expires": "Expires",
+          "edit": "Edit card",
+          "delete": "Delete card",
+          "default": "Default",
+          "deleteTitle": "Deleting",
+          "deleteSubtitle": "Are you sure you want to remove this Visa card?",
+          "deleteNote": "This action cannot be undone.",
+          "cancel": "Cancel",
+          "editTitle": "Edit Card Information"
+        }
+      }
+    },
+    "account": {
+      "title": "Personal info",
+      "notProvided": "Personal info",
+      "settings": "Account Settings",
+      "fullName": "Full Name",
+      "email": "Email address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Add a number so confirmed guests and Airbnb can get in touch. You can add other numbers and choose how they’re used.",
+      "nationalId": "National ID",
+      "address": "Address",
+      "update": "Update",
+      "cancel": "Cancel",
+      "edit": "Edit"
+    },
+    "support": {
+      "senderName": "Qunuf Support",
+      "lastMessage": "Let us know how we can assist you.",
+      "welcomeMessage": "Welcome to Qunuf Support! How can we help you today?"
+    },
+    "renewRequest": {
+      "reviews": "reviews",
+      "priceDetails": "Price details",
+      "forOneMonth": "For one Month",
+      "longStayDiscount": "Long stay discount",
+      "totalUsd": "Total (USD)",
+      "cancel": "Cancel",
+      "renew": "Renew",
+      "disAgree": "DisAgree",
+      "agree": "Agree",
+      "requestToRenew": "Request to Renew"
+    },
+    "settings": {
+      "root": {
+        "account": "Account",
+        "personalInfo": {
+          "title": "Personal Info",
+          "description": "Provide personal details and how we can reach you"
         },
-        "header": {
-            "greeting": "Hello, {name}!",
-            "description": "Explore information and activity"
-        },
-        "sidebar": {
-            "dashboard": "Dashboard",
-            "contracts": "Contracts",
-            "renewRequests": "Renew Requests",
-            "settings": "Account Setting",
-            "paymentHistory": "Payment History",
-            "support": "Customer Support",
-            "rentalsContracts": "Rentals & Contracts",
-            "properties": "Properties",
-            "revenueSummary": "Revenue Summary",
-            "notifications": "Notifications",
-            "chat": "Chats",
-            "contactUs": "Contact Us",
-            "teamMembers": "Team Members",
-            "blogs": "Blogs",
-            "aboutUs": "About Us",
-            "logout": "Logout"
-        },
-        "filter": {
-            "export": {
-                "trigger": "Export Excel",
-                "scope": "Export Scope",
-                "currentTable": "Current Table",
-                "moreData": "More Data",
-                "maxRows": "Max Rows",
-                "export": "Export",
-                "exporting": "Exporting...",
-                "cancel": "Cancel"
-            },
-            "container": {
-                "filter": "Filter"
-            }
-        },
-        "table": {
-            "noRows": "No data available",
-            "errorTitle": "Oops, something went wrong",
-            "errorMessage": "An error occurred while loading the data",
-            "retry": "Retry"
-        },
-        "pagination": {
-            "firstPage": "First Page",
-            "previous": "Previous",
-            "next": "Next",
-            "lastPage": "Last Page",
-            "showingEntries": "Showing {start} to {end} of {total} entries"
-        },
-        "notification": {
-            "title": "Last Notifications",
-            "notifications": "Notifications",
-            "seeMore": "See More",
-            "accountSettings": "Account Settings",
-            "overview": "Overview",
-            "pushToggle": "Turn on push notifications"
-        },
-        "contracts": {
-            "viewContract": "View Contract",
-            "noContractAvailable": "No Contract Available",
-            "contractTitle": "Contract",
-            "contractPage": "Contract page",
-            "noImagesFallback": "No contract images available",
-            "renew": {
-                "actionText": "renew",
-                "title": "Renew Contract",
-                "subtitle": "You sure that you want to renew the contract"
-            },
-            "terminate": {
-                "actionText": "Terminate",
-                "title": "Terminate",
-                "subtitle": "You sure that you want to terminate the contract",
-                "note": "Note: When you terminate the contract, you will not restore your money"
-            },
-            "delete": {
-                "actionText": "Delete",
-                "title": "Delete",
-                "subtitle": "You sure that you want to delete the contract"
-            },
-            "cancel": "Cancel",
-            "table": {
-                "property": "Property",
-                "status": "Status",
-                "free": "Free",
-                "reserved": "Reserved",
-                "startBooking": "Start Booking",
-                "endBooking": "End Booking",
-                "published": "Published",
-                "price": "Price",
-                "contract": "Contract",
-                "location": "Location",
-                "renewContract": "Renew Contract",
-                "terminateContract": "Terminate Contract",
-                "deleteContract": "Delete Contract",
-                "editContract": "Edit Contract",
-                "searchPlaceholder": "Search contracts...",
-                "addProperty": "Add Property"
-            }
+        "notifications": {
+          "title": "Notifications",
+          "description": "Choose notification preferences and how you want to be contacted"
         },
         "payments": {
-            "title": "Payments & Payouts",
-            "accountSettings": "Account Settings",
-            "totalEarnings": "Total Earnings",
-            "pendingPayments": "Pending Payments",
-            "table": {
-                "transactionId": "Transaction ID",
-                "property": "Property",
-                "propertyAddress": "Property Address",
-                "propertyType": "Property Type",
-                "apartment": "Apartment",
-                "house": "House",
-                "price": "Price",
-                "date": "Date"
-            },
-            "paymentMethods": {
-                "title": "Saved Payment Methods",
-                "accountsTab": "Payment Accounts",
-                "transactionsTab": "Transaction History",
-                "recentAccounts": "Recent Payment Accounts",
-                "addMethod": "Add Method",
-                "addCardHolder": "Add Card Holder",
-                "recentTransactions": "Recent Transactions",
-                "save": "Save Changes",
-                "discard": "Discard",
-                "card": {
-                    "expires": "Expires",
-                    "edit": "Edit card",
-                    "delete": "Delete card",
-                    "default": "Default",
-                    "deleteTitle": "Deleting",
-                    "deleteSubtitle": "Are you sure you want to remove this Visa card?",
-                    "deleteNote": "This action cannot be undone.",
-                    "cancel": "Cancel",
-                    "editTitle": "Edit Card Information"
-                }
-            }
-        },
-        "account": {
-            "title": "Personal info",
-            "notProvided": "Personal info",
-            "settings": "Account Settings",
-            "fullName": "Full Name",
-            "email": "Email address",
-            "phone": "Phone Number",
-            "phonePlaceholder": "Add a number so confirmed guests and Airbnb can get in touch. You can add other numbers and choose how they’re used.",
-            "nationalId": "National ID",
-            "address": "Address",
-            "update": "Update",
-            "cancel": "Cancel",
-            "edit": "Edit"
-        },
-        "support": {
-            "senderName": "Qunuf Support",
-            "lastMessage": "Let us know how we can assist you.",
-            "welcomeMessage": "Welcome to Qunuf Support! How can we help you today?"
-        },
-        "renewRequest": {
-            "reviews": "reviews",
-            "priceDetails": "Price details",
-            "forOneMonth": "For one Month",
-            "longStayDiscount": "Long stay discount",
-            "totalUsd": "Total (USD)",
-            "cancel": "Cancel",
-            "renew": "Renew",
-            "disAgree": "DisAgree",
-            "agree": "Agree",
-            "requestToRenew": "Request to Renew"
-        },
-        "settings": {
-            "root": {
-                "account": "Account",
-                "personalInfo": {
-                    "title": "Personal Info",
-                    "description": "Provide personal details and how we can reach you"
-                },
-                "notifications": {
-                    "title": "Notifications",
-                    "description": "Choose notification preferences and how you want to be contacted"
-                },
-                "payments": {
-                    "title": "Payments & payouts",
-                    "description": "Review payments, payouts, coupons, and gift cards"
-                }
-            }
-        },
-        "chats": {
-            "messages": "Messages",
-            "noMessages": "No messages yet. Start the conversation!",
-            "typeMessage": "Type a message",
-            "selectConversation": "Select a conversation to start messaging"
-        },
-        "tenant": {
-            "root": {
-                "reservedProperty": "Reserved Property",
-                "totalPaymentAmount": "Total Payment Amount",
-                "lastRentedProperties": "Last Rented Properties"
-            }
-        },
-        "landlord": {
-            "root": {
-                "totalProperties": "Total Properties",
-                "totalReviews": "Total Reviews",
-                "freeProperties": "Free Properties",
-                "RentedProperties": "Rented Properties",
-                "topRentedProperties": "Top Rented Properties"
-            },
-            "revenue": {
-                "week": "Week",
-                "month": "Month",
-                "year": "Year",
-                "rentalIncome": "Rental Income",
-                "totalReserved": "Total Reserved Property",
-                "totalFree": "Total Free Properties",
-                "topRented": "Top Rented Properties",
-                "recentTransactions": "Recent Transactions"
-            }
-        },
-        "admin": {
-            "root": {
-                "totalProperties": "Total Properties",
-                "freeProperties": "Free Properties",
-                "rentedProperties": "Rented Properties",
-                "lastTransactions": "Last Transactions",
-                "maintenanceRequests": "Maintenance Requests"
-            },
-            "maintenance": {
-                "requestId": "Request ID",
-                "type": {
-                    "Electrical": "Electrical",
-                    "Plumbing": "Plumbing",
-                    "HVAC": "HVAC"
-                }
-            },
-            "costBreakdown": {
-                "maintenance": "Maintenance",
-                "repair": "Repair",
-                "taxes": "Taxes",
-                "saving": "Saving"
-            },
-            "contactUs": {
-                "title": "Contact Us Messages",
-                "searchPlaceholder": "Search by name, email, or phone"
-            },
-            "team": {
-                "title": "Team Members",
-                "add": "Add Team Member",
-                "edit": "Edit Team Member",
-                "deleteTitle": "Delete",
-                "formText": "Show Form",
-                "delete": {
-                    "title": "Delete Team Member",
-                    "subtitle": "Are you sure you want to remove this member from your team?",
-                    "actionText": "Delete",
-                    "cancel": "Cancel"
-                },
-                "form": {
-                    "form": "Team Member Form",
-                    "name": "Name",
-                    "email": "Email",
-                    "phone": "Phone Number",
-                    "namePlaceholder": "Enter full name",
-                    "emailPlaceholder": "Enter email address",
-                    "phonePlaceholder": "Enter phone number",
-                    "upload": "Upload Image",
-                    "noFile": "No file chosen"
-                },
-                "cancel": "Cancel",
-                "addAction": "Add Member",
-                "editAction": "Save Changes"
-            },
-            "blog": {
-                "title": " Blogs",
-                "add": "Add blog",
-                "delete": {
-                    "title": "Delete Blog",
-                    "subtitle": "Are you sure you want to delete this blog post? This action cannot be undone.",
-                    "cancel": "Cancel",
-                    "actionText": "Delete"
-                },
-                "form": {
-                    "title": "Blog Title",
-                    "titlePlaceholder": "Enter blog title",
-                    "description": "Description",
-                    "descriptionPlaceholder": "Write the blog content...",
-                    "date": "Date of Publication",
-                    "datePlaceholder": "Select a date",
-                    "cancel": "Cancel",
-                    "actionText": "Save"
-                }
-            },
-            "about": {
-                "title": "About Us Content",
-                "vision": {
-                    "title": "Our Vision"
-                },
-                "goals": {
-                    "title": "Our Goals"
-                },
-                "missions": {
-                    "title": "Our Missions"
-                },
-                "edit": "Edit",
-                "form": {
-                    "title": "Title",
-                    "message": "Message",
-                    "messagePlaceholder": "Enter section message",
-                    "cancel": "Cancel",
-                    "save": "Save Changes"
-                }
-            }
+          "title": "Payments & payouts",
+          "description": "Review payments, payouts, coupons, and gift cards"
         }
+      }
     },
-    "properties": {
+    "chats": {
+      "messages": "Messages",
+      "noMessages": "No messages yet. Start the conversation!",
+      "typeMessage": "Type a message",
+      "selectConversation": "Select a conversation to start messaging"
+    },
+    "tenant": {
+      "root": {
+        "reservedProperty": "Reserved Property",
+        "totalPaymentAmount": "Total Payment Amount",
+        "lastRentedProperties": "Last Rented Properties"
+      }
+    },
+    "landlord": {
+      "root": {
+        "totalProperties": "Total Properties",
+        "totalReviews": "Total Reviews",
+        "freeProperties": "Free Properties",
+        "RentedProperties": "Rented Properties",
+        "topRentedProperties": "Top Rented Properties"
+      },
+      "revenue": {
+        "week": "Week",
+        "month": "Month",
+        "year": "Year",
+        "rentalIncome": "Rental Income",
+        "totalReserved": "Total Reserved Property",
+        "totalFree": "Total Free Properties",
+        "topRented": "Top Rented Properties",
+        "recentTransactions": "Recent Transactions"
+      }
+    },
+    "admin": {
+      "root": {
+        "totalProperties": "Total Properties",
+        "freeProperties": "Free Properties",
+        "rentedProperties": "Rented Properties",
+        "lastTransactions": "Last Transactions",
+        "maintenanceRequests": "Maintenance Requests"
+      },
+      "maintenance": {
+        "requestId": "Request ID",
+        "type": {
+          "Electrical": "Electrical",
+          "Plumbing": "Plumbing",
+          "HVAC": "HVAC"
+        }
+      },
+      "costBreakdown": {
+        "maintenance": "Maintenance",
+        "repair": "Repair",
+        "taxes": "Taxes",
+        "saving": "Saving"
+      },
+      "contactUs": {
+        "title": "Contact Us Messages",
+        "searchPlaceholder": "Search by name, email, or phone"
+      },
+      "team": {
+        "title": "Team Members",
+        "add": "Add Team Member",
+        "edit": "Edit Team Member",
+        "deleteTitle": "Delete",
+        "formText": "Show Form",
         "delete": {
-            "title": "Delete Property",
-            "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
-            "actionText": "Delete"
-        },
-        "cancel": "Cancel",
-        "table": {
-            "property": "Property",
-            "status": "Status",
-            "free": "Free",
-            "online": "Online",
-            "offline": "Offline",
-            "booked": "Booked",
-            "published": "Published",
-            "price": "Price",
-            "location": "Location",
-            "deleteProperty": "Delete Property",
-            "editProperty": "Edit Property",
-            "addProperty": "Add Property"
+          "title": "Delete Team Member",
+          "subtitle": "Are you sure you want to remove this member from your team?",
+          "actionText": "Delete",
+          "cancel": "Cancel"
         },
         "form": {
-            "title": "Apartment Title",
-            "size": "Size (m²)",
-            "price": "Price per month",
-            "rentType": "Rent Type",
-            "propertyType": "Property Type",
-            "bathrooms": "Bathrooms",
-            "bedrooms": "Bedrooms",
-            "garage": "Garage size",
-            "description": "Description",
-            "additionalDetails": "Additional Details",
-            "location": "Location",
-            "selectLocation": "Select Location",
-            "nearby": "What’s nearby",
-            "placeName": "Place Name",
-            "distance": "Distance (km)",
-            "addNearby": "+ Add Nearby Place",
-            "distanceUnit": "km",
-            "placeNamePlaceholder": "Enter place name",
-            "distancePlaceholder": "Enter distance",
-            "categoryPlaceholder": "Select category",
-            "save": "Save"
+          "form": "Team Member Form",
+          "name": "Name",
+          "email": "Email",
+          "phone": "Phone Number",
+          "namePlaceholder": "Enter full name",
+          "emailPlaceholder": "Enter email address",
+          "phonePlaceholder": "Enter phone number",
+          "upload": "Upload Image",
+          "noFile": "No file chosen"
+        },
+        "cancel": "Cancel",
+        "addAction": "Add Member",
+        "editAction": "Save Changes"
+      },
+      "blog": {
+        "title": " Blogs",
+        "add": "Add blog",
+        "delete": {
+          "title": "Delete Blog",
+          "subtitle": "Are you sure you want to delete this blog post? This action cannot be undone.",
+          "cancel": "Cancel",
+          "actionText": "Delete"
+        },
+        "form": {
+          "title": "Blog Title",
+          "titlePlaceholder": "Enter blog title",
+          "description": "Description",
+          "descriptionPlaceholder": "Write the blog content...",
+          "date": "Date of Publication",
+          "datePlaceholder": "Select a date",
+          "cancel": "Cancel",
+          "actionText": "Save"
         }
+      },
+      "about": {
+        "title": "About Us Content",
+        "vision": {
+          "title": "Our Vision"
+        },
+        "goals": {
+          "title": "Our Goals"
+        },
+        "missions": {
+          "title": "Our Missions"
+        },
+        "edit": "Edit",
+        "form": {
+          "title": "Title",
+          "message": "Message",
+          "messagePlaceholder": "Enter section message",
+          "cancel": "Cancel",
+          "save": "Save Changes"
+        }
+      }
     }
+  },
+  "properties": {
+    "delete": {
+      "title": "Delete Property",
+      "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
+      "actionText": "Delete"
+    },
+    "cancel": "Cancel",
+    "table": {
+      "property": "Property",
+      "status": "Status",
+      "free": "Free",
+      "online": "Online",
+      "offline": "Offline",
+      "booked": "Booked",
+      "published": "Published",
+      "price": "Price",
+      "location": "Location",
+      "deleteProperty": "Delete Property",
+      "editProperty": "Edit Property",
+      "addProperty": "Add Property"
+    },
+    "form": {
+      "title": "Apartment Title",
+      "size": "Size (m²)",
+      "price": "Price per month",
+      "rentType": "Rent Type",
+      "propertyType": "Property Type",
+      "bathrooms": "Bathrooms",
+      "bedrooms": "Bedrooms",
+      "garage": "Garage size",
+      "description": "Description",
+      "additionalDetails": "Additional Details",
+      "location": "Location",
+      "selectLocation": "Select Location",
+      "nearby": "What’s nearby",
+      "placeName": "Place Name",
+      "distance": "Distance (km)",
+      "addNearby": "+ Add Nearby Place",
+      "distanceUnit": "km",
+      "placeNamePlaceholder": "Enter place name",
+      "distancePlaceholder": "Enter distance",
+      "categoryPlaceholder": "Select category",
+      "save": "Save"
+    }
+  }
 }
