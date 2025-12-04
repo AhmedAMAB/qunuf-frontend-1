@@ -5,6 +5,7 @@ interface PasswordInputProps {
     label: string;
     placeholder?: string;
     value?: string;
+    error?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -12,6 +13,7 @@ export default function PasswordInput({
     label,
     placeholder,
     value,
+    error,
     onChange,
 }: PasswordInputProps) {
     const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +37,7 @@ export default function PasswordInput({
                     value={value}
                     onChange={onChange}
                     placeholder={placeholder}
-                    className="hidden-passowrd border border-gray rounded-[8px] p-6 h-[44px] text-[16px] leading-[24px] text-dark placeholder-[var(--placeholder)] w-full pr-12"
+                    className={`hidden-passowrd border ${error ? 'border-red-500' : 'border-gray'} rounded-[8px] p-6 h-[44px] text-[16px] leading-[24px] text-dark placeholder-[var(--placeholder)] w-full pr-12`}
                 />
                 <button
                     type="button"
@@ -45,6 +47,7 @@ export default function PasswordInput({
                     {showPassword ? <FiEye /> : <FiEyeOff />}
                 </button>
             </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>
     );
 }

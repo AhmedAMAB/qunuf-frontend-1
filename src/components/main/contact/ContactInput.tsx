@@ -1,41 +1,50 @@
-import React from "react";
-
-interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    id: string;
-    label: string;
-    value: string;
-    placeholder?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    wrapperClassName?: string;
-}
+import { useState } from "react";
 
 export default function ContactInput({
     id,
     label,
     value,
-    placeholder,
     onChange,
     type = "text",
     wrapperClassName = "",
+    required = false,
     ...props
-}: TextInputProps) {
+}: {
+    id: string;
+    label: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    type?: string;
+    wrapperClassName?: string;
+    required?: boolean;
+}) {
+    const [focused, setFocused] = useState(false);
+
     return (
         <div
-            className={`flex gap-2 flex-col border-b border-primary pb-3 ${wrapperClassName}`}
+            className={`relative flex flex-col border-[1px] border-[#E0E0E0] py-3 px-[20px] ${wrapperClassName}`}
         >
+            {/* Floating label */}
             <label
                 htmlFor={id}
-                className="text-input text-[13px] font-medium"
+                className={`absolute start-[20px] top-1/2 -translate-y-1/2 text-gray-400 text-sm transition-all duration-200 pointer-events-none
+          ${focused || value ? "top-2 text-xs text-primary" : ""}
+        `}
             >
                 {label}
+                {required && <span className="text-red-500"> *</span>}
             </label>
+
+            {/* Input */}
             <input
                 id={id}
                 type={type}
                 value={value}
-                placeholder={placeholder}
                 onChange={onChange}
-                className="focus:outline-0 text-sm font-medium text-primary caret-primary"
+                required={required}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                className="focus:outline-0 text-sm font-medium text-primary caret-primary bg-transparent"
                 {...props}
             />
         </div>

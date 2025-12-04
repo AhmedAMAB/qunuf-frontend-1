@@ -14,7 +14,7 @@ export default async function SignUpPage() {
     const t = await getTranslations('auth.signUp');
 
     return (
-        <div className="py-20 mt-4 lg:mt-12">
+        <div className="py-20">
             <div className="container max-w-[1200px] mx-auto px-4">
                 <div className="flex flex-col lg:flex-row items-stretch justify-between rounded-2xl custom-shadow overflow-hidden">
                     <div className="w-full lg:w-[50%] bg-white p-5 md:p-6 lg:p-8 flex flex-col gap-10">

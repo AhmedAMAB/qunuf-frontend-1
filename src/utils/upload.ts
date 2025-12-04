@@ -1,3 +1,4 @@
+import { baseImg } from "@/libs/axios";
 import z from "zod";
 
 // helpers/fileUpload.ts
@@ -95,4 +96,11 @@ export function processFiles(
     }
 
     return updated;
+}
+
+
+export function resolveUrl(u: string) {
+    if (!u) return '';
+    if (/^(https?:|blob:|data:)/i.test(u)) return u;
+    return (baseImg || '') + u.replace(/^\/+/, '');
 }

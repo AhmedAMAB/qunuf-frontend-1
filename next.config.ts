@@ -7,6 +7,18 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8081",
+        pathname: "/uploads/**",
+      },
+    ],
+  },
+
   async redirects() {
     return [
       {

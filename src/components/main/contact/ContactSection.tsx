@@ -1,65 +1,32 @@
-import SocialIcons from "@/components/shared/footer/SocialIcons";
+'use client'
 import PageHeader from "@/components/shared/PageHeader";
-import { IoMdMail } from "react-icons/io";
-import { IoLocationSharp } from "react-icons/io5";
-import { MdPhoneInTalk } from "react-icons/md";
 import ContactForm from "./ContactForm";
 import { getTranslations } from "next-intl/server";
+import dynamic from "next/dynamic";
+import ContactMap from "./ContactMap";
+import { useTranslations } from "next-intl";
 
-export default async function ContactSection() {
-    const t = await getTranslations("contact.information");
+
+
+export default function ContactSection() {
+    const t = useTranslations("contact.information");
 
     return (
         <div className="bg-highlight pb-32 px-2">
             <div className="container">
-                <PageHeader title={t("title")} className="bg-highlight" />
+                <PageHeader title={t("title")} className="bg-highlight pt-10 md:pt-12 lg:pt-[60px] md:mb-16 lg:mb-24" />
 
-                <div className="mt-20 bg-white rounded-[10px] p-2 grid grid-cols-1 lg:grid-cols-12">
-                    {/* Info side */}
-                    <div className="relative bg-light lg:col-span-4 xl:col-span-4 p-8 lg:p-10 rounded-[10px] overflow-hidden">
-                        <div className="space-y-2">
-                            <h1 className="text-2xl text-dark font-semibold">{t("header")}</h1>
-                            <p className="text-lg text-dark">{t("subtitle")}</p>
-                        </div>
-
-                        <div className="mt-[60px] flex flex-col gap-8">
-                            <div className="flex gap-4 items-center">
-                                <MdPhoneInTalk size={24} className="text-secondary" />
-                                <a
-                                    href="tel:+972029182132"
-                                    className="text-base md:text-lg font-lighter hover:underline"
-                                    dir="ltr"
-                                >
-                                    +97&nbsp;202-918-2132
-                                </a>
-                            </div>
-                            <div className="flex gap-4 items-center">
-                                <IoMdMail size={24} className="text-secondary" />
-                                <a href="mailto:realState@gmail.com" className="hover:underline">
-                                    realState@gmail.com
-                                </a>
-                            </div>
-                            <div className="flex gap-4 items-center">
-                                <IoLocationSharp size={24} className="text-secondary" />
-                                <p className="text-base">{t("location")}</p>
-                            </div>
-                        </div>
-
-                        <div className="mt-[100px]">
-                            <SocialIcons primary={false} size={20} />
-                        </div>
-
-                        {/* Decorative circles */}
-                        <div className="w-[200px] h-[200px] rounded-full bg-primary absolute end-[-80px] bottom-0 opacity-55 " />
-                        <div className="w-[120px] h-[120px] rounded-full bg-secondary absolute end-10 bottom-10 opacity-40" />
-                    </div>
-
+                <div className="md:mt-20 rounded-[10px] p-2 grid grid-cols-1 lg:grid-cols-12 max-lg:gap-6">
                     {/* Form side */}
-                    <div className="lg:col-span-8 xl:col-span-8">
+                    <div className="col-span-6">
                         <ContactForm />
                     </div>
+                    {/* Info side */}
+                    <ContactMap />
                 </div>
             </div>
         </div>
     );
 }
+
+

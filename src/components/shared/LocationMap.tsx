@@ -13,10 +13,11 @@ maplibregl.setRTLTextPlugin(
 type Props = {
     lat: number;
     lng: number;
+    zoom?: number;
     onChange?: (coords: { lat: number; lng: number }) => void;
 };
 
-export default function LocationMap({ lat, lng, onChange }: Props) {
+export default function LocationMap({ lat, lng, onChange, zoom = 8 }: Props) {
     return (
         <div className="h-[400px] sm:h-[500px] lg:h-[600px] ">
             <Map
@@ -24,7 +25,7 @@ export default function LocationMap({ lat, lng, onChange }: Props) {
                 initialViewState={{
                     latitude: lat,
                     longitude: lng,
-                    zoom: 8,
+                    zoom,
                 }}
                 style={{ width: '100%', height: '100%', borderRadius: 12 }}
                 mapStyle="https://tiles.openfreemap.org/styles/liberty"

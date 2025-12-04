@@ -13,7 +13,8 @@
   --placeholder: #948888;
   --dark: #2A2A2A;
   --noti: #625DF5;
-
+  --orange: #FF8D41;
+  --gray-dark: #303030;
 
   --secondary-80: rgba(138, 110, 78, 0.8);
   --light-80: rgba(240, 230, 140, 0.8);
@@ -40,6 +41,8 @@
   --color-placeholder: var(--placeholder);
   --color-dark: var(--dark);
   --color-notification: var(--noti);
+  --color-orange: var(--orange);
+  --color-gray-dark: var(--gray-dark);
 
   --color-secondary-hover: var(--secondary-hover);
   --color-primary-hover: var(--primary-hover);
@@ -337,4 +340,30 @@ body {
 
 .react-datepicker-wrapper {
   margin-bottom: 12px;
+}
+
+.custom-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  background-color: var(--lighter);
+  /* lighter */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.custom-bullet-active {
+  width: 30px;
+  height: 8px;
+  border-radius: 50px;
+  background-color: var(--secondary);
+  /* Tailwind secondary color */
+}
+
+.about-team .swiper-slide {
+  display: flex;
+}
+
+.about-team .swiper-slide .team-member {
+  margin-inline: auto;
 }

@@ -13,6 +13,7 @@ export async function generateMetadata() {
 
 export default async function ForgotPasswordPage() {
     const t = await getTranslations('auth.forgotPassword');
+
     return (
         <section className="py-20 bg-[var(--bg-1)] mt-16">
             <div className="container mx-auto px-4">
@@ -26,7 +27,7 @@ export default async function ForgotPasswordPage() {
                         <ForgotPasswordForm />
 
                         <Link
-                            href="/sign-in"
+                            href="/auth/sign-in"
                             className="mt-4 block text-primary font-semibold underline hover:text-primary-hover transition"
                         >
                             {t('backToLogin')}

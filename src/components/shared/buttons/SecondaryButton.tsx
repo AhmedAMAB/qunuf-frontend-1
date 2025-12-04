@@ -36,6 +36,7 @@ export default function SecondaryButton({
     return (
         <button
             type={type}
+            disabled={disabled}
             onClick={onClick}
             className={`${baseClasses} ${className}`}
             {...props}

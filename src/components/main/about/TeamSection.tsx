@@ -1,34 +1,69 @@
 'use client';
 
 import PageHeader from "@/components/shared/PageHeader";
-import TeamMember from "./TeamMember";
+import TeamMemberCard from "./TeamMemberCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
+import { Team } from "@/types/company";
+import { resolveUrl } from "@/utils/upload";
 
-const members = [
-    { name: "John Carvan", imageSrc: "/about/team/user-2.png" },
-    { name: "Miss Smith Ellen", imageSrc: "/about/team/user-1.png" },
-    { name: "John Carvan", imageSrc: "/about/team/user-2.png" },
-    { name: "Jane Doe", imageSrc: "/about/team/user-1.png" },
-    { name: "Michael Smith", imageSrc: "/about/team/user-2.png" },
-];
+interface TeamSectionProps {
+    teams: Team[];
+    locale: string;
+    isArabic: boolean;
+}
 
-export default function TeamSection() {
+export default function TeamSection({ teams, locale, isArabic }: TeamSectionProps) {
     const [perView, setPerView] = useState(1);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const t = useTranslations("about.team");
+    const t = useTranslations("about");
 
-    if (!members || members.length === 0) return null;
+    // Helper function to get localized text
+    const getLocalizedText = (en: string, ar: string) => isArabic ? ar : en;
+
+
+    if (!teams || teams.length === 0) {
+        return (
+            <section className="about-team relative bg-white py-12">
+                <div className="text-center space-y-2 mb-3">
+                    <p className="text-[#303030] uppercase">{t('yourHostsAndGuides')}</p>
+                    <h1 className="text-center">
+                        <span className="font-['Playfair_Display'] font-normal text-[40px] md:text-[50px] lg:text-[60px] leading-[100%]">
+                            {t('meetYour')}
+                        </span>
+                        <br className="my-2" />
+                        <span className="font-['Playfair_Display'] font-extrabold italic text-[44px] md:text-[54px] lg:text-[64px] leading-[100%]">
+                            {t('facilitators')}
+                        </span>
+                    </h1>
+                </div>
+                <div className="text-center text-gray-500 py-8">
+                    <p>{t('noTeamsAvailable') || 'No team members available at the moment.'}</p>
+                </div>
+            </section>
+        );
+    }
 
     return (
-        <section className="relative bg-white py-12">
-            <PageHeader title={t("header")} />
+        <section className="about-team relative bg-white py-12" data-aos="fade-up">
+            <div className="text-center space-y-2 mb-3">
+                <p className="text-[#303030] uppercase">{t('yourHostsAndGuides')}</p>
+                <h1 className="text-center">
+                    <span className="font-['Playfair_Display'] font-normal text-[40px] md:text-[50px] lg:text-[60px] leading-[100%]">
+                        {t('meetYour')}
+                    </span>
+                    <br className="my-2" />
+                    <span className="font-['Playfair_Display'] font-extrabold italic text-[44px] md:text-[54px] lg:text-[64px] leading-[100%]">
+                        {t('facilitators')}
+                    </span>
+                </h1>
+            </div>
 
             <div className="relative max-w-7xl mx-auto px-4">
                 <Swiper
@@ -43,8 +78,6 @@ export default function TeamSection() {
                         768: { slidesPerView: 2 },
                         1280: { slidesPerView: 3 }, // 👈 3 slides on laptop
                     }}
-                    loop={true}
-                    centeredSlides={true}
                     className="swiper"
                     onSlideChange={(swiper) => {
                         const pv = swiper.params.slidesPerView as number;
@@ -52,24 +85,25 @@ export default function TeamSection() {
                         setActiveIndex(swiper.realIndex); // 👈 track the actual active slide
                     }}
                 >
-                    {members.map((member, idx) => (
-                        <SwiperSlide key={idx} className="flex justify-center">
-                            <TeamMember
-                                name={member.name}
-                                imageSrc={member.imageSrc}
-                                // 👇 scale logic: active slide = 1, others = 0.6
-                                scale={perView === 3 ? (idx === activeIndex ? 1 : 0.6) : 1}
-                            />
+                    {teams.map((member) => (
+                        <SwiperSlide key={member.id}>
+                                <TeamMemberCard
+                                    imageSrc={resolveUrl(member.imagePath)}
+                                    name={member.name}
+                                    job={member.job}
+                                    description={getLocalizedText(member.description_en, member.description_ar)}
+                                />
+
                         </SwiperSlide>
                     ))}
                 </Swiper>
 
                 {/* Navigation buttons */}
-                <button className="team-prev flex-center w-[45px] h-[45px] bg-primary rounded-full absolute top-1/2 -translate-y-1/2 left-2 z-10">
-                    <BiSolidLeftArrow size={24} className="text-white" />
+                <button className="team-next flex-center w-[45px] h-[45px]  absolute top-1/2 -translate-y-1/2 -left-2 lg:-left-10 z-10">
+                    <MdOutlineArrowBackIos size={32} className="" />
                 </button>
-                <button className="team-next flex-center w-[45px] h-[45px] bg-primary rounded-full absolute top-1/2 -translate-y-1/2 right-2 z-10">
-                    <BiSolidRightArrow size={24} className="text-white" />
+                <button className="team-prev flex-center w-[45px] h-[45px]  absolute top-1/2 -translate-y-1/2 -right-2 lg:-right-10 z-10">
+                    <MdOutlineArrowForwardIos size={32} className="" />
                 </button>
             </div>
         </section>

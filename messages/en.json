@@ -10,6 +10,7 @@
         "cancel": "Cancel",
         "save": "Save",
         "form": {
+            "loading": "Loading...",
             "email": {
                 "label": "Email Address",
                 "placeholder": "Enter your email address"
@@ -17,6 +18,12 @@
             "password": {
                 "label": "Password",
                 "placeholder": "Enter your password"
+            },
+            "forgotPassword": {
+                "sent": "If the email is registered, a reset link will be sent"
+            },
+            "errors": {
+                "forgotPasswordFailed": "Failed to send reset email"
             },
             "locationInput": {
                 "fetching": "Fetching address...",
@@ -157,25 +164,36 @@
         }
     },
     "about": {
+        "noDepartmentsAvailable": "No departments available at the moment.",
+        "noTeamsAvailable": "No team members available at the moment.",
+        "readMore": "Read More",
+        "readLess": "Read Less",
+        "historyOfQunuf": "History of Qunuf",
+        "whyQunuf": "Why Qunuf",
+        "meetOur": "Meet our",
+        "department": "Department",
+        "yourHostsAndGuides": "Your Hosts & Guides",
+        "meetYour": "Meet Your",
+        "facilitators": "Facilitators",
         "hero": {
             "title": "About Us",
             "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
             "seeMore": "See More"
         },
-        "header": "About us",
+        "header": "About Us",
         "mission": {
             "title": "Our Mission",
-            "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
+            "description": "At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors.At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors. ",
             "button": "View More"
         },
         "vision": {
             "title": "Our Vision",
-            "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
+            "description": "At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors.At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors. ",
             "button": "Discover"
         },
         "goals": {
             "title": "Our Goals",
-            "description": "Lorem ipsum was conceived as filler text, formatted in a certain way to enable the presentation of graphic elements in documents, without the need for formal copy. ",
+            "description": "At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors.At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors. ",
             "button": "Learn More"
         },
         "team": {
@@ -195,20 +213,21 @@
             "location": "132 Dartmouth Street Boston, Massachusetts 02156 United States"
         },
         "form": {
-            "firstName": "First Name",
-            "lastName": "Last Name",
+            "getIn": "Get in",
+            "touch": "Touch",
+            "headerMessage": "We’re happy to hear from you for any inquiries, support, or collaboration.",
+            "name": "Name",
             "email": "Email",
-            "phone": "Phone Number",
-            "subjectTitle": "Select Subject?",
-            "subjects": {
-                "general": "General Inquiry",
-                "support": "Support",
+            "phone": "Phone",
+            "fax": "Fax",
+            "reason": {
+                "placeholder": "Select a reason for contacting",
+                "support": "Technical Support",
                 "sales": "Sales",
-                "partnership": "Partnership"
+                "partnership": "Partnerships",
+                "other": "Other"
             },
-            "message": "Message",
-            "messagePlaceholder": "Write your message..",
-            "send": "Send Message"
+            "send": "Send"
         }
     },
     "blogs": {
@@ -217,10 +236,10 @@
             "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
             "seeMore": "See More"
         },
-        "recent": {
-            "title": "Our Recent Blogs",
-            "readMore": "Read More"
-        }
+        "blogs": "Blogs",
+        "our": "Our",
+        "recentBlogs": "Recent Blogs",
+        "readMore": "Read More"
     },
     "property": {
         "hero": {
@@ -426,11 +445,25 @@
             "forgotPassword": "Forgot your password?",
             "login": "Login",
             "noAccount": "Don’t have an account?",
-            "register": "Register"
+            "register": "Register",
+            "success": {
+                "signedIn": "Signed in successfully"
+            },
+            "errors": {
+                "loginFailed": "Login failed",
+                "incorrectEmailOrPassword": "Incorrect email or password",
+                "invalidEmail": "Please enter a valid email address",
+                "requiredPassword": "Password is required"
+            },
+            "loading": "Signing in..."
         },
         "signUp": {
             "title": "Welcome to QUNUF",
             "subtitle": "Kindly fill in your details below to create an account",
+            "name": {
+                "label": "Name",
+                "placeholder": "Enter your name"
+            },
             "email": {
                 "label": "Email Address",
                 "placeholder": "Enter your email address"
@@ -440,12 +473,114 @@
                 "placeholder": "Enter your password"
             },
             "register": "Register with us",
+            "loading": "Registering...",
+            "success": {
+                "registered": "Registered successfully"
+            },
+            "errors": {
+                "registrationFailed": "Registration failed",
+                "name": {
+                    "required": "Name is required",
+                    "maxLength": "Name must be at most 50 characters long"
+                },
+                "email": {
+                    "invalid": "Email must be a valid email address"
+                },
+                "password": {
+                    "minLength": "Password must be at least 8 characters long",
+                    "maxLength": "Password must not exceed 20 characters",
+                    "pattern": "Password must contain uppercase, lowercase, number, and special character"
+                }
+            },
             "haveAccount": "Already have an account?",
-            "login": "Login"
+            "login": "Login",
+            "didNotReceiveVerification": "Already signed up and didn’t receive the verification email?",
+            "resend": "Resend verification"
         },
         "forgotPassword": {
             "title": "Reset your password",
-            "backToLogin": "Back to login page"
+            "backToLogin": "Back to login page",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "send": "Send",
+                "loading": "Sending...",
+                "success": {
+                    "sent": "If the email is registered, a reset link will be sent"
+                },
+                "errors": {
+                    "invalidEmail": "Please enter a valid email address",
+                    "forgotPasswordFailed": "Failed to send reset email. Please try again."
+                }
+            }
+        },
+        "resetPassword": {
+            "title": "Reset Password",
+            "backToLogin": "Back to login",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "code": {
+                    "label": "Reset Code",
+                    "placeholder": "Enter the reset code"
+                },
+                "password": {
+                    "label": "New Password",
+                    "placeholder": "Enter your new password",
+                    "minLength": "Password must be at least 8 characters long",
+                    "maxLength": "Password must not exceed 20 characters",
+                    "pattern": "Password must contain uppercase, lowercase, number, and special character"
+                },
+                "reset": "Reset Password",
+                "loading": "Resetting...",
+                "success": {
+                    "sent": "Password reset successfully"
+                },
+                "errors": {
+                    "invalidLink": "The reset link is invalid or expired.",
+                    "requestNewLink": "Request a new reset link",
+                    "email": {
+                        "invalid": "Email must be valid"
+                    },
+                    "password": {
+                        "minLength": "Password must be at least 8 characters long",
+                        "maxLength": "Password must not exceed 20 characters",
+                        "pattern": "Password must contain uppercase, lowercase, number, and special character"
+                    },
+                    "confirmPassword": {
+                        "mismatch": "Passwords do not match"
+                    },
+                    "failed": "Failed to reset password"
+                },
+                "confirmPassword": {
+                    "label": "Confirm Password",
+                    "placeholder": "Re-enter your password"
+                }
+            }
+        },
+        "resendVerification": {
+            "title": "Resend Verification Email",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "send": "Send",
+                "haveAccount": "Already have an account?",
+                "login": "Log in",
+                "loading": "Sending...",
+                "success": {
+                    "sent": "If the email is registered, a verification link will be sent."
+                },
+                "errors": {
+                    "failed": "Failed to resend verification email",
+                    "invalidEmail": "Please enter a valid email address"
+                }
+            }
         }
     },
     "footer": {

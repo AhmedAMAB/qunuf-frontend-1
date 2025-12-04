@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 
 export default function AOSInitializer() {
     useEffect(() => {
-        AOS.init({ duration: 300, easing: 'ease-in-sine', once: true });
+        AOS.init({ duration: 300, easing: 'ease-in-sine', once: true, offset: 100 });
     }, []);
 
     return null;

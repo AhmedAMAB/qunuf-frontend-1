@@ -8,7 +8,6 @@ const LocationMap = dynamic(() => import('../../../shared/LocationMap'), {
 });
 
 
-
 export default function PropertyLocationSection({ lat, lng, title = "Location" }: {
     lat: number;
     lng: number;

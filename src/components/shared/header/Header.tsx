@@ -74,7 +74,7 @@ export default function Header() {
 
                 {/* Language (desktop) */}
                 <div className="flex items-center gap-2 ">
-                    <SecondaryButton href="/sign-in" className="bg-secondary hover:bg-secondary-hover text-white">
+                    <SecondaryButton href="/auth/sign-in" className="bg-secondary hover:bg-secondary-hover text-white">
                         {t("nav.login")}
                     </SecondaryButton>
                     <LocaleSwitcher />
