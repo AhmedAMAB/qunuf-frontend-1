@@ -92,9 +92,21 @@
   "homePage": {
     "hero": {
       "heading": "اختار العقار\nالمناسب لك للايجار",
-      "clients": "عملاء +{count}"
+      "clients": "عملاء +{count}",
+      "badge": "ابحث عن عقارك القادم",
+      "subcopy": "تصفح العقارات الموثوقة من وكلاء معتمدين في جميع أنحاء مصر.",
+      "ratingLabel": "متوسط التقييم"
     },
     "filters": {
+      "aria": {
+        "search": "بحث عن العقارات",
+        "openFilters": "فتح جميع الفلاتر"
+      },
+      "helper": {
+        "noFees": "بدون رسوم إضافية",
+        "verified": "عقارات موثوقة",
+        "instant": "بحث فوري"
+      },
       "labels": {
         "location": "الموقع",
         "propertyType": "نوع العقار",

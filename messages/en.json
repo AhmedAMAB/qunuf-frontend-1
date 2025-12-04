@@ -92,9 +92,21 @@
   "homePage": {
     "hero": {
       "heading": "Designing Your\nNext Chapter",
-      "clients": "{count}+ Happy Clients"
+      "clients": "{count}+ Happy Clients",
+      "badge": "Find your next property",
+      "subcopy": "Browse verified listings from trusted agents across Egypt.",
+      "ratingLabel": "Average rating"
     },
     "filters": {
+      "aria": {
+        "search": "Property search",
+        "openFilters": "Open all filters"
+      },
+      "helper": {
+        "noFees": "No extra fees",
+        "verified": "Verified listings",
+        "instant": "Instant search"
+      },
       "labels": {
         "location": "Location",
         "propertyType": "Property Type",
