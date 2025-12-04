@@ -9,6 +9,8 @@ import 'swiper/css/navigation';
 import PropertyCard from "@/components/shared/properties/PropertyCard";
 import { useLocale, useTranslations } from 'use-intl';
 import SwiperNav from '@/components/shared/SwiperNav';
+import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 
 const properties = [
     {
@@ -164,3 +166,7 @@ export default function RecentPropertiesSection() {
         </section>
     );
 }
+
+ 
+ 
+ 

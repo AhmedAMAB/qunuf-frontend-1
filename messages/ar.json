@@ -1,988 +1,988 @@
 {
-    "root": {
-        "siteName": "قنوف",
-        "logo": "قنوف",
-        "description": "اكتشف وأدر العقارات مع قنوف.",
-        "lang": "English"
-    },
-    "comman": {
-        "datePlaceholder": "حدد نطاق التاريخ",
-        "cancel": "إلغاء",
-        "save": "حفظ",
-        "form": {
-            "loading": "جاري التحميل...",
-            "email": {
-                "label": "البريد الإلكتروني",
-                "placeholder": "أدخل بريدك الإلكتروني"
-            },
-            "password": {
-                "label": "كلمة المرور",
-                "placeholder": "أدخل كلمة المرور"
-            },
-            "forgotPassword": {
-                "sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط إعادة تعيين"
-            },
-            "errors": {
-                "forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين"
-            },
-            "locationInput": {
-                "fetching": "جاري جلب العنوان...",
-                "addressPrefix": "العنوان:",
-                "selectedLocation": "الموقع المحدد:",
-                "latitude": "خط العرض (Latitude)",
-                "longitude": "خط الطول (Longitude)",
-                "latitudePlaceholder": "مثال: {lat}",
-                "longitudePlaceholder": "مثال: {lng}",
-                "invalidInput": "المدخلات غير صالحة، يرجى إدخال أرقام صحيحة",
-                "latRangeError": "خط العرض يجب أن يكون بين -90 و 90",
-                "lngRangeError": "خط الطول يجب أن يكون بين -180 و 180",
-                "unknownAddress": "عنوان غير معروف",
-                "addressFetchError": "تعذر جلب العنوان"
-            },
-            "uploader": {
-                "dragLabel": "اسحب وأفلت",
-                "orLabel": "أو",
-                "chooseFiles": "اختر ملفات",
-                "primaryFile": "الملف الأساسي",
-                "setAsPrimary": "تعيين كملف أساسي",
-                "rules": {
-                    "maxSize": "الحد الأقصى لحجم الملف {size}MB",
-                    "maxFiles": "الحد الأقصى {count} ملفات"
-                }
-            },
-            "send": "إرسال"
-        },
-        "months": [
-            "يناير",
-            "فبراير",
-            "مارس",
-            "أبريل",
-            "مايو",
-            "يونيو",
-            "يوليو",
-            "أغسطس",
-            "سبتمبر",
-            "أكتوبر",
-            "نوفمبر",
-            "ديسمبر"
-        ],
-        "weekdays": [
-            "الاثنين",
-            "الثلاثاء",
-            "الأربعاء",
-            "الخميس",
-            "الجمعة",
-            "السبت",
-            "الأحد"
-        ],
-        "search": "إبحث..."
-    },
-    "header": {
-        "logo": "قنوف",
-        "nav": {
-            "home": "الرئيسية",
-            "about": "معلومات عنا",
-            "realEstate": "العقارات",
-            "blog": "المدونات",
-            "contact": "تواصل معنا",
-            "dashboard": "لوحة القيادة",
-            "login": "تسجيل الدخول"
+  "root": {
+    "siteName": "قنوف",
+    "logo": "قنوف",
+    "description": "اكتشف وأدر العقارات مع قنوف.",
+    "lang": "English"
+  },
+  "comman": {
+    "datePlaceholder": "حدد نطاق التاريخ",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "form": {
+      "loading": "جاري التحميل...",
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "أدخل بريدك الإلكتروني"
+      },
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "أدخل كلمة المرور"
+      },
+      "forgotPassword": {
+        "sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط إعادة تعيين"
+      },
+      "errors": {
+        "forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين"
+      },
+      "locationInput": {
+        "fetching": "جاري جلب العنوان...",
+        "addressPrefix": "العنوان:",
+        "selectedLocation": "الموقع المحدد:",
+        "latitude": "خط العرض (Latitude)",
+        "longitude": "خط الطول (Longitude)",
+        "latitudePlaceholder": "مثال: {lat}",
+        "longitudePlaceholder": "مثال: {lng}",
+        "invalidInput": "المدخلات غير صالحة، يرجى إدخال أرقام صحيحة",
+        "latRangeError": "خط العرض يجب أن يكون بين -90 و 90",
+        "lngRangeError": "خط الطول يجب أن يكون بين -180 و 180",
+        "unknownAddress": "عنوان غير معروف",
+        "addressFetchError": "تعذر جلب العنوان"
+      },
+      "uploader": {
+        "dragLabel": "اسحب وأفلت",
+        "orLabel": "أو",
+        "chooseFiles": "اختر ملفات",
+        "primaryFile": "الملف الأساسي",
+        "setAsPrimary": "تعيين كملف أساسي",
+        "rules": {
+          "maxSize": "الحد الأقصى لحجم الملف {size}MB",
+          "maxFiles": "الحد الأقصى {count} ملفات"
         }
+      },
+      "send": "إرسال"
     },
-    "homePage": {
-        "hero": {
-            "heading": "اختار العقار\nالمناسب لك للايجار",
-            "clients": "عملاء +{count}"
+    "months": [
+      "يناير",
+      "فبراير",
+      "مارس",
+      "أبريل",
+      "مايو",
+      "يونيو",
+      "يوليو",
+      "أغسطس",
+      "سبتمبر",
+      "أكتوبر",
+      "نوفمبر",
+      "ديسمبر"
+    ],
+    "weekdays": [
+      "الاثنين",
+      "الثلاثاء",
+      "الأربعاء",
+      "الخميس",
+      "الجمعة",
+      "السبت",
+      "الأحد"
+    ],
+    "search": "إبحث..."
+  },
+  "header": {
+    "logo": "قنوف",
+    "nav": {
+      "home": "الرئيسية",
+      "about": "معلومات عنا",
+      "realEstate": "العقارات",
+      "blog": "المدونات",
+      "contact": "تواصل معنا",
+      "dashboard": "لوحة القيادة",
+      "login": "تسجيل الدخول"
+    }
+  },
+  "homePage": {
+    "hero": {
+      "heading": "اختار العقار\nالمناسب لك للايجار",
+      "clients": "عملاء +{count}"
+    },
+    "filters": {
+      "labels": {
+        "location": "الموقع",
+        "propertyType": "نوع العقار",
+        "category": "الفئات"
+      },
+      "options": {
+        "locations": {
+          "cairo": "القاهرة",
+          "alex": "الإسكندرية",
+          "giza": "الجيزة"
         },
-        "filters": {
-            "labels": {
-                "location": "الموقع",
-                "propertyType": "نوع العقار",
-                "category": "الفئات"
-            },
-            "options": {
-                "locations": {
-                    "cairo": "القاهرة",
-                    "alex": "الإسكندرية",
-                    "giza": "الجيزة"
-                },
-                "propertyTypes": {
-                    "apartment": "شقة",
-                    "villa": "فيلا",
-                    "duplex": "دوبلكس"
-                },
-                "categories": {
-                    "furnished": "مفروش",
-                    "unfurnished": "غير مفروش"
-                }
-            },
-            "search": "بحث",
-            "adjustments": "تصفية"
+        "propertyTypes": {
+          "apartment": "شقة",
+          "villa": "فيلا",
+          "duplex": "دوبلكس"
         },
-        "recentProperties": {
-            "title": "احدث العقارات",
-            "description": "لقد قمنا بإنجاز العديد من طلبات السكن والفلل والعقارات مع فريقنا المتخصص، بتكاليف تناسبك"
-        },
-        "propertyCategory": {
-            "title": "فئة العقار",
-            "description": "يمكن أن يؤدي هذا إلى تضخم أو تثبيط ما هو موجود في الجسم ويرتبط ببعضه البعض بشكل زائف. مانات بريبر.",
-            "filters": {
-                "house": "منزل",
-                "realEstate": "العقارات",
-                "apartment": "شقة"
-            }
-        },
-        "basedOnLocationSection": {
-            "title": "بناء على موقعك",
-            "description": "ابدأ باكتشاف منزلك المستقبلي الذي يعجبك",
-            "yearly": "سنوى",
-            "monthly": "شهرى",
-            "rent": "الايجار",
-            "bathrooms": "حمام",
-            "guests": "اشخاص",
-            "bedrooms": "غرف نوم"
-        },
-        "features": {
-            "mainTitle": "المكان المثالي لإدارة ممتلكاتك",
-            "mainDescription": "تواصل مع أكثر من 75 مليون مستأجر يبحثون عن منازل جديدة باستخدام منصة التسويق الشاملة لدينا.",
-            "card1": {
-                "title": "أعلن عن إيجارك",
-                "description": "تواصل مع أكثر من 75 مليون مستأجر يبحثون عن منازل جديدة باستخدام منصة التسويق الشاملة لدينا.",
-                "button": "أعلن عن إيجارك"
-            },
-            "card2": {
-                "title": "إيجار 100% عبر الإنترنت",
-                "description": "قم بقبول الطلبات ومعالجة مدفوعات الإيجار عبر الإنترنت وتوقيع عقود الإيجار الرقمية، كل ذلك على منصة واحدة.",
-                "button": "اكتشف المزيد"
-            }
-        },
-        "contactUs": {
-            "title": "اشترك في النشرة الإخبارية لدينا",
-            "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-            "placeholder": "أدخل بريدك الإلكتروني",
-            "button": "اشترك معنا"
+        "categories": {
+          "furnished": "مفروش",
+          "unfurnished": "غير مفروش"
         }
+      },
+      "search": "بحث",
+      "adjustments": "تصفية"
     },
+    "recentProperties": {
+      "title": "احدث العقارات",
+      "description": "لقد قمنا بإنجاز العديد من طلبات السكن والفلل والعقارات مع فريقنا المتخصص، بتكاليف تناسبك"
+    },
+    "propertyCategory": {
+      "title": "فئة العقار",
+      "description": "يمكن أن يؤدي هذا إلى تضخم أو تثبيط ما هو موجود في الجسم ويرتبط ببعضه البعض بشكل زائف. مانات بريبر.",
+      "filters": {
+        "house": "منزل",
+        "realEstate": "العقارات",
+        "apartment": "شقة"
+      }
+    },
+    "basedOnLocationSection": {
+      "title": "بناء على موقعك",
+      "description": "ابدأ باكتشاف منزلك المستقبلي الذي يعجبك",
+      "yearly": "سنوى",
+      "monthly": "شهرى",
+      "rent": "الايجار",
+      "bathrooms": "حمام",
+      "guests": "اشخاص",
+      "bedrooms": "غرف نوم"
+    },
+    "features": {
+      "mainTitle": "المكان المثالي لإدارة ممتلكاتك",
+      "mainDescription": "تواصل مع أكثر من 75 مليون مستأجر يبحثون عن منازل جديدة باستخدام منصة التسويق الشاملة لدينا.",
+      "card1": {
+        "title": "أعلن عن إيجارك",
+        "description": "تواصل مع أكثر من 75 مليون مستأجر يبحثون عن منازل جديدة باستخدام منصة التسويق الشاملة لدينا.",
+        "button": "أعلن عن إيجارك"
+      },
+      "card2": {
+        "title": "إيجار 100% عبر الإنترنت",
+        "description": "قم بقبول الطلبات ومعالجة مدفوعات الإيجار عبر الإنترنت وتوقيع عقود الإيجار الرقمية، كل ذلك على منصة واحدة.",
+        "button": "اكتشف المزيد"
+      }
+    },
+    "contactUs": {
+      "title": "اشترك في النشرة الإخبارية لدينا",
+      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "button": "اشترك معنا"
+    }
+  },
+  "about": {
+    "noDepartmentsAvailable": "لا توجد أقسام متاحة في الوقت الحالي.",
+    "noTeamsAvailable": "لا يوجد أعضاء فريق متاحون في الوقت الحالي.",
+    "readMore": "اقرأ المزيد",
+    "readLess": "اقرأ أقل",
+    "historyOfQunuf": "تاريخ قنوف",
+    "whyQunuf": "لماذا قنوف",
+    "meetOur": "التقِ بـ",
+    "department": "القسم",
+    "yourHostsAndGuides": "مضيفوك ومرشدوك",
+    "meetYour": "التقِ بـ",
+    "facilitators": "الميسرين",
+    "hero": {
+      "title": "معلومات عنا",
+      "description": "من مرحلة ما قبل المدرسة إلى ما قبل الجامعة، يستمتع طلابنا بدروس ممتعة وتفاعلية وذات صلة، ويُمنحون القدرة على التفكير خارج حدود الفصل الدراسي.",
+      "seeMore": "رؤية المزيد"
+    },
+    "seeMore": "رؤية المزيد",
+    "header": "معلومات عنا",
+    "mission": {
+      "title": "مهمتنا",
+      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
+      "button": "رؤية المزيد"
+    },
+    "vision": {
+      "title": "رؤيتنا",
+      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
+      "button": "اكتشف"
+    },
+    "goals": {
+      "title": "أهدافنا",
+      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
+      "button": "اعرف المزيد"
+    },
+    "team": {
+      "header": "فريقنا"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "اتصل بنا",
+      "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
+      "seeMore": "رؤية المزيد"
+    },
+    "information": {
+      "title": "اتصل بنا",
+      "header": "معلومات الاتصال",
+      "subtitle": "قل شيئًا لبدء محادثة مباشرة!",
+      "location": "١٣٢ شارع دارتموث، بوسطن، ماساتشوستس ٠٢١٥٦، الولايات المتحدة"
+    },
+    "form": {
+      "getIn": "تواصل",
+      "touch": "معنا",
+      "headerMessage": "يسعدنا تواصلك معنا لأي استفسار أو دعم أو تعاون.",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "fax": "فاكس",
+      "reason": {
+        "placeholder": "اختر سبب التواصل",
+        "support": "الدعم الفني",
+        "sales": "المبيعات",
+        "partnership": "الشراكات",
+        "other": "أخرى"
+      },
+      "send": "إرسال"
+    }
+  },
+  "blogs": {
+    "hero": {
+      "title": "المدونات",
+      "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
+      "seeMore": "رؤية المزيد"
+    },
+    "blogs": "المدونة",
+    "our": "مدونتنا",
+    "recentBlogs": "الأحدث",
+    "readMore": "اقرأ المزيد"
+  },
+  "property": {
+    "hero": {
+      "title": "العقار",
+      "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
+      "seeMore": "رؤية المزيد"
+    },
+    "filter": {
+      "header": "ابعث عن عقارك",
+      "title": "الفلاتر",
+      "subtitle": "تصفية العقارات",
+      "reset": "إعادة التعيين",
+      "location": {
+        "title": "الموقع",
+        "options": "{option, select, all {أي منطقة} cairo {القاهرة} alexandria {الإسكندرية} giza {الجيزة} other {غير معروف}}"
+      },
+      "subtype": {
+        "title": "النوع الفرعي",
+        "residential": {
+          "options": "{option, select, condo {شقة} multiFamily {متعدد العائلات} townhomes {تاون هاوس} singleFamily {منزل عائلي} other {غير معروف}}"
+        },
+        "commercial": {
+          "options": "{option, select, office {مكتب} retail {تجزئة} warehouse {مستودع} industrial {صناعي} other {غير معروف}}"
+        }
+      },
+      "bedrooms": {
+        "title": "غرف النوم",
+        "options": "{option, select, any {أي} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {غير معروف}}"
+      },
+      "bathrooms": {
+        "title": "الحمامات",
+        "options": "{option, select, any {أي} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {غير معروف}}"
+      },
+      "rentalPeriod": {
+        "title": "مدة الإيجار",
+        "options": "{option, select, yearly {سنوي} monthly {شهري} other {غير معروف}}"
+      },
+      "propertyType": {
+        "title": "نوع العقار",
+        "options": "{option, select, residential {سكني} commercial {تجاري} other {غير معروف}}"
+      },
+      "rentType": {
+        "title": "Rent Type",
+        "options": "{option, select, monthly {شهرياً} yearly {سنوياً} other {غير معروف}}"
+      },
+      "categories": {
+        "title": "الفئة",
+        "options": "{option, select, education {تعليمي} hospital {مستشفى} shopping {تسوق} other {أخرى}}"
+      },
+      "furnishedType": {
+        "title": "نوع التأثيث",
+        "options": "{option, select, furnished {مفروش} unfurnished {غير مفروش} other {غير معروف}}"
+      },
+      "features": {
+        "title": "المميزات",
+        "options": "{option, select, airConditioning {تكييف هواء} assistedLiving {سكن مدعوم} disabilityAccess {إمكانية وصول لذوي الإعاقة} controlledAccess {دخول مُتحكم به} cableReady {جاهز للكابل} availableNow {متاح الآن} college {جامعة} corporate {شركات} elevator {مصعد} extraStorage {مساحة تخزين إضافية} highSpeedInternet {إنترنت عالي السرعة} garage {كراج} petAllowed {مسموح بالحيوانات} other {غير معروف}}"
+      },
+      "priceRange": "نطاق السعر",
+      "squareFeet": "المساحة (قدم²)",
+      "yearBuilt": "سنة البناء"
+    },
+    "grid": {
+      "bedrooms": "غرف النوم",
+      "bathrooms": "الحمامات",
+      "totalArea": "المساحة",
+      "garages": "الكراجات"
+    },
+    "details": {
+      "bookingNow": "احجز الآن",
+      "description": "الوصف",
+      "additionalDetails": "تفاصيل إضافية",
+      "location": "الموقع",
+      "education": "التعليم",
+      "healthAndMedical": "الصحة والخدمات الطبية",
+      "propertyDetails": "تفاصيل العقار",
+      "propertyFeatures": "مميزات العقار",
+      "seeMore": "رؤية المزيد"
+    }
+  },
+  "bookings": {
+    "title": "ابدأ الآن",
+    "step1": {
+      "title": "معلومات الحجز",
+      "subtitle": "يرجى ملء الحقول الفارغة أدناه",
+      "plans": {
+        "business": {
+          "title": "الأعمال",
+          "price": "$40.00",
+          "description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
+          "button": "اختر العرض"
+        },
+        "professional": {
+          "title": "المحترف",
+          "price": "$30.00",
+          "description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
+          "button": "اختر العرض"
+        }
+      },
+      "pickDate": "اختر التاريخ",
+      "payment": {
+        "prefix": "ستدفع "
+      },
+      "confirm": "احجز الآن",
+      "cancel": "إلغاء"
+    },
+    "step2": {
+      "title": "عقد الحجز",
+      "subtitle": "يرجى ملء المعلومات الخاصة بالعقد",
+      "sectionTitle": "معلومات المستأجر",
+      "fields": {
+        "fullName": {
+          "label": "الاسم الكامل للمستأجر",
+          "placeholder": "أدخل الاسم الكامل"
+        },
+        "phone": {
+          "label": "رقم هاتف المستأجر",
+          "placeholder": "أدخل رقم الهاتف"
+        },
+        "nationalId": {
+          "label": "الرقم القومي",
+          "placeholder": "أدخل الرقم القومي"
+        },
+        "billingAddress": {
+          "label": "عنوان الفواتير",
+          "placeholder": "أدخل عنوان الفواتير"
+        },
+        "address": {
+          "label": "العنوان",
+          "placeholder": "أدخل العنوان"
+        },
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل البريد الإلكتروني"
+        }
+      },
+      "confirm": "إنشاء العقد",
+      "cancel": "إلغاء"
+    },
+    "step3": {
+      "title": "الدفع",
+      "subtitle": "يرجى اتباع التعليمات أدناه",
+      "summary": {
+        "realEstate": "حجز العقار:",
+        "reservation": "حجز لمدة شهر واحد على خطة الأعمال",
+        "total": {
+          "prefix": "الإجمالي: ",
+          "amount": "$400 دولار أمريكي"
+        }
+      },
+      "fields": {
+        "cardNumber": {
+          "label": "رقم البطاقة",
+          "placeholder": "رقم بطاقة الدفع"
+        },
+        "bank": {
+          "label": "البنك",
+          "placeholder": "اختر البنك"
+        },
+        "expDate": {
+          "label": "تاريخ الانتهاء",
+          "placeholder": "تاريخ الصلاحية"
+        },
+        "cvv": {
+          "label": "رمز CVV",
+          "placeholder": "بجانب البطاقة"
+        }
+      },
+      "confirm": "ادفع الآن",
+      "cancel": "إلغاء"
+    },
+    "step4": {
+      "title": "تم الدفع بنجاح!",
+      "imageAlt": "تم الدفع",
+      "message": {
+        "line1": "يرجى التحقق من بريدك الإلكتروني ورسائل الهاتف.",
+        "line2": "لقد أرسلنا جميع المعلومات."
+      },
+      "homeLink": "العودة إلى الصفحة الرئيسية"
+    }
+  },
+  "auth": {
+    "roleSelector": {
+      "tenant": {
+        "title": "المستأجر",
+        "description": "ابحث عن مكان وادفع الإيجار عبر الإنترنت."
+      },
+      "landlord": {
+        "title": "المالك",
+        "description": "استقبل الإيجار عبر الإنترنت وادِر الممتلكات."
+      }
+    },
+    "signIn": {
+      "title": "مرحبًا بعودتك!",
+      "subtitle": "سجّل الدخول للوصول إلى بياناتك",
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "أدخل بريدك الإلكتروني"
+      },
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "أدخل كلمة المرور"
+      },
+      "forgotPassword": "هل نسيت كلمة المرور؟",
+      "login": "تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟",
+      "register": "إنشاء حساب",
+      "success": {
+        "signedIn": "تم تسجيل الدخول بنجاح"
+      },
+      "errors": {
+        "loginFailed": "فشل تسجيل الدخول",
+        "incorrectEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+        "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
+        "requiredPassword": "كلمة المرور مطلوبة"
+      },
+      "loading": "جاري تسجيل الدخول..."
+    },
+    "signUp": {
+      "title": "مرحبًا بك في QUNUF",
+      "subtitle": "يرجى تعبئة بياناتك أدناه لإنشاء حساب",
+      "name": {
+        "label": "الاسم",
+        "placeholder": "أدخل اسمك"
+      },
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "أدخل بريدك الإلكتروني"
+      },
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "أدخل كلمة المرور"
+      },
+      "register": "سجّل معنا",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "loading": "جاري التسجيل...",
+      "didNotReceiveVerification": "هل قمت بالتسجيل مسبقًا ولم تصلك رسالة التحقق؟",
+      "resend": "إعادة إرسال التحقق",
+      "success": {
+        "registered": "تم التسجيل بنجاح"
+      },
+      "errors": {
+        "registrationFailed": "فشل التسجيل",
+        "name": {
+          "required": "الاسم مطلوب",
+          "maxLength": "يجب ألا يزيد الاسم عن 50 حرفًا"
+        },
+        "email": {
+          "invalid": "البريد الإلكتروني غير صالح"
+        },
+        "password": {
+          "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+          "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+          "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
+        }
+      },
+      "login": "تسجيل الدخول"
+    },
+    "forgotPassword": {
+      "title": "تغيير كلمة المرور",
+      "backToLogin": "العودة إلى صفحة تسجيل الدخول",
+      "form": {
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني"
+        },
+        "send": "إرسال",
+        "loading": "جارٍ الإرسال...",
+        "success": {
+          "sent": "إذا كان البريد الإلكتروني مسجلاً، سيتم إرسال رابط لإعادة تعيين كلمة المرور"
+        },
+        "errors": {
+          "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
+          "forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين. حاول مرة أخرى."
+        }
+      }
+    },
+    "resetPassword": {
+      "title": "إعادة تعيين كلمة المرور",
+      "backToLogin": "العودة لتسجيل الدخول",
+      "form": {
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني"
+        },
+        "code": {
+          "label": "رمز إعادة التعيين",
+          "placeholder": "أدخل رمز إعادة التعيين"
+        },
+        "password": {
+          "label": "كلمة المرور الجديدة",
+          "placeholder": "أدخل كلمة المرور الجديدة",
+          "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+          "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+          "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
+        },
+        "reset": "إعادة تعيين كلمة المرور",
+        "loading": "جاري إعادة التعيين...",
+        "success": {
+          "sent": "تم إعادة تعيين كلمة المرور بنجاح"
+        },
+        "errors": {
+          "invalidLink": "رابط استعادة كلمة المرور غير صالح أو منتهي الصلاحية.",
+          "requestNewLink": "طلب رابط جديد",
+          "email": {
+            "invalid": "البريد الإلكتروني غير صالح"
+          },
+          "password": {
+            "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+            "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+            "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
+          },
+          "confirmPassword": {
+            "mismatch": "كلمتا المرور غير متطابقتين"
+          },
+          "failed": "فشل إعادة تعيين كلمة المرور"
+        },
+        "confirmPassword": {
+          "label": "تأكيد كلمة المرور",
+          "placeholder": "أعد إدخال كلمة المرور"
+        }
+      }
+    },
+    "resendVerification": {
+      "title": "إعادة إرسال البريد الإلكتروني للتحقق",
+      "form": {
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني"
+        },
+        "send": "إرسال",
+        "haveAccount": "هل لديك حساب بالفعل؟",
+        "login": "تسجيل الدخول",
+        "loading": "جارٍ الإرسال...",
+        "success": {
+          "sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط التحقق."
+        },
+        "errors": {
+          "failed": "فشل إعادة إرسال البريد الإلكتروني للتحقق",
+          "invalidEmail": "يجب أن يكون البريد الإلكتروني صحيحًا"
+        }
+      }
+    }
+  },
+  "footer": {
+    "description": "لوريم إيبسوم هو ببساطة نص شكلي (أي غير واضح) يُستخدم في صناعة الطباعة والتنضيد. ظل لوريم إيبسوم النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر، عندما قام طابع مجهول بنسخ نسخة من الطباعة وخلطها لإنشاء كتاب نماذج طباعة.",
     "about": {
-        "noDepartmentsAvailable": "لا توجد أقسام متاحة في الوقت الحالي.",
-        "noTeamsAvailable": "لا يوجد أعضاء فريق متاحون في الوقت الحالي.",
-        "readMore": "اقرأ المزيد",
-        "readLess": "اقرأ أقل",
-        "historyOfQunuf": "تاريخ قنوف",
-        "whyQunuf": "لماذا قنوف",
-        "meetOur": "التقِ بـ",
-        "department": "القسم",
-        "yourHostsAndGuides": "مضيفوك ومرشدوك",
-        "meetYour": "التقِ بـ",
-        "facilitators": "الميسرين",
-        "hero": {
-            "title": "معلومات عنا",
-            "description": "من مرحلة ما قبل المدرسة إلى ما قبل الجامعة، يستمتع طلابنا بدروس ممتعة وتفاعلية وذات صلة، ويُمنحون القدرة على التفكير خارج حدود الفصل الدراسي.",
-            "seeMore": "رؤية المزيد"
-        },
-        "seeMore": "رؤية المزيد",
-        "header": "معلومات عنا",
-        "mission": {
-            "title": "مهمتنا",
-            "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-            "button": "رؤية المزيد"
-        },
-        "vision": {
-            "title": "رؤيتنا",
-            "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-            "button": "اكتشف"
-        },
-        "goals": {
-            "title": "أهدافنا",
-            "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-            "button": "اعرف المزيد"
-        },
-        "team": {
-            "header": "فريقنا"
-        }
+      "title": "معلومات عنا",
+      "menu": "القائمة",
+      "features": "السمات",
+      "blogs": "المدونات",
+      "support": "المساعدة والدعم"
+    },
+    "company": {
+      "title": "الشركة",
+      "how": "كيف نعمل",
+      "terms": "شروط الخدمة",
+      "pricing": "التسعير",
+      "faq": "التعليمات"
     },
     "contact": {
-        "hero": {
-            "title": "اتصل بنا",
-            "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
-            "seeMore": "رؤية المزيد"
-        },
-        "information": {
-            "title": "اتصل بنا",
-            "header": "معلومات الاتصال",
-            "subtitle": "قل شيئًا لبدء محادثة مباشرة!",
-            "location": "١٣٢ شارع دارتموث، بوسطن، ماساتشوستس ٠٢١٥٦، الولايات المتحدة"
-        },
-        "form": {
-            "getIn": "تواصل",
-            "touch": "معنا",
-            "headerMessage": "يسعدنا تواصلك معنا لأي استفسار أو دعم أو تعاون.",
-            "name": "الاسم",
-            "email": "البريد الإلكتروني",
-            "phone": "الهاتف",
-            "fax": "فاكس",
-            "reason": {
-                "placeholder": "اختر سبب التواصل",
-                "support": "الدعم الفني",
-                "sales": "المبيعات",
-                "partnership": "الشراكات",
-                "other": "أخرى"
-            },
-            "send": "إرسال"
+      "title": "اتصل بنا",
+      "address": "أكشيا ناجار 1st Block 1st Cross، رامورثي ناجار، بنغالور 560016"
+    }
+  },
+  "dashboard": {
+    "statistics": {
+      "increase": "زيادة بنسبة {value}٪",
+      "fromLastWeek": "من الأسبوع الماضي",
+      "newListing": "{value} إعلان جديد",
+      "inThisWeek": "في هذا الأسبوع",
+      "seeAll": "عرض الكل",
+      "rentedAnalytics": "تحليلات الإيجارات",
+      "rentedProperties": "العقارات المحجوزة",
+      "costBreakdown": "تفصيل التكاليف",
+      "reportSales": "تقرير المبيعات"
+    },
+    "header": {
+      "greeting": "مرحبًا، {name}!",
+      "description": "استكشاف المعلومات والنشاطات"
+    },
+    "sidebar": {
+      "dashboard": "لوحة التحكم",
+      "contracts": "العقود",
+      "renewRequests": "طلبات التجديد",
+      "paymentHistory": "سجل المدفوعات",
+      "support": "الدعم الفني",
+      "settings": "إعدادات الحساب",
+      "rentalsContracts": "الإيجارات والعقود",
+      "properties": "العقارات",
+      "revenueSummary": "ملخص الإيرادات",
+      "notifications": "الإشعارات",
+      "chat": "المحادثات",
+      "contactUs": "اتصل بنا",
+      "teamMembers": "أعضاء الفريق",
+      "blogs": "المدونة",
+      "aboutUs": "من نحن",
+      "logout": "تسجيل الخروج"
+    },
+    "notification": {
+      "title": "آخر الإشعارات",
+      "notifications": "الإشعارات",
+      "seeMore": "رؤية المزيد",
+      "accountSettings": "إعدادات الحساب",
+      "overview": "نظرة عامة",
+      "pushToggle": "🔔 فعّل إشعارات الدفع"
+    },
+    "filter": {
+      "export": {
+        "trigger": "تصدير اكسل",
+        "scope": "نطاق التصدير",
+        "currentTable": "الجدول الحالي",
+        "moreData": "بيانات إضافية",
+        "maxRows": "أقصى عدد للصفوف",
+        "export": "تصدير",
+        "exporting": "جارٍ التصدير...",
+        "cancel": "إلغاء"
+      },
+      "container": {
+        "filter": "تصفية"
+      }
+    },
+    "table": {
+      "noRows": "لا توجد بيانات لعرضها",
+      "errorTitle": "عذرًا، حدث خطأ",
+      "errorMessage": "حدث خطأ أثناء تحميل البيانات",
+      "retry": "إعادة المحاولة"
+    },
+    "pagination": {
+      "firstPage": "الصفحة الأولى",
+      "previous": "السابق",
+      "next": "التالي",
+      "lastPage": "الصفحة الأخيرة",
+      "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل"
+    },
+    "contracts": {
+      "viewContract": "عرض العقد",
+      "noContractAvailable": "لا يوجد عقد متاح",
+      "contractTitle": "العقد",
+      "contractPage": "صفحة العقد",
+      "noImagesFallback": "لا توجد صور للعقد",
+      "cancel": "إلغاء",
+      "renew": {
+        "actionText": "تجديد",
+        "title": "تجديد العقد",
+        "subtitle": "هل أنت متأكد أنك تريد تجديد العقد؟"
+      },
+      "terminate": {
+        "actionText": "إنهاء",
+        "title": "إنهاء",
+        "subtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
+        "note": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك"
+      },
+      "delete": {
+        "actionText": "مسح",
+        "title": "مسح",
+        "subtitle": "هل أنت متأكد أنك تريد مسح العقد؟"
+      },
+      "table": {
+        "property": "العقار",
+        "status": "الحالة",
+        "free": "متاح",
+        "reserved": "محجوز",
+        "startBooking": "تاريخ البدء",
+        "endBooking": "تاريخ الانتهاء",
+        "published": "تاريخ النشر",
+        "price": "السعر",
+        "contract": "العقد",
+        "location": "الموقع",
+        "renewContract": "تجديد العقد",
+        "terminateContract": "إنهاء العقد",
+        "deleteContract": "مسح العقد",
+        "editContract": "تعديل العقد",
+        "searchPlaceholder": "ابحث في العقود...",
+        "addProperty": "إضافة عقار"
+      }
+    },
+    "payments": {
+      "title": "المدفوعات والمستحقات",
+      "accountSettings": "إعدادات الحساب",
+      "totalEarnings": "إجمالي الأرباح",
+      "pendingPayments": "المدفوعات المعلقة",
+      "table": {
+        "transactionId": "معرّف المعاملة",
+        "property": "العقار",
+        "propertyAddress": "عنوان العقار",
+        "propertyType": "نوع العقار",
+        "apartment": "شقة",
+        "house": "منزل",
+        "price": "السعر",
+        "date": "التاريخ"
+      },
+      "paymentMethods": {
+        "title": "طرق الدفع المحفوظة",
+        "accountsTab": "حسابات الدفع",
+        "transactionsTab": "سجل المعاملات",
+        "recentAccounts": "حسابات الدفع الأخيرة",
+        "addMethod": "إضافة طريقة",
+        "addCardHolder": "إضافة حامل البطاقة",
+        "recentTransactions": "المعاملات الأخيرة",
+        "save": "حفظ التغييرات",
+        "discard": "تجاهل",
+        "card": {
+          "expires": "تنتهي في",
+          "edit": "تعديل البطاقة",
+          "delete": "حذف البطاقة",
+          "default": "افتراضي",
+          "deleteTitle": "جارٍ الحذف",
+          "deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
+          "deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
+          "cancel": "إلغاء",
+          "editTitle": "تعديل بيانات البطاقة"
         }
+      }
     },
-    "blogs": {
-        "hero": {
-            "title": "المدونات",
-            "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
-            "seeMore": "رؤية المزيد"
-        },
-        "blogs": "المدونة",
-        "our": "مدونتنا",
-        "recentBlogs": "الأحدث",
-        "readMore": "اقرأ المزيد"
+    "account": {
+      "title": "المعلومات الشخصية",
+      "notProvided": "غير متوفر",
+      "settings": "إعدادات الحساب",
+      "fullName": "الاسم الكامل",
+      "email": "عنوان البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "أضف رقمًا ليتواصل معك الضيوف المؤكدون وAirbnb. يمكنك إضافة أرقام أخرى وتحديد كيفية استخدامها.",
+      "nationalId": "الرقم القومي",
+      "address": "العنوان",
+      "update": "تحديث",
+      "cancel": "الغاء",
+      "edit": "تعديل"
     },
-    "property": {
-        "hero": {
-            "title": "العقار",
-            "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
-            "seeMore": "رؤية المزيد"
-        },
-        "filter": {
-            "header": "ابعث عن عقارك",
-            "title": "الفلاتر",
-            "subtitle": "تصفية العقارات",
-            "reset": "إعادة التعيين",
-            "location": {
-                "title": "الموقع",
-                "options": "{option, select, all {أي منطقة} cairo {القاهرة} alexandria {الإسكندرية} giza {الجيزة} other {غير معروف}}"
-            },
-            "subtype": {
-                "title": "النوع الفرعي",
-                "residential": {
-                    "options": "{option, select, condo {شقة} multiFamily {متعدد العائلات} townhomes {تاون هاوس} singleFamily {منزل عائلي} other {غير معروف}}"
-                },
-                "commercial": {
-                    "options": "{option, select, office {مكتب} retail {تجزئة} warehouse {مستودع} industrial {صناعي} other {غير معروف}}"
-                }
-            },
-            "bedrooms": {
-                "title": "غرف النوم",
-                "options": "{option, select, any {أي} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {غير معروف}}"
-            },
-            "bathrooms": {
-                "title": "الحمامات",
-                "options": "{option, select, any {أي} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {غير معروف}}"
-            },
-            "rentalPeriod": {
-                "title": "مدة الإيجار",
-                "options": "{option, select, yearly {سنوي} monthly {شهري} other {غير معروف}}"
-            },
-            "propertyType": {
-                "title": "نوع العقار",
-                "options": "{option, select, residential {سكني} commercial {تجاري} other {غير معروف}}"
-            },
-            "rentType": {
-                "title": "Rent Type",
-                "options": "{option, select, monthly {شهرياً} yearly {سنوياً} other {غير معروف}}"
-            },
-            "categories": {
-                "title": "الفئة",
-                "options": "{option, select, education {تعليمي} hospital {مستشفى} shopping {تسوق} other {أخرى}}"
-            },
-            "furnishedType": {
-                "title": "نوع التأثيث",
-                "options": "{option, select, furnished {مفروش} unfurnished {غير مفروش} other {غير معروف}}"
-            },
-            "features": {
-                "title": "المميزات",
-                "options": "{option, select, airConditioning {تكييف هواء} assistedLiving {سكن مدعوم} disabilityAccess {إمكانية وصول لذوي الإعاقة} controlledAccess {دخول مُتحكم به} cableReady {جاهز للكابل} availableNow {متاح الآن} college {جامعة} corporate {شركات} elevator {مصعد} extraStorage {مساحة تخزين إضافية} highSpeedInternet {إنترنت عالي السرعة} garage {كراج} petAllowed {مسموح بالحيوانات} other {غير معروف}}"
-            },
-            "priceRange": "نطاق السعر",
-            "squareFeet": "المساحة (قدم²)",
-            "yearBuilt": "سنة البناء"
-        },
-        "grid": {
-            "bedrooms": "غرف النوم",
-            "bathrooms": "الحمامات",
-            "totalArea": "المساحة",
-            "garages": "الكراجات"
-        },
-        "details": {
-            "bookingNow": "احجز الآن",
-            "description": "الوصف",
-            "additionalDetails": "تفاصيل إضافية",
-            "location": "الموقع",
-            "education": "التعليم",
-            "healthAndMedical": "الصحة والخدمات الطبية",
-            "propertyDetails": "تفاصيل العقار",
-            "propertyFeatures": "مميزات العقار",
-            "seeMore": "رؤية المزيد"
-        }
+    "support": {
+      "senderName": "دعم قنوف",
+      "lastMessage": "أخبرنا كيف يمكننا مساعدتك.",
+      "welcomeMessage": "مرحبًا بك في دعم قنوف! كيف يمكننا مساعدتك اليوم؟"
     },
-    "bookings": {
-        "title": "ابدأ الآن",
-        "step1": {
-            "title": "معلومات الحجز",
-            "subtitle": "يرجى ملء الحقول الفارغة أدناه",
-            "plans": {
-                "business": {
-                    "title": "الأعمال",
-                    "price": "$40.00",
-                    "description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
-                    "button": "اختر العرض"
-                },
-                "professional": {
-                    "title": "المحترف",
-                    "price": "$30.00",
-                    "description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
-                    "button": "اختر العرض"
-                }
-            },
-            "pickDate": "اختر التاريخ",
-            "payment": {
-                "prefix": "ستدفع "
-            },
-            "confirm": "احجز الآن",
-            "cancel": "إلغاء"
-        },
-        "step2": {
-            "title": "عقد الحجز",
-            "subtitle": "يرجى ملء المعلومات الخاصة بالعقد",
-            "sectionTitle": "معلومات المستأجر",
-            "fields": {
-                "fullName": {
-                    "label": "الاسم الكامل للمستأجر",
-                    "placeholder": "أدخل الاسم الكامل"
-                },
-                "phone": {
-                    "label": "رقم هاتف المستأجر",
-                    "placeholder": "أدخل رقم الهاتف"
-                },
-                "nationalId": {
-                    "label": "الرقم القومي",
-                    "placeholder": "أدخل الرقم القومي"
-                },
-                "billingAddress": {
-                    "label": "عنوان الفواتير",
-                    "placeholder": "أدخل عنوان الفواتير"
-                },
-                "address": {
-                    "label": "العنوان",
-                    "placeholder": "أدخل العنوان"
-                },
-                "email": {
-                    "label": "البريد الإلكتروني",
-                    "placeholder": "أدخل البريد الإلكتروني"
-                }
-            },
-            "confirm": "إنشاء العقد",
-            "cancel": "إلغاء"
-        },
-        "step3": {
-            "title": "الدفع",
-            "subtitle": "يرجى اتباع التعليمات أدناه",
-            "summary": {
-                "realEstate": "حجز العقار:",
-                "reservation": "حجز لمدة شهر واحد على خطة الأعمال",
-                "total": {
-                    "prefix": "الإجمالي: ",
-                    "amount": "$400 دولار أمريكي"
-                }
-            },
-            "fields": {
-                "cardNumber": {
-                    "label": "رقم البطاقة",
-                    "placeholder": "رقم بطاقة الدفع"
-                },
-                "bank": {
-                    "label": "البنك",
-                    "placeholder": "اختر البنك"
-                },
-                "expDate": {
-                    "label": "تاريخ الانتهاء",
-                    "placeholder": "تاريخ الصلاحية"
-                },
-                "cvv": {
-                    "label": "رمز CVV",
-                    "placeholder": "بجانب البطاقة"
-                }
-            },
-            "confirm": "ادفع الآن",
-            "cancel": "إلغاء"
-        },
-        "step4": {
-            "title": "تم الدفع بنجاح!",
-            "imageAlt": "تم الدفع",
-            "message": {
-                "line1": "يرجى التحقق من بريدك الإلكتروني ورسائل الهاتف.",
-                "line2": "لقد أرسلنا جميع المعلومات."
-            },
-            "homeLink": "العودة إلى الصفحة الرئيسية"
-        }
+    "renewRequest": {
+      "reviews": "تقييم",
+      "priceDetails": "تفاصيل السعر",
+      "forOneMonth": "لشهر واحد",
+      "longStayDiscount": "خصم الإقامة الطويلة",
+      "totalUsd": "الإجمالي (دولار أمريكي)",
+      "cancel": "إلغاء",
+      "renew": "تجديد",
+      "disAgree": "غير موافق",
+      "agree": "موافق",
+      "requestToRenew": "طلب تجديد"
     },
-    "auth": {
-        "roleSelector": {
-            "tenant": {
-                "title": "المستأجر",
-                "description": "ابحث عن مكان وادفع الإيجار عبر الإنترنت."
-            },
-            "landlord": {
-                "title": "المالك",
-                "description": "استقبل الإيجار عبر الإنترنت وادِر الممتلكات."
-            }
+    "settings": {
+      "root": {
+        "account": "الحساب",
+        "personalInfo": {
+          "title": "المعلومات الشخصية",
+          "description": "أدخل بياناتك الشخصية وكيفية التواصل معك"
         },
-        "signIn": {
-            "title": "مرحبًا بعودتك!",
-            "subtitle": "سجّل الدخول للوصول إلى بياناتك",
-            "email": {
-                "label": "البريد الإلكتروني",
-                "placeholder": "أدخل بريدك الإلكتروني"
-            },
-            "password": {
-                "label": "كلمة المرور",
-                "placeholder": "أدخل كلمة المرور"
-            },
-            "forgotPassword": "هل نسيت كلمة المرور؟",
-            "login": "تسجيل الدخول",
-            "noAccount": "ليس لديك حساب؟",
-            "register": "إنشاء حساب",
-            "success": {
-                "signedIn": "تم تسجيل الدخول بنجاح"
-            },
-            "errors": {
-                "loginFailed": "فشل تسجيل الدخول",
-                "incorrectEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
-                "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
-                "requiredPassword": "كلمة المرور مطلوبة"
-            },
-            "loading": "جاري تسجيل الدخول..."
-        },
-        "signUp": {
-            "title": "مرحبًا بك في QUNUF",
-            "subtitle": "يرجى تعبئة بياناتك أدناه لإنشاء حساب",
-            "name": {
-                "label": "الاسم",
-                "placeholder": "أدخل اسمك"
-            },
-            "email": {
-                "label": "البريد الإلكتروني",
-                "placeholder": "أدخل بريدك الإلكتروني"
-            },
-            "password": {
-                "label": "كلمة المرور",
-                "placeholder": "أدخل كلمة المرور"
-            },
-            "register": "سجّل معنا",
-            "haveAccount": "لديك حساب بالفعل؟",
-            "loading": "جاري التسجيل...",
-            "didNotReceiveVerification": "هل قمت بالتسجيل مسبقًا ولم تصلك رسالة التحقق؟",
-            "resend": "إعادة إرسال التحقق",
-            "success": {
-                "registered": "تم التسجيل بنجاح"
-            },
-            "errors": {
-                "registrationFailed": "فشل التسجيل",
-                "name": {
-                    "required": "الاسم مطلوب",
-                    "maxLength": "يجب ألا يزيد الاسم عن 50 حرفًا"
-                },
-                "email": {
-                    "invalid": "البريد الإلكتروني غير صالح"
-                },
-                "password": {
-                    "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-                    "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
-                    "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
-                }
-            },
-            "login": "تسجيل الدخول"
-        },
-        "forgotPassword": {
-            "title": "تغيير كلمة المرور",
-            "backToLogin": "العودة إلى صفحة تسجيل الدخول",
-            "form": {
-                "email": {
-                    "label": "البريد الإلكتروني",
-                    "placeholder": "أدخل بريدك الإلكتروني"
-                },
-                "send": "إرسال",
-                "loading": "جارٍ الإرسال...",
-                "success": {
-                    "sent": "إذا كان البريد الإلكتروني مسجلاً، سيتم إرسال رابط لإعادة تعيين كلمة المرور"
-                },
-                "errors": {
-                    "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
-                    "forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين. حاول مرة أخرى."
-                }
-            }
-        },
-        "resetPassword": {
-            "title": "إعادة تعيين كلمة المرور",
-            "backToLogin": "العودة لتسجيل الدخول",
-            "form": {
-                "email": {
-                    "label": "البريد الإلكتروني",
-                    "placeholder": "أدخل بريدك الإلكتروني"
-                },
-                "code": {
-                    "label": "رمز إعادة التعيين",
-                    "placeholder": "أدخل رمز إعادة التعيين"
-                },
-                "password": {
-                    "label": "كلمة المرور الجديدة",
-                    "placeholder": "أدخل كلمة المرور الجديدة",
-                    "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-                    "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
-                    "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
-                },
-                "reset": "إعادة تعيين كلمة المرور",
-                "loading": "جاري إعادة التعيين...",
-                "success": {
-                    "sent": "تم إعادة تعيين كلمة المرور بنجاح"
-                },
-                "errors": {
-                    "invalidLink": "رابط استعادة كلمة المرور غير صالح أو منتهي الصلاحية.",
-                    "requestNewLink": "طلب رابط جديد",
-                    "email": {
-                        "invalid": "البريد الإلكتروني غير صالح"
-                    },
-                    "password": {
-                        "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-                        "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
-                        "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
-                    },
-                    "confirmPassword": {
-                        "mismatch": "كلمتا المرور غير متطابقتين"
-                    },
-                    "failed": "فشل إعادة تعيين كلمة المرور"
-                },
-                "confirmPassword": {
-                    "label": "تأكيد كلمة المرور",
-                    "placeholder": "أعد إدخال كلمة المرور"
-                }
-            }
-        },
-        "resendVerification": {
-            "title": "إعادة إرسال البريد الإلكتروني للتحقق",
-            "form": {
-                "email": {
-                    "label": "البريد الإلكتروني",
-                    "placeholder": "أدخل بريدك الإلكتروني"
-                },
-                "send": "إرسال",
-                "haveAccount": "هل لديك حساب بالفعل؟",
-                "login": "تسجيل الدخول",
-                "loading": "جارٍ الإرسال...",
-                "success": {
-                    "sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط التحقق."
-                },
-                "errors": {
-                    "failed": "فشل إعادة إرسال البريد الإلكتروني للتحقق",
-                    "invalidEmail": "يجب أن يكون البريد الإلكتروني صحيحًا"
-                }
-            }
-        }
-    },
-    "footer": {
-        "description": "لوريم إيبسوم هو ببساطة نص شكلي (أي غير واضح) يُستخدم في صناعة الطباعة والتنضيد. ظل لوريم إيبسوم النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر، عندما قام طابع مجهول بنسخ نسخة من الطباعة وخلطها لإنشاء كتاب نماذج طباعة.",
-        "about": {
-            "title": "معلومات عنا",
-            "menu": "القائمة",
-            "features": "السمات",
-            "blogs": "المدونات",
-            "support": "المساعدة والدعم"
-        },
-        "company": {
-            "title": "الشركة",
-            "how": "كيف نعمل",
-            "terms": "شروط الخدمة",
-            "pricing": "التسعير",
-            "faq": "التعليمات"
-        },
-        "contact": {
-            "title": "اتصل بنا",
-            "address": "أكشيا ناجار 1st Block 1st Cross، رامورثي ناجار، بنغالور 560016"
-        }
-    },
-    "dashboard": {
-        "statistics": {
-            "increase": "زيادة بنسبة {value}٪",
-            "fromLastWeek": "من الأسبوع الماضي",
-            "newListing": "{value} إعلان جديد",
-            "inThisWeek": "في هذا الأسبوع",
-            "seeAll": "عرض الكل",
-            "rentedAnalytics": "تحليلات الإيجارات",
-            "rentedProperties": "العقارات المحجوزة",
-            "costBreakdown": "تفصيل التكاليف",
-            "reportSales": "تقرير المبيعات"
-        },
-        "header": {
-            "greeting": "مرحبًا، {name}!",
-            "description": "استكشاف المعلومات والنشاطات"
-        },
-        "sidebar": {
-            "dashboard": "لوحة التحكم",
-            "contracts": "العقود",
-            "renewRequests": "طلبات التجديد",
-            "paymentHistory": "سجل المدفوعات",
-            "support": "الدعم الفني",
-            "settings": "إعدادات الحساب",
-            "rentalsContracts": "الإيجارات والعقود",
-            "properties": "العقارات",
-            "revenueSummary": "ملخص الإيرادات",
-            "notifications": "الإشعارات",
-            "chat": "المحادثات",
-            "contactUs": "اتصل بنا",
-            "teamMembers": "أعضاء الفريق",
-            "blogs": "المدونة",
-            "aboutUs": "من نحن",
-            "logout": "تسجيل الخروج"
-        },
-        "notification": {
-            "title": "آخر الإشعارات",
-            "notifications": "الإشعارات",
-            "seeMore": "رؤية المزيد",
-            "accountSettings": "إعدادات الحساب",
-            "overview": "نظرة عامة",
-            "pushToggle": "🔔 فعّل إشعارات الدفع"
-        },
-        "filter": {
-            "export": {
-                "trigger": "تصدير اكسل",
-                "scope": "نطاق التصدير",
-                "currentTable": "الجدول الحالي",
-                "moreData": "بيانات إضافية",
-                "maxRows": "أقصى عدد للصفوف",
-                "export": "تصدير",
-                "exporting": "جارٍ التصدير...",
-                "cancel": "إلغاء"
-            },
-            "container": {
-                "filter": "تصفية"
-            }
-        },
-        "table": {
-            "noRows": "لا توجد بيانات لعرضها",
-            "errorTitle": "عذرًا، حدث خطأ",
-            "errorMessage": "حدث خطأ أثناء تحميل البيانات",
-            "retry": "إعادة المحاولة"
-        },
-        "pagination": {
-            "firstPage": "الصفحة الأولى",
-            "previous": "السابق",
-            "next": "التالي",
-            "lastPage": "الصفحة الأخيرة",
-            "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل"
-        },
-        "contracts": {
-            "viewContract": "عرض العقد",
-            "noContractAvailable": "لا يوجد عقد متاح",
-            "contractTitle": "العقد",
-            "contractPage": "صفحة العقد",
-            "noImagesFallback": "لا توجد صور للعقد",
-            "cancel": "إلغاء",
-            "renew": {
-                "actionText": "تجديد",
-                "title": "تجديد العقد",
-                "subtitle": "هل أنت متأكد أنك تريد تجديد العقد؟"
-            },
-            "terminate": {
-                "actionText": "إنهاء",
-                "title": "إنهاء",
-                "subtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
-                "note": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك"
-            },
-            "delete": {
-                "actionText": "مسح",
-                "title": "مسح",
-                "subtitle": "هل أنت متأكد أنك تريد مسح العقد؟"
-            },
-            "table": {
-                "property": "العقار",
-                "status": "الحالة",
-                "free": "متاح",
-                "reserved": "محجوز",
-                "startBooking": "تاريخ البدء",
-                "endBooking": "تاريخ الانتهاء",
-                "published": "تاريخ النشر",
-                "price": "السعر",
-                "contract": "العقد",
-                "location": "الموقع",
-                "renewContract": "تجديد العقد",
-                "terminateContract": "إنهاء العقد",
-                "deleteContract": "مسح العقد",
-                "editContract": "تعديل العقد",
-                "searchPlaceholder": "ابحث في العقود...",
-                "addProperty": "إضافة عقار"
-            }
+        "notifications": {
+          "title": "الإشعارات",
+          "description": "اختر تفضيلات الإشعارات وطريقة التواصل"
         },
         "payments": {
-            "title": "المدفوعات والمستحقات",
-            "accountSettings": "إعدادات الحساب",
-            "totalEarnings": "إجمالي الأرباح",
-            "pendingPayments": "المدفوعات المعلقة",
-            "table": {
-                "transactionId": "معرّف المعاملة",
-                "property": "العقار",
-                "propertyAddress": "عنوان العقار",
-                "propertyType": "نوع العقار",
-                "apartment": "شقة",
-                "house": "منزل",
-                "price": "السعر",
-                "date": "التاريخ"
-            },
-            "paymentMethods": {
-                "title": "طرق الدفع المحفوظة",
-                "accountsTab": "حسابات الدفع",
-                "transactionsTab": "سجل المعاملات",
-                "recentAccounts": "حسابات الدفع الأخيرة",
-                "addMethod": "إضافة طريقة",
-                "addCardHolder": "إضافة حامل البطاقة",
-                "recentTransactions": "المعاملات الأخيرة",
-                "save": "حفظ التغييرات",
-                "discard": "تجاهل",
-                "card": {
-                    "expires": "تنتهي في",
-                    "edit": "تعديل البطاقة",
-                    "delete": "حذف البطاقة",
-                    "default": "افتراضي",
-                    "deleteTitle": "جارٍ الحذف",
-                    "deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
-                    "deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
-                    "cancel": "إلغاء",
-                    "editTitle": "تعديل بيانات البطاقة"
-                }
-            }
-        },
-        "account": {
-            "title": "المعلومات الشخصية",
-            "notProvided": "غير متوفر",
-            "settings": "إعدادات الحساب",
-            "fullName": "الاسم الكامل",
-            "email": "عنوان البريد الإلكتروني",
-            "phone": "رقم الهاتف",
-            "phonePlaceholder": "أضف رقمًا ليتواصل معك الضيوف المؤكدون وAirbnb. يمكنك إضافة أرقام أخرى وتحديد كيفية استخدامها.",
-            "nationalId": "الرقم القومي",
-            "address": "العنوان",
-            "update": "تحديث",
-            "cancel": "الغاء",
-            "edit": "تعديل"
-        },
-        "support": {
-            "senderName": "دعم قنوف",
-            "lastMessage": "أخبرنا كيف يمكننا مساعدتك.",
-            "welcomeMessage": "مرحبًا بك في دعم قنوف! كيف يمكننا مساعدتك اليوم؟"
-        },
-        "renewRequest": {
-            "reviews": "تقييم",
-            "priceDetails": "تفاصيل السعر",
-            "forOneMonth": "لشهر واحد",
-            "longStayDiscount": "خصم الإقامة الطويلة",
-            "totalUsd": "الإجمالي (دولار أمريكي)",
-            "cancel": "إلغاء",
-            "renew": "تجديد",
-            "disAgree": "غير موافق",
-            "agree": "موافق",
-            "requestToRenew": "طلب تجديد"
-        },
-        "settings": {
-            "root": {
-                "account": "الحساب",
-                "personalInfo": {
-                    "title": "المعلومات الشخصية",
-                    "description": "أدخل بياناتك الشخصية وكيفية التواصل معك"
-                },
-                "notifications": {
-                    "title": "الإشعارات",
-                    "description": "اختر تفضيلات الإشعارات وطريقة التواصل"
-                },
-                "payments": {
-                    "title": "المدفوعات والمستحقات",
-                    "description": "راجع المدفوعات والقسائم وبطاقات الهدايا"
-                }
-            }
-        },
-        "chats": {
-            "messages": "الرسائل",
-            "noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
-            "typeMessage": "اكتب رسالة",
-            "selectConversation": "اختر محادثة لبدء المراسلة"
-        },
-        "tenant": {
-            "root": {
-                "reservedProperty": "العقار المحجوز",
-                "totalPaymentAmount": "إجمالي مبلغ الدفع",
-                "lastRentedProperties": "آخر العقارات المؤجرة"
-            }
-        },
-        "landlord": {
-            "root": {
-                "totalProperties": "إجمالي العقارات",
-                "totalReviews": "إجمالي التقييمات",
-                "freeProperties": "العقارات المتاحة",
-                "RentedProperties": "العقارات المؤجرة",
-                "topRentedProperties": "أكثر العقارات تأجيرًا"
-            },
-            "revenue": {
-                "week": "أسبوع",
-                "month": "شهر",
-                "year": "سنة",
-                "rentalIncome": "إيرادات الإيجار",
-                "totalReserved": "إجمالي العقارات المحجوزة",
-                "totalFree": "إجمالي العقارات المتاحة",
-                "topRented": "أكثر العقارات تأجيرًا",
-                "recentTransactions": "المعاملات الأخيرة"
-            }
-        },
-        "admin": {
-            "root": {
-                "totalProperties": "إجمالي العقارات",
-                "freeProperties": "العقارات المتاحة",
-                "rentedProperties": "العقارات المؤجرة",
-                "lastTransactions": "آخر المعاملات",
-                "maintenanceRequests": "طلبات الصيانه"
-            },
-            "maintenance": {
-                "requestId": "رقم الطلب",
-                "type": {
-                    "Electrical": "كهرباء",
-                    "Plumbing": "سباكة",
-                    "HVAC": "تكييف"
-                }
-            },
-            "costBreakdown": {
-                "maintenance": "الصيانة",
-                "repair": "الإصلاح",
-                "taxes": "الضرائب",
-                "saving": "الادخار"
-            },
-            "contactUs": {
-                "title": "رسائل اتصل بنا",
-                "searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني أو رقم الهاتف"
-            },
-            "team": {
-                "title": "أعضاء الفريق",
-                "add": "إضافة عضو جديد",
-                "edit": "تعديل العضو",
-                "deleteTitle": "حذف",
-                "formText": "عرض النموذج",
-                "delete": {
-                    "title": "حذف عضو الفريق",
-                    "subtitle": "هل أنت متأكد أنك تريد إزالة هذا العضو من الفريق؟",
-                    "actionText": "حذف",
-                    "cancel": "إلغاء"
-                },
-                "form": {
-                    "form": "نموذج عضو الفريق",
-                    "name": "الاسم",
-                    "email": "البريد الإلكتروني",
-                    "phone": "رقم الهاتف",
-                    "namePlaceholder": "أدخل الاسم الكامل",
-                    "emailPlaceholder": "أدخل البريد الإلكتروني",
-                    "phonePlaceholder": "أدخل رقم الهاتف",
-                    "upload": "رفع صورة",
-                    "noFile": "لم يتم اختيار ملف"
-                },
-                "cancel": "إلغاء",
-                "addAction": "إضافة عضو",
-                "editAction": "حفظ التعديلات"
-            },
-            "blog": {
-                "title": "المدونات",
-                "add": "إضافة مدونة",
-                "delete": {
-                    "title": "حذف المدونة",
-                    "subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
-                    "cancel": "إلغاء",
-                    "actionText": "حذف"
-                },
-                "form": {
-                    "title": "عنوان المدونة",
-                    "titlePlaceholder": "أدخل عنوان المدونة",
-                    "description": "الوصف",
-                    "descriptionPlaceholder": "اكتب محتوى المدونة...",
-                    "date": "تاريخ النشر",
-                    "datePlaceholder": "اختر التاريخ",
-                    "cancel": "إلغاء",
-                    "actionText": "حفظ"
-                }
-            },
-            "about": {
-                "title": "محتوي صفحة من نحن",
-                "vision": {
-                    "title": "رؤيتنا",
-                    "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
-                },
-                "goals": {
-                    "title": "أهدافنا",
-                    "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
-                },
-                "missions": {
-                    "title": "مهمتنا",
-                    "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
-                },
-                "edit": "تعديل",
-                "form": {
-                    "title": "العنوان",
-                    "titlePlaceholder": "أدخل عنوان القسم",
-                    "message": "الرسالة",
-                    "messagePlaceholder": "أدخل نص الرسالة",
-                    "cancel": "إلغاء",
-                    "save": "حفظ التعديلات"
-                }
-            }
-        },
-        "properties": {
-            "delete": {
-                "title": "حذف العقار",
-                "subtitle": "هل أنت متأكد أنك تريد حذف هذا العقار؟ لا يمكن التراجع عن هذا الإجراء.",
-                "actionText": "حذف"
-            },
-            "cancel": "إلغاء",
-            "table": {
-                "property": "العقار",
-                "status": "الحالة",
-                "free": "متاح",
-                "online": "معروض",
-                "offline": "غير معروض",
-                "booked": "محجوز",
-                "published": "تاريخ النشر",
-                "price": "السعر",
-                "location": "الموقع",
-                "deleteProperty": "حذف العقار",
-                "editProperty": "تعديل العقار",
-                "addProperty": "إضافة عقار"
-            },
-            "form": {
-                "title": "عنوان الشقة",
-                "size": "المساحة (م²)",
-                "price": "السعر الشهري",
-                "rentType": "نوع الإيجار",
-                "propertyType": "نوع العقار",
-                "bathrooms": "عدد الحمامات",
-                "bedrooms": "عدد غرف النوم",
-                "garage": "حجم المرآب",
-                "description": "الوصف",
-                "additionalDetails": "تفاصيل إضافية",
-                "location": "الموقع",
-                "selectLocation": "اختر الموقع",
-                "nearby": "الأماكن القريبة",
-                "placeName": "اسم المكان",
-                "distance": "المسافة (كم)",
-                "addNearby": "+ إضافة مكان قريب",
-                "distanceUnit": "كم",
-                "placeNamePlaceholder": "أدخل اسم المكان",
-                "distancePlaceholder": "أدخل المسافة",
-                "categoryPlaceholder": "اختر الفئة",
-                "categories": {
-                    "education": "تعليمي",
-                    "hospital": "مستشفى",
-                    "shopping": "تسوق",
-                    "other": "أخرى"
-                },
-                "save": "حفظ"
-            }
+          "title": "المدفوعات والمستحقات",
+          "description": "راجع المدفوعات والقسائم وبطاقات الهدايا"
         }
+      }
+    },
+    "chats": {
+      "messages": "الرسائل",
+      "noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
+      "typeMessage": "اكتب رسالة",
+      "selectConversation": "اختر محادثة لبدء المراسلة"
+    },
+    "tenant": {
+      "root": {
+        "reservedProperty": "العقار المحجوز",
+        "totalPaymentAmount": "إجمالي مبلغ الدفع",
+        "lastRentedProperties": "آخر العقارات المؤجرة"
+      }
+    },
+    "landlord": {
+      "root": {
+        "totalProperties": "إجمالي العقارات",
+        "totalReviews": "إجمالي التقييمات",
+        "freeProperties": "العقارات المتاحة",
+        "RentedProperties": "العقارات المؤجرة",
+        "topRentedProperties": "أكثر العقارات تأجيرًا"
+      },
+      "revenue": {
+        "week": "أسبوع",
+        "month": "شهر",
+        "year": "سنة",
+        "rentalIncome": "إيرادات الإيجار",
+        "totalReserved": "إجمالي العقارات المحجوزة",
+        "totalFree": "إجمالي العقارات المتاحة",
+        "topRented": "أكثر العقارات تأجيرًا",
+        "recentTransactions": "المعاملات الأخيرة"
+      }
+    },
+    "admin": {
+      "root": {
+        "totalProperties": "إجمالي العقارات",
+        "freeProperties": "العقارات المتاحة",
+        "rentedProperties": "العقارات المؤجرة",
+        "lastTransactions": "آخر المعاملات",
+        "maintenanceRequests": "طلبات الصيانه"
+      },
+      "maintenance": {
+        "requestId": "رقم الطلب",
+        "type": {
+          "Electrical": "كهرباء",
+          "Plumbing": "سباكة",
+          "HVAC": "تكييف"
+        }
+      },
+      "costBreakdown": {
+        "maintenance": "الصيانة",
+        "repair": "الإصلاح",
+        "taxes": "الضرائب",
+        "saving": "الادخار"
+      },
+      "contactUs": {
+        "title": "رسائل اتصل بنا",
+        "searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني أو رقم الهاتف"
+      },
+      "team": {
+        "title": "أعضاء الفريق",
+        "add": "إضافة عضو جديد",
+        "edit": "تعديل العضو",
+        "deleteTitle": "حذف",
+        "formText": "عرض النموذج",
+        "delete": {
+          "title": "حذف عضو الفريق",
+          "subtitle": "هل أنت متأكد أنك تريد إزالة هذا العضو من الفريق؟",
+          "actionText": "حذف",
+          "cancel": "إلغاء"
+        },
+        "form": {
+          "form": "نموذج عضو الفريق",
+          "name": "الاسم",
+          "email": "البريد الإلكتروني",
+          "phone": "رقم الهاتف",
+          "namePlaceholder": "أدخل الاسم الكامل",
+          "emailPlaceholder": "أدخل البريد الإلكتروني",
+          "phonePlaceholder": "أدخل رقم الهاتف",
+          "upload": "رفع صورة",
+          "noFile": "لم يتم اختيار ملف"
+        },
+        "cancel": "إلغاء",
+        "addAction": "إضافة عضو",
+        "editAction": "حفظ التعديلات"
+      },
+      "blog": {
+        "title": "المدونات",
+        "add": "إضافة مدونة",
+        "delete": {
+          "title": "حذف المدونة",
+          "subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
+          "cancel": "إلغاء",
+          "actionText": "حذف"
+        },
+        "form": {
+          "title": "عنوان المدونة",
+          "titlePlaceholder": "أدخل عنوان المدونة",
+          "description": "الوصف",
+          "descriptionPlaceholder": "اكتب محتوى المدونة...",
+          "date": "تاريخ النشر",
+          "datePlaceholder": "اختر التاريخ",
+          "cancel": "إلغاء",
+          "actionText": "حفظ"
+        }
+      },
+      "about": {
+        "title": "محتوي صفحة من نحن",
+        "vision": {
+          "title": "رؤيتنا",
+          "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
+        },
+        "goals": {
+          "title": "أهدافنا",
+          "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
+        },
+        "missions": {
+          "title": "مهمتنا",
+          "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
+        },
+        "edit": "تعديل",
+        "form": {
+          "title": "العنوان",
+          "titlePlaceholder": "أدخل عنوان القسم",
+          "message": "الرسالة",
+          "messagePlaceholder": "أدخل نص الرسالة",
+          "cancel": "إلغاء",
+          "save": "حفظ التعديلات"
+        }
+      }
+    },
+    "properties": {
+      "delete": {
+        "title": "حذف العقار",
+        "subtitle": "هل أنت متأكد أنك تريد حذف هذا العقار؟ لا يمكن التراجع عن هذا الإجراء.",
+        "actionText": "حذف"
+      },
+      "cancel": "إلغاء",
+      "table": {
+        "property": "العقار",
+        "status": "الحالة",
+        "free": "متاح",
+        "online": "معروض",
+        "offline": "غير معروض",
+        "booked": "محجوز",
+        "published": "تاريخ النشر",
+        "price": "السعر",
+        "location": "الموقع",
+        "deleteProperty": "حذف العقار",
+        "editProperty": "تعديل العقار",
+        "addProperty": "إضافة عقار"
+      },
+      "form": {
+        "title": "عنوان الشقة",
+        "size": "المساحة (م²)",
+        "price": "السعر الشهري",
+        "rentType": "نوع الإيجار",
+        "propertyType": "نوع العقار",
+        "bathrooms": "عدد الحمامات",
+        "bedrooms": "عدد غرف النوم",
+        "garage": "حجم المرآب",
+        "description": "الوصف",
+        "additionalDetails": "تفاصيل إضافية",
+        "location": "الموقع",
+        "selectLocation": "اختر الموقع",
+        "nearby": "الأماكن القريبة",
+        "placeName": "اسم المكان",
+        "distance": "المسافة (كم)",
+        "addNearby": "+ إضافة مكان قريب",
+        "distanceUnit": "كم",
+        "placeNamePlaceholder": "أدخل اسم المكان",
+        "distancePlaceholder": "أدخل المسافة",
+        "categoryPlaceholder": "اختر الفئة",
+        "categories": {
+          "education": "تعليمي",
+          "hospital": "مستشفى",
+          "shopping": "تسوق",
+          "other": "أخرى"
+        },
+        "save": "حفظ"
+      }
     }
+  }
 }
