@@ -6,18 +6,17 @@ import DepartmentSection from "./DepartmentSection";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 import { useTranslations } from "next-intl";
 import { Department } from "@/types/company";
 import { resolveUrl } from "@/utils/upload";
+import NavigationButtons from "@/components/shared/NavigationButtons";
 
 interface AboutDepartmentsProps {
     departments: Department[];
-    locale: string;
     isArabic: boolean;
 }
 
-export default function AboutDepartments({ departments, locale, isArabic }: AboutDepartmentsProps) {
+export default function AboutDepartments({ departments, isArabic }: AboutDepartmentsProps) {
     const t = useTranslations("about");
 
     // Helper function to get localized text
@@ -73,6 +72,7 @@ export default function AboutDepartments({ departments, locale, isArabic }: Abou
                         <DepartmentSection
                             imageSrc={resolveUrl(item.imagePath)}
                             title={getLocalizedText(item.title_en, item.title_ar)}
+                            title_en={item.title_en}
                             text={getLocalizedText(item.description_en, item.description_ar)}
                         />
                     </SwiperSlide>
@@ -81,12 +81,9 @@ export default function AboutDepartments({ departments, locale, isArabic }: Abou
             </Swiper>
             <div className="custom-pagination flex gap-2 justify-center mt-6"></div>
 
-            <button className="department-next flex-center w-[45px] h-[45px]  absolute top-1/2 -translate-y-1/2 -left-2 lg:-left-10 z-10">
-                <MdOutlineArrowBackIos size={32} className="" />
-            </button>
-            <button className="department-prev flex-center w-[45px] h-[45px]  absolute top-1/2 -translate-y-1/2 -right-2 lg:-right-10 z-10">
-                <MdOutlineArrowForwardIos size={32} className="" />
-            </button>
+
+            <NavigationButtons prevClassName="department-prev" nextClassName="department-next" />
+
         </div>
 
     );

@@ -37,7 +37,7 @@ export default function AboutMainSection({ title, text, imageSrc, reverse = fals
     return (
         <div className={`flex flex-col ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"} justify-between gap-8`} {...props}>
             {/* Image Section */}
-            <div className="relative min-w-[300px] md:min-w-[500px] xl:min-w-[600px] h-[240px] md:h-[320px] xl:h-[360px] rounded-[30px] md:rounded-[40px] lg:rounded-[50px] border-[1.5px] border-[#E0E0E0] p-3 md:p-4">
+            <div className="relative min-w-full md:min-w-[500px] xl:min-w-[600px] h-[240px] md:h-[320px] xl:h-[360px] rounded-[30px] md:rounded-[40px] lg:rounded-[50px] border-[1.5px] border-[#E0E0E0] p-3 md:p-4">
                 <div className="relative w-full h-full rounded-[30px] md:rounded-[40px] lg:rounded-[50px] overflow-hidden">
                     <Image
                         fill

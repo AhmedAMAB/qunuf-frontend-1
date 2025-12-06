@@ -1,3 +1,5 @@
+import ImageAlt from "@/components/shared/ImageAlt";
+import { getInitials } from "@/utils/helpers";
 import Image from "next/image";
 
 interface TeamMemberCardProps {
@@ -13,12 +15,14 @@ export default function TeamMemberCard({ imageSrc, name, job, description }: Tea
         <div className="team-member w-full max-w-[400px] rounded-[24px] p-6 flex flex-col" data-aos="fade-up">
             {/* Image */}
             <div className="relative w-full aspect-square rounded-[24px] overflow-hidden bg-light mb-6">
-                <Image
+                {imageSrc ? <Image
                     src={imageSrc}
                     alt={name}
                     fill
                     className="object-cover rounded-[24px] grayscale"
-                />
+                /> : (
+                    <ImageAlt title={name} />
+                )}
             </div>
 
             {/* Name */}

@@ -5,8 +5,17 @@
     "description": "Discover, list, and manage properties with Real State.",
     "lang": "عربي"
   },
+  "notFound": {
+    "oopsTitle": "Oops, Page not found!",
+    "oopsMessage": "The page you're looking for is not found (it may have been moved, deleted, or doesn’t exist). Sorry for the inconvenience.",
+    "oopsHint": "If you think this is an error or something is broken, click report.",
+    "goHome": "Go to home"
+  },
   "comman": {
     "datePlaceholder": "Select Date Range",
+    "retry": "Retry",
+    "errorTitle": "Oops, something went wrong",
+    "errorLoading": "Failed to load data",
     "cancel": "Cancel",
     "save": "Save",
     "form": {
@@ -645,9 +654,10 @@
       "notifications": "Notifications",
       "chat": "Chats",
       "contactUs": "Contact Us",
-      "teamMembers": "Team Members",
       "blogs": "Blogs",
+      "teamMembers": "Team Members",
       "aboutUs": "About Us",
+      "departments": "Departments",
       "logout": "Logout"
     },
     "filter": {
@@ -878,25 +888,97 @@
         "edit": "Edit Team Member",
         "deleteTitle": "Delete",
         "formText": "Show Form",
+        "emptyTitle": "No team members found",
+        "emptyMessage": "There are currently no team members. Please add new members.",
         "delete": {
           "title": "Delete Team Member",
-          "subtitle": "Are you sure you want to remove this member from your team?",
+          "subtitle": "Are you sure you want to delete <strong>{name}</strong>?",
+          "cancel": "Cancel",
           "actionText": "Delete",
-          "cancel": "Cancel"
+          "deleting": "Deleting {name}...",
+          "success": "{name} has been deleted successfully.",
+          "error": "Failed to delete {name}."
         },
         "form": {
           "form": "Team Member Form",
           "name": "Name",
+          "namePlaceholder": "Enter member name",
+          "job": "Job Title",
+          "jobPlaceholder": "Enter job title",
+          "description_en": "Description (English)",
+          "description_ar": "Description (Arabic)",
           "email": "Email",
-          "phone": "Phone Number",
-          "namePlaceholder": "Enter full name",
-          "emailPlaceholder": "Enter email address",
+          "emailPlaceholder": "Enter email",
+          "phone": "Phone",
           "phonePlaceholder": "Enter phone number",
           "upload": "Upload Image",
-          "noFile": "No file chosen"
+          "noFile": "No file selected",
+          "validation": {
+            "required": "This field is required",
+            "maxLength": "Exceeds maximum length ({max})",
+            "email": "Invalid email address",
+            "imageRequired": "Please upload an image"
+          },
+          "actions": {
+            "create": "Create",
+            "update": "Update",
+            "cancel": "Cancel",
+            "creating": "Creating team member...",
+            "updating": "Updating team member...",
+            "createSuccess": "Team member created successfully",
+            "updateSuccess": "Team member updated successfully",
+            "error": "An error occurred. Please try again"
+          }
         },
         "cancel": "Cancel",
         "addAction": "Add Member",
+        "editAction": "Save Changes"
+      },
+      "departments": {
+        "title": "Departments",
+        "add": "Add Department",
+        "edit": "Edit Department",
+        "deleteTitle": "Delete",
+        "formText": "Show Form",
+        "emptyTitle": "No departments found",
+        "emptyMessage": "There are currently no departments. Please add new ones.",
+        "delete": {
+          "title": "Delete Department",
+          "subtitle": "Are you sure you want to delete <strong>{name}</strong>?",
+          "cancel": "Cancel",
+          "actionText": "Delete",
+          "deleting": "Deleting {name}...",
+          "success": "{name} has been deleted successfully.",
+          "error": "Failed to delete {name}."
+        },
+        "form": {
+          "form": "Department Form",
+          "title_en": "Title (English)",
+          "title_enPlaceholder": "Enter title in English",
+          "title_ar": "Title (Arabic)",
+          "title_arPlaceholder": "Enter title in Arabic",
+          "description_en": "Description (English)",
+          "description_ar": "Description (Arabic)",
+          "upload": "Upload Image",
+          "noFile": "No file selected",
+          "validation": {
+            "required": "This field is required",
+            "maxLength": "Exceeds maximum length ({max})",
+            "imageRequired": "Please upload an image"
+          },
+          "actions": {
+            "create": "Create",
+            "update": "Update",
+            "cancel": "Cancel",
+            "creating": "Creating department...",
+            "updating": "Updating department...",
+            "createSuccess": "Department created successfully",
+            "updateSuccess": "Department updated successfully",
+            "error": "An error occurred. Please try again"
+          }
+        },
+        "cancel": "Cancel",
+        "addAction": "Add Department",
         "editAction": "Save Changes"
       },
       "blog": {
@@ -920,21 +1002,49 @@
         }
       },
       "about": {
+        "validation": {
+          "titleRequired": "Title is required",
+          "titleMax": "Title must not exceed 255 characters",
+          "contentRequired": "Content is required",
+          "imageRequired": "Image is required"
+        },
         "title": "About Us Content",
         "vision": {
-          "title": "Our Vision"
+          "title": "Our Vision",
+          "defaultTitle": "Our Vision"
+        },
+        "mission": {
+          "title": "Our Mission",
+          "defaultTitle": "Our Mission"
         },
         "goals": {
-          "title": "Our Goals"
+          "title": "Our Goals",
+          "defaultTitle": "Our Goals"
         },
-        "missions": {
-          "title": "Our Missions"
+        "history": {
+          "title": "History",
+          "defaultTitle": "History"
+        },
+        "why_us": {
+          "title": "Why Qunuf",
+          "defaultTitle": "Why Qunuf"
         },
         "edit": "Edit",
+        "noContent": "No content available",
+        "saving": "Saving...",
+        "saved": "Saved",
+        "errors": {
+          "failed": "Failed to save"
+        },
         "form": {
-          "title": "Title",
-          "message": "Message",
-          "messagePlaceholder": "Enter section message",
+          "title_en": "Title (EN)",
+          "title_ar": "Title (AR)",
+          "title_en_placeholder": "Enter title in English",
+          "title_ar_placeholder": "Enter title in Arabic",
+          "content_en": "Content (EN)",
+          "content_ar": "Content (AR)",
+          "content_en_placeholder": "Enter content in English",
+          "content_ar_placeholder": "Enter content in Arabic",
           "cancel": "Cancel",
           "save": "Save Changes"
         }
@@ -985,5 +1095,11 @@
       "categoryPlaceholder": "Select category",
       "save": "Save"
     }
+  },
+  "Pagination": {
+    "previous": "Previous page",
+    "next": "Next page",
+    "jumpBack": "Jump back {{count}} pages",
+    "jumpForward": "Jump forward {{count}} pages"
   }
 }

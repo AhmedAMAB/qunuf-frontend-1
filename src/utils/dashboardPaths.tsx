@@ -18,7 +18,8 @@ export type DashboardPathKey =
     | 'contactUs'
     | 'teamMembers'
     | 'blogs'
-    | 'aboutUs';
+    | 'aboutUs'
+    | 'departments';
 
 export const dashboardPaths: Record<DashboardPathKey, string> = {
     root: '',
@@ -39,6 +40,7 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     teamMembers: '/team-members',
     blogs: '/blogs',
     aboutUs: '/about-us',
+    departments: '/departments',
 };
 
 

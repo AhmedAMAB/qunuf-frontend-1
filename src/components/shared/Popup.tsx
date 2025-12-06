@@ -27,11 +27,11 @@ export default function Popup({ children, onClose, show, className, headerConten
         <div
             data-popup
             className={`px-2 popup fixed inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-            style={{ zIndex: 99999 }}
+            style={{ zIndex: 100 }}
         >
             <div
                 ref={popupRef}
-                className={` w-fit sm:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-4 md:p-5 lg:p-6  space-y-2 transition-all duration-300 scale-100  ${className}`}
+                className={` max-h-[90vh] overflow-y-auto w-fit sm:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-4 md:p-5 lg:p-6  space-y-2 transition-all duration-300 scale-100  ${className}`}
             >
                 {/* Close Button */}
 

@@ -1,15 +1,14 @@
 import { LuLayoutDashboard } from 'react-icons/lu';
-import { FaHeadset, FaRegNewspaper } from 'react-icons/fa';
+import { FaRegNewspaper } from 'react-icons/fa';
 import { MdOutlineFactCheck, MdOutlinePayments } from 'react-icons/md';
 import { Role } from '@/types/global';
 import { ComponentType, SVGProps } from 'react';
-import { TbContract } from 'react-icons/tb';
+import { TbBuildingCommunity, TbContract } from 'react-icons/tb';
 import { PiBuildingApartment } from 'react-icons/pi';
 import { IoAnalytics } from 'react-icons/io5';
 import { getDashboardHref } from '@/utils/dashboardPaths';
 import { GrContact } from 'react-icons/gr';
 import { HiOutlineUserGroup, HiOutlineUsers } from 'react-icons/hi2';
-
 
 export type SidebarLink = {
     href: string;
@@ -37,9 +36,10 @@ const landlordLinks: SidebarLink[] = [
 const adminLinks: SidebarLink[] = [
     { href: getDashboardHref('admin', 'root'), key: 'dashboard', Icon: LuLayoutDashboard },
     { href: getDashboardHref('admin', 'contactUs'), key: 'contactUs', Icon: GrContact },
-    { href: getDashboardHref('admin', 'teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers },
     { href: getDashboardHref('admin', 'blogs'), key: 'blogs', Icon: FaRegNewspaper },
+    { href: getDashboardHref('admin', 'teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers },
     { href: getDashboardHref('admin', 'aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup },
+    { href: getDashboardHref('admin', 'departments'), key: 'departments', Icon: TbBuildingCommunity },
 ];
 
 // sidebar links per role

@@ -1,37 +1,43 @@
-'use client';
+import { Tajawal } from 'next/font/google';
+import '../styles/globals.css'
+const plexMomo = Tajawal({
+    variable: "--font-app",
+    display: "swap",
+    subsets: ["latin"],
+    weight: ["200", "300", "400", "500", "700", "800", "900"],
+});
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function NotFound() {
-    const router = useRouter();
-
     return (
-        <div className="py-[30px] lg:py-[60px] bg-bg-2 h-screen">
-            <div className="container mx-auto">
-                <div className="flex justify-center ">
-                    <div className="col-span-10 lg:col-span-6">
-                        <div className="text-center pb-10">
-                            <h2 className="mt-10 mb-5 text-3xl font-bold text-center">عذرًا! الصفحة غير موجودة</h2>
-                            <p className="mb-8 text-gray-600 text-center">
-                                نأسف، الصفحة التي تبحث عنها غير موجودة. قد تكون قد أُزيلت أو تم تغيير عنوانها أو أنها غير متوفرة مؤقتًا.
-                            </p>
+        <div className={`flex items-center justify-center min-h-screen bg-gray-50 px-4 ${plexMomo.variable}`}>
+            <div className="text-center max-w-2xl">
+                {/* Responsive 404 */}
+                <h1 className="text-[80px] sm:text-[120px] lg:text-[160px] font-extrabold text-gray-900 mb-6">
+                    404
+                </h1>
 
-                            <div className="flex justify-center gap-4 flex-wrap">
-                                <Link href="/" className="btn-secondary font-semibold">
-                                    العودة إلى الصفحة الرئيسية
-                                </Link>
-                                <button
-                                    onClick={() => router.back()}
-                                    className="btn-primary font-semibold"
-                                >
-                                    العودة للخلف
-                                </button>
-                            </div>
+                {/* Responsive subtitle */}
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 mb-8">
+                    Oops, Page not found!
+                </h2>
 
-                        </div>
-                    </div>
-                </div>
+                {/* Description */}
+                <p className="text-gray-600 mb-4 text-sm sm:text-base lg:text-lg">
+                    The page you're looking for is not found (it may have been moved, deleted, or doesn’t exist). Sorry for the inconvenience.
+                </p>
+
+                <p className="text-gray-500 mb-10 text-xs sm:text-sm lg:text-base">
+                    If you think this is an error or something is broken, click report.
+                </p>
+
+                {/* Custom link instead of SecondaryButton */}
+                <a
+                    href="/"
+                    className="inline-block px-6 sm:px-8 lg:px-10 py-2 sm:py-3 lg:py-4 bg-secondary text-white rounded-lg shadow hover:bg-secondary/90 transition"
+                >
+                    Go to home
+                </a>
             </div>
         </div>
     );

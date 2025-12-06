@@ -1,6 +1,6 @@
 'use client';
 
-import { FileItem, processFiles } from '@/utils/upload';
+import { FileItem, processFiles, resolveUrl } from '@/utils/upload';
 import { Control, Controller } from 'react-hook-form';
 import FilePreviewItem from './FilePreviewItem';
 import { BsCloudArrowUp } from 'react-icons/bs';
@@ -18,6 +18,7 @@ type UploaderProps = {
     rules?: string[]; // 👈 array of rules to display
     maxSizeMB?: number;
     maxFiles?: number;
+    defaultImage?: string;
 };
 
 export default function Uploader({
@@ -26,6 +27,7 @@ export default function Uploader({
     allowMultiple = true,
     allowPrimary = true,
     label,
+    defaultImage,
     accept = '*/*',
     rules = ['الحد الأقصى لحجم الملف 9MB', 'الحد الأقصى 10 ملفات'],
     maxSizeMB = 9,
@@ -133,16 +135,27 @@ export default function Uploader({
                                     className="hidden"
                                     onChange={handleFiles}
                                 />
-                                {isOneImage &&
-                                    currentFiles.length === 1 &&
-                                    currentFiles[0].url?.trim() && (
-                                        <Image
-                                            src={currentFiles[0].url}
-                                            alt="Preview"
-                                            fill
-                                            className="absolute inset-0 object-cover rounded-[8px]"
-                                        />
-                                    )}
+                                {isOneImage && (
+                                    (() => {
+                                        const src =
+                                            currentFiles.length === 1 ? (typeof currentFiles[0] === 'string'
+                                                ? currentFiles[0]
+                                                : currentFiles[0]?.url || '') : '';
+
+                                        if (!src) return null;
+
+                                        return (
+                                            <Image
+                                                src={resolveUrl(src)}
+                                                alt="Preview"
+                                                fill
+                                                className="absolute inset-0 object-cover rounded-[8px]"
+                                            />
+                                        );
+                                    })()
+                                )}
+
+
                             </label>
                         </div>
 

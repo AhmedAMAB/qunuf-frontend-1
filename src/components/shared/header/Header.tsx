@@ -67,7 +67,7 @@ export default function Header() {
   const linkIdle = 'text-slate-900 hover:text-slate-700';
 
   return (
-    <header id='main-header' ref={headerRef} className={['fixed left-0 top-0 md:!top-4 z-50 w-full transition-transform duration-300 will-change-transform', isHidden ? '-translate-y-[100px]' : 'translate-y-0'].join(' ')} aria-label={t('aria.mainNav', { default: 'Main navigation' })}>
+    <header id='main-header' ref={headerRef} className={['fixed left-0 top-0 md:!top-4 z-50 w-full transition-transform duration-300 will-change-transform', isHidden ? '-translate-y-[100px]' : 'translate-y-0'].join(' ')} >
       <div
         className={[
           'mx-auto flex w-full items-center justify-between gap-4 px-5 lg:px-8 md:py-4 py-3',
@@ -82,7 +82,7 @@ export default function Header() {
         </div>
 
         {/* Desktop nav */}
-        <nav className='navbar me-auto ms-6 hidden md:flex items-center gap-5 lg:gap-7' aria-label={t('aria.primary', { default: 'Primary' })}>
+        <nav className='navbar me-auto ms-6 hidden md:flex items-center gap-5 lg:gap-7' >
           {navLinks.map(({ label, href }) => {
             const active = normalizedPath === href;
             return (
@@ -117,14 +117,14 @@ export default function Header() {
         <div ref={menuRef} className={['fixed inset-x-0 top-0 origin-top rounded-b-2xl', 'bg-white shadow-xl ring-1 ring-black/5', 'pt-[calc(env(safe-area-inset-top)+12px)] pb-4', 'transition-transform duration-300 ease-out motion-reduce:transition-none', menuOpen ? 'translate-y-0' : '-translate-y-4'].join(' ')}>
           <div className='flex items-center justify-between px-4'>
             <Logo />
-            <button onClick={() => setMenuOpen(false)} className='rounded-md p-2 text-slate-600 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2' aria-label={t('aria.closeMenu', { default: 'Close menu' })}>
+            <button onClick={() => setMenuOpen(false)} className='rounded-md p-2 text-slate-600 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2' >
               <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5' viewBox='0 0 24 24' fill='none' stroke='currentColor'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
               </svg>
             </button>
           </div>
 
-          <nav className='mt-2 divide-y divide-slate-100 text-[#1f2937]' aria-label={t('aria.primaryMobile', { default: 'Primary mobile' })}>
+          <nav className='mt-2 divide-y divide-slate-100 text-[#1f2937]' >
             {navLinks.map(({ label, href }) => {
               const active = normalizedPath === href;
               return (

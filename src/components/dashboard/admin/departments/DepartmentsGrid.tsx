@@ -2,27 +2,26 @@
 
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { TeamMemberCard } from './TeamMemberCard';
-import Popup from '@/components/shared/Popup';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
-import TeamMemberForm from './TeamMemberForm';
 import SectionHeading from '../../SectionHeading';
 import Pagination from '@/components/shared/Pagination';
 import { ErrorCard } from '@/components/shared/ErrorCard';
-import api from '@/libs/axios';
 import EmptyState from '@/components/shared/EmptyState';
-import DeleteTeamMemberPopup from './DeleteTeamMemberPopup';
+import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import Popup from '@/components/shared/Popup';
+import api from '@/libs/axios';
+import DepartmentForm from './DepartmentForm';
+import DeleteDepartmentPopup from './DeleteDepartmentPopup';
+import DepartmentCard from './DepartmentCard';
 
-
-export default function TeamGrid() {
-    const t = useTranslations("dashboard.admin.team");
+export default function DepartmentsGrid() {
+    const t = useTranslations("dashboard.admin.departments");
 
     // UI State
     const [popupOpen, setPopupOpen] = useState<'add-edit' | 'delete' | null>(null);
-    const [selectedMember, setSelectedMember] = useState<any | null>(null);
+    const [selectedDepartment, setSelectedDepartment] = useState<any | null>(null);
 
     // Data State
-    const [team, setTeam] = useState([]);
+    const [departments, setDepartments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -36,16 +35,13 @@ export default function TeamGrid() {
     });
 
     const limit = pagination.limit;
-    // Fetch function
+
+    // Abort Controller
     const abortRef = useRef<AbortController | null>(null);
 
     const fetchData = useCallback(async (page: number) => {
-        // Abort previous request if exists
-        if (abortRef.current) {
-            abortRef.current.abort();
-        }
+        if (abortRef.current) abortRef.current.abort();
 
-        // Create new AbortController for this request
         const controller = new AbortController();
         abortRef.current = controller;
 
@@ -54,44 +50,41 @@ export default function TeamGrid() {
             setError(null);
 
             const res = await api.get(
-                `/teams?page=${page}&limit=${limit}`,
+                `/departments?page=${page}&limit=${limit}`,
                 { signal: controller.signal }
             );
 
             const { records, pagination } = res.data.data;
 
-            setTeam(records);
-            setPagination(p => ({ ...p, total: pagination.total, totalPages: pagination.totalPages }));
+            setDepartments(records);
+            setPagination(p => ({
+                ...p,
+                total: pagination.total,
+                totalPages: pagination.totalPages,
+            }));
 
         } catch (err: any) {
-            if (err?.name === "CanceledError" || err?.message === "canceled") {
-                // Request aborted → ignore
-                return;
-            }
+            if (err?.name === "CanceledError") return;
 
-            setError(err?.response?.data?.message || "Failed to load team members");
+            setError(err?.response?.data?.message || "Failed to load departments");
         } finally {
-            if (abortRef.current === controller)
-                setLoading(false);
+            if (abortRef.current === controller) setLoading(false);
         }
     }, [limit]);
 
-
-    // Fetch when page changes
     useEffect(() => {
         fetchData(page);
     }, [page, limit]);
 
-
-
     async function handleSuccess() {
-        await fetchData(1)
+        await fetchData(1);
     }
 
     function onClose() {
         setPopupOpen(null);
-        setSelectedMember(null);
+        setSelectedDepartment(null);
     }
+
     // Error State
     if (!loading && error) {
         return (
@@ -110,7 +103,7 @@ export default function TeamGrid() {
                 <SecondaryButton
                     onClick={() => {
                         setPopupOpen('add-edit');
-                        setSelectedMember(null);
+                        setSelectedDepartment(null);
                     }}
                     className="bg-secondary hover:bg-secondary-hover font-semibold text-lighter sm:!py-2"
                 >
@@ -120,38 +113,32 @@ export default function TeamGrid() {
 
             {/* Loading Skeleton */}
             {loading && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-                    {Array(10)
-                        .fill(0)
-                        .map((_, i) => (
-                            <Skeleton key={i} />
-                        ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+                    {Array(8).fill(0).map((_, i) => <DepartmentSkeletonCard key={i} />)}
                 </div>
             )}
 
             {/* Empty State */}
-            {!loading && team.length === 0 && (
-                <EmptyState
-                    title={t("emptyTitle")}
-                    message={t("emptyMessage")}
-                />
+            {!loading && departments.length === 0 && (
+                <EmptyState title={t("emptyTitle")} message={t("emptyMessage")} />
             )}
 
             {/* Grid */}
-            {!loading && team.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-                    {team.map((member: any) => (
-                        <TeamMemberCard
-                            key={member.id}
+            {!loading && departments.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+                    {departments.map((dep: any) => (
+                        <DepartmentCard
+                            key={dep.id}
+                            {...dep}
                             onEdit={() => {
-                                setSelectedMember(member);
+                                setSelectedDepartment(dep);
                                 setPopupOpen('add-edit');
                             }}
                             onDelete={() => {
-                                setSelectedMember(member);
+                                setSelectedDepartment(dep);
                                 setPopupOpen('delete');
                             }}
-                            {...member} />
+                        />
                     ))}
                 </div>
             )}
@@ -165,7 +152,6 @@ export default function TeamGrid() {
                 totalPages={pagination.totalPages}
             />
 
-            {/* Add Member Popup */}
             {/* Add/Edit Popup */}
             <Popup
                 show={popupOpen === 'add-edit'}
@@ -173,34 +159,47 @@ export default function TeamGrid() {
                 className="max-sm:!w-full"
                 headerContent={
                     <p className="text-[24px] font-bold text-dark">
-                        {selectedMember ? t('edit') : t('add')}
+                        {selectedDepartment ? t('edit') : t('add')}
                     </p>
                 }
             >
-                <TeamMemberForm
-                    key={selectedMember?.id}
-                    initialData={selectedMember ?? undefined}
+                <DepartmentForm
+                    key={selectedDepartment?.id}
+                    initialData={selectedDepartment ? { ...selectedDepartment, image: selectedDepartment?.imagePath } : undefined}
                     onClose={onClose}
                     onSuccess={handleSuccess}
                 />
             </Popup>
 
+            {/* Delete Popup */}
             <Popup show={popupOpen === 'delete'} onClose={onClose} headerContent={t('deleteTitle')}>
-                {selectedMember && <DeleteTeamMemberPopup onClose={onClose} selectedMember={selectedMember} onSuccess={handleSuccess} />}
+                {selectedDepartment && (
+                    <DeleteDepartmentPopup
+                        selectedDepartment={selectedDepartment}
+                        onClose={onClose}
+                        onSuccess={handleSuccess}
+                    />
+                )}
             </Popup>
         </div>
     );
 }
 
+// Skeleton Loader
+function DepartmentSkeletonCard() {
+    return (
+        <div className="bg-card-bg rounded-xl p-4 shadow-sm animate-pulse">
+            {/* Image Skeleton */}
+            <div className="w-full h-40 bg-gray-200 rounded-lg mb-4"></div>
 
+            {/* Title Skeleton */}
+            <div className="h-5 w-2/3 bg-gray-200 rounded mb-3"></div>
 
-// If loading + No previous data → Skeleton
-const Skeleton = () => (
-    <div
-        className="bg-card-bg rounded-[14px] p-4 w-full max-w-xs mx-auto animate-pulse"
-    >
-        <div className="w-[111px] h-[105px] bg-gray rounded-[12px] mx-auto mb-4"></div>
-        <div className="h-4 bg-gray rounded mb-2"></div>
-        <div className="h-4 bg-gray rounded"></div>
-    </div>
-);
+            {/* Description Skeleton (2 lines) */}
+            <div className="h-4 w-full bg-gray-200 rounded mb-2"></div>
+            <div className="h-4 w-5/6 bg-gray-200 rounded mb-4"></div>
+            <div className="h-4 w-5/6 bg-gray-200 rounded mb-4"></div>
+        </div>
+    );
+}
+

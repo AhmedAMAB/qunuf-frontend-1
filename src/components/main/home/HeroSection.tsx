@@ -85,7 +85,6 @@ export default function HeroSection() {
           </span>
           <h1
             className="mt-5 font-bold tracking-tight text-white text-3xl sm:text-5xl lg:text-6xl xl:text-[72px] leading-[1.1]"
-            aria-label={t('heading', { default: 'Designing Your\nNext Chapter' })}
           >
             {(t('heading', { default: 'Designing Your\nNext Chapter' }) as string)
               .split('\n')
@@ -151,7 +150,6 @@ export function HeroFilter() {
   return (
     <div
       role="search"
-      aria-label={t('aria.search', { default: 'Property search' })}
       className="max-w-[1300px] w-full"
     >
       {/* Match your glass style exactly */}
@@ -195,7 +193,6 @@ export function HeroFilter() {
           <div className="flex items-stretch gap-2">
             <Link
               href="/properties"
-              aria-label={t('aria.openFilters', { default: 'Open all filters' })}
               className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-3 sm:px-4 text-slate-700 hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
             >
               <HiOutlineAdjustmentsHorizontal size={22} />
@@ -203,7 +200,6 @@ export function HeroFilter() {
 
             <Link
               href={search}
-              aria-label={t('search')}
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-secondary px-4 sm:px-6 py-2.5 text-white shadow-sm transition hover:bg-secondary-hover focus:outline-none focus:ring-2 focus:ring-secondary/70 focus:ring-offset-2"
             >
               <span className="text-sm sm:text-base">{t('search')}</span>

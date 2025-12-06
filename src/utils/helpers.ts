@@ -98,3 +98,12 @@ export function getDropMenuPosition(position: DropMenuPosition) {
 
     return className;
 }
+
+// utils/string.ts
+export function getInitials(name: string): string {
+    if (!name) return '';
+    const words = name.trim().split(' ');
+    const firstChar = words[0]?.charAt(0) || '';
+    const secondChar = words[1]?.charAt(0) || '';
+    return (firstChar + secondChar).toUpperCase();
+}

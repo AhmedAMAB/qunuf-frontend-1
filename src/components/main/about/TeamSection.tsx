@@ -1,6 +1,5 @@
 'use client';
 
-import PageHeader from "@/components/shared/PageHeader";
 import TeamMemberCard from "./TeamMemberCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -8,9 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 import { Team } from "@/types/company";
 import { resolveUrl } from "@/utils/upload";
+import NavigationButtons from "@/components/shared/NavigationButtons";
 
 interface TeamSectionProps {
     teams: Team[];
@@ -87,24 +86,19 @@ export default function TeamSection({ teams, locale, isArabic }: TeamSectionProp
                 >
                     {teams.map((member) => (
                         <SwiperSlide key={member.id}>
-                                <TeamMemberCard
-                                    imageSrc={resolveUrl(member.imagePath)}
-                                    name={member.name}
-                                    job={member.job}
-                                    description={getLocalizedText(member.description_en, member.description_ar)}
-                                />
+                            <TeamMemberCard
+                                imageSrc={resolveUrl(member.imagePath)}
+                                name={member.name}
+                                job={member.job}
+                                description={getLocalizedText(member.description_en, member.description_ar)}
+                            />
 
                         </SwiperSlide>
                     ))}
                 </Swiper>
 
-                {/* Navigation buttons */}
-                <button className="team-next flex-center w-[45px] h-[45px]  absolute top-1/2 -translate-y-1/2 -left-2 lg:-left-10 z-10">
-                    <MdOutlineArrowBackIos size={32} className="" />
-                </button>
-                <button className="team-prev flex-center w-[45px] h-[45px]  absolute top-1/2 -translate-y-1/2 -right-2 lg:-right-10 z-10">
-                    <MdOutlineArrowForwardIos size={32} className="" />
-                </button>
+                <NavigationButtons prevClassName="team-prev" nextClassName="team-next" />
+
             </div>
         </section>
     );

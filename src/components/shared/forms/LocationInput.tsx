@@ -152,7 +152,6 @@ function LocationInput<T extends FieldValues>({ control, name }: LocationInputPr
                             min={-90}
                             max={90}
                             inputMode="decimal"
-                            aria-label={t("latitude")}
                             placeholder={t("latitudePlaceholder", { lat: latInput })}
                             value={latInput}
                             onChange={(e) => {
@@ -182,7 +181,6 @@ function LocationInput<T extends FieldValues>({ control, name }: LocationInputPr
                             min={-180}
                             max={180}
                             inputMode="decimal"
-                            aria-label={t("longitude")}
                             placeholder={t("longitudePlaceholder", { lng: lngInput })}
                             value={lngInput}
                             onChange={(e) => {

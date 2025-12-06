@@ -5,8 +5,17 @@
     "description": "اكتشف وأدر العقارات مع قنوف.",
     "lang": "English"
   },
+  "notFound": {
+    "oopsTitle": "عذرًا، الصفحة غير موجودة!",
+    "oopsMessage": "الصفحة التي تبحث عنها غير موجودة (قد تكون نُقلت أو حُذفت أو أنها غير متوفرة). نأسف على الإزعاج.",
+    "oopsHint": "إذا كنت تعتقد أن هذا خطأ أو أن هناك مشكلة، يرجى الإبلاغ عنها.",
+    "goHome": "العودة إلى الصفحة الرئيسية"
+  },
   "comman": {
     "datePlaceholder": "حدد نطاق التاريخ",
+    "retry": "إعادة المحاولة",
+    "errorTitle": "عذرًا، حدث خطأ ما",
+    "errorLoading": "فشل في تحميل البيانات",
     "cancel": "إلغاء",
     "save": "حفظ",
     "form": {
@@ -643,6 +652,7 @@
       "rentalsContracts": "الإيجارات والعقود",
       "properties": "العقارات",
       "revenueSummary": "ملخص الإيرادات",
+      "departments": "الأقسام",
       "notifications": "الإشعارات",
       "chat": "المحادثات",
       "contactUs": "اتصل بنا",
@@ -879,25 +889,97 @@
         "edit": "تعديل العضو",
         "deleteTitle": "حذف",
         "formText": "عرض النموذج",
+        "emptyTitle": "لم يتم العثور على أعضاء الفريق",
+        "emptyMessage": "لا يوجد أعضاء فريق حالياً. الرجاء إضافة أعضاء جدد.",
         "delete": {
           "title": "حذف عضو الفريق",
-          "subtitle": "هل أنت متأكد أنك تريد إزالة هذا العضو من الفريق؟",
+          "subtitle": "هل أنت متأكد أنك تريد حذف <strong>{name}</strong>؟",
+          "cancel": "إلغاء",
           "actionText": "حذف",
-          "cancel": "إلغاء"
+          "deleting": "جاري حذف <strong>{name}</strong>...",
+          "success": "تم حذف <strong>{name}</strong> بنجاح.",
+          "error": "فشل في حذف <strong>{name}</strong>."
         },
         "form": {
           "form": "نموذج عضو الفريق",
           "name": "الاسم",
+          "namePlaceholder": "أدخل اسم العضو",
+          "job": "المسمى الوظيفي",
+          "jobPlaceholder": "أدخل المسمى الوظيفي",
+          "description_en": "الوصف (إنجليزي)",
+          "description_ar": "الوصف (عربي)",
           "email": "البريد الإلكتروني",
-          "phone": "رقم الهاتف",
-          "namePlaceholder": "أدخل الاسم الكامل",
           "emailPlaceholder": "أدخل البريد الإلكتروني",
+          "phone": "رقم الهاتف",
           "phonePlaceholder": "أدخل رقم الهاتف",
-          "upload": "رفع صورة",
-          "noFile": "لم يتم اختيار ملف"
+          "upload": "رفع الصورة",
+          "noFile": "لا يوجد ملف",
+          "validation": {
+            "required": "هذا الحقل مطلوب",
+            "maxLength": "تجاوز الحد الأقصى للطول ({max})",
+            "email": "عنوان البريد الإلكتروني غير صالح",
+            "imageRequired": "يرجى رفع صورة"
+          },
+          "actions": {
+            "create": "إنشاء",
+            "update": "تحديث",
+            "cancel": "إلغاء",
+            "creating": "جارٍ إنشاء عضو الفريق...",
+            "updating": "جارٍ تحديث عضو الفريق...",
+            "createSuccess": "تم إنشاء عضو الفريق بنجاح",
+            "updateSuccess": "تم تحديث عضو الفريق بنجاح",
+            "error": "حدث خطأ. حاول مرة أخرى"
+          }
         },
         "cancel": "إلغاء",
         "addAction": "إضافة عضو",
+        "editAction": "حفظ التعديلات"
+      },
+      "departments": {
+        "title": "الأقسام",
+        "add": "إضافة قسم جديد",
+        "edit": "تعديل القسم",
+        "deleteTitle": "حذف",
+        "formText": "عرض النموذج",
+        "emptyTitle": "لم يتم العثور على الأقسام",
+        "emptyMessage": "لا توجد أقسام حالياً. الرجاء إضافة أقسام جديدة.",
+        "delete": {
+          "title": "حذف القسم",
+          "subtitle": "هل أنت متأكد أنك تريد حذف <strong>{name}</strong>؟",
+          "cancel": "إلغاء",
+          "actionText": "حذف",
+          "deleting": "جاري حذف <strong>{name}</strong>...",
+          "success": "تم حذف <strong>{name}</strong> بنجاح.",
+          "error": "فشل في حذف <strong>{name}</strong>."
+        },
+        "form": {
+          "form": "نموذج القسم",
+          "title_en": "العنوان (إنجليزي)",
+          "title_enPlaceholder": "أدخل العنوان باللغة الإنجليزية",
+          "title_ar": "العنوان (عربي)",
+          "title_arPlaceholder": "أدخل العنوان باللغة العربية",
+          "description_en": "الوصف (إنجليزي)",
+          "description_ar": "الوصف (عربي)",
+          "upload": "رفع الصورة",
+          "noFile": "لا يوجد ملف",
+          "validation": {
+            "required": "هذا الحقل مطلوب",
+            "maxLength": "تجاوز الحد الأقصى للطول ({max})",
+            "imageRequired": "يرجى رفع صورة"
+          },
+          "actions": {
+            "create": "إنشاء",
+            "update": "تحديث",
+            "cancel": "إلغاء",
+            "creating": "جارٍ إنشاء القسم...",
+            "updating": "جارٍ تحديث القسم...",
+            "createSuccess": "تم إنشاء القسم بنجاح",
+            "updateSuccess": "تم تحديث القسم بنجاح",
+            "error": "حدث خطأ. حاول مرة أخرى"
+          }
+        },
+        "cancel": "إلغاء",
+        "addAction": "إضافة قسم",
         "editAction": "حفظ التعديلات"
       },
       "blog": {
@@ -921,25 +1003,49 @@
         }
       },
       "about": {
+        "validation": {
+          "titleRequired": "العنوان مطلوب",
+          "titleMax": "يجب ألا يزيد العنوان عن 255 حرفًا",
+          "contentRequired": "المحتوى مطلوب",
+          "imageRequired": "الصورة مطلوب"
+        },
         "title": "محتوي صفحة من نحن",
         "vision": {
           "title": "رؤيتنا",
-          "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
+          "defaultTitle": "رؤيتنا"
+        },
+        "mission": {
+          "title": "مهمتنا",
+          "defaultTitle": "مهمتنا"
         },
         "goals": {
           "title": "أهدافنا",
-          "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
+          "defaultTitle": "أهدافنا"
         },
-        "missions": {
-          "title": "مهمتنا",
-          "description": "تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية في المستندات دون الحاجة إلى محتوى فعلي. تم إنشاء لوريم إيبسوم كنص وهمي، منسق بطريقة معينة لعرض العناصر الرسومية"
+        "history": {
+          "title": "تاريخنا",
+          "defaultTitle": "تاريخنا"
+        },
+        "why_us": {
+          "title": "لماذا قنف",
+          "defaultTitle": "لماذا قنف"
         },
         "edit": "تعديل",
+        "noContent": "لا يوجد محتوى حالياً",
+        "saving": "جاري الحفظ...",
+        "saved": "تم الحفظ",
+        "errors": {
+          "failed": "فشل الحفظ"
+        },
         "form": {
-          "title": "العنوان",
-          "titlePlaceholder": "أدخل عنوان القسم",
-          "message": "الرسالة",
-          "messagePlaceholder": "أدخل نص الرسالة",
+          "title_en": "العنوان (EN)",
+          "title_ar": "العنوان (AR)",
+          "title_en_placeholder": "أدخل العنوان باللغة الإنجليزية",
+          "title_ar_placeholder": "أدخل العنوان باللغة العربية",
+          "content_en": "المحتوى (EN)",
+          "content_ar": "المحتوى (AR)",
+          "content_en_placeholder": "أدخل المحتوى باللغة الإنجليزية",
+          "content_ar_placeholder": "أدخل المحتوى باللغة العربية",
           "cancel": "إلغاء",
           "save": "حفظ التعديلات"
         }
@@ -996,5 +1102,11 @@
         "save": "حفظ"
       }
     }
+  },
+  "Pagination": {
+    "previous": "الصفحة السابقة",
+    "next": "الصفحة التالية",
+    "jumpBack": "الرجوع {count} صفحات",
+    "jumpForward": "التقدم {count} صفحات"
   }
 }

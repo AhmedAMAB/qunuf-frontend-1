@@ -74,7 +74,6 @@ export default function DashboardSidebar() {
 
                 <button
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-lighter hover:bg-gray text-dark lg:hidden w-full justify-start"
-                    aria-label={t("logout")}
                 >
                     <IoLogOutOutline className="w-6 h-6" />
                     <span className="text-sm font-medium">{t("logout")}</span>
@@ -86,7 +85,6 @@ export default function DashboardSidebar() {
                         position="top-left">
                         <button
                             className="w-[44px] h-[44px] flex items-center justify-center rounded-full  hover:bg-gray text-dark"
-                            aria-label={t("logout")}
                         >
                             <IoLogOutOutline className="w-6 h-6" />
                         </button>

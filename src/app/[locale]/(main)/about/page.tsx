@@ -33,8 +33,14 @@ export default async function AboutPage() {
     ]);
 
     // Extract actual data
-    const teams: Team[] = teamsRes.data.data || [];
-    const departments: Department[] = departmentsRes.data.data || [];
+    const { records: TeamRecords } = teamsRes.data.data;
+
+    // Explicitly type records as Team[]
+    const teams: Team[] = TeamRecords;
+
+    const { records: departmentsRecords } = departmentsRes.data.data;
+
+    const departments: Department[] = departmentsRecords;
     const companyInfo: CompanyInfo[] = companyInfoRes.data.data || [];
 
     // Helper function to get localized text
@@ -65,11 +71,11 @@ export default async function AboutPage() {
                     <div className="flex flex-col gap-[60px] md:gap-[80px] lg:gap-[100px]">
 
                         {historyInfo && (
-                                <AboutMainSection  data-aos="fade-up"title={getLocalizedText(historyInfo.title_en, historyInfo.title_ar)} imageSrc={historyInfo.imagePath ? resolveUrl(historyInfo.imagePath) : '/about/History.jpg'} text={getLocalizedText(historyInfo.content_en, historyInfo.content_ar)} />
+                            <AboutMainSection data-aos="fade-up" title={getLocalizedText(historyInfo.title_en, historyInfo.title_ar)} imageSrc={historyInfo.imagePath ? resolveUrl(historyInfo.imagePath) : '/about/History.jpg'} text={getLocalizedText(historyInfo.content_en, historyInfo.content_ar)} />
                         )}
 
                         {whyUsInfo && (
-                                <AboutMainSection data-aos="fade-up" title={getLocalizedText(whyUsInfo.title_en, whyUsInfo.title_ar)} imageSrc={whyUsInfo.imagePath ? resolveUrl(whyUsInfo.imagePath) : '/about/Why.jpg'} reverse text={getLocalizedText(whyUsInfo.content_en, whyUsInfo.content_ar)} />
+                            <AboutMainSection data-aos="fade-up" title={getLocalizedText(whyUsInfo.title_en, whyUsInfo.title_ar)} imageSrc={whyUsInfo.imagePath ? resolveUrl(whyUsInfo.imagePath) : '/about/Why.jpg'} reverse text={getLocalizedText(whyUsInfo.content_en, whyUsInfo.content_ar)} />
                         )}
 
                     </div>
@@ -77,32 +83,32 @@ export default async function AboutPage() {
 
                     <div className="flex flex-col gap-7 lg:flex-row md:flex-wrap">
                         {visionInfo && (
-                                <AboutInfoCard
+                            <AboutInfoCard
                                 data-aos="fade-up" data-aos-delay="100"
-                                    title={getLocalizedText(visionInfo.title_en, visionInfo.title_ar)}
-                                    text={getLocalizedText(visionInfo.content_en, visionInfo.content_ar)}
-                                />
+                                title={getLocalizedText(visionInfo.title_en, visionInfo.title_ar)}
+                                text={getLocalizedText(visionInfo.content_en, visionInfo.content_ar)}
+                            />
                         )}
 
                         {missionInfo && (
-                                <AboutInfoCard
+                            <AboutInfoCard
                                 data-aos="fade-up" data-aos-delay="200"
-                                    title={getLocalizedText(missionInfo.title_en, missionInfo.title_ar)}
-                                    text={getLocalizedText(missionInfo.content_en, missionInfo.content_ar)}
-                                />
+                                title={getLocalizedText(missionInfo.title_en, missionInfo.title_ar)}
+                                text={getLocalizedText(missionInfo.content_en, missionInfo.content_ar)}
+                            />
                         )}
 
                         {goalsInfo && (
-                                <AboutInfoCard
+                            <AboutInfoCard
                                 data-aos="fade-up" data-aos-delay="300"
-                                    title={getLocalizedText(goalsInfo.title_en, goalsInfo.title_ar)}
-                                    text={getLocalizedText(goalsInfo.content_en, goalsInfo.content_ar)}
-                                />
+                                title={getLocalizedText(goalsInfo.title_en, goalsInfo.title_ar)}
+                                text={getLocalizedText(goalsInfo.content_en, goalsInfo.content_ar)}
+                            />
                         )}
 
                     </div>
 
-                    <AboutDepartments departments={departments} locale={locale} isArabic={isArabic} />
+                    <AboutDepartments departments={departments} isArabic={isArabic} />
 
                 </div>
                 <TeamSection teams={teams} locale={locale} isArabic={isArabic} />

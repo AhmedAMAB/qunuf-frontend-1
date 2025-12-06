@@ -2,15 +2,17 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IconType } from "react-icons";
 
 import ActionButtons from "./ActionButtons";
+import { ReactNode } from "react";
 
 interface ActionPopupProps {
-    title: string;
-    subtitle?: string;
+    title: string | ReactNode;
+    subtitle?: string | ReactNode;
     MainIcon: IconType;
     mainIconColor?: string;
     note?: string;
     cancelText?: string;
     actionText: string;
+    isDisabled?: boolean;
     onCancel: () => void;
     onAction: () => void;
 }
@@ -18,6 +20,7 @@ interface ActionPopupProps {
 export default function ActionPopup({
     title,
     subtitle,
+    isDisabled,
     MainIcon,
     mainIconColor = 'var(--light)',
     note,
@@ -53,11 +56,11 @@ export default function ActionPopup({
 
             {/* Buttons */}
             <ActionButtons
-                onAction={onCancel}
-                onCancel={onAction}
-                actionText={cancelText}
-                cancelText={actionText}
-                isDisabled={false}
+                onAction={onAction}
+                onCancel={onCancel}
+                actionText={actionText}
+                cancelText={cancelText}
+                isDisabled={isDisabled}
             />
         </div>
     );

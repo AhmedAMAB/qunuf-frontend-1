@@ -1,3 +1,5 @@
+import FormErrorMessage from "./FormErrorMessage";
+
 interface TextInputProps {
     label: string;
     placeholder?: string;
@@ -44,7 +46,7 @@ export default function TextInput({
                 placeholder={placeholder}
                 className={`border ${error ? 'border-red-500' : 'border-gray'} rounded-[8px] p-6 h-[44px] text-[16px] leading-[24px] text-dark placeholder-[var(--placeholder)]`}
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            <FormErrorMessage message={error} />
         </div>
     );
 }

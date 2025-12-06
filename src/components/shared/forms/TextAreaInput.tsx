@@ -1,10 +1,13 @@
+import FormErrorMessage from "./FormErrorMessage";
+
 type TextAreaInputProps = {
     label?: string; // optional
     placeholder?: string;
-    value: string;
+    value?: string;
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     className?: string;
     rows?: number;
+    error?: string;
 };
 
 export default function TextAreaInput({
@@ -13,6 +16,7 @@ export default function TextAreaInput({
     value,
     onChange,
     className,
+    error,
     rows = 4,
 }: TextAreaInputProps) {
     return (
@@ -32,6 +36,7 @@ export default function TextAreaInput({
                 rows={rows}
                 className="border border-gray rounded-[8px] p-3 text-[16px] leading-[24px] text-dark placeholder-[var(--placeholder)] resize-none"
             />
+            <FormErrorMessage message={error} />
         </div>
     );
 }
