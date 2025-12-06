@@ -144,12 +144,14 @@ export default function DepartmentsGrid() {
             )}
 
             {/* Pagination */}
+            {/* Pagination */}
             <Pagination
                 page={page}
-                recordsCount={pagination.total}
+                total={46}
                 setPage={setPage}
                 loading={loading}
-                totalPages={pagination.totalPages}
+                totalPages={3}
+                limit={pagination.limit}
             />
 
             {/* Add/Edit Popup */}

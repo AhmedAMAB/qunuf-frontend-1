@@ -110,7 +110,7 @@ export default function DataView<T = Record<string, any>>({
                     />
                 )}
 
-                <TablePagination pageCount={pageCount} pageSize={pageSize} totalRowsCount={totalRowsCount} />
+                <TablePagination pageCount={pageCount} pageSize={pageSize} total={totalRowsCount} />
             </div>
         </DashboardCard>
     );

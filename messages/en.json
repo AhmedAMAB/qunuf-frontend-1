@@ -95,7 +95,8 @@
       "blog": "Blogs",
       "contact": "Contact Us",
       "dashboard": "Dashboard",
-      "login": "Sign in"
+      "login": "Sign in",
+      "logout": "Logout"
     }
   },
   "homePage": {
@@ -236,19 +237,29 @@
     "form": {
       "getIn": "Get in",
       "touch": "Touch",
-      "headerMessage": "We’re happy to hear from you for any inquiries, support, or collaboration.",
+      "headerMessage": "We'd love to hear from you. Please fill out the form below.",
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
-      "fax": "Fax",
-      "reason": {
-        "placeholder": "Select a reason for contacting",
-        "support": "Technical Support",
-        "sales": "Sales",
-        "partnership": "Partnerships",
-        "other": "Other"
+      "message": {
+        "label": "How did you find us?",
+        "placeholder": "Select an option",
+        "options": {
+          "search_engine": "Search Engine",
+          "social_media": "Social Media",
+          "friend_referral": "Friend Referral",
+          "other": "Other"
+        }
       },
-      "send": "Send"
+      "send": "Send",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully!",
+      "error": "Failed to send message.",
+      "validation": {
+        "required": "This field is required",
+        "email": "Invalid email address",
+        "invalidPhone": "Invalid phone number"
+      }
     }
   },
   "blogs": {
@@ -686,7 +697,10 @@
       "previous": "Previous",
       "next": "Next",
       "lastPage": "Last Page",
-      "showingEntries": "Showing {start} to {end} of {total} entries"
+      "showingEntries": "Showing {start} to {end} of {total} entries",
+      "showing": "Showing {start} to {end} of {total}",
+      "jumpBack": "Jump back {{count}} pages",
+      "jumpForward": "Jump forward {{count}} pages"
     },
     "notification": {
       "title": "Last Notifications",
@@ -917,7 +931,8 @@
             "required": "This field is required",
             "maxLength": "Exceeds maximum length ({max})",
             "email": "Invalid email address",
-            "imageRequired": "Please upload an image"
+            "imageRequired": "Please upload an image",
+            "invalidPhone": "Invalid phone number"
           },
           "actions": {
             "create": "Create",
@@ -1095,11 +1110,5 @@
       "categoryPlaceholder": "Select category",
       "save": "Save"
     }
-  },
-  "Pagination": {
-    "previous": "Previous page",
-    "next": "Next page",
-    "jumpBack": "Jump back {{count}} pages",
-    "jumpForward": "Jump forward {{count}} pages"
   }
 }

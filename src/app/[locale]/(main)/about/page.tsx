@@ -12,7 +12,6 @@ import { CompanySection, type Team, type Department, type CompanyInfo } from "@/
 import { resolveUrl } from "@/utils/upload";
 
 
-
 export async function generateMetadata() {
     const t = await getTranslations("about");
 

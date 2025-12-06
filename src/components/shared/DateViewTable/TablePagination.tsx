@@ -9,10 +9,10 @@ import { useTranslations } from 'next-intl';
 interface PaginationControllerProps {
     pageCount: number;
     pageSize: number;
-    totalRowsCount: number;
+    total: number;
 }
 
-export default function TablePagination({ pageCount, pageSize, totalRowsCount }: PaginationControllerProps) {
+export default function TablePagination({ pageCount, pageSize, total }: PaginationControllerProps) {
 
     const t = useTranslations('dashboard.pagination');
     const searchParams = useSearchParams();
@@ -27,10 +27,10 @@ export default function TablePagination({ pageCount, pageSize, totalRowsCount }:
     };
 
     const startEntry = (currentPage - 1) * pageSize + 1;
-    const endEntry = Math.min(currentPage * pageSize, totalRowsCount);
+    const endEntry = Math.min(currentPage * pageSize, total);
 
     return (
-        totalRowsCount > 0 && (
+        total > 0 && (
             <div className="flex justify-between flex-col-reverse flex-nowrap lg:flex-row lg:items-center gap-3 pt-5 lg:pt-7 mb-2 w-full">
                 {pageCount > 1 ? <Pagination
                     currentPage={currentPage}
@@ -41,7 +41,7 @@ export default function TablePagination({ pageCount, pageSize, totalRowsCount }:
                     {t('showingEntries', {
                         start: startEntry,
                         end: endEntry,
-                        total: totalRowsCount
+                        total: total
                     })}
                 </span>
             </div>

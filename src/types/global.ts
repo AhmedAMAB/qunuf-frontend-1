@@ -2,6 +2,6 @@
 
 export type Locale = "en" | "ar";
 
-export type Role = 'tenant' | 'landlord' | 'admin';
+export type Role = 'admin' | 'tenant' | 'landlord';
 
 export type ContractStatus = 'free' | 'reserved';

@@ -159,10 +159,11 @@ export default function TeamGrid() {
             {/* Pagination */}
             <Pagination
                 page={page}
-                recordsCount={pagination.total}
+                total={pagination.total}
                 setPage={setPage}
                 loading={loading}
                 totalPages={pagination.totalPages}
+                limit={pagination.limit}
             />
 
             {/* Add Member Popup */}

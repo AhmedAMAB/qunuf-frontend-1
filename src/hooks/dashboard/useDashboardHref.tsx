@@ -1,14 +1,14 @@
-import { DashboardPathKey, dashboardPaths, getDashboardHref } from "@/utils/dashboardPaths";
-import { useRoleFromPath } from "./useRoleFromPath";
+import { DashboardPathKey, getDashboardHref } from "@/utils/dashboardPaths";
+import { useAuth } from "@/contexts/AuthContext";
 
 export function useDashboardHref() {
-    const role = useRoleFromPath();
+    const { role } = useAuth();
 
     const getHref = (
         key: DashboardPathKey,
         query?: Record<string, string | number | boolean>
     ): string => {
-        return getDashboardHref(role, key, query);
+        return getDashboardHref(key, query);
     };
 
     return { getHref, role };

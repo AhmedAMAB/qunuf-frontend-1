@@ -3,12 +3,12 @@ import StatCard from "@/components/dashboard/StatCard";
 import { BiBuildings } from "react-icons/bi";
 import { IoCardOutline } from "react-icons/io5";
 import { IoIosTrendingUp } from "react-icons/io";
-import { getTranslations } from "next-intl/server";
 import RentedPropertyCard from "@/components/dashboard/landlord/RentedPropertyCard";
 import MaintenanceRequestCard from "@/components/dashboard/admin/MaintenanceRequestCard";
 import { MaintenanceRequestCardType } from "@/types/dashboard/maintenance";
 import { ReportSalesChart } from "@/components/dashboard/admin/ReportSalesChart";
 import { CostBreakdownChart } from "@/components/dashboard/admin/CostBreakdownChart";
+import { useTranslations } from "next-intl";
 
 const transactions = [
     {
@@ -115,11 +115,10 @@ const requests: MaintenanceRequestCardType[] = [
     },
 ];
 
-export default async function AdminPage() {
-    const [tAdmin, tStat] = await Promise.all([
-        getTranslations("dashboard.admin.root"),
-        getTranslations("dashboard.statistics"),
-    ]);
+export default function AdminDashboard() {
+    const tStat = useTranslations('dashboard.statistics');
+    const tAdmin = useTranslations('dashboard.admin.root');
+
 
     return (
         <div className="space-y-4 h-full overflow-hidden">

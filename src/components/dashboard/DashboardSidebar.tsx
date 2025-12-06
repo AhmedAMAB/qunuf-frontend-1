@@ -1,31 +1,32 @@
 'use client';
 
-import { useNormalizedPath } from '@/hooks/useNormalizedPath';
 import { dashboardItems, SidebarLink } from '@/constants/dashboardItems';
 import { useTranslations } from 'next-intl';
 import Logo from '../shared/Logo';
 import Tooltip from '../shared/Tooltip';
-import { IoChatbubbleEllipsesOutline, IoLogOutOutline, IoNotificationsOutline, IoSettingsOutline } from 'react-icons/io5';
-import { FaHeadset } from 'react-icons/fa';
+import { IoLogOutOutline } from 'react-icons/io5';
 import FallbackImage from '../shared/FallbackImage';
 import SidebarItem from '../shared/SidebarItem';
 import LocaleSwitcher from '../shared/LocaleSwitcher';
 import { GrLanguage } from 'react-icons/gr';
-import { useDashboardHref } from '@/hooks/dashboard/useDashboardHref';
-import { isPathActive } from '@/utils/dashboardPaths';
+import { usePathname } from '@/i18n/navigation';
+import { useMemo } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 
 
 
 export default function DashboardSidebar() {
     const t = useTranslations('dashboard.sidebar');
-    const { normalizedPath } = useNormalizedPath();
+    const pathname = usePathname();
+    const { role } = useAuth()
 
-    const { getHref, role } = useDashboardHref();
-    let items: SidebarLink[] = [];
+    let items: SidebarLink[] = role ? dashboardItems[role] : [];
 
-    if (role) {
-        items = dashboardItems[role];
-    }
+    const activeHref = useMemo(() => {
+        if (!pathname) return items[0]?.href;
+        const match = items.find(i => pathname.startsWith(i.href));
+        return match?.href ?? items[0]?.href;
+    }, [pathname, items]);
 
     return (
 
@@ -36,35 +37,19 @@ export default function DashboardSidebar() {
             </div>
 
             <div className='lg:bg-card-bg rounded-[55px] p-2 space-y-2 lg:space-y-1 max-lg:w-full lg:mt-10'>
-                {items.map(({ href, key, Icon }) => {
-                    const isActive = normalizedPath === href;
+                {items.map(({ href, key, Icon, className }) => {
+                    const isActive = activeHref === href;
                     return (
-                        <SidebarItem
-                            key={href}
-                            href={href}
-                            label={t(key)}
-                            isActive={isActive}
-                            Icon={Icon}
-                        />
+                        <div className={`${className}`} key={href}>
+                            <SidebarItem
+                                href={href}
+                                label={t(key)}
+                                isActive={isActive}
+                                Icon={Icon}
+                            />
+                        </div>
                     );
                 })}
-
-
-                <div className="lg:mt-12 space-y-1">
-                    <SidebarItem
-                        href={getHref('settings')}
-                        label={t("settings")}
-                        isActive={isPathActive(normalizedPath, role, 'settings')}
-                        Icon={IoSettingsOutline}
-                    />
-
-                    <SidebarItem
-                        href={getHref('support')}
-                        label={t("support")}
-                        isActive={isPathActive(normalizedPath, role, 'support')}
-                        Icon={FaHeadset}
-                    />
-                </div>
 
             </div>
 

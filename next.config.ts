@@ -14,25 +14,12 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "localhost",
         port: "8081",
-        pathname: "/uploads/**",
+        pathname: "/**",
       },
     ],
   },
 
-  async redirects() {
-    return [
-      {
-        source: '/en/dashboard',
-        destination: '/en/dashboard/tenant',
-        permanent: true,
-      },
-      {
-        source: '/ar/dashboard',
-        destination: '/ar/dashboard/tenant',
-        permanent: true
-      }
-    ]
-  },
+
 };
 
 export default withNextIntl(nextConfig);

@@ -3,9 +3,9 @@ import StatCard from "@/components/dashboard/StatCard";
 import { BiBuildings } from "react-icons/bi";
 import { IoIosTrendingUp } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
-import PropertyCard from "../PropertCard";
-import { getTranslations } from "next-intl/server";
+import PropertyCard from "./PropertCard";
 import { getDashboardHref } from "@/utils/dashboardPaths";
+import { useTranslations } from "next-intl";
 
 
 const properties = [
@@ -61,11 +61,11 @@ const properties = [
 ];
 
 
-export default async function TenantPage() {
-    const [tStat, tTenant] = await Promise.all([
-        getTranslations('dashboard.statistics'),
-        getTranslations('dashboard.tenant.root')
-    ]);
+export default function TenantDashboard() {
+
+    const tStat = useTranslations('dashboard.statistics');
+    const tTenant = useTranslations('dashboard.tenant.root');
+
 
     return (
         <div className="space-y-4">
@@ -106,7 +106,7 @@ export default async function TenantPage() {
             <DashboardCard
                 title={tTenant('lastRentedProperties')}
                 linkLabel={tStat('seeAll')}
-                linkHref={getDashboardHref('tenant', 'contracts')}
+                linkHref={getDashboardHref('contracts')}
                 className="max-h-[620px] overflow-y-auto thin-scrollbar"
             >
                 <div className="divide-y divide-gray-300">

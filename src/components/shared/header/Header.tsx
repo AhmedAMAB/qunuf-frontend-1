@@ -1,17 +1,22 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNormalizedPath } from '@/hooks/useNormalizedPath';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import LocaleSwitcher from '../LocaleSwitcher';
 import { useTranslations } from 'next-intl';
 import Logo from '../Logo';
 import SecondaryButton from '../buttons/SecondaryButton';
+import { useAuth } from '@/contexts/AuthContext';
+import { FiLogOut } from 'react-icons/fi';
+
+
 
 export default function Header() {
-  const { normalizedPath } = useNormalizedPath();
+  const pathname = usePathname();
+  const { role, logout, LoggingOut } = useAuth()
   const t = useTranslations('header');
+
 
   const [isPinned, setIsPinned] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -58,13 +63,21 @@ export default function Header() {
     { label: t('nav.blog'), href: '/blog' },
     { label: t('nav.about'), href: '/about' },
     { label: t('nav.contact'), href: '/contact' },
-    { label: t('nav.dashboard'), href: '/dashboard' },
+    // Only include dashboard if role exists
+    ...(role
+      ? [{ label: t('nav.dashboard'), href: '/dashboard' }]
+      : []),
   ];
+
 
   // Typography upgrades via classes
   const linkBase = 'relative inline-flex items-center font-medium tracking-[0.01em] text-[15px] md:text-[16px] xl:text-[17px] ' + 'transition-colors outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2';
   const linkActive = 'text-slate-900 after:absolute after:-bottom-1 after:start-0 after:h-[2px] after:w-full after:bg-secondary after:rounded-full';
   const linkIdle = 'text-slate-900 hover:text-slate-700';
+
+  async function onLogout() {
+    await logout()
+  }
 
   return (
     <header id='main-header' ref={headerRef} className={['fixed left-0 top-0 md:!top-4 z-50 w-full transition-transform duration-300 will-change-transform', isHidden ? '-translate-y-[100px]' : 'translate-y-0'].join(' ')} >
@@ -82,9 +95,11 @@ export default function Header() {
         </div>
 
         {/* Desktop nav */}
+
         <nav className='navbar me-auto ms-6 hidden md:flex items-center gap-5 lg:gap-7' >
           {navLinks.map(({ label, href }) => {
-            const active = normalizedPath === href;
+            const active = pathname === href;
+
             return (
               <Link key={href} href={href} className={[linkBase, active ? linkActive : linkIdle, 'leading-6'].join(' ')} aria-current={active ? 'page' : undefined}>
                 <span className='pb-1'>{label}</span>
@@ -93,12 +108,22 @@ export default function Header() {
           })}
         </nav>
 
+
         {/* Actions */}
         <div className='flex items-center gap-2'>
-          <SecondaryButton href='/sign-in' className='bg-secondary hover:bg-secondary-hover text-white focus-visible:ring-2 focus-visible:ring-secondary/70 focus-visible:ring-offset-2 text-[14px] md:text-[15px] font-semibold'>
-            {t('nav.login')}
-          </SecondaryButton>
+          {role ? (
+
+            <button onClick={onLogout} title={t('nav.logout')} disabled={LoggingOut}>
+              <FiLogOut size={24} className="text-secondary" />
+            </button>
+          ) : (
+
+            <SecondaryButton href='/auth/sign-in' className='bg-secondary hover:bg-secondary-hover text-white focus-visible:ring-2 focus-visible:ring-secondary/70 focus-visible:ring-offset-2 text-[14px] md:text-[15px] font-semibold'>
+              {t('nav.login')}
+            </SecondaryButton>
+          )}
           <LocaleSwitcher />
+
 
           {/* Mobile toggle */}
           <button ref={toggleRef} id='menu-toggle' aria-controls='mobile-menu' aria-expanded={menuOpen} onClick={() => setMenuOpen(prev => !prev)} className='md:hidden rounded-md p-2 text-slate-800/90 hover:bg-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 transition'>
@@ -126,7 +151,7 @@ export default function Header() {
 
           <nav className='mt-2 divide-y divide-slate-100 text-[#1f2937]' >
             {navLinks.map(({ label, href }) => {
-              const active = normalizedPath === href;
+              const active = pathname === href;
               return (
                 <Link key={href} href={href} onClick={() => setMenuOpen(false)} className={['block px-4 py-3 text-[16px] font-medium tracking-[0.01em] transition-colors', active ? 'text-secondary' : 'text-slate-700 hover:text-slate-900'].join(' ')} aria-current={active ? 'page' : undefined}>
                   {label}
@@ -135,11 +160,11 @@ export default function Header() {
             })}
           </nav>
 
-          <div className='px-4 pt-3'>
+          {!role && <div className='px-4 pt-3'>
             <SecondaryButton href='/sign-in' className='w-full bg-secondary hover:bg-secondary-hover text-white focus-visible:ring-2 focus-visible:ring-secondary/70 focus-visible:ring-offset-2 text-[15px] font-semibold'>
               {t('nav.login')}
             </SecondaryButton>
-          </div>
+          </div>}
 
           <div className='h-[env(safe-area-inset-bottom)]' />
         </div>

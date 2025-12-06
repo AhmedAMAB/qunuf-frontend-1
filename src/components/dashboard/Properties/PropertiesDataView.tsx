@@ -11,12 +11,12 @@ import { MenuActionItem } from "@/components/shared/DateViewTable/MenuActionList
 import ActionPopup from "@/components/shared/ActionPopup";
 import { FaHome } from "react-icons/fa";
 import { useProperties } from "@/hooks/properties/useProperties";
-import { useRoleFromPath } from "@/hooks/dashboard/useRoleFromPath";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function PropertiesDataView() {
     const t = useTranslations('dashboard.properties.table');
     const { getRows } = useProperties();
-    const role = useRoleFromPath();
+    const { role } = useAuth();
     return (
         <DataView<PropertyRow>
             columns={PropertyColumns(t)}
@@ -38,7 +38,7 @@ export default function PropertiesDataView() {
                 show: true,
                 label: t('addProperty'),
                 MobileIcon: BiBuilding,
-                href: getDashboardHref(role, 'addProperty'),
+                href: getDashboardHref('addProperty'),
             }}
             pageSize={10}
         />

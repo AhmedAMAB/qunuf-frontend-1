@@ -6,7 +6,6 @@ import PingIndicator from "../shared/PingIndicator";
 import LocaleSwitcher from "../shared/LocaleSwitcher";
 import { GrLanguage } from "react-icons/gr";
 import { useTranslations } from "next-intl";
-import { useRoleFromPath } from "@/hooks/dashboard/useRoleFromPath";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import MobileDashboardIcons from "./MobileDashboardIcons";
 import { RxDotsHorizontal } from "react-icons/rx";

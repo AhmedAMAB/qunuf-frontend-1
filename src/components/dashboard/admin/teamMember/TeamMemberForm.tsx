@@ -13,6 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
 import api from '@/libs/axios';
 import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
+import { phoneSchema } from '@/utils/validation';
 
 export const getTeamMemberSchema = (t: (key: string, params?: any) => string) =>
     z.object({
@@ -34,10 +35,7 @@ export const getTeamMemberSchema = (t: (key: string, params?: any) => string) =>
             .string()
             .nonempty({ message: t("validation.required") }),
 
-        phone: z
-            .string()
-            .max(50, { message: t("validation.maxLength", { max: 50 }) })
-            .nonempty({ message: t("validation.required") }),
+        phone: phoneSchema,
 
         email: z
             .email({ message: t("validation.email") })

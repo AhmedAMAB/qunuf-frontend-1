@@ -1,11 +1,11 @@
 import { LuLayoutDashboard } from 'react-icons/lu';
-import { FaRegNewspaper } from 'react-icons/fa';
+import { FaHeadset, FaRegNewspaper } from 'react-icons/fa';
 import { MdOutlineFactCheck, MdOutlinePayments } from 'react-icons/md';
 import { Role } from '@/types/global';
 import { ComponentType, SVGProps } from 'react';
 import { TbBuildingCommunity, TbContract } from 'react-icons/tb';
 import { PiBuildingApartment } from 'react-icons/pi';
-import { IoAnalytics } from 'react-icons/io5';
+import { IoAnalytics, IoSettingsOutline } from 'react-icons/io5';
 import { getDashboardHref } from '@/utils/dashboardPaths';
 import { GrContact } from 'react-icons/gr';
 import { HiOutlineUserGroup, HiOutlineUsers } from 'react-icons/hi2';
@@ -15,31 +15,39 @@ export type SidebarLink = {
     // key used to get translations
     key: string;
     Icon: ComponentType<SVGProps<SVGSVGElement>>;
+    className?: string
 };
 
+const common: SidebarLink[] = [
+    { href: getDashboardHref('settings'), key: 'settings', Icon: IoSettingsOutline, className: 'lg:mt-12' },
+    { href: getDashboardHref('support'), key: 'support', Icon: FaHeadset },
+]
 const tenantLinks: SidebarLink[] = [
-    { href: getDashboardHref('tenant', 'root'), key: 'dashboard', Icon: LuLayoutDashboard },
-    { href: getDashboardHref('tenant', 'contracts'), key: 'contracts', Icon: TbContract },
-    { href: getDashboardHref('tenant', 'renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck },
-    { href: getDashboardHref('tenant', 'paymentHistory'), key: 'paymentHistory', Icon: MdOutlinePayments },
+    { href: getDashboardHref('root'), key: 'dashboard', Icon: LuLayoutDashboard },
+    { href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract },
+    { href: getDashboardHref('renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck },
+    { href: getDashboardHref('paymentHistory'), key: 'paymentHistory', Icon: MdOutlinePayments },
+    ...common,
 ];
 
 
 const landlordLinks: SidebarLink[] = [
-    { href: getDashboardHref('landlord', 'root'), key: 'dashboard', Icon: LuLayoutDashboard },
-    { href: getDashboardHref('landlord', 'contracts'), key: 'contracts', Icon: TbContract },
-    { href: getDashboardHref('landlord', 'properties'), key: 'properties', Icon: PiBuildingApartment },
-    { href: getDashboardHref('landlord', 'renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck },
-    { href: getDashboardHref('landlord', 'revenueSummary'), key: 'revenueSummary', Icon: IoAnalytics },
+    { href: getDashboardHref('root'), key: 'dashboard', Icon: LuLayoutDashboard },
+    { href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract },
+    { href: getDashboardHref('properties'), key: 'properties', Icon: PiBuildingApartment },
+    { href: getDashboardHref('renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck },
+    { href: getDashboardHref('revenueSummary'), key: 'revenueSummary', Icon: IoAnalytics },
+    ...common,
 ];
 
 const adminLinks: SidebarLink[] = [
-    { href: getDashboardHref('admin', 'root'), key: 'dashboard', Icon: LuLayoutDashboard },
-    { href: getDashboardHref('admin', 'contactUs'), key: 'contactUs', Icon: GrContact },
-    { href: getDashboardHref('admin', 'blogs'), key: 'blogs', Icon: FaRegNewspaper },
-    { href: getDashboardHref('admin', 'teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers },
-    { href: getDashboardHref('admin', 'aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup },
-    { href: getDashboardHref('admin', 'departments'), key: 'departments', Icon: TbBuildingCommunity },
+    { href: getDashboardHref('root'), key: 'dashboard', Icon: LuLayoutDashboard },
+    { href: getDashboardHref('contactUs'), key: 'contactUs', Icon: GrContact },
+    { href: getDashboardHref('blogs'), key: 'blogs', Icon: FaRegNewspaper },
+    { href: getDashboardHref('teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers },
+    { href: getDashboardHref('aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup },
+    { href: getDashboardHref('departments'), key: 'departments', Icon: TbBuildingCommunity },
+    ...common,
 ];
 
 // sidebar links per role

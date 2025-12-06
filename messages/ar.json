@@ -95,7 +95,8 @@
       "blog": "المدونات",
       "contact": "تواصل معنا",
       "dashboard": "لوحة القيادة",
-      "login": "تسجيل الدخول"
+      "login": "تسجيل الدخول",
+      "logout": "تسجيل الخروج"
     }
   },
   "homePage": {
@@ -237,19 +238,29 @@
     "form": {
       "getIn": "تواصل",
       "touch": "معنا",
-      "headerMessage": "يسعدنا تواصلك معنا لأي استفسار أو دعم أو تعاون.",
+      "headerMessage": "نحب أن نسمع منك. الرجاء تعبئة النموذج أدناه.",
       "name": "الاسم",
       "email": "البريد الإلكتروني",
-      "phone": "الهاتف",
-      "fax": "فاكس",
-      "reason": {
-        "placeholder": "اختر سبب التواصل",
-        "support": "الدعم الفني",
-        "sales": "المبيعات",
-        "partnership": "الشراكات",
-        "other": "أخرى"
+      "phone": "رقم الهاتف",
+      "message": {
+        "label": "كيف عرفت عنا؟",
+        "placeholder": "اختر أحد الخيارات",
+        "options": {
+          "search_engine": "محرك بحث",
+          "social_media": "وسائل التواصل الاجتماعي",
+          "friend_referral": "إحالة صديق",
+          "other": "أخرى"
+        }
       },
-      "send": "إرسال"
+      "send": "إرسال",
+      "sending": "جارٍ الإرسال...",
+      "success": "تم إرسال رسالتك بنجاح!",
+      "error": "فشل في إرسال الرسالة.",
+      "validation": {
+        "required": "هذا الحقل مطلوب",
+        "email": "عنوان البريد الإلكتروني غير صالح",
+        "invalidPhone": "رقم الهاتف غير صالح"
+      }
     }
   },
   "blogs": {
@@ -695,7 +706,10 @@
       "previous": "السابق",
       "next": "التالي",
       "lastPage": "الصفحة الأخيرة",
-      "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل"
+      "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل",
+      "showing": "عرض {start} إلى {end} من أصل {total}",
+      "jumpBack": "الرجوع {count} صفحات",
+      "jumpForward": "التقدم {count} صفحات"
     },
     "contracts": {
       "viewContract": "عرض العقد",
@@ -965,7 +979,8 @@
           "validation": {
             "required": "هذا الحقل مطلوب",
             "maxLength": "تجاوز الحد الأقصى للطول ({max})",
-            "imageRequired": "يرجى رفع صورة"
+            "imageRequired": "يرجى رفع صورة",
+            "invalidPhone": "رقم الهاتف غير صالح"
           },
           "actions": {
             "create": "إنشاء",
@@ -1102,11 +1117,5 @@
         "save": "حفظ"
       }
     }
-  },
-  "Pagination": {
-    "previous": "الصفحة السابقة",
-    "next": "الصفحة التالية",
-    "jumpBack": "الرجوع {count} صفحات",
-    "jumpForward": "التقدم {count} صفحات"
   }
 }

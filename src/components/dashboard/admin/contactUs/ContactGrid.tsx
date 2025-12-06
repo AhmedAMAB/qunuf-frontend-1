@@ -95,7 +95,7 @@ export default function ContactGrid() {
                 <TablePagination
                     pageCount={pageCount}
                     pageSize={pageSize}
-                    totalRowsCount={totalRowsCount}
+                    total={totalRowsCount}
                 />
             </div>
         </div>

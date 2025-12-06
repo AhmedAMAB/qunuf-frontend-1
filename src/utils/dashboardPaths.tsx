@@ -45,12 +45,11 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
 
 
 export function getDashboardHref(
-    role: Role,
     key: DashboardPathKey,
     query?: Record<string, string | number | boolean>
 ): string {
 
-    const basePath = `/dashboard/${role}${dashboardPaths[key]}`;
+    const basePath = `/dashboard/${dashboardPaths[key]}`;
 
     if (!query) return basePath;
 
@@ -63,7 +62,7 @@ export function getDashboardHref(
 }
 
 
-export function isPathActive(normalizedPath: string, role: Role, key: DashboardPathKey): boolean {
-    const basePath = getDashboardHref(role, key);
+export function isPathActive(normalizedPath: string, key: DashboardPathKey): boolean {
+    const basePath = getDashboardHref(key);
     return normalizedPath.startsWith(basePath);
 }

@@ -8,9 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import PropertyCategorySkeleton from "@/components/shared/properties/PropertyCategorySkeleton";
-import { useNormalizedPath } from "@/hooks/useNormalizedPath";
 import { useIndicatorPosition } from "@/hooks/useIndicatorPosition";
 import { updateUrlParams } from "@/utils/helpers";
 
@@ -76,7 +75,7 @@ type category = 'house' | 'realEstate' | 'apartment'
 export default function PropertyCategorySection() {
     const searchParams = useSearchParams();
     const locale = useLocale();
-    const { pathname } = useNormalizedPath();
+    const pathname = usePathname();
     const t = useTranslations('homePage.propertyCategory');
 
     const [currentPage, setCurrentPage] = useState(1);

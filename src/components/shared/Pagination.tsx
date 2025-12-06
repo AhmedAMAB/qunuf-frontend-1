@@ -100,10 +100,12 @@ interface PaginationProps {
   loading?: boolean;
 
   /** Whether to show records count */
-  recordsCount: number;
+  total: number;
 
   /** How many pages to jump when clicking ellipsis */
   jumpBy?: number;
+
+  limit: number
 }
 
 
@@ -115,11 +117,12 @@ export default function Pagination({
   siblingCount = 1,
   boundaryCount = 1,
   loading = false,
-  recordsCount = 0,
+  total = 0,
   jumpBy = 5, // how many pages to jump when clicking ellipsis
+  limit,
 }: PaginationProps) {
   const navRef = useRef<HTMLElement | null>(null);
-  const t = useTranslations('Pagination');
+  const t = useTranslations('dashboard.pagination');
   const locale = useLocale();
   const isRtl = locale === 'ar';
   // hooks always run
@@ -155,14 +158,26 @@ export default function Pagination({
   if (totalPages <= 1) {
     return null;
   };
-  if (!loading && (recordsCount ?? 0) === 0) return null;
+  if (!loading && (total ?? 0) === 0) return null;
+
+  const startEntry = (page - 1) * limit + 1;
+  const endEntry = Math.min(page * limit, total);
+
   return (
-    <div className={`flex justify-center mt-8 ${className}`}>
+    <div className={`flex justify-between flex-col-reverse flex-nowrap md:flex-row md:items-center gap-3 mt-8 ${className}`}>
+      <span className="text-sm text-dark lg:text-nowrap max-md:text-center">
+        {t('showing', {
+          start: startEntry,
+          end: endEntry,
+          total: total
+        })}
+      </span>
+
       <nav
         ref={navRef}
         className="
         flex items-center flex-wrap sm:flex-nowrap gap-1 
-        rounded-2xl border 
+        rounded-2xl border max-md:justify-center
         bg-[var(--color-lighter)] 
         border-[var(--color-gray)] 
         shadow-sm px-2 py-1

@@ -3,10 +3,10 @@ import StatCard from "@/components/dashboard/StatCard";
 import { BiBuildings } from "react-icons/bi";
 import { IoIosTrendingUp } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
-import PropertyCard from "../PropertCard";
-import { getTranslations } from "next-intl/server";
+import PropertyCard from "./PropertCard";
 import { getDashboardHref } from "@/utils/dashboardPaths";
 import RentedAnalyticsChart from "@/components/shared/charts/RentedAnalytics";
+import { useTranslations } from "next-intl";
 
 const properties = [
     {
@@ -61,11 +61,10 @@ const properties = [
 ];
 
 
-export default async function landlordPage() {
-    const [tStat, tLandlord] = await Promise.all([
-        getTranslations('dashboard.statistics'),
-        getTranslations('dashboard.landlord.root')
-    ]);
+export default function LandlordDashboard() {
+    const tStat = useTranslations('dashboard.statistics');
+    const tLandlord = useTranslations('dashboard.landlord.root');
+
 
     return (
         <div className="space-y-4 h-full">
@@ -121,7 +120,7 @@ export default async function landlordPage() {
                 <DashboardCard
                     title={tStat('rentedAnalytics')}
                     linkLabel={tStat('seeAll')}
-                    linkHref={getDashboardHref('landlord', 'contracts')}
+                    linkHref={getDashboardHref('contracts')}
                     className="flex flex-col justify-between"
                 >
                     <RentedAnalyticsChart data={[102, 130, 120, 110, 150, 160, 120, 110, 70, 60, 60, 50]} />
@@ -129,7 +128,7 @@ export default async function landlordPage() {
                 <DashboardCard
                     title={tLandlord('topRentedProperties')}
                     linkLabel={tStat('seeAll')}
-                    linkHref={getDashboardHref('landlord', 'contracts')}
+                    linkHref={getDashboardHref('contracts')}
                     className="max-h-[620px] overflow-y-auto thin-scrollbar"
                 >
                     <div className="divide-y divide-gray-300">

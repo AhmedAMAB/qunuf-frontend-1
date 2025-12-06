@@ -13,12 +13,12 @@ import { useTranslations } from "next-intl";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import { BiBuilding } from "react-icons/bi";
 import { getDashboardHref } from "@/utils/dashboardPaths";
-import { useRoleFromPath } from "@/hooks/dashboard/useRoleFromPath";
+import { useAuth } from "@/contexts/AuthContext";
 
-export default function TenantContractDataView() {
+export default function ContractDataView() {
     const t = useTranslations('dashboard.contracts.table');
     const { getRows } = useTenantContracts();
-    const role = useRoleFromPath();
+    const { role } = useAuth();
 
     return (
         <DataView<TenantContractRow>
@@ -54,7 +54,7 @@ export default function TenantContractDataView() {
                     show: role === 'landlord',
                     label: t('addProperty'),
                     MobileIcon: BiBuilding,
-                    href: getDashboardHref('landlord', 'addProperty')
+                    href: getDashboardHref('addProperty')
                 }
             }
             pageSize={10}
