@@ -103,10 +103,10 @@ export default function ContactForm() {
                             id="message"
                             placeholder={t('message.label')}
                             options={[
-                                { value: 'search_engine', label: t('message.options.search_engine') },
-                                { value: 'social_media', label: t('message.options.social_media') },
-                                { value: 'friend_referral', label: t('message.options.friend_referral') },
-                                { value: 'other', label: t('message.options.other') },
+                                { value: 'Friend Referral', label: "Friend Referral" },
+                                { value: 'Social Media', label: "Social Media" },
+                                { value: 'Search Engine', label: "Search Engine" },
+                                { value: 'other', label: "Other" },
                             ]}
                             value={field.value}
                             onChange={field.onChange}

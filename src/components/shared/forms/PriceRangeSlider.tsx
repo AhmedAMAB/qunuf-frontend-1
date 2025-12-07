@@ -21,7 +21,7 @@ export default function PriceRangeSlider({ range, value, onChange, showCurrencyS
             : [range?.min ?? 0, range?.max ?? 10000];
     });
 
-    const debouncedValue = useDebounce(internalValue, 275);
+    const { debouncedValue } = useDebounce({ value: internalValue });
 
     useEffect(() => {
         if (value.min != debouncedValue[0] || value.max != debouncedValue[1])

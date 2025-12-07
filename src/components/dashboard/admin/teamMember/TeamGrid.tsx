@@ -29,7 +29,6 @@ export default function TeamGrid() {
     // Pagination state
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState({
-        page: 1,
         limit: 15,
         total: 0,
         totalPages: 1,
@@ -58,10 +57,10 @@ export default function TeamGrid() {
                 { signal: controller.signal }
             );
 
-            const { records, pagination } = res.data.data;
+            const { records, pagination: serverPagination } = res.data.data;
 
             setTeam(records);
-            setPagination(p => ({ ...p, total: pagination.total, totalPages: pagination.totalPages }));
+            setPagination(p => ({ ...p, total: serverPagination.total, totalPages: serverPagination.totalPages }));
 
         } catch (err: any) {
             if (err?.name === "CanceledError" || err?.message === "canceled") {
@@ -134,6 +133,7 @@ export default function TeamGrid() {
                 <EmptyState
                     title={t("emptyTitle")}
                     message={t("emptyMessage")}
+                    actionLabel={t('resetFilters')} onAction={() => setPage(1)}
                 />
             )}
 

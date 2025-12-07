@@ -1,10 +1,33 @@
+
+import { Link } from "@/i18n/navigation";
 import { FiSearch } from "react-icons/fi";
+
+interface EmptyStateProps {
+    title?: string;
+    message?: string;
+
+    /** Button text (if empty → button is hidden) */
+    actionLabel?: string;
+
+    /** Called when button clicked (ignored if href exists) */
+    onAction?: () => void;
+
+    /** If provided → button becomes a Link */
+    href?: string;
+
+    /** Additional classes for the action button */
+    actionClassName?: string;
+}
 
 
 export default function EmptyState({
     title = "No data found",
-    message = "Try adjusting your search or filters."
-}) {
+    message = "Try adjusting your search or filters.",
+    actionLabel,
+    onAction,
+    href, // optional navigation link
+    actionClassName = "",
+}: EmptyStateProps) {
     return (
         <div className="relative max-w-full md:min-w-[520px] flex py-32 min-h-[360px] items-center justify-center gap-3 overflow-hidden rounded-[20px]  px-8 mt-20">
             <div className="mx-auto flex w-full max-w-lg flex-col items-center justify-center">
@@ -62,6 +85,27 @@ export default function EmptyState({
                     <h1 className="text-primary text-xl font-semibold">{title}</h1>
                     <p className="text-center text-base text-tertiary">{message}</p>
                 </main>
+
+                {/* Action Button (optional) */}
+                {actionLabel && (
+                    <>
+                        {href ? (
+                            <Link
+                                href={href}
+                                className={`z-10 mt-2 px-5 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition ${actionClassName}`}
+                            >
+                                {actionLabel}
+                            </Link>
+                        ) : (
+                            <button
+                                onClick={onAction}
+                                className={`z-10 mt-2 px-5 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition ${actionClassName}`}
+                            >
+                                {actionLabel}
+                            </button>
+                        )}
+                    </>
+                )}
             </div>
         </div>
     );

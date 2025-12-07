@@ -894,7 +894,10 @@
       },
       "contactUs": {
         "title": "Contact Us Messages",
-        "searchPlaceholder": "Search by name, email, or phone"
+        "searchPlaceholder": "Search by name, email, or phone",
+        "emptyTitle": "No Messages Found",
+        "emptyMessage": "There are no contact messages to display at the moment.",
+        "resetFilters": "Reset Filters"
       },
       "team": {
         "title": "Team Members",
@@ -903,6 +906,7 @@
         "deleteTitle": "Delete",
         "formText": "Show Form",
         "emptyTitle": "No team members found",
+        "resetFilters": "Reset Filters",
         "emptyMessage": "There are currently no team members. Please add new members.",
         "delete": {
           "title": "Delete Team Member",
@@ -957,6 +961,7 @@
         "formText": "Show Form",
         "emptyTitle": "No departments found",
         "emptyMessage": "There are currently no departments. Please add new ones.",
+        "resetFilters": "Reset Filters",
         "delete": {
           "title": "Delete Department",
           "subtitle": "Are you sure you want to delete <strong>{name}</strong>?",

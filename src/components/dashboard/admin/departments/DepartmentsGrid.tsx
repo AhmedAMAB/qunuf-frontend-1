@@ -28,7 +28,6 @@ export default function DepartmentsGrid() {
     // Pagination state
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState({
-        page: 1,
         limit: 15,
         total: 0,
         totalPages: 1,
@@ -54,13 +53,13 @@ export default function DepartmentsGrid() {
                 { signal: controller.signal }
             );
 
-            const { records, pagination } = res.data.data;
+            const { records, pagination: serverPagination } = res.data.data;
 
             setDepartments(records);
             setPagination(p => ({
                 ...p,
-                total: pagination.total,
-                totalPages: pagination.totalPages,
+                total: serverPagination.total,
+                totalPages: serverPagination.totalPages,
             }));
 
         } catch (err: any) {
@@ -120,7 +119,8 @@ export default function DepartmentsGrid() {
 
             {/* Empty State */}
             {!loading && departments.length === 0 && (
-                <EmptyState title={t("emptyTitle")} message={t("emptyMessage")} />
+                <EmptyState title={t("emptyTitle")} message={t("emptyMessage")}
+                    actionLabel={t('resetFilters')} onAction={() => setPage(1)} />
             )}
 
             {/* Grid */}
@@ -144,13 +144,12 @@ export default function DepartmentsGrid() {
             )}
 
             {/* Pagination */}
-            {/* Pagination */}
             <Pagination
                 page={page}
-                total={46}
+                total={pagination.total}
                 setPage={setPage}
                 loading={loading}
-                totalPages={3}
+                totalPages={pagination.totalPages}
                 limit={pagination.limit}
             />
 

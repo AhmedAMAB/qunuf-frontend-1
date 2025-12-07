@@ -22,11 +22,24 @@ export default function DashboardSidebar() {
 
     let items: SidebarLink[] = role ? dashboardItems[role] : [];
 
+
     const activeHref = useMemo(() => {
         if (!pathname) return items[0]?.href;
-        const match = items.find(i => pathname.startsWith(i.href));
+
+        // 1) Exact match for "/"
+        if (pathname === "/") {
+            const rootItem = items.find(i => i.href === "/");
+            return rootItem?.href ?? items[0]?.href;
+        }
+
+        // 2) Other paths should match by prefix (but skip root "/")
+        const match = items
+            .filter(i => i.href !== "/")
+            .find(i => pathname.startsWith(i.href));
+
         return match?.href ?? items[0]?.href;
     }, [pathname, items]);
+
 
     return (
 
@@ -36,7 +49,7 @@ export default function DashboardSidebar() {
                 <Logo small />
             </div>
 
-            <div className='lg:bg-card-bg rounded-[55px] p-2 space-y-2 lg:space-y-1 max-lg:w-full lg:mt-10'>
+            <div className='lg:bg-card-bg rounded-[55px] p-2 space-y-2 lg:space-y-1 max-lg:w-full lg:mt-10 min-h-[200px] min-w-[76px]'>
                 {items.map(({ href, key, Icon, className }) => {
                     const isActive = activeHref === href;
                     return (
