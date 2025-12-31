@@ -53,7 +53,7 @@ export default function DepartmentsGrid() {
                 { signal: controller.signal }
             );
 
-            const { records, pagination: serverPagination } = res.data.data;
+            const { records, pagination: serverPagination } = res.data;
 
             setDepartments(records);
             setPagination(p => ({

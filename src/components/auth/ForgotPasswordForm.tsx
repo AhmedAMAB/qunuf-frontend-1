@@ -37,9 +37,9 @@ export default function ForgotPasswordForm() {
     const onSubmit = async (data: ForgotPasswordFormValues) => {
         setLoading(true);
         try {
-            const res = await api.post('/auth/forgot-password', { email: data.email });
+            await api.post('/auth/forgot-password', { email: data.email });
 
-            toast.success(res.data.message || t('success.sent'));
+            toast.success(t('success.sent'));
             router.push('/auth/sign-in');
         } catch (err: any) {
             toast.error(err.response?.data?.message || t('errors.forgotPasswordFailed'));

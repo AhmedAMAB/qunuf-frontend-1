@@ -55,7 +55,7 @@ export default function ContactGrid() {
                     { signal: controller.signal }
                 );
 
-                const { records, pagination: serverPagination } = res.data.data;
+                const { records, pagination: serverPagination } = res.data;
 
                 setMessages(records);
 

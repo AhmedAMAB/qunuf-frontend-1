@@ -57,7 +57,7 @@ export default function TeamGrid() {
                 { signal: controller.signal }
             );
 
-            const { records, pagination: serverPagination } = res.data.data;
+            const { records, pagination: serverPagination } = res.data;
 
             setTeam(records);
             setPagination(p => ({ ...p, total: serverPagination.total, totalPages: serverPagination.totalPages }));

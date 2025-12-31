@@ -92,7 +92,7 @@ export default function DepartmentForm({ initialData, onClose, onSuccess }: Depa
                 toast.success(t("actions.createSuccess"), { id: toastId });
             }
 
-            const { data: department } = res.data;
+            const department = res.data;
             onClose();
             onSuccess(department);
 

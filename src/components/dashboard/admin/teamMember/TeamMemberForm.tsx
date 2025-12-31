@@ -128,7 +128,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
                 });
                 toast.success(t("actions.createSuccess"), { id: toastId });
             }
-            const { data: teamMember } = res.data;
+            const teamMember = res.data;
             onClose()
             onSuccess(teamMember);
         } catch (err: any) {

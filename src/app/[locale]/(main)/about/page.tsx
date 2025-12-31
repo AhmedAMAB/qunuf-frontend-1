@@ -32,15 +32,15 @@ export default async function AboutPage() {
     ]);
 
     // Extract actual data
-    const { records: TeamRecords } = teamsRes.data.data;
+    const { records: TeamRecords } = teamsRes.data;
 
     // Explicitly type records as Team[]
     const teams: Team[] = TeamRecords;
 
-    const { records: departmentsRecords } = departmentsRes.data.data;
+    const { records: departmentsRecords } = departmentsRes.data;
 
     const departments: Department[] = departmentsRecords;
-    const companyInfo: CompanyInfo[] = companyInfoRes.data.data || [];
+    const companyInfo: CompanyInfo[] = companyInfoRes.data || [];
 
     // Helper function to get localized text
     const getLocalizedText = (en: string, ar: string) => isArabic ? ar : en;

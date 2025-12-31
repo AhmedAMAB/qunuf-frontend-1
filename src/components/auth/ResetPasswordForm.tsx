@@ -47,12 +47,12 @@ export default function ResetPasswordForm() {
     const onSubmit = async (data: ResetPasswordFormValues) => {
         setLoading(true);
         try {
-            const res = await api.post('/auth/reset-password', {
+            await api.post('/auth/reset-password', {
                 email: data.email,
                 code: data.code,
                 password: data.password,
             });
-            toast.success(res.data.message || t('success.sent'));
+            toast.success(t('success.sent'));
             router.push('/auth/sign-in');
         } catch (err: any) {
             toast.error(err.response?.data?.message || t('errors.failed'));

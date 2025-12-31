@@ -46,8 +46,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       setLoadingUser(true);
       const res = await api.get('/auth/me');
-      setUser(res.data?.data);
-      return res.data?.data;
+      setUser(res.data);
+      return res.data;
     } catch {
       setUser(null);
       return null;
@@ -73,7 +73,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const login = async (credentials: LoginCredentials) => {
     try {
       const res = await api.post('/auth/login', credentials);
-      const { accessToken, refreshToken, user } = res.data.data;
+      const { accessToken, refreshToken, user } = res.data;
 
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);

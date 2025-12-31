@@ -33,8 +33,8 @@ export default function ResendVerificationEmailForm() {
     const onSubmit = async (data: ResendFormValues) => {
         setLoading(true);
         try {
-            const res = await api.post('/auth/resend-verification-email', data);
-            toast.success(res.data.message || t('success.sent'));
+            await api.post('/auth/resend-verification-email', data);
+            toast.success(t('success.sent'));
             router.push('/auth/sign-in');
         } catch (err: any) {
             toast.error(err.response?.data?.message || t('errors.failed'));

@@ -54,7 +54,7 @@ export default function ContactForm() {
             });
 
             // Show success toast from response message if available
-            toast.success(res.data.message || t('success'), { id: toastId });
+            toast.success(t('success'), { id: toastId });
 
             toast.success(t('success'), { id: toastId });
             reset();

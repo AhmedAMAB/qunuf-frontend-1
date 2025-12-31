@@ -47,10 +47,9 @@ export default function SignUpForm() {
     const onSubmit = async (data: RegisterFormValues) => {
         setLoading(true);
         try {
-            const res = await api.post('/auth/register', data);
+            await api.post('/auth/register', data);
 
-            const result = res.data
-            toast.success(result.message || t('success.registered'));
+            toast.success(t('success.registered'));
             router.push('/auth/sign-in');
         } catch (err: any) {
             toast.error(err.response.data.message || t('errors.registrationFailed'));

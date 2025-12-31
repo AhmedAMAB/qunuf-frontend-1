@@ -99,7 +99,7 @@ export default function AboutSectionForm({
 
             toast.success(t('saved') || 'Saved', { id: toastId });
             onCancel()
-            onSave(res.data?.data)
+            onSave(res.data)
         } catch (err: any) {
             setSaving(false)
             const msg = err?.response?.data?.message || t('errors.failed') || 'Failed';

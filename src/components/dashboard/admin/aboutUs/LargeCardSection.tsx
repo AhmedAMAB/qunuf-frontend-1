@@ -53,7 +53,7 @@ export default function LargeCardSection() {
       setLoading(true);
       setError(null);
       const res = await api.get('/company-info');
-      const data: CompanyInfo[] = res.data?.data || [];
+      const data: CompanyInfo[] = res.data || [];
 
       const map: Record<string, CompanyInfo> = {};
       data.forEach((it) => (map[it.section] = it));
