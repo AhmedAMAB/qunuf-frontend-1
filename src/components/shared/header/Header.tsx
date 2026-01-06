@@ -60,7 +60,7 @@ export default function Header() {
   const navLinks = [
     { label: t('nav.home'), href: '/' },
     { label: t('nav.realEstate'), href: '/properties' },
-    { label: t('nav.blog'), href: '/blog' },
+    { label: t('nav.blog'), href: '/blogs' },
     { label: t('nav.about'), href: '/about' },
     { label: t('nav.contact'), href: '/contact' },
     // Only include dashboard if role exists

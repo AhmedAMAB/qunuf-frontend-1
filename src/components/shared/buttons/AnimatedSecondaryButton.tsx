@@ -1,25 +1,28 @@
-type AnimatedSecondaryButtonProps = {
+
+type AnimatedSecondaryButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
     className?: string;
-    position?: 'start' | 'end'
+    position?: 'start' | 'end';
     primary?: boolean;
     large?: boolean;
     showBall?: boolean;
+    loading?: boolean; // added loading prop
 };
-
 export const AnimatedSecondaryButton = ({
     children,
     className = '',
     position = 'start',
     primary = false,
     large = true,
-    showBall = true
+    showBall = true,
+    loading = false, // new prop
+    ...props
 }: AnimatedSecondaryButtonProps) => {
     return (
-        <button
+        <button {...props}
             className={`group relative transition ${primary ? "bg-primary hover:bg-primary-hover" : "bg-secondary hover:bg-secondary-hover"} text-white
                   ${large ? "w-[180px] sm:w-[200px] 2xl:w-[242px]" : " w-[140px] lg:w-[160px]"} h-[45px] sm:h-[50px] 2xl:h-[53px] overflow-hidden
-                  rounded-md font-medium ${className}`}
+                  rounded-md font-medium   ${loading ? 'opacity-70 cursor-not-allowed' : ''} ${className}`}
             style={{ boxShadow: "0px 4px 12px 0px #0000001F" }}
         >
             <span>{children}</span>

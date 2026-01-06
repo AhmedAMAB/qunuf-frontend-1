@@ -1,93 +1,210 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
+import { useCallback, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import api from '@/libs/axios';
+import { toast } from 'react-hot-toast';
+
 import TextInput from '@/components/shared/forms/TextInput';
 import TextAreaInput from '@/components/shared/forms/TextAreaInput';
 import Uploader from '@/components/shared/forms/Uploader';
 import ActionButtons from '@/components/shared/ActionButtons';
-import { FileItem } from '@/utils/upload';
+import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
 
-export interface BlogFormType {
-    title: string;
-    description: string;
-    image: FileItem;
-    date: string;
-}
+/* ---------------------------------- */
+/* Schema */
+/* ---------------------------------- */
+export const getBlogSchema = (t: (key: string, params?: any) => string, isEdit?: boolean) =>
+    z.object({
+        title_en: z
+            .string()
+            .max(255, { message: t('validation.maxLength', { max: 255 }) })
+            .nonempty({ message: t('validation.required') }),
 
+        title_ar: z
+            .string()
+            .max(255, { message: t('validation.maxLength', { max: 255 }) })
+            .nonempty({ message: t('validation.required') }),
+
+        description_en: z
+            .string()
+            .nonempty({ message: t('validation.required') }),
+
+        description_ar: z
+            .string()
+            .nonempty({ message: t('validation.required') }),
+
+        image: isEdit
+            ? z.any().optional()
+            : z
+                .any()
+                .refine(
+                    (val) => val && val.file,
+                    { message: t('validation.imageRequired') }
+                ),
+
+    });
+
+export type BlogFormType = z.infer<ReturnType<typeof getBlogSchema>>;
+
+/* ---------------------------------- */
+/* Props */
+/* ---------------------------------- */
 interface BlogEditFormProps {
-    initialData?: BlogFormType;
-    onCancel: () => void;
-    onAction: (data: BlogFormType) => void;
+    initialData?: BlogFormType & { id?: string };
+    onClose: () => void;
+    onSuccess: (blog: BlogFormType) => void;
 }
 
+/* ---------------------------------- */
+/* Component */
+/* ---------------------------------- */
 export default function BlogEditForm({
     initialData,
-    onCancel,
-    onAction,
-
+    onClose,
+    onSuccess,
 }: BlogEditFormProps) {
-    const t = useTranslations('dashboard.admin.blog');
     const tUploader = useTranslations('comman.form.uploader');
+    const t = useTranslations('dashboard.admin.blog.form');
 
-    const { control, handleSubmit, watch, setValue } = useForm<BlogFormType>({
+    const isEdit = !!initialData?.id;
+    const [loading, setLoading] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        control,
+        formState: { errors },
+    } = useForm<BlogFormType>({
+        resolver: zodResolver(getBlogSchema(t, isEdit)),
         defaultValues: initialData || {
-            title: '',
-            description: '',
-            image: {},
-            date: '',
+            title_en: '',
+            title_ar: '',
+            description_en: '',
+            description_ar: '',
+            image: null,
         },
     });
 
+    /* ---------------------------------- */
+    /* Submit */
+    /* ---------------------------------- */
+    const onSubmit = useCallback(
+        async (data: BlogFormType) => {
+            const toastId = toast.loading(
+                isEdit ? t('actions.updating') : t('actions.creating')
+            );
+            setLoading(true);
+
+            try {
+                const formData = new FormData();
+                formData.append('title_en', data.title_en);
+                formData.append('title_ar', data.title_ar);
+                formData.append('description_en', data.description_en);
+                formData.append('description_ar', data.description_ar);
+
+                if (data.image?.file) {
+                    formData.append('image', data.image.file);
+                }
+
+                let res;
+                if (isEdit && initialData?.id) {
+                    res = await api.put(`/blogs/${initialData.id}`, formData, {
+                        headers: { 'Content-Type': 'multipart/form-data' },
+                    });
+                    toast.success(t('actions.updateSuccess'), { id: toastId });
+                } else {
+                    res = await api.post('/blogs', formData, {
+                        headers: { 'Content-Type': 'multipart/form-data' },
+                    });
+                    toast.success(t('actions.createSuccess'), { id: toastId });
+                }
+
+                onClose();
+                onSuccess(res.data);
+            } catch (err: any) {
+                toast.error(
+                    err?.response?.data?.message || t('actions.error'),
+                    { id: toastId }
+                );
+            } finally {
+                setLoading(false);
+            }
+        },
+        [isEdit, initialData, onSuccess, t]
+    );
+
+    /* ---------------------------------- */
+    /* Render */
+    /* ---------------------------------- */
     return (
-        <form onSubmit={handleSubmit(onAction)} className="space-y-6">
-            {/* Image Upload */}
-            <Uploader
-                control={control}
-                name="image"
-                accept="image/*"
-                allowMultiple={false}
-                rules={[
-                    tUploader('rules.maxSize', { size: 5 }),
-                    tUploader('rules.maxFiles', { count: 1 }),
-                ]}
-                maxFiles={1}
-                maxSizeMB={5}
-            />
+        <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-            {/* Title */}
-            <TextInput
-                label={t('form.title')}
-                placeholder={t('form.titlePlaceholder')}
-                value={watch('title')}
-                onChange={(e) => setValue('title', e.target.value)}
-            />
-            {/* Date */}
-            <TextInput
-                label={t('form.date')}
-                placeholder={t('form.datePlaceholder')}
-                value={watch('date')}
-                onChange={(e) => setValue('date', e.target.value)}
-                type="date"
-            />
+                {/* Titles */}
+                <TextInput
+                    label={t('title_en')}
+                    {...register('title_en')}
+                    value={watch('title_en') ?? ''}
+                    onChange={(e) => setValue('title_en', e.target.value)}
+                    error={errors.title_en?.message}
+                />
 
-            {/* Description */}
-            <TextAreaInput
-                label={t('form.description')}
-                placeholder={t('form.descriptionPlaceholder')}
-                value={watch('description')}
-                onChange={(e) => setValue('description', e.target.value)}
-                rows={6}
-            />
+                <TextInput
+                    label={t('title_ar')}
+                    {...register('title_ar')}
+                    value={watch('title_ar') ?? ''}
+                    onChange={(e) => setValue('title_ar', e.target.value)}
+                    error={errors.title_ar?.message}
+                />
 
+                {/* Descriptions */}
+                <TextAreaInput
+                    label={t('description_en')}
+                    {...register('description_en')}
+                    value={watch('description_en') ?? ''}
+                    onChange={(e) => setValue('description_en', e.target.value)}
+                    error={errors.description_en?.message}
+                />
 
-            {/* Action Buttons */}
+                <TextAreaInput
+                    label={t('description_ar')}
+                    {...register('description_ar')}
+                    value={watch('description_ar') ?? ''}
+                    onChange={(e) => setValue('description_ar', e.target.value)}
+                    error={errors.description_ar?.message}
+                />
+
+                {/* Image */}
+                <div className="md:col-span-2">
+                    <Uploader
+                        control={control}
+                        name="image"
+                        accept="image/*"
+                        allowMultiple={false}
+                        rules={[
+                            tUploader('rules.maxSize', { size: 10 }),
+                            tUploader('rules.maxFiles', { count: 1 }),
+                        ]}
+                        maxFiles={1}
+                        maxSizeMB={5}
+                    />
+                    <FormErrorMessage message={errors.image?.message as string} />
+                </div>
+            </div>
+
+            {/* Actions */}
             <ActionButtons
-                onAction={onCancel}
-                onCancel={handleSubmit(onAction)}
-                actionText={t('form.actionText')}
-                cancelText={t('form.cancel')}
-                isDisabled={false}
+                onAction={handleSubmit(onSubmit)}
+                onCancel={onClose}
+                actionText={isEdit ? t('actions.update') : t('actions.create')}
+                cancelText={t('actions.cancel')}
+                isDisabled={loading}
             />
         </form>
     );

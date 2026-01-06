@@ -267,6 +267,8 @@
     }
   },
   "blogs": {
+    "loadingMore": "Loading more...",
+    "blog": "Blog",
     "hero": {
       "title": "Blogs",
       "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
@@ -1015,21 +1017,50 @@
       "blog": {
         "title": " Blogs",
         "add": "Add blog",
+        "edit": "Edt blog",
+        "emptyTitle": "No blogs found",
+        "emptyMessage": "There are currently no blogs. Please add new ones.",
+        "resetFilters": "Reset Filters",
+        "deleteTitle": "Delete",
         "delete": {
           "title": "Delete Blog",
           "subtitle": "Are you sure you want to delete this blog post? This action cannot be undone.",
           "cancel": "Cancel",
-          "actionText": "Delete"
+          "actionText": "Delete",
+          "deleting": "Deleting {name}...",
+          "success": "{name} has been deleted successfully.",
+          "error": "Failed to delete {name}."
         },
         "form": {
-          "title": "Blog Title",
-          "titlePlaceholder": "Enter blog title",
-          "description": "Description",
-          "descriptionPlaceholder": "Write the blog content...",
-          "date": "Date of Publication",
-          "datePlaceholder": "Select a date",
+          "form": "Blog Form",
+          "title_en": "Title (English)",
+          "title_enPlaceholder": "Enter blog title in English",
+          "title_ar": "Title (Arabic)",
+          "title_arPlaceholder": "Enter blog title in Arabic",
+          "description_en": "Description (English)",
+          "description_ar": "Description (Arabic)",
+          "upload": "Upload Blog Image",
+          "noFile": "No file selected",
+          "validation": {
+            "required": "This field is required",
+            "maxLength": "Exceeds maximum length ({max})",
+            "imageRequired": "Please upload a blog image"
+          },
+          "actions": {
+            "create": "Create",
+            "update": "Update",
+            "cancel": "Cancel",
+            "creating": "Creating blog...",
+            "updating": "Updating blog...",
+            "createSuccess": "Blog created successfully",
+            "updateSuccess": "Blog updated successfully",
+            "error": "An error occurred. Please try again"
+          }
+        },
+        "actions": {
           "cancel": "Cancel",
-          "actionText": "Save"
+          "addAction": "Add Blog",
+          "editAction": "Save Changes"
         }
       },
       "about": {

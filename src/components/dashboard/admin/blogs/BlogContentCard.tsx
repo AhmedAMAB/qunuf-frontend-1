@@ -4,26 +4,25 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Popup from '@/components/shared/Popup';
 import { MdDelete, MdEdit } from 'react-icons/md';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import ActionPopup from '@/components/shared/ActionPopup';
 import { FaRegNewspaper } from 'react-icons/fa';
 import BlogEditForm from './BlogEditForm';
+import { resolveUrl } from '@/utils/upload';
+import { Blog } from '@/types/dashboard/blog';
 
 interface BlogContentCardProps {
-    block: {
-        id: string;
-        imageUrl: string;
-        title: string;
-        description: string;
-        date: string | Date;
-    };
+    block: Blog
+    onEdit: () => void;
+    onDelete: () => void;
 }
 
-export default function BlogContentCard({ block }: BlogContentCardProps) {
-    const [showPopup, setShowPopup] = useState(false);
-    const [showDelete, setShowDelete] = useState(false);
-
-    const formattedDate = new Date(block.date).toLocaleDateString('en', {
+export default function BlogContentCard({ block, onEdit, onDelete }: BlogContentCardProps) {
+    const locale = useLocale()
+    const isAr = locale === 'ar';
+    const title = isAr ? block.title_ar : block.title_en;
+    const description = isAr ? block.description_ar : block.description_en;
+    const formattedDate = new Date(block.created_at).toLocaleDateString('en', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
@@ -35,8 +34,8 @@ export default function BlogContentCard({ block }: BlogContentCardProps) {
                 {/* Image */}
                 <div className="w-[250px] h-[250px] rounded-[12px] overflow-hidden shrink-0">
                     <Image
-                        src={block.imageUrl}
-                        alt={block.title}
+                        src={resolveUrl(block.imagePath)}
+                        alt={title}
                         width={250}
                         height={250}
                         className="object-cover w-full h-full"
@@ -48,24 +47,24 @@ export default function BlogContentCard({ block }: BlogContentCardProps) {
                     <div className='flex  flex-col'>
                         <div className='space-y-1'>
                             <h2 className="font-bold text-[28px] sm:text-[32px] text-dark">
-                                {block.title}
+                                {title}
                             </h2>
                             <div className="text-input text-sm">{formattedDate}</div>
 
                         </div>
-                        <p className="text-lg sm:text-xl text-dark mt-6 ">
-                            {block.description}
+                        <p className="text-lg sm:text-xl text-dark mt-6  whitespace-break-spaces">
+                            {description}
                         </p>
                     </div>
                     <div className="flex gap-2 items-start justify-center md:justify-start">
                         <button
-                            onClick={() => setShowDelete(true)}
+                            onClick={onDelete}
                             className="bg-red-500 text-white font-semibold rounded-full p-2 sm:!py-2"
                         >
                             <MdDelete size={16} />
                         </button>
                         <button
-                            onClick={() => setShowPopup(true)}
+                            onClick={onEdit}
                             className="bg-primary text-lighter font-semibold rounded-full p-2 sm:!py-2"
                         >
                             <MdEdit size={16} />
@@ -73,67 +72,7 @@ export default function BlogContentCard({ block }: BlogContentCardProps) {
                     </div>
                 </div>
             </div>
-
-            <Popup
-                show={showDelete}
-                onClose={() => setShowDelete(false)}
-            >
-                <DeleteBlogPopup onClose={() => setShowDelete(false)} />
-            </Popup>
-
-
-            {/* Popup */}
-            <Popup
-                show={showPopup}
-
-                onClose={() => setShowPopup(false)}
-                className="w-full md:w-[540px]"
-                headerContent={
-                    <p className="text-[24px] font-bold text-dark text-center">
-                        {block.title}
-                    </p>
-                }
-            >
-                <BlogEditForm
-                    initialData={{
-                        title: block.title,
-                        description: block.description,
-                        image: { url: block.imageUrl },
-                        date: typeof block.date === 'string' ? block.date : block.date.toISOString().split('T')[0],
-                    }}
-                    onCancel={() => setShowPopup(false)}
-                    onAction={(data) => {
-                        console.log('Updated blog:', data);
-                        setShowPopup(false);
-                    }}
-
-                />
-            </Popup>
-
         </>
     );
 }
 
-
-
-
-interface DeleteBlogPopupProps {
-    onClose: () => void;
-}
-
-function DeleteBlogPopup({ onClose }: DeleteBlogPopupProps) {
-    const t = useTranslations('dashboard.admin.blog');
-
-    return (
-        <ActionPopup
-            title={t('delete.title')}
-            subtitle={t('delete.subtitle')}
-            MainIcon={FaRegNewspaper}
-            mainIconColor="#FD5257"
-            cancelText={t('delete.cancel')}
-            actionText={t('delete.actionText')}
-            onCancel={onClose}
-            onAction={() => onClose()}
-        />
-    );
-}

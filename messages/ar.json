@@ -268,6 +268,8 @@
     }
   },
   "blogs": {
+    "loadingMore": "جاري تحميل المزيد...",
+    "blog": "مدونة",
     "hero": {
       "title": "المدونات",
       "description": "من مرحلة ما قبل المدرسة إلى مرحلة ما قبل التعليم العالي، يستمتع طلابنا بالدروس الممتعة والتفاعلية والمهمة ويتم تمكينهم من التفكير خارج حدود الفصل الدراسي",
@@ -1014,23 +1016,53 @@
         "editAction": "حفظ التعديلات"
       },
       "blog": {
+        "formText": "عرض المدونة",
+        "emptyTitle": "لم يتم العثور على المدونات",
+        "emptyMessage": "لا توجد مدونات حالياً. الرجاء إضافة مدونة جديدة.",
+        "resetFilters": "إعادة تعيين الفلاتر",
         "title": "المدونات",
         "add": "إضافة مدونة",
+        "edit": "تعديل مدونة",
+        "deleteTitle": "حذف",
         "delete": {
           "title": "حذف المدونة",
           "subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
           "cancel": "إلغاء",
-          "actionText": "حذف"
+          "actionText": "حذف",
+          "deleting": "جاري حذف <strong>{name}</strong>...",
+          "success": "تم حذف <strong>{name}</strong> بنجاح.",
+          "error": "فشل في حذف <strong>{name}</strong>."
         },
         "form": {
-          "title": "عنوان المدونة",
-          "titlePlaceholder": "أدخل عنوان المدونة",
-          "description": "الوصف",
-          "descriptionPlaceholder": "اكتب محتوى المدونة...",
-          "date": "تاريخ النشر",
-          "datePlaceholder": "اختر التاريخ",
+          "form": "نموذج المدونة",
+          "title_en": "العنوان (إنجليزي)",
+          "title_enPlaceholder": "أدخل عنوان المدونة باللغة الإنجليزية",
+          "title_ar": "العنوان (عربي)",
+          "title_arPlaceholder": "أدخل عنوان المدونة باللغة العربية",
+          "description_en": "الوصف (إنجليزي)",
+          "description_ar": "الوصف (عربي)",
+          "upload": "رفع صورة المدونة",
+          "noFile": "لا يوجد ملف",
+          "validation": {
+            "required": "هذا الحقل مطلوب",
+            "maxLength": "تجاوز الحد الأقصى للطول ({max})",
+            "imageRequired": "يرجى رفع صورة للمدونة"
+          },
+          "actions": {
+            "create": "إنشاء",
+            "update": "تحديث",
+            "cancel": "إلغاء",
+            "creating": "جارٍ إنشاء المدونة...",
+            "updating": "جارٍ تحديث المدونة...",
+            "createSuccess": "تم إنشاء المدونة بنجاح",
+            "updateSuccess": "تم تحديث المدونة بنجاح",
+            "error": "حدث خطأ. حاول مرة أخرى"
+          }
+        },
+        "actions": {
           "cancel": "إلغاء",
-          "actionText": "حفظ"
+          "addAction": "إضافة مدونة",
+          "editAction": "حفظ التعديلات"
         }
       },
       "about": {
