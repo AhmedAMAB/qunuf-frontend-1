@@ -39,7 +39,21 @@ const ChatSidebar = memo(function ChatSidebar({
                 <MdFilterList size={24} className="text-secondary" />
             </div>
 
-            <Virtuoso
+            {loadingConversations && sortedConversationsIds.length === 0 && (
+                <div style={{ height: "calc(100vh - 256px)" }} >
+                    {Array.from({ length: 5 }).map((_, i) => <ChatPreviewSkeleton key={i} />)}
+                </div>
+            )}
+            {!loadingConversations && sortedConversationsIds.length === 0 && (
+                <div style={{ height: "calc(100vh - 256px)" }} className="h-full flex flex-col items-center justify-center text-center py-10 px-2">
+                    <div className="p-4 bg-gray-100 rounded-full mb-4">
+                        <MdFilterList size={40} className="text-gray-400" />
+                    </div>
+                    <p className="text-gray-500 font-medium">{t("noConversationsYet")}</p>
+                    <p className="text-sm text-gray-400">{t("startMessagingToSeeChats")}</p>
+                </div>
+            )}
+            {sortedConversationsIds.length > 0 && <Virtuoso
                 style={{ height: "calc(100vh - 256px)" }}
                 className="space-y-4 thin-scrollbar max-md:border-none border-e border-gray"
                 data={sortedConversationsIds}
@@ -71,23 +85,12 @@ const ChatSidebar = memo(function ChatSidebar({
                             </div>
                         ) : null,
                 }}
-            />
+            />}
 
             {/* 1️⃣ Initial loading: no conversations yet */}
-            {loadingConversations && sortedConversationsIds.length === 0 && (
-                Array.from({ length: 5 }).map((_, i) => <ChatPreviewSkeleton key={i} />)
-            )}
 
             {/* 3️⃣ Empty state: no conversations loaded */}
-            {!loadingConversations && sortedConversationsIds.length === 0 && (
-                <div className="h-full flex flex-col items-center justify-center text-center py-10 px-2">
-                    <div className="p-4 bg-gray-100 rounded-full mb-4">
-                        <MdFilterList size={40} className="text-gray-400" />
-                    </div>
-                    <p className="text-gray-500 font-medium">{t("noConversationsYet")}</p>
-                    <p className="text-sm text-gray-400">{t("startMessagingToSeeChats")}</p>
-                </div>
-            )}
+
         </div>
     );
 });

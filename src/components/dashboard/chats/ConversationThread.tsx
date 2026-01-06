@@ -374,15 +374,15 @@ export default ConversationThread;
 
 export function MessageSkeleton() {
     return (
-        <div className="flex items-center gap-4 p-4 animate-pulse">
-            <div className="shrink-0 w-[37px] h-[37px] bg-gray-200 rounded-full" />
+        <div className="flex items-center  gap-4 p-4 animate-pulse">
             <div className="flex flex-col gap-2 flex-1">
-                <div className="flex gap-4">
-                    <div className="h-4 bg-gray-200 rounded w-24" />
+                <div className="flex  justify-end gap-4">
                     <div className="h-4 bg-gray-100 rounded w-16" />
+                    <div className="h-4 bg-gray-200 rounded w-24" />
                 </div>
-                <div className="h-4 bg-gray-100 rounded w-3/4" />
+                <div className="h-4 bg-gray-100 ms-auto rounded w-3/4" />
             </div>
+            <div className="shrink-0 w-[37px] h-[37px] bg-gray-200 rounded-full" />
         </div>
     );
 }
