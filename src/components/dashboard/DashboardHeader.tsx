@@ -10,12 +10,13 @@ import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import MobileDashboardIcons from "./MobileDashboardIcons";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { useState } from "react";
-
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () => void }) {
     const t = useTranslations('dashboard.header')
     const [subHeaderOpen, setSubHeaderOpen] = useState(false);
     const { getHref } = useDashboardHref();
+    const { user } = useAuth();
 
     function toggleSubHeader() {
         setSubHeaderOpen(p => !p)
@@ -37,7 +38,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 
                         <div>
                             <h1 className="text-2xl sm:text-[28px] md:text-[32px] font-bold text-dark">
-                                {t('greeting', { name: 'Bassem' })}
+                                {t('greeting', { name: user?.name || "There" })}
                             </h1>
                             <p className="text-base sm:text-lg md:text-xl text-dark font-medium">
                                 {t('description')}

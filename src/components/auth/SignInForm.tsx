@@ -17,7 +17,7 @@ import { Link } from "@/i18n/navigation";
 // Zod schema for validation
 const loginSchema = z.object({
     email: z.email({ message: 'errors.invalidEmail' }),
-    password: z.string().min(1, { message: 'errors.requiredPassword' }),
+    password: z.string().trim().min(1, { message: 'errors.requiredPassword' }),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;

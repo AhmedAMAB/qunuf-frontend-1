@@ -1,11 +1,9 @@
 import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
-import { useState } from "react";
 
 export default function ContactInput({
     id,
     label,
-    value,
-    onChange,
+    // value, // We don't need this manually if using register()
     type = "text",
     wrapperClassName = "",
     required = false,
@@ -15,43 +13,50 @@ export default function ContactInput({
     id: string;
     label: string;
     value?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     type?: string;
     wrapperClassName?: string;
     error?: string | undefined,
     required?: boolean;
 }) {
-    const [focused, setFocused] = useState(false);
-
     return (
-        <div>
+        <div className="w-full">
             <div
-                className={`relative flex flex-col border-[1px]  ${error ? 'border-red-500' : 'border-[#E0E0E0]'} py-3 px-[20px] ${wrapperClassName}`}
+                className={`relative flex flex-col border-[1px] py-3 px-[20px] transition-all duration-200 ${wrapperClassName} ${error ? 'border-red-500' : 'border-[#E0E0E0] focus-within:border-primary'
+                    }`}
             >
-                {/* Floating label */}
+                {/* 1. The Input MUST have the "peer" class and a placeholder=" " */}
+                <input
+                    id={id}
+                    type={type}
+                    placeholder=" " // CRITICAL: This allows :placeholder-shown to work
+                    className="peer focus:outline-0 text-sm font-medium text-primary caret-primary bg-transparent pt-2"
+                    {...props}
+                />
+
+                {/* 2. The Label uses "peer" selectors to move up */}
                 <label
                     htmlFor={id}
-                    className={`absolute start-[20px] top-1/2 -translate-y-1/2 text-gray-400 text-sm transition-all duration-200 pointer-events-none
-          ${focused || value ? "top-2 text-xs text-primary" : ""}
-        `}
+                    className={`absolute start-[20px] transition-all duration-200 pointer-events-none 
+                        /* Default: Floated position (top) */
+                        top-2 text-xs text-primary
+                        
+                        /* If the placeholder IS SHOWN (meaning input is empty) AND NOT focused, move to middle */
+                        peer-placeholder-shown:top-1/2 
+                        peer-placeholder-shown:-translate-y-1/2 
+                        peer-placeholder-shown:text-sm 
+                        peer-placeholder-shown:text-gray-400
+                        
+                        /* If focused, always move back up (overrides the empty state) */
+                        peer-focus:top-2 
+                        peer-focus:-translate-y-0 
+                        peer-focus:text-xs 
+                        peer-focus:text-primary
+                    `}
                 >
                     {label}
                     {required && <span className="text-red-500"> *</span>}
                 </label>
-
-                {/* Input */}
-                <input
-                    id={id}
-                    type={type}
-                    value={value}
-                    onChange={onChange}
-                    required={required}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
-                    className="focus:outline-0 text-sm font-medium text-primary caret-primary bg-transparent"
-                    {...props}
-                />
-
             </div>
             <FormErrorMessage message={error} />
         </div>

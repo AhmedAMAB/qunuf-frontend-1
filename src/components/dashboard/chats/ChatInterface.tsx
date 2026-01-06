@@ -1,97 +1,74 @@
 'use client';
 
-import ChatPreviewCard from "@/components/dashboard/chats/ChatPreviewCard";
-import { updateUrlParams } from "@/utils/helpers";
-import { usePathname, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
-import { MdFilterList } from "react-icons/md";
+import React from "react";
 import DesktopChatPanel from "./DesktopChatPanel";
 import MobileChatPanel from "./MobileChatPanel";
-import { Message, User } from "@/types/dashboard/chat";
-import { useTranslations } from "next-intl";
+import ChatSidebar from "./ChatSidebar";
+import { useChat } from "@/hooks/dashboard/useChat";
 
 
-interface ChatInterfaceProps {
-    users: User[];
-    messagesMap: Record<number, Message[]>;
-    onUpdateMessages: (chatId: number, newMessages: Message[]) => void;
-}
+export default function ChatInterface() {
 
-export default function ChatInterface({
-    users,
-    messagesMap,
-    onUpdateMessages,
-}: ChatInterfaceProps) {
-    const t = useTranslations('dashboard.chats');
-
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
-
-    const initialChatId = searchParams.get("chat") ? Number(searchParams.get("chat")) : undefined;
-    const [selectedChatId, setSelectedChatId] = useState<number | undefined>(initialChatId);
-
-    const selectedUser = users?.find((u) => u.id === selectedChatId);
-
-    const handleSelectChat = (id: number) => {
-        setSelectedChatId(id);
-        const newParams = new URLSearchParams(searchParams.toString());
-        newParams.set("chat", id.toString());
-        updateUrlParams(pathname, newParams);
-    };
-
-    const handleSendMessage = (content: string) => {
-        if (!selectedChatId) return;
-        const newMessage: Message = {
-            sender: "Bassem",
-            role: "host",
-            timestamp: new Date().toISOString(),
-            content,
-        };
-
-        const updatedMessages = [...(messagesMap[selectedChatId] || []), newMessage];
-        onUpdateMessages(selectedChatId, updatedMessages);
-    };
+    const {
+        sortedConversationsIds,
+        conversationsMap,
+        currentOpenConversationId,
+        handleSelectChat,
+        currentConversation,
+        currentConversationMessages,
+        loadingConversations,
+        loadingMessageId,
+        sendMessage,
+        retryMessage,
+        loadingMoreId,
+        loadMoreMessages,
+        isSending,
+        markAsRead,
+        fetchMoreConversations,
+    } = useChat()
 
 
+    // return <App1 />
     return (
         <div className="flex-1  grid grid-cols-1 md:grid-cols-12 mx-auto px-4 py-6  gap-6 h-full">
             {/* Sidebar */}
             <div className=" md:col-span-6 lg:col-span-5 xl:col-span-4">
-                <div className="bg-card-bg rounded-[8px] p-4">
-                    <div className="flex justify-between pb-4 items-center border-b border-b-gray">
-                        <h2 className="text-lg font-bold text-center text-gray-800">{t('messages')}</h2>
-                        <MdFilterList size={24} className="text-secondary" />
-                    </div>
-                    <div className=" space-y-4 overflow-auto h-[calc(100vh-256px)] thin-scrollbar max-md:border-none border-e border-gray">
-                        {users?.map((user) => (
-                            <ChatPreviewCard
-                                key={user.id}
-                                imageSrc={user.imageSrc}
-                                name={user.name}
-                                lastMessage={user.lastMessage}
-                                selected={user.id === selectedChatId}
-                                onClick={() => handleSelectChat(user.id)}
-                            />
-                        ))}
-                    </div>
-                </div>
+                <ChatSidebar
+                    fetchMoreConversations={fetchMoreConversations}
+                    isSending={isSending}
+                    conversationsMap={conversationsMap}
+                    currentOpenConversationId={currentOpenConversationId}
+                    handleSelectChat={handleSelectChat}
+                    loadingConversations={loadingConversations}
+                    sortedConversationsIds={sortedConversationsIds} />
             </div>
 
-            {/* Mobile Sidebar */}
             <DesktopChatPanel
-                selectedUser={selectedUser}
-                selectedChatId={selectedChatId}
-                messagesMap={messagesMap}
-                handleSendMessage={handleSendMessage}
+                markAsRead={markAsRead}
+                loadingMoreId={loadingMoreId}
+                loadMoreMessages={loadMoreMessages}
+                loadingMessageId={loadingMessageId}
+                retryMessage={retryMessage}
+                currentOpenConversationId={currentOpenConversationId}
+                selectedUser={currentConversation?.partner}
+                selectedChatId={currentOpenConversationId}
+                messages={currentConversationMessages}
+                handleSendMessage={(content) => sendMessage(currentOpenConversationId || '', content)}
             />
 
             <MobileChatPanel
-                selectedUser={selectedUser}
-                selectedChatId={selectedChatId}
-                messagesMap={messagesMap}
-                handleSendMessage={handleSendMessage}
-                handleCloseThread={() => setSelectedChatId(undefined)}
-                isOpen={selectedChatId !== undefined}
+                markAsRead={markAsRead}
+                loadingMoreId={loadingMoreId}
+                loadMoreMessages={loadMoreMessages}
+                retryMessage={retryMessage}
+                loadingMessageId={loadingMessageId}
+                currentOpenConversationId={currentOpenConversationId}
+                selectedUser={currentConversation?.partner}
+                selectedChatId={currentOpenConversationId}
+                messages={currentConversationMessages}
+                handleSendMessage={(content) => sendMessage(currentOpenConversationId || '', content)}
+                handleCloseThread={() => handleSelectChat(null)}
+                isOpen={!!currentOpenConversationId}
             />
 
         </div>

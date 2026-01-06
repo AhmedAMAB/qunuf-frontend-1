@@ -15,7 +15,7 @@ import z from 'zod';
 
 // Zod schema for validation
 const forgotPasswordSchema = z.object({
-    email: z.string().email({ message: 'invalidEmail' }),
+    email: z.email({ message: 'invalidEmail' }),
 });
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;

@@ -367,3 +367,59 @@ body {
 .about-team .swiper-slide .team-member {
   margin-inline: auto;
 }
+
+
+.highlight {
+  animation: highlightFade 1s ease;
+}
+
+@keyframes highlightFade {
+  0% {
+    background: #dbeafe;
+    transform: translateY(-6px);
+  }
+
+  50% {
+    background: #eff6ff;
+    transform: translateY(0);
+  }
+
+  100% {
+    background: white;
+  }
+}
+
+
+
+/* 1. The general scrollbar shape/size */
+.my-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 2. Style the thumb (The gray bar) */
+.my-scroll::-webkit-scrollbar-thumb {
+  background-color: #aaa9a9;
+  /* Your normal gray color */
+  border-radius: 10px;
+}
+
+/* 3. THE FIX: Hide everything when "hide-scrollbar" class is added */
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #FCFCFC !important;
+  /* Make thumb invisible */
+}
+
+.hide-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  /* Force hide arrows */
+  width: 0 !important;
+  /* Ensure they take no space */
+  height: 0 !important;
+}
+
+/* 4. Firefox specific Fix */
+.hide-scrollbar {
+  /* scrollbar-color: [thumb] [track] */
+  scrollbar-color: transparent transparent !important;
+}

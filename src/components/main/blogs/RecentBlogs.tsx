@@ -22,7 +22,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lore
         ar: "لوريم إيبسوم هو ببساطة نص شكلي (أي شكل غير واضح) يُستخدم في صناعة الطباعة والتنضيد. ظل لوريم إيبسوم النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر.",
     },
     imageUrl: "/blogs/blog-list2.jpg",
-    createdAt: "13 March 2023",
+    created_at: "13 March 2023",
 }
 const blogs = [{
     id: "1",
@@ -35,7 +35,7 @@ const blogs = [{
         ar: "لوريم إيبسوم هو النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر.",
     },
     imageUrl: "/blogs/blog-1.jpg",
-    createdAt: "13 March 2023",
+    created_at: "13 March 2023",
 },
 {
     id: "2",
@@ -48,7 +48,7 @@ const blogs = [{
         ar: "لوريم إيبسوم هو النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر.",
     },
     imageUrl: "/blogs/blog-2.jpg",
-    createdAt: "13 March 2023",
+    created_at: "13 March 2023",
 },
 {
     id: "3",
@@ -61,7 +61,7 @@ const blogs = [{
         ar: "لوريم إيبسوم هو النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر.",
     },
     imageUrl: "/blogs/blog-3.jpg",
-    createdAt: "13 March 2023",
+    created_at: "13 March 2023",
 },
 {
     id: "4",
@@ -74,7 +74,7 @@ const blogs = [{
         ar: "لوريم إيبسوم هو النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر.",
     },
     imageUrl: "/blogs/blog-4.jpg",
-    createdAt: "13 March 2023",
+    created_at: "13 March 2023",
 }];
 
 export default function RecentBlogs() {

@@ -3,14 +3,8 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import api from '@/libs/axios';
 import type { Role } from '@/types/global';
+import { User } from '@/types/dashboard/user';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: Role;
-  [key: string]: any;
-}
 
 interface LoginCredentials {
   email: string;

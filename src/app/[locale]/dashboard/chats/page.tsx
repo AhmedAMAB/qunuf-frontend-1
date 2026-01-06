@@ -1,10 +1,9 @@
-import Chats from "@/components/dashboard/tenant/Chats";
-
+import ChatInterface from "@/components/dashboard/chats/ChatInterface";
 
 export default function ChatsPage() {
     return (
         <div className="container">
-            <Chats />
+            <ChatInterface />
         </div>
     );
 }

@@ -99,7 +99,7 @@ export function processFiles(
 }
 
 
-export function resolveUrl(u: string) {
+export function resolveUrl(u?: string | null) {
     if (!u) return '';
     if (/^(https?:|blob:|data:)/i.test(u)) return u;
     return (baseImg || '') + u.replace(/^\/+/, '');

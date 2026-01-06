@@ -20,11 +20,13 @@ const allowedRoles = [UserRole.TENANT, UserRole.LANDLORD] as const;
 const registerSchema = z.object({
     name: z
         .string()
+        .trim()
         .min(1, { message: 'name.required' })
         .max(50, { message: 'name.maxLength' }),
     email: z.email({ message: 'email.invalid' }),
     password: z
         .string()
+        .trim()
         .min(8, { message: 'password.minLength' })
         .max(20, { message: 'password.maxLength' })
         .regex(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$!%*?&])/, { message: 'password.pattern' }),

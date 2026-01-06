@@ -12,6 +12,10 @@
     "goHome": "العودة إلى الصفحة الرئيسية"
   },
   "comman": {
+    "date": {
+      "yesterday": "أمس",
+      "today": "اليوم"
+    },
     "datePlaceholder": "حدد نطاق التاريخ",
     "retry": "إعادة المحاولة",
     "errorTitle": "عذرًا، حدث خطأ ما",
@@ -840,10 +844,17 @@
       }
     },
     "chats": {
+      "loadingHistory": "جاري تحميل السجل…",
+      "loadingMore": "جاري تحميل المزيد",
       "messages": "الرسائل",
       "noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
+      "newMessages": "رسائل جديدة",
       "typeMessage": "اكتب رسالة",
-      "selectConversation": "اختر محادثة لبدء المراسلة"
+      "selectConversation": "اختر محادثة لبدء المراسلة",
+      "noConversationsYet": "لا توجد محادثات بعد",
+      "startMessagingToSeeChats": "عندما تبدأ محادثة جديدة، ستظهر هنا.",
+      "failedSendTitle": "فشل الإرسال. اضغط لإعادة المحاولة",
+      "failedSendText": "فشل التسليم — اضغط على الأيقونة لإعادة المحاولة"
     },
     "tenant": {
       "root": {

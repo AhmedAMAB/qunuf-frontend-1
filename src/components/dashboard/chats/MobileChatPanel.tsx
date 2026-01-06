@@ -2,24 +2,42 @@ import { MdClose } from "react-icons/md";
 
 import ConversationThread from "./ConversationThread";
 import EmptyChatState from "./EmptyChatState";
-import { Message, User } from "@/types/dashboard/chat";
+import { Message } from "@/types/dashboard/chat";
+import { User } from "@/types/dashboard/user";
+import { memo } from "react";
 
 interface MobileChatPanelProps {
     selectedUser?: User;
-    selectedChatId?: number;
-    messagesMap: Record<number, Message[]>;
+    selectedChatId: string | null;
+    messages: {
+        items: Message[];
+        hasMore: boolean;
+        nextCursor: string | null;
+    } | null;
     handleSendMessage: (content: string) => void;
     handleCloseThread: () => void;
     isOpen: boolean;
+    loadingMessageId: string | null;
+    currentOpenConversationId: string | null;
+    retryMessage?: (msg: Message) => void;
+    loadMoreMessages?: (conversationId: string) => Promise<number>;
+    markAsRead?: (conversationId: string) => Promise<void>;
+    loadingMoreId?: string | null;
 }
 
-export default function MobileChatPanel({
+const MobileChatPanel = memo(function MobileChatPanel({
     selectedUser,
     selectedChatId,
-    messagesMap,
+    loadingMessageId,
+    currentOpenConversationId,
+    messages,
     handleSendMessage,
     handleCloseThread,
     isOpen,
+    retryMessage,
+    loadMoreMessages,
+    loadingMoreId,
+    markAsRead
 }: MobileChatPanelProps) {
     return (
         <div
@@ -28,12 +46,15 @@ export default function MobileChatPanel({
         >
             {selectedUser ? (
                 <ConversationThread
+                    markAsRead={markAsRead}
+                    loadingMoreId={loadingMoreId}
+                    loadMoreMessages={loadMoreMessages}
+                    retryMessage={retryMessage}
+                    currentOpenConversationId={currentOpenConversationId}
+                    loadingMessageId={loadingMessageId}
                     className="h-full overflow-hidden px-4 py-6"
-                    messages={messagesMap[selectedChatId!] || []}
-                    participant={{
-                        name: selectedUser.name,
-                        imageSrc: selectedUser.imageSrc,
-                    }}
+                    messages={messages?.items || []}
+                    participant={selectedUser}
                     onSendMessage={handleSendMessage}
                 />
             ) : (
@@ -47,4 +68,6 @@ export default function MobileChatPanel({
             </button>
         </div>
     );
-}
+})
+
+export default MobileChatPanel;

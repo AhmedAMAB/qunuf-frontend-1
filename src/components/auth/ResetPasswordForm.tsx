@@ -18,11 +18,13 @@ const resetPasswordSchema = z.object({
     code: z.string().min(1, { message: 'code.required' }),
     password: z
         .string()
+        .trim()
         .min(8, { message: 'password.minLength' })
         .max(20, { message: 'password.maxLength' })
         .regex(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$!%*?&])/, { message: 'password.pattern' }),
     confirmPassword: z
         .string()
+        .trim()
         .min(8, { message: 'password.minLength' })
         .max(20, { message: 'password.maxLength' })
         .regex(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$!%*?&])/, { message: 'password.pattern' }),

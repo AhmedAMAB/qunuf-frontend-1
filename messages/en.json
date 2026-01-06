@@ -12,6 +12,10 @@
     "goHome": "Go to home"
   },
   "comman": {
+    "date": {
+      "yesterday": "Yesterday",
+      "today": "Today"
+    },
     "datePlaceholder": "Select Date Range",
     "retry": "Retry",
     "errorTitle": "Oops, something went wrong",
@@ -839,10 +843,17 @@
       }
     },
     "chats": {
+      "loadingHistory": "Loading history…",
+      "loadingMore": "Loading more",
       "messages": "Messages",
       "noMessages": "No messages yet. Start the conversation!",
       "typeMessage": "Type a message",
-      "selectConversation": "Select a conversation to start messaging"
+      "newMessages": "New messages",
+      "selectConversation": "Select a conversation to start messaging",
+      "noConversationsYet": "No conversations yet",
+      "startMessagingToSeeChats": "When you start a new chat, it will appear here.",
+      "failedSendTitle": "Failed to send. Click to retry",
+      "failedSendText": "Delivery Failed — Tap icon to retry"
     },
     "tenant": {
       "root": {

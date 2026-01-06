@@ -9,7 +9,7 @@ interface BlogProps {
         title: string;
         description: string;
         imageUrl: string;
-        createdAt: string; // 👈 new date prop
+        created_at: string;
     };
     list?: boolean;
 }
@@ -32,7 +32,7 @@ export default function Blog({ blog, list = false }: BlogProps) {
 
             <div className={`flex-1 text-start flex flex-col gap-2 lg:gap-4 z-[1] mb-4 ${list ? "mt-5 md:mt-3" : ""}`}>
 
-                {!list && <p className="font-medium text-placeholder text-[13px]">{blog.createdAt}</p>}
+                {!list && <p className="font-medium text-placeholder text-[13px]">{blog.created_at}</p>}
                 <Link
                     href={`/blogs/${blog.id}`}
                     className="block font-bold text-xl md:text-2xl text-black"
