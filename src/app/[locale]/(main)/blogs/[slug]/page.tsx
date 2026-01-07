@@ -3,6 +3,7 @@ import RecentBlogs from "@/components/main/blogs/RecentBlogs";
 import { getLocale, getTranslations } from "next-intl/server";
 import api from "@/libs/axios"; // adjust to your API helper
 import { Blog } from "@/types/dashboard/blog";
+import { notFound } from "next/navigation";
 
 interface BlogsPageProps {
     params: {
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: BlogsPageProps) {
     const t = await getTranslations("blogs.hero");
     const locale = await getLocale();
 
-    const { slug } = params;
+    const { slug } = await params;
 
     let title = t("title");
     let description = t("description");
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: BlogsPageProps) {
 export default async function BlogsPage({ params }: BlogsPageProps) {
     const t = await getTranslations("blogs.hero");
     const locale = await getLocale();
-    const { slug } = params;
+    const { slug } = await params;
 
     let blog: Blog | null = null;
     try {
@@ -48,7 +49,7 @@ export default async function BlogsPage({ params }: BlogsPageProps) {
         console.error("Error fetching blog:", err);
     }
 
-
+    if (!blog) return notFound()
     return (
 
         <section id="blogs" className="relative overflow-hidden">

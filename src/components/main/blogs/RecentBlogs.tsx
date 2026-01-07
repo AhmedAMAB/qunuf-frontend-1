@@ -4,6 +4,8 @@ import PageHeader from '@/components/shared/PageHeader';
 import { Blog } from '@/types/dashboard/blog';
 import FetchMoreBlogs from './FetchMoreBlogs';
 import { getTranslations } from 'next-intl/server';
+import EmptyState from '@/components/shared/EmptyState';
+import { MdArticle } from 'react-icons/md';
 
 export default async function RecentBlogs({ slug }: { slug?: string }) {
     const t = await getTranslations('blogs');
@@ -31,7 +33,21 @@ export default async function RecentBlogs({ slug }: { slug?: string }) {
     }
 
 
+    if (!blogs.length && !recentBlog) {
+        return (<div className="flex flex-col items-center justify-center text-center py-20 px-4">
+            <div className="mb-6 rounded-full bg-gray-100 p-6">
+                <MdArticle size={48} className="text-gray-400" />
+            </div>
 
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                {t('empty.title')}
+            </h3>
+
+            <p className="text-sm text-gray-500 max-w-md">
+                {t('empty.description')}
+            </p>
+        </div>)
+    }
     return (
         <div className="bg-highlight pb-20 sm:pb-26 lg:pb-32 px-2">
             <div className="container">
