@@ -1,6 +1,6 @@
 'use client';
 
-import { dashboardItems, SidebarLink } from '@/constants/dashboardItems';
+import { getDashboardItems, SidebarLink } from '@/constants/dashboardItems';
 import { useTranslations } from 'next-intl';
 import Logo from '../shared/Logo';
 import Tooltip from '../shared/Tooltip';
@@ -12,32 +12,31 @@ import { GrLanguage } from 'react-icons/gr';
 import { usePathname } from '@/i18n/navigation';
 import { useMemo } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useValues } from '@/contexts/GlobalContext';
 
 
 
 export default function DashboardSidebar() {
     const t = useTranslations('dashboard.sidebar');
     const pathname = usePathname();
-    const { role } = useAuth()
+    const { user, role, logout, LoggingOut } = useAuth()
+    const { settings } = useValues()
 
-    let items: SidebarLink[] = role ? dashboardItems[role] : [];
+    const items: SidebarLink[] = useMemo(() => (getDashboardItems(role, settings?.adminUserId) || []), [role, settings]);
 
 
+    async function handleLogOut() {
+        await logout()
+    }
     const activeHref = useMemo(() => {
-        if (!pathname) return items[0]?.href;
-
-        // 1) Exact match for "/"
-        if (pathname === "/") {
-            const rootItem = items.find(i => i.href === "/");
-            return rootItem?.href ?? items[0]?.href;
-        }
+        if (!pathname) return null;
 
         // 2) Other paths should match by prefix (but skip root "/")
-        const match = items
-            .filter(i => i.href !== "/")
-            .find(i => pathname.startsWith(i.href));
 
-        return match?.href ?? items[0]?.href;
+        const match = items
+            .find(i => pathname === i.href);
+
+        return match?.href ?? null;
     }, [pathname, items]);
 
 
@@ -49,15 +48,16 @@ export default function DashboardSidebar() {
                 <Logo small />
             </div>
 
-            <div className='lg:bg-card-bg rounded-[55px] p-2 space-y-2 lg:space-y-1 max-lg:w-full lg:mt-10 min-h-[200px] min-w-[76px]'>
-                {items.map(({ href, key, Icon, className }) => {
+            <div className='lg:bg-card-bg rounded-[55px] p-2 flex flex-col gap-2 lg:gap-1 max-lg:w-full lg:mt-10 min-h-[200px] min-w-[76px]'>
+                {items.map(({ href, key, Icon, className, order, disabled }) => {
                     const isActive = activeHref === href;
                     return (
-                        <div className={`${className}`} key={href}>
+                        <div className={`${className}`} key={href} style={{ order }}>
                             <SidebarItem
                                 href={href}
                                 label={t(key)}
                                 isActive={isActive}
+                                disabled={disabled}
                                 Icon={Icon}
                             />
                         </div>
@@ -70,18 +70,20 @@ export default function DashboardSidebar() {
                 {/* Mobile: Logout with label */}
                 <LocaleSwitcher Trigger={LocaleTrigger} />
 
-                <button
+                <button disabled={LoggingOut}
+                    onClick={handleLogOut}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-lighter hover:bg-gray text-dark lg:hidden w-full justify-start"
                 >
                     <IoLogOutOutline className="w-6 h-6" />
-                    <span className="text-sm font-medium">{t("logout")}</span>
+                    <span className="text-sm font-medium">{LoggingOut ? t("loggingOut") : t("logout")}</span>
                 </button>
 
                 {/* Desktop: Logout icon with tooltip */}
                 <div className="hidden lg:block group relative">
-                    <Tooltip content={t("logout")}
+                    <Tooltip content={LoggingOut ? t("loggingOut") : t("logout")}
                         position="top-left">
-                        <button
+                        <button onClick={handleLogOut}
+                            disabled={LoggingOut}
                             className="w-[44px] h-[44px] flex items-center justify-center rounded-full  hover:bg-gray text-dark"
                         >
                             <IoLogOutOutline className="w-6 h-6" />
@@ -92,11 +94,12 @@ export default function DashboardSidebar() {
                 {/* Profile Image */}
                 <button
                     className="hidden lg:flex relative w-[44px] h-[44px]  justify-center items-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30"
-                    aria-label="فتح قائمة المستخدم"
+
                 >
                     <FallbackImage
                         alt="profile"
-                        src="/users/user-4.jpg"
+                        src={user?.imagePath || "/users/default-user.png"}
+                        defaultImage="/users/default-user.png"
                         width={44}
                         height={44}
                         className="w-full h-full rounded-full object-cover"

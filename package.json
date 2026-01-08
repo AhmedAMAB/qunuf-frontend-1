@@ -12,6 +12,7 @@
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@hookform/resolvers": "^5.2.2",
+    "@rimbu/sorted": "^2.1.6",
     "aos": "^2.3.4",
     "axios": "^1.12.2",
     "chart.js": "^4.5.1",

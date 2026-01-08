@@ -3,9 +3,11 @@ import { useSocket } from '@/contexts/SocketContext';
 import api from '@/libs/axios';
 import { Conversation, Message } from '@/types/dashboard/chat';
 import { User } from '@/types/dashboard/user';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { ulid } from "ulid";
+import { SortedMap, SortedSet } from '@rimbu/sorted';
+import { ConversationOrder, conversationSetContext } from '@/utils/compare';
 
 const findDescendingInsertionIndex = (array: any[], newSortId: string): number => {
     let low = 0;
@@ -60,6 +62,7 @@ export interface ConversationChat {
 
 export function useChat() {
     const searchParams = useSearchParams();
+    const router = useRouter();
     const targetUserIdFromParams = searchParams.get("user");
     const { user } = useAuth();
     const currentUserId = user?.id;
@@ -79,7 +82,13 @@ export function useChat() {
         return Array.from(conversationsMap.values());
     }, [conversationsMap]);
 
-    const [sortedConversationsIds, setSortedConversationsIds] = useState<{ id: string, sortId: string }[]>([]);
+
+
+    const [sortedConversationsIds, setSortedConversationsIds] = useState<
+        SortedSet<ConversationOrder>
+    >(() => conversationSetContext.empty());
+
+
     const [currentOpenConversationId, setCurrentOpenConversationId] = useState<string | null>(null);
 
 
@@ -129,9 +138,7 @@ export function useChat() {
 
         const controller = new AbortController();
         fetchController.current = controller;
-
         if (!hasMoreConversations) {
-            setLoadingConversations(false);
             return;
         }
 
@@ -160,7 +167,10 @@ export function useChat() {
                 sortId: c.lastMessage?.sortId || c.sortId,
             }));
 
-            setSortedConversationsIds(prev => [...prev, ...sortIds]);
+
+            setSortedConversationsIds(prev =>
+                prev.addAll(sortIds)
+            );
 
             // Update pagination state
             setCursorConversations(nextCursor || false);
@@ -173,7 +183,8 @@ export function useChat() {
                 console.error(err);
             }
         } finally {
-            setLoadingConversations(false);
+            if (fetchController.current === controller)
+                setLoadingConversations(false);
         }
     }, [processConversation, cursorConversations, hasMoreConversations]);
 
@@ -247,7 +258,13 @@ export function useChat() {
 
     const loadMessages = useCallback(async (conversationId: string) => {
 
+
         if (messagesData.has(conversationId)) return;
+
+        const existingId = loadingMessageId?.startsWith("new-chat") ? conversationsMap.get(conversationId)?.partner?.id : null;
+        if (existingId && loadingMessageId === `new-chat_${existingId}`)
+            return;
+
 
         if (abortControllers.current.has(conversationId)) {
             abortControllers.current.get(conversationId)?.abort();
@@ -289,18 +306,21 @@ export function useChat() {
         } finally {
             if (abortControllers.current.get(conversationId) === controller) {
                 abortControllers.current.delete(conversationId);
+                console.log("loadingMessageId: ", loadingMessageId, " will set null")
                 setLoadingMessageId(null);
             }
         }
-    }, [messagesData]);
+    }, [messagesData, loadingMessageId, conversationsMap]);
 
     useEffect(() => {
         // Flag to prevent state updates if component unmounts or dependencies change fast
-        let isActive = true;
 
         const resolveChatState = async () => {
 
             if (targetUserIdFromParams) {
+                const newParams = new URLSearchParams(searchParams.toString());
+                newParams.delete("user");
+                router.replace(`?${newParams.toString()}`, { scroll: false });
                 // A. Search locally first
                 const existing = conversationsArray.find(c => c.partner.id === targetUserIdFromParams);
 
@@ -311,19 +331,19 @@ export function useChat() {
                     }
 
                     // Only update state if this effect is still active
-                    if (isActive && currentOpenConversationId !== existing.id) {
+                    if (currentOpenConversationId !== existing.id) {
                         setCurrentOpenConversationId(existing.id);
                     }
                     return;
                 }
 
-                if (loadingMessageId === 'new-chat') return;
+                if (loadingMessageId?.startsWith('new-chat')) return;
                 // B. Create New Conversation (API)
-                setLoadingMessageId('new-chat');
+                setCurrentOpenConversationId(null);
+                setLoadingMessageId(`new-chat_${targetUserIdFromParams}`);
                 try {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     const res = await api.post('/conversations', { otherUserId: targetUserIdFromParams });
-
-                    if (!isActive) return; // Stop if user navigated away
 
                     const { conversation, messages, nextCursor, hasMore } = res.data;
                     const processed = processConversation(conversation);
@@ -333,17 +353,14 @@ export function useChat() {
 
                     // 2. Update Sidebar (Descending Order - Newest Top)
                     setSortedConversationsIds(prevIds => {
-                        if (prevIds.some(item => item.id === processed.id)) return prevIds;
-
-                        const newIdList = [...prevIds];
                         const effectiveSortId = processed.lastMessage?.sortId || processed.sortId;
 
-                        // Assuming you want Newest at top (Descending)
-                        const index = findDescendingInsertionIndex(newIdList, effectiveSortId);
-                        newIdList.splice(index, 0, { id: processed.id, sortId: effectiveSortId });
-                        return newIdList;
-                    });
+                        // Create a new ConversationOrder object
+                        const newItem: ConversationOrder = { id: processed.id, sortId: effectiveSortId };
 
+                        // Add to the sorted set (returns a NEW set, immutable)
+                        return prevIds.add(newItem);
+                    });
                     // 3. Update Messages Map
                     setMessagesData(prev => new Map(prev).set(processed.id, {
                         items: messages || [],
@@ -352,11 +369,14 @@ export function useChat() {
                     }));
 
                     setCurrentOpenConversationId(processed.id);
+
                 } catch (err) {
                     console.error("Failed to sync conversation:", err);
                 } finally {
-                    if (isActive) setLoadingMessageId(null);
+                    setLoadingMessageId(null);
                 }
+
+
                 return;
             }
 
@@ -374,16 +394,13 @@ export function useChat() {
 
         resolveChatState();
 
-        // Cleanup function to cancel operations if dependencies change
-        return () => {
-            isActive = false;
-        };
-
     }, [
         targetUserIdFromParams,
         currentOpenConversationId,
         conversationsArray,
         messagesData,
+        user?.id,
+        loadingMessageId,
         loadMessages,
         processConversation
     ]);
@@ -397,11 +414,10 @@ export function useChat() {
         }
         readRequestsInProgress.current.add(conversationId);
         // Optimistic Update: Local Conversation State
-        let oldUnRead = 0;
+        let oldUnRead = conv.myUnreadCount;
         setConversationsMap(prev => {
             const updated = new Map(prev);
             const current = updated.get(conversationId);
-            oldUnRead = current?.myUnreadCount || 0;
             if (current) updated.set(conversationId, { ...current, myUnreadCount: 0 });
             return updated;
         });
@@ -410,7 +426,9 @@ export function useChat() {
         // Optimistic Update: Global Socket Unread Bubble
 
         try {
-            await api.put(`/conversations/${conversationId}/read`);
+            const res = await api.put(`/conversations/${conversationId}/read`);
+            const newTotle = res.data.totalUnread
+            setUnreadChatCount(newTotle);
         } catch (err) {
             console.error("Failed to mark read", err);
             setUnreadChatCount(prev => Math.max(0, prev + oldUnRead));
@@ -427,25 +445,23 @@ export function useChat() {
             readRequestsInProgress.current.delete(conversationId);
         }
 
-    }, [conversationsMap, setUnreadChatCount]);
+    }, [conversationsMap]);
 
+    // Assuming ConversationOrder = { id: string; sortId: number }
+    // and your SortedSet context is configured with compare: (a, b) => b.sortId - a.sortId
+    // and hash: c => c.id
 
     const updateSortedList = useCallback((id: string, sortId: string) => {
-        setSortedConversationsIds((prev) => {
-            // 1. Remove the item if it exists (to handle the move-to-top/re-sort)
-            const filtered = prev.filter((item) => item.id !== id);
+        setSortedConversationsIds(prev => {
+            // Construct the updated conversation order
+            const updatedConv: ConversationOrder = { id, sortId };
 
-            // 2. Find the new index based on the new sortId
-            const insertionIndex = findDescendingInsertionIndex(filtered, sortId);
-
-            // 3. Create the new list and splice in the updated object
-            const newList = [...filtered];
-            newList.splice(insertionIndex, 0, { id, sortId });
-
-            return newList;
+            // Remove by id (thanks to hash function) and add updated
+            return prev
+                .remove({ id } as ConversationOrder) // remove old entry by id
+                .add(updatedConv);                   // add updated entry, SortedSet re-sorts automatically
         });
     }, []);
-
 
     const fetchOneConversation = async (conversationId: string) => {
         try {
@@ -471,7 +487,7 @@ export function useChat() {
 
     useEffect(() => {
         // Subscribe to Socket Events
-        const unsubscribe = subscribe(async (action) => {
+        const unsubscribe = subscribe("chat", async (action) => {
             if (action.type === "NEW_MESSAGE") {
                 const { message, tempId, sender } = action.payload;
                 const convId = message.conversationId;
@@ -523,20 +539,22 @@ export function useChat() {
                         return next;
                     });
 
-
-                    // Re-sort the sortedConversations array
+                    // Assuming ConversationOrder = { id: string; sortId: number }
                     setSortedConversationsIds(prev => {
-                        const filtered = prev.filter(c => c.id !== convId);
                         const convToMove = existingConv;
                         if (!convToMove) return prev;
 
-                        const updatedConv = { ...convToMove, lastMessage: message };
-                        const effectiveSortId = message.sortId; // Newest message is now the priority
+                        const updatedConv: ConversationOrder = {
+                            id: convToMove.id,
+                            sortId: message.sortId, // newest message priority
+                        };
 
-                        const insIndex = findDescendingInsertionIndex(filtered, effectiveSortId);
-                        filtered.splice(insIndex, 0, { id: updatedConv.id, sortId: message.sortId });
-                        return filtered;
+                        // Remove old entry, then add updated one
+                        return prev
+                            .remove({ id: convToMove.id, sortId: convToMove.sortId }) // remove old
+                            .add(updatedConv); // add updated, SortedSet keeps order
                     });
+
                 } else {
                     // This updates both the Map and the Sorted IDs list
                     existingConv = await fetchOneConversation(convId);

@@ -24,7 +24,7 @@ interface SocketContextType {
     unreadChatCount: number;
     userStatuses: Record<string, 'online' | 'offline'>; // Track online/offline users
     setUnreadChatCount: Dispatch<SetStateAction<number>>;
-    subscribe: (cb: SocketSubscriberCallback) => () => void;
+    subscribe: (key: string, cb: SocketSubscriberCallback) => () => void;
     incrementUnread: () => void;
     resetUnread: () => void;
     clearUnreadForThread: (threadId: string) => void;
@@ -38,7 +38,7 @@ export const SocketProvider = ({ children }: { children: ReactNode }) => {
     const { addIncoming } = useNotifications();
 
     const socketRef = useRef<Socket | null>(null);
-    const subscribers = useRef<Set<SocketSubscriberCallback>>(new Set());
+    const subscribers = useRef<Map<string, SocketSubscriberCallback>>(new Map());
 
     const [isConnected, setIsConnected] = useState<boolean>(false);
     const [unreadChatCount, setUnreadChatCount] = useState<number>(0);
@@ -48,9 +48,9 @@ export const SocketProvider = ({ children }: { children: ReactNode }) => {
         subscribers.current.forEach((cb) => cb(action));
     };
 
-    const subscribe = useCallback((cb: SocketSubscriberCallback) => {
-        subscribers.current.add(cb);
-        return () => { subscribers.current.delete(cb); };
+    const subscribe = useCallback((key: string, cb: SocketSubscriberCallback) => {
+        subscribers.current.set(key, cb);
+        return () => { subscribers.current.delete(key); };
     }, []);
 
     const incrementUnread = () => setUnreadChatCount((prev) => prev + 1);

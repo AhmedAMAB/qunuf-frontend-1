@@ -7,6 +7,7 @@ import { useAuthInterceptor } from "@/hooks/useAuthInterceptor"
 import { AuthProvider } from '@/contexts/AuthContext';
 import { SocketProvider } from '@/contexts/SocketContext';
 import { NotificationProvider } from '@/contexts/NotificationContext';
+import { GlobalProvider } from '@/contexts/GlobalContext';
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
     // Enforce toast limit
     const { toasts } = useToasterStore()
@@ -21,22 +22,24 @@ export default function ClientProviders({ children }: { children: React.ReactNod
 
     return (
         <AuthProvider>
-            <NotificationProvider>
-                <SocketProvider>
-                    <AuthInterceptorWrapper>
-                        <ProgressProvider
-                            height="2px"
-                            color="#0070f3"
-                            options={{ showSpinner: false }}
-                            shallowRouting
-                        >
-                            <AOSInitializer />
-                            <Toaster position='top-center' />
-                            {children}
-                        </ProgressProvider>
-                    </AuthInterceptorWrapper>
-                </SocketProvider>
-            </NotificationProvider>
+            <GlobalProvider>
+                <NotificationProvider>
+                    <SocketProvider>
+                        <AuthInterceptorWrapper>
+                            <ProgressProvider
+                                height="2px"
+                                color="#0070f3"
+                                options={{ showSpinner: false }}
+                                shallowRouting
+                            >
+                                <AOSInitializer />
+                                <Toaster position='top-center' />
+                                {children}
+                            </ProgressProvider>
+                        </AuthInterceptorWrapper>
+                    </SocketProvider>
+                </NotificationProvider>
+            </GlobalProvider>
         </AuthProvider>
     );
 }

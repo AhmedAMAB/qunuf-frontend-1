@@ -24,6 +24,8 @@ interface Route {
     path: string;
     strict?: boolean;
     regex?: RegExp;
+    notFor?: Role;
+    relpace?: string;
 }
 
 const PUBLIC_ROUTES: Route[] = [
@@ -38,7 +40,7 @@ const PUBLIC_ROUTES: Route[] = [
 // Role-specific routes
 const TENANT_ROUTES: string[] = [];
 const LANDLORD_ROUTES: string[] = [];
-const ADMIN_ROUTES: string[] = [];
+const ADMIN_ROUTES: string[] = ['/website-settings'];
 
 // -----------------------------
 // 3) Middleware function
@@ -54,13 +56,30 @@ export async function middleware(request: NextRequest) {
 
     // Remove locale prefix to compare route
     const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
+    const payload = await getJwtPayload(token);
+    const role: Role = payload?.role as Role;
 
     // -----------------------------
     // 1) PUBLIC ROUTES → always allowed
     // -----------------------------
-    if (isPublicRoute(pathWithoutLocale)) {
+    const publicRoute = getPublicRouteMatch(pathWithoutLocale, role);
+
+    if (publicRoute) {
+        // Check if the user is restricted from this specific public route
+        if (publicRoute.restricted) {
+            const redirectPath = publicRoute.relpace || '/'; // Fallback to '/' if replace is missing
+
+            // Create the redirect URL (keeping the current locale/origin)
+            const url = request.nextUrl.clone();
+            url.pathname = redirectPath;
+
+            return NextResponse.redirect(url);
+        }
+
+        // Otherwise, allow access
         return intlMiddleware(request);
     }
+
 
     // -----------------------------
     // 2) Must be authenticated
@@ -72,12 +91,11 @@ export async function middleware(request: NextRequest) {
     // -----------------------------
     // 3) Decode JWT and extract role
     // -----------------------------
-    const payload = await getJwtPayload(token);
+
     if (!payload) {
         return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, request.url));
     }
 
-    const role: Role = payload.role as Role;
 
     // -----------------------------
     // 4) Role-specific protection
@@ -132,15 +150,23 @@ function createPathRegex(pattern: string, exact = true): RegExp {
     return new RegExp(regexStr);
 }
 
-function isPublicRoute(path: string): boolean {
-    return PUBLIC_ROUTES.some((route) => {
+function getPublicRouteMatch(path, userRole) {
+    const match = PUBLIC_ROUTES.find(route => {
         if (route.regex) {
             return createPathRegex(route.path, route?.strict).test(path);
         }
         if (route.strict) {
             return path === route.path;
         }
-        // default: startsWith
         return path.startsWith(route.path);
     });
+
+    if (!match) return null;
+
+    // If the route has a 'notFor' restriction and it matches the current user's role
+    if (match.notFor && match.notFor === userRole) {
+        return { ...match, restricted: true };
+    }
+
+    return { ...match, restricted: false };
 }

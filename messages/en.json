@@ -1,8 +1,8 @@
 {
   "root": {
-    "siteName": "Real State",
+    "siteName": "Qunuf",
     "logo": "QUNUF",
-    "description": "Discover, list, and manage properties with Real State.",
+    "description": "Discover, list, and manage properties with qunuf.",
     "lang": "عربي"
   },
   "notFound": {
@@ -227,6 +227,7 @@
     }
   },
   "contact": {
+    "nolocation": "Location not available",
     "hero": {
       "title": "Contatc Us",
       "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
@@ -245,6 +246,8 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
+      "fax": "Fax",
+      "noData": "Not available",
       "message": {
         "label": "How did you find us?",
         "placeholder": "Select an option",
@@ -639,7 +642,16 @@
       "how": "How We Work",
       "terms": "Terms of Service",
       "pricing": "Pricing",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "privacy": "Privacy Policy",
+      "about": "About Us",
+      "termsDescription": "Please review our usage guidelines and legal terms.",
+      "privacyDescription": "Learn how we handle and protect your personal data.",
+      "seeMore": "See More",
+      "empty": {
+        "title": "No Content Found",
+        "description": "We couldn't find the terms of service content at the moment. Please check back later."
+      }
     },
     "contact": {
       "title": "Contact Us",
@@ -679,7 +691,9 @@
       "teamMembers": "Team Members",
       "aboutUs": "About Us",
       "departments": "Departments",
-      "logout": "Logout"
+      "websiteSettings": "Website Settings",
+      "logout": "Logout",
+      "loggingOut": "Logging out..."
     },
     "filter": {
       "export": {
@@ -888,6 +902,65 @@
       }
     },
     "admin": {
+      "settings": {
+        "loading": "Loading settings...",
+        "saving": "Saving...",
+        "save": "Save Changes",
+        "sections": {
+          "general": "General Information",
+          "description": "Descriptions",
+          "contactAndLocation": "Contact & Location",
+          "legal": "Legal Documents",
+          "social": "Social Media Links"
+        },
+        "messages": {
+          "updating": "Saving settings...",
+          "fetchError": "Failed to load settings.",
+          "updateSuccess": "Settings updated successfully!",
+          "updateError": "An error occurred while saving."
+        },
+        "fields": {
+          "name": "Website Name",
+          "platformPercent": "Platform Commission (%)",
+          "contactEmail": "Contact Email",
+          "contactPhone": "Contact Phone",
+          "fax": "Fax Number",
+          "address": "Physical Address",
+          "latitude": "Latitude",
+          "longitude": "Longitude",
+          "description_en": "Description (English)",
+          "description_ar": "Description (Arabic)",
+          "privacyPolicy_en": "Privacy Policy (English)",
+          "privacyPolicy_ar": "Privacy Policy (Arabic)",
+          "termsOfService_en": "Terms of Service (English)",
+          "termsOfService_ar": "Terms of Service (Arabic)",
+          "facebook": "Facebook",
+          "twitter": "Twitter",
+          "instagram": "Instagram",
+          "linkedin": "LinkedIn",
+          "pinterest": "Pinterest",
+          "tiktok": "TikTok",
+          "youtube": "YouTube"
+        },
+        "placeholders": {
+          "name": "Enter website name",
+          "description_en": "Enter website description in English",
+          "description_ar": "Enter website description in Arabic"
+        },
+        "required": "This field is required",
+        "email": {
+          "invalid": "Please enter a valid email address"
+        },
+        "url": {
+          "invalid": "Please enter a valid URL (e.g., https://...)"
+        },
+        "number": {
+          "invalid": "Value must be a number"
+        },
+        "percent": {
+          "invalid": "Percentage must be a number between 0 and 100"
+        }
+      },
       "root": {
         "totalProperties": "Total Properties",
         "freeProperties": "Free Properties",

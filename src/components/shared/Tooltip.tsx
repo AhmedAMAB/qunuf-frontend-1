@@ -19,7 +19,7 @@ export default function Tooltip({
         <div className="relative group inline-block">
             {children}
             <div
-                className={`absolute ${className} w-max max-w-xs px-2 py-1 rounded text-sm z-10
+                className={`absolute ${className} w-max max-w-xs px-2 py-1 rounded text-sm z-[40]
           bg-[var(--primary)] text-[var(--highlight)] shadow-lg opacity-0 group-hover:opacity-100
           transition-opacity duration-200 pointer-events-none`}
             >

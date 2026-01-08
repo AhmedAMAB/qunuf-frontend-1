@@ -2,12 +2,14 @@ import { useTranslations } from "next-intl";
 import { MdFilterList } from "react-icons/md";
 import ChatPreviewCard from "./ChatPreviewCard";
 import { ConversationChat } from "@/hooks/dashboard/useChat";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { Virtuoso } from "react-virtuoso";
+import { SortedSet } from "@rimbu/sorted";
+import { ConversationOrder } from "@/utils/compare";
 
 interface ChatSidebarProps {
     loadingConversations: boolean;
-    sortedConversationsIds: { id: string; sortId: string }[];
+    sortedConversationsIds: SortedSet<ConversationOrder>;
     conversationsMap: Map<string, ConversationChat>; // Enforces using Map, not Object
     handleSelectChat: (id: string) => void;
     fetchMoreConversations: () => void;
@@ -30,6 +32,12 @@ const ChatSidebar = memo(function ChatSidebar({
         if (!loadingConversations)
             fetchMoreConversations()
     }
+
+    const virtuosoData = useMemo(() => {
+        return sortedConversationsIds.toArray().map(({ id }) => conversationsMap.get(id));
+    }, [sortedConversationsIds, conversationsMap]);
+
+
     return (
         <div className="bg-card-bg rounded-[8px] p-4">
             <div className="flex justify-between pb-4 items-center border-b border-b-gray">
@@ -39,12 +47,12 @@ const ChatSidebar = memo(function ChatSidebar({
                 <MdFilterList size={24} className="text-secondary" />
             </div>
 
-            {loadingConversations && sortedConversationsIds.length === 0 && (
+            {loadingConversations && sortedConversationsIds.size === 0 && (
                 <div style={{ height: "calc(100vh - 256px)" }} >
                     {Array.from({ length: 5 }).map((_, i) => <ChatPreviewSkeleton key={i} />)}
                 </div>
             )}
-            {!loadingConversations && sortedConversationsIds.length === 0 && (
+            {!loadingConversations && sortedConversationsIds.size === 0 && (
                 <div style={{ height: "calc(100vh - 256px)" }} className="h-full flex flex-col items-center justify-center text-center py-10 px-2">
                     <div className="p-4 bg-gray-100 rounded-full mb-4">
                         <MdFilterList size={40} className="text-gray-400" />
@@ -53,10 +61,10 @@ const ChatSidebar = memo(function ChatSidebar({
                     <p className="text-sm text-gray-400">{t("startMessagingToSeeChats")}</p>
                 </div>
             )}
-            {sortedConversationsIds.length > 0 && <Virtuoso
+            {sortedConversationsIds.size > 0 && (<Virtuoso
                 style={{ height: "calc(100vh - 256px)" }}
                 className="space-y-4 thin-scrollbar max-md:border-none border-e border-gray"
-                data={sortedConversationsIds}
+                data={virtuosoData}
                 endReached={fetchMore}
                 increaseViewportBy={200}
                 itemContent={(index, conv) => {
@@ -65,27 +73,26 @@ const ChatSidebar = memo(function ChatSidebar({
 
                     const sending = isSending.get(conv.id) || false;
 
+
                     return (
                         <ChatPreviewCard
                             key={conv.id}
-                            partner={conversation.partner}
-                            lastMessage={conversation.lastMessage}
                             selected={conversation.id === currentOpenConversationId}
                             isSending={sending}
-                            unreadCount={conversation.myUnreadCount}
+                            conversation={conversation}
                             onClick={() => handleSelectChat(conversation.id)}
                         />
                     );
                 }}
                 components={{
                     Footer: () =>
-                        loadingConversations && sortedConversationsIds.length > 0 ? (
+                        loadingConversations && sortedConversationsIds.size > 0 ? (
                             <div className="py-4 text-center text-xs text-gray-400">
                                 {t("loadingMore")}
                             </div>
                         ) : null,
                 }}
-            />}
+            />)}
 
             {/* 1️⃣ Initial loading: no conversations yet */}
 

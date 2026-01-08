@@ -11,27 +11,27 @@ import MobileDashboardIcons from "./MobileDashboardIcons";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useSocket } from "@/contexts/SocketContext";
 
 export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () => void }) {
     const t = useTranslations('dashboard.header')
     const [subHeaderOpen, setSubHeaderOpen] = useState(false);
     const { getHref } = useDashboardHref();
     const { user } = useAuth();
-
+    const { unreadChatCount } = useSocket();
     function toggleSubHeader() {
         setSubHeaderOpen(p => !p)
     }
+
+
     return (
         <div>
-
-
             <header className="px-4 md:px-6 bg-dashboard-bg ">
                 <div className=" ">
                     <div className="py-[21px] flex justify-between items-center h-[98px] sm:h-[107px] md:h-[112px]">
                         <button
                             onClick={toggleSubHeader}
                             className={`lg:hidden p-2 rounded-[6px] ${subHeaderOpen ? "bg-gray-100" : ""}`}
-                            aria-label="فتح القائمة الجانبية"
                         >
                             <RxDotsHorizontal className="text-xl text-primary" />
                         </button>
@@ -52,7 +52,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 
                             <Link href={getHref('chats')}>
                                 <div className="relative bg-card-bg custom-shadow rounded-full p-3">
-                                    <PingIndicator />
+                                    {unreadChatCount ? <PingIndicator /> : null}
                                     <IoChatbubbleEllipsesOutline size={20} className="text-primary" />
                                 </div>
                             </Link>

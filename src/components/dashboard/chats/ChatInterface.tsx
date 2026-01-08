@@ -51,6 +51,7 @@ export default function ChatInterface() {
                 retryMessage={retryMessage}
                 currentOpenConversationId={currentOpenConversationId}
                 selectedUser={currentConversation?.partner}
+                isPartnerAdmin={currentConversation?.partner.id === currentConversation?.supportUserId}
                 selectedChatId={currentOpenConversationId}
                 messages={currentConversationMessages}
                 handleSendMessage={(content) => sendMessage(currentOpenConversationId || '', content)}
@@ -64,6 +65,7 @@ export default function ChatInterface() {
                 loadingMessageId={loadingMessageId}
                 currentOpenConversationId={currentOpenConversationId}
                 selectedUser={currentConversation?.partner}
+                isPartnerAdmin={currentConversation?.partner.id === currentConversation?.supportUserId}
                 selectedChatId={currentOpenConversationId}
                 messages={currentConversationMessages}
                 handleSendMessage={(content) => sendMessage(currentOpenConversationId || '', content)}

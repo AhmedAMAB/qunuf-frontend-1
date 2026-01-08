@@ -38,13 +38,14 @@ async function reverseGeocode(
 type LocationInputProps<T extends FieldValues> = {
     control: Control<T>;
     name: Path<T>; // this ensures the name is a valid path
+    showAddress?: boolean;
 };
 
 export type LocationInputType = <T extends FieldValues>(
     props: LocationInputProps<T>
 ) => ReactElement;
 
-function LocationInput<T extends FieldValues>({ control, name }: LocationInputProps<T>) {
+function LocationInput<T extends FieldValues>({ control, name, showAddress = true }: LocationInputProps<T>) {
     const {
         field: { value: position, onChange },
     } = useController({
@@ -72,7 +73,7 @@ function LocationInput<T extends FieldValues>({ control, name }: LocationInputPr
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
-
+        if (!showAddress) return;
         const fetchAddress = async () => {
             try {
                 setLoadingAddress(true);
@@ -94,7 +95,7 @@ function LocationInput<T extends FieldValues>({ control, name }: LocationInputPr
             isMounted = false;
             controller.abort(); // cancel any in-flight request
         };
-    }, [position, locale]);
+    }, [position, locale, showAddress]);
 
 
     // Validate and apply changes when either input updates
@@ -121,9 +122,9 @@ function LocationInput<T extends FieldValues>({ control, name }: LocationInputPr
     return (
         <div className="space-y-4">
             {/* Address and inputs */}
-            <div className="text-lg font-semibold text-gray-600 mt-2 md:mt-0">
+            {showAddress && <div className="text-lg font-semibold text-gray-600 mt-2 md:mt-0">
                 {loadingAddress ? t("fetching") : `${t("addressPrefix")} ${address}`}
-            </div>
+            </div>}
             <div className="flex flex-col md:flex-row gap-3 justify-between items-start md:items-center">
                 {/* Selected position summary */}
                 <div className="flex items-center gap-3">

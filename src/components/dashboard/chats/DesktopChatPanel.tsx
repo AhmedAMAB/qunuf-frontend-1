@@ -1,12 +1,13 @@
 
 import { Message } from "@/types/dashboard/chat";
-import ConversationThread from "./ConversationThread";
+import ConversationThread, { MessageSkeleton } from "./ConversationThread";
 import EmptyChatState from "./EmptyChatState";
 import { User } from "@/types/dashboard/user";
 import { Component, memo, useMemo } from "react";
 import React, { useRef, useState, useCallback } from "react";
 import VirtualMessageRow from "./VirtualMessageRow";
 import { useAuth } from "@/contexts/AuthContext";
+import MessagesLoading from "./MessagesLoading";
 
 
 
@@ -26,6 +27,7 @@ interface DesktopChatPanelProps {
     loadMoreMessages?: (conversationId: string) => Promise<number>;
     markAsRead?: (conversationId: string) => Promise<void>;
     loadingMoreId?: string | null;
+    isPartnerAdmin?: boolean;
 }
 
 const DesktopChatPanel = memo(function DesktopChatPanel({
@@ -38,14 +40,21 @@ const DesktopChatPanel = memo(function DesktopChatPanel({
     retryMessage,
     loadMoreMessages,
     loadingMoreId,
-    markAsRead
+    markAsRead,
+    isPartnerAdmin
 }: DesktopChatPanelProps) {
 
-    const { user } = useAuth()
+    if (loadingMessageId?.startsWith('new-chat')) {
+        return (
+            <MessagesLoading />
+        );
+    }
+
     return (
         <div className="hidden md:block md:col-span-6 lg:col-span-7 xl:col-span-8 bg-white  rounded-[8px] relative">
             {selectedUser ? (
                 <ConversationThread
+                    isPartnerAdmin={isPartnerAdmin}
                     markAsRead={markAsRead}
                     loadingMoreId={loadingMoreId}
                     loadMoreMessages={loadMoreMessages}

@@ -20,6 +20,7 @@ type ConversationThreadProps = {
     loadMoreMessages?: (conversationId: string) => Promise<number>;
     markAsRead?: (conversationId: string) => Promise<void>;
     loadingMoreId?: string | null;
+    isPartnerAdmin?: boolean;
 };
 
 const ConversationThread = memo(function ConversationThread({
@@ -32,8 +33,10 @@ const ConversationThread = memo(function ConversationThread({
     retryMessage,
     loadMoreMessages,
     loadingMoreId,
-    markAsRead
+    markAsRead,
+    isPartnerAdmin
 }: ConversationThreadProps) {
+    const tSupport = useTranslations('dashboard.support');
     const [showScrollButton, setShowScrollButton] = useState(false);
     const prevMessagesCount = useRef(messages.length);
     const { user } = useAuth()
@@ -218,7 +221,6 @@ const ConversationThread = memo(function ConversationThread({
     }, []); // Re-bind if conversation or handler changes
 
 
-
     return (
         <div className={`relative rounded-[8px] bg-card-bg p ${className}`}>
             {/* Scrollable Message Area */}
@@ -227,17 +229,17 @@ const ConversationThread = memo(function ConversationThread({
                 <div className="shrink-0 w-14 h-14 relative rounded-full overflow-hidden mb-2">
                     <Image
                         src={resolveUrl(participant.imagePath) || '/users/default-user.png'}
-                        alt={`${participant.name}'s profile`}
+                        alt={`${isPartnerAdmin ? tSupport('senderName') : participant.name}'s profile`}
                         width={56}
                         height={56}
                         className="object-cover"
                     />
                 </div>
-                <h4 className="text-base font-semibold text-dark">{participant.name}</h4>
+                <h4 className="text-base font-semibold text-dark">{isPartnerAdmin ? tSupport('senderName') : participant.name}</h4>
             </div>
             <div ref={messagesContainerRef} key={currentOpenConversationId} className={`h-[calc(100vh-175px)] md:h-[calc(100vh-370px)] thin-scrollbar space-y-6 pr-1 `}>
                 {/* Messages */}
-                {(loadingMessageId === currentOpenConversationId) || (!currentOpenConversationId && loadingMessageId === 'new-chat') ? (
+                {(loadingMessageId === currentOpenConversationId) ? (
                     <div className="space-y-4">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <MessageSkeleton key={i} />
@@ -249,8 +251,6 @@ const ConversationThread = memo(function ConversationThread({
                     </div>
                 ) : (
                     <>
-
-
                         <div className="h-full w-full relative">
                             {/* Nice Top Loading Indicator */}
                             {loadingMoreId === currentOpenConversationId && (
@@ -374,13 +374,13 @@ export default ConversationThread;
 
 export function MessageSkeleton() {
     return (
-        <div className="flex items-center  gap-4 p-4 animate-pulse">
+        <div className="flex items-center  gap-4 p-4 animate-pulse ltr:flex-row-reverse">
             <div className="flex flex-col gap-2 flex-1">
-                <div className="flex  justify-end gap-4">
+                <div className="flex rtl:justify-end lrt:justify-start gap-4">
                     <div className="h-4 bg-gray-100 rounded w-16" />
                     <div className="h-4 bg-gray-200 rounded w-24" />
                 </div>
-                <div className="h-4 bg-gray-100 ms-auto rounded w-3/4" />
+                <div className="h-4 bg-gray-100 rtl:ms-auto ltr:me-auto rounded w-3/4" />
             </div>
             <div className="shrink-0 w-[37px] h-[37px] bg-gray-200 rounded-full" />
         </div>

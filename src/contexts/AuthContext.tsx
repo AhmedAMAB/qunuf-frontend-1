@@ -19,7 +19,7 @@ interface AuthContextType {
   setCurrentUser: (input: string | User) => void;
   refetchUser: () => Promise<User | null>;
   login: (credentials: LoginCredentials) => Promise<{ accessToken: string; refreshToken: string; user: User }>;
-  logout: () => Promise<void>;
+  logout: (direct?: string) => Promise<void>;
   updateTokens: (tokens: { accessToken?: string; refreshToken?: string }) => void;
 }
 
@@ -82,7 +82,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const [LoggingOut, setLoggingOut] = useState(false); // loading state
 
-  const logout = async () => {
+  const logout = async (direct = '/') => {
     try {
       setLoggingOut(true); // start loading
       console.log('Logging out user...');
@@ -98,6 +98,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
 
       setUser(null); // clear user state
+      window.location.href = direct || '/';
     } catch (err) {
       console.error('Logout failed', err);
     } finally {

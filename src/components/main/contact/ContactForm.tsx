@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import api from "@/libs/axios";
 import { phoneSchema } from "@/utils/validation";
+import { useValues } from "@/contexts/GlobalContext";
 
 
 const contactSchema = z.object({
@@ -26,7 +27,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function ContactForm() {
     const t = useTranslations('contact.form');
-
+    const { settings } = useValues();
     const {
         register,
         handleSubmit,
@@ -133,17 +134,17 @@ export default function ContactForm() {
                 <ContactInfo
                     icon={<FiPhoneCall size={28} />}
                     label={t('phone')}
-                    value="03 5432 1234"
+                    value={settings?.contactPhone || t('noData')}
                 />
                 <ContactInfo
                     icon={<LiaFaxSolid size={28} />}
                     label={t('fax')}
-                    value="03 5432 1234"
+                    value={settings?.fax || t('noData')}
                 />
                 <ContactInfo
                     icon={<HiOutlineMailOpen size={28} />}
                     label={t('email')}
-                    value="info@example.com"
+                    value={settings?.contactEmail || t('noData')}
                 />
             </div>
         </form>

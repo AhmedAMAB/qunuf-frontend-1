@@ -14,6 +14,9 @@ export default function MessageInput({
     // Map of conversationId -> draft message
     const draftsRef = useRef<Map<string, string>>(new Map());
 
+
+    // Ref for the input element const
+    const inputRef = useRef<HTMLInputElement>(null);
     // Local state bound to the input
     const [message, setMessage] = useState<string>("");
 
@@ -22,6 +25,7 @@ export default function MessageInput({
         if (!currentConversationId) return;
         const draft = draftsRef.current.get(currentConversationId) || "";
         setMessage(draft);
+        inputRef.current?.focus();
     }, [currentConversationId]);
 
     function send() {
@@ -45,6 +49,7 @@ export default function MessageInput({
         <div className="flex items-end md:bottom-2 md:start-0 md:end-0 bg-card-bg mt-5">
             <div className="flex items-center gap-5 flex-1">
                 <input
+                    ref={inputRef}
                     type="text"
                     placeholder={t("typeMessage")}
                     value={message}

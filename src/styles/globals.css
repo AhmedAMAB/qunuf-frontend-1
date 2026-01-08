@@ -78,7 +78,8 @@ body {
     @apply cursor-pointer;
   }
 
-  [disabled] {
+  [disabled],
+  .disabled {
     opacity: 0.5;
     pointer-events: none;
     /* prevent clicks */

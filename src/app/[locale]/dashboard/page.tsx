@@ -1,10 +1,7 @@
-'use client'
-
 import AdminDashboard from "@/components/dashboard/admin/AdminDashboard";
 import LandlordDashboard from "@/components/dashboard/admin/LandlordDashboard";
 import TenantDashboard from "@/components/dashboard/admin/TenantDashboard";
-import { useAuth } from "@/contexts/AuthContext";
-
+import { getUserRole } from "@/utils/auth";
 
 
 const dashboards: Record<string, React.ReactNode> = {
@@ -13,24 +10,11 @@ const dashboards: Record<string, React.ReactNode> = {
     landlord: <LandlordDashboard />,
 };
 
-export default function DashboardPage() {
-    const { role, loadingUser } = useAuth();
-
-    if (loadingUser) {
-        return (
-            <div className="flex items-center justify-center h-full">
-                Loading...
-            </div>
-        );
-    }
-
+export default async function DashboardPage() {
+    const role = await getUserRole();
     return (
         <div>
-            {role ? dashboards[role] : (
-                <div className="text-center text-gray-500">
-                    You do not have access to dashboard.
-                </div>
-            )}
+            {dashboards[role]}
         </div>
     );
 }

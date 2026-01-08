@@ -1,10 +1,20 @@
-import { Link } from "@/i18n/navigation";
+'use client';
+import { Link, usePathname } from "@/i18n/navigation";
 import Logo from "../Logo";
 import SocialIcons from "./SocialIcons";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useValues } from "@/contexts/GlobalContext";
+
+// Simple skeleton component for placeholders
+const Skeleton = ({ width = "w-32", height = "h-4" }) => (
+    <div className={`bg-gray-600 animate-pulse rounded ${width} ${height}`} />
+);
 
 export default function Footer() {
     const t = useTranslations("footer");
+    const locale = useLocale();
+    const isAr = locale === 'ar';
+    const { settings, loadingSettings } = useValues();
 
     return (
         <footer className="relative">
@@ -19,8 +29,18 @@ export default function Footer() {
                             <Logo />
                         </div>
                         <p className="text-sm sm:text-base text-white max-w-[370px] leading-relaxed">
-                            {t("description")}
+                            {loadingSettings ? (
+                                <div className="space-y-2">
+
+                                    <Skeleton width="w-64" height="h-5" />
+                                    <Skeleton width="w-62" height="h-5" />
+                                    <Skeleton width="w-54" height="h-5" />
+                                </div>
+                            ) : (
+                                isAr ? settings?.description_ar : settings?.description_en
+                            )}
                         </p>
+
                         <SocialIcons />
                     </div>
 
@@ -32,20 +52,20 @@ export default function Footer() {
                         <ul className="flex flex-col gap-4">
                             <FooterLink href="/#home" label={t("about.menu")} />
                             <FooterLink href="/#features" label={t("about.features")} />
-                            <FooterLink href="/blog" label={t("about.blogs")} />
+                            <FooterLink href="/blogs" label={t("about.blogs")} />
                             <FooterLink href="/contact" label={t("about.support")} />
                         </ul>
                     </div>
 
+                    {/* Company */}
                     <div className="flex flex-col items-center sm:items-start">
                         <h2 className="mb-6 text-primary font-bold text-xl sm:text-2xl">
                             {t("company.title")}
                         </h2>
                         <ul className="flex flex-col gap-4">
-                            <FooterLink href="/#home" label={t("company.how")} />
-                            <FooterLink href="/#home" label={t("company.terms")} />
-                            <FooterLink href="/#home" label={t("company.pricing")} />
-                            <FooterLink href="/#home" label={t("company.faq")} />
+                            <FooterLink href="/about" label={t("company.about")} />
+                            <FooterLink href="/terms" label={t("company.terms")} />
+                            <FooterLink href="/privacy" label={t("company.privacy")} />
                         </ul>
                     </div>
 
@@ -55,20 +75,42 @@ export default function Footer() {
                             {t("contact.title")}
                         </h2>
                         <ul className="flex flex-col gap-4 text-white">
-                            <li><p className="text-base md:text-lg">{t("contact.address")}</p></li>
-                            <li><a
-                                href="tel:+972029182132"
-                                className="text-base md:text-lg font-lighter hover:underline"
-                                dir="ltr"
-                            >
-                                +97&nbsp;202-918-2132
-                            </a></li>
-                            <li><a
-                                href="mailto:realState@gmail.com"
-                                className="hover:underline"
-                            >
-                                realState@gmail.com
-                            </a></li>
+                            <li>
+                                {loadingSettings ? (
+                                    <Skeleton width="w-48" height="h-5" />
+                                ) : (
+                                    <p className="text-base md:text-lg">{settings?.address}</p>
+                                )}
+                            </li>
+                            <li>
+                                {loadingSettings ? (
+                                    <Skeleton width="w-32" height="h-5" />
+                                ) : (
+                                    settings?.contactPhone && (
+                                        <a
+                                            href={`tel:${settings.contactPhone}`}
+                                            className="text-base md:text-lg font-lighter hover:underline"
+                                            dir="ltr"
+                                        >
+                                            {settings.contactPhone}
+                                        </a>
+                                    )
+                                )}
+                            </li>
+                            <li>
+                                {loadingSettings ? (
+                                    <Skeleton width="w-40" height="h-5" />
+                                ) : (
+                                    settings?.contactEmail && (
+                                        <a
+                                            href={`mailto:${settings.contactEmail}`}
+                                            className="hover:underline"
+                                        >
+                                            {settings.contactEmail}
+                                        </a>
+                                    )
+                                )}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -83,11 +125,20 @@ type FooterLinkProps = {
     label: string;
 };
 function FooterLink({ href, label }: FooterLinkProps) {
+    const pathname = usePathname();
+
+    // Check if the current path matches the href
+    // We handle the locale prefix automatically if you're using next-intl middleware
+    const isActive = pathname === href || pathname.startsWith(`${href}/`);
+
     return (
         <li>
             <Link
                 href={href}
-                className="text-base text-white hover:text-primary transition-colors duration-200"
+                className={`text-base transition-colors duration-200 ${isActive
+                    ? "text-primary font-medium" // Active state styles
+                    : "text-white hover:text-primary" // Default state styles
+                    }`}
             >
                 {label}
             </Link>

@@ -23,5 +23,3 @@ export default function DashboardLayoutClient({ children }: { children: React.Re
         </div>
     );
 }
-
-//

@@ -5,11 +5,14 @@ import { Link } from "@/i18n/navigation";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import FallbackImage from "../shared/FallbackImage";
+import { useSocket } from "@/contexts/SocketContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 
 export default function MobileDashboardIcons({ open, onClose }: { open: boolean, onClose: () => void }) {
     const { getHref } = useDashboardHref();
-
+    const { user } = useAuth()
+    const { unreadChatCount } = useSocket();
     if (!open) return null;
 
     return (
@@ -18,7 +21,7 @@ export default function MobileDashboardIcons({ open, onClose }: { open: boolean,
             <div className="flex gap-2 items-center">
                 <Link href={getHref('chats')} onClick={onClose}>
                     <div className="relative bg-card-bg custom-shadow rounded-full p-3">
-                        <PingIndicator />
+                        {unreadChatCount ? <PingIndicator /> : null}
                         <IoChatbubbleEllipsesOutline size={20} className="text-primary" />
                     </div>
                 </Link>
@@ -45,13 +48,14 @@ export default function MobileDashboardIcons({ open, onClose }: { open: boolean,
                 >
                     <FallbackImage
                         alt="profile"
-                        src="/users/user-4.jpg"
+                        src={user?.imagePath || "/users/default-user.png"}
+                        defaultImage="/users/default-user.png"
                         width={44}
                         height={44}
                         className="w-full h-full rounded-full object-cover"
                     />
                 </button>
-                <p className="text-input">Bassen Ali</p>
+                <p className="text-input">{user?.name}</p>
             </div>
 
         </div>

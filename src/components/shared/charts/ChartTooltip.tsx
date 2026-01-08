@@ -22,8 +22,10 @@ export default function ChartTooltip({ tooltipData, visible, tooltiTitle }: { to
     let left = tooltipData.left + 10;
 
     // If tooltip would overflow right edge, flip to left side
-    if (left + width + 30 > window.innerWidth) {
-        left = tooltipData.left - width - 10;
+    if (typeof window !== "undefined") {
+        if (left + width + 30 > window.innerWidth) {
+            left = tooltipData.left - width - 10;
+        }
     }
 
     return <div

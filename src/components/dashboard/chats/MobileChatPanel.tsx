@@ -5,6 +5,7 @@ import EmptyChatState from "./EmptyChatState";
 import { Message } from "@/types/dashboard/chat";
 import { User } from "@/types/dashboard/user";
 import { memo } from "react";
+import MessagesLoading from "./MessagesLoading";
 
 interface MobileChatPanelProps {
     selectedUser?: User;
@@ -23,6 +24,7 @@ interface MobileChatPanelProps {
     loadMoreMessages?: (conversationId: string) => Promise<number>;
     markAsRead?: (conversationId: string) => Promise<void>;
     loadingMoreId?: string | null;
+    isPartnerAdmin?: boolean;
 }
 
 const MobileChatPanel = memo(function MobileChatPanel({
@@ -37,8 +39,15 @@ const MobileChatPanel = memo(function MobileChatPanel({
     retryMessage,
     loadMoreMessages,
     loadingMoreId,
-    markAsRead
+    markAsRead,
+    isPartnerAdmin
 }: MobileChatPanelProps) {
+    if (loadingMessageId?.startsWith('new-chat')) {
+        return (
+            <MessagesLoading />
+        );
+    }
+
     return (
         <div
             className={`fixed inset-0 z-50 transition-transform duration-300 ease-in-out md:hidden bg-white ${isOpen ? "translate-x-0" : "translate-x-full"
@@ -46,6 +55,7 @@ const MobileChatPanel = memo(function MobileChatPanel({
         >
             {selectedUser ? (
                 <ConversationThread
+                    isPartnerAdmin={isPartnerAdmin}
                     markAsRead={markAsRead}
                     loadingMoreId={loadingMoreId}
                     loadMoreMessages={loadMoreMessages}
