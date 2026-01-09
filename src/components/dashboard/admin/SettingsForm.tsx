@@ -225,6 +225,7 @@ export default function SettingsForm() {
                             name="name"
                             render={({ field }) => (
                                 <TextInput
+                                    type='text'
                                     label={t("fields.name")}
                                     placeholder={t("placeholders.name")}
                                     value={field.value ?? ""}
@@ -308,6 +309,7 @@ export default function SettingsForm() {
                             name="contactPhone"
                             render={({ field }) => (
                                 <TextInput
+                                    type='text'
                                     label={t("fields.contactPhone")}
                                     value={field.value ?? ""}
                                     onChange={field.onChange}
@@ -319,6 +321,7 @@ export default function SettingsForm() {
                             name="fax"
                             render={({ field }) => (
                                 <TextInput
+                                    type='text'
                                     label={t("fields.fax")}
                                     value={field.value ?? ""}
                                     onChange={field.onChange}
@@ -330,6 +333,7 @@ export default function SettingsForm() {
                             name="address"
                             render={({ field }) => (
                                 <TextInput
+                                    type='text'
                                     label={t("fields.address")}
                                     value={field.value ?? ""}
                                     onChange={field.onChange}
@@ -415,6 +419,7 @@ export default function SettingsForm() {
                                 name={social as keyof SettingsFormType}
                                 render={({ field }) => (
                                     <TextInput
+                                        type='text'
                                         label={t(`fields.${social}`)}
                                         placeholder="https://..."
                                         value={field.value?.toString() ?? ""}

@@ -113,6 +113,7 @@ export default function AboutSectionForm({
             {/* Titles */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <TextInput
+                    type='text'
                     label={t('form.title_en')}
                     placeholder={t('form.title_en_placeholder')}
                     value={watch('title_en') ?? ''}
@@ -121,6 +122,7 @@ export default function AboutSectionForm({
                 />
 
                 <TextInput
+                    type='text'
                     label={t('form.title_ar')}
                     placeholder={t('form.title_ar_placeholder')}
                     value={watch('title_ar') ?? ''}

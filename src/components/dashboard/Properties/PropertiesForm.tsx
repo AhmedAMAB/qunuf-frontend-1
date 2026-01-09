@@ -72,6 +72,7 @@ export default function PropertiesForm({ initialData }: { initialData?: Properti
                         name="title"
                         render={({ field }) => (
                             <TextInput
+                                type='text'
                                 label={t("title")}
                                 placeholder={t("title")}
                                 value={field.value}

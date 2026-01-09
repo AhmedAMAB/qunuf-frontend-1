@@ -13,6 +13,7 @@ import { usePathname } from '@/i18n/navigation';
 import { useMemo } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useValues } from '@/contexts/GlobalContext';
+import { resolveUrl } from '@/utils/upload';
 
 
 
@@ -98,7 +99,7 @@ export default function DashboardSidebar() {
                 >
                     <FallbackImage
                         alt="profile"
-                        src={user?.imagePath || "/users/default-user.png"}
+                        src={resolveUrl(user?.imagePath) || "/users/default-user.png"}
                         defaultImage="/users/default-user.png"
                         width={44}
                         height={44}

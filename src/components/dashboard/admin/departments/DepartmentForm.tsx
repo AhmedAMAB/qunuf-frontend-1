@@ -110,6 +110,7 @@ export default function DepartmentForm({ initialData, onClose, onSuccess }: Depa
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                 <TextInput
+                    type='text'
                     label={t("title_en")}
                     {...register("title_en")}
                     value={watch("title_en") ?? ""}
@@ -118,6 +119,7 @@ export default function DepartmentForm({ initialData, onClose, onSuccess }: Depa
                 />
 
                 <TextInput
+                    type='text'
                     label={t("title_ar")}
                     {...register("title_ar")}
                     value={watch("title_ar") ?? ""}

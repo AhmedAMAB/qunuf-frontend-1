@@ -68,6 +68,7 @@ export default function SignUpForm() {
                 control={control}
                 render={({ field }) => (
                     <TextInput
+                        type='text'
                         label={t('name.label')}
                         placeholder={t('name.placeholder')}
                         {...field}

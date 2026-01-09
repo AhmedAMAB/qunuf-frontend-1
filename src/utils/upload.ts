@@ -101,6 +101,8 @@ export function processFiles(
 
 export function resolveUrl(u?: string | null) {
     if (!u) return '';
+    console.log(u)
     if (/^(https?:|blob:|data:)/i.test(u)) return u;
+    console.log(u, u.replace(/^\/+/, ''))
     return (baseImg || '') + u.replace(/^\/+/, '');
 }

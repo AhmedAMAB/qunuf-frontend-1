@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -56,7 +56,27 @@ export default function SignInForm() {
             setLoading(false);
         }
     };
+    const searchParams = useSearchParams();
+    const loginError = searchParams?.get('error');
 
+    useEffect(() => {
+
+
+        if (loginError === 'confirmation_failed') {
+            toast.error(t('errors.emailConfirmationFailed'));
+
+            // 🔥 Remove query param from URL without reload
+            const params = new URLSearchParams(window.location.search);
+            params.delete('error');
+            params.delete('error_message');
+
+            const newUrl =
+                window.location.pathname + '?' + params.toString();
+
+            router.replace(newUrl, { scroll: false });
+        }
+
+    }, [t, router, loginError])
     return (
         <form className="flex flex-col gap-4 md:gap-5" onSubmit={handleSubmit(onSubmit)}>
             {/* Email */}

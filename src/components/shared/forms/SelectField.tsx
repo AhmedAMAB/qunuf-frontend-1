@@ -9,6 +9,7 @@ type SelectFieldProps = {
     onChange?: (opt: Option) => void;
     className?: string;
     triggerClassName?: string;
+    dropdownClassName?: string;
 };
 
 export default function SelectField({
@@ -19,6 +20,7 @@ export default function SelectField({
     onChange,
     className,
     triggerClassName,
+    dropdownClassName,
 }: SelectFieldProps) {
     const [internalValue, setInternalValue] = useState<Option | null>(value ?? null);
 
@@ -42,6 +44,7 @@ export default function SelectField({
                 triggerClassName={`bg-white rounded-[8px] ${triggerClassName ?? ''}`}
                 value={internalValue}
                 onChange={handleChange}
+                dropdownClassName={dropdownClassName}
             />
         </div>
     );

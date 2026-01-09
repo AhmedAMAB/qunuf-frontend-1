@@ -13,3 +13,12 @@ export enum UserStatus {
     SUSPENDED = 'suspended',  // admin or violation
     DELETED = 'deleted',
 }
+
+export enum IdentityType {
+    NATIONAL_ID = 'national_id',              // هوية وطنية
+    RESIDENCY = 'residency',                  // هوية مقيم
+    PREMIUM_RESIDENCY = 'premium_residency',  // إقامة مميزة
+    GCC_ID = 'gcc_id',                        // هوية خليجية
+    PASSPORT = 'passport',                    // جواز سفر
+    OTHER = 'other',                          // أخرى
+}

@@ -178,6 +178,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
             {/* Inputs */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <TextInput
+                    type='text'
                     label={t("name")}
                     {...register("name")}
                     value={watch('name') ?? ''}
@@ -185,6 +186,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
                     error={errors.name?.message}
                 />
                 <TextInput
+                    type='text'
                     label={t("job")}
                     {...register("job")}
                     value={watch('job') ?? ''}
@@ -206,6 +208,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
                     error={errors.description_ar?.message}
                 />
                 <TextInput
+                    type='text'
                     label={t("phone")}
                     {...register("phone")}
                     value={watch('phone') ?? ''}
@@ -213,6 +216,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
                     error={errors.phone?.message}
                 />
                 <TextInput
+                    type='email'
                     label={t("email")}
                     {...register("email")}
                     value={watch('email') ?? ''}

@@ -148,6 +148,7 @@ export default function BlogEditForm({
 
                 {/* Titles */}
                 <TextInput
+                    type='text'
                     label={t('title_en')}
                     {...register('title_en')}
                     value={watch('title_en') ?? ''}
@@ -156,6 +157,7 @@ export default function BlogEditForm({
                 />
 
                 <TextInput
+                    type='text'
                     label={t('title_ar')}
                     {...register('title_ar')}
                     value={watch('title_ar') ?? ''}

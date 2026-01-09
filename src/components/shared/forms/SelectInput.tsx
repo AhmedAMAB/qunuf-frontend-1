@@ -17,6 +17,7 @@ type SelectProps = {
     dir?: "ltr" | "rtl";
     value?: Option | null;
     triggerClassName?: string;
+    dropdownClassName?: string;
     onChange?: (opt: Option) => void;
 };
 
@@ -28,6 +29,7 @@ export default function SelectInput({
     value,
     triggerClassName = '',
     onChange,
+    dropdownClassName = '',
 }: SelectProps) {
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef(null)
@@ -59,7 +61,7 @@ export default function SelectInput({
 
             {/* Dropdown */}
             {isOpen && (
-                <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-y-auto max-h-[400px]">
+                <div className={`absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-y-auto max-h-[400px] ${dropdownClassName}`}>
                     {options.map((opt) => (
                         <div
                             key={opt.value}
