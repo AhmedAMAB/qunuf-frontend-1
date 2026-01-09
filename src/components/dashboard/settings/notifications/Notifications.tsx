@@ -8,12 +8,13 @@ import { Link } from "@/i18n/navigation";
 import { FaRegNewspaper } from "react-icons/fa";
 import DashboardCard from "../../DashboardCard";
 import { useTranslations } from "next-intl";
+import { useSocket } from "@/contexts/SocketContext";
 
 
 export default function Notifications() {
     const { getHref } = useDashboardHref();
     const t = useTranslations('dashboard.notification');
-
+    const { } = useSocket();
     return (
         <div>
             <BreadcrumbsHeader

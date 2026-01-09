@@ -409,6 +409,7 @@ export function useChat() {
     const readRequestsInProgress = useRef<Set<string>>(new Set());
     const markAsRead = useCallback(async (conversationId: string) => {
         const conv = conversationsMap.get(conversationId);
+
         if (!conv || readRequestsInProgress.current.has(conversationId) || conv.myUnreadCount === 0) {
             return;
         }

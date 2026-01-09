@@ -2,6 +2,7 @@ import { Message } from "@/types/dashboard/chat";
 import { User } from "@/types/dashboard/user";
 import { resolveUrl } from "@/utils/upload";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { memo } from "react";
 import { FiAlertCircle } from "react-icons/fi";
 import { RiLoader2Fill } from "react-icons/ri";
@@ -40,7 +41,7 @@ const MessageRow = memo(function MessageRow({
             >
                 {/* Avatar */}
                 <div className="shrink-0 w-[37px] h-[37px] relative rounded-full overflow-hidden">
-                    <img
+                    <Image
                         src={
                             resolveUrl(
                                 isMine ? user.imagePath : participant.imagePath
@@ -49,7 +50,7 @@ const MessageRow = memo(function MessageRow({
                         alt="profile"
                         width={37}
                         height={37}
-                        className="object-cover"
+                        className="w-full h-full rounded-full object-cover"
                     />
                 </div>
 

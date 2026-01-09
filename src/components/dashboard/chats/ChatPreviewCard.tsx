@@ -40,7 +40,8 @@ export default function ChatPreviewCard({
                         alt={`${support ? tSupport('senderName') : conversation?.partner?.name}'s profile`}
                         width={56}
                         height={56}
-                        className={`object-cover transition-opacity ${isSending ? 'opacity-40' : 'opacity-100'}`}
+                        className={`w-full h-full rounded-full object-cover transition-opacity ${isSending ? 'opacity-40' : 'opacity-100'}`}
+
                     />
                 </div>
 

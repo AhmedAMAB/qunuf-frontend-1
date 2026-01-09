@@ -29,7 +29,7 @@ export function getDashboardItems(role: Role, adminUserId?: string): SidebarLink
     const tenantLinks: SidebarLink[] = [
         { href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 2 },
         { href: getDashboardHref('renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck, order: 3 },
-        { href: getDashboardHref('paymentHistory'), key: 'paymentHistory', Icon: MdOutlinePayments, order: 4 },
+        // { href: getDashboardHref('paymentHistory'), key: 'paymentHistory', Icon: MdOutlinePayments, order: 4 },
         { href: getDashboardHref('chats', { user: adminUserId }), key: 'support', Icon: FaHeadset, order: 20, disabled: !adminUserId },
     ];
 

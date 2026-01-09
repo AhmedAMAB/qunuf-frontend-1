@@ -816,6 +816,7 @@
       }
     },
     "account": {
+      "accountSettings": "Account Settings",
       "typeLabel": "Type",
       "idNumberLabel": "ID Number",
       "issueCountryLabel": "Country",
@@ -957,6 +958,8 @@
       }
     },
     "chats": {
+      "online": "Active now",
+      "offline": "Offline",
       "loadingHistory": "Loading history…",
       "loadingMore": "Loading more",
       "messages": "Messages",

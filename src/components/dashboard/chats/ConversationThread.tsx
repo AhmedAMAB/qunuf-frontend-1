@@ -8,6 +8,7 @@ import MessageInput from "./MessageInput";
 import { resolveUrl } from "@/utils/upload";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 import VirtualMessageRow from "./VirtualMessageRow";
+import { useSocket } from "@/contexts/SocketContext";
 
 type ConversationThreadProps = {
     messages: Message[];
@@ -50,7 +51,7 @@ const ConversationThread = memo(function ConversationThread({
     const lastProcessedMessageId = useRef<string | number | null>(null);
     const lastMessage = messages[0];
 
-
+    const { userStatuses } = useSocket()
     // Helper
     function handleSendMessage(value: string) {
         if (!value) return;
@@ -124,6 +125,7 @@ const ConversationThread = memo(function ConversationThread({
 
         // 1. Handle "New Messages" button visibility
         const isNearBottom = scrollHeight - scrollTop - clientHeight < 150;
+
         if (isNearBottom && showScrollButton) {
             setShowScrollButton(false);
             markRead();
@@ -221,6 +223,7 @@ const ConversationThread = memo(function ConversationThread({
     }, []); // Re-bind if conversation or handler changes
 
 
+
     return (
         <div className={`relative rounded-[8px] bg-card-bg p ${className}`}>
             {/* Scrollable Message Area */}
@@ -232,10 +235,28 @@ const ConversationThread = memo(function ConversationThread({
                         alt={`${isPartnerAdmin ? tSupport('senderName') : participant.name}'s profile`}
                         width={56}
                         height={56}
-                        className="object-cover"
+                        className="w-full h-full rounded-full object-cover"
                     />
                 </div>
-                <h4 className="text-base font-semibold text-dark">{isPartnerAdmin ? tSupport('senderName') : participant.name}</h4>
+                <div className="flex justify-center flex-col gap-1">
+
+                    <h4 className="text-base font-semibold text-dark">{isPartnerAdmin ? tSupport('senderName') : participant.name}</h4>
+                    {!isPartnerAdmin && <span
+                        className={`flex items-center gap-1 text-sm font-medium ${userStatuses.get(participant.id) === "online"
+                            ? "text-green-600"
+                            : "text-gray-400"
+                            }`}
+                    >
+                        <span
+                            className={`inline-block w-2 h-2 rounded-full ${userStatuses.get(participant.id) === "online"
+                                ? "bg-green-500 animate-pulse"
+                                : "bg-gray-400"
+                                }`}
+                        />
+                        {userStatuses.get(participant.id) === "online" ? t('online') : t('offline')}
+                    </span>}
+
+                </div>
             </div>
             <div ref={messagesContainerRef} key={currentOpenConversationId} className={`h-[calc(100vh-175px)] md:h-[calc(100vh-370px)] thin-scrollbar space-y-6 pr-1 `}>
                 {/* Messages */}

@@ -14,7 +14,7 @@ export default function Settings() {
     return (
         <div className="space-y-20">
             <h1 className="font-bold text-2xl sm:text-3xl">{t('account')}</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
                 <SettingsCard
                     title={t('personalInfo.title')}
                     description={t('personalInfo.description')}
@@ -27,12 +27,12 @@ export default function Settings() {
                     icon={AiOutlineNotification}
                     href={getHref('notifications')}
                 />
-                <SettingsCard
+                {/* <SettingsCard
                     title={t('payments.title')}
                     description={t('payments.description')}
                     icon={MdOutlinePayments}
                     href={getHref('payments')}
-                />
+                /> */}
             </div>
         </div>
     );

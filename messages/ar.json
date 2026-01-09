@@ -817,6 +817,7 @@
       }
     },
     "account": {
+      "accountSettings": "إعدادات الحساب",
       "typeLabel": "النوع",
       "idNumberLabel": "رقم الهوية",
       "issueCountryLabel": "بلد الإصدار",
@@ -958,6 +959,8 @@
       }
     },
     "chats": {
+      "online": "نشط الآن",
+      "offline": "غير متصل",
       "loadingHistory": "جاري تحميل السجل…",
       "loadingMore": "جاري تحميل المزيد",
       "messages": "الرسائل",

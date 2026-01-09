@@ -9,7 +9,7 @@ import FallbackImage from '../shared/FallbackImage';
 import SidebarItem from '../shared/SidebarItem';
 import LocaleSwitcher from '../shared/LocaleSwitcher';
 import { GrLanguage } from 'react-icons/gr';
-import { usePathname } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useMemo } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useValues } from '@/contexts/GlobalContext';
@@ -93,7 +93,8 @@ export default function DashboardSidebar() {
                 </div>
 
                 {/* Profile Image */}
-                <button
+                <Link
+                    href={'/dashboard/settings/account'}
                     className="hidden lg:flex relative w-[44px] h-[44px]  justify-center items-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30"
 
                 >
@@ -105,7 +106,7 @@ export default function DashboardSidebar() {
                         height={44}
                         className="w-full h-full rounded-full object-cover"
                     />
-                </button>
+                </Link>
             </div>
 
         </div>
