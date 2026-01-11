@@ -97,7 +97,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      setUser(null); // clear user state
+      setUser(null); // clear user stat
+      const pathname = window.location.pathname
+      console.log(pathname, direct)
       window.location.href = direct || '/';
     } catch (err) {
       console.error('Logout failed', err);

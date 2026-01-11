@@ -19,6 +19,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
     const { getHref } = useDashboardHref();
     const { user } = useAuth();
     const { unreadChatCount } = useSocket();
+
     function toggleSubHeader() {
         setSubHeaderOpen(p => !p)
     }

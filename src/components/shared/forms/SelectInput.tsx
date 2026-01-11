@@ -7,7 +7,7 @@ import { FiChevronDown } from "react-icons/fi";
 
 export type Option = {
     label: string;
-    value: string;
+    value: string | number;
 };
 
 type SelectProps = {
@@ -19,6 +19,7 @@ type SelectProps = {
     triggerClassName?: string;
     dropdownClassName?: string;
     onChange?: (opt: Option) => void;
+    openDirection?: "top" | "bottom";
 };
 
 export default function SelectInput({
@@ -30,6 +31,7 @@ export default function SelectInput({
     triggerClassName = '',
     onChange,
     dropdownClassName = '',
+    openDirection = "bottom"
 }: SelectProps) {
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef(null)
@@ -39,7 +41,9 @@ export default function SelectInput({
         onChange?.(opt);
         setIsOpen(false);
     };
-
+    const positionClass = openDirection === "top"
+        ? "bottom-full mb-2"
+        : "top-full mt-2";
     return (
         <div className={`relative w-fit ${className}`} {...(dir ? { dir } : {})} ref={selectRef}>
             {/* Trigger */}
@@ -61,7 +65,7 @@ export default function SelectInput({
 
             {/* Dropdown */}
             {isOpen && (
-                <div className={`absolute top-full left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-y-auto max-h-[400px] ${dropdownClassName}`}>
+                <div className={`absolute left-0 mt-2 w-full bg-white rounded-md shadow-lg z-10 overflow-y-auto max-h-[400px] ${dropdownClassName} ${positionClass}`}>
                     {options.map((opt) => (
                         <div
                             key={opt.value}

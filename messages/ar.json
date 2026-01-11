@@ -703,7 +703,17 @@
       "seeMore": "رؤية المزيد",
       "accountSettings": "إعدادات الحساب",
       "overview": "نظرة عامة",
-      "pushToggle": "🔔 فعّل إشعارات الدفع"
+      "pushToggle": "🔔 فعّل إشعارات الدفع",
+      "markAllAsRead": "تحديد الكل كمقروء",
+      "markRead": "تحديد كمقروء",
+      "noNotifications": "ليس لديك أي تنبيهات حالياً.",
+      "failedToLoad": "فشل في تحميل التنبيهات. يرجى المحاولة مرة أخرى.",
+      "prev": "السابق",
+      "next": "التالي",
+      "pageInfo": "صفحة {current} من {total}",
+      "updating": "جاري التحديث...",
+      "selectItemsPerPage": "اختر عدد العناصر لكل صفحة",
+      "loading": "جاري التحميل..."
     },
     "filter": {
       "export": {
@@ -817,6 +827,8 @@
       }
     },
     "account": {
+      "shortAddress": "العنوان الوطني",
+      "shortAddressHint": "رمز مكون من 8 خانات من عنوانك الوطني السعودي.",
       "accountSettings": "إعدادات الحساب",
       "typeLabel": "النوع",
       "idNumberLabel": "رقم الهوية",
@@ -876,7 +888,9 @@
         "under18": "يجب أن يكون عمرك 18 عاماً على الأقل",
         "invalidBirthDate": "يجب أن يكون تاريخ الميلاد بين 100 و 18 عاماً",
         "alphanumeric": "يسمح فقط بالأحرف والأرقام",
-        "invalidPassword": "يجب أن تحتوي كلمة المرور على حرف كبير، وحرف صغير، ورقم، ورمز خاص"
+        "invalidPassword": "يجب أن تحتوي كلمة المرور على حرف كبير، وحرف صغير، ورقم، ورمز خاص",
+        "shortAddressLength": "يجب أن يتكون العنوان المختصر من 8 خانات بالضبط",
+        "shortAddressInvalid": "صيغة غير صحيحة. استخدم 4 أحرف و4 أرقام (مثال: RRRD2929)"
       },
       "identityTypeGroup": {
         "national_id": "هوية وطنية",
@@ -901,6 +915,7 @@
         "invalidFileType": "يرجى اختيار ملف صورة صالح (JPEG, PNG, WebP)"
       },
       "placeholders": {
+        "shortAddress": "مثال: RRRD2929",
         "email": "أدخل بريدك الإلكتروني",
         "pendingEmail": "أدخل البريد الإلكتروني الجديد",
         "name": "أدخل اسمك الكامل",

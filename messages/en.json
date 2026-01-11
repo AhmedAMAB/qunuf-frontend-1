@@ -733,7 +733,17 @@
       "seeMore": "See More",
       "accountSettings": "Account Settings",
       "overview": "Overview",
-      "pushToggle": "Turn on push notifications"
+      "pushToggle": "Turn on push notifications",
+      "markAllAsRead": "Mark all as read",
+      "markRead": "Mark as read",
+      "noNotifications": "You have no notifications at the moment.",
+      "failedToLoad": "Failed to load notifications. Please try again.",
+      "prev": "Previous",
+      "next": "Next",
+      "pageInfo": "Page {current} of {total}",
+      "updating": "Updating...",
+      "selectItemsPerPage": "Select items per page",
+      "loading": "Loading..."
     },
     "contracts": {
       "viewContract": "View Contract",
@@ -816,6 +826,8 @@
       }
     },
     "account": {
+      "shortAddress": "National Address",
+      "shortAddressHint": "The 8-character code from your Saudi National Address.",
       "accountSettings": "Account Settings",
       "typeLabel": "Type",
       "idNumberLabel": "ID Number",
@@ -868,7 +880,9 @@
         "under18": "You must be at least 18 years old",
         "invalidBirthDate": "Date of birth must be between 100 and 18 years ago",
         "alphanumeric": "Only letters and numbers allowed",
-        "invalidPassword": "Password must contain uppercase, lowercase, number, and special character"
+        "invalidPassword": "Password must contain uppercase, lowercase, number, and special character",
+        "shortAddressLength": "Short Address must be exactly 8 characters",
+        "shortAddressInvalid": "Invalid format. Use 4 letters and 4 numbers (e.g. RRRD2929)"
       },
       "identityTypeGroup": {
         "national_id": "National ID",
@@ -900,6 +914,7 @@
         "invalidFileType": "Please select a valid image file (JPEG, PNG, WebP)"
       },
       "placeholders": {
+        "shortAddress": "مثال: RRRD2929",
         "email": "Enter your email address",
         "pendingEmail": "Enter new email address",
         "name": "Enter your full name",

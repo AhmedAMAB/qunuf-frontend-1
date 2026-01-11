@@ -7,12 +7,14 @@ import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import FallbackImage from "../shared/FallbackImage";
 import { useSocket } from "@/contexts/SocketContext";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNotifications } from "@/contexts/NotificationContext";
 
 
 export default function MobileDashboardIcons({ open, onClose }: { open: boolean, onClose: () => void }) {
     const { getHref } = useDashboardHref();
     const { user } = useAuth()
     const { unreadChatCount } = useSocket();
+    const { unreadNotificationCount } = useNotifications();
     if (!open) return null;
 
     return (
@@ -28,7 +30,7 @@ export default function MobileDashboardIcons({ open, onClose }: { open: boolean,
                 <Link href={getHref('notifications')} onClick={onClose}>
                     <div className="relative inline-flex bg-card-bg p-3 rounded-full custom-shadow">
                         {/* Notification Dot */}
-                        <PingIndicator />
+                        {unreadNotificationCount ? <PingIndicator /> : null}
                         {/* Bell Button */}
                         <button
                             type="button"

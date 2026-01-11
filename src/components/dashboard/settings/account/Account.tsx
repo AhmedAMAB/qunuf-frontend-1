@@ -19,6 +19,7 @@ import { BirthDatePopup } from "./BirthDatePopup";
 import { PasswordPopup } from "./PasswordPopup";
 import { EmailPopup } from "./EmailPopup";
 import UserImageUpdater from "./UserImageUpdater";
+import ShortAddressPopup from "./ShortAddressPopup";
 
 // Saudi Phone Regex
 const saudiPhoneRegex = /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/;
@@ -57,14 +58,18 @@ export const userUpdateSchema = z.object({
     identityIssueCountryId: z.uuid().optional(),
     nationalityId: z.uuid().optional(),
 
-    address: z.object({
-        stateId: z.uuid().optional(),
-        city: z.string().min(2, "validation.required").optional(),
-        streetName: z.string().min(2, "validation.required").optional(),
-        buildingNumber: z.string().min(1, "validation.required").optional(),
-        postalCode: z.string().optional(),
-        additionalNumber: z.string().optional(),
-    }).optional(),
+    // address: z.object({
+    //     stateId: z.uuid().optional(),
+    //     city: z.string().min(2, "validation.required").optional(),
+    //     streetName: z.string().min(2, "validation.required").optional(),
+    //     buildingNumber: z.string().min(1, "validation.required").optional(),
+    //     postalCode: z.string().optional(),
+    //     additionalNumber: z.string().optional(),
+    // }).optional(),
+    shortAddress: z.string()
+        .length(8, "validation.shortAddressLength")
+        .regex(/^[A-Z]{4}\d{4}$|^[0-9]{8}$/, "validation.shortAddressInvalid")
+        .optional(),
 }).superRefine((data, ctx) => {
     if (data.identityType === IdentityType.OTHER) {
         if (!data.identityOtherType || data.identityOtherType.length < 1) {
@@ -179,30 +184,32 @@ export default function Account() {
     };
 
     // Address Merge Logic
-    const fullAddress = useMemo(() => {
-        if (!user?.address) return '';
 
-        const addr = user.address;
+    //We will store at database short address number instead of detailed address
+    // const fullAddress = useMemo(() => {
+    //     if (!user?.address) return '';
 
-        return [
-            addr.buildingNumber ? `${t('buildingNumber')}: ${addr.buildingNumber}` : null,
-            addr.streetName ? `${t('streetName')}: ${addr.streetName}` : null,
-            addr.city ? `${t('city')}: ${addr.city}` : null,
-            addr.state?.name ? `${t('state')}: ${addr.state?.name}` : null,
-            addr.postalCode ? `${t('postalCode')}: ${addr.postalCode}` : null,
-            addr.additionalNumber ? `${t('additionalNumber')}: ${addr.additionalNumber}` : null,
-        ]
-            .filter(Boolean)
-            .join(' • ');
-    }, [
-        user?.address?.buildingNumber,
-        user?.address?.streetName,
-        user?.address?.city,
-        user?.address?.state?.name,
-        user?.address?.postalCode,
-        user?.address?.additionalNumber,
-        t // include t if you are using translations inside useMemo
-    ]);
+    //     const addr = user.address;
+
+    //     return [
+    //         addr.buildingNumber ? `${t('buildingNumber')}: ${addr.buildingNumber}` : null,
+    //         addr.streetName ? `${t('streetName')}: ${addr.streetName}` : null,
+    //         addr.city ? `${t('city')}: ${addr.city}` : null,
+    //         addr.state?.name ? `${t('state')}: ${addr.state?.name}` : null,
+    //         addr.postalCode ? `${t('postalCode')}: ${addr.postalCode}` : null,
+    //         addr.additionalNumber ? `${t('additionalNumber')}: ${addr.additionalNumber}` : null,
+    //     ]
+    //         .filter(Boolean)
+    //         .join(' • ');
+    // }, [
+    //     user?.address?.buildingNumber,
+    //     user?.address?.streetName,
+    //     user?.address?.city,
+    //     user?.address?.state?.name,
+    //     user?.address?.postalCode,
+    //     user?.address?.additionalNumber,
+    //     t // include t if you are using translations inside useMemo
+    // ]);
 
     const identityInfo = useMemo(() => {
         if (!user) return '';
@@ -391,6 +398,9 @@ export default function Account() {
                     }
                 />
 
+
+                {/* 
+                detailed address
                 <EditableField
                     label={t('address')}
                     popupClassName="!overflow-visible"
@@ -408,6 +418,21 @@ export default function Account() {
                             }}
                             isLoading={updating}
                             onSave={(data) => handleUpdate({ address: data }, close, z.object({ address: userUpdateSchema.shape.address }))}
+                            close={close}
+                        />
+                    )}
+                /> */}
+
+                <EditableField
+                    label={t('shortAddress')}
+                    valueDisplay={user?.shortAddress}
+                    renderPopup={(close) => (
+                        <ShortAddressPopup
+                            errors={errors}
+                            initialData={user?.shortAddress || ''}
+                            isLoading={updating}
+                            // Update handleUpdate to send { shortAddress: data }   
+                            onSave={(data) => handleUpdate({ shortAddress: data }, close, z.object({ shortAddress: userUpdateSchema.shape.shortAddress }))}
                             close={close}
                         />
                     )}

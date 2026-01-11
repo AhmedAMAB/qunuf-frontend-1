@@ -28,16 +28,18 @@ export interface User {
     identityIssueCountry?: { id: string; name: string; name_ar: string; } | null;
 
     // Address
-    address?: {
-        id: string;
-        stateId: string;
-        state: { id: string; name: string };
-        city: string;
-        streetName: string;
-        buildingNumber: string;
-        postalCode?: string | null;
-        additionalNumber?: string | null;
-    } | null;
+    // address?: {
+    //     id: string;
+    //     stateId: string;
+    //     state: { id: string; name: string };
+    //     city: string;
+    //     streetName: string;
+    //     buildingNumber: string;
+    //     postalCode?: string | null;
+    //     additionalNumber?: string | null;
+    // } | null;
+
+    shortAddress: string | null;
 
     // Stats
     notificationUnreadCount: number;
