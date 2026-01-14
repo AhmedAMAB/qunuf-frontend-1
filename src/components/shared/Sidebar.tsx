@@ -39,7 +39,7 @@ export default function Sidebar({ title, open, onClose, children, className }: S
                                     <HiX size={24} />
                                 </button>
                             </div>
-                            <div dir={document.dir} className="overflow-y-auto">
+                            <div dir={document.dir} className="">
                                 {children}
                             </div>
                         </div>

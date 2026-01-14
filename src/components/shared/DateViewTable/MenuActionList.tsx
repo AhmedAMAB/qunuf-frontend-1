@@ -5,6 +5,7 @@ import React, { ComponentType, ReactElement, useState } from 'react';
 import Popup from '../Popup';
 import { IconType } from 'react-icons';
 import Tooltip from '../Tooltip';
+import { TableRowType } from "@/types/table";
 
 export type ActionType =
     | 'primary'
@@ -34,12 +35,16 @@ export type MenuActionItem = {
     Icon?: IconType;
     type?: ActionType;
     link?: string;
-    Child?: ComponentType<{ onClose: () => void }>;
+    Child?: ComponentType<{ row, onClose: () => void }>;
+    onClick?: () => void
 };
 
 type Props = {
     items?: MenuActionItem[];
     onClose?: () => void;
+    row?: any
+    setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>,
+    onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: any) => void
 };
 
 //for drop dwon action version 
@@ -104,21 +109,21 @@ export default function MenuActionList({ items, onClose }: Props) {
     );
 }
 
-
+export type ChildTypeProps = { row, onClose: () => void, setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>, }
 // for icon version
-export function ActionList({ items }: Props) {
-    const [activeChild, setActiveChild] = useState<{ Child: ComponentType<{ onClose: () => void }> | undefined }>({ Child: undefined });
-    const [menuOpen, setMenuOpen] = useState(false);
+export function ActionList({ items, row, setRows, onOpenPopup }: Props) {
+    // const [activeChild, setActiveChild] = useState<{ Child: ComponentType<ChildTypeProps> | undefined }>({ Child: undefined });
+    // const [menuOpen, setMenuOpen] = useState(false);
 
 
-    function handleOnClose() {
-        setMenuOpen(false);
-    }
+    // function handleOnClose() {
+    //     setMenuOpen(false);
+    // }
 
     if (items?.length == 0) return null;
 
     return (
-        <div className="flex flex-row gap-4 p-2">
+        <div className="flex flex-row justify-end gap-4 p-2">
             {items?.map((item, index) => {
                 const Icon = item.Icon;
                 const content = (
@@ -144,9 +149,15 @@ export function ActionList({ items }: Props) {
                 return (
                     <button
                         key={index}
+                        // onClick={() => {
+                        //     setActiveChild({ Child: item.Child });
+                        //     setMenuOpen(true);
+                        // }}
                         onClick={() => {
-                            setActiveChild({ Child: item.Child });
-                            setMenuOpen(true);
+                            if (item?.onClick)
+                                item?.onClick?.()
+                            else if (item.Child && onOpenPopup)
+                                onOpenPopup(item.Child, row);
                         }}
                         className={`flex items-center gap-2 text-sm `}
                     >
@@ -156,11 +167,11 @@ export function ActionList({ items }: Props) {
             })}
 
             {/* Render child if active */}
-            {activeChild?.Child && (
+            {/* {activeChild?.Child && (
                 <Popup onClose={handleOnClose} show={menuOpen}>
-                    <activeChild.Child onClose={handleOnClose} />
+                    <activeChild.Child row={row} setRows={setRows} onClose={handleOnClose} />
                 </Popup>
-            )}
+            )} */}
 
         </div>
     );

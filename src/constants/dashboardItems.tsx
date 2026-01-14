@@ -43,6 +43,7 @@ export function getDashboardItems(role: Role, adminUserId?: string): SidebarLink
     ];
 
     const adminLinks: SidebarLink[] = [
+        { href: getDashboardHref('properties'), key: 'properties', Icon: PiBuildingApartment, order: 1 },
         { href: getDashboardHref('contactUs'), key: 'contactUs', Icon: GrContact, order: 2 },
         { href: getDashboardHref('blogs'), key: 'blogs', Icon: FaRegNewspaper, order: 3 },
         { href: getDashboardHref('teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers, order: 4 },

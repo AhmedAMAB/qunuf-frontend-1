@@ -41,7 +41,7 @@ export default function TableSkeleton<T = Record<string, any>>({
                                     key={String(col.key)}
                                     className={`py-4 px-4 text-right align-top text-gray-500 ${col.className || ''}`}
                                 >
-                                    <div className="h-4 bg-gray-500 rounded w-full" />
+                                    <div className="h-4 bg-gray-400 rounded w-full" />
                                 </td>
                             ))}
                         </tr>

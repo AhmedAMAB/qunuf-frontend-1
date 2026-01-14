@@ -25,6 +25,7 @@ import { CiFilter } from 'react-icons/ci';
 import { IconType } from 'react-icons';
 import TableActions from './TableActions';
 import { useTranslations } from 'next-intl';
+import SelectDropdown from '../forms/SelectDropdown';
 
 export type actionButton = {
     show?: boolean;
@@ -37,13 +38,17 @@ type Props = {
     filters: FilterConfig[];
     showSearch?: boolean;
     searchPlaceholder?: string;
-    actionButton?: actionButton
+    actionButton?: actionButton;
+    onExport?: (limit: number) => Promise<void>;
+    hasRows?: boolean
 };
 export default function FilterContainer({
     filters,
     searchPlaceholder,
+    onExport,
     showSearch = true,
-    actionButton = { show: false }
+    actionButton = { show: false },
+    hasRows,
 }: Props) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const t = useTranslations('dashboard.filter.container');
@@ -52,9 +57,9 @@ export default function FilterContainer({
         setSearch,
         allFilters,
         updateFilter,
-        handleReset,
         handleDateChange
     } = useTableFilter({ filters })
+
     return (
         <div>
             <div className='flex max-md:flex-wrap items-start flex-row gap-3 mb-5 max-lg:p-2'>
@@ -74,7 +79,7 @@ export default function FilterContainer({
                         </div>
                     }>
 
-                    <div className="flex-1 flex flex-col max-lg:m-4 max-lg:mt-6 lg:flex-row flex-wrap items-center justify-between gap-3 ">
+                    <div className="flex-1 flex flex-col max-lg:m-4 max-lg:mt-6 lg:flex-row flex-wrap items-center gap-3 ">
                         <div className=" order-first w-full  flex items-center gap-3 " >
                             <div className="w-full md:flex-none">
                                 {showSearch && <SearchField
@@ -95,24 +100,24 @@ export default function FilterContainer({
                             if (filter.type === 'custom' && filter.Component) {
                                 const CustomComponent = filter.Component;
                                 return (
-                                    <div key={filter.key} className="w-full md:w-fit">
+                                    <div key={filter.key} className="w-full lg:w-fit">
                                         <CustomComponent value={current} onChange={handleChange} />
                                     </div>
                                 );
                             }
 
-                            // if (filter.type === "select" && filter.options) {
-                            //     return (
-                            //         <div key={filter.key} className="w-full md:w-fit">
-                            //             <SelectDropdown
-                            //                 label={filter.label}
-                            //                 options={filter.options}
-                            //                 value={current}
-                            //                 onChange={handleChange}
-                            //             />
-                            //         </div>
-                            //     )
-                            // }
+                            if (filter.type === "select" && filter.options) {
+                                return (
+                                    <div key={filter.key} className="w-full lg:w-fit">
+                                        <SelectDropdown
+                                            label={filter.label}
+                                            options={filter.options}
+                                            value={current}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                )
+                            }
 
                             if (filter.type === "dateRange") {
                                 const fromDate = allFilters[`${filter.key}_from`]
@@ -123,7 +128,7 @@ export default function FilterContainer({
                                     : undefined;
 
                                 return (
-                                    <div key={filter.key} className="w-full md:w-fit">
+                                    <div key={filter.key} className="w-full lg:w-fit">
                                         <DateRangePicker
                                             // DateInputComponent={filter.label}
                                             value={{ startDate: fromDate, endDate: toDate }}
@@ -138,7 +143,7 @@ export default function FilterContainer({
                     </div>
                 </Sidebar >
 
-                <TableActions actionButton={actionButton} />
+                <TableActions hasRows={hasRows} actionButton={actionButton} onExport={onExport} />
             </div>
         </div>
     )

@@ -49,10 +49,10 @@ export default function SelectInput({
             {/* Trigger */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-between rounded-md  py-[14px] px-4 gap-2 cursor-pointer  bg-[#F6F6F6] ${triggerClassName}`}
+                className={`flex items-center justify-between rtl:flex-row-reverse rounded-md  py-[14px] px-4 gap-2 cursor-pointer  bg-[#F6F6F6] ${triggerClassName}`}
             >
                 {/* Text */}
-                <span className="font-normal text-[16px] leading-[20px] text-dark">
+                <span className="font-normal text-[16px] leading-[20px] text-dark text-end">
                     {value ? value.label : placeholder}
                 </span>
 
@@ -70,7 +70,7 @@ export default function SelectInput({
                         <div
                             key={opt.value}
                             onClick={() => handleSelect(opt)}
-                            className="px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+                            className="px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer rtl:text-end"
                         >
                             {opt.label}
                         </div>

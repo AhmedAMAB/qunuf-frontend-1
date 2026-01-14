@@ -1,12 +1,11 @@
 import { Control } from "react-hook-form";
-import { PropertiesFormType } from "./PropertiesForm";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import Popup from "@/components/shared/Popup";
 import LocationInput from "@/components/shared/forms/LocationInput";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
-export function LocationSection({ control }: { control: Control<PropertiesFormType> }) {
+export function LocationSection({ control }: { control: Control<any> }) {
     const t = useTranslations("dashboard.properties.form");
     const [show, setShow] = useState(false);
 

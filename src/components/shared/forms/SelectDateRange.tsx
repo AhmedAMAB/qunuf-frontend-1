@@ -41,7 +41,7 @@ export default function DateRangePicker({ DateInputComponent, onChange, value }:
                 }
 
                 onClick={onClick}
-                ref={ref as React.Ref<HTMLDivElement>}
+                ref={ref as any}
             />
         )
     );

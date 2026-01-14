@@ -4,12 +4,12 @@ import SecondaryButton from '../buttons/SecondaryButton';
 import Tooltip from '../Tooltip';
 import { Link } from "@/i18n/navigation";
 
-export default function TableActions({ actionButton }: { actionButton: actionButton }) {
+export default function TableActions({ hasRows, actionButton, onExport }: { hasRows?: boolean, actionButton: actionButton, onExport?: (limit: number) => Promise<void>; }) {
     const MobileIcon = actionButton.MobileIcon;
 
     return (
         <div className='flex gap-3 flex-row items-start'>
-            <ExportExel />
+            <ExportExel hasRows={hasRows} onExport={onExport} />
             {actionButton.show && actionButton.href && actionButton.label && MobileIcon && (
                 <div>
                     <SecondaryButton href={actionButton.href} className='max-md:hidden bg-primary hover:bg-primary-hover text-white max-lg:w-full'>

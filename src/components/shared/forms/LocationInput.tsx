@@ -1,5 +1,6 @@
 'use client';
 
+import { useDebounce } from '@/hooks/useDebounce';
 import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { ReactElement, useEffect, useState } from 'react';
@@ -35,17 +36,17 @@ async function reverseGeocode(
     }
 }
 
-type LocationInputProps<T extends FieldValues> = {
-    control: Control<T>;
-    name: Path<T>; // this ensures the name is a valid path
+type LocationInputProps = {
+    control: Control<any>;
+    name: Path<any>; // this ensures the name is a valid path
     showAddress?: boolean;
 };
 
-export type LocationInputType = <T extends FieldValues>(
-    props: LocationInputProps<T>
+export type LocationInputType = (
+    props: LocationInputProps
 ) => ReactElement;
 
-function LocationInput<T extends FieldValues>({ control, name, showAddress = true }: LocationInputProps<T>) {
+function LocationInput({ control, name, showAddress = true }: LocationInputProps) {
     const {
         field: { value: position, onChange },
     } = useController({
@@ -61,7 +62,8 @@ function LocationInput<T extends FieldValues>({ control, name, showAddress = tru
     const [latInput, setLatInput] = useState(position.lat.toFixed(6));
     const [lngInput, setLngInput] = useState(position.lng.toFixed(6));
     const [error, setError] = useState<string>('');
-
+    const { debouncedValue: debouncedLatInput } = useDebounce({ value: latInput, delay: 800 })
+    const { debouncedValue: debouncedLngInput } = useDebounce({ value: lngInput, delay: 800 })
 
     // Sync text inputs when position changes (e.g., map click)
     useEffect(() => {
@@ -99,9 +101,10 @@ function LocationInput<T extends FieldValues>({ control, name, showAddress = tru
 
 
     // Validate and apply changes when either input updates
-    const applyFromInputs = (latStr: string, lngStr: string) => {
-        const lat = parseFloat(latStr);
-        const lng = parseFloat(lngStr);
+    useEffect(() => {
+
+        const lat = parseFloat(debouncedLatInput);
+        const lng = parseFloat(debouncedLngInput);
 
         if (Number.isFinite(lat) && Number.isFinite(lng)) {
             if (lat < -90 || lat > 90) {
@@ -117,7 +120,8 @@ function LocationInput<T extends FieldValues>({ control, name, showAddress = tru
         } else {
             setError(t("invalidInput"));
         }
-    };
+
+    }, [debouncedLngInput, debouncedLatInput])
 
     return (
         <div className="space-y-4">
@@ -158,7 +162,6 @@ function LocationInput<T extends FieldValues>({ control, name, showAddress = tru
                             onChange={(e) => {
                                 const val = e.target.value;
                                 setLatInput(val);
-                                applyFromInputs(val, lngInput);
                             }}
                             className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                         />
@@ -187,7 +190,6 @@ function LocationInput<T extends FieldValues>({ control, name, showAddress = tru
                             onChange={(e) => {
                                 const val = e.target.value;
                                 setLngInput(val);
-                                applyFromInputs(latInput, val);
                             }}
                             className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                         />

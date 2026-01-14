@@ -44,7 +44,7 @@ export function NationalityPopup({ value, error, isLoading, onSave, close }: Pro
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!selected) return;
-        onSave(selected.value);
+        onSave(selected.value.toString());
     };
 
     return (

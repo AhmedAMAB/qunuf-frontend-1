@@ -20,20 +20,20 @@ export default function SearchField({ value, onChange, searchPlaceholder, classN
     const router = useRouter();
     const t = useTranslations('comman')
 
-    // const { debouncedValue } = useDebounce({ value });
+    const { debouncedValue } = useDebounce({ value });
 
-    // useEffect(() => {
-    //     const params = new URLSearchParams(searchParams.toString());
+    useEffect(() => {
+        const params = new URLSearchParams(searchParams.toString());
 
-    //     if (debouncedValue) {
-    //         params.set('search', debouncedValue);
-    //         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    //     } else if (params.get('search')) {
-    //         params.delete('search');
-    //         updateUrlParams(pathname, params);
+        if (debouncedValue) {
+            params.set('search', debouncedValue);
+            router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        } else if (params.get('search')) {
+            params.delete('search');
+            updateUrlParams(pathname, params);
 
-    //     }
-    // }, [debouncedValue]);
+        }
+    }, [debouncedValue.trim()]);
 
     return <KeywordSearch value={value} onChange={onChange} searchPlaceholder={searchPlaceholder ?? t('search')} className={className} />;
 }

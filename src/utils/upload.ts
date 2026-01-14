@@ -102,6 +102,8 @@ export function processFiles(
 export function resolveUrl(u?: string | null) {
     if (!u) return '';
     if (/^(https?:|blob:|data:)/i.test(u)) return u;
-    console.log(u, u.replace(/^\/+/, ''))
-    return (baseImg || '') + u.replace(/^\/+/, '');
+
+    // Ensure leading slash for relative paths
+    const normalized = u.replace(/^\/+/, '');
+    return (baseImg || '/') + normalized;
 }

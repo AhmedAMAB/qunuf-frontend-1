@@ -8,6 +8,7 @@ import FallbackImage from "../shared/FallbackImage";
 import { useSocket } from "@/contexts/SocketContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNotifications } from "@/contexts/NotificationContext";
+import { resolveUrl } from "@/utils/upload";
 
 
 export default function MobileDashboardIcons({ open, onClose }: { open: boolean, onClose: () => void }) {
@@ -50,7 +51,7 @@ export default function MobileDashboardIcons({ open, onClose }: { open: boolean,
                 >
                     <FallbackImage
                         alt="profile"
-                        src={user?.imagePath || "/users/default-user.png"}
+                        src={resolveUrl(user?.imagePath) || "/users/default-user.png"}
                         defaultImage="/users/default-user.png"
                         width={44}
                         height={44}

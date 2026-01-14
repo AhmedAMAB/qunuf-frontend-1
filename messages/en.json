@@ -53,6 +53,7 @@
         "addressFetchError": "Failed to fetch address"
       },
       "uploader": {
+        "removing": "Removing...",
         "dragLabel": "Drag and drop",
         "orLabel": "or",
         "chooseFiles": "Choose files",
@@ -88,7 +89,23 @@
       "Saturday",
       "Sunday"
     ],
-    "search": "Search..."
+    "search": "Search...",
+    "saving": "Saving...",
+    "submitting": "Submitting...",
+    "error": "An error occurred",
+    "uploader": {
+      "success": {
+        "removed": "File deleted successfully"
+      },
+      "errors": {
+        "deleteFailed": "Failed to delete file. Please try again"
+      },
+      "rules": {
+        "maxSize": "Max file size is {size}MB",
+        "maxFiles": "Max {count} files allowed",
+        "onlyPDF": "Only PDF files are allowed"
+      }
+    }
   },
   "header": {
     "logo": "QUNUF",
@@ -362,6 +379,53 @@
       "propertyDetails": "Property Details",
       "propertyFeatures": "Property Features",
       "seeMore": "See More"
+    },
+    "enums": {
+      "propertyType": {
+        "commercial": "Commercial",
+        "residential": "Residential"
+      },
+      "subType": {
+        "residential": {
+          "apartment": "Apartment",
+          "villa": "Villa",
+          "floor": "Floor",
+          "room": "Room",
+          "popular_house": "Popular House",
+          "annex": "Annex",
+          "labor_housing": "Labor Housing",
+          "individual_housing": "Individual Housing",
+          "driver_room": "Driver Room",
+          "family_housing": "Family Housing",
+          "other": "Other"
+        },
+        "commercial": {
+          "office": "Office",
+          "retail_store": "Retail Store",
+          "showroom": "Showroom",
+          "warehouse": "Warehouse",
+          "workshop": "Workshop",
+          "commercial_center": "Commercial Center",
+          "commercial_building": "Commercial Building",
+          "commercial_labor_housing": "Commercial Labor Housing",
+          "kiosk": "Kiosk",
+          "land": "Land",
+          "other": "Other"
+        }
+      },
+      "rentType": {
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "ownershipType": {
+        "owner": "Owner",
+        "representative": "Representative"
+      },
+      "documentType": {
+        "electronic_deed": "Electronic Deed",
+        "real_estate_registration": "Real Estate Registration",
+        "other": "Other"
+      }
     }
   },
   "bookings": {
@@ -1300,51 +1364,276 @@
           "save": "Save Changes"
         }
       }
-    }
-  },
-  "properties": {
-    "delete": {
-      "title": "Delete Property",
-      "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
-      "actionText": "Delete"
     },
-    "cancel": "Cancel",
-    "table": {
-      "property": "Property",
-      "status": "Status",
-      "free": "Free",
-      "online": "Online",
-      "offline": "Offline",
-      "booked": "Booked",
-      "published": "Published",
-      "price": "Price",
-      "location": "Location",
-      "deleteProperty": "Delete Property",
-      "editProperty": "Edit Property",
-      "addProperty": "Add Property"
-    },
-    "form": {
-      "title": "Apartment Title",
-      "size": "Size (m²)",
-      "price": "Price per month",
-      "rentType": "Rent Type",
-      "propertyType": "Property Type",
-      "bathrooms": "Bathrooms",
-      "bedrooms": "Bedrooms",
-      "garage": "Garage size",
-      "description": "Description",
-      "additionalDetails": "Additional Details",
-      "location": "Location",
-      "selectLocation": "Select Location",
-      "nearby": "What’s nearby",
-      "placeName": "Place Name",
-      "distance": "Distance (km)",
-      "addNearby": "+ Add Nearby Place",
-      "distanceUnit": "km",
-      "placeNamePlaceholder": "Enter place name",
-      "distancePlaceholder": "Enter distance",
-      "categoryPlaceholder": "Select category",
-      "save": "Save"
+    "properties": {
+      "updatingStatus": "Updating property status...",
+      "statusUpdated": "Status updated successfully",
+      "statusUpdateError": "Failed to update status",
+      "statusOptions": {
+        "active": "Active",
+        "pending": "Pending",
+        "rejected": "Rejected",
+        "archived": "Archived"
+      },
+      "delete": {
+        "title": "Delete Property",
+        "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
+        "actionText": "Delete"
+      },
+      "cancel": "Cancel",
+      "table": {
+        "viewDetails": "View Details",
+        "archiveProperty": "Archive Property",
+        "restoreProperty": "Restore Property",
+        "property": "Property",
+        "status": "Status",
+        "free": "Free",
+        "online": "Online",
+        "offline": "Offline",
+        "booked": "Booked",
+        "published": "Published",
+        "price": "Price",
+        "location": "Location",
+        "deleteProperty": "Delete Property",
+        "editProperty": "Edit Property",
+        "addProperty": "Add Property",
+        "title": "Properties Management",
+        "searchPlaceholder": "Search by name...",
+        "filters": {
+          "status": "Status",
+          "propertyType": "Property Type",
+          "occupancy": "Availability",
+          "sortBy": "Sort By"
+        },
+        "statusOptions": {
+          "all": "All Statuses",
+          "pending": "Pending Review",
+          "active": "Active",
+          "inactive": "Inactive",
+          "rejected": "Rejected",
+          "archived": "Archived"
+        },
+        "typeOptions": {
+          "all": "All Units",
+          "residential": "Residential",
+          "commercial": "Commercial"
+        },
+        "occupancyOptions": {
+          "all": "All Units",
+          "rented": "Rented",
+          "available": "Available"
+        },
+        "columns": {
+          "name": "Property Name",
+          "status": "Listing Status",
+          "isRented": "Occupancy",
+          "type": "Property Type",
+          "price": "Rent Price",
+          "createdAt": "Added Date"
+        },
+        "validation": {
+          "required": "This field is required",
+          "minLength": "Must be at least {min} characters",
+          "maxLength": "Cannot exceed {max} characters",
+          "minNumber": "Value must be {min} or greater",
+          "invalidFormat": "Invalid format",
+          "exactLength": "Must be exactly {len} characters",
+          "minImages": "At least one image must be uploaded"
+        }
+      },
+      "form": {
+        "documentType": "Title Deed Yype",
+        "documentImage": "Title Deed Yype",
+        "createTitle": "Add New Property",
+        "editTitle": "Edit Property",
+        "basicInfo": "Basic Information",
+        "locationAndLegal": "Location & Legal Details",
+        "facilities": "Facilities & Amenities",
+        "features": "Features",
+        "gallery": "Image Gallery",
+        "title": "Property Name",
+        "description": "Description",
+        "additionalDetails": "Additional Details",
+        "propertyType": "Property Type",
+        "subType": "Property Sub-Type",
+        "rentType": "Rent Frequency",
+        "ownershipType": "Ownership Type",
+        "price": "Rent Price",
+        "size": "Area",
+        "securityDeposit": "Security Deposit",
+        "capacity": "Capacity",
+        "propertyNumber": "Property Number",
+        "nationalAddressCode": "National Address Code",
+        "stateId": "City / State",
+        "documentNumber": "Document Number",
+        "documentIssueDate": "Document Issue Date",
+        "issuedBy": "Issued By",
+        "ownerIdNumber": "Owner ID Number",
+        "insurancePolicyNumber": "Insurance Policy Number",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "livingRooms": "Living Rooms",
+        "kitchen": "Kitchens",
+        "parking": "Parking Spaces",
+        "elevators": "Elevators",
+        "rooms": "Rooms",
+        "majlis": "Majlis",
+        "store": "Storage",
+        "securityEntrances": "Security Entrances",
+        "maidRoom": "Maid Room",
+        "backyard": "Backyard",
+        "centralAC": "Central A/C",
+        "desertAC": "Desert A/C",
+        "isFurnished": "Furnished",
+        "featuresPlaceholder": "e.g. Near Park, Gym Access",
+        "featuresHint": "Type a feature and press Enter to add it.",
+        "utilities": "Utility Meters",
+        "surroundings": "Surroundings & Features",
+        "complexName": "Complex Name",
+        "gasMeterNumber": "Gas Meter No.",
+        "electricityMeterNumber": "Electricity Meter No.",
+        "waterMeterNumber": "Water Meter No.",
+        "educationInstitutions": "Education Institutions",
+        "healthMedicalFacilities": "Health & Medical Facilities",
+        "facilityName": "Place Name",
+        "facilityType": "Type (e.g. School, Hospital)",
+        "distanceKm": "Distance (km)",
+        "addFacility": "Add Place",
+        "locationTitle": "Property Location",
+        "locationSubtitle": "Pin the exact location of the property on the map",
+        "featuresAndFacilities": "Amenities & Nearby Facilities",
+        "messages": {
+          "createSuccess": "Property created successfully",
+          "updateSuccess": "Property updated successfully"
+        },
+        "validation": {
+          "required": "This field is required",
+          "min": "Value must be at least {min}",
+          "max": "Value must be at most {max}",
+          "maxLength": "Max length is {max} characters",
+          "invalidFormat": "Invalid format",
+          "atLeastOne": "At least one image is required",
+          "features": {
+            "maxTags": "You cannot add more than {max} features",
+            "tagTooLong": "Each feature must be less than {max} characters"
+          },
+          "nearby": {
+            "maxFacilities": "You can add up to {max} facilities only",
+            "distanceTooFar": "Distance cannot exceed {max} km",
+            "distanceTooShort": "Distance must be at least {min} km"
+          }
+        },
+        "constructionDate": "Construction completion date",
+        "placeholders": {
+          "name": "e.g., Modern Apartment in Al-Narjis",
+          "description": "Describe property details, nearby facilities, and features...",
+          "additionalDetails": "Any extra information for the tenant...",
+          "propertyType": "Select property type",
+          "subType": "Select sub-type",
+          "rentType": "Select payment cycle",
+          "ownershipType": "Are you the owner or representative?",
+          "documentType": "Select document type",
+          "documentNumber": "Enter document number",
+          "documentIssueDate": "Issue date",
+          "issuedBy": "Issuing authority",
+          "ownerIdNumber": "National ID or Iqama number",
+          "insurancePolicyNumber": "Insurance policy number (if any)",
+          "propertyNumber": "Property or unit number",
+          "complexName": "Building or complex name",
+          "nationalAddressCode": "e.g., RRRE1234",
+          "area": "Area in square meters",
+          "rentPrice": "Rental price",
+          "securityDeposit": "Security deposit amount",
+          "capacity": "Occupancy capacity",
+          "constructionDate": "Construction completion date",
+          "stateId": "Select region/city",
+          "gasMeterNumber": "Gas meter number",
+          "electricityMeterNumber": "Electricity meter number",
+          "waterMeterNumber": "Water meter number",
+          "facilities": {
+            "livingRooms": "Number of living rooms",
+            "parking": "Number of parking spots",
+            "elevators": "Number of elevators",
+            "bathrooms": "Number of bathrooms",
+            "bedrooms": "Number of bedrooms",
+            "kitchen": "Number of kitchens",
+            "store": "Number of storerooms",
+            "majlis": "Number of majlis",
+            "rooms": "Total number of rooms",
+            "securityEntrances": "Number of security entrances"
+          },
+          "features": "Add a feature (e.g., Sea view)",
+          "nearby": {
+            "institutionName": "Facility name (e.g., King's School)",
+            "distance": "Distance in km"
+          }
+        }
+      },
+      "archive": {
+        "title": "Archive Property",
+        "subtitle": "Are you sure you want to archive",
+        "actionText": "Archive",
+        "restoreTitle": "Restore Property",
+        "restoreSubtitle": "Are you sure you want to restore",
+        "restoreAction": "Restore",
+        "loading": "Processing...",
+        "success": "Property archived successfully",
+        "restoreSuccess": "Property restored successfully",
+        "error": "Operation failed"
+      },
+      "details": {
+        "capacity": "Capacity",
+        "constructionDate": "Construction Date",
+        "additionalDetails": "Additional Details",
+        "propertyNumber": "Property Number",
+        "complexName": "Complex Name",
+        "ownershipType": "Ownership Type",
+        "documentType": "Document Type",
+        "documentIssueDate": "Document Issue Date",
+        "issuedBy": "Issued By",
+        "state": "State",
+        "errorTitle": "Failed to load property details",
+        "noDataFound": "No data found",
+        "error": "Failed to load property details",
+        "close": "Close",
+        "price": "Rent Price",
+        "area": "Total Area",
+        "securityDeposit": "Deposit",
+        "isFurnished": "Furnished",
+        "isRented": "Currently Rented",
+        "yes": "Yes",
+        "no": "No",
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "facilities": "Property Facilities",
+        "utilityMeters": "Utility Meters",
+        "electricityMeter": "Electricity Meter",
+        "waterMeter": "Water Meter",
+        "gasMeter": "Gas Meter",
+        "documents": "Legal Documents",
+        "documentNumber": "Document #",
+        "ownerId": "Owner ID",
+        "insurancePolicy": "Insurance Policy",
+        "nearby": "Nearby Amenities",
+        "education": "Education",
+        "health": "Health & Medical",
+        "facilityKeys": {
+          "livingRooms": "Living Rooms",
+          "parking": "Parking Slots",
+          "elevators": "Elevators",
+          "bathrooms": "Bathrooms",
+          "securityEntrances": "Security Entrances",
+          "bedrooms": "Bedrooms",
+          "maidRoom": "Maid Room",
+          "kitchen": "Kitchens",
+          "store": "Storage Room",
+          "backyard": "Backyard",
+          "centralAC": "Central AC",
+          "desertAC": "Desert AC",
+          "majlis": "Majlis",
+          "rooms": "Total Rooms"
+        }
+      }
     }
   }
 }

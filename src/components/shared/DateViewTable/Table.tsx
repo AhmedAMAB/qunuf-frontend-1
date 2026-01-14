@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { ComponentType, useMemo, useState } from 'react';
 import { TableColumnType, TableRowType } from '@/types/table';
-import { MenuActionItem } from './MenuActionList';
+import { ChildTypeProps, MenuActionItem } from './MenuActionList';
 import NoRowsFound from './NoRowsFound';
 import TableRow from './TableRow';
 import TableHeader from './TableHeader';
+import Popup from '../Popup';
 
 
 
@@ -13,6 +14,7 @@ interface TableProps<T = Record<string, any>> {
     columns: TableColumnType<T>[];
     rows: TableRowType<T>[];
     showActions?: boolean;
+    setRows?: React.Dispatch<React.SetStateAction<TableRowType<T>[] | null>>,
     actionsMenuItems?: (row: T, onClose?: () => void) => MenuActionItem[];
 }
 
@@ -21,6 +23,7 @@ export default function Table<T = Record<string, any>>({
     rows,
     actionsMenuItems,
     showActions = false,
+    setRows
 }: TableProps<T>) {
 
     const allColumns = useMemo(() => {
@@ -33,6 +36,22 @@ export default function Table<T = Record<string, any>>({
             ? [...normalized, { key: 'actions' as keyof T, label: '', className: 'w-12', sortable: false }]
             : normalized;
     }, [columns, showActions]);
+
+    const [popupState, setPopupState] = useState<{
+        Child?: ComponentType<ChildTypeProps>;
+        row?: T;
+    }>({});
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    function handleOpenPopup(Child: ComponentType<ChildTypeProps>, row: T) {
+        setPopupState({ Child, row });
+        setMenuOpen(true);
+    }
+
+    function handleClosePopup() {
+        setMenuOpen(false);
+        setPopupState({});
+    }
 
     return (
         <div className="">
@@ -54,11 +73,18 @@ export default function Table<T = Record<string, any>>({
                                 allColumns={allColumns}
                                 showActions={true}
                                 actionsMenuItems={actionsMenuItems}
+                                setRows={setRows}
+                                onOpenPopup={handleOpenPopup}
                             />
                         ))
                     )}
                 </tbody>
             </table>
+            {popupState.Child && (
+                <Popup onClose={handleClosePopup} show={menuOpen}>
+                    <popupState.Child row={popupState.row!} setRows={setRows} onClose={handleClosePopup} />
+                </Popup>
+            )}
         </div>
     );
 }

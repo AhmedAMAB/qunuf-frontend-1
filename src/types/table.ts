@@ -6,7 +6,8 @@ export type TableColumnType<T = Record<string, any>> = {
     label: string;
     className?: string;
     sortable?: boolean;
-    cell?: (value: any, row?: T) => React.ReactNode;
+    cell?: (value: any, row?: T, setRows?: React.Dispatch<React.SetStateAction<TableRowType<T>[] | null>>) => React.ReactNode;
+    sortKey?: string;
 };
 
 export type TableRowType<T = Record<string, any>> = T;

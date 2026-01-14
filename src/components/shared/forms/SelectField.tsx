@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SelectInput, { Option } from './SelectInput';
+import FormErrorMessage from './FormErrorMessage';
 
 type SelectFieldProps = {
     label: string;
@@ -10,6 +11,7 @@ type SelectFieldProps = {
     className?: string;
     triggerClassName?: string;
     dropdownClassName?: string;
+    error?: string;
 };
 
 export default function SelectField({
@@ -21,6 +23,7 @@ export default function SelectField({
     className,
     triggerClassName,
     dropdownClassName,
+    error
 }: SelectFieldProps) {
     const [internalValue, setInternalValue] = useState<Option | null>(value ?? null);
 
@@ -28,6 +31,10 @@ export default function SelectField({
         setInternalValue(opt);
         onChange?.(opt);
     };
+
+    useEffect(() => {
+        setInternalValue(value)
+    }, [value])
 
     return (
         <div className={`flex flex-col gap-2 ${className ?? ''}`}>
@@ -46,6 +53,7 @@ export default function SelectField({
                 onChange={handleChange}
                 dropdownClassName={dropdownClassName}
             />
+            <FormErrorMessage message={error} />
         </div>
     );
 }

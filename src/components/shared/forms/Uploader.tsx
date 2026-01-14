@@ -6,7 +6,9 @@ import FilePreviewItem from './FilePreviewItem';
 import { BsCloudArrowUp } from 'react-icons/bs';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { set } from 'zod';
+import { MdClose } from 'react-icons/md';
 
 type UploaderProps = {
     control: Control<any>;
@@ -14,6 +16,8 @@ type UploaderProps = {
     allowMultiple?: boolean;
     allowPrimary?: boolean
     label?: string;
+    onRemoveFile?: (file: FileItem) => Promise<boolean>,
+    preventRemoveOn?: number;
     accept?: string;
     rules?: string[]; // 👈 array of rules to display
     maxSizeMB?: number;
@@ -28,15 +32,19 @@ export default function Uploader({
     allowPrimary = true,
     label,
     defaultImage,
+    onRemoveFile,
+    preventRemoveOn,
     accept = '*/*',
     rules = ['الحد الأقصى لحجم الملف 9MB', 'الحد الأقصى 10 ملفات'],
     maxSizeMB = 9,
     maxFiles = 10,
 }: UploaderProps) {
     const t = useTranslations("comman.form.uploader");
+    const [removingFiles, setRemovingFiles] = useState(new Set<string>());
     // generate a stable unique id per Uploader instance
     const idRef = useRef(`${name}-dropzone-${Math.random().toString(36).slice(2)}`);
     const inputId = idRef.current;
+
     return (
         <Controller
             name={name}
@@ -48,7 +56,7 @@ export default function Uploader({
                         ? [field.value]
                         : [];
 
-
+                const canRemove = !preventRemoveOn || currentFiles.length > preventRemoveOn;
                 const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
 
@@ -76,19 +84,52 @@ export default function Uploader({
                     field.onChange(updated);
                 };
 
-                const removeFile = (url: string) => {
-                    const updated: FileItem[] = (field.value as FileItem[] || []).filter(
-                        (f: FileItem) => f.url !== url
+                const removeFile = async (url: string) => {
+                    const currentValues = Array.isArray(field.value)
+                        ? field.value
+                        : field.value ? [field.value] : [];
+
+                    // 2. Find the specific file item to pass to the callback
+                    const fileItemToRemove = currentValues.find((f: any) =>
+                        typeof f === 'string' ? f === url : f.url === url
                     );
 
-                    if (allowPrimary && !updated.some((f: FileItem) => f.isPrimary) && updated.length > 0) {
-                        updated[0].isPrimary = true;
+                    let isRemoved = true;
+                    if (onRemoveFile) {
+                        setRemovingFiles(prev => {
+                            const next = new Set(prev);
+                            next.add(fileItemToRemove.url);
+                            return next;
+                        });
+
+                        isRemoved = await onRemoveFile(fileItemToRemove);
+
+                        setRemovingFiles(prev => {
+                            const next = new Set(prev);
+                            next.delete(fileItemToRemove.url);
+                            return next;
+                        });
                     }
 
-                    field.onChange(updated);
+
+                    if (!isRemoved) return;
+                    let updated = currentValues.filter((f: any) =>
+                        typeof f === 'string' ? f !== url : f.url !== url
+                    );
+
+                    if (allowMultiple && allowPrimary && updated.length > 0) {
+                        const hasPrimary = updated.some((f: any) => typeof f === 'object' && f.isPrimary);
+
+                        if (!hasPrimary && typeof updated[0] === 'object') {
+                            updated[0] = { ...updated[0], isPrimary: true };
+                        }
+                    }
+
+                    const finalValue = allowMultiple ? updated : (updated[0] || null);
+                    field.onChange(finalValue);
                 };
 
-                const isOneImage = !allowMultiple;
+                const isOneFile = !allowMultiple;
 
                 return (
                     <div className="col-span-12"
@@ -135,34 +176,76 @@ export default function Uploader({
                                     className="hidden"
                                     onChange={handleFiles}
                                 />
-                                {isOneImage && (
-                                    (() => {
-                                        const src =
-                                            currentFiles.length === 1 ? (typeof currentFiles[0] === 'string'
-                                                ? currentFiles[0]
-                                                : currentFiles[0]?.url || '') : '';
+                                {isOneFile && currentFiles.length === 1 && (() => {
+                                    const file = currentFiles[0];
+                                    let src = '';
+                                    let isImage = false;
 
-                                        if (!src) return null;
+                                    let fileName = '';
 
-                                        return (
-                                            <Image
-                                                src={resolveUrl(src)}
-                                                alt="Preview"
-                                                fill
-                                                className="absolute inset-0 object-cover rounded-[8px]"
-                                            />
-                                        );
-                                    })()
-                                )}
+                                    if (typeof file === 'string') {
+                                        src = file;
+                                        isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(src);
+                                        fileName = src.split('/').pop() || '';
+                                    } else {
+                                        src = file.url || '';
+                                        isImage = file.type?.startsWith('image/');
+                                        fileName = file.name || '';
+                                    }
+                                    if (!src) return null;
+                                    const isRemoving = removingFiles.has(src);
+                                    return (
+                                        <div className="absolute inset-0 z-20 bg-white">
+                                            <div className={`relative w-full h-full ${isRemoving ? "opacity-50 grayscale" : ""}`}>
+                                                {isImage ? (
+                                                    <Image
+                                                        src={resolveUrl(src)}
+                                                        alt="Preview"
+                                                        fill
+                                                        className="object-cover rounded-[8px]"
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full bg-gray-100 rounded-[8px] flex flex-col items-center justify-center">
+                                                        <BsCloudArrowUp size={40} className="text-gray-400 mb-2" />
+                                                        <span className="text-sm text-gray-700 px-4 text-center truncate w-full">{fileName}</span>
+                                                    </div>
+                                                )}
+                                            </div>
 
+                                            {/* Loading Spinner for Single File */}
+                                            {isRemoving && (
+                                                <div className="absolute inset-0 flex items-center justify-center z-30">
+                                                    <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                                                </div>
+                                            )}
+
+                                            {/* Close Icon - Disabled while removing */}
+                                            <button
+                                                type="button"
+                                                disabled={isRemoving}
+                                                onClick={(e) => {
+                                                    e.preventDefault(); // Prevent opening file dialog
+                                                    e.stopPropagation();
+                                                    removeFile(src); // Your callback
+                                                }}
+                                                className={`absolute top-2 right-2 p-1.5 rounded-full shadow-md z-40 transition-colors
+                    ${isRemoving ? "bg-gray-300 cursor-not-allowed" : "bg-red-500 hover:bg-red-600 text-white"}`}
+                                            >
+                                                <MdClose size={18} />
+                                            </button>
+                                        </div>
+                                    );
+                                })()}
 
                             </label>
                         </div>
 
-                        {!isOneImage && currentFiles.length > 0 && (
+                        {!isOneFile && currentFiles.length > 0 && (
                             <div className="grid grid-cols-1 xs:!grid-cols-2 md:!grid-cols-3 lg:!grid-cols-4 gap-4 mt-6">
                                 {currentFiles.map((file: FileItem | string, idx: number) => (
                                     <FilePreviewItem
+                                        canRemove={canRemove}
+                                        removingFiles={removingFiles}
                                         key={idx}
                                         file={file}
                                         idx={idx}

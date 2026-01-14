@@ -16,6 +16,7 @@ export interface Country {
 
 export interface State {
     id: string;
+    region_code: string;
     name: string;
     name_ar: string;
 }

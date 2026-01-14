@@ -17,9 +17,9 @@ export default function HeroFilter() {
 
     const search = useMemo(() => {
         const params = new URLSearchParams();
-        if (location) params.set("location", location.value);
-        if (propertyType) params.set("type", propertyType.value);
-        if (category) params.set("category", category.value);
+        if (location) params.set("location", location.value.toString());
+        if (propertyType) params.set("type", propertyType.value.toString());
+        if (category) params.set("category", category.value.toString());
 
         const search = `/properties?${params.toString()}`
         return search;

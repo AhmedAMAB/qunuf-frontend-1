@@ -38,6 +38,7 @@ type DataViewProps<T = Record<string, any>> = {
         error?: Error | null;
         totalCount?: number;
     }>;
+    onExport?: (limit: number) => Promise<void>;
 };
 
 
@@ -52,6 +53,7 @@ export default function DataView<T = Record<string, any>>({
     pageSize = 10,
     actionButton,
     getRows,
+    onExport
 }: DataViewProps<T>) {
     const searchParams = useSearchParams();
     const [rows, setRows] = useState<TableRowType<T>[] | null>(null);
@@ -82,9 +84,7 @@ export default function DataView<T = Record<string, any>>({
 
     const startEntry = (currentPage - 1) * pageSize + 1;
     const endEntry = Math.min(currentPage * pageSize, totalRowsCount);
-    // const pageCount = Math.ceil(totalRowsCount / pageSize);
-    const pageCount = 70;
-
+    const pageCount = Math.ceil(totalRowsCount / pageSize);
     return (
 
         <DashboardCard>
@@ -93,7 +93,8 @@ export default function DataView<T = Record<string, any>>({
                 showSearch={showSearch}
                 searchPlaceholder={searchPlaceholder}
                 actionButton={actionButton}
-
+                onExport={onExport}
+                hasRows={rows?.length > 0}
             />
 
             <div className='overflow-x-auto thin-scrollbar '>
@@ -104,6 +105,7 @@ export default function DataView<T = Record<string, any>>({
                 ) : (
                     <Table<T>
                         columns={columns}
+                        setRows={setRows}
                         rows={rows ?? []}
                         showActions={showActions}
                         actionsMenuItems={actionsMenuItems}

@@ -6,6 +6,7 @@ import { DropMenuPosition, getDropMenuPosition } from '@/utils/helpers';
 export interface TriggerProps {
     isOpen: boolean;
     onToggle: () => void;
+    disabled?: boolean;
 }
 
 export interface MenuProps {

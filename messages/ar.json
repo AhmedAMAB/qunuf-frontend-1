@@ -53,6 +53,7 @@
         "addressFetchError": "تعذر جلب العنوان"
       },
       "uploader": {
+        "removing": "جارٍ الإزالة...",
         "dragLabel": "اسحب وأفلت",
         "orLabel": "أو",
         "chooseFiles": "اختر ملفات",
@@ -88,7 +89,23 @@
       "السبت",
       "الأحد"
     ],
-    "search": "إبحث..."
+    "search": "إبحث...",
+    "saving": "جاري الحفظ...",
+    "submitting": "جاري الإرسال...",
+    "error": "حدث خطأ ما",
+    "uploader": {
+      "success": {
+        "removed": "تم حذف الملف بنجاح"
+      },
+      "errors": {
+        "deleteFailed": "فشل حذف الملف. يرجى المحاولة مرة أخرى"
+      },
+      "rules": {
+        "maxSize": "الحد الأقصى للحجم {size} ميجابايت",
+        "maxFiles": "الحد الأقصى للملفات {count}",
+        "onlyPDF": "مسموح فقط بملفات PDF"
+      }
+    }
   },
   "header": {
     "logo": "قنوف",
@@ -363,6 +380,53 @@
       "propertyDetails": "تفاصيل العقار",
       "propertyFeatures": "مميزات العقار",
       "seeMore": "رؤية المزيد"
+    },
+    "enums": {
+      "propertyType": {
+        "commercial": "تجاري",
+        "residential": "سكني"
+      },
+      "subType": {
+        "residential": {
+          "apartment": "شقة",
+          "villa": "فيلا",
+          "floor": "دور",
+          "room": "غرفة",
+          "popular_house": "بيت شعبي",
+          "annex": "ملحق",
+          "labor_housing": "سكن عمال",
+          "individual_housing": "سكن أفراد",
+          "driver_room": "غرفة سائق",
+          "family_housing": "سكن عوائل",
+          "other": "أخرى"
+        },
+        "commercial": {
+          "office": "مكتب",
+          "retail_store": "محل تجاري",
+          "showroom": "معرض",
+          "warehouse": "مستودع",
+          "workshop": "ورشة",
+          "commercial_center": "مركز تجاري",
+          "commercial_building": "عمارة تجارية",
+          "commercial_labor_housing": "سكن عمال تجاري",
+          "kiosk": "كشك",
+          "land": "أرض",
+          "other": "أخرى"
+        }
+      },
+      "rentType": {
+        "monthly": "شهري",
+        "yearly": "سنوي"
+      },
+      "ownershipType": {
+        "owner": "المالك",
+        "representative": "وكيل / مفوض"
+      },
+      "documentType": {
+        "electronic_deed": "صك إلكتروني",
+        "real_estate_registration": "تسجيل عقاري",
+        "other": "أخرى"
+      }
     }
   },
   "bookings": {
@@ -1304,6 +1368,15 @@
       }
     },
     "properties": {
+      "updatingStatus": "جاري تحديث حالة العقار...",
+      "statusUpdated": "تم تحديث الحالة بنجاح",
+      "statusUpdateError": "فشل تحديث الحالة",
+      "statusOptions": {
+        "active": "نشط",
+        "pending": "قيد الانتظار",
+        "rejected": "مرفوض",
+        "archived": "مؤرشف"
+      },
       "delete": {
         "title": "حذف العقار",
         "subtitle": "هل أنت متأكد أنك تريد حذف هذا العقار؟ لا يمكن التراجع عن هذا الإجراء.",
@@ -1311,6 +1384,9 @@
       },
       "cancel": "إلغاء",
       "table": {
+        "viewDetails": "عرض التفاصيل",
+        "archiveProperty": "أرشفة العقار",
+        "restoreProperty": "استعادة العقار",
         "property": "العقار",
         "status": "الحالة",
         "free": "متاح",
@@ -1322,36 +1398,243 @@
         "location": "الموقع",
         "deleteProperty": "حذف العقار",
         "editProperty": "تعديل العقار",
-        "addProperty": "إضافة عقار"
+        "addProperty": "إضافة عقار",
+        "title": "إدارة العقارات",
+        "searchPlaceholder": "ابحث بالاسم...",
+        "filters": {
+          "status": "الحالة",
+          "propertyType": "نوع العقار",
+          "occupancy": "التوفر",
+          "sortBy": "ترتيب حسب"
+        },
+        "statusOptions": {
+          "all": "جميع الحالات",
+          "pending": "قيد المراجعة",
+          "active": "نشط",
+          "inactive": "غير نشط",
+          "rejected": "مرفوض",
+          "archived": "مؤرشف"
+        },
+        "typeOptions": {
+          "all": "جميع الوحدات",
+          "residential": "سكني",
+          "commercial": "تجاري"
+        },
+        "occupancyOptions": {
+          "all": "الكل",
+          "rented": "مؤجر",
+          "available": "متاح"
+        },
+        "columns": {
+          "name": "اسم العقار",
+          "status": "حالة العرض",
+          "isRented": "حالة الإشغال",
+          "type": "نوع العقار",
+          "price": "سعر الإيجار",
+          "createdAt": "تاريخ الإضافة"
+        },
+        "validation": {
+          "required": "هذا الحقل مطلوب",
+          "minLength": "يجب أن يكون {min} أحرف على الأقل",
+          "maxLength": "لا يمكن أن يتجاوز {max} حرفاً",
+          "minNumber": "القيمة يجب أن تكون {min} أو أكثر",
+          "invalidFormat": "تنسيق غير صالح",
+          "exactLength": "يجب أن يتكون من {len} خانات بالضبط",
+          "minImages": "يجب رفع صورة واحدة على الأقل"
+        }
       },
       "form": {
-        "title": "عنوان الشقة",
-        "size": "المساحة (م²)",
-        "price": "السعر الشهري",
-        "rentType": "نوع الإيجار",
-        "propertyType": "نوع العقار",
-        "bathrooms": "عدد الحمامات",
-        "bedrooms": "عدد غرف النوم",
-        "garage": "حجم المرآب",
+        "documentType": "نوع صك الملكية",
+        "documentImage": "صك الملكية",
+        "createTitle": "إضافة عقار جديد",
+        "editTitle": "تعديل العقار",
+        "basicInfo": "المعلومات الأساسية",
+        "locationAndLegal": "الموقع والبيانات القانونية",
+        "facilities": "المرافق والخدمات",
+        "features": "المميزات",
+        "gallery": "معرض الصور",
+        "title": "اسم العقار",
         "description": "الوصف",
         "additionalDetails": "تفاصيل إضافية",
-        "location": "الموقع",
-        "selectLocation": "اختر الموقع",
-        "nearby": "الأماكن القريبة",
-        "placeName": "اسم المكان",
-        "distance": "المسافة (كم)",
-        "addNearby": "+ إضافة مكان قريب",
-        "distanceUnit": "كم",
-        "placeNamePlaceholder": "أدخل اسم المكان",
-        "distancePlaceholder": "أدخل المسافة",
-        "categoryPlaceholder": "اختر الفئة",
-        "categories": {
-          "education": "تعليمي",
-          "hospital": "مستشفى",
-          "shopping": "تسوق",
-          "other": "أخرى"
+        "propertyType": "نوع العقار",
+        "subType": "نوع الوحدة",
+        "rentType": "نظام الإيجار",
+        "ownershipType": "نوع الملكية",
+        "price": "سعر الإيجار",
+        "size": "المساحة",
+        "securityDeposit": "مبلغ التأمين",
+        "capacity": "السعة الاستيعابية",
+        "propertyNumber": "رقم العقار",
+        "nationalAddressCode": "رمز العنوان الوطني",
+        "stateId": "المدينة / المنطقة",
+        "documentNumber": "رقم الوثيقة",
+        "documentIssueDate": "تاريخ إصدار الوثيقة",
+        "issuedBy": "جهة الإصدار",
+        "ownerIdNumber": "رقم هوية المالك",
+        "insurancePolicyNumber": "رقم بوليصة التأمين",
+        "bedrooms": "غرف النوم",
+        "bathrooms": "دورات المياه",
+        "livingRooms": "الصالات",
+        "kitchen": "المطابخ",
+        "parking": "مواقف السيارات",
+        "elevators": "المصاعد",
+        "rooms": "الغرف",
+        "majlis": "المجلس",
+        "store": "المستودع",
+        "securityEntrances": "مداخل أمنية",
+        "maidRoom": "غرفة خادمة",
+        "backyard": "فناء خلفي (حوش)",
+        "centralAC": "تكييف مركزي",
+        "desertAC": "تكييف صحراوي",
+        "isFurnished": "مؤثثة",
+        "featuresPlaceholder": "مثال: مسبح، قريب من مسجد",
+        "featuresHint": "اكتب الميزة واضغط Enter للإضافة.",
+        "utilities": "عدادات الخدمات",
+        "surroundings": "المحيط والمميزات",
+        "complexName": "اسم المجمع",
+        "gasMeterNumber": "رقم عداد الغاز",
+        "electricityMeterNumber": "رقم عداد الكهرباء",
+        "waterMeterNumber": "رقم عداد المياه",
+        "educationInstitutions": "المؤسسات التعليمية",
+        "healthMedicalFacilities": "المرافق الصحية والطبية",
+        "facilityName": "اسم المكان",
+        "facilityType": "النوع (مثال: مدرسة، مستشفى)",
+        "distanceKm": "البعد (كم)",
+        "addFacility": "إضافة مكان",
+        "locationTitle": "موقع العقار",
+        "locationSubtitle": "حدد الموقع الدقيق للعقار على الخريطة",
+        "featuresAndFacilities": "المرافق والخدمات القريبة",
+        "constructionDate": "تاريخ الانتهاء من البناء",
+        "messages": {
+          "createSuccess": "تم إنشاء العقار بنجاح",
+          "updateSuccess": "تم تحديث العقار بنجاح"
         },
-        "save": "حفظ"
+        "validation": {
+          "required": "هذا الحقل مطلوب",
+          "min": "القيمة يجب أن تكون على الأقل {min}",
+          "max": "القيمة يجب أن تكون على الأكثر {max}",
+          "maxLength": "الحد الأقصى {max} حرف",
+          "invalidFormat": "تنسيق غير صحيح",
+          "atLeastOne": "يجب إرفاق صورة واحدة على الأقل",
+          "features": {
+            "maxTags": "لا يمكنك إضافة أكثر من {max} مميزات",
+            "tagTooLong": "يجب أن يكون طول الميزة أقل من {max} حرفاً"
+          },
+          "nearby": {
+            "maxFacilities": "يمكنك إضافة حتى {max} مرافق فقط",
+            "distanceTooFar": "لا يمكن أن تتجاوز المسافة {max} كم",
+            "distanceTooShort": "يجب أن تكون المسافة {min} كم على الأقل"
+          }
+        },
+        "placeholders": {
+          "name": "مثال: شقة مودرن في حي النرجس",
+          "description": "اكتب تفاصيل العقار، المرافق القريبة، والمميزات...",
+          "additionalDetails": "أي معلومات إضافية ترغب في إضافتها للمستأجر...",
+          "propertyType": "اختر نوع العقار",
+          "subType": "اختر النوع الفرعي",
+          "rentType": "اختر دورة الدفع (شهري، سنوي...)",
+          "ownershipType": "هل أنت المالك أم مفوض؟",
+          "documentType": "اختر نوع الوثيقة (صك، عقد...)",
+          "documentNumber": "أدخل رقم الوثيقة",
+          "documentIssueDate": "تاريخ الإصدار",
+          "issuedBy": "الجهة المصدرة للوثيقة",
+          "ownerIdNumber": "رقم الهوية الوطنية أو الإقامة",
+          "insurancePolicyNumber": "رقم وثيقة التأمين (إن وجد)",
+          "propertyNumber": "رقم العقار أو الوحدة",
+          "complexName": "اسم المجمع السكني أو التجاري",
+          "nationalAddressCode": "مثال: RRRE1234",
+          "area": "المساحة بالمتر المربع",
+          "rentPrice": "سعر الإيجار",
+          "securityDeposit": "قيمة مبلغ التأمين",
+          "capacity": "عدد الأشخاص المستوعبين",
+          "constructionDate": "تاريخ الانتهاء من البناء",
+          "stateId": "اختر المنطقة/المدينة",
+          "gasMeterNumber": "رقم عداد الغاز",
+          "electricityMeterNumber": "رقم عداد الكهرباء",
+          "waterMeterNumber": "رقم عداد المياه",
+          "facilities": {
+            "livingRooms": "عدد الصالات",
+            "parking": "عدد المواقف",
+            "elevators": "عدد المصاعد",
+            "bathrooms": "عدد دورات المياه",
+            "bedrooms": "عدد غرف النوم",
+            "kitchen": "عدد المطابخ",
+            "store": "عدد المستودعات",
+            "majlis": "عدد المجالس",
+            "rooms": "إجمالي عدد الغرف",
+            "securityEntrances": "عدد المداخل الأمنية"
+          },
+          "features": "أضف ميزة (مثال: واجهة بحرية)",
+          "nearby": {
+            "institutionName": "اسم المنشأة (مثال: مدرسة المملكة)",
+            "distance": "المسافة بالكيلومتر"
+          }
+        }
+      },
+      "archive": {
+        "title": "أرشفة العقار",
+        "subtitle": "هل أنت متأكد من رغبتك في أرشفة",
+        "actionText": "أرشفة",
+        "restoreTitle": "استعادة العقار",
+        "restoreSubtitle": "هل أنت متأكد من رغبتك في استعادة",
+        "restoreAction": "استعادة",
+        "loading": "جاري التنفيذ...",
+        "success": "تم أرشفة العقار بنجاح",
+        "restoreSuccess": "تم استعادة العقار بنجاح",
+        "error": "فشلت العملية"
+      },
+      "details": {
+        "capacity": "السعة",
+        "constructionDate": "تاريخ البناء",
+        "additionalDetails": "تفاصيل إضافية",
+        "propertyNumber": "رقم العقار",
+        "complexName": "اسم المجمع",
+        "ownershipType": "نوع الملكية",
+        "documentType": "نوع المستند",
+        "documentIssueDate": "تاريخ إصدار المستند",
+        "issuedBy": "جهة الإصدار",
+        "state": "الولاية",
+        "errorTitle": "فشل في تحميل بيانات العقار",
+        "noDataFound": "لا توجد بيانات",
+        "error": "فشل في تحميل تفاصيل العقار",
+        "close": "إغلاق",
+        "price": "سعر الإيجار",
+        "area": "المساحة الإجمالية",
+        "securityDeposit": "مبلغ التأمين",
+        "isFurnished": "مفروش",
+        "isRented": "مؤجر حالياً",
+        "yes": "نعم",
+        "no": "لا",
+        "monthly": "شهري",
+        "yearly": "سنوي",
+        "facilities": "مرافق العقار",
+        "utilityMeters": "عدادات الخدمات",
+        "electricityMeter": "عداد الكهرباء",
+        "waterMeter": "عداد المياه",
+        "gasMeter": "عداد الغاز",
+        "documents": "الوثائق القانونية",
+        "documentNumber": "رقم الوثيقة",
+        "ownerId": "رقم هوية المالك",
+        "insurancePolicy": "بوليصة التأمين",
+        "nearby": "المرافق القريبة",
+        "education": "التعليم",
+        "health": "الصحة والخدمات الطبية",
+        "facilityKeys": {
+          "livingRooms": "غرف المعيشة",
+          "parking": "مواقف السيارات",
+          "elevators": "المصاعد",
+          "bathrooms": "دورات المياه",
+          "securityEntrances": "مداخل أمنية",
+          "bedrooms": "غرف النوم",
+          "maidRoom": "غرفة عاملة",
+          "kitchen": "المطابخ",
+          "store": "مستودع",
+          "backyard": "فناء خلفي",
+          "centralAC": "تكييف مركزي",
+          "desertAC": "تكييف صحراوي",
+          "majlis": "مجلس",
+          "rooms": "إجمالي الغرف"
+        }
       }
     }
   }

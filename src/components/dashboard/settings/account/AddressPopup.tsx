@@ -85,7 +85,7 @@ export default function AddressPopup({ initialData, onSave, close, isLoading, er
                     loadingStates ? t('loading') : t('selectState')
                 }
                 value={selectedOption}
-                onChange={(opt) => setForm({ ...form, stateId: opt.value })}
+                onChange={(opt) => setForm({ ...form, stateId: opt.value.toString() })}
             />
             <FormErrorMessage message={errors['address.state'] ? t(errors['address.state']) : ""} />
             <TextInput error={errors['address.city'] ? t(errors['address.city']) : ''} type='text' label={t('city')} placeholder={t('placeholders.address.city')} value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} />

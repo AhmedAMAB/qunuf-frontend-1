@@ -3,10 +3,11 @@
 import { createContext, useContext, useRef, useEffect, useState, ReactNode, Dispatch, SetStateAction, useCallback } from "react";
 import { io, Socket } from "socket.io-client";
 import { useAuth } from "./AuthContext";
-import { useNotifications, Notification } from "./NotificationContext";
+import { useNotifications } from "./NotificationContext";
 import { Message } from "@/types/dashboard/chat";
 import api from "@/libs/axios";
 import { User } from "@/types/dashboard/user";
+import { Notification } from "@/types/dashboard/notifications";
 
 
 // --- Extended Types ---
@@ -122,7 +123,6 @@ export const SocketProvider = ({ children }: { children: ReactNode }) => {
         socket.on(
             "users:active",
             (data: { users: string[]; timestamp: string }) => {
-                console.log("users", data)
                 setUserStatuses(() => {
                     const updated = new Map<string, "online" | "offline">();
                     data.users.forEach(userId => {

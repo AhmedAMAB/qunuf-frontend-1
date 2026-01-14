@@ -31,12 +31,12 @@ export default function Popup({ children, onClose, show, className, headerConten
         >
             <div
                 ref={popupRef}
-                className={` max-h-[90vh] overflow-y-auto w-fit sm:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-4 md:p-5 lg:p-6  space-y-2 transition-all duration-300 scale-100  ${className}`}
+                className={` max-h-[90vh] overflow-y-auto w-fit  md:min-w-[300px]  relative bg-white rounded-xl shadow-lg p-4 md:p-5 lg:p-6  space-y-2 transition-all duration-300 scale-100  ${className}`}
             >
                 {/* Close Button */}
 
                 <div className="flex ">
-                    <div className='flex-1'>
+                    <div className='flex-1 '>
                         {headerContent}
                     </div>
                     {onClose && (<button

@@ -82,7 +82,7 @@ export function IdentityPopup({ user, onSave, close, isLoading, errors }: Identi
                     placeholder={t('placeholders.identityType')}
                     options={identityOptions}
                     value={identityOptions.find(o => o.value === form.identityType)}
-                    onChange={(opt) => setForm({ ...form, identityType: opt.value })}
+                    onChange={(opt) => setForm({ ...form, identityType: opt.value.toString() })}
                 />
                 <FormErrorMessage message={errors.identityType ? t(errors.identityType) : ""} />
                 <TextInput
@@ -112,7 +112,7 @@ export function IdentityPopup({ user, onSave, close, isLoading, errors }: Identi
                 placeholder={
                     loadingCountries ? t('loading') : t('selectNationality')
                 }
-                onChange={(opt) => setForm({ ...form, identityIssueCountryId: opt.value })}
+                onChange={(opt) => setForm({ ...form, identityIssueCountryId: opt.value.toString() })}
             />
             <FormErrorMessage message={errors.identityIssueCountry ? t(errors.identityIssueCountry) : ""} />
 

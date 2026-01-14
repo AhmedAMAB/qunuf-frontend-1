@@ -1,19 +1,22 @@
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { FilterConfig } from "@/types/table";
 import { updateUrlParams } from "@/utils/helpers";
 import { format } from "date-fns";
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
+
 import { useState } from 'react';
 
 
 export default function useTableFilter({ filters }: { filters: FilterConfig[]; }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const router = useRouter();
     const [search, setSearch] = useState(searchParams.get('search') ?? '');
 
     const [allFilters, setAllFilters] = useState(() => {
         const initial: Record<string, string> = {};
 
-        initial.search = searchParams.get('search') ?? '';
+        // initial.search = searchParams.get('search') ?? '';
         filters.forEach((filter) => {
             if (filter.type === 'select') {
                 initial[filter.key] =
@@ -43,22 +46,24 @@ export default function useTableFilter({ filters }: { filters: FilterConfig[]; }
     // ✅ Update query and state
     const updateFilter = (key: string, value: string | undefined) => {
         const updated = { ...allFilters };
+        const params = new URLSearchParams(searchParams.toString());
         if (value) {
             updated[key] = value;
+            params.set(key, value);
         } else {
             delete updated[key];
+            params.delete(key);
         }
         setAllFilters(updated);
-
-        const params = new URLSearchParams(updated);
-        updateUrlParams(pathname, params)
+        // ✅ Push new URL with merged params
+        router.replace(`${pathname}?${params.toString()}`);
     };
 
     // ✅ Reset filters 
     const handleReset = () => {
         const reset: Record<string, string> = {};
 
-        reset.search = '';
+        // reset.search = '';
         setSearch('');
         filters.forEach((filter) => {
             if (filter.type === 'select') {

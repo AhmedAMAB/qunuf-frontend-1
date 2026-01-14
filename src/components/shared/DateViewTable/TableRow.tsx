@@ -1,7 +1,8 @@
 
-import { TableColumnType } from "@/types/table";
+import { TableColumnType, TableRowType } from "@/types/table";
 // import Dropdown from "../Dropdown";
-import /*MenuActionList,*/ { ActionList, MenuActionItem } from "./MenuActionList";
+import /*MenuActionList,*/ { ActionList, ChildTypeProps, MenuActionItem } from "./MenuActionList";
+import { ComponentType } from "react";
 // import TableTrigger from "./TableTrigger";
 
 interface TableRowProps<T> {
@@ -9,7 +10,9 @@ interface TableRowProps<T> {
     idx: number;
     allColumns: TableColumnType<T>[];
     showActions?: boolean;
+    setRows?: React.Dispatch<React.SetStateAction<TableRowType<T>[] | null>>,
     actionsMenuItems?: (row: T, onClose: () => void) => MenuActionItem[];
+    onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: T) => void
 }
 
 export default function TableRow<T>({
@@ -17,7 +20,9 @@ export default function TableRow<T>({
     idx,
     allColumns,
     showActions,
+    setRows,
     actionsMenuItems,
+    onOpenPopup
 }: TableRowProps<T>) {
     return (
         <tr
@@ -25,7 +30,8 @@ export default function TableRow<T>({
             className="hover:bg-lighter border-b border-gray-500 group/row transition-colors duration-200"
         >
             {allColumns.map((col, index) => {
-                const value = row[col.key];
+
+                const value = col.key ? row[col.key] : '';
 
                 return (
                     <td
@@ -48,11 +54,11 @@ export default function TableRow<T>({
                             // />
                             // for action list version
                             <div>
-                                <ActionList items={actionsMenuItems?.(row, () => { })} />
+                                <ActionList onOpenPopup={onOpenPopup} setRows={setRows} row={row} items={actionsMenuItems?.(row, () => { })} />
                             </div>
 
                         ) : col.cell ? (
-                            col.cell(value, row)
+                            col.cell?.(value, row, setRows)
                         ) : value !== undefined ? (
                             value as React.ReactNode
                         ) : (
