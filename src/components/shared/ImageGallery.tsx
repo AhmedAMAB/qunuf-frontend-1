@@ -35,7 +35,7 @@ const ImageGallery: React.FC<Props> = ({ images, userImage, price, title }) => {
         ? locale === 'ar' ? 'شهرياً' : 'mo'
         : locale === 'ar' ? 'سنويًا' : 'yr';
     return (
-        <section className="py-12 relative">
+        <section className="py-8 relative">
             <div className="mx-auto">
                 <div className="flex flex-col justify-center gap-4 md:gap-5 lg:gap-6">
                     {/* Main Image */}

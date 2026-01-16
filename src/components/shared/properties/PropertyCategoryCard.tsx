@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import FloatingActionButton from "../buttons/FloatingActionButton";
+import { resolveUrl } from "@/utils/upload";
 
 type Property = {
     id: string;
@@ -8,6 +9,7 @@ type Property = {
     address: string;
     price: number;
     imageUrl: string;
+    slug: string
 };
 
 export default function PropertyCategoryCard({
@@ -50,7 +52,7 @@ export default function PropertyCategoryCard({
             </div>
             {/* Floating action button */}
             <FloatingActionButton
-                href={`/properties/${property.id}`}
+                href={`/properties/${property.slug}`}
                 bgColor="white"
                 size={60}
             />
@@ -58,10 +60,10 @@ export default function PropertyCategoryCard({
 
             {/* Property details */}
             <div className="relative w-full h-full rounded-[24px] overflow-hidden">
-                <Image src={property.imageUrl} fill alt={property.title} className="rounded-[24px] object-cover filter brightness-[0.9] image-scale" />
+                <Image src={property.imageUrl ? resolveUrl(property.imageUrl) : '/placeholder.jpg'} fill alt={property.title} className="rounded-[24px] object-cover filter brightness-[0.9] image-scale" />
             </div>
             <div className="space-y-4 z-[1] ms-2 me-6 mb-4">
-                <Link href={`/properties/${property.id}`} className="block font-medium text-lg text-black ">{property.title}</Link>
+                <Link href={`/properties/${property.slug}`} className="block font-medium text-lg text-black ">{property.title}</Link>
                 <p className="text-black text-xs">{property.address}</p>
                 <div className="text-black">
                     <span className="font-medium text-2xl">${property.price}</span> <span>{period}</span>

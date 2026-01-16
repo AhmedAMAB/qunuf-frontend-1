@@ -19,6 +19,7 @@ export default function TextAreaInput({
     error,
     rows = 4,
 }: TextAreaInputProps) {
+
     return (
         <div className={`flex flex-col gap-2 w-full ${className}`}>
             {label && (

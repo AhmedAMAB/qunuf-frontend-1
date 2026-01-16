@@ -1,6 +1,6 @@
 'use client';
 
-import { JSX, useState } from 'react';
+import { JSX, useState, useEffect } from 'react';
 import { IoMdCheckmark } from 'react-icons/io';
 import Step1 from './Step1';
 import Step2 from './Step2';
@@ -8,18 +8,77 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 import Logo from '@/components/shared/Logo';
 import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import api from '@/libs/axios';
+import toast from 'react-hot-toast';
+import { PropertyStatus, RentType } from '@/types/dashboard/properties';
 
 const steps = [1, 2, 3];
 
-const stepComponents: Record<number, (props: { nextStep: () => void }) => JSX.Element> = {
-    1: ({ nextStep }) => <Step1 nextStep={nextStep} />,
-    2: ({ nextStep }) => <Step2 nextStep={nextStep} />,
-    3: ({ nextStep }) => <Step3 nextStep={nextStep} />,
+interface StepProps {
+    nextStep: () => void;
+    property: { id: string; rentType: RentType; status: PropertyStatus };
+    createdContract: any; // Replace 'any' with your Contract type
+    setCreatedContract: (contract: any) => void;
+}
+
+const stepComponents: Record<number, (props: StepProps) => JSX.Element> = {
+    1: (props) => <Step1 {...props} />,
+    2: (props) => <Step2 {...props} />,
+    3: (props) => <Step3 {...props} />,
 };
 
 export default function Booking() {
     const [activeStep, setActiveStep] = useState(1);
     const [completed, setCompleted] = useState(false);
+    const [checking, setChecking] = useState(true);
+    const [property, setProperty] = useState(null);
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const t = useTranslations('bookings');
+    const [createdContract, setCreatedContract] = useState<any>(null);
+
+    useEffect(() => {
+        const checkEligibility = async () => {
+            const propertyId = searchParams.get('property');
+
+            if (!propertyId) {
+                toast.error(t('eligibility.errors.noProperty'));
+                router.push('/properties');
+                return;
+            }
+
+            try {
+                setChecking(true);
+                const response = await api.get(`/contracts/check-eligibility/${propertyId}`);
+
+                if (!response.data.allowed) {
+                    toast.error(response.data.message || t('eligibility.errors.notAllowed'));
+                    if (response.data.contractId) {
+                        router.push(`/dashboard/contracts?view=${response.data.contractId}`);
+                        return;
+                    }
+                    router.push('/properties');
+                    return;
+                }
+
+                // If user has existing contract, redirect to view it
+
+
+                setProperty(response.data?.property)
+                setChecking(false);
+            } catch (error: any) {
+                const errorMessage = error?.response?.data?.message || t('eligibility.errors.checkFailed');
+                toast.error(errorMessage);
+                router.push('/properties');
+            } finally {
+                setChecking(false);
+            }
+        };
+
+        checkEligibility();
+    }, [searchParams, router, t]);
 
     const nextStep = () => {
         if (activeStep < steps.length) {
@@ -29,8 +88,24 @@ export default function Booking() {
         }
     };
 
+    if (checking) {
+        return (
+            <div className="mx-2 flex flex-col hero-height booking">
+                <div className="border-b border-b-gray py-3 flex items-center justify-center gap-5">
+                    <Logo className="justify-center" />
+                    <LocaleSwitcher />
+                </div>
+                <div className="flex-1 flex items-center justify-center">
+                    <div className="text-center">
+                        <p className="text-lg">{t('eligibility.checking')}</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className="mx-2 flex flex-col hero-height">
+        <div className="mx-2 flex flex-col hero-height booking">
             <div className="border-b border-b-gray py-3 flex items-center justify-center gap-5">
                 <Logo className="justify-center" />
                 <LocaleSwitcher />
@@ -66,7 +141,12 @@ export default function Booking() {
 
                         {/* Current Step */}
                         <div className="flex-1 flex flex-col">
-                            {stepComponents[activeStep]({ nextStep })}
+                            {stepComponents[activeStep]({
+                                nextStep,
+                                property,
+                                createdContract,
+                                setCreatedContract
+                            })}
                         </div>
                     </>
                 ) : (

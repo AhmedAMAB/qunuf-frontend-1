@@ -110,7 +110,7 @@ export default function PropertiesDataView() {
                 filters={propertyFilters} // إضافة الفلاتر هنا
                 showSearch={true}
                 searchPlaceholder={t('searchPlaceholder')}
-                showActions={role !== 'admin'}
+                showActions={true}
                 actionsMenuItems={(row: Property): MenuActionItem[] =>
                     [
                         {
@@ -118,16 +118,18 @@ export default function PropertiesDataView() {
                             Icon: FaHome,
                             onClick: () => handleSetSelected(row),
                         },
-                        role === 'landlord' && ![PropertyStatus.REJECTED, PropertyStatus.INACTIVE].includes(row.status) && {
+                        {
                             // Dynamic label and icon based on current status
                             label: row.status === 'archived' ? t('restoreProperty') : t('archiveProperty'),
                             Icon: row.status === 'archived' ? BiArchiveOut : BiArchiveIn,
                             Child: ArchivePropertyPopup,
+                            show: role === 'landlord' && ![PropertyStatus.REJECTED, PropertyStatus.INACTIVE].includes(row.status)
                         },
-                        role === 'landlord' && {
+                        {
                             label: t('editProperty'),
                             Icon: MdModeEdit,
                             link: `/dashboard/properties/${row.id}/edit`,
+                            show: role === 'landlord'
                         },
                     ].filter(Boolean) as MenuActionItem[]
                 }

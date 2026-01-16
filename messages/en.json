@@ -169,10 +169,12 @@
     "propertyCategory": {
       "title": "Property Category",
       "description": "Lörem ipsum päde hypertropi eller mitin antir evis ofäns i jonin som pseudonäning. Manat preber. Pös vil gigana: nisöbel på igt. ",
+      "noProperties": "No Properties Found",
+      "emptyCategory": "We are constantly updating our listings. Currently, there are no properties in this category. Please check other sections.",
       "filters": {
-        "house": "House",
-        "realEstate": "Real Estate",
-        "apartment": "Apartment"
+        "apartment": "Apartments",
+        "family_housing": "Family Housing",
+        "villa": "Villas"
       }
     },
     "basedOnLocationSection": {
@@ -195,7 +197,7 @@
       },
       "card2": {
         "title": "Lease 100% Online",
-        "description": "Accept applications, process rent payments online, and sign digital leases all powered on a single platform.",
+        "description": "Accept applications, and sign digital leases all powered on a single platform.",
         "button": "Find Out More"
       }
     },
@@ -203,7 +205,10 @@
       "title": "Subscribe Our Newsletter",
       "description": "Lorem ipsum dolor sit amet consectetur. Feugiat ut aliquet sit pellentesque sollicitudin. Egestas faucibus lacus diam in senectus consectetur. Mattis elit adipiscing quisque tellus scelerisque vehicula ante nunc.",
       "placeholder": "Enter your email",
-      "button": "Get a Quote"
+      "button": "Get a Quote",
+      "loading": "Sending...",
+      "successMessage": "Subscribed successfully! Thank you.",
+      "errorMessage": "Something went wrong. Please try again later."
     }
   },
   "about": {
@@ -220,7 +225,7 @@
     "facilitators": "Facilitators",
     "hero": {
       "title": "About Us",
-      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "description": "A leading real estate firm committed to providing innovative housing and investment solutions. We combine deep market expertise with integrity to build long-term relationships with our clients.",
       "seeMore": "See More"
     },
     "header": "About Us",
@@ -247,7 +252,7 @@
     "nolocation": "Location not available",
     "hero": {
       "title": "Contatc Us",
-      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "description": "We are here to help with your real estate journey. Whether you have a question about a specific property or need a consultation, our team is ready to assist.",
       "seeMore": "See More"
     },
     "information": {
@@ -295,8 +300,8 @@
     "blog": "Blog",
     "hero": {
       "title": "Blogs",
-      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
-      "seeMore": "See More"
+      "description": "Stay informed with the latest real estate market trends, investment tips, and neighborhood guides through our regularly updated expert articles.",
+      "seeMore": "Read More"
     },
     "blogs": "Blogs",
     "our": "Our",
@@ -305,8 +310,8 @@
   },
   "property": {
     "hero": {
-      "title": "Property",
-      "description": "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.",
+      "title": "Properties",
+      "description": "Explore a wide range of premium properties tailored to your needs. From modern apartments to luxury villas, we help you find your dream home with ease.",
       "seeMore": "See More"
     },
     "filter": {
@@ -316,7 +321,7 @@
       "reset": "Reset all",
       "location": {
         "title": "Location",
-        "options": "{option, select, all {Any area} cairo {Cairo} alexandria {Alexandria} giza {Giza} other {Unknown}}"
+        "any": "Any area"
       },
       "subtype": {
         "title": "Subtype",
@@ -329,11 +334,11 @@
       },
       "bedrooms": {
         "title": "Bedrooms",
-        "options": "{option, select, any {Any} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {Unknown}}"
+        "options": "{option, select, all {Any} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {Unknown}}"
       },
       "bathrooms": {
         "title": "Bathrooms",
-        "options": "{option, select, any {Any} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {Unknown}}"
+        "options": "{option, select, all {Any} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {Unknown}}"
       },
       "rentalPeriod": {
         "title": "Rental Period",
@@ -367,7 +372,10 @@
       "bedrooms": "Bedrooms",
       "bathrooms": "Bathrooms",
       "totalArea": "Total area",
-      "garages": "Garages"
+      "livingRooms": "Living Rooms",
+      "emptyTitle": "No Properties Found",
+      "emptyMessage": "We couldn't find any properties matching your current filters. Try adjusting your search or clearing the filters.",
+      "clearFilters": "Clear all filters"
     },
     "details": {
       "bookingNow": "Booking Now",
@@ -430,9 +438,83 @@
   },
   "bookings": {
     "title": "Getting Started",
+    "fullDetails": {
+      "title": "Complete Your Profile",
+      "subtitle": "Please provide your full details to proceed with booking",
+      "sectionTitle": "Personal Information",
+      "confirm": "Continue",
+      "cancel": "Cancel"
+    },
+    "contractDetails": {
+      "title": "Contract Details",
+      "subtitle": "Set your rental period and terms",
+      "fields": {
+        "startDate": {
+          "label": "Start Date",
+          "placeholder": "Select start date"
+        },
+        "duration": {
+          "label": "Duration (Months)",
+          "placeholder": "Enter duration",
+          "hint": {
+            "monthly": "Select duration between {min} and {max} months",
+            "yearly": "Duration is fixed at 1 year for yearly rentals"
+          }
+        },
+        "proposedTerms": {
+          "label": "Proposed Contract Terms",
+          "placeholder": "Enter contract terms...",
+          "hint": "You can edit the default contract terms as needed"
+        }
+      },
+      "confirm": "Create Contract",
+      "cancel": "Cancel",
+      "creating": "Creating contract...",
+      "created": "Contract created successfully",
+      "loading": "Loading...",
+      "errors": {
+        "noProperty": "Property ID is missing",
+        "noStartDate": "Please select a start date",
+        "invalidDuration": "Invalid duration selected",
+        "startDatePast": "Start date must be in the future",
+        "loadPropertyFailed": "Failed to load property details",
+        "createFailed": "Failed to create contract"
+      }
+    },
+    "eligibility": {
+      "checking": "Checking eligibility...",
+      "errors": {
+        "noProperty": "Property ID is missing",
+        "notAllowed": "You are not eligible to book this property",
+        "checkFailed": "Failed to check eligibility"
+      }
+    },
+    "approval": {
+      "title": "Review & Approve",
+      "subtitle": "Please review the contract details before approving",
+      "summary": {
+        "title": "Contract Summary",
+        "property": "Property",
+        "dates": "Rental Period",
+        "terms": "Proposed Terms",
+        "month": "month",
+        "months": "months",
+        "note": "By approving, you agree to the terms and conditions of this rental contract."
+      },
+      "confirm": "Approve Contract",
+      "cancel": "Cancel",
+      "approving": "Approving contract...",
+      "approved": "Contract approved successfully",
+      "loading": "Loading contract details...",
+      "errors": {
+        "noContract": "Contract data is missing",
+        "loadFailed": "Failed to load contract details",
+        "approveFailed": "Failed to approve contract"
+      }
+    },
     "step1": {
-      "title": "Booking Information",
-      "subtitle": "Please fill up the blank fields below",
+      "title": "Booking Contract",
+      "subtitle": "Please fill up the Info For Contract",
       "plans": {
         "business": {
           "title": "Business",
@@ -520,13 +602,50 @@
       "cancel": "Cancel"
     },
     "step4": {
-      "title": "Yay! Payment Completed",
-      "imageAlt": "Payment Completed",
+      "title": "Contract Created Successfully!",
+      "imageAlt": "Contract Created",
       "message": {
-        "line1": "Please check your email & phone message.",
-        "line2": "We have sent all the information."
+        "line1": "Your contract has been created successfully.",
+        "line2": "The contract has been sent to the landlord for review.",
+        "line3": "The landlord will review the terms you edited and respond accordingly."
       },
-      "homeLink": "Go to Home Page"
+      "viewContract": "View Contract"
+    },
+    "contractReview": {
+      "title": "Contract Review",
+      "subtitle": "Please review contract details",
+      "noContract": "No contract data available",
+      "done": "Done",
+      "sections": {
+        "property": "Property Information",
+        "rentalPeriod": "Rental Period",
+        "financial": "Financial Details",
+        "landlord": "Landlord Information",
+        "terms": "Contract Terms"
+      },
+      "fields": {
+        "propertyName": "Property Name",
+        "propertyType": "Type",
+        "area": "Area",
+        "capacity": "Capacity",
+        "location": "Location",
+        "furnished": "Furnished",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "duration": "Duration",
+        "rentType": "Rent Type",
+        "totalAmount": "Total Amount",
+        "securityDeposit": "Security Deposit",
+        "platformFee": "Platform Fee",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone"
+      },
+      "yes": "Yes",
+      "no": "No",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "months": "months"
     }
   },
   "auth": {
@@ -748,6 +867,7 @@
       "support": "Customer Support",
       "rentalsContracts": "Rentals & Contracts",
       "properties": "Properties",
+      "users": "Users",
       "revenueSummary": "Revenue Summary",
       "notifications": "Notifications",
       "chat": "Chats",
@@ -833,22 +953,139 @@
       },
       "cancel": "Cancel",
       "table": {
-        "property": "Property",
-        "status": "Status",
-        "free": "Free",
-        "reserved": "Reserved",
-        "startBooking": "Start Booking",
-        "endBooking": "End Booking",
-        "published": "Published",
-        "price": "Price",
-        "contract": "Contract",
-        "location": "Location",
-        "renewContract": "Renew Contract",
+        "columns": {
+          "property": "Property",
+          "status": "Status",
+          "contractNumber": "Contract Number",
+          "tenant": "Tenant",
+          "landlord": "Landlord",
+          "startDate": "Start Date",
+          "endDate": "End Date",
+          "totalAmount": "Total Amount",
+          "createdAt": "Created At"
+        },
+        "statusOptions": {
+          "all": "All",
+          "draft": "Draft",
+          "pending_tenant_acceptance": "Pending Tenant Acceptance",
+          "pending_landlord_acceptance": "Pending Landlord Acceptance",
+          "pending_signature": "Awaiting Attestation",
+          "active": "Active",
+          "expired": "Expired",
+          "cancelled": "Cancelled",
+          "terminated": "Terminated",
+          "pending_termination": "Pending Termination"
+        },
+        "viewDetails": "View Details",
+        "reviseContract": "Revise Contract",
+        "acceptContract": "Accept Contract",
+        "cancelContract": "Cancel Contract",
+        "activateContract": "Activate Contract",
         "terminateContract": "Terminate Contract",
-        "deleteContract": "Delete Contract",
-        "editContract": "Edit Contract",
-        "searchPlaceholder": "Search contracts...",
-        "addProperty": "Add Property"
+        "searchPlaceholder": "Search by property, tenant or landlord name...",
+        "filters": {
+          "status": "Status",
+          "maxPrice": "Max Price",
+          "maxPricePlaceholder": "Enter max price"
+        }
+      },
+      "details": {
+        "title": "Contract Details",
+        "error": "Failed to load contract details",
+        "errorTitle": "Error",
+        "close": "Close",
+        "property": "Property Information",
+        "propertyName": "Property Name",
+        "propertyType": "Property Type",
+        "area": "Area",
+        "location": "Location",
+        "rentalPeriod": "Rental Period",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "duration": "Duration",
+        "months": "months",
+        "rentType": "Rent Type",
+        "financial": "Financial Details",
+        "totalAmount": "Total Amount",
+        "securityDeposit": "Security Deposit",
+        "platformFee": "Platform Fee",
+        "parties": "Parties",
+        "landlord": "Landlord",
+        "tenant": "Tenant",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "terms": "Contract Terms",
+        "contractInfo": "Contract Information",
+        "createdAt": "Created At",
+        "contractDate": "Contract Date",
+        "terminationDate": "Termination Date",
+        "nationality": "Nationality",
+        "identityType": "Identity Type",
+        "identityNumber": "Identity Number",
+        "identityIssueCountry": "Issue Country",
+        "birthDate": "Birth Date",
+        "shortAddress": "Short Address"
+      },
+      "actions": {
+        "revise": {
+          "title": "Revise Contract Terms",
+          "subtitle": "Review and update the contract terms. The tenant will need to accept or reject your changes.",
+          "fields": {
+            "terms": "Contract Terms",
+            "termsPlaceholder": "Enter the revised contract terms..."
+          },
+          "submit": "Send to Tenant",
+          "success": "Contract terms updated successfully",
+          "error": "Failed to update contract terms",
+          "showComparison": "Show comparison (Review Changes)",
+          "addedText": "Added",
+          "removedText": "Removed",
+          "comparisonNote": "Changes are highlighted: Green for new text, Red for deleted text."
+        },
+        "accept": {
+          "title": "Accept Contract",
+          "subtitle": "Please carefully review the contract terms and default conditions before accepting to proceed to the next stage.",
+          "fields": {
+            "sendRenewalNotify": "Send Renewal Notification",
+            "renewalDiscountAmount": "Renewal Discount Amount (SAR)",
+            "requiredMonthsForIncentive": "Required Months for Incentive"
+          },
+          "submit": "Accept",
+          "success": "Contract accepted successfully",
+          "error": "Failed to accept contract"
+        },
+        "cancel": {
+          "title": "Cancel Contract",
+          "subtitle": "Are you sure you want to cancel this contract? This action cannot be undone.",
+          "confirm": "Cancel Contract",
+          "cancel": "Keep Contract",
+          "submitting": "Cancelling...",
+          "success": "Contract cancelled successfully",
+          "error": "Failed to cancel contract"
+        },
+        "activate": {
+          "title": "Activate Contract",
+          "subtitle": "Upload the Ejar contract PDF and enter the contract number to activate this contract.",
+          "fields": {
+            "contractNumber": "Contract Number",
+            "contractNumberPlaceholder": "Enter contract number",
+            "contractPdf": "Contract PDF"
+          },
+          "submit": "Activate",
+          "success": "Contract activated successfully",
+          "error": "Failed to activate contract"
+        },
+        "terminate": {
+          "title": "Terminate Contract",
+          "subtitle": "Are you sure you want to terminate this contract?",
+          "note": "Note: Tenant termination is immediate. Landlord termination requires 60 days notice.",
+          "confirm": "Terminate",
+          "cancel": "Cancel",
+          "submitting": "Terminating...",
+          "success": "Contract termination initiated successfully",
+          "error": "Failed to terminate contract"
+        }
       }
     },
     "payments": {
@@ -915,7 +1152,7 @@
       "identityType": "Identity Type",
       "identityNumber": "Identity Number",
       "nationality": "Nationality",
-      "identityIssueCountry": "Issue Country",
+      "identityIssueCountry": "Country of Identity Issue",
       "birthDate": "Birth date",
       "selectNationality": "Select nationality",
       "selectState": "Select state",
@@ -1083,6 +1320,7 @@
         "saving": "Saving...",
         "save": "Save Changes",
         "sections": {
+          "defaultContractTerms": "Default Contract Terms",
           "general": "General Information",
           "description": "Descriptions",
           "contactAndLocation": "Contact & Location",
@@ -1096,6 +1334,7 @@
           "updateError": "An error occurred while saving."
         },
         "fields": {
+          "defaultContractTerms": "Terms & Conditions",
           "name": "Website Name",
           "platformPercent": "Platform Commission (%)",
           "contactEmail": "Contact Email",
@@ -1119,6 +1358,7 @@
           "youtube": "YouTube"
         },
         "placeholders": {
+          "defaultContractTerms": "Enter the default terms and conditions that will be automatically applied to new contracts...",
           "name": "Enter website name",
           "description_en": "Enter website description in English",
           "description_ar": "Enter website description in Arabic"
@@ -1507,6 +1747,7 @@
           "updateSuccess": "Property updated successfully"
         },
         "validation": {
+          "yearRange": "Construction year must be between {min} and {max}",
           "required": "This field is required",
           "min": "Value must be at least {min}",
           "max": "Value must be at most {max}",
@@ -1521,7 +1762,11 @@
             "maxFacilities": "You can add up to {max} facilities only",
             "distanceTooFar": "Distance cannot exceed {max} km",
             "distanceTooShort": "Distance must be at least {min} km"
-          }
+          },
+          "nameExists": "A property with this name already exists",
+          "nameAvailable": "This name is available",
+          "checking": "Checking...",
+          "checkFailed": "Failed to verify name availability"
         },
         "constructionDate": "Construction completion date",
         "placeholders": {
@@ -1632,6 +1877,77 @@
           "desertAC": "Desert AC",
           "majlis": "Majlis",
           "rooms": "Total Rooms"
+        }
+      }
+    },
+    "users": {
+      "updatingStatus": "Updating user status...",
+      "statusUpdated": "Status updated successfully",
+      "statusUpdateError": "Failed to update status",
+      "statusOptions": {
+        "all": "All Statuses",
+        "active": "Active",
+        "inactive": "Inactive",
+        "pending_verification": "Pending Verification",
+        "suspended": "Suspended",
+        "deleted": "Deleted"
+      },
+      "roleOptions": {
+        "all": "All Roles",
+        "admin": "Admin",
+        "landlord": "Landlord",
+        "tenant": "Tenant"
+      },
+      "table": {
+        "viewDetails": "View Details",
+        "searchPlaceholder": "Search by name or email...",
+        "filters": {
+          "status": "Status",
+          "role": "Role"
+        },
+        "columns": {
+          "name": "Name",
+          "email": "Email",
+          "role": "Role",
+          "status": "Status",
+          "lastLogin": "Last Login",
+          "createdAt": "Created At",
+          "never": "Never"
+        }
+      },
+      "details": {
+        "email": "Email",
+        "pendingEmail": "Pending Email",
+        "phoneNumber": "Phone Number",
+        "birthDate": "Birth Date",
+        "lastLogin": "Last Login",
+        "never": "Never",
+        "identity": "Identity Information",
+        "nationality": "Nationality",
+        "identityType": "Identity Type",
+        "identityNumber": "Identity Number",
+        "identityIssueCountry": "Identity Issue Country",
+        "identityOtherType": "Other Identity Type",
+        "address": "Address",
+        "shortAddress": "Short Address",
+        "accountInfo": "Account Information",
+        "createdAt": "Created At",
+        "updatedAt": "Updated At",
+        "notificationsEnabled": "Notifications Enabled",
+        "unreadNotifications": "Unread Notifications",
+        "yes": "Yes",
+        "no": "No",
+        "notProvided": "Not Provided",
+        "errorTitle": "Failed to load user details",
+        "error": "Failed to load user details",
+        "close": "Close",
+        "identityTypes": {
+          "national_id": "National ID",
+          "residency": "Residency",
+          "premium_residency": "Premium Residency",
+          "gcc_id": "GCC ID",
+          "passport": "Passport",
+          "other": "Other"
         }
       }
     }

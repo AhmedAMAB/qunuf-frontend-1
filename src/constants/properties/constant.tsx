@@ -1,6 +1,6 @@
 import AdminStatusSelect from "@/components/dashboard/Properties/AdminStatusSelect";
 import { PropertyCell } from "@/components/shared/properties/PropertyCell";
-import { Property, PropertyStatus } from "@/types/dashboard/properties";
+import { Property, PropertyStatus, PropertyType, RentType } from "@/types/dashboard/properties";
 import { TableColumnType } from "@/types/table";
 import { format } from "date-fns";
 import { useTranslations } from "next-intl";
@@ -17,7 +17,7 @@ export const subtypeValues = {
 } as const;
 
 export const bedroomValues = [
-    'any',
+    'all',
     '1',
     '2',
     '3',
@@ -26,7 +26,7 @@ export const bedroomValues = [
 ] as const;
 
 export const bathroomValues = [
-    'any',
+    'all',
     '1_0',
     '1_5',
     '2_0',
@@ -35,31 +35,15 @@ export const bathroomValues = [
 ] as const;
 
 
-export const featurevalues = [
-    'airConditioning',
-    'assistedLiving',
-    'disabilityAccess',
-    'controlledAccess',
-    'cableReady',
-    'availableNow',
-    'college',
-    'corporate',
-    'elevator',
-    'extraStorage',
-    'highSpeedInternet',
-    'garage',
-    'petAllowed'
-];
 
-
-export const periodValues: PeriodType[] = [
-    'yearly',
-    'monthly'
+export const periodValues: RentType[] = [
+    RentType.MONTHLY,
+    RentType.YEARLY
 ] as const;
 
 export const propertyTypeValues: PropertyType[] = [
-    'residential',
-    'commercial'
+    PropertyType.RESIDENTIAL,
+    PropertyType.COMMERCIAL
 ] as const;
 
 export const furnishedValues: FurnishedType[] = [
@@ -67,50 +51,41 @@ export const furnishedValues: FurnishedType[] = [
     'unfurnished'
 ] as const;
 
-export type PeriodType = "monthly" | "yearly";
-export type PropertyType = "residential" | "commercial";
+
 export type FurnishedType = "furnished" | "unfurnished";
 
-export const MIN_PRICE = 1000;
-export const MAX_PRICE = 100_000;
+export const MIN_PRICE = 1;
+export const MAX_PRICE = 1000_000;
 
-export const MIN_SCQUAREFEET = 10;
-export const MAX_SCQUAREFEET = 1500;
-
-export const MIN_YEARBUILD = 1950;
-export const MAX_YEARBUILD = 2025;
+export const MIN_SCQUAREFEET = 1;
+export const MAX_SCQUAREFEET = 100_000;
+const today = new Date();
+const currentYear = today.getFullYear();
+export const MIN_YEARBUILD = 1900;
+export const MAX_YEARBUILD = currentYear;
 
 export type FilterState = {
-    location: string;
-    period: "monthly" | "yearly";
-    type: "residential" | "commercial";
+    location: string; //state id
+    period: string; // rent type
+    type: string;
     subtype: string[];
-    furnished: "furnished" | "unfurnished";
-    bathroom: string;
-    bedroom: string;
-    features: string[];
-    priceMin: number;
-    priceMax: number;
-    scquarefeetMin: number;
-    scquarefeetMax: number;
+    furnished: string;  //"furnished" | "unfurnished";
+    bathroom: string; // 'all', '1_0', '1_5', '2_0', '2_5', 'threeAndMore' 
+    bedroom: string; // 'all', '1', '2', '3', '4', 'fiveAndMore'
+    features: string[]; // list of "maidRoom", "backyard", "centralAC", "desertAC", where if exists so true
+    priceMin: number; //rent price
+    priceMax: number; //rent price
+    scquarefeetMin: number; //min area
+    scquarefeetMax: number; //max area
     yearBuiltMin: number;
     yearBuiltMax: number;
 };
 
 export const featureKeys = [
-    "airConditioning",
-    "assistedLiving",
-    "disabilityAccess",
-    "controlledAccess",
-    "cableReady",
-    "availableNow",
-    "college",
-    "corporate",
-    "elevator",
-    "extraStorage",
-    "highSpeedInternet",
-    "garage",
-    "petAllowed",
+    "maidRoom",
+    "backyard",
+    "centralAC",
+    "desertAC",
 ] as const;
 
 export const PropertyColumns = (t: ReturnType<typeof useTranslations>, role: string): TableColumnType<Property>[] => [
@@ -118,7 +93,7 @@ export const PropertyColumns = (t: ReturnType<typeof useTranslations>, role: str
         key: 'name',
         label: t('columns.name'),
         cell(value, row) {
-            return <PropertyCell isActive={row?.status === PropertyStatus.ACTIVE} id={row.id} images={row.images} name={row.name} />;
+            return <PropertyCell property={row} />;
         },
     },
     {

@@ -423,3 +423,9 @@ body {
   /* scrollbar-color: [thumb] [track] */
   scrollbar-color: transparent transparent !important;
 }
+
+.booking .book-input input,
+.booking .book-input .select-input {
+  background-color: var(--lighter) !important;
+  border-color: var(--light) !important;
+}

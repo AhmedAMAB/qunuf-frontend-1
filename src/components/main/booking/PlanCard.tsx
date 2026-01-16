@@ -6,6 +6,7 @@ interface PlanCardProps {
     description: string;
     buttonText: string;
     onClick?: () => void;
+    isSelected?: boolean;
     aos?: string;
 }
 
@@ -15,11 +16,14 @@ export default function PlanCard({
     description,
     buttonText,
     onClick,
+    isSelected = false,
     aos = 'fade-up',
 }: PlanCardProps) {
     return (
         <div
-            className="w-full max-w-[350px] h-[310px] bg-white shadow-md rounded-lg flex flex-col justify-between overflow-hidden border border-gray"
+            className={`w-full max-w-[350px] h-[310px] bg-white shadow-md rounded-lg flex flex-col justify-between overflow-hidden border-2 transition-all ${
+                isSelected ? 'border-secondary' : 'border-gray'
+            }`}
             data-aos={aos}
         >
             <div className="px-6 pt-4">
@@ -35,8 +39,12 @@ export default function PlanCard({
             <button
                 onClick={onClick}
                 className={`
-                    w-full h-[66px] mt-auto bg-secondary text-white text-lg font-semibold 
-                    hover:bg-secondary-hover transition-colors
+                    w-full h-[66px] mt-auto text-white text-lg font-semibold 
+                    transition-colors
+                    ${isSelected 
+                        ? 'bg-secondary hover:bg-secondary-hover' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }
                 `}
             >
                 {buttonText}

@@ -58,6 +58,7 @@ export const settingsSchema = z.object({
     // Localized Text Areas
     description_en: z.string().nullable().optional(),
     description_ar: z.string().nullable().optional(),
+    defaultContractTerms: z.string().nullable().optional(),
     privacyPolicy_en: z.string().nullable().optional(),
     privacyPolicy_ar: z.string().nullable().optional(),
     termsOfService_en: z.string().nullable().optional(),
@@ -279,6 +280,27 @@ export default function SettingsForm() {
                                     value={field.value ?? ""}
                                     onChange={field.onChange}
                                     rows={6}
+                                />
+                            )}
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 className="text-xl font-bold mb-4 border-b border-b-gray-400 pb-2 text-dark">
+                        {t("sections.defaultContractTerms")}
+                    </h3>
+                    <div className="grid grid-cols-1 gap-y-5 gap-x-12">
+                        <Controller
+                            control={control}
+                            name="defaultContractTerms"
+                            render={({ field }) => (
+                                <TextAreaInput
+                                    label={t("fields.defaultContractTerms")}
+                                    placeholder={t("placeholders.defaultContractTerms")}
+                                    value={field.value ?? ""}
+                                    onChange={field.onChange}
+                                    rows={8}
                                 />
                             )}
                         />

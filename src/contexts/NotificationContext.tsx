@@ -144,8 +144,8 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
 
     const getNavigationLink = (notif: Notification) => {
         const type = notif.relatedEntityType?.toLowerCase();
-        if (type === 'property') return `/properties/${notif.relatedEntityId}`;
-        if (type === 'contract') return getHref('contracts', { id: notif.relatedEntityId });
+        if (type === 'property') return `/dashboard/properties?view=${notif.relatedEntityId}`;
+        if (type === 'contract') return `/dashboard/contracts?view=${notif.relatedEntityId}`;
         if (type === 'chat') return getHref('chats', { user: notif.relatedEntityId });
         return "";
     };

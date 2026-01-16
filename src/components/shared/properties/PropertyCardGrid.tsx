@@ -1,10 +1,13 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { IoBedOutline } from "react-icons/io5";
+import { LuBath, LuMove } from "react-icons/lu";
+import { Property } from "@/types/dashboard/properties";
+import { resolveUrl } from "@/utils/upload";
 import Tooltip from "../Tooltip";
 import { ReactNode } from "react";
-import { LuBath } from "react-icons/lu";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { LiaCouchSolid } from "react-icons/lia";
 
 
 export type PropertyGrid = {
@@ -18,56 +21,58 @@ export type PropertyGrid = {
     bedrooms: number;
     garages: number;
     totalArea: number;
+    slug: string;
 };
 
-export default async function PropertyCardGrid({
-    property,
-}: {
-    property: PropertyGrid;
-    locale: "ar" | "en";
-}) {
+export default function PropertyCardGrid({ property }: { property: Property; locale: string }) {
+    const tEnums = useTranslations("property.enums");
+    const t = useTranslations('property.grid')
+    // Get primary image or fallback to first image
+    const displayImage = property.images?.find(img => img.is_primary)?.url || property.images?.[0]?.url;
 
-    const t = await getTranslations('property.grid')
     return (
-        <div className="h-full relative max-w-[416px] rounded-[5px] w-fit mx-auto flex flex-col transition hover:shadow-2xl hover:-translate-y-1"
+        <div className="h-full relative max-w-[416px] rounded-[5px] w-full mx-auto flex flex-col transition hover:shadow-2xl hover:-translate-y-1 bg-white"
             style={{ boxShadow: "0px 4px 10px 0px #00000012" }}>
-            <div className="max-w-[416px] overflow-hidden">
-
+            <div className="relative h-[250px] overflow-hidden rounded-t-[5px]">
                 <Image
-                    src={property.imageUrl}
-                    alt={property.title}
-                    width={411}
-                    height={260}
-                    className=" h-[250px] xl:h-[230px] w-[416px]  object-cover image-scale"
+                    src={displayImage ? resolveUrl(displayImage) : '/placeholder-property.jpg'}
+                    alt={property.name}
+                    fill
+                    className="object-cover image-scale"
                 />
             </div>
-            <div className="flex-1 flex flex-col gap-2 z-[1]  p-4">
-                <div className="flex-1 flex flex-col gap-1">
-                    <Link
-                        href={`/properties/${property.id}`}
-                        className="block font-semibold text-lg text-dark leading-snug"
-                    >
-                        {property.title}
-                    </Link>
 
-                    {/* Location from prop */}
-                    <p className="text-sm font-medium text-dark">
-                        {property.location}
+            <div className="flex-1 flex flex-col gap-2 p-4">
+                <Link href={`/properties/${property.slug}`} className="block font-semibold text-lg text-dark hover:text-primary transition truncate">
+                    {property.name}
+                </Link>
+
+                {/* Show Complex Name or Location Code */}
+                <p className="text-sm text-gray-500 truncate">
+                    {property.complexName || property.nationalAddressCode}
+                </p>
+
+                {/* Price and Rent Type */}
+                <div className="flex items-baseline gap-1 mt-1">
+                    <p className="text-primary font-bold text-xl lg:text-[22px]">
+                        {Number(property.rentPrice).toLocaleString()}
+                        <span className="text-sm font-medium ms-1">SAR</span>
                     </p>
-                    <p className="text-primary font-semibold text-xl lg:text-[22px] sflex items-center justify-between gap-2">
-                        ${property.price}
-                    </p>
+                    <span className="text-gray-400 text-sm font-medium">
+                        / {tEnums(`rentType.${property.rentType}`)}
+                    </span>
                 </div>
+
                 <div className="grid grid-cols-4 gap-3 justify-between items-end border-t border-[#7A74741A] pt-[10px]">
                     <InfoWithTooltip
                         icon={<IoBedOutline size={21} />}
                         label={t('bedrooms')}
-                        value={property.bedrooms}
+                        value={property.facilities.bathrooms}
                     />
                     <InfoWithTooltip
                         icon={<LuBath size={21} />}
                         label={t('bathrooms')}
-                        value={property.bathrooms}
+                        value={property.facilities.bathrooms}
                     />
 
                     <InfoWithTooltip
@@ -78,21 +83,15 @@ export default async function PropertyCardGrid({
                             </svg>
                         }
                         label={t('totalArea')}
-                        value={property.totalArea}
+                        value={property.area}
                     />
-
                     <InfoWithTooltip
-                        icon={
-                            <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M21.1055 5.34005L11.3555 0.0900479C11.1343 -0.0292021 10.8665 -0.0292021 10.6453 0.0900479L0.89525 5.34005C0.6515 5.47055 0.5 5.72405 0.5 6.00005V20.25C0.5 20.664 0.83525 21 1.25 21H20.75C21.1647 21 21.5 20.664 21.5 20.25V6.00005C21.5 5.72405 21.3485 5.47055 21.1055 5.34005ZM5.75 13.5H16.25V15.75H5.75V13.5ZM16.25 12H5.75V9.75005H16.25V12ZM5.75 19.5V17.25H16.25V19.5H5.75ZM20 19.5H17.75V9.00005C17.75 8.58605 17.4147 8.25005 17 8.25005H5C4.58525 8.25005 4.25 8.58605 4.25 9.00005V19.5H2V6.4478L11 1.60205L20 6.4478V19.5Z" fill="var(--primary)" />
-                            </svg>
-
-                        }
-                        label={t('garages')}
-                        value={property.garages}
+                        icon={<LiaCouchSolid size={22} />}
+                        label={t('livingRooms')}
+                        value={property.facilities.livingRooms}
                     />
-
                 </div>
+
             </div>
         </div>
     );
@@ -106,12 +105,18 @@ type InfoWithTooltipProps = {
 };
 
 function InfoWithTooltip({ icon, label, value }: InfoWithTooltipProps) {
+    const cleanValue = typeof value === 'number'
+        ? Math.trunc(value)
+        : (!isNaN(Number(value)) && value !== '')
+            ? Math.trunc(Number(value))
+            : value;
+
     return (
-        <Tooltip content={`${label} ${value}`}>
+        <Tooltip content={`${label} ${cleanValue}`}>
             <div className="flex flex-col gap-1 relative max-w-full">
                 <div className="flex gap-2 items-center">
                     <div className="shrink-0 text-primary">{icon}</div>
-                    <span className="text-sm">{value}</span>
+                    <span className="text-sm">{cleanValue}</span>
                 </div>
                 <span className="text-input font-medium text-[13px] truncate peer">{label}</span>
             </div>

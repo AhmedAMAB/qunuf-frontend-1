@@ -12,7 +12,7 @@ export default async function PropertyExplorer() {
         <div className="mt-28 mx-2">
             <div className="container ">
                 <div className="flex flex-col gap-4 md:gap-6 mb-10 lg:grid lg:grid-cols-[335px_1fr]">
-                    <div className="max-sm:w-full max-sm:max-w-[416px] max-sm:mx-auto flex justify-between lg:block">
+                    <div className="z-[45] relative max-sm:w-full max-sm:max-w-[416px] max-sm:mx-auto flex justify-between lg:block">
                         <FilterProperties />
                         <h1 className="block lg:hidden text-2xl md:text-4xl text-dark font-bold">
                             {t("header")}

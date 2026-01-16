@@ -47,6 +47,7 @@ export default function useTableFilter({ filters }: { filters: FilterConfig[]; }
     const updateFilter = (key: string, value: string | undefined) => {
         const updated = { ...allFilters };
         const params = new URLSearchParams(searchParams.toString());
+        params.set('page', '1');
         if (value) {
             updated[key] = value;
             params.set(key, value);
@@ -85,6 +86,7 @@ export default function useTableFilter({ filters }: { filters: FilterConfig[]; }
 
         setAllFilters(reset);
         const params = new URLSearchParams(reset);
+        params.set('page', '1');
         updateUrlParams(pathname, params)
     };
 
@@ -97,7 +99,7 @@ export default function useTableFilter({ filters }: { filters: FilterConfig[]; }
         dates: { startDate?: Date; endDate?: Date };
     }) => {
         const params = new URLSearchParams(allFilters);
-
+        params.set('page', '1');
         if (dates.startDate) {
             params.set(`${filter.key}_from`, format(dates.startDate, 'yyyy-MM-dd'));
         } else {

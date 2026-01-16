@@ -1,11 +1,12 @@
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 
 interface FormActionsProps {
-    onConfirm: () => void;
+    onConfirm?: () => void;
     onCancel: () => void;
     confirmLabel?: string;
     cancelLabel?: string;
     isDisabled?: boolean;
+    type?: 'button' | 'submit'; // Add type prop
 }
 
 export default function FormActions({
@@ -14,16 +15,27 @@ export default function FormActions({
     confirmLabel = 'Book Now',
     cancelLabel = 'Cancel',
     isDisabled = false,
+    type = 'button',
 }: FormActionsProps) {
     return (
         <div className="flex flex-wrap justify-center gap-4 ">
-            <SecondaryButton
-                onClick={onConfirm}
-                className="bg-secondary hover:bg-secondary-hover text-white py-2 lg:py-3 w-full sm:w-[323px]"
-                disabled={isDisabled}
-            >
-                {confirmLabel}
-            </SecondaryButton>
+            {type === 'submit' ? (
+                <button
+                    type="submit"
+                    disabled={isDisabled}
+                    className="bg-secondary hover:bg-secondary-hover text-white py-2 lg:py-3 w-full sm:w-[323px] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+                >
+                    {confirmLabel}
+                </button>
+            ) : (
+                <SecondaryButton
+                    onClick={onConfirm}
+                    className="bg-secondary hover:bg-secondary-hover text-white py-2 lg:py-3 w-full sm:w-[323px]"
+                    disabled={isDisabled}
+                >
+                    {confirmLabel}
+                </SecondaryButton>
+            )}
 
             <SecondaryButton
                 onClick={onCancel}

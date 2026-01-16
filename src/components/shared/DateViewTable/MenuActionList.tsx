@@ -36,7 +36,8 @@ export type MenuActionItem = {
     type?: ActionType;
     link?: string;
     Child?: ComponentType<{ row, onClose: () => void }>;
-    onClick?: () => void
+    onClick?: () => void;
+    show?: boolean
 };
 
 type Props = {
@@ -125,6 +126,7 @@ export function ActionList({ items, row, setRows, onOpenPopup }: Props) {
     return (
         <div className="flex flex-row justify-end gap-4 p-2">
             {items?.map((item, index) => {
+                if (item.show != undefined && !item.show) return;
                 const Icon = item.Icon;
                 const content = (
                     <>

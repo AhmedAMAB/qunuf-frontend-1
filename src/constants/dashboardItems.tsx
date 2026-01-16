@@ -44,12 +44,14 @@ export function getDashboardItems(role: Role, adminUserId?: string): SidebarLink
 
     const adminLinks: SidebarLink[] = [
         { href: getDashboardHref('properties'), key: 'properties', Icon: PiBuildingApartment, order: 1 },
-        { href: getDashboardHref('contactUs'), key: 'contactUs', Icon: GrContact, order: 2 },
-        { href: getDashboardHref('blogs'), key: 'blogs', Icon: FaRegNewspaper, order: 3 },
-        { href: getDashboardHref('teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers, order: 4 },
-        { href: getDashboardHref('aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup, order: 5 },
-        { href: getDashboardHref('departments'), key: 'departments', Icon: TbBuildingCommunity, order: 6 },
-        { href: getDashboardHref('websiteSettings'), key: 'websiteSettings', Icon: MdOutlineSettingsApplications, order: 7 }
+        { href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 3 },
+        { href: getDashboardHref('users'), key: 'users', Icon: HiOutlineUsers, order: 4 },
+        { href: getDashboardHref('contactUs'), key: 'contactUs', Icon: GrContact, order: 5 },
+        { href: getDashboardHref('blogs'), key: 'blogs', Icon: FaRegNewspaper, order: 6 },
+        { href: getDashboardHref('teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers, order: 7 },
+        { href: getDashboardHref('aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup, order: 8 },
+        { href: getDashboardHref('departments'), key: 'departments', Icon: TbBuildingCommunity, order: 9 },
+        { href: getDashboardHref('websiteSettings'), key: 'websiteSettings', Icon: MdOutlineSettingsApplications, order: 10 }
     ];
 
 

@@ -1,39 +1,54 @@
 import { useSearchParams, usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { getSafeNumberInRange, getSafeString, updateUrlParams } from "@/utils/helpers";
+import { getSafeNumberInRange, updateUrlParams } from "@/utils/helpers";
 import {
-    PeriodType, FurnishedType, PropertyType, FilterState,
+    FilterState,
     MAX_PRICE, MIN_PRICE, MAX_SCQUAREFEET, MIN_SCQUAREFEET, MAX_YEARBUILD, MIN_YEARBUILD,
-    locationValues, subtypeValues, bedroomValues, bathroomValues, featurevalues, periodValues, propertyTypeValues, furnishedValues
+    bedroomValues, bathroomValues, periodValues, propertyTypeValues, furnishedValues,
+    featureKeys,
 } from "@/constants/properties/constant";
 import { useLocalizedOptionsGroups } from "../useLocalizedOptionsGroups";
+import { useValues } from "@/contexts/GlobalContext";
+import { useLocale, useTranslations } from "next-intl";
+import { Option } from "@/components/shared/forms/SelectInput";
+import { CommercialSubType, PropertyType, RentType, ResidentialSubType } from "@/types/dashboard/properties";
+import { useRouter } from "@/i18n/navigation";
 
 
 function useFilterProperties() {
+    const tForm = useTranslations("dashboard.properties.form");
+    const tEnums = useTranslations("property.enums");
+    const t = useTranslations("property.filter");
     const searchParams = useSearchParams();
     const pathname = usePathname();
+    const router = useRouter();
 
-
+    const locale = useLocale()
+    const { states, loadingStates: loadingLocations } = useValues();
+    const locations: Option[] = useMemo(
+        () => [
+            {
+                value: "all",
+                label: t("location.any"), // localized "Any location"
+            },
+            ...states.map((s) => ({
+                value: s.id,
+                label: locale === "ar" ? s.name_ar : s.name,
+            })),
+        ],
+        [states, locale, t]
+    );
 
     // options
-    const {
-        locations,
-        residentialSubtypes,
-        commercialSubtypes,
-        bedrooms,
+    const { bedrooms,
         bathrooms,
-        features,
         periods,
         propertyTypes,
         furnishedTypes
     } = useLocalizedOptionsGroups(
         [
-            { key: 'locations', translationPath: 'location', options: [...locationValues], },
-            { key: 'residentialSubtypes', translationPath: 'subtype.residential', options: [...subtypeValues.residential], },
-            { key: 'commercialSubtypes', translationPath: 'subtype.commercial', options: [...subtypeValues.commercial], },
             { key: 'bedrooms', translationPath: 'bedrooms', options: [...bedroomValues], },
             { key: 'bathrooms', translationPath: 'bathrooms', options: [...bathroomValues], },
-            { key: 'features', translationPath: 'features', options: [...featurevalues], },
             { key: 'periods', translationPath: 'rentalPeriod', options: [...periodValues], },
             { key: 'propertyTypes', translationPath: 'propertyType', options: [...propertyTypeValues], },
             { key: 'furnishedTypes', translationPath: 'furnishedType', options: [...furnishedValues], }
@@ -41,26 +56,28 @@ function useFilterProperties() {
         'property.filter'
     );
 
-    const subtypeValueMap = useMemo(
+    const yearOptions = useMemo(() => {
+        const years: { label: string; value: number }[] = [];
+        for (let year = MAX_YEARBUILD; year >= MIN_YEARBUILD; year--) {
+            years.push({
+                label: year.toString(),
+                value: year,
+            });
+        }
+        return years;
+    }, []);
+
+
+    const featureOptions = useMemo(
         () =>
-            new Map<string, Set<string>>([
-                ['residential', new Set(residentialSubtypes.map(opt => opt.value))],
-                ['commercial', new Set(commercialSubtypes.map(opt => opt.value))]
-            ]),
-        [residentialSubtypes, commercialSubtypes]
+            featureKeys.map((key) => ({
+                value: key,
+                label: tForm(`${key}`), // localized label
+            })),
+        [tForm]
     );
 
-
-    const featureValueSet = useMemo(() => new Set(features.map(f => f.value)), [features]);
-
     const [filters, setFilters] = useState<FilterState>(() => {
-        const allowedPeriods = new Set<PeriodType>(["monthly", "yearly"]);
-        const allowedFurnished = new Set<FurnishedType>(["furnished", "unfurnished"]);
-        const allowedTypes = new Set<PropertyType>(["residential", "commercial"]);
-        const allowedBathrooms = new Set<string>(bathrooms.map(b => b.value));
-        const allowedBedrooms = new Set<string>(bedrooms.map(b => b.value));
-
-
         const rawPriceMin = getSafeNumberInRange(searchParams.get("priceMin"), MIN_PRICE, MIN_PRICE, MAX_PRICE);
         const rawPriceMax = getSafeNumberInRange(searchParams.get("priceMax"), MAX_PRICE, MIN_PRICE, MAX_PRICE);
         const priceMin = Math.min(rawPriceMin, rawPriceMax);
@@ -76,22 +93,18 @@ function useFilterProperties() {
         const yearBuiltMin = Math.min(rawYearMin, rawYearMax);
         const yearBuiltMax = Math.max(rawYearMin, rawYearMax);
 
-        const type = getSafeString(searchParams.get("type"), allowedTypes, "residential");
-        const period = getSafeString(searchParams.get("period"), allowedPeriods, "yearly");
-        const furnished = getSafeString(searchParams.get("furnished"), allowedFurnished, "furnished");
-        const bathroom = getSafeString(searchParams.get("bathrooms"), allowedBathrooms, bathrooms[0].value);
-        const bedroom = getSafeString(searchParams.get("bedrooms"), allowedBedrooms, bedrooms[0].value);
+        const type = searchParams.get("type") || PropertyType.RESIDENTIAL;
+        const period = searchParams.get("period") || RentType.MONTHLY;
+        const furnished = searchParams.get("furnished") || "furnished";
+        const bathroom = searchParams.get("bathrooms") || 'all';
+        const bedroom = searchParams.get("bedrooms") || 'all';
 
-        const subtype = (searchParams.get("subtype")?.split(",") || []).filter(v =>
-            subtypeValueMap.get(type)?.has(v)
-        );
+        const subtype = (searchParams.get("subtype")?.split(",") || [])
 
-        const features = (searchParams.get("features")?.split(",") || []).filter(v =>
-            featureValueSet.has(v)
-        );
+        const features = (searchParams.get("features")?.split(",") || [])
 
         return {
-            location: searchParams.get("location") || locations[0].value,
+            location: searchParams.get("location") || locations?.[0]?.value.toString(),
             period,
             type,
             subtype,
@@ -108,10 +121,19 @@ function useFilterProperties() {
         };
     });
 
+    const subTypeOptions = useMemo(() => {
+        const isCommercial = filters.type === PropertyType.COMMERCIAL;
+        const subTypeEnum = isCommercial ? CommercialSubType : ResidentialSubType;
+        const path = isCommercial ? "commercial" : "residential";
+
+        return Object.values(subTypeEnum).map(val => ({
+            label: tEnums(`subType.${path}.${val}`),
+            value: val
+        }));
+    }, [filters.type, tEnums]);
 
     const activeLocation = useMemo(() => locations.find(o => o.value === filters.location), [filters.location, locations])
 
-    const subtypes = filters.type === 'residential' ? residentialSubtypes : commercialSubtypes;
 
     function updateFilter(key: keyof typeof filters, value: string) {
         setFilters(prev => ({ ...prev, [key]: value }));
@@ -165,9 +187,9 @@ function useFilterProperties() {
 
     function resetFilters() {
         const defaultFilters: FilterState = {
-            location: locations[0].value,
-            period: "yearly",
-            type: "residential",
+            location: locations[0].value.toString(),
+            period: RentType.MONTHLY,
+            type: PropertyType.RESIDENTIAL,
             subtype: [],
             furnished: "furnished",
             bathroom: bathrooms[0].value,
@@ -187,14 +209,16 @@ function useFilterProperties() {
     return {
         filters,
         activeLocation,
+        loadingLocations,
         locations,
-        subtypes,
+        subtypes: subTypeOptions,
         bedrooms,
         bathrooms,
-        features,
+        features: featureOptions,
         periods,
         propertyTypes,
         furnishedTypes,
+        yearOptions: yearOptions,
         setFilters,
         updateFilter,
         toggleSubtype,

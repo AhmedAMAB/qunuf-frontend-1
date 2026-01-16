@@ -1,218 +1,166 @@
+'use client'
+import Pagination from "@/components/shared/DateViewTable/Pagination";
+import EmptyState from "@/components/shared/EmptyState";
 import PropertyCardGrid from "@/components/shared/properties/PropertyCardGrid";
-import { Locale } from "@/types/global";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import api from "@/libs/axios";
+import { Property } from "@/types/dashboard/properties";
+import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
-const properties = [
-    {
-        id: "property-1",
-        rate: 3,
-        title: {
-            ar: "شقة كبيرة مكونة من 4 غرف مع تراس جميل",
-            en: "Spacious 4-Bedroom Apartment ",
-        },
-        address: {
-            ar: "2972 طريق ويستهايمر. سانتا آنا، إلينوي 85486",
-            en: "2972 Westheimer Rd. Santa Ana, Illinois 85486",
-        },
-        price: 943.65,
-        imageUrl: "/properties/location/property-1.jpg",
-        location: "Santa Ana, Illinois",
-        bathrooms: 2,
-        bedrooms: 4,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-2",
-        rate: 3,
-        title: {
-            ar: "فيلا فاخرة مع مسبح خاص",
-            en: "Luxury Villa with Private Pool",
-        },
-        address: {
-            ar: "1234 شارع النيل، القاهرة، مصر",
-            en: "1234 Nile St, Cairo, Egypt",
-        },
-        price: 2500,
-        imageUrl: "/properties/location/property-2.jpg",
-        location: "Cairo, Egypt",
-        bathrooms: 3,
-        bedrooms: 5,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-3",
-        rate: 3,
-        title: {
-            ar: "منزل عائلي مريح بالقرب من وسط المدينة",
-            en: "Cozy Family House near Downtown",
-        },
-        address: {
-            ar: "56 شارع التحرير، الجيزة، مصر",
-            en: "56 Tahrir St, Giza, Egypt",
-        },
-        price: 1200,
-        imageUrl: "/properties/location/property-3.jpg",
-        location: "Giza, Egypt",
-        bathrooms: 2,
-        bedrooms: 3,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-4",
-        rate: 3,
-        title: {
-            ar: "شقة حديثة في برج فاخر",
-            en: "Modern Apartment in Luxury Tower",
-        },
-        address: {
-            ar: "89 شارع الشيخ زايد، دبي، الإمارات",
-            en: "89 Sheikh Zayed Rd, Dubai, UAE",
-        },
-        price: 3200,
-        imageUrl: "/properties/location/property-4.jpg",
-        location: "Dubai, UAE",
-        bathrooms: 2,
-        bedrooms: 2,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-5",
-        rate: 3,
-        title: {
-            ar: "كوخ ريفي هادئ مع حديقة واسعة",
-            en: "Quiet Countryside Cottage with Large Garden",
-        },
-        address: {
-            ar: "12 طريق الريف، توسكانا، إيطاليا",
-            en: "12 Countryside Rd, Tuscany, Italy",
-        },
-        price: 1800,
-        imageUrl: "/properties/location/property-5.jpg",
-        location: "Tuscany, Italy",
-        bathrooms: 1,
-        bedrooms: 2,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-6",
-        rate: 3,
-        title: {
-            ar: "بنتهاوس فاخر مع إطلالة بانورامية",
-            en: "Luxury Penthouse with Panoramic View",
-        },
-        address: {
-            ar: "77 شارع الملك فهد، الرياض، السعودية",
-            en: "77 King Fahd Rd, Riyadh, Saudi Arabia",
-        },
-        price: 5000,
-        imageUrl: "/properties/location/property-6.jpg",
-        location: "Riyadh, Saudi Arabia",
-        bathrooms: 4,
-        bedrooms: 4,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-7",
-        rate: 3,
-        title: {
-            ar: "كوخ ريفي هادئ مع حديقة واسعة",
-            en: "Quiet Countryside Cottage with Large Garden",
-        },
-        address: {
-            ar: "12 طريق الريف، توسكانا، إيطاليا",
-            en: "12 Countryside Rd, Tuscany, Italy",
-        },
-        price: 1800,
-        imageUrl: "/properties/location/property-2.jpg",
-        location: "Tuscany, Italy",
-        bathrooms: 1,
-        bedrooms: 2,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-8",
-        rate: 3,
-        title: {
-            ar: "بنتهاوس فاخر مع إطلالة بانورامية",
-            en: "Luxury Penthouse with Panoramic View",
-        },
-        address: {
-            ar: "77 شارع الملك فهد، الرياض، السعودية",
-            en: "77 King Fahd Rd, Riyadh, Saudi Arabia",
-        },
-        price: 5000,
-        imageUrl: "/properties/location/property-5.jpg",
-        location: "Riyadh, Saudi Arabia",
-        bathrooms: 4,
-        bedrooms: 4,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-9",
-        rate: 3,
-        title: {
-            ar: "بنتهاوس فاخر مع إطلالة بانورامية",
-            en: "Luxury Penthouse with Panoramic View",
-        },
-        address: {
-            ar: "77 شارع الملك فهد، الرياض، السعودية",
-            en: "77 King Fahd Rd, Riyadh, Saudi Arabia",
-        },
-        price: 5000,
-        imageUrl: "/properties/location/property-1.jpg",
-        location: "Riyadh, Saudi Arabia",
-        bathrooms: 4,
-        bedrooms: 4,
-        garages: 4,
-        totalArea: 1200
-    },
-    {
-        id: "property-10",
-        rate: 3,
-        title: {
-            ar: "بنتهاوس فاخر مع إطلالة بانورامية",
-            en: "Luxury Penthouse with Panoramic View",
-        },
-        address: {
-            ar: "77 شارع الملك فهد، الرياض، السعودية",
-            en: "77 King Fahd Rd, Riyadh, Saudi Arabia",
-        },
-        price: 5000,
-        imageUrl: "/properties/location/property-2.jpg",
-        location: "Riyadh, Saudi Arabia",
-        bathrooms: 4,
-        bedrooms: 4,
-        garages: 4,
-        totalArea: 1200
-    },
-];
+const mapParamsToDto = (searchParams: URLSearchParams) => {
+    const dto: any = {
+        page: searchParams.get("page") || "1",
+        limit: "12",
+    };
 
+    // Helper to only add defined/non-empty values
+    const addIfValid = (dtoKey: string, paramKey: string, transform?: (v: string) => any) => {
+        const value = searchParams.get(paramKey);
+        if (value && value !== 'all' && value !== 'undefined') {
+            dto[dtoKey] = transform ? transform(value) : value;
+        }
+    };
 
-type PropertiesListProps = {
-    locale: Locale;
+    addIfValid("stateId", "location");
+    addIfValid("rentType", "period");
+    addIfValid("propertyType", "type");
+    addIfValid("subTypes", "subtype"); // Keeps as comma string for backend @Transform
+    addIfValid("features", "features"); // Keeps as comma string for backend @Transform
+
+    addIfValid("bathroom", "bathroom");
+    addIfValid("bedroom", "bedroom");
+
+    // Handle Furnished logic
+    addIfValid("isFurnished", "furnished")
+
+    // Numerical Ranges
+    addIfValid("minPrice", "priceMin", Number);
+    addIfValid("maxPrice", "priceMax", Number);
+    addIfValid("minArea", "scquarefeetMin", Number);
+    addIfValid("maxArea", "scquarefeetMax", Number);
+    addIfValid("minYear", "yearBuiltMin", Number);
+    addIfValid("maxYear", "yearBuiltMax", Number);
+
+    return dto;
 };
 
-export default function PropertiesList({ locale }: PropertiesListProps) {
+export default function PropertiesList({ locale }: { locale: string }) {
+    const t = useTranslations('property.grid')
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const [properties, setProperties] = useState([]);
+    const page = searchParams.get('page') || 1;
+    const [pagination, setPagination] = useState({
+        limit: 15,
+        total: 0,
+        totalPages: 1,
+    });
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProperties = async () => {
+            setLoading(true);
+            try {
+                const dtoParams = mapParamsToDto(new URLSearchParams(searchParams.toString()));
+                const queryString = new URLSearchParams(dtoParams as any).toString();
+
+                const res = await api.get(`/properties/search?${queryString}`);
+                const { records, pagination: serverPagination } = res.data;
+
+                setProperties(records);
+                setPagination(p => ({
+                    ...p,
+                    total: serverPagination.total,
+                    totalPages: serverPagination.totalPages,
+                }));
+            } catch (error) {
+                console.error("Search failed", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProperties();
+    }, [searchParams]);
+
+
+    const handlePageChange = (page: number) => {
+
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('page', page.toString());
+
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    };
+
+
+
+    if (loading) return <PropertyGridSkeleton />;
+
+    if (!properties?.length) {
+        return (
+            !loading && !properties?.length && (
+                <EmptyState title={t("emptyTitle")} message={t("emptyMessage")} />
+            )
+        )
+    }
+
+
+    return (
+        <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-12 gap-4 xl:gap-5">
+                {properties.map((property) => (
+                    <div key={property.id} className="col-span-12 sm:col-span-6 xl:col-span-4 2xl:col-span-3">
+                        <PropertyCardGrid property={property} locale={locale} />
+                    </div>
+                ))}
+            </div>
+            <div className="mx-auto">
+                <Pagination currentPage={Number(page)} pageCount={pagination.totalPages} onPageChange={handlePageChange} />
+            </div>
+        </div>
+    );
+}
+
+
+function PropertyGridSkeleton() {
     return (
         <div className="grid grid-cols-12 gap-4 xl:gap-5">
-            {[...properties, ...properties].map((property, index) => (
-                <div key={index} className="h-full col-span-12 sm:col-span-6 xl:col-span-4 2xl:col-span-3">
-                    <PropertyCardGrid
-                        property={{
-                            ...property,
-                            title: property.title[locale],
-                            address: property.address[locale],
-                        }}
-                        locale={locale}
-                    />
+            {[...Array(16)].map((_, i) => (
+                <div key={i} className="col-span-12 sm:col-span-6 xl:col-span-4 2xl:col-span-3">
+                    <div
+                        className="h-full relative max-w-[416px] rounded-[5px] w-full mx-auto flex flex-col bg-white overflow-hidden"
+                        style={{ boxShadow: "0px 4px 10px 0px #00000012" }}
+                    >
+                        {/* Image Placeholder */}
+                        <div className="h-[250px] w-full bg-gray-200 animate-pulse" />
+
+                        <div className="flex-1 flex flex-col gap-3 p-4">
+                            {/* Title Placeholder */}
+                            <div className="h-6 w-3/4 bg-gray-200 animate-pulse rounded" />
+
+                            {/* Complex Name Placeholder */}
+                            <div className="h-4 w-1/2 bg-gray-100 animate-pulse rounded" />
+
+                            {/* Price Placeholder */}
+                            <div className="h-7 w-1/3 bg-gray-200 animate-pulse rounded mt-1" />
+
+                            {/* Info Grid Placeholder */}
+                            <div className="grid grid-cols-4 gap-3 border-t border-gray-50 pt-[15px] mt-2">
+                                {[...Array(4)].map((_, j) => (
+                                    <div key={j} className="flex flex-col gap-2">
+                                        <div className="h-5 w-5 bg-gray-100 animate-pulse rounded-full" />
+                                        <div className="h-3 w-8 bg-gray-50 animate-pulse rounded" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>

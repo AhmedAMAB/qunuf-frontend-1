@@ -17,11 +17,13 @@ import { useState } from "react";
 
 
 export default function FilterProperties() {
-
+    const tA = useTranslations('dashboard.account');
     const {
         filters,
         activeLocation,
+        loadingLocations,
         locations,
+        yearOptions,
         subtypes,
         bedrooms,
         bathrooms,
@@ -63,6 +65,9 @@ export default function FilterProperties() {
                             options={locations}
                             value={activeLocation}
                             fallbackValue={locations?.[0]}
+                            placeholder={
+                                loadingLocations ? tA('loading') : tA('selectState')
+                            }
                             onChange={(option) => updateFilter("location", option.value.toString())}
                         />
                     </PropertyFilterInputWrapper>
@@ -146,10 +151,7 @@ export default function FilterProperties() {
                         min={filters.yearBuiltMin}
                         max={filters.yearBuiltMax}
                         range={{ min: MIN_YEARBUILD, max: MAX_YEARBUILD }}
-                        options={Array.from({ length: 76 }, (_, i) => {
-                            const year = (MAX_YEARBUILD - i);
-                            return { label: year.toString(), value: year };
-                        })}
+                        options={yearOptions}
                         onChange={({ min, max }) => {
                             setFilters(prev => ({
                                 ...prev,

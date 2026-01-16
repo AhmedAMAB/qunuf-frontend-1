@@ -20,9 +20,11 @@ import { PasswordPopup } from "./PasswordPopup";
 import { EmailPopup } from "./EmailPopup";
 import UserImageUpdater from "./UserImageUpdater";
 import ShortAddressPopup from "./ShortAddressPopup";
+import { saudiPhoneRegex } from "@/utils/helpers";
+import { isWithinAdultRange } from "@/utils/date";
 
 // Saudi Phone Regex
-const saudiPhoneRegex = /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/;
+
 
 export const userUpdateSchema = z.object({
     name: z.string()
@@ -38,11 +40,8 @@ export const userUpdateSchema = z.object({
 
     birthDate: z.date()
         .refine((date) => {
-            const eighteenYearsAgo = new Date();
-            eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
-            const maxDate = new Date();
-            maxDate.setFullYear(maxDate.getFullYear() - 100);
-            return date <= eighteenYearsAgo && date >= maxDate;
+
+            return isWithinAdultRange(date);
         }, "validation.invalidBirthDate")
         .optional(),
     identityType: z
@@ -222,8 +221,8 @@ export default function Account() {
             ? `${user.identityNumber.slice(0, 2)}******${user.identityNumber.slice(-2)}`
             : '';
 
-        const countryValue = user.identityIssueCountry
-            ? ` ${isAr ? user.identityIssueCountry.name_ar : user.identityIssueCountry.name}`.trim()
+        const countryValue = user?.identityIssueCountry
+            ? ` ${isAr ? user.identityIssueCountry?.name_ar : user.identityIssueCountry?.name}`.trim()
             : '';
 
         const parts = [
@@ -387,9 +386,9 @@ export default function Account() {
                 <EditableField
                     label={t('nationality')}
                     popupClassName="!overflow-visible"
-                    valueDisplay={isAr ? user?.nationality.name_ar : user?.nationality.name}
+                    valueDisplay={isAr ? user?.nationality?.name_ar : user?.nationality?.name}
                     renderPopup={(close) => <NationalityPopup
-                        value={isAr ? user?.nationality.name_ar : user?.nationality.name}
+                        value={isAr ? user?.nationality?.name_ar : user?.nationality?.name}
                         isLoading={updating}
                         error={errors.nationalityId}
                         onSave={(val) => handleUpdate({ nationalityId: val }, close, z.object({ nationalityId: userUpdateSchema.shape.nationalityId }))}

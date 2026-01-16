@@ -22,4 +22,5 @@ export interface Settings {
     youtube?: string | null;
     platformPercent?: number;
     adminUserId?: string;
+    defaultContractTerms?: string | null;
 }

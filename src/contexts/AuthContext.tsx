@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from 'react
 import api from '@/libs/axios';
 import type { Role } from '@/types/global';
 import { User } from '@/types/dashboard/user';
+import { UserRole } from '@/constants/user';
 
 
 interface LoginCredentials {
@@ -13,7 +14,7 @@ interface LoginCredentials {
 
 interface AuthContextType {
   user: User | null;
-  role: Role | null;
+  role: UserRole | null;
   loadingUser: boolean;
   LoggingOut: boolean;
   setCurrentUser: (input: string | User) => void;
@@ -112,7 +113,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (refreshToken) localStorage.setItem('refreshToken', refreshToken);
   };
 
-  const role: Role | null = user?.role || null;
+  const role: UserRole | null = user?.role || null;
 
   return (
     <AuthContext.Provider

@@ -47,7 +47,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import RatingStars from '@/components/shared/RatingStars';
 
 const users = ['/users/user-1.jpg', '/users/user-2.jpg', '/users/user-3.jpg', '/users/user-4.jpg'];
@@ -55,11 +55,13 @@ import { useMemo, useState } from 'react';
 import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { CiSearch } from 'react-icons/ci';
 import SelectInput, { Option } from '@/components/shared/forms/SelectInput';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
+import { useValues } from '@/contexts/GlobalContext';
+import { useLocalizedOptionsGroups } from '@/hooks/useLocalizedOptionsGroups';
+import { furnishedValues, propertyTypeValues } from '@/constants/properties/constant';
 
 export default function HeroSection() {
   const t = useTranslations('homePage.hero');
-
   return (
     <section id="hero" className="relative isolate overflow-hidden min-h-[100svh]">
       {/* Background image + soft overlay (kept subtle to let your brand gradient show) */}
@@ -133,61 +135,79 @@ export default function HeroSection() {
 }
 
 export function HeroFilter() {
+  const tFilter = useTranslations("property.filter");
   const t = useTranslations('homePage.filters');
-  const [location, setLocation] = useState<Option | null>(null);
-  const [propertyType, setPropertyType] = useState<Option | null>(null);
-  const [category, setCategory] = useState<Option | null>(null);
+  const router = useRouter();
 
-  const search = useMemo(() => {
+  const locale = useLocale()
+  const { states, loadingStates: loadingLocations } = useValues();
+  const locations: Option[] = useMemo(
+    () => [
+      {
+        value: "all",
+        label: tFilter("location.any"), // localized "Any location"
+      },
+      ...states.map((s) => ({
+        value: s.id,
+        label: locale === "ar" ? s.name_ar : s.name,
+      })),
+    ],
+    [states, locale, t]
+  );
+
+  const { propertyTypes, furnishedTypes } = useLocalizedOptionsGroups(
+    [
+      { key: 'propertyTypes', translationPath: 'propertyType', options: [...propertyTypeValues], },
+      { key: 'furnishedTypes', translationPath: 'furnishedType', options: [...furnishedValues], }
+    ],
+    'property.filter'
+  );
+  const [selectedLoc, setSelectedLoc] = useState<Option | null>(null);
+  const [selectedType, setSelectedType] = useState<Option | null>(null);
+  const [selectedFurnished, setSelectedFurnished] = useState<Option | null>(null);
+
+  const handleSearch = () => {
     const params = new URLSearchParams();
-    if (location) params.set('location', location.value.toString());
-    if (propertyType) params.set('type', propertyType.value.toString());
-    if (category) params.set('category', category.value.toString());
-    const url = `/properties${params.toString() ? `?${params.toString()}` : ''}`;
-    return url;
-  }, [location, propertyType, category]);
+    if (selectedLoc && selectedLoc.value !== 'all') params.set('location', selectedLoc.value.toString());
+    if (selectedType) params.set('type', selectedType.value.toString());
+    if (selectedFurnished) params.set('furnished', selectedFurnished.value.toString());
+
+    router.push(`/properties?${params.toString()}`);
+  };
 
   return (
     <div
       role="search"
-      className="max-w-[1300px] w-full"
+      className="max-w-[1300px] w-full relative z-[45]"
     >
       {/* Match your glass style exactly */}
       <div className="rtl:ml-auto ltr:mr-auto max-w-5xl rounded-2xl border border-white/20 bg-white shadow-xl shadow-slate-900/5 ring-1 ring-black/5 backdrop-blur supports-[backdrop-filter]:bg-white/80 p-3 sm:p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_auto] gap-3">
           <SelectInput
-            options={[
-              { label: t('options.locations.cairo'), value: 'cairo' },
-              { label: t('options.locations.alex'), value: 'alex' },
-              { label: t('options.locations.giza'), value: 'giza' },
-            ]}
+            className='!w-full'
+            dropdownClassName="!max-h-[250px]"
+            options={locations}
             placeholder={t('labels.location')}
-            value={location}
-            onChange={setLocation}
-            className="w-full"
+            value={selectedLoc}
+            onChange={setSelectedLoc}
           />
 
           <SelectInput
-            options={[
-              { label: t('options.propertyTypes.apartment'), value: 'apartment' },
-              { label: t('options.propertyTypes.villa'), value: 'villa' },
-              { label: t('options.propertyTypes.duplex'), value: 'duplex' },
-            ]}
+            options={propertyTypes}
+            className='!w-full'
+            dropdownClassName="!max-h-[250px]"
             placeholder={t('labels.propertyType')}
-            value={propertyType}
-            onChange={setPropertyType}
-            className="w-full"
+            value={selectedType}
+            onChange={setSelectedType}
           />
 
           <SelectInput
-            options={[
-              { label: t('options.categories.furnished'), value: 'furnished' },
-              { label: t('options.categories.unfurnished'), value: 'unfurnished' },
-            ]}
+            options={furnishedTypes}
+            className='!w-full'
+            dropdownClassName="!max-h-[250px]"
             placeholder={t('labels.category')}
-            value={category}
-            onChange={setCategory}
-            className="w-full"
+            value={selectedFurnished}
+            onChange={setSelectedFurnished}
           />
 
           <div className="flex items-stretch gap-2">
@@ -198,13 +218,13 @@ export function HeroFilter() {
               <HiOutlineAdjustmentsHorizontal size={22} />
             </Link>
 
-            <Link
-              href={search}
+            <button
+              onClick={handleSearch}
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-secondary px-4 sm:px-6 py-2.5 text-white shadow-sm transition hover:bg-secondary-hover focus:outline-none focus:ring-2 focus:ring-secondary/70 focus:ring-offset-2"
             >
               <span className="text-sm sm:text-base">{t('search')}</span>
               <CiSearch size={22} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            </button>
           </div>
         </div>
 

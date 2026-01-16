@@ -1,7 +1,7 @@
 import FormErrorMessage from "./FormErrorMessage";
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    label: string;
+    label?: string;
     placeholder?: string;
     value?: string | number;
     type?: string;
@@ -30,13 +30,13 @@ export default function TextInput({
 }: TextInputProps) {
     return (
         <div className={`flex flex-col gap-2 w-full ${className}`}>
-            <label
+            {label && <label
                 className="text-input font-medium text-[14px] leading-[20px]"
                 style={{ fontWeight: 500 }}
             >
                 {label}
             </label>
-
+            }
             <div className="relative w-full">
                 <input
                     {...props}

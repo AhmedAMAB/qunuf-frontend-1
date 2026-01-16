@@ -13,6 +13,7 @@ import RoleSelector from './RoleSelector';
 import { useState } from 'react';
 import { UserRole } from '@/constants/user';
 import api from '@/libs/axios';
+import { useSearchParams } from 'next/navigation';
 
 const allowedRoles = [UserRole.TENANT, UserRole.LANDLORD] as const;
 
@@ -39,11 +40,13 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 export default function SignUpForm() {
     const t = useTranslations('auth.signUp');
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [loading, setLoading] = useState(false);
 
+    const initalRole = searchParams.get("type") as UserRole.TENANT | UserRole.LANDLORD | null;
     const { control, handleSubmit, formState: { errors } } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
-        defaultValues: { name: '', email: '', password: '', role: UserRole.TENANT },
+        defaultValues: { name: '', email: '', password: '', role: initalRole && [UserRole.TENANT, UserRole.LANDLORD].includes(initalRole) ? initalRole : UserRole.TENANT, },
     });
 
     const onSubmit = async (data: RegisterFormValues) => {

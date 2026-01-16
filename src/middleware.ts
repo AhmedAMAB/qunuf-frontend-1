@@ -33,7 +33,7 @@ const PUBLIC_ROUTES: Route[] = [
     { path: '/about', strict: true },
     { path: '/blog', strict: true },
     { path: '/contact', strict: true },
-    { path: '/properties', strict: true },
+    { path: '/properties', strict: false },
     { path: '/', strict: true },
 ];
 

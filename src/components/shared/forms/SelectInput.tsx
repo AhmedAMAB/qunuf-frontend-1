@@ -49,7 +49,7 @@ export default function SelectInput({
             {/* Trigger */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-between rtl:flex-row-reverse rounded-md  py-[14px] px-4 gap-2 cursor-pointer  bg-[#F6F6F6] ${triggerClassName}`}
+                className={`select-input flex items-center justify-between rtl:flex-row-reverse rounded-md  py-[14px] px-4 gap-2 cursor-pointer  bg-[#F6F6F6] ${triggerClassName}`}
             >
                 {/* Text */}
                 <span className="font-normal text-[16px] leading-[20px] text-dark text-end">

@@ -1,5 +1,7 @@
 // --- Enums ---
 
+import { User } from "./user";
+
 export enum PropertyType {
     COMMERCIAL = 'commercial',
     RESIDENTIAL = 'residential',
@@ -77,14 +79,14 @@ export interface PropertyFacilities {
     bathrooms?: number;
     securityEntrances?: number;
     bedrooms?: number;
-    maidRoom?: boolean;
     kitchen?: number;
     store?: number;
+    majlis?: number;
+    rooms?: number;
+    maidRoom?: boolean;
     backyard?: boolean;
     centralAC?: boolean;
     desertAC?: boolean;
-    majlis?: number;
-    rooms?: number;
 }
 
 // --- Main Property Interface ---
@@ -155,6 +157,8 @@ export interface Property {
 
     // Meta
     userId: string;
+    user?: User,
     constructionDate?: string | Date;
     rentType: RentType;
+    slug: string
 }

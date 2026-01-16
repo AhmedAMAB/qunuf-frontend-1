@@ -1,3 +1,5 @@
+import z from "zod";
+
 type FormatOptions = {
     showTodayAs?: 'time' | 'today';
 };
@@ -53,3 +55,16 @@ export const formatLastMessageTime = (
         day: 'numeric',
     });
 };
+
+
+export function isWithinAdultRange(val: string | Date): boolean {
+    const date = val instanceof Date ? val : new Date(val);
+
+    const eighteenYearsAgo = new Date();
+    eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+
+    const hundredYearsAgo = new Date();
+    hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100);
+
+    return date <= eighteenYearsAgo && date >= hundredYearsAgo;
+}

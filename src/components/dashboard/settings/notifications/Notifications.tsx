@@ -54,6 +54,8 @@ export default function Notifications() {
         }
     }, [t]);
 
+
+
     useEffect(() => {
         loadNotifications(pagination.page, pagination.limit);
     }, [pagination.page, pagination.limit]);
@@ -185,6 +187,7 @@ export default function Notifications() {
                         <div className="py-10 text-center text-muted">{t('noNotifications')}</div>
                     )}
                 </div>
+
 
                 {/* --- Pagination --- */}
 

@@ -7,6 +7,7 @@ type PrimaryButtonProps = {
     onClick?: () => void;
     href?: string; // 👈 optional link
     type?: "button" | "submit" | "reset";
+    disabled?: boolean
 };
 
 export default function PrimaryButton({
@@ -15,6 +16,7 @@ export default function PrimaryButton({
     onClick,
     href,
     type = "button",
+    disabled,
     ...props
 }: PrimaryButtonProps) {
     const baseClasses =
@@ -24,6 +26,7 @@ export default function PrimaryButton({
         return (
             <Link
                 href={href}
+
                 className={`${baseClasses} ${className}`}
                 {...props}
             >
@@ -34,6 +37,7 @@ export default function PrimaryButton({
 
     return (
         <button
+            disabled={disabled}
             type={type}
             onClick={onClick}
             className={`${baseClasses} ${className}`}

@@ -21,6 +21,9 @@ import NearbyFacilitiesSection from "./NearbySection";
 import LocationInput from "@/components/shared/forms/LocationInput";
 import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
 import { FileItem } from "@/utils/upload";
+import PropertyNameInput from "./PropertyNameInput";
+const today = new Date();
+const currentYear = today.getFullYear();
 
 export const getPropertySchema = (t: (key: string, params?: any) => string) => {
     // Helper for required number fields
@@ -43,7 +46,21 @@ export const getPropertySchema = (t: (key: string, params?: any) => string) => {
         // Document Data
         documentType: z.enum(DocumentType),
         documentNumber: z.string().trim().max(25, { message: t("validation.max", { max: 25 }) }).nonempty({ message: t("validation.required") }),
-        documentIssueDate: z.string().trim().nonempty({ message: t("validation.required") }),
+
+        documentIssueDate: z
+            .string()
+            .trim()
+            .nonempty({ message: t("validation.required") })
+            .refine(
+                (val) => {
+                    const date = new Date(val);
+                    return !isNaN(date.getTime()) && date <= today;
+                },
+                {
+                    message: t("validation.max", { max: today.toISOString().split("T")[0] }),
+                }
+            ),
+
         issuedBy: z.string().trim().max(250, { message: t("validation.max", { max: 250 }) }).nonempty({ message: t("validation.required") }),
         ownerIdNumber: z.string().trim().min(3, { message: t("validation.min", { min: 3 }) }).regex(/^[a-zA-Z0-9]*$/).max(20, { message: t("validation.max", { max: 20 }) }).nonempty({ message: t("validation.required") }),
         insurancePolicyNumber: z.string().trim().max(100, { message: t("validation.max", { max: 100 }) }).optional(),
@@ -54,11 +71,40 @@ export const getPropertySchema = (t: (key: string, params?: any) => string) => {
         nationalAddressCode: z.string().trim().length(8, { message: t("validation.max", { max: 8 }) }).regex(/^[A-Z]{4}\d{4}$|^[0-9]{8}$/, { message: t("validation.invalidFormat") }),
 
         // Numeric
-        area: requiredNumber.refine((val) => val >= 1, t("validation.min", { min: 1 })),
-        rentPrice: requiredNumber.refine((val) => val >= 1, t("validation.min", { min: 1 })),
         securityDeposit: requiredNumber,
         capacity: optionalNumber,
-        constructionDate: z.string().trim().optional(),
+        area: requiredNumber
+            .refine((val) => val >= 1, {
+                message: t("validation.min", { min: 1 }),
+            })
+            .refine((val) => val <= 100_000, {
+                message: t("validation.max", { max: 100_000 }),
+            }),
+
+        rentPrice: requiredNumber
+            .refine((val) => val >= 1, {
+                message: t("validation.min", { min: 1 }),
+            })
+            .refine((val) => val <= 1_000_000, {
+                message: t("validation.max", { max: 1_000_000 }),
+            }),
+        constructionDate: z
+            .string()
+            .trim()
+            .optional()
+            .refine(
+                (val) => {
+                    if (!val) return true; // allow empty
+                    const year = new Date(val).getFullYear();
+                    return year >= 1900 && year <= currentYear;
+                },
+                {
+                    message: t("validation.yearRange", {
+                        min: 1900,
+                        max: currentYear,
+                    }),
+                }
+            ),
 
         // Booleans
         isFurnished: z.boolean(),
@@ -163,7 +209,7 @@ export default function PropertiesForm({ initialData }: Props) {
 
     const schema = getPropertySchema(t);
 
-    const { control, handleSubmit, setValue, formState: { errors } } = useForm<PropertySchemaType>({
+    const { control, handleSubmit, setValue, formState: { errors }, setError, clearErrors } = useForm<PropertySchemaType>({
         // @ts-expect-error - Type inference issue between zodResolver and useForm types
         resolver: zodResolver(schema),
         defaultValues: {
@@ -494,7 +540,20 @@ export default function PropertiesForm({ initialData }: Props) {
                         <Controller
                             control={control}
                             name="name"
-                            render={({ field }) => <TextInput {...field} label={t("title")} placeholder={t(`placeholders.name`)} error={errors.name?.message} />}
+                            render={({ field }) => (
+                                <PropertyNameInput
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    onBlur={field.onBlur}
+                                    label={t("title")}
+                                    placeholder={t(`placeholders.name`)}
+                                    error={errors.name?.message}
+                                    initialEditName={initialData?.name}
+                                    propertyId={initialData?.id}
+                                    setError={setError}
+                                    clearErrors={() => clearErrors('name')}
+                                />
+                            )}
                         />
                         <Controller
                             control={control}
@@ -755,7 +814,7 @@ export default function PropertiesForm({ initialData }: Props) {
                                             type="checkbox"
                                             checked={!!field.value}
                                             onChange={field.onChange}
-                                            className="w-5 h-5 text-secondary rounded focus:ring-secondary"
+                                            className="w-4 h-4 text-secondary rounded focus:ring-secondary"
                                         />
                                         <span className="text-dark font-medium">{t(key)}</span>
                                     </label>
@@ -767,7 +826,7 @@ export default function PropertiesForm({ initialData }: Props) {
                             name="isFurnished"
                             render={({ field }) => (
                                 <label className="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-5 h-5 text-secondary rounded" />
+                                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-4 h-4 text-secondary rounded" />
                                     <span className="text-dark font-medium">{t("isFurnished")}</span>
                                 </label>
                             )}

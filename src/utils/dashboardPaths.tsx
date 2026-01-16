@@ -20,7 +20,8 @@ export type DashboardPathKey =
     | 'blogs'
     | 'aboutUs'
     | 'departments'
-    | 'websiteSettings';
+    | 'websiteSettings'
+    | 'users';
 
 export const dashboardPaths: Record<DashboardPathKey, string> = {
     root: '',
@@ -42,7 +43,8 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     blogs: 'blogs',
     aboutUs: 'about-us',
     departments: 'departments',
-    websiteSettings: 'website-settings'
+    websiteSettings: 'website-settings',
+    users: 'users'
 };
 
 
