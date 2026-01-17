@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import ContractPdfViewer from "@/components/dashboard/Contracts/ContractPdfViewer";
+import { resolveUrl } from "@/utils/upload";
 
 export const ContractColumns = (t: ReturnType<typeof useTranslations>, role: UserRole): TableColumnType<Contract>[] => [
     {
@@ -109,7 +110,6 @@ export const ContractColumns = (t: ReturnType<typeof useTranslations>, role: Use
 
 function ContractViewButton({ contract }: { contract: Contract }) {
     const t = useTranslations('dashboard.contracts.table');
-    const [showViewer, setShowViewer] = useState(false);
     const hasPdf = !!contract.ejarPdfPath;
 
     if (!hasPdf) {
@@ -125,19 +125,16 @@ function ContractViewButton({ contract }: { contract: Contract }) {
 
     return (
         <>
-            <button
-                className="text-primary py-1 px-2 border border-dark rounded-full text-sm hover:bg-primary/10 transition-colors"
-                onClick={() => setShowViewer(true)}
+            <a
+                // If hasPdf is false, href becomes undefined, effectively disabling the link
+                href={hasPdf ? resolveUrl(contract.ejarPdfPath) : undefined}
+                target="_blank"
+                className={`text-primary py-1 px-2 border border-dark rounded-full text-sm transition-colors ${!hasPdf ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'hover:bg-primary/10'
+                    }`}
             >
                 {t('viewContract')}
-            </button>
-            {showViewer && contract.ejarPdfPath && (
-                <ContractPdfViewer
-                    pdfPath={contract.ejarPdfPath}
-                    contractNumber={contract.contractNumber}
-                    onClose={() => setShowViewer(false)}
-                />
-            )}
+            </a>
+
         </>
     );
 }

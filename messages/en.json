@@ -609,7 +609,9 @@
         "line2": "The contract has been sent to the landlord for review.",
         "line3": "The landlord will review the terms you edited and respond accordingly."
       },
-      "viewContract": "View Contract"
+      "viewContract": "View Contract",
+      "addReview": "Add Review",
+      "viewReview": "View Review"
     },
     "contractReview": {
       "title": "Contract Review",
@@ -987,6 +989,35 @@
           "status": "Status",
           "maxPrice": "Max Price",
           "maxPricePlaceholder": "Enter max price"
+        },
+        "viewContract": "View Contract",
+        "addReview": "Add Review",
+        "viewReview": "View Review"
+      },
+      "reviews": {
+        "create": {
+          "title": "Add Review",
+          "subtitle": "Share your experience with this property",
+          "fields": {
+            "rating": "Rating",
+            "reviewText": "Review",
+            "reviewTextPlaceholder": "Write your review here..."
+          },
+          "submit": "Submit Review",
+          "success": "Review submitted successfully",
+          "error": "Failed to submit review"
+        },
+        "view": {
+          "title": "View Review",
+          "subtitle": "Your review for this contract",
+          "fields": {
+            "rating": "Rating",
+            "reviewText": "Review",
+            "reviewDate": "Review Date"
+          },
+          "close": "Close",
+          "noReview": "No review found",
+          "error": "Failed to load review"
         }
       },
       "details": {
@@ -1250,11 +1281,30 @@
       "forOneMonth": "For one Month",
       "longStayDiscount": "Long stay discount",
       "totalUsd": "Total (USD)",
+      "total": "Total",
+      "currency": "SAR",
       "cancel": "Cancel",
       "renew": "Renew",
+      "accept": "Accept",
+      "reject": "Reject",
+      "accepting": "Accepting...",
+      "rejecting": "Rejecting...",
+      "acceptSuccess": "Renewal request accepted successfully",
+      "acceptError": "Failed to accept renewal request",
+      "rejectSuccess": "Renewal request rejected successfully",
+      "rejectError": "Failed to reject renewal request",
+      "loadError": "Failed to load renewal requests",
+      "emptyTitle": "No renewal requests",
+      "emptyMessage": "You don't have any renewal requests at the moment.",
       "disAgree": "DisAgree",
       "agree": "Agree",
-      "requestToRenew": "Request to Renew"
+      "requestToRenew": "Request to Renew",
+      "status": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "rejected": "Rejected",
+        "expired": "Expired"
+      }
     },
     "settings": {
       "root": {
@@ -1637,6 +1687,7 @@
         "deleteProperty": "Delete Property",
         "editProperty": "Edit Property",
         "addProperty": "Add Property",
+        "viewReviews": "View Reviews",
         "title": "Properties Management",
         "searchPlaceholder": "Search by name...",
         "filters": {
@@ -1670,6 +1721,14 @@
           "type": "Property Type",
           "price": "Rent Price",
           "createdAt": "Added Date"
+        },
+        "reviews": {
+          "title": "Property Reviews",
+          "reviews": "reviews",
+          "noReviews": "No reviews yet",
+          "loadError": "Failed to load reviews",
+          "loading": "Loading...",
+          "loadMore": "Load More"
         },
         "validation": {
           "required": "This field is required",

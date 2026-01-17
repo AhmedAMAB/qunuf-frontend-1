@@ -16,6 +16,7 @@ interface TableProps<T = Record<string, any>> {
     showActions?: boolean;
     setRows?: React.Dispatch<React.SetStateAction<TableRowType<T>[] | null>>,
     actionsMenuItems?: (row: T, onClose?: () => void) => MenuActionItem[];
+    fetchRows?: (signal?: AbortSignal) => Promise<void>;
 }
 
 export default function Table<T = Record<string, any>>({
@@ -23,7 +24,8 @@ export default function Table<T = Record<string, any>>({
     rows,
     actionsMenuItems,
     showActions = false,
-    setRows
+    setRows,
+    fetchRows
 }: TableProps<T>) {
 
     const allColumns = useMemo(() => {
@@ -74,6 +76,7 @@ export default function Table<T = Record<string, any>>({
                                 showActions={true}
                                 actionsMenuItems={actionsMenuItems}
                                 setRows={setRows}
+                                fetchRows={fetchRows}
                                 onOpenPopup={handleOpenPopup}
                             />
                         ))
@@ -82,7 +85,7 @@ export default function Table<T = Record<string, any>>({
             </table>
             {popupState.Child && (
                 <Popup onClose={handleClosePopup} show={menuOpen}>
-                    <popupState.Child row={popupState.row!} setRows={setRows} onClose={handleClosePopup} />
+                    <popupState.Child row={popupState.row!} setRows={setRows} fetchRows={fetchRows} onClose={handleClosePopup} />
                 </Popup>
             )}
         </div>

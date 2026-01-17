@@ -8,11 +8,12 @@ import React, { useRef, useState, useCallback } from "react";
 import VirtualMessageRow from "./VirtualMessageRow";
 import { useAuth } from "@/contexts/AuthContext";
 import MessagesLoading from "./MessagesLoading";
+import { MdClose } from "react-icons/md";
 
 
 
 
-interface DesktopChatPanelProps {
+interface ChatPanelProps {
     selectedUser?: User;
     selectedChatId: string | null;
     messages: {
@@ -23,6 +24,8 @@ interface DesktopChatPanelProps {
     handleSendMessage: (content: string) => void;
     loadingMessageId: string | null;
     currentOpenConversationId: string | null;
+    handleCloseThread: () => void;
+    isOpen: boolean;
     retryMessage?: (msg: Message) => void;
     loadMoreMessages?: (conversationId: string) => Promise<number>;
     markAsRead?: (conversationId: string) => Promise<void>;
@@ -30,7 +33,7 @@ interface DesktopChatPanelProps {
     isPartnerAdmin?: boolean;
 }
 
-const DesktopChatPanel = memo(function DesktopChatPanel({
+const ChatPanel = memo(function ChatPanel({
     selectedUser,
     selectedChatId,
     loadingMessageId,
@@ -39,10 +42,13 @@ const DesktopChatPanel = memo(function DesktopChatPanel({
     handleSendMessage,
     retryMessage,
     loadMoreMessages,
+    handleCloseThread,
+    isOpen,
+
     loadingMoreId,
     markAsRead,
     isPartnerAdmin
-}: DesktopChatPanelProps) {
+}: ChatPanelProps) {
 
     if (loadingMessageId?.startsWith('new-chat')) {
         return (
@@ -51,7 +57,8 @@ const DesktopChatPanel = memo(function DesktopChatPanel({
     }
 
     return (
-        <div className="hidden md:block md:col-span-6 lg:col-span-7 xl:col-span-8 bg-white  rounded-[8px] relative">
+        <div className={`max-md:fixed max-md:inset-0 max-md:z-50 max-md:transition-transform max-md:duration-300 max-md:ease-in-out   ${isOpen ? "max-md:translate-x-0" : "max-md:translate-x-full"}
+        md:block md:col-span-6 lg:col-span-7 xl:col-span-8 bg-white  rounded-[8px] md:relative`}>
             {selectedUser ? (
                 <ConversationThread
                     isPartnerAdmin={isPartnerAdmin}
@@ -69,8 +76,14 @@ const DesktopChatPanel = memo(function DesktopChatPanel({
             ) : (
                 <EmptyChatState />
             )}
+            <button
+                onClick={handleCloseThread}
+                className="absolute top-4 end-4 text-gray-500 hover:text-gray-800 md:hidden"
+            >
+                <MdClose size={28} />
+            </button>
         </div>
     );
 })
 
-export default DesktopChatPanel;
+export default ChatPanel;

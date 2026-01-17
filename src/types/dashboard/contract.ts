@@ -134,4 +134,5 @@ export interface Contract {
     requiredMonthsForIncentive: number | null;
     durationInMonths: number;
     status: ContractStatus;
+    isReviewed: boolean;
 }

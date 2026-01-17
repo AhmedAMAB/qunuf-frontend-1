@@ -37,8 +37,8 @@ export function getDashboardItems(role: Role, adminUserId?: string): SidebarLink
     const landlordLinks: SidebarLink[] = [
         { href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 2 },
         { href: getDashboardHref('properties'), key: 'properties', Icon: PiBuildingApartment, order: 3 },
-        { href: getDashboardHref('renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck, order: 4 },
-        { href: getDashboardHref('revenueSummary'), key: 'revenueSummary', Icon: IoAnalytics, order: 5 },
+        // { href: getDashboardHref('renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck, order: 4 },
+        // { href: getDashboardHref('revenueSummary'), key: 'revenueSummary', Icon: IoAnalytics, order: 5 },
         { href: getDashboardHref('chats', { user: adminUserId }), key: 'support', Icon: FaHeadset, order: 20, disabled: !adminUserId },
     ];
 

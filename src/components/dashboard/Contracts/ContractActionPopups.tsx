@@ -16,9 +16,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { diffWords, Change } from 'diff';
 
 type ContractActionPopupsProps = {
-    contract: Contract;
+    row: Contract;
     onClose: () => void;
-    onSuccess: () => void;
+    setRows?: React.Dispatch<React.SetStateAction<any[] | null>>;
+    fetchRows?: (signal?: AbortSignal) => Promise<void>;
 };
 
 // Revise Contract Form Schema
@@ -63,7 +64,7 @@ const getActivateSchema = (t: (key: string, params?: any) => string) => z.object
 
 type ActivateFormData = z.infer<ReturnType<typeof getActivateSchema>>;
 
-export function ReviseContractPopup({ contract, onClose, onSuccess }: ContractActionPopupsProps) {
+export function ReviseContractPopup({ row: contract, onClose, setRows, fetchRows }: ContractActionPopupsProps) {
     const tCommon = useTranslations('comman');
     const t = useTranslations('dashboard.contracts.actions.revise');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,7 +88,9 @@ export function ReviseContractPopup({ contract, onClose, onSuccess }: ContractAc
                 newTerms: data.newTerms,
             });
             toast.success(t('success'), { id: toastId });
-            onSuccess();
+            if (fetchRows) {
+                await fetchRows();
+            }
             onClose();
         } catch (error: any) {
             toast.error(error?.response?.data?.message || t('error'), { id: toastId });
@@ -197,7 +200,7 @@ export function ReviseContractPopup({ contract, onClose, onSuccess }: ContractAc
     );
 }
 
-export function AcceptContractPopup({ contract, onClose, onSuccess }: ContractActionPopupsProps) {
+export function AcceptContractPopup({ row: contract, onClose, setRows, fetchRows }: ContractActionPopupsProps) {
     const t = useTranslations('dashboard.contracts.actions.accept');
     const tCommon = useTranslations('comman');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -236,7 +239,9 @@ export function AcceptContractPopup({ contract, onClose, onSuccess }: ContractAc
 
             await api.post(`/contracts/${contract.id}/accept`, payload);
             toast.success(t('success'), { id: toastId });
-            onSuccess();
+            if (fetchRows) {
+                await fetchRows();
+            }
             onClose();
         } catch (error: any) {
             toast.error(error?.response?.data?.message || t('error'), { id: toastId });
@@ -311,7 +316,7 @@ export function AcceptContractPopup({ contract, onClose, onSuccess }: ContractAc
     );
 }
 
-export function CancelContractPopup({ contract, onClose, onSuccess }: ContractActionPopupsProps) {
+export function CancelContractPopup({ row: contract, onClose, setRows, fetchRows }: ContractActionPopupsProps) {
     const t = useTranslations('dashboard.contracts.actions.cancel');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -322,7 +327,9 @@ export function CancelContractPopup({ contract, onClose, onSuccess }: ContractAc
         try {
             await api.post(`/contracts/${contract.id}/cancel`);
             toast.success(t('success'), { id: toastId });
-            onSuccess();
+            if (fetchRows) {
+                await fetchRows();
+            }
             onClose();
         } catch (error: any) {
             toast.error(error?.response?.data?.message || t('error'), { id: toastId });
@@ -346,7 +353,7 @@ export function CancelContractPopup({ contract, onClose, onSuccess }: ContractAc
     );
 }
 
-export function ActivateContractPopup({ contract, onClose, onSuccess }: ContractActionPopupsProps) {
+export function ActivateContractPopup({ row: contract, onClose, setRows, fetchRows }: ContractActionPopupsProps) {
     const t = useTranslations('dashboard.contracts.actions.activate');
     const tCommon = useTranslations('comman');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -370,7 +377,9 @@ export function ActivateContractPopup({ contract, onClose, onSuccess }: Contract
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             toast.success(t('success'), { id: toastId });
-            onSuccess();
+            if (fetchRows) {
+                await fetchRows();
+            }
             onClose();
         } catch (error: any) {
             toast.error(error?.response?.data?.message || t('error'), { id: toastId });
@@ -429,7 +438,7 @@ export function ActivateContractPopup({ contract, onClose, onSuccess }: Contract
     );
 }
 
-export function TerminateContractPopup({ contract, onClose, onSuccess }: ContractActionPopupsProps) {
+export function TerminateContractPopup({ row: contract, onClose, setRows, fetchRows }: ContractActionPopupsProps) {
     const t = useTranslations('dashboard.contracts.actions.terminate');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -440,7 +449,9 @@ export function TerminateContractPopup({ contract, onClose, onSuccess }: Contrac
         try {
             await api.post(`/contracts/${contract.id}/terminate`);
             toast.success(t('success'), { id: toastId });
-            onSuccess();
+            if (fetchRows) {
+                await fetchRows();
+            }
             onClose();
         } catch (error: any) {
             toast.error(error?.response?.data?.message || t('error'), { id: toastId });

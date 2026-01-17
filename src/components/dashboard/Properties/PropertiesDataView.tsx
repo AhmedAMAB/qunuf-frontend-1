@@ -4,6 +4,7 @@ import { Property, PropertyStatus } from "@/types/dashboard/properties";
 import { useTranslations } from 'next-intl';
 import { MdDelete, MdModeEdit } from 'react-icons/md';
 import { BiArchiveIn, BiArchiveOut, BiBuilding } from 'react-icons/bi';
+import { FaStar } from 'react-icons/fa';
 import { getDashboardHref } from '@/utils/dashboardPaths';
 import { PropertyColumns } from '@/constants/properties/constant';
 import DataView from "@/components/shared/DateViewTable/DataView";
@@ -17,6 +18,7 @@ import api from "@/libs/axios";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import PropertyDetailsPopup from "./PropertyDetailsPopup";
+import PropertyReviewsPopup from "./PropertyReviewsPopup";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import Popup from "@/components/shared/Popup";
@@ -119,7 +121,6 @@ export default function PropertiesDataView() {
                             onClick: () => handleSetSelected(row),
                         },
                         {
-                            // Dynamic label and icon based on current status
                             label: row.status === 'archived' ? t('restoreProperty') : t('archiveProperty'),
                             Icon: row.status === 'archived' ? BiArchiveOut : BiArchiveIn,
                             Child: ArchivePropertyPopup,
@@ -130,6 +131,12 @@ export default function PropertiesDataView() {
                             Icon: MdModeEdit,
                             link: `/dashboard/properties/${row.id}/edit`,
                             show: role === 'landlord'
+                        },
+                        {
+                            label: t('viewReviews'),
+                            Icon: FaStar,
+                            Child: PropertyReviewsPopup,
+                            show: true
                         },
                     ].filter(Boolean) as MenuActionItem[]
                 }

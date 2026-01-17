@@ -45,6 +45,7 @@ type Props = {
     onClose?: () => void;
     row?: any
     setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>,
+    fetchRows?: (signal?: AbortSignal) => Promise<void>;
     onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: any) => void
 };
 
@@ -110,9 +111,9 @@ export default function MenuActionList({ items, onClose }: Props) {
     );
 }
 
-export type ChildTypeProps = { row, onClose: () => void, setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>, }
+export type ChildTypeProps = { row, onClose: () => void, setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>, fetchRows?: (signal?: AbortSignal) => Promise<void>; }
 // for icon version
-export function ActionList({ items, row, setRows, onOpenPopup }: Props) {
+export function ActionList({ items, row, setRows, fetchRows, onOpenPopup }: Props) {
     // const [activeChild, setActiveChild] = useState<{ Child: ComponentType<ChildTypeProps> | undefined }>({ Child: undefined });
     // const [menuOpen, setMenuOpen] = useState(false);
 
@@ -158,8 +159,13 @@ export function ActionList({ items, row, setRows, onOpenPopup }: Props) {
                         onClick={() => {
                             if (item?.onClick)
                                 item?.onClick?.()
-                            else if (item.Child && onOpenPopup)
-                                onOpenPopup(item.Child, row);
+                            else if (item.Child && onOpenPopup) {
+                                // Store fetchRows in a closure for the Child component
+                                const ChildWithFetchRows = (props: any) => {
+                                    return <item.Child {...props} fetchRows={fetchRows} />;
+                                };
+                                onOpenPopup(ChildWithFetchRows as ComponentType<ChildTypeProps>, row);
+                            }
                         }}
                         className={`flex items-center gap-2 text-sm `}
                     >

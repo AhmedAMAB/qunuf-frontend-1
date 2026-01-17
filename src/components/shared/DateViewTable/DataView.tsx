@@ -39,6 +39,7 @@ type DataViewProps<T = Record<string, any>> = {
         totalCount?: number;
     }>;
     onExport?: (limit: number) => Promise<void>;
+    onFetchRowsReady?: (fetchRows: (signal?: AbortSignal) => Promise<void>) => void;
 };
 
 
@@ -53,19 +54,14 @@ export default function DataView<T = Record<string, any>>({
     pageSize = 10,
     actionButton,
     getRows,
-    onExport
+    onExport,
+    onFetchRowsReady
 }: DataViewProps<T>) {
     const searchParams = useSearchParams();
     const [rows, setRows] = useState<TableRowType<T>[] | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [totalRowsCount, setTotalRowsCount] = useState(0);
     const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const controller = new AbortController();
-        fetchRows(controller.signal);
-        return () => controller.abort();
-    }, [getRows]);
 
     const fetchRows = async (signal?: AbortSignal) => {
         setIsLoading(true);
@@ -78,6 +74,18 @@ export default function DataView<T = Record<string, any>>({
             setIsLoading(false);
         }
     };
+
+    useEffect(() => {
+        const controller = new AbortController();
+        fetchRows(controller.signal);
+        return () => controller.abort();
+    }, [getRows]);
+
+    useEffect(() => {
+        if (onFetchRowsReady) {
+            onFetchRowsReady(fetchRows);
+        }
+    }, [onFetchRowsReady]);
 
     const pageParam = searchParams.get('page');
     const currentPage = pageParam ? parseInt(pageParam) : 1;
@@ -109,6 +117,7 @@ export default function DataView<T = Record<string, any>>({
                         rows={rows ?? []}
                         showActions={showActions}
                         actionsMenuItems={actionsMenuItems}
+                        fetchRows={fetchRows}
                     />
                 )}
 

@@ -161,4 +161,5 @@ export interface Property {
     constructionDate?: string | Date;
     rentType: RentType;
     slug: string
+    averageRating: number | null;
 }

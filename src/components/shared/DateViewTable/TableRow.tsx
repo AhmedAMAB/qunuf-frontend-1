@@ -12,7 +12,8 @@ interface TableRowProps<T> {
     showActions?: boolean;
     setRows?: React.Dispatch<React.SetStateAction<TableRowType<T>[] | null>>,
     actionsMenuItems?: (row: T, onClose: () => void) => MenuActionItem[];
-    onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: T) => void
+    onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: T) => void;
+    fetchRows?: (signal?: AbortSignal) => Promise<void>;
 }
 
 export default function TableRow<T>({
@@ -22,7 +23,8 @@ export default function TableRow<T>({
     showActions,
     setRows,
     actionsMenuItems,
-    onOpenPopup
+    onOpenPopup,
+    fetchRows
 }: TableRowProps<T>) {
     return (
         <tr
@@ -54,7 +56,7 @@ export default function TableRow<T>({
                             // />
                             // for action list version
                             <div>
-                                <ActionList onOpenPopup={onOpenPopup} setRows={setRows} row={row} items={actionsMenuItems?.(row, () => { })} />
+                                <ActionList onOpenPopup={onOpenPopup} setRows={setRows} fetchRows={fetchRows} row={row} items={actionsMenuItems?.(row, () => { })} />
                             </div>
 
                         ) : col.cell ? (

@@ -54,7 +54,8 @@ export default function PropertyCardPreview({
                             <span className="font-bold text-xl lg:text-2xl">${property.price}</span>
                             <span className="text-dark opacity-50">/ {period}</span>
                         </div>
-                        <RatingStars rating={property.rate} size={16} reverse />
+                        <div></div>
+                        {/* <RatingStars rating={property.rate} size={16} reverse /> */}
                     </div>
 
                     <Link

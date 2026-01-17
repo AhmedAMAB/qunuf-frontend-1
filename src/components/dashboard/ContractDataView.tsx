@@ -7,10 +7,10 @@ import { Contract, ContractStatus } from "@/types/dashboard/contract";
 import { ContractColumns } from '@/constants/dashboard/contracts/contractColumns';
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaStar } from "react-icons/fa";
 import { MdEdit, MdCheck, MdClose, MdUpload } from "react-icons/md";
 import { RiIndeterminateCircleLine } from "react-icons/ri";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Popup from "@/components/shared/Popup";
 import ContractDetailsPopup from "./Contracts/ContractDetailsPopup";
@@ -21,7 +21,7 @@ import {
     ActivateContractPopup,
     TerminateContractPopup,
 } from "./Contracts/ContractActionPopups";
-import MaxPriceFilter from "./Contracts/MaxPriceFilter";
+import { CreateReviewPopup, ViewReviewPopup } from "./Contracts/ReviewPopups";
 import { FilterConfig } from "@/types/table";
 
 export default function ContractDataView() {
@@ -32,8 +32,7 @@ export default function ContractDataView() {
     const router = useRouter();
     const pathname = usePathname();
     const [selectedContract, setSelectedContract] = useState<Contract | null>(null);
-    const [actionContract, setActionContract] = useState<Contract | null>(null);
-    const [actionType, setActionType] = useState<'revise' | 'accept' | 'cancel' | 'activate' | 'terminate' | null>(null);
+    const fetchRowsRef = useRef<((signal?: AbortSignal) => Promise<void>) | null>(null);
 
     useEffect(() => {
         const viewId = searchParams.get('view');
@@ -56,19 +55,8 @@ export default function ContractDataView() {
         router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
 
-    const handleAction = (contract: Contract, type: 'revise' | 'accept' | 'cancel' | 'activate' | 'terminate') => {
-        setActionContract(contract);
-        setActionType(type);
-    };
-
-    const handleActionClose = () => {
-        setActionContract(null);
-        setActionType(null);
-    };
-
-    const handleActionSuccess = () => {
-        // Refresh the table by triggering a re-render
-        window.location.reload();
+    const handleFetchRowsReady = (fetchRows: (signal?: AbortSignal) => Promise<void>) => {
+        fetchRowsRef.current = fetchRows;
     };
 
     const statusOptions = [
@@ -104,22 +92,39 @@ export default function ContractDataView() {
             onClick: () => handleSetSelected(contract),
         });
 
+        // Review action for tenants with contractNumber
+        if (role === 'tenant' && contract.contractNumber) {
+            if (contract.isReviewed) {
+                actions.push({
+                    label: t('viewReview'),
+                    Icon: FaStar,
+                    Child: ViewReviewPopup,
+                });
+            } else {
+                actions.push({
+                    label: t('addReview'),
+                    Icon: FaStar,
+                    Child: CreateReviewPopup,
+                });
+            }
+        }
+
         // Landlord actions for PENDING_LANDLORD_ACCEPTANCE
         if (role === 'landlord' && contract.status === ContractStatus.PENDING_LANDLORD_ACCEPTANCE) {
             actions.push({
                 label: t('reviseContract'),
                 Icon: MdEdit,
-                onClick: () => handleAction(contract, 'revise'),
+                Child: ReviseContractPopup,
             });
             actions.push({
                 label: t('acceptContract'),
                 Icon: MdCheck,
-                onClick: () => handleAction(contract, 'accept'),
+                Child: AcceptContractPopup,
             });
             actions.push({
                 label: t('cancelContract'),
                 Icon: MdClose,
-                onClick: () => handleAction(contract, 'cancel'),
+                Child: CancelContractPopup,
             });
         }
 
@@ -128,12 +133,12 @@ export default function ContractDataView() {
             actions.push({
                 label: t('acceptContract'),
                 Icon: MdCheck,
-                onClick: () => handleAction(contract, 'accept'),
+                Child: AcceptContractPopup,
             });
             actions.push({
                 label: t('cancelContract'),
                 Icon: MdClose,
-                onClick: () => handleAction(contract, 'cancel'),
+                Child: CancelContractPopup,
             });
         }
 
@@ -142,7 +147,7 @@ export default function ContractDataView() {
             actions.push({
                 label: t('activateContract'),
                 Icon: MdUpload,
-                onClick: () => handleAction(contract, 'activate'),
+                Child: ActivateContractPopup,
             });
         }
 
@@ -151,7 +156,7 @@ export default function ContractDataView() {
             actions.push({
                 label: t('terminateContract'),
                 Icon: RiIndeterminateCircleLine,
-                onClick: () => handleAction(contract, 'terminate'),
+                Child: TerminateContractPopup,
             });
         }
 
@@ -164,6 +169,7 @@ export default function ContractDataView() {
                 columns={ContractColumns(t, role)}
                 getRows={getRows}
                 onExport={exportRows}
+                onFetchRowsReady={handleFetchRowsReady}
                 showActions={true}
                 showSearch={true}
                 searchPlaceholder={t('searchPlaceholder')}
@@ -182,56 +188,6 @@ export default function ContractDataView() {
                 </Popup>
             )}
 
-            {/* Action Popups */}
-            {actionContract && actionType === 'revise' && (
-                <Popup show={true} onClose={handleActionClose}>
-                    <ReviseContractPopup
-                        contract={actionContract}
-                        onClose={handleActionClose}
-                        onSuccess={handleActionSuccess}
-                    />
-                </Popup>
-            )}
-
-            {actionContract && actionType === 'accept' && (
-                <Popup show={true} onClose={handleActionClose}>
-                    <AcceptContractPopup
-                        contract={actionContract}
-                        onClose={handleActionClose}
-                        onSuccess={handleActionSuccess}
-                    />
-                </Popup>
-            )}
-
-            {actionContract && actionType === 'cancel' && (
-                <Popup show={true} onClose={handleActionClose}>
-                    <CancelContractPopup
-                        contract={actionContract}
-                        onClose={handleActionClose}
-                        onSuccess={handleActionSuccess}
-                    />
-                </Popup>
-            )}
-
-            {actionContract && actionType === 'activate' && (
-                <Popup show={true} onClose={handleActionClose}>
-                    <ActivateContractPopup
-                        contract={actionContract}
-                        onClose={handleActionClose}
-                        onSuccess={handleActionSuccess}
-                    />
-                </Popup>
-            )}
-
-            {actionContract && actionType === 'terminate' && (
-                <Popup show={true} onClose={handleActionClose}>
-                    <TerminateContractPopup
-                        contract={actionContract}
-                        onClose={handleActionClose}
-                        onSuccess={handleActionSuccess}
-                    />
-                </Popup>
-            )}
         </>
     );
 }

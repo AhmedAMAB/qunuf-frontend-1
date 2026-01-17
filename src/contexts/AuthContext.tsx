@@ -36,7 +36,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const fetchUser = async (): Promise<User | null> => {
     const access = localStorage.getItem('accessToken');
-    if (!access) return null;
+    if (!access) { setLoadingUser(false); return; }
 
     try {
       setLoadingUser(true);

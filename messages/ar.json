@@ -990,7 +990,35 @@
           "maxPrice": "أقصى سعر",
           "maxPricePlaceholder": "أدخل أقصى سعر"
         },
-        "viewContract": "عرض العقد"
+        "viewContract": "عرض العقد",
+        "addReview": "إضافة تقييم",
+        "viewReview": "عرض التقييم"
+      },
+      "reviews": {
+        "create": {
+          "title": "إضافة تقييم",
+          "subtitle": "شارك تجربتك مع هذا العقار",
+          "fields": {
+            "rating": "التقييم",
+            "reviewText": "التقييم",
+            "reviewTextPlaceholder": "اكتب تقييمك هنا..."
+          },
+          "submit": "إرسال التقييم",
+          "success": "تم إرسال التقييم بنجاح",
+          "error": "فشل إرسال التقييم"
+        },
+        "view": {
+          "title": "عرض التقييم",
+          "subtitle": "تقييمك لهذا العقد",
+          "fields": {
+            "rating": "التقييم",
+            "reviewText": "التقييم",
+            "reviewDate": "تاريخ التقييم"
+          },
+          "close": "إغلاق",
+          "noReview": "لم يتم العثور على تقييم",
+          "error": "فشل تحميل التقييم"
+        }
       },
       "pdfViewer": {
         "title": "وثيقة العقد",
@@ -1263,11 +1291,30 @@
       "forOneMonth": "لشهر واحد",
       "longStayDiscount": "خصم الإقامة الطويلة",
       "totalUsd": "الإجمالي (دولار أمريكي)",
+      "total": "الإجمالي",
+      "currency": "ر.س",
       "cancel": "إلغاء",
+      "accept": "قبول",
+      "reject": "رفض",
+      "accepting": "جاري القبول...",
+      "rejecting": "جاري الرفض...",
+      "acceptSuccess": "تم قبول طلب التجديد بنجاح",
+      "acceptError": "فشل قبول طلب التجديد",
+      "rejectSuccess": "تم رفض طلب التجديد بنجاح",
+      "rejectError": "فشل رفض طلب التجديد",
+      "loadError": "فشل تحميل طلبات التجديد",
+      "emptyTitle": "لا توجد طلبات تجديد",
+      "emptyMessage": "ليس لديك أي طلبات تجديد في الوقت الحالي.",
       "renew": "تجديد",
       "disAgree": "غير موافق",
       "agree": "موافق",
-      "requestToRenew": "طلب تجديد"
+      "requestToRenew": "طلب تجديد",
+      "status": {
+        "pending": "قيد الانتظار",
+        "accepted": "مقبول",
+        "rejected": "مرفوض",
+        "expired": "منتهي الصلاحية"
+      }
     },
     "settings": {
       "root": {
@@ -1651,6 +1698,7 @@
         "deleteProperty": "حذف العقار",
         "editProperty": "تعديل العقار",
         "addProperty": "إضافة عقار",
+        "viewReviews": "عرض التقييمات",
         "title": "إدارة العقارات",
         "searchPlaceholder": "ابحث بالاسم...",
         "filters": {
@@ -1684,6 +1732,14 @@
           "type": "نوع العقار",
           "price": "سعر الإيجار",
           "createdAt": "تاريخ الإضافة"
+        },
+        "reviews": {
+          "title": "تقييمات العقار",
+          "reviews": "تقييم",
+          "noReviews": "لا توجد تقييمات بعد",
+          "loadError": "فشل تحميل التقييمات",
+          "loading": "جاري التحميل...",
+          "loadMore": "تحميل المزيد"
         },
         "validation": {
           "required": "هذا الحقل مطلوب",

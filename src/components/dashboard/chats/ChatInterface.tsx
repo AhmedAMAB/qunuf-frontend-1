@@ -1,10 +1,9 @@
 'use client';
 
 import React from "react";
-import DesktopChatPanel from "./DesktopChatPanel";
-import MobileChatPanel from "./MobileChatPanel";
 import ChatSidebar from "./ChatSidebar";
 import { useChat } from "@/hooks/dashboard/useChat";
+import ChatPanel from "./ChatPanel";
 
 
 export default function ChatInterface() {
@@ -43,26 +42,12 @@ export default function ChatInterface() {
                     sortedConversationsIds={sortedConversationsIds} />
             </div>
 
-            <DesktopChatPanel
+            <ChatPanel
                 markAsRead={markAsRead}
                 loadingMoreId={loadingMoreId}
                 loadMoreMessages={loadMoreMessages}
                 loadingMessageId={loadingMessageId}
                 retryMessage={retryMessage}
-                currentOpenConversationId={currentOpenConversationId}
-                selectedUser={currentConversation?.partner}
-                isPartnerAdmin={currentConversation?.partner.id === currentConversation?.supportUserId}
-                selectedChatId={currentOpenConversationId}
-                messages={currentConversationMessages}
-                handleSendMessage={(content) => sendMessage(currentOpenConversationId || '', content)}
-            />
-
-            <MobileChatPanel
-                markAsRead={markAsRead}
-                loadingMoreId={loadingMoreId}
-                loadMoreMessages={loadMoreMessages}
-                retryMessage={retryMessage}
-                loadingMessageId={loadingMessageId}
                 currentOpenConversationId={currentOpenConversationId}
                 selectedUser={currentConversation?.partner}
                 isPartnerAdmin={currentConversation?.partner.id === currentConversation?.supportUserId}
@@ -72,6 +57,8 @@ export default function ChatInterface() {
                 handleCloseThread={() => handleSelectChat(null)}
                 isOpen={!!currentOpenConversationId}
             />
+
+
 
         </div>
     );
