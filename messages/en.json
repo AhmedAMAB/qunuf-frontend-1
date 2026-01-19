@@ -5,6 +5,14 @@
     "description": "Discover, list, and manage properties with qunuf.",
     "lang": "عربي"
   },
+  "hero": {
+    "ratingLabel": "Average rating",
+    "trusted": "Trusted by thousands",
+    "satisfaction": "100% Satisfaction",
+    "quality": "Quality",
+    "guaranteed": "Guaranteed",
+    "eyebrow": "Discover Revolutionary Tools"
+  },
   "notFound": {
     "oopsTitle": "Oops, Page not found!",
     "oopsMessage": "The page you're looking for is not found (it may have been moved, deleted, or doesn’t exist). Sorry for the inconvenience.",
@@ -137,8 +145,7 @@
       "heading": "Designing Your\nNext Chapter",
       "clients": "{count}+ Happy Clients",
       "badge": "Find your next property",
-      "subcopy": "Browse verified listings from trusted agents across Egypt.",
-      "ratingLabel": "Average rating"
+      "subcopy": "Browse verified listings from trusted agents across Egypt."
     },
     "filters": {
       "aria": {
@@ -861,6 +868,11 @@
     }
   },
   "dashboard": {
+    "error": {
+      "title": "Oops! Something went wrong",
+      "defaultMessage": "We encountered an error while loading the data. Please try again.",
+      "retry": "Try Again"
+    },
     "statistics": {
       "increase": "{value}% Increase",
       "fromLastWeek": "from last week",
@@ -960,6 +972,7 @@
       "previous": "Previous",
       "next": "Next",
       "lastPage": "Last Page",
+      "of": "of",
       "showingEntries": "Showing {start} to {end} of {total} entries",
       "showing": "Showing {start} to {end} of {total}",
       "jumpBack": "Jump back {{count}} pages",

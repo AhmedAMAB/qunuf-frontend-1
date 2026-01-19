@@ -1,6 +1,17 @@
 {
-  
-	"dashboard": {
+  "hero": {
+    "trusted": "موثوق به من قبل الآلاف",
+    "satisfaction": "رضا العملاء 100%",
+    "quality": "جودة",
+    "guaranteed": "مضمونة",
+    "eyebrow": "اكتشف أدوات ثورية"
+  },
+  "dashboard": {
+    "error": {
+      "title": "عذراً! حدث خطأ ما",
+      "defaultMessage": "واجهنا مشكلة أثناء تحميل البيانات. يرجى المحاولة مرة أخرى.",
+      "retry": "إعادة المحاولة"
+    },
     "statistics": {
       "increase": "زيادة بنسبة {value}٪",
       "fromLastWeek": "من الأسبوع الماضي",
@@ -12,8 +23,8 @@
       "costBreakdown": "تفاصيل الإيجارات",
       "reportSales": "تقرير المبيعات",
       "contractsCreated": "العقود المنشأة",
-      "noChartData": "لا توجد بيانات للعرض حتى الآن" ,
-       "decrease": "-{value}%", 
+      "noChartData": "لا توجد بيانات للعرض حتى الآن",
+      "decrease": "-{value}%",
       "noChartDataMessage": "لا توجد بيانات كافية لعرض الرسم البياني"
     },
     "landlord": {
@@ -119,6 +130,7 @@
       "firstPage": "الصفحة الأولى",
       "previous": "السابق",
       "next": "التالي",
+      "of": "من",
       "lastPage": "الصفحة الأخيرة",
       "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل",
       "showing": "عرض {start} إلى {end} من أصل {total}",
@@ -2057,5 +2069,5 @@
       "title": "اتصل بنا",
       "address": "أكشيا ناجار 1st Block 1st Cross، رامورثي ناجار، بنغالور 560016"
     }
-  } 
+  }
 }

@@ -1,6 +1,6 @@
 
-import Booking from "@/components/main/booking/Booking";
-import { getTranslations } from "next-intl/server";
+import { getTranslations } from 'next-intl/server';
+import BookingClient from './client';
 
 
 export async function generateMetadata() {
@@ -9,6 +9,8 @@ export async function generateMetadata() {
         title: t('title'),
     };
 }
-export default function BookingPage() {
-    return <Booking />;
+
+
+export default function Booking() {
+    return <BookingClient />
 }

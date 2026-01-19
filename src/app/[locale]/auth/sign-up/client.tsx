@@ -24,7 +24,7 @@ export async function generateMetadata() {
     };
 }
 
-export default async function SignUpClient() {
+export default function SignUpClient() {
     const t = useTranslations('auth.signUp');
 
     return (

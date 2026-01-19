@@ -77,9 +77,11 @@
 [dir='rtl'] body {
   font-family: var(--font-arabic) !important;
 }
+
 .font-ar {
   font-family: var(--font-arabic) !important;
 }
+
 .font-en {
   font-family: var(--font-open-sans) !important;
 }
@@ -87,6 +89,7 @@
 .font-number {
   font-family: var(--font-inter), sans-serif !important;
 }
+
 @layer base {
   button {
     @apply cursor-pointer;
@@ -151,7 +154,7 @@
     @apply scale-103;
   }
 
-  .image-wrapper > *:last-child {
+  .image-wrapper>*:last-child {
     margin-left: 0 !important;
   }
 
@@ -499,6 +502,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -551,7 +555,7 @@
   background: rgba(var(--primary-rgb), 0.4);
 }
 
- 
+
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -585,4 +589,44 @@ html {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Add this to your globals.css file */
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+}
+
+/* Additional smooth transitions for hover effects */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Pulse animation variants */
+.delay-75 {
+  animation-delay: 75ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
 }

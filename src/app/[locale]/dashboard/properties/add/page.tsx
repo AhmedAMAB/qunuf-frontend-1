@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import PropertiesForm from "@/components/dashboard/Properties/PropertiesForm";
 import { useAuth } from '@/contexts/AuthContext';
-import Step1 from '@/components/main/booking/Step1';
+import Step1 from '@/components/pages/booking/Step1';
 
 export default function AddPage() {
     const { user } = useAuth();
