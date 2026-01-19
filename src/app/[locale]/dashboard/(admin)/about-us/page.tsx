@@ -3,8 +3,8 @@ import LargeCardSection from "@/components/dashboard/admin/aboutUs/LargeCardSect
 
 export default function AboutUsPage() {
     return (
-        <div>
-            <LargeCardSection />
-        </div>
+
+        <LargeCardSection />
+
     );
 }

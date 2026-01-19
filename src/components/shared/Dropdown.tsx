@@ -37,7 +37,7 @@ export default function Dropdown({
     );
 
     const baseClass =
-        'absolute w-max overflow-y-auto rounded shadow-md z-10';
+        'absolute w-max overflow-hidden rounded shadow-md z-[100]';
 
     const positionClass = getDropMenuPosition(position);
 

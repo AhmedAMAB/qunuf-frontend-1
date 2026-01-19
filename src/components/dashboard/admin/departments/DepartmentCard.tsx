@@ -17,6 +17,7 @@ interface DepartmentCardProps {
     onDelete: () => void;
 }
 
+
 export default function DepartmentCard({
     title_en,
     title_ar,
@@ -26,7 +27,6 @@ export default function DepartmentCard({
     onEdit,
     onDelete
 }: DepartmentCardProps) {
-
     const t = useTranslations("dashboard.admin.departments");
     const locale = useLocale();
     const isArabic = locale === "ar";
@@ -35,68 +35,58 @@ export default function DepartmentCard({
     const description = (isArabic ? description_ar : description_en) || "";
 
     return (
-        <div
-            className="
-                relative bg-card-bg rounded-[8px] p-4 
-                flex flex-col gap-6 w-full 
-                custom-shadow border border-gray-100
-            "
-        >
-            {/* Edit Button */}
-            <button
-                onClick={onEdit}
-                className="
-                    flex-center absolute top-2 end-2
-                    bg-white p-2 rounded-full shadow-md hover:bg-gray-100 z-10
-                "
-            >
-                <FaEdit size={18} className="text-dark" />
-            </button>
+        <div className="group relative bg-card-bg rounded-[14px] p-4 flex flex-col gap-4 w-full transition-all duration-300 hover:shadow-xl border border-gray/10 transform-gpu">
 
-            {/* Delete Button */}
-            <button
-                onClick={onDelete}
-                className="
-                    flex-center absolute top-2 start-2 
-                    bg-red-600 p-2 rounded-full shadow-md hover:bg-red-700 z-10
-                "
-            >
-                <MdDelete size={18} className="text-white" />
-            </button>
+            {/* 1. Actions - Hidden until hover for a cleaner grid */}
+            <div className="absolute top-6 inset-x-6 flex justify-between opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                <button
+                    onClick={onDelete}
+                    className="bg-red-600 text-white p-2.5 rounded-xl shadow-lg hover:scale-110 active:scale-95 transition-all"
+                >
+                    <MdDelete size={18} />
+                </button>
+                <button
+                    onClick={onEdit}
+                    className="bg-white text-dark p-2.5 rounded-xl shadow-lg border border-gray/10 hover:scale-110 active:scale-95 transition-all"
+                >
+                    <FaEdit size={18} />
+                </button>
+            </div>
 
-            {/* Image Section */}
-            <div className="relative w-full h-[200px] md:h-[240px] lg:h-[260px] rounded-[4px] overflow-hidden">
-
+            {/* 2. Image Section - Matching your preferred 12px radius */}
+            <div className="relative w-full h-[200px] md:h-[240px] rounded-[12px] overflow-hidden shrink-0 shadow-sm">
                 {imagePath ? (
                     <Image
                         src={resolveUrl(imagePath)}
                         alt={title}
                         fill
-                        className="object-cover rounded-[4px] opacity-95 mix-blend-multiply"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                 ) : (
-                    <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-600 text-3xl">
-                        {getInitials(title)}
+                    <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 font-bold text-2xl">
+                        {title.charAt(0)}
                     </div>
                 )}
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 rounded-[4px]" />
+                {/* Subtle gradient for depth, removed the heavy mix-blend */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
             </div>
 
-            {/* Title */}
-            <h3 className="text-xl font-semibold text-dark">
-                {title}
-            </h3>
+            {/* 3. Text Content */}
+            <div className="flex flex-col gap-2 px-1 pb-2">
+                <h3 className="text-xl md:text-2xl font-bold text-dark group-hover:text-primary transition-colors duration-200">
+                    {title}
+                </h3>
 
-            {/* Description */}
-            {description && (
-                <p className="
-                    text-dark whitespace-break-spaces inline
-                ">
-                    {description}
-                </p>
-            )}
+                {description && (
+                    <p className="text-dark/70 text-sm md:text-base leading-relaxed line-clamp-3">
+                        {description}
+                    </p>
+                )}
+            </div>
+
+            {/* Subtle "Learn More" or indicator if needed, or just white space for "trim" look */}
+            <div className="h-1 w-0 bg-secondary rounded-full group-hover:w-12 transition-all duration-500" />
         </div>
     );
 }

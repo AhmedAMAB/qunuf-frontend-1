@@ -1,43 +1,63 @@
-'use client';
-
+import { cn } from '@/lib/utils';
 import React from 'react';
 
 interface PaginationButtonProps {
     label: string;
-    icon?: React.ReactNode;
+    icon: React.ReactNode;
+    iconPosition?: 'left' | 'right';
+    isDisabled: boolean;
     currentPage: number;
-    isDisabled: boolean,
     onPageChange: () => void;
-    iconPosition?: 'left' | 'right'
 }
 
 export default function PaginationButton({
     label,
     icon,
+    iconPosition = 'left',
     isDisabled,
     onPageChange,
-    iconPosition = 'left'
 }: PaginationButtonProps) {
-
     return (
         <button
-            onClick={() => onPageChange()}
+            onClick={isDisabled ? undefined : onPageChange}
             disabled={isDisabled}
-            className={`border border-dark flex items-center  justify-center gap-1 text-dark px-2 py-[6px] lg:px-3 lg:py-2 text-sm  lg:text-base  rounded-[8px] duration-300  ${isDisabled ? 'opacity-30 cursor-not-allowed' : 'hover:bg-gray'
-                }`}
+            className={cn(
+                "group relative flex items-center gap-2 px-4 py-2.5 rounded-xl",
+                "text-sm font-semibold transition-all duration-200",
+                !isDisabled && "active:scale-95",
+                // IMPROVED DISABLED STATE:
+                isDisabled
+                    ? "bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed opacity-100" // Removed opacity-60, used solid grays
+                    : "bg-white border border-gray/20 text-dark hover:border-secondary hover:bg-gradient-to-r hover:from-secondary/5 hover:to-primary/5 hover:shadow-sm"
+            )}
+            aria-label={label}
+            aria-disabled={isDisabled}
         >
-            {iconPosition === 'left' ? (
-                <>
-                    {icon}
-                    <span>{label}</span>
-                </>
-            ) : (
-                <>
-                    <span>{label}</span>
-                    {icon}
-                </>
+            {/* Hover glow effect - only for enabled state */}
+            {!isDisabled && (
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary/0 via-secondary/10 to-primary/0 rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-200 -z-10" />
             )}
 
-        </button >
+            {/* Icon and Label */}
+            {iconPosition === 'left' && (
+                <span className={cn(
+                    "transition-transform duration-200",
+                    !isDisabled && "group-hover:scale-110"
+                )}>
+                    {icon}
+                </span>
+            )}
+
+            <span className="hidden sm:inline">{label}</span>
+
+            {iconPosition === 'right' && (
+                <span className={cn(
+                    "transition-transform duration-200",
+                    !isDisabled && "group-hover:scale-110"
+                )}>
+                    {icon}
+                </span>
+            )}
+        </button>
     );
 }

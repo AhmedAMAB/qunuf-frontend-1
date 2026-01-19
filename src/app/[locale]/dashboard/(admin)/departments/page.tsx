@@ -2,8 +2,8 @@ import DepartmentsGrid from "@/components/dashboard/admin/departments/Department
 
 export default function DepartmentsPage() {
     return (
-        <div>
-            <DepartmentsGrid />
-        </div>
+
+        <DepartmentsGrid />
+
     );
 }

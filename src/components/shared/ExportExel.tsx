@@ -6,16 +6,28 @@ import Popup from "./Popup";
 import Tooltip from "./Tooltip";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { tv } from "tailwind-variants";
+
+const exportVariants = tv({
+    slots: {
+        container: "space-y-4 bg-dashboard-bg p-2 md:p-4 rounded-2xl w-full max-w-md animate-in fade-in zoom-in duration-200",
+        radioLabel: "inline-flex items-center gap-2 cursor-pointer group p-2 rounded-xl hover:bg-secondary/5 transition-colors",
+        radioInput: "w-4 h-4 border-secondary text-secondary focus:ring-secondary accent-secondary",
+        numberInput: "w-full border border-gray/20 py-2 px-3 rounded-xl focus:border-secondary focus:ring-2 focus:ring-secondary/10 transition-all outline-none",
+        primaryBtn: "bg-primary hover:bg-primary-hover text-white rounded-xl py-2.5 px-6 text-sm font-semibold transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-primary/10",
+        ghostBtn: "text-dark/60 hover:text-dark hover:bg-gray/10 rounded-xl py-2.5 px-6 text-sm font-semibold transition-all"
+    }
+});
 
 
 export default function ExportExel({ hasRows, onExport }: { hasRows?: boolean, onExport?: (limit: number) => Promise<void> }) {
     const [showPopup, setShowPopup] = useState(false);
     const t = useTranslations('dashboard.filter.export');
 
-
     return (
-        <div className="">
-            {/* Desktop dropdown */}
+        <div>
+            {/* Desktop Dropdown */}
             <Dropdown
                 className="hidden md:block"
                 Trigger={(props) => <ExportExelTrigger {...props} disabled={!hasRows} />}
@@ -23,23 +35,28 @@ export default function ExportExel({ hasRows, onExport }: { hasRows?: boolean, o
                 position="bottom-right"
             />
 
-            {/* Mobile trigger */}
-            <div className="block md:hidden w-fit" >
+            {/* Mobile Trigger */}
+            <div className="block md:hidden w-fit">
                 <Tooltip content={t('trigger')}>
-                    <button disabled={!hasRows} className="px-4 py-2 rounded-[8px]  border border-dark " onClick={() => setShowPopup(true)}>
-                        <CiExport size={24} className='shrink-0 text-dark' />
+                    <button
+                        disabled={!hasRows}
+                        className={cn(
+                            "p-2.5 rounded-xl border border-gray/20 bg-dashboard-bg transition-all active:scale-95 disabled:opacity-40",
+                            "hover:border-secondary hover:bg-secondary/5"
+                        )}
+                        onClick={() => setShowPopup(true)}
+                    >
+                        <CiExport size={22} className='shrink-0 text-secondary' />
                     </button>
                 </Tooltip>
             </div>
 
-            {/* Mobile popup */}
             <Popup show={showPopup} onClose={() => setShowPopup(false)}>
-                <ExportExelMenu disabled={!hasRows} onClose={() => setShowPopup(false)} />
+                <ExportExelMenu disabled={!hasRows} onClose={() => setShowPopup(false)} onExport={onExport} />
             </Popup>
         </div>
     );
 }
-
 
 function ExportExelTrigger({ isOpen, onToggle, disabled }: TriggerProps) {
     const t = useTranslations('dashboard.filter.export');
@@ -47,10 +64,14 @@ function ExportExelTrigger({ isOpen, onToggle, disabled }: TriggerProps) {
     return (
         <SecondaryButton
             disabled={disabled}
-            className="text-nowrap flex gap-2 items-center border border-dark hover:bg-gray text-dark"
+            className={cn(
+                "flex gap-2 items-center border border-gray/20 bg-dashboard-bg px-5 py-2.5 rounded-xl transition-all duration-150",
+                isOpen && "border-secondary ring-4 ring-secondary/5"
+            )}
             onClick={onToggle}
         >
-            {t('trigger')}
+            <CiExport size={18} className={cn("transition-transform", isOpen && "scale-110")} />
+            <span className="text-nowrap">{t('trigger')}</span>
         </SecondaryButton>
     );
 }
@@ -60,82 +81,69 @@ function ExportExelMenu({ onClose, onExport, disabled }: { disabled: boolean, on
     const [isLoading, setLoading] = useState(false);
     const [scope, setScope] = useState<'current' | 'more'>('current');
     const [maxRows, setMaxRows] = useState(100);
-
-    // Use searchParams to get current table limit for "current" scope
     const searchParams = useSearchParams();
+    const instanceId = useId();
+    const styles = exportVariants();
 
     async function handleExport() {
         if (!onExport) return;
-
         setLoading(true);
-
-        // Logic:
-        // If "Current Table": Use limit from URL (default 10)
-        // If "More Data": Use the input value (maxRows)
         const currentLimit = Number(searchParams.get('limit')) || 10;
         const limitToSend = scope === 'current' ? currentLimit : maxRows;
-
         await onExport(limitToSend);
-
         setLoading(false);
         onClose?.();
     }
 
-    const instanceId = useId();
-
     return (
-        <div className="space-y-4 bg-white md:p-4 rounded-md w-full max-w-md">
-            <div className="space-y-2">
-                <div className="text-sm font-medium">{t('scope')}</div>
-                <div className="flex items-center gap-4">
-                    <label className="inline-flex items-center gap-2 cursor-pointer">
+        <div className={styles.container()}>
+            <div className="space-y-3">
+                <div className="text-xs font-bold text-secondary uppercase tracking-wider">{t('scope')}</div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <label className={styles.radioLabel()}>
                         <input
                             type="radio"
                             name={`export-scope-${instanceId}`}
-                            className="radio"
+                            className={styles.radioInput()}
                             checked={scope === 'current'}
                             onChange={() => setScope('current')}
                         />
-                        <span>{t('currentTable')}</span>
+                        <span className="text-sm font-medium text-dark">{t('currentTable')}</span>
                     </label>
-                    <label className="inline-flex items-center gap-2 cursor-pointer">
+                    <label className={styles.radioLabel()}>
                         <input
                             type="radio"
                             name={`export-scope-${instanceId}`}
-                            className="radio"
+                            className={styles.radioInput()}
                             checked={scope === 'more'}
                             onChange={() => setScope('more')}
                         />
-                        <span>{t('moreData')}</span>
+                        <span className="text-sm font-medium text-dark">{t('moreData')}</span>
                     </label>
                 </div>
             </div>
 
-            <div className={`space-y-1 ${scope !== 'more' && 'opacity-50 select-none'}`}>
-                <label className="block text-sm font-medium" htmlFor="max-rows"> <span>{t('moreData')}</span></label>
+            <div className={cn("space-y-2 transition-all duration-200", scope !== 'more' && "opacity-40 grayscale pointer-events-none")}>
+                <label className="block text-sm font-semibold text-dark" htmlFor="max-rows">{t('moreData')}</label>
                 <input
                     id="max-rows"
                     type="number"
-                    min={1}
-                    className={`input input-bordered w-full  border border-gray py-1 px-2 rounded-[8px] focus:outline-0 ${scope !== 'more' && 'select-none'}`}
+                    className={styles.numberInput()}
                     value={maxRows}
                     disabled={scope !== 'more'}
-                    onChange={(e) => {
-                        const value = Number(e.target.value) || 0;
-                        setMaxRows(Math.min(1000, Math.max(1, value)));
-                    }}
+                    onChange={(e) => setMaxRows(Math.min(1000, Math.max(1, Number(e.target.value) || 0)))}
                 />
             </div>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-3 pt-4 border-t border-gray/5">
                 <button
-                    className="bg-primary rounded-full py-2 px-4 text-sm text-white"
+                    className={styles.primaryBtn()}
                     disabled={disabled || isLoading}
                     onClick={handleExport}
                 >
                     {isLoading ? t('exporting') : t('export')}
                 </button>
-                <button className="btn btn-ghost" onClick={onClose}> {t('cancel')}</button>
+                <button className={styles.ghostBtn()} onClick={onClose}>{t('cancel')}</button>
             </div>
         </div>
     );

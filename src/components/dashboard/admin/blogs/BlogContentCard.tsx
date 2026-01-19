@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { MdDelete, MdEdit, MdKeyboardArrowDown } from 'react-icons/md';
+import { MdCalendarToday, MdDelete, MdEdit, MdKeyboardArrowDown } from 'react-icons/md';
 import { useLocale, useTranslations } from 'next-intl';
 import { resolveUrl } from '@/utils/upload';
 import { Blog } from '@/types/dashboard/blog';
@@ -14,17 +14,15 @@ interface BlogContentCardProps {
     onDelete: () => void;
 }
 
-
 export default function BlogContentCard({ block, onEdit, onDelete }: BlogContentCardProps) {
     const locale = useLocale();
-    const t = useTranslations('comman'); // Assuming 'seeMore' is in common
+    const t = useTranslations('comman');
     const [isExpanded, setIsExpanded] = useState(false);
 
     const isAr = locale === 'ar';
     const title = isAr ? block.title_ar : block.title_en;
     const description = isAr ? block.description_ar : block.description_en;
 
-    // Character limit for the "trimmed" view
     const CHAR_LIMIT = 150;
     const shouldShowButton = description?.length > CHAR_LIMIT;
     const displayedText = isExpanded ? description : `${description?.slice(0, CHAR_LIMIT)}...`;
@@ -36,62 +34,83 @@ export default function BlogContentCard({ block, onEdit, onDelete }: BlogContent
     });
 
     return (
-        <div className="flex flex-col md:flex-row max-md:items-center gap-5 md:gap-7 lg:gap-10 bg-card-bg rounded-[14px] p-3 w-full mx-auto">
-            {/* Image */}
-            <div className="w-[250px] h-[250px] rounded-[12px] overflow-hidden shrink-0">
+        <div className="group relative flex flex-col md:flex-row gap-6 bg-card-bg rounded-[14px] p-4 transition-all duration-300 hover:shadow-xl transform-gpu">
+
+            {/* Image Section */}
+            <div className="relative w-full md:w-[240px] h-[240px] rounded-xl overflow-hidden shrink-0 shadow-sm">
                 <Image
                     src={resolveUrl(block.imagePath)}
                     alt={title}
-                    width={250}
-                    height={250}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+                {/* Subtle overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
-            {/* Text */}
-            <div className="flex gap-2 flex-col md:flex-row justify-between flex-1 text-center md:text-start">
-                <div className='flex flex-col flex-1'>
-                    <div className='space-y-1'>
-                        <h2 className="font-bold text-[28px] sm:text-[32px] text-dark">
+            {/* Content Section */}
+            <div className="flex flex-col flex-1 min-w-0 py-1">
+                <div className="flex justify-between items-start gap-4">
+                    <div className="space-y-2 flex-1">
+                        {/* Date with Icon */}
+                        <div className="flex items-center gap-2 text-primary font-medium text-xs uppercase tracking-wider">
+                            <MdCalendarToday size={14} />
+                            <span>{formattedDate}</span>
+                        </div>
+
+                        <h2 className="font-bold text-2xl sm:text-3xl text-dark group-hover:text-primary transition-colors duration-200 line-clamp-2 leading-tight">
                             {title}
                         </h2>
-                        <div className="text-input text-sm">{formattedDate}</div>
                     </div>
 
-                    <div className="mt-6">
-                        <p className="text-lg sm:text-xl text-dark whitespace-break-spaces inline">
-                            {shouldShowButton ? displayedText : description}
-                        </p>
-
-                        {shouldShowButton && (
-                            <SecondaryButton
-                                // Transition added for hover, and min-width to prevent "jumping" when text changes
-                                className="mt-4 bg-secondary hover:bg-opacity-90 transition-all duration-200 text-white !w-fit min-w-[120px] text-sm font-semibold shadow-sm active:scale-95"
-                                onClick={() => setIsExpanded(!isExpanded)}
-                            >
-                                <span className="flex items-center gap-2">
-                                    {isExpanded ? t('seeLess') : t('seeMore')}
-                                    {/* Optional: Add an icon that rotates */}
-                                    <MdKeyboardArrowDown
-                                        className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                                        size={20}
-                                    />
-                                </span>
-                            </SecondaryButton>
-                        )}
+                    {/* Desktop Actions (Hidden until hover) */}
+                    <div className="hidden md:flex gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <ActionButton onClick={onEdit} icon={<MdEdit />} color="bg-primary" />
+                        <ActionButton onClick={onDelete} icon={<MdDelete />} color="bg-red-500" />
                     </div>
                 </div>
 
-                {/* Actions */}
-                <div className="flex gap-2 items-start justify-center md:justify-start">
-                    <button onClick={onDelete} className="bg-red-500 text-white rounded-full p-2">
-                        <MdDelete size={16} />
+                <div className="mt-4 flex-1">
+                    <p className="text-base sm:text-lg text-dark/70 leading-relaxed whitespace-break-spaces">
+                        {shouldShowButton ? displayedText : description}
+                    </p>
+
+                    {shouldShowButton && (
+                        <button
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className="mt-3 flex items-center gap-1 text-secondary font-bold text-sm hover:underline transition-all"
+                        >
+                            {isExpanded ? t('seeLess') : t('seeMore')}
+                            <MdKeyboardArrowDown
+                                className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                                size={20}
+                            />
+                        </button>
+                    )}
+                </div>
+
+                {/* Mobile Actions (Always visible) */}
+                <div className="flex md:hidden gap-3 mt-6 pt-4 border-t border-gray/5">
+                    <button onClick={onEdit} className="flex-1 flex items-center justify-center gap-2 bg-primary/10 text-primary py-2.5 rounded-xl font-bold text-sm">
+                        <MdEdit size={18} /> {t('edit')}
                     </button>
-                    <button onClick={onEdit} className="bg-primary text-lighter rounded-full p-2">
-                        <MdEdit size={16} />
+                    <button onClick={onDelete} className="flex-1 flex items-center justify-center gap-2 bg-red-50 text-red-500 py-2.5 rounded-xl font-bold text-sm">
+                        <MdDelete size={18} /> {t('delete')}
                     </button>
                 </div>
             </div>
         </div>
+    );
+}
+
+// Helper Mini-Component for actions
+function ActionButton({ onClick, icon, color }: { onClick: () => void, icon: React.ReactNode, color: string }) {
+    return (
+        <button
+            onClick={onClick}
+            className={`${color} text-white p-2.5 rounded-xl shadow-lg hover:scale-110 active:scale-95 transition-all duration-200`}
+        >
+            {icon}
+        </button>
     );
 }

@@ -37,8 +37,8 @@ export default function AdminDashboard() {
 
 
 	function isRecent(date) {
-		const propertyDate:any = new Date(date);
-		const now:any = new Date();
+		const propertyDate: any = new Date(date);
+		const now: any = new Date();
 		const diffTime = Math.abs(now - propertyDate);
 		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 		return diffDays <= 7;
@@ -226,99 +226,67 @@ export default function AdminDashboard() {
 							{recentProperties.map((property, index) => (
 								<div
 									key={property.id}
-									className="group relative"
+									className="group/row relative transform-gpu" // Added transform-gpu for hardware acceleration
 									style={{
-										animationDelay: `${index * 50}ms`,
-										animation: 'fadeInUp 0.5s ease-out forwards',
-										opacity: 0
+										animationDelay: `${index * 40}ms`,
+										animation: 'fadeInUp 0.4s ease-out forwards',
+										opacity: 0,
+										willChange: 'transform, opacity' // Prepares browser for animation
 									}}
 								>
-									{/* Hover background gradient */}
-									<div className="absolute inset-0 bg-gradient-to-r from-secondary/0 via-secondary/5 to-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+									{/* 1. Hover background - Only renders fully when needed */}
+									<div className="absolute inset-0 bg-gradient-to-r from-secondary/0 via-secondary/5 to-primary/5 rounded-xl opacity-0 invisible group-hover/row:opacity-100 group-hover/row:visible transition-all duration-200 pointer-events-none" />
 
-									{/* Content */}
-									<div className="relative flex justify-between items-center gap-4 py-3 px-3 rounded-xl transition-all duration-300 group-hover:translate-x-1">
+									{/* Content Wrapper */}
+									<div className="relative flex justify-between items-center gap-4 py-3 px-3 rounded-xl transition-transform duration-200 group-hover/row:translate-x-1 will-change-transform">
 										<div className="flex items-center gap-4 flex-1 min-w-0">
-											{/* Property Image */}
+
+											{/* Property Image Container */}
 											<div className="relative shrink-0">
-												{/* Multiple glow layers */}
-												<div className="absolute -inset-1 bg-gradient-to-br from-secondary/40 via-primary/40 to-secondary/40 rounded-full opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500" />
-												<div className="absolute -inset-0.5 bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+												{/* 2. OPTIMIZED GLOWS: Using 'invisible' to stop browser from calculating blurs when not hovered */}
+												<div className="absolute -inset-1 bg-gradient-to-br from-secondary/40 via-primary/40 to-secondary/40 rounded-full opacity-0 invisible group-hover/row:opacity-100 group-hover/row:visible blur-lg transition-all duration-500" />
+												<div className="absolute -inset-0.5 bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full opacity-0 invisible group-hover/row:opacity-100 group-hover/row:visible blur-md transition-all duration-300" />
 
 												{/* Image container */}
-												<div className="relative w-[58px] h-[58px] rounded-full overflow-hidden ring-2 ring-gray/20 group-hover:ring-secondary group-hover:ring-4 transition-all duration-300 shadow-md group-hover:shadow-xl">
+												<div className="relative w-[58px] h-[58px] rounded-full overflow-hidden ring-2 ring-gray/20 group-hover/row:ring-secondary group-hover/row:ring-4 transition-all duration-300 shadow-md">
 													<img
 														src={resolveUrl(property.imageSrc)}
 														alt={property.name}
-														className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-125 group-hover:rotate-3"
+														className="w-full h-full object-cover transition-transform duration-500 group-hover/row:scale-110 group-hover/row:rotate-2"
+														loading="lazy" // Added to prevent main thread blocking
 													/>
-
-													{/* Overlay on hover */}
-													<div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+													<div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 invisible group-hover/row:opacity-100 group-hover/row:visible transition-opacity duration-300" />
 												</div>
 
 												{/* Status badge */}
-												<div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-secondary to-primary rounded-full shadow-lg flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
-													<svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+												<div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-secondary to-primary rounded-full shadow-lg flex items-center justify-center transform scale-0 group-hover/row:scale-100 transition-transform duration-300">
+													<svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" />
 													</svg>
 												</div>
 											</div>
 
 											{/* Property Info */}
-											<div className="flex-1 min-w-0 space-y-1.5">
-												<Link
-													href={`/properties/${property.slug}`}
-													className="group/link block"
-												>
+											<div className="flex-1 min-w-0 space-y-1">
+												<Link href={`/properties/${property.slug}`} className="group/link block">
 													<div className="flex items-center gap-2">
 														<h4 className="font-bold text-sm sm:text-base text-dark group-hover/link:text-primary transition-colors duration-200 line-clamp-1">
 															{property.name}
 														</h4>
-
-														{/* Arrow icon */}
-														<svg
-															className="w-4 h-4 text-secondary group-hover/link:text-primary opacity-0 group-hover/link:opacity-100 transform translate-x-0 group-hover/link:translate-x-1 transition-all duration-300"
-															fill="none"
-															viewBox="0 0 24 24"
-															stroke="currentColor"
-														>
+														<svg className="w-4 h-4 text-secondary opacity-0 group-hover/link:opacity-100 transform -translate-x-2 group-hover/link:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 															<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
 														</svg>
 													</div>
 												</Link>
 
-												{/* Date with enhanced styling */}
 												<div className="flex items-center gap-2">
-													<div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-gradient-to-r from-secondary/10 to-primary/10 group-hover:from-secondary/20 group-hover:to-primary/20 transition-all duration-300">
-														<svg
-															className="w-3 h-3 text-secondary flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-															fill="none"
-															viewBox="0 0 24 24"
-															stroke="currentColor"
-														>
-															<path
-																strokeLinecap="round"
-																strokeLinejoin="round"
-																strokeWidth={2}
-																d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-															/>
-														</svg>
-														<span className="text-xs sm:text-sm text-dark/70 font-medium">
-															{new Date(property.date).toLocaleString("en-US", {
-																day: "2-digit",
-																month: "short",
-																year: "numeric",
-																hour: "2-digit",
-																minute: "2-digit",
-																hour12: false,
-															})}
+													<div className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-gray/5 group-hover/row:bg-secondary/10 transition-colors duration-200">
+														<span className="text-xs text-dark/60 font-medium">
+															{new Date(property.date).toLocaleDateString()}
 														</span>
 													</div>
-
-													{/* New badge (if recently added) */}
 													{isRecent(property.date) && (
-														<span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-sm animate-pulse">
+														<span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-500 text-white animate-pulse">
 															NEW
 														</span>
 													)}
@@ -326,17 +294,14 @@ export default function AdminDashboard() {
 											</div>
 										</div>
 
-										{/* View details button */}
+										{/* View Button */}
 										<Link
 											href={`/properties/${property.slug}`}
-											className="shrink-0 opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300"
+											className="shrink-0 opacity-0 invisible group-hover/row:opacity-100 group-hover/row:visible transform scale-90 group-hover/row:scale-100 transition-all duration-200"
 										>
-											<button className="relative group/btn px-4 py-2 rounded-xl bg-gradient-to-r from-secondary to-secondary-hover hover:from-primary hover:to-primary-hover text-white text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200">
-												{/* Glow effect */}
-												<div className="absolute -inset-0.5 bg-primary/30 rounded-xl opacity-0 group-hover/btn:opacity-100 blur-sm transition-opacity duration-200" />
-
-												<span className="relative flex items-center gap-1.5">
-													<span>View</span>
+											<button className="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold shadow-md active:scale-95">
+												<span className="flex items-center gap-1.5">
+													View
 													<svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -348,7 +313,6 @@ export default function AdminDashboard() {
 								</div>
 							))}
 						</div>
-
 
 
 					)}

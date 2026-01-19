@@ -32,8 +32,8 @@ export default function TableHeader<T>({ columns }: TableHeaderProps<T>) {
     };
 
     return (
-        <thead>
-            <tr className="">
+        <thead className="bg-gradient-to-r from-secondary/10 to-primary/10 border-b border-gray/10">
+            <tr>
                 {columns.map((col, index) => {
                     const isSorted = sort === col.key;
                     const isAsc = dir === 'asc';

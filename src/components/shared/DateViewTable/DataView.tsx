@@ -1,5 +1,4 @@
 'use client';
- 
 
 import { useSearchParams } from 'next/navigation';
 import { FilterConfig, TableColumnType, TableRowType } from '@/types/table';
@@ -20,7 +19,7 @@ type DataViewProps<T = Record<string, any>> = {
     actionsMenuItems?: (row: T, onClose?: () => void) => MenuActionItem[];
     showActions?: boolean;
     pageSize?: number;
-    actionButton?: actionButton
+    actionButton?: actionButton;
     getRows: (signal?: AbortSignal) => Promise<{
         rows: TableRowType<T>[];
         error?: Error | null;
@@ -29,8 +28,6 @@ type DataViewProps<T = Record<string, any>> = {
     onExport?: (limit: number) => Promise<void>;
     onFetchRowsReady?: (fetchRows: (signal?: AbortSignal) => Promise<void>) => void;
 };
-
-
 
 export default function DataView<T = Record<string, any>>({
     columns,
@@ -50,7 +47,6 @@ export default function DataView<T = Record<string, any>>({
     const [isLoading, setIsLoading] = useState(true);
     const [totalRowsCount, setTotalRowsCount] = useState(0);
     const [error, setError] = useState<string | null>(null);
-
 
     const fetchRows = async (signal?: AbortSignal) => {
         setIsLoading(true);
@@ -84,21 +80,23 @@ export default function DataView<T = Record<string, any>>({
     const startEntry = (currentPage - 1) * pageSize + 1;
     const endEntry = Math.min(currentPage * pageSize, totalRowsCount);
     const pageCount = Math.ceil(totalRowsCount / pageSize);
-    return (
 
-        <DashboardCard>
+    return (
+        <DashboardCard className="space-y-6">
+            {/* Filters Section */}
             <FilterContainer
                 filters={filters}
                 showSearch={showSearch}
                 searchPlaceholder={searchPlaceholder}
                 actionButton={actionButton}
                 onExport={onExport}
-                hasRows={rows?.length > 0}
+                hasRows={rows && rows.length > 0}
             />
 
-            <div className='overflow-x-auto thin-scrollbar '>
+            {/* Table Section */}
+            <div className="space-y-4">
                 {isLoading ? (
-                    <TableSkeleton columns={columns} rowCount={pageSize} />
+                    <TableSkeleton columns={columns} rowCount={pageSize} showActions={showActions} />
                 ) : error ? (
                     <TableError message={error} onRetry={fetchRows} />
                 ) : (
@@ -109,10 +107,18 @@ export default function DataView<T = Record<string, any>>({
                         showActions={showActions}
                         actionsMenuItems={actionsMenuItems}
                         fetchRows={fetchRows}
+                        loading={isLoading}
                     />
                 )}
 
-                <TablePagination pageCount={pageCount} pageSize={pageSize} total={totalRowsCount} />
+                {/* Pagination */}
+                {!isLoading && !error && (
+                    <TablePagination
+                        pageCount={pageCount}
+                        pageSize={pageSize}
+                        total={totalRowsCount}
+                    />
+                )}
             </div>
         </DashboardCard>
     );

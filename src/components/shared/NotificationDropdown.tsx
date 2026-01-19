@@ -17,12 +17,12 @@ export default function NotificationDropdown() {
 
 function NotificationTrigger({ isOpen, onToggle }: TriggerProps) {
     const { unreadNotificationCount } = useNotifications();
-    
+
     return (
         <div className="relative group">
             {/* Glow effect on hover */}
             <div className="absolute -inset-1 bg-primary/30 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-200" />
-            
+
             {/* Button */}
             <button
                 type="button"
@@ -31,7 +31,7 @@ function NotificationTrigger({ isOpen, onToggle }: TriggerProps) {
                 className="relative bg-secondary hover:bg-primary rounded-full p-3 transition-all duration-200 shadow-sm hover:shadow-md"
             >
                 <BsBell className="w-5 h-5 text-white group-hover:scale-110 transition-transform duration-200" />
-                
+
                 {/* Unread Badge */}
                 {unreadNotificationCount > 0 && (
                     <span className="absolute -top-1 -right-1 flex h-5 w-5">
@@ -123,7 +123,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
             </header>
 
             {/* Notifications List */}
-            <div className="bg-white max-h-[400px] overflow-y-auto thin-scrollbar">
+            <div className="bg-white max-h-[400px] thin-scrollbar overflow-y-auto">
                 {loading && notifications.length === 0 ? (
                     <div className="p-8 text-center text-dark/40 text-sm">
                         <div className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin mx-auto mb-3" />
@@ -134,34 +134,31 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
                         {notifications.map((item) => (
                             <button
                                 key={item.id}
-                                className={`group flex items-start gap-3 p-4 text-start w-full hover:bg-secondary/5 transition-all duration-200 ${
-                                    !item.isRead ? 'bg-primary/5 border-l-2 border-l-primary' : ''
-                                }`}
+                                className={`group flex items-start gap-3 p-4 text-start w-full hover:bg-secondary/5 transition-all duration-200 ${!item.isRead ? 'bg-primary/5 border-l-2 border-l-primary' : ''
+                                    }`}
                                 onClick={() => handleNotificationClick(item)}
                             >
                                 {/* Icon */}
-                                <div className={`mt-1 shrink-0 p-2 rounded-lg transition-all duration-200 ${
-                                    !item.isRead 
-                                        ? 'bg-primary/10 text-primary' 
-                                        : 'bg-secondary/10 text-secondary'
-                                }`}>
+                                <div className={`mt-1 shrink-0 p-2 rounded-lg transition-all duration-200 ${!item.isRead
+                                    ? 'bg-primary/10 text-primary'
+                                    : 'bg-secondary/10 text-secondary'
+                                    }`}>
                                     {getNotificationIcon(item.relatedEntityType || '')}
                                 </div>
 
                                 {/* Content */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-2 mb-1">
-                                        <h2 className={`text-sm leading-tight ${
-                                            !item.isRead 
-                                                ? 'font-bold text-dark' 
-                                                : 'font-medium text-dark/60'
-                                        }`}>
+                                        <h2 className={`text-sm leading-tight ${!item.isRead
+                                            ? 'font-bold text-dark'
+                                            : 'font-medium text-dark/60'
+                                            }`}>
                                             {item.title}
                                         </h2>
                                         {!item.isRead && (
                                             <span className="flex h-2 w-2 shrink-0 mt-1">
-                                                <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-primary opacity-75"></span>
-                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                                {/* <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-primary opacity-75"></span> */}
+                                                <span className="animate-ping relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                             </span>
                                         )}
                                     </div>

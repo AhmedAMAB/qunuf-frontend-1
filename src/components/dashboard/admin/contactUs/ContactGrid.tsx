@@ -94,13 +94,17 @@ export default function ContactGrid() {
         <div className="space-y-6">
             {/* Header */}
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <SectionHeading title={t("title")} />
+                <div className="space-y-1">
+                    <SectionHeading title={t("title")} />
+                </div>
 
                 <SearchField
                     value={search}
                     onChange={setSearch}
                     searchPlaceholder={t("searchPlaceholder")}
-                    className="lg:!max-w-[510px]"
+                    // Pass the minimal variant here
+                    variant="minimal"
+                    className="lg:!max-w-[480px] h-[52px]"
                 />
             </div>
 

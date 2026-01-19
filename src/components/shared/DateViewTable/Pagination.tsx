@@ -6,6 +6,7 @@ import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 import { LuArrowLeftToLine, LuArrowRightToLine } from 'react-icons/lu';
 import PaginationButton from './PaginationButton';
 import { useTranslations } from 'next-intl';
+import { cn } from '@/lib/utils';
 
 interface PaginationProps {
     currentPage: number;
@@ -15,42 +16,57 @@ interface PaginationProps {
 
 export default function Pagination({ currentPage, pageCount, onPageChange }: PaginationProps) {
     const t = useTranslations('dashboard.pagination');
+
     if (pageCount <= 1) return null;
 
     return (
-        <div className="flex text-nowrap lg:justify-center items-center flex-wrap gap-2">
+        <div className="flex items-center justify-center flex-wrap gap-2">
             {/* First Page */}
             <PaginationButton
                 label={t('firstPage')}
-                icon={<LuArrowLeftToLine size={20} className='rtl:rotate-180' />}
+                icon={<LuArrowLeftToLine size={18} className="rtl:rotate-180" />}
                 isDisabled={currentPage === 1}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(1)}
             />
+
             {/* Previous Page */}
             <PaginationButton
                 label={t('previous')}
-                icon={<GoArrowLeft size={20} className='rtl:rotate-180' />}
+                icon={<GoArrowLeft size={18} className="rtl:rotate-180" />}
                 isDisabled={currentPage === 1}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(currentPage > 1 ? currentPage - 1 : 1)}
             />
 
             {/* Page Numbers */}
-            <div className="flex text-nowrap justify-center gap-2">
+            <div className="flex items-center gap-1.5">
                 {generatePagination(currentPage, pageCount).map((item, idx) =>
                     item === '...' ? (
-                        <span key={idx} className="lg:px-3 lg:py-2 text-sm  lg:text-base font-bold text-secondary">...</span>
+                        <span
+                            key={idx}
+                            className="px-3 py-2 text-sm font-bold text-secondary/60"
+                        >
+                            ...
+                        </span>
                     ) : (
                         <button
                             key={idx}
                             onClick={() => onPageChange(Number(item))}
-                            className={`px-2 py-[6px]  lg:px-3 lg:py-2 text-sm  lg:text-base min-w-[32px] min-h-[32px] lg:min-w-[42px] lg:min-h-[42px] rounded-[8px] duration-300 ${currentPage === item
-                                ? 'bg-[var(--primary)] text-white font-semibold'
-                                : 'bg-card-bg border border-dark text-dark hover:bg-gray'
-                                }`}
+                            className={cn(
+                                "relative min-w-[40px] min-h-[40px] px-3 py-2 rounded-xl",
+                                "text-sm font-semibold transition-all duration-200",
+                                "active:scale-95",
+                                currentPage === item
+                                    ? "bg-gradient-to-br from-secondary to-primary text-white shadow-md hover:shadow-lg"
+                                    : "bg-white border border-gray/20 text-dark hover:border-secondary hover:bg-secondary/5 hover:shadow-sm"
+                            )}
                         >
-                            {item}
+                            {/* Active page glow effect */}
+                            {currentPage === item && (
+                                <div className="absolute -inset-1 bg-gradient-to-br from-secondary/30 to-primary/30 rounded-xl blur-md -z-10" />
+                            )}
+                            <span className="relative">{item}</span>
                         </button>
                     )
                 )}
@@ -59,8 +75,8 @@ export default function Pagination({ currentPage, pageCount, onPageChange }: Pag
             {/* Next Page */}
             <PaginationButton
                 label={t('next')}
-                iconPosition='right'
-                icon={<GoArrowRight size={20} className='rtl:rotate-180' />}
+                iconPosition="right"
+                icon={<GoArrowRight size={18} className="rtl:rotate-180" />}
                 isDisabled={currentPage === pageCount}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(currentPage < pageCount ? currentPage + 1 : pageCount)}
@@ -69,8 +85,8 @@ export default function Pagination({ currentPage, pageCount, onPageChange }: Pag
             {/* Last Page */}
             <PaginationButton
                 label={t('lastPage')}
-                iconPosition='right'
-                icon={<LuArrowRightToLine size={20} className='rtl:rotate-180' />}
+                iconPosition="right"
+                icon={<LuArrowRightToLine size={18} className="rtl:rotate-180" />}
                 isDisabled={currentPage === pageCount}
                 currentPage={currentPage}
                 onPageChange={() => onPageChange(pageCount)}
