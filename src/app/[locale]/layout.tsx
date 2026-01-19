@@ -1,5 +1,5 @@
 
-import { Open_Sans, Tajawal } from "next/font/google";
+import {Cairo, Inter, Open_Sans, Roboto_Mono} from 'next/font/google';
 import "../../styles/globals.css";
 import Providers from "../ServerProviders";
 import { routing } from "@/i18n/routing";
@@ -8,18 +8,33 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
 
-const plexMomo = Tajawal({
-  variable: "--font-app",
-  display: "swap",
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "700", "800", "900"],
+
+export const robotoMono = Roboto_Mono({
+  variable: '--font-roboto-mono',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap'
+});
+
+export const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap'
 });
 
 const openSans = Open_Sans({
-  subsets: ['latin'],
   variable: '--font-open-sans',
-  weight: ['400', '600', '700'], // adjust as needed
-  display: 'swap',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap'
+});
+
+const arabicFont = Cairo({
+  variable: '--font-arabic',
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap'
 });
 
 
@@ -48,9 +63,9 @@ export default async function RootLayout({
 
   return (
     <>
-      <html lang={locale} className={`${plexMomo.variable} ${openSans.variable}`} dir={locale == 'en' ? 'ltr' : 'rtl'}>
+      <html lang={locale} className={`${arabicFont.variable} ${openSans.variable} ${robotoMono.variable} ${inter.variable}`} dir={locale == 'en' ? 'ltr' : 'rtl'}>
 
-        <body className={`${plexMomo.variable}`}>
+        <body className={`$ `}>
           <Providers>
             {children}
           </Providers>

@@ -1,17 +1,5 @@
 'use client';
-/**
- * 📊 DataView Component
- *
- * A generic table wrapper that handles:
- * - Fetching paginated data using the `getRows` function
- * - Displaying filters, search, and sort controls via `FilterContainer`
- * - Rendering loading skeletons, error states, and the final table
- * - Managing pagination and showing entry count summary
- *
-
- * This component is designed to be reusable across different data types by leveraging generics (`<T>`).
- */
-
+ 
 
 import { useSearchParams } from 'next/navigation';
 import { FilterConfig, TableColumnType, TableRowType } from '@/types/table';

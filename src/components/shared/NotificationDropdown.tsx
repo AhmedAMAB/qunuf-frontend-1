@@ -9,7 +9,6 @@ import api from "@/libs/axios";
 import { useEffect, useState } from "react";
 import { Notification } from "@/types/dashboard/notifications";
 
-
 export default function NotificationDropdown() {
     return (
         <Dropdown Trigger={NotificationTrigger} Menu={NotificationMenu} position="bottom-right" />
@@ -18,25 +17,34 @@ export default function NotificationDropdown() {
 
 function NotificationTrigger({ isOpen, onToggle }: TriggerProps) {
     const { unreadNotificationCount } = useNotifications();
+    
     return (
-        <div className="relative inline-flex bg-card-bg p-3 rounded-full custom-shadow">
-            {/* Notification Dot */}
-            {unreadNotificationCount ? <PingIndicator /> : null}
-            {/* Bell Button */}
+        <div className="relative group">
+            {/* Glow effect on hover */}
+            <div className="absolute -inset-1 bg-primary/30 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-200" />
+            
+            {/* Button */}
             <button
                 type="button"
-                aria-label="فتح الإشعارات"
+                aria-label="Open notifications"
                 onClick={onToggle}
-                className="text-primary inline-flex justify-center rounded-3xl text-sm hover:bg-opacity-30"
+                className="relative bg-secondary hover:bg-primary rounded-full p-3 transition-all duration-200 shadow-sm hover:shadow-md"
             >
-                <BsBell className="w-5 h-5" />
+                <BsBell className="w-5 h-5 text-white group-hover:scale-110 transition-transform duration-200" />
+                
+                {/* Unread Badge */}
+                {unreadNotificationCount > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex items-center justify-center rounded-full h-5 w-5 bg-red-500 text-white text-[10px] font-bold shadow-md">
+                            {unreadNotificationCount > 9 ? '9+' : unreadNotificationCount}
+                        </span>
+                    </span>
+                )}
             </button>
         </div>
     );
 }
-
-
-
 
 function NotificationMenu({ isOpen, onClose }: MenuProps) {
     const t = useTranslations('dashboard.notification');
@@ -50,12 +58,10 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
         getNotificationIcon,
     } = useNotifications();
 
-
     // --- Fetch Logic ---
     const fetchList = async () => {
         setLoading(true);
         try {
-            // We usually only need the most recent 5-10 for the popup
             const res = await api.get('/notifications?limit=10&page=1');
             const { records = [] } = res.data || {};
             setNotifications(records);
@@ -79,7 +85,6 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
                     setNotifications(prev => {
                         const exists = prev.some(n => n.id === action.payload.id);
                         if (exists) return prev;
-                        // Add to top and trim to keep popup small
                         return [action.payload, ...prev].slice(0, 10);
                     });
                     break;
@@ -105,51 +110,89 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
     };
 
     return (
-        <div className="w-80 shadow-xl rounded-lg overflow-hidden border border-gray-100">
-            <header className="p-3 text-white font-bold text-sm flex justify-between items-center"
-                style={{ background: 'linear-gradient(90deg, var(--secondary) 0%, var(--lightGold) 100%)' }}>
-                <span>{t('title')}</span>
-                {loading && (<div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />)}
+        <div className="w-80 shadow-2xl rounded-2xl overflow-hidden border border-gray/20 bg-white">
+            {/* Header with gradient */}
+            <header className="p-4 bg-gradient-to-r from-secondary via-secondary to-secondary-hover text-white font-bold text-sm flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                    <BsBell className="w-4 h-4" />
+                    <span>{t('title')}</span>
+                </div>
+                {loading && (
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                )}
             </header>
 
-            <div className="bg-white max-h-[350px] overflow-y-auto thin-scrollbar divide-y divide-gray-50">
+            {/* Notifications List */}
+            <div className="bg-white max-h-[400px] overflow-y-auto thin-scrollbar">
                 {loading && notifications.length === 0 ? (
-                    <div className="p-6 text-center text-gray-400 text-xs animate-pulse">{t('loading')}</div>
+                    <div className="p-8 text-center text-dark/40 text-sm">
+                        <div className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                        <p className="animate-pulse">{t('loading')}</p>
+                    </div>
                 ) : notifications.length > 0 ? (
-                    notifications.map((item) => (
-                        <button
-                            key={item.id}
-                            className={`flex items-start gap-3 p-4 text-start w-full hover:bg-gray-50 transition-colors ${!item.isRead ? 'bg-secondary/5' : ''}`}
-                            onClick={() => handleNotificationClick(item)}
-                        >
-                            <div className="mt-1 shrink-0">
-                                {getNotificationIcon(item.relatedEntityType || '')}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between gap-2">
-                                    <h2 className={`text-xs truncate ${!item.isRead ? 'font-bold text-dark' : 'text-gray-500'}`}>
-                                        {item.title}
-                                    </h2>
-                                    {!item.isRead && (
-                                        <div className="shrink-0 rounded-full w-2 h-2 bg-primary animate-pulse" />
-                                    )}
+                    <div className="divide-y divide-gray/10">
+                        {notifications.map((item) => (
+                            <button
+                                key={item.id}
+                                className={`group flex items-start gap-3 p-4 text-start w-full hover:bg-secondary/5 transition-all duration-200 ${
+                                    !item.isRead ? 'bg-primary/5 border-l-2 border-l-primary' : ''
+                                }`}
+                                onClick={() => handleNotificationClick(item)}
+                            >
+                                {/* Icon */}
+                                <div className={`mt-1 shrink-0 p-2 rounded-lg transition-all duration-200 ${
+                                    !item.isRead 
+                                        ? 'bg-primary/10 text-primary' 
+                                        : 'bg-secondary/10 text-secondary'
+                                }`}>
+                                    {getNotificationIcon(item.relatedEntityType || '')}
                                 </div>
-                                <p className="text-[11px] text-gray-500 line-clamp-2 mt-0.5">{item.message}</p>
-                            </div>
-                        </button>
-                    ))
+
+                                {/* Content */}
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-start justify-between gap-2 mb-1">
+                                        <h2 className={`text-sm leading-tight ${
+                                            !item.isRead 
+                                                ? 'font-bold text-dark' 
+                                                : 'font-medium text-dark/60'
+                                        }`}>
+                                            {item.title}
+                                        </h2>
+                                        {!item.isRead && (
+                                            <span className="flex h-2 w-2 shrink-0 mt-1">
+                                                <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-primary opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <p className="text-xs text-dark/60 line-clamp-2 leading-relaxed">
+                                        {item.message}
+                                    </p>
+                                </div>
+                            </button>
+                        ))}
+                    </div>
                 ) : (
-                    <div className="p-10 text-center text-gray-400 text-xs">{t('noNotifications')}</div>
+                    <div className="p-12 text-center">
+                        <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <BsBell className="w-8 h-8 text-secondary/40" />
+                        </div>
+                        <p className="text-sm text-dark/40 font-medium">{t('noNotifications')}</p>
+                    </div>
                 )}
             </div>
 
-            <footer className="p-2 bg-gray-50 border-t border-gray-100 text-center">
+            {/* Footer */}
+            <footer className="p-3 bg-gradient-to-r from-secondary/5 to-transparent border-t border-gray/10 text-center">
                 <Link
                     href={getHref('notifications')}
                     onClick={onClose}
-                    className="text-xs text-secondary font-semibold hover:underline"
+                    className="inline-flex items-center gap-2 text-sm text-secondary hover:text-primary font-semibold transition-colors duration-200"
                 >
-                    {t('seeMore')}
+                    <span>{t('seeMore')}</span>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                 </Link>
             </footer>
         </div>
