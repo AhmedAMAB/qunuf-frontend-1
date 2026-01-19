@@ -63,7 +63,7 @@ import { furnishedValues, propertyTypeValues } from '@/constants/properties/cons
 export default function HeroSection() {
   const t = useTranslations('homePage.hero');
   return (
-    <section id="hero" className="relative isolate overflow-hidden min-h-[100svh]">
+    <section id="hero" className="relative isolate overflow-hidden min-h-[100svh] ">
       {/* Background image + soft overlay (kept subtle to let your brand gradient show) */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -78,7 +78,7 @@ export default function HeroSection() {
       </div>
 
       {/* Centered content stack */}
-      <div className="max-w-[1300px] w-full relative mx-auto px-4 sm:px-6 lg:px-12 min-h-[inherit]">
+      <div className="max-w-[1300px] w-full relative mx-auto px-4 sm:px-6 lg:px-12 min-h-[inherit] container">
         {/* Make a vertical center column, but reserve space at the bottom so the pinned UsersCard never overlaps */}
         <div className="min-h-[inherit] flex flex-col items-start justify-center pb-28 sm:pb-32 lg:pb-0">
           {/* Eyebrow */}
@@ -117,16 +117,16 @@ export default function HeroSection() {
             <HeroFilter />
           </div>
         </div>
-      </div>
 
-      {/* Happy clients / Users card
+        {/* Happy clients / Users card
          - On large screens: pinned bottom-end, w-fit
          - On small/tight screens: becomes full-width at the bottom to avoid overlapping */}
-      <div className="absolute inset-x-0 bottom-0 z-20 px-4 sm:px-6 lg:px-12 pb-[env(safe-area-inset-bottom)]">
-        <div className="flex justify-end">
-          {/* lg:w-fit keeps the card compact on desktop; w-full on small to prevent crowding */}
-          <div className="w-full max-w-[min(100%,560px)] lg:w-fit">
-            <UsersCard />
+        <div className="absolute inset-x-0 bottom-0 z-20 px-4 sm:px-6 lg:px-12 pb-[env(safe-area-inset-bottom)]">
+          <div className="flex justify-end">
+            {/* lg:w-fit keeps the card compact on desktop; w-full on small to prevent crowding */}
+            <div className="w-full max-w-[min(100%,560px)] lg:w-fit">
+              <UsersCard />
+            </div>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useAuth } from "@/contexts/AuthContext";
 import { Message } from "@/types/dashboard/chat";
 import { User } from "@/types/dashboard/user";
 import { resolveUrl } from "@/utils/upload";
@@ -22,10 +23,12 @@ interface MessageRowProps {
 const MessageRow = memo(function MessageRow({
     msg,
     participant,
-    user,
+    // user,
     style,
     onRetry,
 }: MessageRowProps) {
+
+    const { user } = useAuth()
     const isMine = msg.senderId === user?.id;
     const isSending = msg.status === 'sending';
     const isFailed = msg.status === 'error';
