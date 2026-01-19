@@ -22,6 +22,8 @@
     "errorLoading": "فشل في تحميل البيانات",
     "cancel": "إلغاء",
     "save": "حفظ",
+    "seeMore": "عرض المزيد",
+    "seeLess": "عرض أقل",
     "form": {
       "loading": "جاري التحميل...",
       "email": {
@@ -111,13 +113,23 @@
     "logo": "قنوف",
     "nav": {
       "home": "الرئيسية",
-      "about": "معلومات عنا",
       "realEstate": "العقارات",
-      "blog": "المدونات",
-      "contact": "تواصل معنا",
-      "dashboard": "لوحة القيادة",
+      "blog": "المدونة",
+      "about": "من نحن",
+      "contact": "اتصل بنا",
+      "dashboard": "لوحة التحكم",
       "login": "تسجيل الدخول",
       "logout": "تسجيل الخروج"
+    },
+    "userMenu": {
+      "profile": "ملفي الشخصي",
+      "notifications": "التنبيهات",
+      "contracts": "العقود"
+    },
+    "roles": {
+      "admin": "مسؤول",
+      "tenant": "مستأجر",
+      "landlord": "مالك"
     }
   },
   "homePage": {
@@ -178,7 +190,7 @@
       }
     },
     "basedOnLocationSection": {
-      "title": "بناء على موقعك",
+      "title": "اكتشف منزلك المستقبلي",
       "description": "ابدأ باكتشاف منزلك المستقبلي الذي يعجبك",
       "yearly": "سنوى",
       "monthly": "شهرى",

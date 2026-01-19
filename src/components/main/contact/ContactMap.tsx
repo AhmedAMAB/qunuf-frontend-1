@@ -14,12 +14,14 @@ export default function ContactMap() {
     const { settings, loadingSettings } = useValues();
 
     return (
-        <div className="col-span-6 relative h-full flex justify-center items-center ">
-            <div className="absolute top-0 bottom-0 right-0 h-full w-[300px] bg-secondary rounded-r-4xl"></div>
-            <div className="w-full max-w-[650px] my-12 md:my-16 lg:my-20 me-12 md:me-16 lg:me-20">
+        <div className="col-span-6 relative h-full flex justify-center items-center">
+            {/* Reversed: right-0 -> left-0 AND rounded-r -> rounded-l */}
+            <div className="absolute top-0 bottom-0 left-0 h-full w-[300px] bg-secondary rounded-l-4xl"></div>
+
+            {/* Margins: changed from me (margin-end) to ms (margin-start) to push content away from the new left box */}
+            <div className="w-full max-w-[650px] my-12 md:my-16 lg:my-20 ms-12 md:ms-16 lg:ms-20 z-10">
                 {loadingSettings ? (
-                    // Skeleton placeholder while loading
-                    <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px]  bg-gray-600 animate-pulse rounded-lg" />
+                    <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] bg-gray-600 animate-pulse rounded-lg" />
                 ) : settings?.latitude && settings?.longitude ? (
                     <LocationMap lat={settings.latitude} lng={settings.longitude} zoom={6} />
                 ) : (

@@ -68,19 +68,19 @@ const ChatSidebar = memo(function ChatSidebar({
                 endReached={fetchMore}
                 increaseViewportBy={200}
                 itemContent={(index, conv) => {
-                    const conversation = conversationsMap.get(conv.id);
+                    const conversation = conversationsMap.get(conv?.id);
                     if (!conversation) return null;
 
-                    const sending = isSending.get(conv.id) || false;
+                    const sending = isSending.get(conv?.id) || false;
 
 
                     return (
                         <ChatPreviewCard
-                            key={conv.id}
-                            selected={conversation.id === currentOpenConversationId}
+                            key={conv?.id}
+                            selected={conversation?.id === currentOpenConversationId}
                             isSending={sending}
                             conversation={conversation}
-                            onClick={() => handleSelectChat(conversation.id)}
+                            onClick={() => handleSelectChat(conversation?.id)}
                         />
                     );
                 }}

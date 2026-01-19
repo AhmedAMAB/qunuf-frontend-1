@@ -98,7 +98,7 @@ export default function UsersDataView() {
                         {
                             label: t('table.chat'),
                             Icon: FaComments,
-                            link: `/chats?user=${row.id}`
+                            link: `/dashboard/chats?user=${row.id}`
                         },
                         {
                             label: t('table.viewDetails'),

@@ -14,8 +14,8 @@ import z from 'zod';
 import { Link } from '@/i18n/navigation';
 
 const resetPasswordSchema = z.object({
-    email: z.string().min(1, { message: 'email.required' }).email({ message: 'email.invalid' }),
-    code: z.string().min(1, { message: 'code.required' }),
+    email: z.string().trim().min(1, { message: 'email.required' }).email({ message: 'email.invalid' }),
+    code: z.string().trim().min(1, { message: 'code.required' }),
     password: z
         .string()
         .trim()

@@ -74,7 +74,7 @@ const ConversationThread = memo(function ConversationThread({
 
     // Auto-scroll / show scroll button logic for newly added messages
     useEffect(() => {
-        if (!lastMessage || lastMessage.id === lastProcessedMessageId.current) return;
+        if (!lastMessage || lastMessage?.id === lastProcessedMessageId.current) return;
 
         const isNewMessage = messages.length > prevMessagesCount.current;
         if (!isNewMessage) {
@@ -100,7 +100,7 @@ const ConversationThread = memo(function ConversationThread({
             const isNearBottom = scrollHeight - scrollTop - clientHeight < 150;
 
             if (isMyMessage || isNearBottom) {
-                lastProcessedMessageId.current = lastMessage.id;
+                lastProcessedMessageId.current = lastMessage?.id;
                 cache.current.clearAll();
                 listRef.current?.recomputeRowHeights();
                 requestAnimationFrame(() => scrollToBottom());
@@ -108,7 +108,7 @@ const ConversationThread = memo(function ConversationThread({
                 setShowScrollButton(false);
             } else {
                 setShowScrollButton(true);
-                lastProcessedMessageId.current = lastMessage.id;
+                lastProcessedMessageId.current = lastMessage?.id;
             }
 
             prevMessagesCount.current = messages.length;
@@ -242,18 +242,18 @@ const ConversationThread = memo(function ConversationThread({
 
                     <h4 className="text-base font-semibold text-dark">{isPartnerAdmin ? tSupport('senderName') : participant.name}</h4>
                     {!isPartnerAdmin && <span
-                        className={`flex items-center gap-1 text-sm font-medium ${userStatuses.get(participant.id) === "online"
+                        className={`flex items-center gap-1 text-sm font-medium ${userStatuses.get(participant?.id) === "online"
                             ? "text-green-600"
                             : "text-gray-400"
                             }`}
                     >
                         <span
-                            className={`inline-block w-2 h-2 rounded-full ${userStatuses.get(participant.id) === "online"
+                            className={`inline-block w-2 h-2 rounded-full ${userStatuses.get(participant?.id) === "online"
                                 ? "bg-green-500 animate-pulse"
                                 : "bg-gray-400"
                                 }`}
                         />
-                        {userStatuses.get(participant.id) === "online" ? t('online') : t('offline')}
+                        {userStatuses.get(participant?.id) === "online" ? t('online') : t('offline')}
                     </span>}
 
                 </div>

@@ -3,6 +3,7 @@ import { DoughnutChart } from "@/components/shared/charts/DoughnutChart";
 import { useTranslations } from "next-intl"
 import { ContractStatus } from "@/types/dashboard/contract";
 import { useMemo } from "react";
+import EmptyState from "@/components/shared/EmptyState";
 
 interface CostBreakdownChartProps {
     statusBreakdown?: Record<string, number>;
@@ -10,8 +11,8 @@ interface CostBreakdownChartProps {
 }
 
 export function CostBreakdownChart({ statusBreakdown = {}, totalContracts = 0 }: CostBreakdownChartProps) {
+    const tdash = useTranslations('dashboard.statistics');
     const t = useTranslations('dashboard.contracts.table.statusOptions');
-
     // Map contract statuses to labels
     const statusLabels: Record<string, string> = {
         [ContractStatus.PENDING_LANDLORD_ACCEPTANCE]: t('pending_landlord_acceptance'),
@@ -31,6 +32,17 @@ export function CostBreakdownChart({ statusBreakdown = {}, totalContracts = 0 }:
 
         return { statuses, labels, data };
     }, [statusLabels, statusBreakdown]);
+
+
+    const hasData = useMemo(() => data.some((val) => val > 0), [data]);
+    if (!hasData) {
+        return (
+
+            <EmptyState
+                title={tdash('noChartData')}
+            />
+        );
+    }
 
     // Colors for different statuses
     const colors = ['#A4C8AE', '#E5D6B8', '#C1D8DA', '#B8BED5', '#D4A5A5', '#C4B5FD', '#FDE68A'];

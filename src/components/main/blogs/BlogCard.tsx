@@ -40,6 +40,8 @@ export default function BlogCard({ blog, list = false }: BlogProps) {
                 alt={title}
                 width={400}
                 height={360}
+                loading="eager" // Forced eager
+                fetchPriority="high"
                 className={`w-full ${list ? "w-full h-[380px] sm:h-[400px] md:h-[420px] lg:h-[450px]" : "max-w-[400px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[360px]"
                     } h-[200px] sm:h-[250px] md:h-[300px] lg:h-[360px] rounded-[16px] object-cover image-scale`}
             />

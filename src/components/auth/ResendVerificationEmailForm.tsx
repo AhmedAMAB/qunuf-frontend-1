@@ -15,7 +15,7 @@ import api from '@/libs/axios';
 
 // Zod schema
 const resendSchema = z.object({
-    email: z.email({ message: 'invalidEmail' }),
+    email: z.string().trim().email({ message: 'invalidEmail' }),
 });
 
 type ResendFormValues = z.infer<typeof resendSchema>;

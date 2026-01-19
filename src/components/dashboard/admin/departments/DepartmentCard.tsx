@@ -92,8 +92,7 @@ export default function DepartmentCard({
             {/* Description */}
             {description && (
                 <p className="
-                    font-inter text-[15px] leading-[28px] text-[#363636] 
-                    text-justify
+                    text-dark whitespace-break-spaces inline
                 ">
                     {description}
                 </p>

@@ -22,6 +22,8 @@
     "errorLoading": "Failed to load data",
     "cancel": "Cancel",
     "save": "Save",
+    "seeMore": "See More",
+    "seeLess": "See Less",
     "form": {
       "loading": "Loading...",
       "email": {
@@ -111,13 +113,23 @@
     "logo": "QUNUF",
     "nav": {
       "home": "Home",
-      "about": "About Us",
-      "realEstate": "Property",
-      "blog": "Blogs",
-      "contact": "Contact Us",
+      "realEstate": "Properties",
+      "blog": "Blog",
+      "about": "About",
+      "contact": "Contact",
       "dashboard": "Dashboard",
-      "login": "Sign in",
+      "login": "Login",
       "logout": "Logout"
+    },
+    "userMenu": {
+      "profile": "My Profile",
+      "notifications": "Notifications",
+      "contracts": "The Contracts"
+    },
+    "roles": {
+      "admin": "Administrator",
+      "tenant": "Tenant",
+      "landlord": "Landlord"
     }
   },
   "homePage": {
@@ -178,7 +190,7 @@
       }
     },
     "basedOnLocationSection": {
-      "title": "Based on your location",
+      "title": "Discover your future home",
       "description": "Start discover your liking future home",
       "yearly": "Yearly",
       "monthly": "Monthly",
@@ -1004,7 +1016,8 @@
           "startDate": "Start Date",
           "endDate": "End Date",
           "totalAmount": "Total Amount",
-          "createdAt": "Created At"
+          "createdAt": "Created At",
+          "contract": "Contract"
         },
         "statusOptions": {
           "all": "All",

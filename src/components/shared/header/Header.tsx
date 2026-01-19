@@ -8,13 +8,16 @@ import { useTranslations } from 'next-intl';
 import Logo from '../Logo';
 import SecondaryButton from '../buttons/SecondaryButton';
 import { useAuth } from '@/contexts/AuthContext';
-import { FiLogOut } from 'react-icons/fi';
+import { FiBell, FiFileText, FiLogOut, FiUser } from 'react-icons/fi';
+import FallbackImage from '../FallbackImage';
+import { resolveUrl } from '@/utils/upload';
+import { UserRole } from '@/constants/user';
 
 
 
 export default function Header() {
   const pathname = usePathname();
-  const { role, logout, LoggingOut } = useAuth()
+  const { role, logout, LoggingOut, user } = useAuth()
   const t = useTranslations('header');
 
 
@@ -25,7 +28,12 @@ export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
+  useOutsideClick([menuRef, toggleRef, userMenuRef], () => {
+    setMenuOpen(false);
+    setUserMenuOpen(false);
+  });
   useOutsideClick([menuRef, toggleRef], () => setMenuOpen(false));
 
   useEffect(() => {
@@ -78,7 +86,11 @@ export default function Header() {
   async function onLogout() {
     await logout()
   }
-
+  const roleStyles: Record<UserRole, string> = {
+    [UserRole.ADMIN]: 'text-red-400 bg-red-50 border-red-50',
+    [UserRole.LANDLORD]: 'text-blue-400 bg-blue-50 border-blue-50',
+    [UserRole.TENANT]: 'text-emerald-400 bg-emerald-50 border-emerald-50',
+  };
   return (
     <header id='main-header' ref={headerRef} className={['fixed left-0 top-0 md:!top-4 z-50 w-full transition-transform duration-300 will-change-transform', isHidden ? '-translate-y-[100px]' : 'translate-y-0'].join(' ')} >
       <div
@@ -111,14 +123,71 @@ export default function Header() {
 
         {/* Actions */}
         <div className='flex items-center gap-2'>
-          {role ? (
+          {role && user ? (
+            <div className="relative" ref={userMenuRef}>
+              {/* User Trigger */}
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 p-1 rounded-lg hover:bg-slate-100 transition-colors border border-slate-200"
+              >
+                <FallbackImage
+                  src={user.imagePath ? resolveUrl(user.imagePath) : '/users/default-user.png'}
+                  alt={user.name}
+                  width={36}
+                  height={36}
+                  className="rounded-full object-cover w-9 h-9"
+                  defaultImage="/users/default-user.png"
+                />
+                <div className="hidden lg:flex flex-col items-start leading-tight pe-2">
+                  <span className="text-sm font-bold text-slate-900 truncate max-w-[100px]">{user.name}</span>
+                  <span className={[
+                    "text-[10px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded-md border",
+                    roleStyles[user.role] || "text-secondary bg-slate-50 border-slate-100"
+                  ].join(' ')}>
+                    {t(`roles.${user.role}`)}
+                  </span>
+                </div>
+              </button>
 
-            <button onClick={onLogout} title={t('nav.logout')} disabled={LoggingOut}>
-              <FiLogOut size={24} className="text-secondary" />
-            </button>
+              {/* Dropdown Menu */}
+              {userMenuOpen && (
+                <div className="absolute top-full mt-2 end-0 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-[60] animate-in fade-in zoom-in-95 duration-200">
+                  <div className="px-4 py-2 border-b border-slate-50 lg:hidden">
+                    <p className="font-bold text-slate-900">{user.name}</p>
+                    <p className="text-xs text-secondary">{t(`roles.${user.role}`)}</p>
+                  </div>
+
+                  <Link href="/dashboard/settings/account" className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
+                    <FiUser className="text-slate-400" /> {t('userMenu.profile')}
+                  </Link>
+                  <Link href="/dashboard/notifications" className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors justify-between">
+                    <div className="flex items-center gap-3">
+                      <FiBell className="text-slate-400" /> {t('userMenu.notifications')}
+                    </div>
+                    {user.notificationUnreadCount > 0 && (
+                      <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">
+                        {user.notificationUnreadCount}
+                      </span>
+                    )}
+                  </Link>
+                  <Link href="/dashboard/contracts" className="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
+                    <FiFileText className="text-slate-400" /> {t('userMenu.contracts')}
+                  </Link>
+
+                  <div className="h-px bg-slate-100 my-1" />
+
+                  <button
+                    onClick={onLogout}
+                    disabled={LoggingOut}
+                    className="flex w-full items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                  >
+                    <FiLogOut /> {t('nav.logout')}
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
-
-            <SecondaryButton href='/auth/sign-in' className='bg-secondary hover:bg-secondary-hover text-white focus-visible:ring-2 focus-visible:ring-secondary/70 focus-visible:ring-offset-2 text-[14px] md:text-[15px] font-semibold'>
+            <SecondaryButton href='/auth/sign-in' className='bg-secondary hover:bg-secondary-hover text-white text-[14px] md:text-[15px] font-semibold'>
               {t('nav.login')}
             </SecondaryButton>
           )}
