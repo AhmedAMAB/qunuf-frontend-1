@@ -178,6 +178,16 @@ export default function Step1({ nextStep }: { nextStep: () => void }) {
         }
     };
 
+    const today = new Date();
+
+    // Maximum date (User must be at least 18 years old)
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
+        .toISOString().split("T")[0];
+
+    // Minimum date (User cannot be older than 100 years)
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate())
+        .toISOString().split("T")[0];
+
     return (
         <div className="flex-1 flex flex-col justify-between gap-12">
             <div className="space-y-4 md:space-y-6 lg:space-y-14">
@@ -313,6 +323,8 @@ export default function Step1({ nextStep }: { nextStep: () => void }) {
                                 <div>
                                     <TextInput
                                         {...field}
+                                        min={minDate}
+                                        max={maxDate}
                                         type="date"
                                         label={tAccount('birthDate')}
                                         placeholder={tAccount('placeholders.birthDate')}

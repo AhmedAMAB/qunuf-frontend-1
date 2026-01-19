@@ -54,14 +54,23 @@ export default function PropertyReviewsPopup({ row: property, onClose }: Propert
             setNextCursor(newCursor || null);
             setHasMore(more || false);
         } catch (err: any) {
-            if (err?.name === 'CanceledError') return;
+            if (err.name === 'CanceledError' || err.code === 'ERR_CANCELED') {
+                return; // Exit completely, do not touch loading state
+            }
             setError(err?.response?.data?.message || t('loadError'));
         } finally {
-            setLoading(false);
+            if (!signal || !signal?.aborted) {
+                setLoading(false);
+            }
         }
     };
 
     useEffect(() => {
+        setReviews([]);
+        setError(null);
+        setLoading(true);
+        setNextCursor(null);
+
         abortControllerRef.current = new AbortController();
         loadReviews(undefined, abortControllerRef.current.signal);
         return () => {
@@ -101,7 +110,7 @@ export default function PropertyReviewsPopup({ row: property, onClose }: Propert
                 )}
             </div>
 
-            {loading && !reviews || reviews.length === 0 ? (
+            {loading && reviews.length === 0 ? (
                 <div className="flex justify-center items-center py-8">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
                 </div>

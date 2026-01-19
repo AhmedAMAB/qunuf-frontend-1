@@ -19,20 +19,24 @@ export const getTeamMemberSchema = (t: (key: string, params?: any) => string) =>
     z.object({
         name: z
             .string()
+            .trim()
             .max(255, { message: t("validation.maxLength", { max: 255 }) })
             .nonempty({ message: t("validation.required") }),
 
         job: z
             .string()
+            .trim()
             .max(255, { message: t("validation.maxLength", { max: 255 }) })
             .nonempty({ message: t("validation.required") }),
 
         description_en: z
             .string()
+            .trim()
             .nonempty({ message: t("validation.required") }),
 
         description_ar: z
             .string()
+            .trim()
             .nonempty({ message: t("validation.required") }),
 
         phone: phoneSchema,
@@ -156,7 +160,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
                         <div className="text-gray-400">No Image</div>
                     )}
                 </div>
-                <label className="bg-lighter gap-2 text-primary px-4 py-2 rounded-[8px] cursor-pointer w-full">
+                <label className="bg-lighter gap-2 text-primary px-4 py-2 rounded-[8px] cursor-pointer w-full max-w-[340px]">
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-start sm:items-center">
                         <div className="border border-primary rounded-[8px] px-2 py-1 w-fit">
                             {t("upload")}
@@ -213,7 +217,7 @@ export default function TeamMemberForm({ initialData, onClose, onSuccess }: Team
                     {...register("phone")}
                     value={watch('phone') ?? ''}
                     onChange={(e) => setValue('phone', e.target.value)}
-                    error={errors.phone?.message}
+                    error={errors.phone?.message ? t(errors.phone?.message) : null}
                 />
                 <TextInput
                     type='email'

@@ -215,7 +215,7 @@ export default function Account() {
 
         const typeValue = user.identityType === IdentityType.OTHER && user.identityOtherType
             ? user.identityOtherType
-            : t(`identityTypeGroup.${user.identityType}`) || user.identityType;
+            : user.identityType ? t(`identityTypeGroup.${user.identityType}`) : '';
 
         const maskedNumber = user.identityNumber
             ? `${user.identityNumber.slice(0, 2)}******${user.identityNumber.slice(-2)}`

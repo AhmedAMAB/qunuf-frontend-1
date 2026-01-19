@@ -678,12 +678,14 @@
       "noAccount": "Don’t have an account?",
       "register": "Register",
       "success": {
-        "signedIn": "Signed in successfully"
+        "signedIn": "Signed in successfully",
+        "verified": "Email confirmed successfully. You can now log in."
       },
       "errors": {
         "loginFailed": "Login failed",
         "incorrectEmailOrPassword": "Incorrect email or password",
         "invalidEmail": "Please enter a valid email address",
+        "requiredEmail": "Email is required",
         "requiredPassword": "Password is required"
       },
       "loading": "Signing in..."
@@ -706,7 +708,7 @@
       "register": "Register with us",
       "loading": "Registering...",
       "success": {
-        "registered": "Registered successfully"
+        "emailSend": "Account created. Please check your email to verify your account."
       },
       "errors": {
         "registrationFailed": "Registration failed",
@@ -715,7 +717,8 @@
           "maxLength": "Name must be at most 50 characters long"
         },
         "email": {
-          "invalid": "Email must be a valid email address"
+          "invalid": "Email must be a valid email address",
+          "required": "Email is required"
         },
         "password": {
           "minLength": "Password must be at least 8 characters long",
@@ -775,7 +778,8 @@
           "invalidLink": "The reset link is invalid or expired.",
           "requestNewLink": "Request a new reset link",
           "email": {
-            "invalid": "Email must be valid"
+            "invalid": "Email must be valid",
+            "required": "Email is required"
           },
           "password": {
             "minLength": "Password must be at least 8 characters long",
@@ -853,8 +857,44 @@
       "seeAll": "See All",
       "rentedAnalytics": "Rented Analytics",
       "rentedProperties": "Rented Properties",
-      "costBreakdown": "Cost Breakdown",
-      "reportSales": "Report Sales"
+      "costBreakdown": "Contracts Breakdown",
+      "reportSales": "Report Sales",
+      "contractsCreated": "Contracts Created",
+      "noChartData": "No data to display yet"
+    },
+    "landlord": {
+      "root": {
+        "totalProperties": "Total Properties",
+        "totalReviews": "Total Reviews",
+        "freeProperties": "Free Properties",
+        "rentedProperties": "Rented Properties",
+        "topRentedProperties": "Recent Contracts",
+        "lastRentedProperties": "Last Rented Properties",
+        "noContracts": "No contracts yet",
+        "noContractsMessage": "You have no recent contracts to display."
+      },
+      "revenue": {
+        "week": "Week",
+        "month": "Month",
+        "year": "Year",
+        "rentalIncome": "Rental Income",
+        "totalReserved": "Total Reserved Property",
+        "totalFree": "Total Free Properties",
+        "topRented": "Top Rented Properties",
+        "recentTransactions": "Recent Transactions"
+      }
+    },
+    "tenant": {
+      "root": {
+        "reservedProperty": "Reserved Properties",
+        "totalPaymentAmount": "Total Payments",
+        "lastRentedProperties": "Last Rented Properties",
+        "noContracts": "No contracts yet",
+        "noContractsMessage": "You have no recent contracts to display.",
+        "mockAmount": "SAR --",
+        "pendingRenewRequests": "Pending renew requests",
+        "totalEjarAmount": "Total Ejar contracts amount"
+      }
     },
     "header": {
       "greeting": "Hello, {name}!",
@@ -1338,32 +1378,6 @@
       "failedSendTitle": "Failed to send. Click to retry",
       "failedSendText": "Delivery Failed — Tap icon to retry"
     },
-    "tenant": {
-      "root": {
-        "reservedProperty": "Reserved Property",
-        "totalPaymentAmount": "Total Payment Amount",
-        "lastRentedProperties": "Last Rented Properties"
-      }
-    },
-    "landlord": {
-      "root": {
-        "totalProperties": "Total Properties",
-        "totalReviews": "Total Reviews",
-        "freeProperties": "Free Properties",
-        "RentedProperties": "Rented Properties",
-        "topRentedProperties": "Top Rented Properties"
-      },
-      "revenue": {
-        "week": "Week",
-        "month": "Month",
-        "year": "Year",
-        "rentalIncome": "Rental Income",
-        "totalReserved": "Total Reserved Property",
-        "totalFree": "Total Free Properties",
-        "topRented": "Top Rented Properties",
-        "recentTransactions": "Recent Transactions"
-      }
-    },
     "admin": {
       "settings": {
         "loading": "Loading settings...",
@@ -1432,7 +1446,12 @@
         "freeProperties": "Free Properties",
         "rentedProperties": "Rented Properties",
         "lastTransactions": "Last Transactions",
-        "maintenanceRequests": "Maintenance Requests"
+        "maintenanceRequests": "Maintenance Requests",
+        "recentProperties": "Recent Properties",
+        "noContracts": "No contracts yet",
+        "noContractsMessage": "There are no recent contracts to show.",
+        "noProperties": "No properties yet",
+        "noPropertiesMessage": "There are no recent properties to show."
       },
       "maintenance": {
         "requestId": "Request ID",
@@ -1466,12 +1485,12 @@
         "emptyMessage": "There are currently no team members. Please add new members.",
         "delete": {
           "title": "Delete Team Member",
-          "subtitle": "Are you sure you want to delete <strong>{name}</strong>?",
+          "subtitle": "Are you sure you want to delete team Member?",
           "cancel": "Cancel",
           "actionText": "Delete",
-          "deleting": "Deleting {name}...",
-          "success": "{name} has been deleted successfully.",
-          "error": "Failed to delete {name}."
+          "deleting": "Deleting team Member...",
+          "success": "Team Member has been deleted successfully.",
+          "error": "Failed to delete team Member."
         },
         "form": {
           "form": "Team Member Form",
@@ -1520,12 +1539,12 @@
         "resetFilters": "Reset Filters",
         "delete": {
           "title": "Delete Department",
-          "subtitle": "Are you sure you want to delete <strong>{name}</strong>?",
+          "subtitle": "Are you sure you want to delete department?",
           "cancel": "Cancel",
           "actionText": "Delete",
-          "deleting": "Deleting {name}...",
-          "success": "{name} has been deleted successfully.",
-          "error": "Failed to delete {name}."
+          "deleting": "Deleting department...",
+          "success": "Department has been deleted successfully.",
+          "error": "Failed to delete department."
         },
         "form": {
           "form": "Department Form",
@@ -1570,9 +1589,9 @@
           "subtitle": "Are you sure you want to delete this blog post? This action cannot be undone.",
           "cancel": "Cancel",
           "actionText": "Delete",
-          "deleting": "Deleting {name}...",
-          "success": "{name} has been deleted successfully.",
-          "error": "Failed to delete {name}."
+          "deleting": "Deleting blog...",
+          "success": "Blog has been deleted successfully.",
+          "error": "Failed to delete blog."
         },
         "form": {
           "form": "Blog Form",
@@ -1959,6 +1978,7 @@
       },
       "table": {
         "viewDetails": "View Details",
+        "chat": "Chat",
         "searchPlaceholder": "Search by name or email...",
         "filters": {
           "status": "Status",

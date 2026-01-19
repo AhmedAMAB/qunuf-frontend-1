@@ -6,7 +6,7 @@ interface PropertyCardProps {
     imageSrc: string;
     address: string;
     date: Date;
-    rating: number;
+    rating?: number;
     id?: string;
 }
 
@@ -45,7 +45,25 @@ export default function PropertyCard({
             </div>
 
             <div className="flex flex-col gap-1">
-                <CircularRating rating={rating} />
+                {rating != null ? (
+                    <CircularRating rating={rating} />
+                ) : (
+                    <span
+                        style={{
+                            fontSize: 48,
+                            fontWeight: 700,
+                            lineHeight: 1,
+                            color: 'var(--primary)',
+                            display: 'inline-block',
+                            width: 50,
+                            textAlign: 'center',
+                            userSelect: 'none',
+                        }}
+                    >
+                        _
+                    </span>
+                )}
+
             </div>
         </div>
     );

@@ -1,141 +1,204 @@
+'use client';
+
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import StatCard from "@/components/dashboard/StatCard";
 import { BiBuildings } from "react-icons/bi";
-import { IoIosTrendingUp } from "react-icons/io";
+import { IoIosTrendingDown, IoIosTrendingUp } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
 import PropertyCard from "./PropertCard";
-import { getDashboardHref } from "@/utils/dashboardPaths";
 import RentedAnalyticsChart from "@/components/shared/charts/RentedAnalytics";
 import { useTranslations } from "next-intl";
-
-const properties = [
-    {
-        id: "property-6",
-        imageSrc: "/properties/property-6.jpg",
-        address: "456 Oak Street, Cairo",
-        date: new Date("2025-10-10T14:30"),
-        rating: 4.2,
-    },
-    {
-        id: "property-2",
-        imageSrc: "/properties/property-2.jpg",
-        address: "789 Palm Road, Giza",
-        date: new Date("2025-10-11T09:15"),
-        rating: 3.8,
-    },
-    {
-        id: "property-3",
-        imageSrc: "/properties/property-3.jpg",
-        address: "321 Cedar Lane, Alexandria",
-        date: new Date("2025-10-12T17:45"),
-        rating: 4.5,
-    },
-    {
-        id: "property-4",
-        imageSrc: "/properties/property-4.jpg",
-        address: "654 Elm Street, Mansoura",
-        date: new Date("2025-10-13T11:00"),
-        rating: 3.9,
-    },
-    {
-        id: "property-5",
-        imageSrc: "/properties/property-5.jpg",
-        address: "987 Pine Avenue, Tanta",
-        date: new Date("2025-10-14T08:20"),
-        rating: 4.0,
-    },
-    {
-        id: "property-6",
-        imageSrc: "/properties/property-6.jpg",
-        address: "159 Birch Blvd, Aswan",
-        date: new Date("2025-10-15T19:00"),
-        rating: 4.3,
-    },
-    {
-        id: "property-7",
-        imageSrc: "/properties/property-7.jpg",
-        address: "753 Willow Way, Ismailia",
-        date: new Date("2025-10-16T13:10"),
-        rating: 3.7,
-    },
-];
-
+import { useDashboardStats } from "@/hooks/dashboard/useDashboardStats";
+import EmptyState from "@/components/shared/EmptyState";
+import { ErrorCard } from "@/components/shared/ErrorCard";
+import { resolveUrl } from "@/utils/upload";
+import { getTrend } from "@/utils/helpers";
 
 export default function LandlordDashboard() {
     const tStat = useTranslations('dashboard.statistics');
     const tLandlord = useTranslations('dashboard.landlord.root');
+    const { stats, chartData, recentContracts, loading, error, refetch } = useDashboardStats();
 
+
+    if (error && !loading) {
+        return <ErrorCard message={error} onAction={refetch} />;
+    }
+
+    const statsValue = stats || {};
+    const analyticsData = chartData?.rentedAnalytics && chartData.rentedAnalytics.length === 12
+        ? chartData.rentedAnalytics
+        : Array(12).fill(0);
 
     return (
         <div className="space-y-4 h-full">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <StatCard
-                    icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tLandlord('totalProperties')}
-                    value={111}
-                    trend={tStat('increase', {
-                        value: 10
-                    })}
-                    trendColor="rgba(76,108,90,0.1)"
-                    trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext={tStat('fromLastWeek')}
-                />
 
-                <StatCard
-                    icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tLandlord('totalReviews')}
-                    value={110}
-                    trend={tStat('increase', {
-                        value: 10
-                    })}
-                    trendColor="rgba(76,108,90,0.1)"
-                    trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext={tStat('fromLastWeek')}
-                />
+                {/* Total Properties */}
+                {(() => {
+                    const stat = statsValue.totalProperties;
+                    const trend = getTrend(stat?.changePercent);
 
-                <StatCard
-                    icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tLandlord('freeProperties')}
-                    value="20"
-                    trend={tStat('newListing', {
-                        value: 2
-                    })}
-                    trendColor="rgba(76,108,90,0.1)"
-                    subtext={tStat('inThisWeek')}
-                />
-                <StatCard
-                    icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tLandlord('RentedProperties')}
-                    value="5"
-                    trend={tStat('increase', {
-                        value: 10
-                    })}
-                    trendColor="rgba(76,108,90,0.1)"
-                    trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext={tStat('fromLastWeek')}
-                />
+                    return (
+                        <StatCard
+                            icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
+                            label={tLandlord('totalProperties')}
+                            value={loading ? '...' : stat?.value ?? 0}
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
+
+                {/* Total Reviews */}
+                {(() => {
+                    const stat = statsValue.totalReviews;
+                    const trend = getTrend(stat?.changePercent);
+
+                    return (
+                        <StatCard
+                            icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
+                            label={tLandlord('totalReviews')}
+                            value={loading ? '...' : stat?.value ?? 0}
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
+
+                {/* Free Properties */}
+                {(() => {
+                    const stat = statsValue.freeProperties;
+                    const trend = getTrend(stat?.changePercent);
+
+                    return (
+                        <StatCard
+                            icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
+                            label={tLandlord('freeProperties')}
+                            value={loading ? '...' : stat?.value ?? 0}
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
+
+                {/* Rented Properties */}
+                {(() => {
+                    const stat = statsValue.rentedProperties;
+                    const trend = getTrend(stat?.changePercent);
+
+                    return (
+                        <StatCard
+                            icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
+                            label={tLandlord('rentedProperties')}
+                            value={loading ? '...' : stat?.value ?? 0}
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <DashboardCard
                     title={tStat('rentedAnalytics')}
-                    linkLabel={tStat('seeAll')}
-                    linkHref={getDashboardHref('contracts')}
                     className="flex flex-col justify-between"
                 >
-                    <RentedAnalyticsChart data={[102, 130, 120, 110, 150, 160, 120, 110, 70, 60, 60, 50]} />
+                    {loading ? (
+                        <div className="flex items-center justify-center h-64">
+                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
+                        </div>
+                    ) : (
+                        <RentedAnalyticsChart data={analyticsData} />
+                    )}
                 </DashboardCard>
                 <DashboardCard
-                    title={tLandlord('topRentedProperties')}
-                    linkLabel={tStat('seeAll')}
-                    linkHref={getDashboardHref('contracts')}
+                    title={tLandlord('lastRentedProperties')}
                     className="max-h-[620px] overflow-y-auto thin-scrollbar"
                 >
-                    <div className="divide-y divide-gray-300">
-                        {properties.map((property, index) => (
-                            <PropertyCard key={index} {...property} />
-                        ))}
-                    </div>
+                    {loading ? (
+                        <div className="flex items-center justify-center h-32">
+                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
+                        </div>
+                    ) : recentContracts.length === 0 ? (
+                        <EmptyState
+                            title={tLandlord('noContracts')}
+                            message={tLandlord('noContractsMessage')}
+                        />
+                    ) : (
+                        <div className="divide-y divide-gray-300">
+                            {recentContracts.map((contract, index) => {
+                                const imageSrc = contract.property?.images?.find(img => img.is_primary)?.url
+                                    || contract.property?.images?.[0]?.url
+                                    || "/images/property-placeholder.png";
+                                return (
+                                    <PropertyCard
+                                        key={index}
+                                        imageSrc={resolveUrl(imageSrc)}
+                                        address={contract.propertyName}
+                                        date={new Date(contract.date)}
+                                        rating={contract.review ? contract.review.rate : undefined}
+                                        id={contract.property?.slug}
+                                    />
+                                );
+                            })}
+                        </div>
+                    )}
                 </DashboardCard>
             </div>
         </div>

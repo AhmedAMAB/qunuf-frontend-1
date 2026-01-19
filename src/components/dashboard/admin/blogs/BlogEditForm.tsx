@@ -21,20 +21,24 @@ export const getBlogSchema = (t: (key: string, params?: any) => string, isEdit?:
     z.object({
         title_en: z
             .string()
+            .trim()
             .max(255, { message: t('validation.maxLength', { max: 255 }) })
             .nonempty({ message: t('validation.required') }),
 
         title_ar: z
             .string()
+            .trim()
             .max(255, { message: t('validation.maxLength', { max: 255 }) })
             .nonempty({ message: t('validation.required') }),
 
         description_en: z
             .string()
+            .trim()
             .nonempty({ message: t('validation.required') }),
 
         description_ar: z
             .string()
+            .trim()
             .nonempty({ message: t('validation.required') }),
 
         image: isEdit
@@ -80,6 +84,7 @@ export default function BlogEditForm({
         watch,
         control,
         formState: { errors },
+        reset,
     } = useForm<BlogFormType>({
         resolver: zodResolver(getBlogSchema(t, isEdit)),
         defaultValues: initialData || {
@@ -126,6 +131,7 @@ export default function BlogEditForm({
                 }
 
                 onClose();
+                reset()
                 onSuccess(res.data);
             } catch (err: any) {
                 toast.error(
@@ -194,7 +200,7 @@ export default function BlogEditForm({
                             tUploader('rules.maxFiles', { count: 1 }),
                         ]}
                         maxFiles={1}
-                        maxSizeMB={5}
+                        maxSizeMB={10}
                     />
                     <FormErrorMessage message={errors.image?.message as string} />
                 </div>

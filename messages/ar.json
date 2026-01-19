@@ -677,12 +677,14 @@
       "noAccount": "ليس لديك حساب؟",
       "register": "إنشاء حساب",
       "success": {
-        "signedIn": "تم تسجيل الدخول بنجاح"
+        "signedIn": "تم تسجيل الدخول بنجاح",
+        "verified": "تم تأكيد البريد الإلكتروني بنجاح. يمكنك تسجيل الدخول الآن."
       },
       "errors": {
         "loginFailed": "فشل تسجيل الدخول",
         "incorrectEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
         "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
+        "requiredEmail": "البريد الإلكتروني مطلوب",
         "requiredPassword": "كلمة المرور مطلوبة"
       },
       "loading": "جاري تسجيل الدخول..."
@@ -708,7 +710,7 @@
       "didNotReceiveVerification": "هل قمت بالتسجيل مسبقًا ولم تصلك رسالة التحقق؟",
       "resend": "إعادة إرسال التحقق",
       "success": {
-        "registered": "تم التسجيل بنجاح"
+        "emailSend": "تم إنشاء الحساب. يرجى التحقق من بريدك الإلكتروني لتفعيل الحساب."
       },
       "errors": {
         "registrationFailed": "فشل التسجيل",
@@ -717,7 +719,8 @@
           "maxLength": "يجب ألا يزيد الاسم عن 50 حرفًا"
         },
         "email": {
-          "invalid": "البريد الإلكتروني غير صالح"
+          "invalid": "البريد الإلكتروني غير صالح",
+          "required": "البريد الإلكتروني مطلوب"
         },
         "password": {
           "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
@@ -774,7 +777,8 @@
           "invalidLink": "رابط استعادة كلمة المرور غير صالح أو منتهي الصلاحية.",
           "requestNewLink": "طلب رابط جديد",
           "email": {
-            "invalid": "البريد الإلكتروني غير صالح"
+            "invalid": "البريد الإلكتروني غير صالح",
+            "required": "البريد الإلكتروني مطلوب"
           },
           "password": {
             "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
@@ -852,8 +856,44 @@
       "seeAll": "عرض الكل",
       "rentedAnalytics": "تحليلات الإيجارات",
       "rentedProperties": "العقارات المحجوزة",
-      "costBreakdown": "تفصيل التكاليف",
-      "reportSales": "تقرير المبيعات"
+      "costBreakdown": "تفاصيل الإيجارات",
+      "reportSales": "تقرير المبيعات",
+      "contractsCreated": "العقود المنشأة",
+      "noChartData": "لا توجد بيانات للعرض حتى الآن"
+    },
+    "landlord": {
+      "root": {
+        "totalProperties": "إجمالي العقارات",
+        "totalReviews": "إجمالي التقييمات",
+        "freeProperties": "العقارات المتاحة",
+        "rentedProperties": "العقارات المؤجرة",
+        "topRentedProperties": "العقود الحديثة",
+        "lastRentedProperties": "آخر العقود",
+        "noContracts": "لا توجد عقود حالياً",
+        "noContractsMessage": "لا توجد عقود حديثة للعرض."
+      },
+      "revenue": {
+        "week": "أسبوع",
+        "month": "شهر",
+        "year": "سنة",
+        "rentalIncome": "إيرادات الإيجار",
+        "totalReserved": "إجمالي العقارات المحجوزة",
+        "totalFree": "إجمالي العقارات المتاحة",
+        "topRented": "أكثر العقارات تأجيرًا",
+        "recentTransactions": "المعاملات الأخيرة"
+      }
+    },
+    "tenant": {
+      "root": {
+        "reservedProperty": "العقارات المحجوزة",
+        "totalPaymentAmount": "إجمالي الدفعات",
+        "lastRentedProperties": "آخر العقود",
+        "noContracts": "لا توجد عقود حالياً",
+        "noContractsMessage": "لا توجد عقود حديثة للعرض.",
+        "mockAmount": "ريال --",
+        "pendingRenewRequests": "طلبات التجديد المعلقة",
+        "totalEjarAmount": "إجمالي قيمة عقود إيجار"
+      }
     },
     "header": {
       "greeting": "مرحبًا، {name}!",
@@ -1348,32 +1388,6 @@
       "failedSendTitle": "فشل الإرسال. اضغط لإعادة المحاولة",
       "failedSendText": "فشل التسليم — اضغط على الأيقونة لإعادة المحاولة"
     },
-    "tenant": {
-      "root": {
-        "reservedProperty": "العقار المحجوز",
-        "totalPaymentAmount": "إجمالي مبلغ الدفع",
-        "lastRentedProperties": "آخر العقارات المؤجرة"
-      }
-    },
-    "landlord": {
-      "root": {
-        "totalProperties": "إجمالي العقارات",
-        "totalReviews": "إجمالي التقييمات",
-        "freeProperties": "العقارات المتاحة",
-        "RentedProperties": "العقارات المؤجرة",
-        "topRentedProperties": "أكثر العقارات تأجيرًا"
-      },
-      "revenue": {
-        "week": "أسبوع",
-        "month": "شهر",
-        "year": "سنة",
-        "rentalIncome": "إيرادات الإيجار",
-        "totalReserved": "إجمالي العقارات المحجوزة",
-        "totalFree": "إجمالي العقارات المتاحة",
-        "topRented": "أكثر العقارات تأجيرًا",
-        "recentTransactions": "المعاملات الأخيرة"
-      }
-    },
     "admin": {
       "settings": {
         "loading": "جاري تحميل الإعدادات...",
@@ -1442,7 +1456,12 @@
         "freeProperties": "العقارات المتاحة",
         "rentedProperties": "العقارات المؤجرة",
         "lastTransactions": "آخر المعاملات",
-        "maintenanceRequests": "طلبات الصيانه"
+        "maintenanceRequests": "طلبات الصيانه",
+        "recentProperties": "أحدث العقارات",
+        "noContracts": "لا توجد عقود حالياً",
+        "noContractsMessage": "لا توجد عقود حديثة للعرض.",
+        "noProperties": "لا توجد عقارات",
+        "noPropertiesMessage": "لا توجد عقارات حديثة للعرض."
       },
       "maintenance": {
         "requestId": "رقم الطلب",
@@ -1476,12 +1495,12 @@
         "resetFilters": "إعادة تعيين الفلاتر",
         "delete": {
           "title": "حذف عضو الفريق",
-          "subtitle": "هل أنت متأكد أنك تريد حذف <strong>{name}</strong>؟",
+          "subtitle": "هل أنت متأكد أنك تريد حذف هذا العضو",
           "cancel": "إلغاء",
           "actionText": "حذف",
-          "deleting": "جاري حذف <strong>{name}</strong>...",
-          "success": "تم حذف <strong>{name}</strong> بنجاح.",
-          "error": "فشل في حذف <strong>{name}</strong>."
+          "deleting": "جاري حذف هذا العضو...",
+          "success": "تم حذف هذا العضو بنجاح.",
+          "error": "فشل في حذف هذا العضو."
         },
         "form": {
           "form": "نموذج عضو الفريق",
@@ -1501,7 +1520,8 @@
             "required": "هذا الحقل مطلوب",
             "maxLength": "تجاوز الحد الأقصى للطول ({max})",
             "email": "عنوان البريد الإلكتروني غير صالح",
-            "imageRequired": "يرجى رفع صورة"
+            "imageRequired": "يرجى رفع صورة",
+            "invalidPhone": "رقم الهاتف غير صالح"
           },
           "actions": {
             "create": "إنشاء",
@@ -1529,12 +1549,12 @@
         "resetFilters": "إعادة تعيين الفلاتر",
         "delete": {
           "title": "حذف القسم",
-          "subtitle": "هل أنت متأكد أنك تريد حذف <strong>{name}</strong>؟",
+          "subtitle": "هل أنت متأكد أنك تريد حذف القسم؟",
           "cancel": "إلغاء",
           "actionText": "حذف",
-          "deleting": "جاري حذف <strong>{name}</strong>...",
-          "success": "تم حذف <strong>{name}</strong> بنجاح.",
-          "error": "فشل في حذف <strong>{name}</strong>."
+          "deleting": "جاري حذف القسم...",
+          "success": "تم حذف القسم بنجاح.",
+          "error": "فشل في حذف القسم."
         },
         "form": {
           "form": "نموذج القسم",
@@ -1581,9 +1601,9 @@
           "subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
           "cancel": "إلغاء",
           "actionText": "حذف",
-          "deleting": "جاري حذف <strong>{name}</strong>...",
-          "success": "تم حذف <strong>{name}</strong> بنجاح.",
-          "error": "فشل في حذف <strong>{name}</strong>."
+          "deleting": "جاري حذف المدونة...",
+          "success": "تم حذف المدونة بنجاح.",
+          "error": "فشل في حذف المدونة."
         },
         "form": {
           "form": "نموذج المدونة",
@@ -1970,6 +1990,7 @@
       },
       "table": {
         "viewDetails": "عرض التفاصيل",
+        "chat": "محادثة",
         "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني...",
         "filters": {
           "status": "الحالة",

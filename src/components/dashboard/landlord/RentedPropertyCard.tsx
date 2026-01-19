@@ -13,8 +13,8 @@ export default function RentedPropertyCard({
     imageSrc,
     address,
     date,
-    price,
-    id
+    id,
+    price
 }: PropertyCardProps) {
     const formattedDate = date.toLocaleString("en-US", {
         day: "2-digit",
@@ -44,7 +44,7 @@ export default function RentedPropertyCard({
             </div>
 
             <div className="flex flex-col gap-1 text-dark text-base font-semibold">
-                {price} $
+                {price} SAR
             </div>
         </div>
     );

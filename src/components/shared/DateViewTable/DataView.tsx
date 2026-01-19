@@ -63,6 +63,7 @@ export default function DataView<T = Record<string, any>>({
     const [totalRowsCount, setTotalRowsCount] = useState(0);
     const [error, setError] = useState<string | null>(null);
 
+
     const fetchRows = async (signal?: AbortSignal) => {
         setIsLoading(true);
         try {
@@ -71,7 +72,9 @@ export default function DataView<T = Record<string, any>>({
             setError(error ? error.message : null);
             setRows(rows);
         } finally {
-            setIsLoading(false);
+            if (!signal || !signal.aborted) {
+                setIsLoading(false);
+            }
         }
     };
 

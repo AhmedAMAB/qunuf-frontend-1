@@ -19,17 +19,21 @@ export const getDepartmentSchema = (t: (key: string, params?: any) => string) =>
     z.object({
         title_en: z
             .string()
+            .trim()
             .max(255, { message: t("validation.maxLength", { max: 255 }) })
             .nonempty({ message: t("validation.required") }),
         title_ar: z
             .string()
+            .trim()
             .max(255, { message: t("validation.maxLength", { max: 255 }) })
             .nonempty({ message: t("validation.required") }),
         description_en: z
             .string()
+            .trim()
             .nonempty({ message: t("validation.required") }),
         description_ar: z
             .string()
+            .trim()
             .nonempty({ message: t("validation.required") }),
         image: z.any(),
     });
@@ -156,7 +160,7 @@ export default function DepartmentForm({ initialData, onClose, onSuccess }: Depa
                             tUploader('rules.maxFiles', { count: 1 }),
                         ]}
                         maxFiles={1}
-                        maxSizeMB={5}
+                        maxSizeMB={10}
                     />
                     <FormErrorMessage message={errors.image?.message as string} />
                 </div>

@@ -18,15 +18,15 @@ import { useState } from 'react';
 export const getAboutSectionSchema = (t: (key: string) => string) =>
     z.object({
         title_en: z
-            .string()
+            .string().trim()
             .max(255, { message: t('validation.titleMax') })
             .nonempty({ message: t('validation.titleRequired') }),
         title_ar: z
-            .string()
+            .string().trim()
             .max(255, { message: t('validation.titleMax') })
             .nonempty({ message: t('validation.titleRequired') }),
-        content_en: z.string().nonempty({ message: t('validation.contentRequired') }),
-        content_ar: z.string().nonempty({ message: t('validation.contentRequired') }),
+        content_en: z.string().trim().nonempty({ message: t('validation.contentRequired') }),
+        content_ar: z.string().trim().nonempty({ message: t('validation.contentRequired') }),
         image: z.any().refine(
             (file) => file,
             t('validation.imageRequired')
@@ -163,7 +163,7 @@ export default function AboutSectionForm({
                     tUploader('rules.maxFiles', { count: 1 }),
                 ]}
                 maxFiles={1}
-                maxSizeMB={5}
+                maxSizeMB={10}
             />
             <FormErrorMessage message={errors.image?.message as string} />
 

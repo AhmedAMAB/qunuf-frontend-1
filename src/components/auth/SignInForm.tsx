@@ -16,7 +16,7 @@ import { Link } from "@/i18n/navigation";
 
 // Zod schema for validation
 const loginSchema = z.object({
-    email: z.email({ message: 'errors.invalidEmail' }),
+    email: z.string().min(1, { message: 'email.required' }).email({ message: 'email.invalid' }),
     password: z.string().trim().min(1, { message: 'errors.requiredPassword' }),
 });
 
@@ -58,17 +58,30 @@ export default function SignInForm() {
     };
     const searchParams = useSearchParams();
     const loginError = searchParams?.get('error');
+    const loginSuccess = searchParams?.get('success');
 
     useEffect(() => {
 
-
         if (loginError === 'confirmation_failed') {
-            toast.error(t('errors.emailConfirmationFailed'));
+            toast.error(t('emailConfirmationFailed'));
 
             // 🔥 Remove query param from URL without reload
             const params = new URLSearchParams(window.location.search);
             params.delete('error');
             params.delete('error_message');
+
+            const newUrl =
+                window.location.pathname + '?' + params.toString();
+
+            router.replace(newUrl, { scroll: false });
+        }
+
+        if (loginSuccess === 'verified') {
+            toast.success(t('success.verified'));
+
+            // 🔥 Remove query param from URL without reload
+            const params = new URLSearchParams(window.location.search);
+            params.delete('success');
 
             const newUrl =
                 window.location.pathname + '?' + params.toString();

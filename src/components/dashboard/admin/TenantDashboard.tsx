@@ -1,119 +1,163 @@
+'use client';
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import StatCard from "@/components/dashboard/StatCard";
 import { BiBuildings } from "react-icons/bi";
-import { IoIosTrendingUp } from "react-icons/io";
+import { IoIosTrendingDown, IoIosTrendingUp } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
-import PropertyCard from "./PropertCard";
-import { getDashboardHref } from "@/utils/dashboardPaths";
 import { useTranslations } from "next-intl";
-
-
-const properties = [
-    {
-        id: "property-6",
-        imageSrc: "/properties/property-6.jpg",
-        address: "456 Oak Street, Cairo",
-        date: new Date("2025-10-10T14:30"),
-        rating: 4.2,
-    },
-    {
-        id: "property-2",
-        imageSrc: "/properties/property-2.jpg",
-        address: "789 Palm Road, Giza",
-        date: new Date("2025-10-11T09:15"),
-        rating: 3.8,
-    },
-    {
-        id: "property-3",
-        imageSrc: "/properties/property-3.jpg",
-        address: "321 Cedar Lane, Alexandria",
-        date: new Date("2025-10-12T17:45"),
-        rating: 4.5,
-    },
-    {
-        id: "property-4",
-        imageSrc: "/properties/property-4.jpg",
-        address: "654 Elm Street, Mansoura",
-        date: new Date("2025-10-13T11:00"),
-        rating: 3.9,
-    },
-    {
-        id: "property-5",
-        imageSrc: "/properties/property-5.jpg",
-        address: "987 Pine Avenue, Tanta",
-        date: new Date("2025-10-14T08:20"),
-        rating: 4.0,
-    },
-    {
-        id: "property-6",
-        imageSrc: "/properties/property-6.jpg",
-        address: "159 Birch Blvd, Aswan",
-        date: new Date("2025-10-15T19:00"),
-        rating: 4.3,
-    },
-    {
-        id: "property-7",
-        imageSrc: "/properties/property-7.jpg",
-        address: "753 Willow Way, Ismailia",
-        date: new Date("2025-10-16T13:10"),
-        rating: 3.7,
-    },
-];
-
+import { useDashboardStats } from "@/hooks/dashboard/useDashboardStats";
+import EmptyState from "@/components/shared/EmptyState";
+import { ErrorCard } from "@/components/shared/ErrorCard";
+import RentedPropertyCard from "@/components/dashboard/landlord/RentedPropertyCard";
+import { resolveUrl } from "@/utils/upload";
+import { getTrend } from "@/utils/helpers";
 
 export default function TenantDashboard() {
-
     const tStat = useTranslations('dashboard.statistics');
     const tTenant = useTranslations('dashboard.tenant.root');
+    const { stats, recentContracts, loading, error, refetch } = useDashboardStats();
 
+    if (error && !loading) {
+        return <ErrorCard message={error} onAction={refetch} />;
+    }
+
+    const statsValue = stats || {};
 
     return (
         <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <StatCard
-                    icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tTenant('reservedProperty')}
-                    value={111}
-                    trend={tStat('increase', {
-                        value: 10
-                    })}
-                    trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext={tStat('fromLastWeek')}
-                />
 
-                <StatCard
-                    icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tTenant('reservedProperty')}
-                    value={111}
-                    trend={tStat('increase', {
-                        value: 10
-                    })}
-                    trendIcon={<IoIosTrendingUp size={14} />}
-                    subtext={tStat('fromLastWeek')}
-                />
+                {/* Active Contracts */}
+                {(() => {
+                    const stat = statsValue.activeContracts;
+                    const trend = getTrend(stat?.changePercent);
 
-                <StatCard
-                    icon={<IoCardOutline size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
-                    label={tTenant('totalPaymentAmount')}
-                    value="$20"
-                    trend={tStat('newListing', {
-                        value: 2
-                    })}
-                    subtext={tStat('inThisWeek')}
-                />
+                    return (
+                        <StatCard
+                            icon={<BiBuildings size={26} className="text-secondary w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />}
+                            label={tTenant('reservedProperty')}
+                            value={loading ? '...' : stat?.value ?? 0}
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
+
+                {/* Pending Renew Requests */}
+                {(() => {
+                    const stat = statsValue.totalPendingRenewRequests;
+                    const trend = getTrend(stat?.changePercent);
+
+                    return (
+                        <StatCard
+                            icon={<BiBuildings size={26} className="text-secondary" />}
+                            label={tTenant('pendingRenewRequests')}
+                            value={loading ? '...' : stat?.value ?? 0}
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
+
+                {/* Total Ejar Amount */}
+                {(() => {
+                    const stat = statsValue.totalAmountWithEjar;
+                    const trend = getTrend(stat?.changePercent);
+
+                    return (
+                        <StatCard
+                            icon={<IoCardOutline size={26} className="text-secondary" />}
+                            label={tTenant('totalEjarAmount')}
+                            value={
+                                loading
+                                    ? '...'
+                                    : new Intl.NumberFormat(undefined, {
+                                        style: 'currency',
+                                        currency: 'SAR',
+                                    }).format(stat?.value ?? 0)
+                            }
+                            trend={
+                                trend
+                                    ? trend.isUp
+                                        ? tStat('increase', { value: trend.value })
+                                        : tStat('decrease', { value: trend.value })
+                                    : undefined
+                            }
+                            trendIcon={
+                                trend
+                                    ? trend.isUp
+                                        ? <IoIosTrendingUp size={14} />
+                                        : <IoIosTrendingDown size={14} />
+                                    : undefined
+                            }
+                            trendColor={trend?.isUp ? 'rgba(76,108,90,0.1)' : 'rgba(220,38,38,0.1)'}
+                            subtext={tStat('fromLastWeek')}
+                        />
+                    );
+                })()}
+
             </div>
 
             <DashboardCard
                 title={tTenant('lastRentedProperties')}
-                linkLabel={tStat('seeAll')}
-                linkHref={getDashboardHref('contracts')}
                 className="max-h-[620px] overflow-y-auto thin-scrollbar"
             >
-                <div className="divide-y divide-gray-300">
-                    {properties.map((property, index) => (
-                        <PropertyCard key={index} {...property} />
-                    ))}
-                </div>
+                {loading ? (
+                    <div className="flex items-center justify-center h-32">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary"></div>
+                    </div>
+                ) : recentContracts.length === 0 ? (
+                    <EmptyState
+                        title={tTenant('noContracts')}
+                        message={tTenant('noContractsMessage')}
+                    />
+                ) : (
+                    <div className="divide-y divide-gray-300">
+                        {recentContracts.map((contract) => {
+                            const imageSrc = contract.property?.images?.find(img => img.is_primary)?.url
+                                || contract.property?.images?.[0]?.url
+                                || "/images/property-placeholder.png";
+                            return (
+                                <RentedPropertyCard
+                                    key={contract.id}
+                                    imageSrc={resolveUrl(imageSrc)}
+                                    address={contract.propertyName}
+                                    date={new Date(contract.date)}
+                                    price={contract.price}
+                                    id={contract.property?.slug}
+                                />
+                            );
+                        })}
+                    </div>
+                )}
             </DashboardCard>
         </div>
     );

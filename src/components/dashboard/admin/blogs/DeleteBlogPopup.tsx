@@ -2,7 +2,8 @@
 
 import ActionPopup from "@/components/shared/ActionPopup";
 import api from "@/libs/axios";
-import { useTranslations } from "next-intl";
+import { Blog } from "@/types/dashboard/blog";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaBuilding, FaRegNewspaper } from "react-icons/fa";
@@ -10,10 +11,7 @@ import { FaBuilding, FaRegNewspaper } from "react-icons/fa";
 interface DeleteBlogPopupProps {
     onClose: () => void;
     onSuccess: () => void;
-    selectedBlog: {
-        id: string;
-        name: string;
-    };
+    selectedBlog: Blog
 }
 
 export default function DeleteBlogPopup({
@@ -24,10 +22,12 @@ export default function DeleteBlogPopup({
 
     const t = useTranslations('dashboard.admin.blog');
     const [deleting, setDeleting] = useState(false);
+    const locale = useLocale();
+    const name = locale === 'ar' ? selectedBlog.title_ar : selectedBlog.title_en;
 
     const handleDelete = async () => {
         const toastId = toast.loading(
-            t('delete.deleting', { name: selectedBlog.name })
+            t('delete.deleting')
         );
         setDeleting(true);
 
@@ -35,7 +35,7 @@ export default function DeleteBlogPopup({
             await api.delete(`/blogs/${selectedBlog.id}`);
 
             toast.success(
-                t('delete.success', { name: selectedBlog.name }),
+                t('delete.success'),
                 { id: toastId }
             );
 
@@ -44,7 +44,7 @@ export default function DeleteBlogPopup({
         } catch (err: any) {
             toast.error(
                 err?.response?.data?.message ||
-                t('delete.error', { name: selectedBlog.name }),
+                t('delete.error'),
                 { id: toastId }
             );
         } finally {
@@ -55,10 +55,7 @@ export default function DeleteBlogPopup({
     return (
         <ActionPopup
             title={t('delete.title')}
-            subtitle={t.rich('delete.subtitle', {
-                name: selectedBlog.name,
-                strong: (chunk) => <strong>{chunk}</strong>,
-            })}
+            subtitle={t.rich('delete.subtitle')}
             MainIcon={FaRegNewspaper}
             mainIconColor="#FD5257"
             cancelText={t('delete.cancel')}

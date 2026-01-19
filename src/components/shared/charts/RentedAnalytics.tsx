@@ -1,6 +1,8 @@
 'use client'
 import { useTranslations } from "next-intl"
 import { LineChart } from "./LineChart"
+import EmptyState from "../EmptyState";
+import { useMemo } from "react";
 
 interface RentedAnalyticsChartProps {
     data?: number[]
@@ -12,7 +14,15 @@ export default function RentedAnalyticsChart({ data }: RentedAnalyticsChartProps
 
     // Get months array directly
     const months = tComman.raw('months') as string[];
+    const hasData = useMemo(() => data.some((val) => val > 0), [data]);
+    if (!hasData) {
+        return (
 
+            <EmptyState
+                title={tdash('noChartData')}
+            />
+        );
+    }
     return (
         <LineChart
             labels={months}

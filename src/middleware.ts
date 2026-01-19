@@ -31,9 +31,11 @@ interface Route {
 const PUBLIC_ROUTES: Route[] = [
     { path: '/auth' },
     { path: '/about', strict: true },
-    { path: '/blog', strict: true },
+    { path: '/blogs', strict: false },
     { path: '/contact', strict: true },
     { path: '/properties', strict: false },
+    { path: '/terms', strict: true },
+    { path: '/privacy', strict: true },
     { path: '/', strict: true },
 ];
 

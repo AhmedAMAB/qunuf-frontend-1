@@ -1,27 +1,46 @@
 'use client'
 import { DoughnutChart } from "@/components/shared/charts/DoughnutChart";
 import { useTranslations } from "next-intl"
+import { ContractStatus } from "@/types/dashboard/contract";
+import { useMemo } from "react";
 
-export function CostBreakdownChart() {
-    const t = useTranslations('dashboard.admin.costBreakdown');
+interface CostBreakdownChartProps {
+    statusBreakdown?: Record<string, number>;
+    totalContracts?: number;
+}
 
-    const labels = [
-        t('maintenance'),
-        t('repair'),
-        t('taxes'),
-        t('saving')
-    ];
+export function CostBreakdownChart({ statusBreakdown = {}, totalContracts = 0 }: CostBreakdownChartProps) {
+    const t = useTranslations('dashboard.contracts.table.statusOptions');
 
-    const data = [300, 150, 200, 100]; // example values
+    // Map contract statuses to labels
+    const statusLabels: Record<string, string> = {
+        [ContractStatus.PENDING_LANDLORD_ACCEPTANCE]: t('pending_landlord_acceptance'),
+        [ContractStatus.PENDING_TENANT_ACCEPTANCE]: t('pending_tenant_acceptance'),
+        [ContractStatus.PENDING_SIGNATURE]: t('pending_signature'),
+        [ContractStatus.ACTIVE]: t('active'),
+        [ContractStatus.TERMINATED]: t('terminated'),
+        [ContractStatus.CANCELLED]: t('cancelled'),
+        [ContractStatus.EXPIRED]: t('expired'),
+    };
 
-    const colors = ['#A4C8AE', '#E5D6B8', '#C1D8DA', '#B8BED5'];
+    // Extract statuses that have counts
+    const { statuses, labels, data } = useMemo(() => {
+        const statuses = Object.keys(statusLabels).filter(status => (statusBreakdown[status] || 0) > 0);
+        const labels = statuses.map(status => statusLabels[status]);
+        const data = statuses.map(status => statusBreakdown[status] || 0);
+
+        return { statuses, labels, data };
+    }, [statusLabels, statusBreakdown]);
+
+    // Colors for different statuses
+    const colors = ['#A4C8AE', '#E5D6B8', '#C1D8DA', '#B8BED5', '#D4A5A5', '#C4B5FD', '#FDE68A'];
 
     return (
         <DoughnutChart
-            centerText="$ 4,750"
+            centerText={totalContracts.toString()}
             labels={labels}
             data={data}
-            colors={colors}
+            colors={colors.slice(0, labels.length)}
         />
     );
 }

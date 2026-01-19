@@ -22,7 +22,7 @@ interface EmptyStateProps {
 
 export default function EmptyState({
     title = "No data found",
-    message = "Try adjusting your search or filters.",
+    message,
     actionLabel,
     onAction,
     href, // optional navigation link
@@ -83,7 +83,7 @@ export default function EmptyState({
                 {/* Content */}
                 <main className="z-10 flex w-full max-w-88 flex-col items-center justify-center mb-8 gap-2">
                     <h1 className="text-primary text-xl font-semibold">{title}</h1>
-                    <p className="text-center text-base text-tertiary">{message}</p>
+                    {message && <p className="text-center text-base text-tertiary">{message}</p>}
                 </main>
 
                 {/* Action Button (optional) */}

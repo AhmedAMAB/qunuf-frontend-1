@@ -106,6 +106,7 @@ export default function PropertiesDataView() {
     return (
         <>
             <DataView<Property>
+                key={'properties'}
                 columns={columns}
                 getRows={getRows}
                 onExport={exportRows}

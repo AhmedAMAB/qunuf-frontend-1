@@ -1,14 +1,22 @@
 'use client'
 import { BarChart } from "@/components/shared/charts/BarChart";
+import EmptyState from "@/components/shared/EmptyState";
 import { useTranslations } from "next-intl"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
-export function ReportSalesChart() {
+interface ReportSalesChartProps {
+    data?: number[];
+}
+
+export function ReportSalesChart({ data = [] }: ReportSalesChartProps) {
     const tStat = useTranslations('dashboard.statistics');
     const tComman = useTranslations('comman');
 
     const labels = tComman.raw('weekdays') as string[];
-    const data = [120, 90, 150, 80, 100, 130, 110];
+    const chartData = useMemo
+        (() => (data.length === 7 ? data : Array(7).fill(0)), [data]);
+
+    const hasData = useMemo(() => chartData.some((val) => val > 0), [chartData]);
 
     const [resolvedColor, setResolvedColor] = useState<string>('#2F6B3E'); // fallback
 
@@ -17,14 +25,23 @@ export function ReportSalesChart() {
         if (cssVar) setResolvedColor(cssVar);
     }, []);
 
+    if (!hasData) {
+        return (
+
+            <EmptyState
+                title={tStat('noChartData')}
+            />
+        );
+    }
+
     return (
         <BarChart
             labels={labels}
-            label={tStat('reportSales')}
+            label={tStat('contractsCreated')}
             usePattern
             patternSpacing={30}
             patternStroke="#FFFFFF4D"
-            data={data}
+            data={chartData}
             barColors={Array(labels.length).fill(resolvedColor)}
         />
     );

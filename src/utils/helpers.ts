@@ -111,3 +111,12 @@ export function getInitials(name: string): string {
 
 
 export const saudiPhoneRegex = /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/;
+
+export const getTrend = (percent?: number) => {
+    if (percent == null) return null;
+
+    return {
+        isUp: percent >= 0,
+        value: Math.abs(percent),
+    };
+};

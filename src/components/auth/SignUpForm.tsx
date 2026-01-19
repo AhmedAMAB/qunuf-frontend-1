@@ -24,7 +24,7 @@ const registerSchema = z.object({
         .trim()
         .min(1, { message: 'name.required' })
         .max(50, { message: 'name.maxLength' }),
-    email: z.email({ message: 'email.invalid' }),
+    email: z.string().min(1, { message: 'email.required' }).email({ message: 'email.invalid' }),
     password: z
         .string()
         .trim()
@@ -54,7 +54,7 @@ export default function SignUpForm() {
         try {
             await api.post('/auth/register', data);
 
-            toast.success(t('success.registered'));
+            toast.success(t('success.emailSend'));
             router.push('/auth/sign-in');
         } catch (err: any) {
             toast.error(err.response.data.message || t('errors.registrationFailed'));
@@ -138,12 +138,12 @@ export default function SignUpForm() {
                     </Link>
                 </p>
 
-                <p className="text-gray-600">
+                {/* <p className="text-gray-600">
                     {t('didNotReceiveVerification')}{' '}
                     <Link href="/auth/resend-verification-email" className="text-primary font-medium underline">
                         {t('resend')}
                     </Link>
-                </p>
+                </p> */}
 
             </div>
 

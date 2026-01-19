@@ -27,11 +27,20 @@ export function BirthDatePopup({ value, error, isLoading, onSave, close }: Props
         if (!birthDate) return;
         onSave(birthDate ? new Date(birthDate) : null);
     };
+    const today = new Date();
 
+    // Maximum date (User must be at least 18 years old)
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
+        .toISOString().split("T")[0];
+
+    // Minimum date (User cannot be older than 100 years)
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate())
+        .toISOString().split("T")[0];
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <TextInput
-
+                min={minDate}
+                max={maxDate}
                 type="date"
                 label={t('birthDate')}
                 placeholder={t('placeholders.birthDate')}

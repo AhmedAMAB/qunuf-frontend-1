@@ -4,8 +4,9 @@ import z from "zod";
 
 // Reusable phone schema
 export const phoneSchema = z.string()
-    .min(1, 'required')
-    .regex(/^[+]?[\d\s\-()]{3,20}$/, 'invalidPhone');
+    .min(1, 'validation.required')
+    .regex(/^[+]?[\d\s\-()]{3,20}$/, 'validation.invalidPhone');
+
 export const triggerFileDownload = (response: AxiosResponse<any, any>, defaultName: string) => {
     const contentDisposition = response.headers['content-disposition'];
     let filename = defaultName;

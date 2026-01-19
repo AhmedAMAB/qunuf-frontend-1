@@ -40,7 +40,7 @@ export default function Features() {
                     <p className="text-sm sm:text-base leading-[26px] max-w-[700px] text-white opacity-80 w-fit text-center">
                         {t("card1.description")}
                     </p>
-                    <PrimaryButton href={role === UserRole.LANDLORD ? '/dashboard/properties/add' : '/auth/sign-up'} className="text-black transition-colors bg-white  hover:bg-gray-300 text-sm md:text-base" >
+                    <PrimaryButton href={role === UserRole.LANDLORD ? '/dashboard/properties/add' : '/auth/sign-up?type=landlord'} className="text-black transition-colors bg-white  hover:bg-gray-300 text-sm md:text-base" >
                         {t("card1.button")}
                     </PrimaryButton>
                 </div>
@@ -53,7 +53,7 @@ export default function Features() {
                     <p className="text-sm sm:text-base leading-[26px] max-w-[700px] text-white opacity-80 w-fit text-center">
                         {t("card2.description")}
                     </p>
-                    <PrimaryButton href={role === UserRole.LANDLORD ? '/dashboard/contracts' : '/auth/sign-up'} className="text-black transition-colors bg-white  hover:bg-gray-300 text-sm md:text-base">
+                    <PrimaryButton href={role === UserRole.LANDLORD ? '/dashboard/contracts' : '/auth/sign-up?type=landlord'} className="text-black transition-colors bg-white  hover:bg-gray-300 text-sm md:text-base">
                         {t("card2.button")}
                     </PrimaryButton>
                 </div>

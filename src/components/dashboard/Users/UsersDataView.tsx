@@ -14,7 +14,7 @@ import UserDetailsPopup from "./UserDetailsPopup";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import Popup from "@/components/shared/Popup";
-import { FaUser } from "react-icons/fa";
+import { FaComments, FaUser } from "react-icons/fa";
 
 
 export default function UsersDataView() {
@@ -85,6 +85,7 @@ export default function UsersDataView() {
     return (
         <>
             <DataView<User>
+                key={'users'}
                 columns={columns}
                 getRows={getRows}
                 onExport={exportRows}
@@ -94,6 +95,11 @@ export default function UsersDataView() {
                 showActions={true}
                 actionsMenuItems={(row: User): MenuActionItem[] =>
                     [
+                        {
+                            label: t('table.chat'),
+                            Icon: FaComments,
+                            link: `/chats?user=${row.id}`
+                        },
                         {
                             label: t('table.viewDetails'),
                             Icon: FaUser,

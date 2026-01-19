@@ -166,6 +166,7 @@ export default function ContractDataView() {
     return (
         <>
             <DataView<Contract>
+                key={'contracts'}
                 columns={ContractColumns(t, role)}
                 getRows={getRows}
                 onExport={exportRows}
