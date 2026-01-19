@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
-
+ 
 interface SidebarProps {
     title: string | ReactNode;
     open: boolean;

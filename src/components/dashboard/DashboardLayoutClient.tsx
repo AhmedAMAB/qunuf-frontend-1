@@ -2,32 +2,29 @@
 
 import { useState } from 'react';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
-import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
-import Sidebar from '@/components/shared/Sidebar';
-import Logo from '../shared/Logo';
+import DashboardSidebar, { MobileSidebar } from '@/components/dashboard/DashboardSidebar';
 
 export default function DashboardLayoutClient({ children }: { children: React.ReactNode }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <div className='flex h-screen overflow-hidden bg-dashboard-bg relative'>
-
-            {/* Sidebar: Fixed position in the flex row */}
-            <aside className="hidden lg:block w-[140px] h-full shrink-0 border-e border-gray/10 bg-white z-30 relative">
+        <div className="flex h-screen overflow-hidden bg-dashboard-bg">
+            {/* Desktop Sidebar - Compact 80px */}
+            <aside className="hidden lg:block w-[90px] h-full shrink-0 bg-sidebar z-30 relative border-r border-gray/10 shadow-sm">
                 <DashboardSidebar />
             </aside>
-            {/* Mobile Sidebar (Kept as is for overlay logic) */}
-            <div className="lg:hidden">
-                <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} title={<Logo small />}>
-                    <DashboardSidebar />
-                </Sidebar>
-            </div>
 
-            {/* Main Area: flex-1 takes remaining width, overflow-y-auto handles its own scroll */}
+            {/* Mobile Sidebar */}
+            <MobileSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+            {/* Main Content Area */}
             <div className="flex-1 flex flex-col h-full overflow-hidden">
+                {/* Header */}
                 <DashboardHeader onOpenSidebar={() => setSidebarOpen(true)} />
+
+                {/* Main Content */}
                 <main className="flex-1 overflow-y-auto thin-scrollbar">
-                    <div className="max-w-[1600px] mx-auto">
+                    <div className=" p-6 lg:p-8">
                         {children}
                     </div>
                 </main>

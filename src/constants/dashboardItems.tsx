@@ -5,7 +5,7 @@ import { Role } from '@/types/global';
 import { ComponentType, SVGProps } from 'react';
 import { TbBuildingCommunity, TbContract } from 'react-icons/tb';
 import { PiBuildingApartment } from 'react-icons/pi';
-import { IoAnalytics, IoSettingsOutline } from 'react-icons/io5';
+import { IoAnalytics, IoLogOutOutline, IoSettingsOutline } from 'react-icons/io5';
 import { getDashboardHref } from '@/utils/dashboardPaths';
 import { GrContact } from 'react-icons/gr';
 import { HiOutlineUserGroup, HiOutlineUsers } from 'react-icons/hi2';
@@ -24,7 +24,8 @@ export type SidebarLink = {
 export function getDashboardItems(role: Role, adminUserId?: string): SidebarLink[] {
     const commonLinks: SidebarLink[] = [
         { href: getDashboardHref('root'), key: 'dashboard', Icon: LuLayoutDashboard, order: 1 },
-        { href: getDashboardHref('settings'), key: 'settings', Icon: IoSettingsOutline, className: 'lg:mt-12', order: 20 },
+        { href: getDashboardHref('settings'), key: 'settings', Icon: IoSettingsOutline,  order: 20 },
+        // { href: getDashboardHref('logout') , key: 'logout', Icon: IoLogOutOutline,  order: 20 } as any,
     ]
     const tenantLinks: SidebarLink[] = [
         { href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 2 },

@@ -21,6 +21,7 @@ export type DashboardPathKey =
     | 'aboutUs'
     | 'departments'
     | 'websiteSettings'
+		| 'logout'
     | 'users';
 
 export const dashboardPaths: Record<DashboardPathKey, string> = {
@@ -44,7 +45,8 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     aboutUs: 'about-us',
     departments: 'departments',
     websiteSettings: 'website-settings',
-    users: 'users'
+    users: 'users' ,
+    logout: 'logout'
 };
 
 
