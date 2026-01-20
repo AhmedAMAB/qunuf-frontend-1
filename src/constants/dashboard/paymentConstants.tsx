@@ -1,5 +1,5 @@
 
-import { PropertyCell } from "@/components/shared/properties/PropertyCell";
+import { PropertyCell } from "@/components/molecules/properties/PropertyCell";
 import { PaymentRow } from "@/types/dashboard/payment";
 import { TableColumnType } from "@/types/table";
 import { format } from "date-fns";

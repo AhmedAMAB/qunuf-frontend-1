@@ -4,9 +4,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useValues } from '@/contexts/GlobalContext';
 import PopupActionButtons from './PopupActionButtons';
-import { Option } from '@/components/shared/forms/SelectInput';
-import SelectField from '@/components/shared/forms/SelectField';
-import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
+import { Option } from '@/components/molecules/forms/SelectInput';
+import SelectField from '@/components/molecules/forms/SelectField';
+import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
 
 interface Props {
     value?: string | null; // nationalityId

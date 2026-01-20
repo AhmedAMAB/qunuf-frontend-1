@@ -3,14 +3,14 @@
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { TeamMemberCard } from './TeamMemberCard';
-import Popup from '@/components/shared/Popup';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import Popup from '@/components/atoms/Popup';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 import TeamMemberForm from './TeamMemberForm';
 import SectionHeading from '../../SectionHeading';
-import Pagination from '@/components/shared/Pagination';
-import { ErrorCard } from '@/components/shared/ErrorCard';
+import Pagination from '@/components/atoms/Pagination';
+import { ErrorCard } from '@/components/atoms/ErrorCard';
 import api from '@/libs/axios';
-import EmptyState from '@/components/shared/EmptyState';
+import EmptyState from '@/components/atoms/EmptyState';
 import DeleteTeamMemberPopup from './DeleteTeamMemberPopup';
 
 

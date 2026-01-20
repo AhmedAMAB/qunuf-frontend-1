@@ -1,5 +1,5 @@
-import Footer from "@/components/shared/footer/Footer";
-import Header from "@/components/shared/header/Header";
+import Footer from "@/components/molecules/footer/Footer";
+import Header from "@/components/molecules/header/Header";
 
 
 export default function MainLayout({

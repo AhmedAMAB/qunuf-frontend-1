@@ -1,4 +1,4 @@
-import { TooltipDP } from "@/components/shared/charts/ChartTooltip";
+import { TooltipDP } from "@/components/molecules/charts/ChartTooltip";
 import { TooltipItem, TooltipModel } from "chart.js";
 import { useState } from "react";
 

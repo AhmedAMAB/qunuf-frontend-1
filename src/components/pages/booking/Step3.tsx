@@ -3,7 +3,7 @@
 import StepTitle from "./StepTitle";
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from "next/navigation";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 import { PropertyType, RentType } from "@/types/dashboard/properties";
 
 export default function Step3({ nextStep, createdContract }: { nextStep: () => void, createdContract: any }) {

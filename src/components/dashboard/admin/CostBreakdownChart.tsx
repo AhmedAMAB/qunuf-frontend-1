@@ -1,9 +1,9 @@
 'use client'
-import { DoughnutChart } from "@/components/shared/charts/DoughnutChart";
+import { DoughnutChart } from "@/components/molecules/charts/DoughnutChart";
 import { useTranslations } from "next-intl"
 import { ContractStatus } from "@/types/dashboard/contract";
 import { useEffect, useMemo, useState } from "react";
-import EmptyState from "@/components/shared/EmptyState";
+import EmptyState from "@/components/atoms/EmptyState";
 
 interface CostBreakdownChartProps {
     statusBreakdown?: Record<string, number>;
@@ -78,7 +78,7 @@ export function CostBreakdownChart({ statusBreakdown = {}, totalContracts = 0 }:
         <div className="relative">
             {/* Gradient background overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-xl pointer-events-none" />
-            
+
             {/* Chart container */}
             <div className="relative p-4">
                 <DoughnutChart
@@ -93,12 +93,12 @@ export function CostBreakdownChart({ statusBreakdown = {}, totalContracts = 0 }:
             <div className="relative mt-4 px-4 pb-2">
                 <div className="flex flex-wrap gap-2 justify-center">
                     {labels.map((label, index) => (
-                        <div 
-                            key={index} 
+                        <div
+                            key={index}
                             className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gray/10 shadow-sm"
                         >
-                            <div 
-                                className="w-3 h-3 rounded-full shadow-sm" 
+                            <div
+                                className="w-3 h-3 rounded-full shadow-sm"
                                 style={{ backgroundColor: colors[index] }}
                             />
                             <span className="text-xs font-medium text-dark/80">

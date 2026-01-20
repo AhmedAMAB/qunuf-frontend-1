@@ -1,8 +1,8 @@
 import React from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 import api from "@/libs/axios";
-import PageHeroSection from "@/components/shared/PageHeroSection";
-import NoData from "@/components/shared/NoData";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
+import NoData from "@/components/atoms/NoData";
 
 async function getPrivacyData() {
     try {

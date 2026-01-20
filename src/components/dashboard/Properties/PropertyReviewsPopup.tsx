@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import api from '@/libs/axios';
-import Popup from '@/components/shared/Popup';
+import Popup from '@/components/atoms/Popup';
 import { FaStar } from 'react-icons/fa';
 import { Property } from '@/types/dashboard/properties';
 import { TableRowType } from '@/types/table';

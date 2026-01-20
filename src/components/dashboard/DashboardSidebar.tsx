@@ -2,12 +2,12 @@
 
 import { getDashboardItems, SidebarLink } from '@/constants/dashboardItems';
 import { useTranslations } from 'next-intl';
-import Logo from '../shared/Logo';
-import Tooltip from '../shared/Tooltip';
+import Logo from '../atoms/Logo';
+import Tooltip from '../atoms/Tooltip';
 import { IoLogOutOutline } from 'react-icons/io5';
-import FallbackImage from '../shared/FallbackImage';
-import SidebarItem from '../shared/SidebarItem';
-import LocaleSwitcher from '../shared/LocaleSwitcher';
+import FallbackImage from '../atoms/FallbackImage';
+import SidebarItem from '../atoms/SidebarItem';
+import LocaleSwitcher from '../atoms/LocaleSwitcher';
 import { GrLanguage } from 'react-icons/gr';
 import { HiX } from 'react-icons/hi';
 import { Link, usePathname } from '@/i18n/navigation';
@@ -101,7 +101,7 @@ export default function DashboardSidebar({ isMobile = false, onClose }: Dashboar
             <div className={cn(
                 "shrink-0 border-t border-gray/10",
                 isMobile ? "px-4 py-4 space-y-3" : "px-2 py-3 space-y-2"
-            )}> 
+            )}>
 
                 {/* Logout Button - Desktop */}
                 {!isMobile && (
@@ -121,13 +121,13 @@ export default function DashboardSidebar({ isMobile = false, onClose }: Dashboar
                 {/* Profile Avatar - Desktop */}
                 {!isMobile && (
                     <div className="flex justify-center">
-                        <Link 
+                        <Link
                             href="/dashboard/settings/account"
                             className="relative group block"
                         >
                             {/* Glow effect on hover */}
                             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary via-primary/50 to-primary/30 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-300" />
-                            
+
                             {/* Avatar container */}
                             <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-secondary group-hover:border-primary transition-all duration-300 ring-4 ring-transparent group-hover:ring-primary/20 shadow-lg">
                                 <FallbackImage
@@ -154,7 +154,7 @@ export default function DashboardSidebar({ isMobile = false, onClose }: Dashboar
                     <div className="relative group">
                         {/* Gradient border effect */}
                         <div className="absolute -inset-[1px] bg-gradient-to-r from-primary/50 via-primary to-primary/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
+
                         {/* Card content */}
                         <div className="relative bg-gradient-to-br from-secondary/30 to-secondary/10 rounded-2xl p-4 border border-secondary/40 group-hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md">
                             <div className="flex items-center gap-3">
@@ -174,7 +174,7 @@ export default function DashboardSidebar({ isMobile = false, onClose }: Dashboar
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    
+
                                     {/* Online Status */}
                                     <span className="absolute bottom-0 right-0 flex h-3.5 w-3.5">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -250,7 +250,7 @@ function DesktopLocaleTrigger({
         </Tooltip>
     );
 }
- 
+
 function MobileLocaleTrigger({
     onClick,
     disabled,

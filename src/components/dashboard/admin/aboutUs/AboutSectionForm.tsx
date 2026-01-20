@@ -4,15 +4,15 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import TextInput from '@/components/shared/forms/TextInput';
-import Uploader from '@/components/shared/forms/Uploader';
-import ActionButtons from '@/components/shared/ActionButtons';
+import TextInput from '@/components/molecules/forms/TextInput';
+import Uploader from '@/components/molecules/forms/Uploader';
+import ActionButtons from '@/components/atoms/ActionButtons';
 import { FileItem } from '@/utils/upload';
-import TextAreaInput from '@/components/shared/forms/TextAreaInput';
+import TextAreaInput from '@/components/molecules/forms/TextAreaInput';
 import toast from 'react-hot-toast';
 import api from '@/libs/axios';
 import { CompanyInfo } from '@/types/company';
-import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
+import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
 import { useState } from 'react';
 
 export const getAboutSectionSchema = (t: (key: string) => string) =>

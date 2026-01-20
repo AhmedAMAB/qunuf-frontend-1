@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import FloatingActionButton from "../buttons/FloatingActionButton";
 import { resolveUrl } from "@/utils/upload";
+import FloatingActionButton from "@/components/atoms/buttons/FloatingActionButton";
 
 type Property = {
     id: string;

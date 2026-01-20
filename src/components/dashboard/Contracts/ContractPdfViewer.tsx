@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Popup from '@/components/shared/Popup';
+import Popup from '@/components/atoms/Popup';
 import { PiDownloadBold, PiSpinnerGapBold } from 'react-icons/pi';
 import { resolveUrl } from '@/utils/upload';
 

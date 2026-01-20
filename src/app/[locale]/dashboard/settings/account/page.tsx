@@ -1,7 +1,7 @@
 'use client'
 
 import Account from "@/components/dashboard/settings/account/Account";
-import BreadcrumbsHeader from "@/components/shared/BreadcrumbsHeader";
+import BreadcrumbsHeader from "@/components/atoms/BreadcrumbsHeader";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { useTranslations } from "next-intl";
 

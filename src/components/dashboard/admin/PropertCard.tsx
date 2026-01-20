@@ -1,4 +1,4 @@
-import CircularRating from "@/components/shared/CircularRating";
+import CircularRating from "@/components/atoms/CircularRating";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 

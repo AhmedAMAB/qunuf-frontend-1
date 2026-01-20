@@ -1,6 +1,6 @@
 'use client';
 
-import ActionPopup from "@/components/shared/ActionPopup";
+import ActionPopup from "@/components/atoms/ActionPopup";
 import api from "@/libs/axios";
 import { useTranslations } from "next-intl";
 import { useState } from "react";

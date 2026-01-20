@@ -5,7 +5,7 @@ import { FilterConfig } from '@/types/table';
 import DateRangePicker from '../forms/SelectDateRange';
 import SearchField from '../forms/SearchField';
 import useTableFilter from '@/hooks/dashboard/useTableFilter';
-import Sidebar from '../Sidebar';
+
 import { useState } from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { IconType } from 'react-icons';
@@ -13,6 +13,7 @@ import TableActions from './TableActions';
 import { useTranslations } from 'next-intl';
 import SelectDropdown from '../forms/SelectDropdown';
 import { cn } from '@/lib/utils';
+import Sidebar from '@/components/atoms/Sidebar';
 
 export type actionButton = {
     show?: boolean;

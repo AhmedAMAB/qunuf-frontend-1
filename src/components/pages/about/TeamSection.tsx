@@ -8,9 +8,9 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Team } from "@/types/company";
 import { resolveUrl } from "@/utils/upload";
-import NavigationButtons from "@/components/shared/NavigationButtons";
+import NavigationButtons from "@/components/atoms/NavigationButtons";
 
-import ImageAlt from "@/components/shared/ImageAlt";
+import ImageAlt from "@/components/atoms/ImageAlt";
 import Image from "next/image";
 
 interface TeamSectionProps {

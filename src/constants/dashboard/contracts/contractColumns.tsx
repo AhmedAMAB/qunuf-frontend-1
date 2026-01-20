@@ -1,5 +1,5 @@
-import { PropertyCell } from "@/components/shared/properties/PropertyCell";
-import { UserCell } from "@/components/shared/properties/UserCell";
+import { PropertyCell } from "@/components/molecules/properties/PropertyCell";
+import { UserCell } from "@/components/molecules/properties/UserCell";
 import { UserRole } from "@/constants/user";
 import { Contract, ContractStatus } from "@/types/dashboard/contract";
 import { TableColumnType } from "@/types/table";

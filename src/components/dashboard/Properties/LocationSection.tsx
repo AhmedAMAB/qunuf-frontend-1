@@ -1,7 +1,7 @@
 import { Control } from "react-hook-form";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
-import Popup from "@/components/shared/Popup";
-import LocationInput from "@/components/shared/forms/LocationInput";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
+import Popup from "@/components/atoms/Popup";
+import LocationInput from "@/components/molecules/forms/LocationInput";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 

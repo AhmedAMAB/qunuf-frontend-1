@@ -6,7 +6,7 @@ import { MdCalendarToday, MdDelete, MdEdit, MdKeyboardArrowDown } from 'react-ic
 import { useLocale, useTranslations } from 'next-intl';
 import { resolveUrl } from '@/utils/upload';
 import { Blog } from '@/types/dashboard/blog';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 
 interface BlogContentCardProps {
     block: Blog

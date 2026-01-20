@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import api from "@/libs/axios";
 import { phoneSchema } from "@/utils/validation";
 import { useValues } from "@/contexts/GlobalContext";
-import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
+import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 
 
 const contactSchema = z.object({

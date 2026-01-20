@@ -6,7 +6,7 @@ import { ChildTypeProps, MenuActionItem } from './MenuActionList';
 import NoRowsFound from './NoRowsFound';
 import TableRow from './TableRow';
 import TableHeader from './TableHeader';
-import Popup from '../Popup';
+import Popup from "@/components/atoms/Popup";
 
 interface TableProps<T = Record<string, any>> {
     columns: TableColumnType<T>[];

@@ -12,7 +12,7 @@ import {
     MAX_PRICE, MIN_PRICE, MAX_SCQUAREFEET, MIN_SCQUAREFEET, MAX_YEARBUILD, MIN_YEARBUILD,
 } from "@/constants/properties/constant";
 import { useTranslations } from "next-intl";
-import Sidebar from "@/components/shared/Sidebar";
+import Sidebar from "@/components/atoms/Sidebar";
 import { useState } from "react";
 
 

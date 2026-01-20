@@ -1,6 +1,6 @@
 'use client'
-import { BarChart } from "@/components/shared/charts/BarChart";
-import EmptyState from "@/components/shared/EmptyState";
+import { BarChart } from "@/components/molecules/charts/BarChart";
+import EmptyState from "@/components/atoms/EmptyState";
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
 
@@ -14,7 +14,7 @@ export function ReportSalesChart({ data = [] }: ReportSalesChartProps) {
 
     const labels = tComman.raw('weekdays') as string[];
     const chartData = useMemo(
-        () => (data.length === 7 ? data : Array(7).fill(0)), 
+        () => (data.length === 7 ? data : Array(7).fill(0)),
         [data]
     );
 
@@ -44,7 +44,7 @@ export function ReportSalesChart({ data = [] }: ReportSalesChartProps) {
         <div className="relative">
             {/* Gradient background overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5 rounded-xl pointer-events-none" />
-            
+
             {/* Chart container */}
             <div className="relative p-4">
                 <BarChart

@@ -1,6 +1,6 @@
 'use client'
-import PrimaryButton from "@/components/shared/buttons/PrimaryButton";
-import ImageGallery from "@/components/shared/ImageGallery";
+import PrimaryButton from "@/components/atoms/buttons/PrimaryButton";
+import ImageGallery from "@/components/atoms/ImageGallery";
 import { LiaBuilding } from "react-icons/lia";
 import { GiMilitaryAmbulance } from "react-icons/gi";
 import { Property, RentType } from "@/types/dashboard/properties";
@@ -13,7 +13,7 @@ import dynamic from 'next/dynamic';
 import { ReactNode } from "react";
 import { IoIosPin } from "react-icons/io";
 
-const LocationMap = dynamic(() => import('../../../components/shared/LocationMap'), {
+const LocationMap = dynamic(() => import('../../../components/atoms/LocationMap'), {
     ssr: false,
 });
 

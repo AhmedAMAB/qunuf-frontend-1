@@ -1,8 +1,9 @@
+import ExportExel from "@/components/atoms/ExportExel";
 import { actionButton } from "./FilterContainer";
-import ExportExel from '../ExportExel';
-import SecondaryButton from '../buttons/SecondaryButton';
-import Tooltip from '../Tooltip';
+
 import { Link } from "@/i18n/navigation";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
+import Tooltip from "@/components/atoms/Tooltip";
 
 export default function TableActions({ hasRows, actionButton, onExport }: { hasRows?: boolean, actionButton: actionButton, onExport?: (limit: number) => Promise<void>; }) {
     const MobileIcon = actionButton.MobileIcon;

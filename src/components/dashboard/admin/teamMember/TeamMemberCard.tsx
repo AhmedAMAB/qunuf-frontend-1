@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { MdDelete } from 'react-icons/md';
 import { resolveUrl } from '@/utils/upload';
 import { getInitials } from '@/utils/helpers';
-import ImageAlt from '@/components/shared/ImageAlt';
+import ImageAlt from '@/components/atoms/ImageAlt';
 
 interface TeamMemberCardProps {
   name: string;

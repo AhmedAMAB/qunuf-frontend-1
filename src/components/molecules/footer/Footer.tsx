@@ -1,9 +1,10 @@
 'use client';
 import { Link, usePathname } from "@/i18n/navigation";
-import Logo from "../Logo";
+
 import SocialIcons from "./SocialIcons";
 import { useLocale, useTranslations } from "next-intl";
 import { useValues } from "@/contexts/GlobalContext";
+import Logo from "@/components/atoms/Logo";
 
 // Simple skeleton component for placeholders
 const Skeleton = ({ width = "w-32", height = "h-4" }) => (

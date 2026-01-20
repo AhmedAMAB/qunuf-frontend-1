@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import Popup from "../shared/Popup";
+import Popup from "../atoms/Popup";
 import { PiDownloadBold } from "react-icons/pi";
 import { useTranslations } from "next-intl";
 

@@ -1,8 +1,8 @@
 import { Controller, useFieldArray } from "react-hook-form";
 import { MdAdd, MdDelete } from "react-icons/md";
-import TextInput from "@/components/shared/forms/TextInput";
+import TextInput from "@/components/molecules/forms/TextInput";
 import { useTranslations } from "next-intl";
-import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
+import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 
 
 const NearbyFacilitiesSection = ({ control, name, label, errors }: { control: any, name: string, label: string, errors: any }) => {

@@ -1,8 +1,9 @@
 'use client'
 import { useTranslations } from "next-intl"
 import { LineChart } from "./LineChart"
-import EmptyState from "../EmptyState";
+
 import { useMemo } from "react";
+import EmptyState from "@/components/atoms/EmptyState";
 
 interface RentedAnalyticsChartProps {
     data?: number[]

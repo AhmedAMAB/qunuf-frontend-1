@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import TextInput from '@/components/shared/forms/TextInput';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import TextInput from '@/components/molecules/forms/TextInput';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 import PopupActionButtons from './PopupActionButtons';
 
 interface SubPopupProps {

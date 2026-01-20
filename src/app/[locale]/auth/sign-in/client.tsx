@@ -1,9 +1,9 @@
 
 'use client'
 import AuthHeader from "@/components/atoms/AuthHeader";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
-import PasswordInput from "@/components/shared/forms/PasswordInput";
-import TextInput from "@/components/shared/forms/TextInput";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
+import PasswordInput from "@/components/molecules/forms/PasswordInput";
+import TextInput from "@/components/molecules/forms/TextInput";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";

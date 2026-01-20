@@ -1,5 +1,5 @@
 import AdminStatusSelect from "@/components/dashboard/Properties/AdminStatusSelect";
-import { PropertyCell } from "@/components/shared/properties/PropertyCell";
+import { PropertyCell } from "@/components/molecules/properties/PropertyCell";
 import { Property, PropertyStatus, PropertyType, RentType } from "@/types/dashboard/properties";
 import { TableColumnType } from "@/types/table";
 import { format } from "date-fns";

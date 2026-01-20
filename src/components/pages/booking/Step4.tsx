@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import StepTitle from './StepTitle';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

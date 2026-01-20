@@ -1,4 +1,4 @@
-import PageHeroSection from "@/components/shared/PageHeroSection";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
 import { getLocale, getTranslations } from "next-intl/server";
 import api from "@/libs/axios"; // adjust to your API helper
 import { Blog } from "@/types/dashboard/blog";

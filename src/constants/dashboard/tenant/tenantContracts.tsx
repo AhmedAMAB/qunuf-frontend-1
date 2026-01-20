@@ -1,6 +1,6 @@
 
 import ContractViewer from '@/components/dashboard/ContractViewer';
-import { PropertyCell } from '@/components/shared/properties/PropertyCell';
+import { PropertyCell } from '@/components/molecules/properties/PropertyCell';
 import { TenantContractRow } from '@/types/dashboard/tenant';
 import { ContractStatus } from '@/types/global';
 import { TableColumnType } from '@/types/table';

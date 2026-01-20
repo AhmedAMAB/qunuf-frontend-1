@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import TextInput from '@/components/shared/forms/TextInput';
+import TextInput from '@/components/molecules/forms/TextInput';
 
 type MaxPriceFilterProps = {
     value?: string;

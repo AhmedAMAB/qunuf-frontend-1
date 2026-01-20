@@ -4,15 +4,15 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import api from '@/libs/axios';
 import toast from 'react-hot-toast';
-import ActionPopup from '@/components/shared/ActionPopup';
+import ActionPopup from '@/components/atoms/ActionPopup';
 import { Contract } from '@/types/dashboard/contract';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import TextAreaInput from '@/components/shared/forms/TextAreaInput';
+import TextAreaInput from '@/components/molecules/forms/TextAreaInput';
 import { FaStar } from 'react-icons/fa';
 import { TableRowType } from '@/types/table';
-import Popup from '@/components/shared/Popup';
+import Popup from '@/components/atoms/Popup';
 
 type ReviewPopupsProps = {
     row: Contract;

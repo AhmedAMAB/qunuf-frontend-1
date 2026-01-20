@@ -1,4 +1,4 @@
-// components/shared/SwiperNav.tsx
+// components/atoms/SwiperNav.tsx
 'use client';
 
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";

@@ -1,7 +1,7 @@
 'use client'
-import PrimaryButton from "@/components/shared/buttons/PrimaryButton";
-import PropertyCategoryCard from "@/components/shared/properties/PropertyCategoryCard";
-import SwiperNav from "@/components/shared/SwiperNav";
+import PrimaryButton from "@/components/atoms/buttons/PrimaryButton";
+import PropertyCategoryCard from "@/components/molecules/properties/PropertyCategoryCard";
+import SwiperNav from "@/components/atoms/SwiperNav";
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "use-intl";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +9,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { usePathname, useSearchParams } from "next/navigation";
-import PropertyCategorySkeleton from "@/components/shared/properties/PropertyCategorySkeleton";
+import PropertyCategorySkeleton from "@/components/molecules/properties/PropertyCategorySkeleton";
 import { useIndicatorPosition } from "@/hooks/useIndicatorPosition";
 import { updateUrlParams } from "@/utils/helpers";
 import { LuSearchX } from "react-icons/lu";

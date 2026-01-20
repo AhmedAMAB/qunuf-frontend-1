@@ -1,5 +1,5 @@
 'use client'
-import PrimaryButton from "@/components/shared/buttons/PrimaryButton";
+import PrimaryButton from "@/components/atoms/buttons/PrimaryButton";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import api from "@/libs/axios";

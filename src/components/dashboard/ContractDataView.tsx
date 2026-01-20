@@ -1,7 +1,7 @@
 'use client'
 
-import DataView from "@/components/shared/DateViewTable/DataView";
-import { MenuActionItem } from "@/components/shared/DateViewTable/MenuActionList";
+import DataView from "@/components/molecules/DateViewTable/DataView";
+import { MenuActionItem } from "@/components/molecules/DateViewTable/MenuActionList";
 import { useContracts } from "@/hooks/dashboard/contracts/useContracts";
 import { Contract, ContractStatus } from "@/types/dashboard/contract";
 import { ContractColumns } from '@/constants/dashboard/contracts/contractColumns';
@@ -12,7 +12,7 @@ import { MdEdit, MdCheck, MdClose, MdUpload } from "react-icons/md";
 import { RiIndeterminateCircleLine } from "react-icons/ri";
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import Popup from "@/components/shared/Popup";
+import Popup from "@/components/atoms/Popup";
 import ContractDetailsPopup from "./Contracts/ContractDetailsPopup";
 import {
     ReviseContractPopup,

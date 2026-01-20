@@ -6,9 +6,9 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import PropertyCard from "@/components/shared/properties/PropertyCard";
+import PropertyCard from "@/components/molecules/properties/PropertyCard";
 import { useLocale, useTranslations } from 'use-intl';
-import SwiperNav from '@/components/shared/SwiperNav';
+import SwiperNav from '@/components/atoms/SwiperNav';
 import api from '@/libs/axios';
 import { LuSearchX } from 'react-icons/lu';
 

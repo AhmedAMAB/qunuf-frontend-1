@@ -1,6 +1,6 @@
 'use client'
 import { useState, ReactNode } from 'react';
-import Popup from '../shared/Popup';
+import Popup from '../atoms/Popup';
 import { useTranslations } from 'next-intl';
 
 interface EditableFieldProps {

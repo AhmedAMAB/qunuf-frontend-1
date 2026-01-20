@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useLocale, useMessages, useTranslations } from 'next-intl';
 import { useState } from 'react';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 import { CompanySection, type CompanyInfo } from '@/types/company';
 import { resolveUrl } from '@/utils/upload';
 import { MdEdit } from 'react-icons/md';

@@ -4,12 +4,12 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useDebounce } from "@/hooks/useDebounce";
 import api from "@/libs/axios";
-import { ErrorCard } from "@/components/shared/ErrorCard";
+import { ErrorCard } from "@/components/atoms/ErrorCard";
 import SectionHeading from "../../SectionHeading";
-import SearchField from "@/components/shared/forms/SearchField";
+import SearchField from "@/components/molecules/forms/SearchField";
 import { MessageCard } from "./MessageCard";
-import Pagination from "@/components/shared/Pagination";
-import EmptyState from "@/components/shared/EmptyState";
+import Pagination from "@/components/atoms/Pagination";
+import EmptyState from "@/components/atoms/EmptyState";
 
 export default function ContactGrid() {
     const t = useTranslations("dashboard.admin.contactUs");

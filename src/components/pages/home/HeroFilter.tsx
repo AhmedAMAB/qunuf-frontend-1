@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
-import SelectInput, { Option } from "@/components/shared/forms/SelectInput";
+import SelectInput, { Option } from "@/components/molecules/forms/SelectInput";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 

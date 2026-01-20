@@ -1,10 +1,10 @@
 import { BsBell } from "react-icons/bs";
-import LocaleSwitcher from "../shared/LocaleSwitcher";
-import PingIndicator from "../shared/PingIndicator";
+import LocaleSwitcher from "../atoms/LocaleSwitcher";
+import PingIndicator from "../atoms/PingIndicator";
 import { Link } from "@/i18n/navigation";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import FallbackImage from "../shared/FallbackImage";
+import FallbackImage from "../atoms/FallbackImage";
 import { useSocket } from "@/contexts/SocketContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNotifications } from "@/contexts/NotificationContext";

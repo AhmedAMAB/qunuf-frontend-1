@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { MdEdit, MdDelete } from 'react-icons/md';
 import { FaCreditCard } from 'react-icons/fa';
-import Popup from '@/components/shared/Popup';
-import ActionPopup from '@/components/shared/ActionPopup';
-import ActionButtons from '@/components/shared/ActionButtons';
+import Popup from '@/components/atoms/Popup';
+import ActionPopup from '@/components/atoms/ActionPopup';
+import ActionButtons from '@/components/atoms/ActionButtons';
 import { useTranslations } from 'next-intl';
 
 export default function VisaCard() {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
-import SecondaryButton from "../../shared/buttons/SecondaryButton";
+import SecondaryButton from "../../atoms/buttons/SecondaryButton";
 import { useTranslations } from "next-intl";
 import { RenewRequest, RenewStatus } from "@/types/dashboard/renew-request";
 import { resolveUrl } from "@/utils/upload";

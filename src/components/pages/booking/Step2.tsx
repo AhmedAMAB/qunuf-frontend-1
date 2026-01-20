@@ -8,7 +8,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import api from "@/libs/axios";
 import toast from "react-hot-toast";
 import { useValues } from "@/contexts/GlobalContext";
-import TextInput from "@/components/shared/forms/TextInput";
+import TextInput from "@/components/molecules/forms/TextInput";
 import { PropertyStatus, RentType } from "@/types/dashboard/properties";
 
 type step2Props = {

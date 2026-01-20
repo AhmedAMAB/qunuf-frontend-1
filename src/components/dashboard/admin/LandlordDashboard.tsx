@@ -6,11 +6,11 @@ import { BiBuildings } from "react-icons/bi";
 import { IoIosTrendingDown, IoIosTrendingUp } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
 import PropertyCard from "./PropertCard";
-import RentedAnalyticsChart from "@/components/shared/charts/RentedAnalytics";
+import RentedAnalyticsChart from "@/components/molecules/charts/RentedAnalytics";
 import { useTranslations } from "next-intl";
 import { useDashboardStats } from "@/hooks/dashboard/useDashboardStats";
-import EmptyState from "@/components/shared/EmptyState";
-import { ErrorCard } from "@/components/shared/ErrorCard";
+import EmptyState from "@/components/atoms/EmptyState";
+import { ErrorCard } from "@/components/atoms/ErrorCard";
 import { resolveUrl } from "@/utils/upload";
 import { getTrend } from "@/utils/helpers";
 

@@ -1,8 +1,8 @@
 import { FaBars } from "react-icons/fa";
-import NotificationDropdown from "../shared/NotificationDropdown";
+import NotificationDropdown from "../atoms/NotificationDropdown";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { Link } from "@/i18n/navigation";
-import LocaleSwitcher from "../shared/LocaleSwitcher";
+import LocaleSwitcher from "../atoms/LocaleSwitcher";
 import { GrLanguage } from "react-icons/gr";
 import { useTranslations } from "next-intl";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useSocket } from "@/contexts/SocketContext";
 import { UserRole } from "@/constants/user";
-import FallbackImage from "../shared/FallbackImage";
+import FallbackImage from "../atoms/FallbackImage";
 import { resolveUrl } from "@/utils/upload";
 
 export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () => void }) {
@@ -43,11 +43,10 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 						{/* Mobile Menu Toggle */}
 						<button
 							onClick={() => setSubHeaderOpen(!subHeaderOpen)}
-							className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 ${
-								subHeaderOpen 
-									? "bg-primary text-white shadow-md" 
+							className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 ${subHeaderOpen
+									? "bg-primary text-white shadow-md"
 									: "bg-secondary/80 hover:bg-primary text-white hover:shadow-md"
-							}`}
+								}`}
 							aria-label="Toggle mobile menu"
 						>
 							<RxDotsHorizontal className="text-xl" />
@@ -77,7 +76,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 									{/* Button */}
 									<div className="relative bg-secondary hover:bg-primary rounded-full p-3 transition-all duration-200 shadow-sm hover:shadow-md">
 										<IoChatbubbleEllipsesOutline size={20} className="text-white group-hover:scale-110 transition-transform duration-200" />
-										
+
 										{/* Unread Badge */}
 										{unreadChatCount > 0 && (
 											<span className="absolute -top-1 -right-1 flex h-5 w-5">
@@ -100,7 +99,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 							<div className="relative group">
 								{/* Gradient border effect on hover */}
 								<div className="absolute -inset-[1px] bg-gradient-to-r from-primary/30 via-primary/50 to-primary/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
-								
+
 								{/* Profile Card */}
 								<div className="relative flex items-center gap-3 ps-4 py-2 pe-2 border-s border-gray/10 bg-gradient-to-r from-transparent to-secondary/5 rounded-r-2xl group-hover:to-secondary/10 transition-all duration-300">
 									{/* User Info - Desktop */}
@@ -121,7 +120,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 									<div className="relative shrink-0">
 										{/* Glow effect on hover */}
 										<div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary via-primary/50 to-primary/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
-										
+
 										{/* Avatar Image */}
 										<div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden border-2 border-secondary group-hover:border-primary transition-all duration-300 ring-2 ring-transparent group-hover:ring-primary/20 shadow-md">
 											<FallbackImage

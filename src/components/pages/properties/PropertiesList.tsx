@@ -1,6 +1,6 @@
 'use client'
-import Pagination from "@/components/shared/DateViewTable/Pagination";
-import EmptyState from "@/components/shared/EmptyState";
+import Pagination from "@/components/molecules/DateViewTable/Pagination";
+import EmptyState from "@/components/atoms/EmptyState";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import api from "@/libs/axios";
 import { useSearchParams } from "next/navigation";
@@ -14,7 +14,7 @@ import { resolveUrl } from "@/utils/upload";
 import { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { LiaCouchSolid } from "react-icons/lia";
-import Tooltip from "@/components/shared/Tooltip";
+import Tooltip from "@/components/atoms/Tooltip";
 import FilterProperties from "./FilterProperties";
 
 

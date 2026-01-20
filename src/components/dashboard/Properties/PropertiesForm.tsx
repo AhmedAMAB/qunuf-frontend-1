@@ -1,11 +1,11 @@
 'use client'
 
-import TextInput from "@/components/shared/forms/TextInput";
-import Uploader from "@/components/shared/forms/Uploader";
+import TextInput from "@/components/molecules/forms/TextInput";
+import Uploader from "@/components/molecules/forms/Uploader";
 import { Controller, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import SelectField from "@/components/shared/forms/SelectField";
-import TextAreaInput from "@/components/shared/forms/TextAreaInput";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import SelectField from "@/components/molecules/forms/SelectField";
+import TextAreaInput from "@/components/molecules/forms/TextAreaInput";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import z from "zod";
@@ -16,10 +16,10 @@ import api from "@/libs/axios";
 import { useRouter } from "@/i18n/navigation";
 import { FeaturesTagsInput } from "./FeaturesTagsInput";
 import { useValues } from "@/contexts/GlobalContext";
-import { Option } from "@/components/shared/forms/SelectInput";
+import { Option } from "@/components/molecules/forms/SelectInput";
 import NearbyFacilitiesSection from "./NearbySection";
-import LocationInput from "@/components/shared/forms/LocationInput";
-import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
+import LocationInput from "@/components/molecules/forms/LocationInput";
+import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 import { FileItem } from "@/utils/upload";
 import PropertyNameInput from "./PropertyNameInput";
 const today = new Date();

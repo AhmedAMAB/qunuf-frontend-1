@@ -8,11 +8,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import api from '@/libs/axios';
 import { toast } from 'react-hot-toast';
 
-import TextInput from '@/components/shared/forms/TextInput';
-import TextAreaInput from '@/components/shared/forms/TextAreaInput';
-import Uploader from '@/components/shared/forms/Uploader';
-import ActionButtons from '@/components/shared/ActionButtons';
-import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
+import TextInput from '@/components/molecules/forms/TextInput';
+import TextAreaInput from '@/components/molecules/forms/TextAreaInput';
+import Uploader from '@/components/molecules/forms/Uploader';
+import ActionButtons from '@/components/atoms/ActionButtons';
+import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
 
 /* ---------------------------------- */
 /* Schema */

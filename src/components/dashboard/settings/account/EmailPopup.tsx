@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import TextInput from '@/components/shared/forms/TextInput';
+import TextInput from '@/components/molecules/forms/TextInput';
 import PopupActionButtons from './PopupActionButtons';
 import api from '@/libs/axios'; // Ensure you have this import
 import { toast } from 'react-hot-toast';

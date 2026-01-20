@@ -3,9 +3,9 @@ import { Link } from "@/i18n/navigation";
 import { FaBed } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
 import { useTranslations } from "next-intl";
-import RatingStars from "../RatingStars";
-import Tooltip from "../Tooltip";
+
 import { resolveUrl } from "@/utils/upload";
+import Tooltip from "@/components/atoms/Tooltip";
 
 export type PropertyGridPreview = {
     id: string;

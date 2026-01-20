@@ -1,4 +1,4 @@
-import Logo from "@/components/shared/Logo";
+import Logo from "@/components/atoms/Logo";
 import { useTranslations } from "next-intl";
 
 

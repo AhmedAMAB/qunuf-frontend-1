@@ -10,8 +10,8 @@ import { ReportSalesChart } from "@/components/dashboard/admin/ReportSalesChart"
 import { CostBreakdownChart } from "@/components/dashboard/admin/CostBreakdownChart";
 import { useTranslations } from "next-intl";
 import { useDashboardStats } from "@/hooks/dashboard/useDashboardStats";
-import { ErrorCard } from "@/components/shared/ErrorCard";
-import EmptyState from "@/components/shared/EmptyState";
+import { ErrorCard } from "@/components/atoms/ErrorCard";
+import EmptyState from "@/components/atoms/EmptyState";
 import { resolveUrl } from "@/utils/upload";
 import Link from "next/link";
 import { getTrend } from "@/utils/helpers";

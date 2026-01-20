@@ -1,4 +1,4 @@
-import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
+import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useRef, useState } from "react";
 

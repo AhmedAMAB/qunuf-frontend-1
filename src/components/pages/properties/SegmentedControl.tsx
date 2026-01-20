@@ -1,5 +1,5 @@
 'use client';
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 import { useIndicatorPosition } from "@/hooks/useIndicatorPosition";
 
 type SegmentedControlProps = {

@@ -1,6 +1,6 @@
 import { BlogCardSkeleton } from "@/components/pages/blogs/RecentBlogs";
-import PageHeader from "@/components/shared/PageHeader";
-import PageHeroSection from "@/components/shared/PageHeroSection";
+import PageHeader from "@/components/atoms/PageHeader";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
 import { getTranslations } from "next-intl/server";
 
 

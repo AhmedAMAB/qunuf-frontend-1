@@ -48,13 +48,13 @@
 
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
-import RatingStars from '@/components/shared/RatingStars';
+import RatingStars from '@/components/atoms/RatingStars';
 
 const users = ['/users/user-1.jpg', '/users/user-2.jpg', '/users/user-3.jpg', '/users/user-4.jpg'];
 import { useMemo, useState } from 'react';
 import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { CiSearch } from 'react-icons/ci';
-import SelectInput, { Option } from '@/components/shared/forms/SelectInput';
+import SelectInput, { Option } from '@/components/molecules/forms/SelectInput';
 import { Link, useRouter } from '@/i18n/navigation';
 import { useValues } from '@/contexts/GlobalContext';
 import { useLocalizedOptionsGroups } from '@/hooks/useLocalizedOptionsGroups';

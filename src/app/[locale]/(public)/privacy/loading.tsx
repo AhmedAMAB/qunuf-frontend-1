@@ -1,7 +1,7 @@
 import React from "react";
 import { getTranslations } from "next-intl/server";
-import PageHeroSection from "@/components/shared/PageHeroSection";
-import LegalSkeleton from "@/components/shared/LegalSkeleton";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
+import LegalSkeleton from "@/components/atoms/LegalSkeleton";
 
 
 export default async function LoadingPrivacy() {

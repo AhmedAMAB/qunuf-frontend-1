@@ -1,7 +1,7 @@
 'use client'
 import { useTranslations } from 'next-intl';
 import { useDashboardHref } from '@/hooks/dashboard/useDashboardHref';
-import BreadcrumbsHeader from '@/components/shared/BreadcrumbsHeader';
+import BreadcrumbsHeader from '@/components/atoms/BreadcrumbsHeader';
 import SettingsCard from '../settings/SettingsCard';
 import SavedPaymentMethods from './SavedPaymentMethods';
 import { RiFundsBoxLine } from 'react-icons/ri';

@@ -4,15 +4,15 @@ import { useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { useCallback, useState } from 'react';
 import Image from 'next/image';
-import TextInput from '@/components/shared/forms/TextInput';
-import ActionButtons from '@/components/shared/ActionButtons';
+import TextInput from '@/components/molecules/forms/TextInput';
+import ActionButtons from '@/components/atoms/ActionButtons';
 import { resolveUrl } from '@/utils/upload';
-import TextAreaInput from '@/components/shared/forms/TextAreaInput';
+import TextAreaInput from '@/components/molecules/forms/TextAreaInput';
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
 import api from '@/libs/axios';
-import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
+import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
 import { phoneSchema } from '@/utils/validation';
 
 export const getTeamMemberSchema = (t: (key: string, params?: any) => string) =>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PropertyFilterInputWrapper from "./PropertyFilterInputWrapper";
-import PriceRangeSlider from "@/components/shared/forms/PriceRangeSlider";
+import PriceRangeSlider from "@/components/molecules/forms/PriceRangeSlider";
 
 type NumberRangeInputProps = {
     min: number;

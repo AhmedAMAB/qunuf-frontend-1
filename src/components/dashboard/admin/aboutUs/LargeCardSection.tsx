@@ -8,9 +8,9 @@ import messagesAr from '@/../messages/ar.json';
 
 import api from '@/libs/axios';
 import { CompanySection, type CompanyInfo } from '@/types/company';
-import Popup from '@/components/shared/Popup';
+import Popup from '@/components/atoms/Popup';
 import AboutSectionForm from './AboutSectionForm';
-import { ErrorCard } from '@/components/shared/ErrorCard';
+import { ErrorCard } from '@/components/atoms/ErrorCard';
 
 const defaultImages: Record<string, string> = {
   [CompanySection.VISION]: '/about/vision.jpg',

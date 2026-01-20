@@ -1,5 +1,5 @@
 import Image from "next/image";
-import RatingStars from "@/components/shared/RatingStars"
+import RatingStars from "@/components/atoms/RatingStars"
 import { useTranslations } from "next-intl";
 const users = [
     "/users/user-1.jpg",

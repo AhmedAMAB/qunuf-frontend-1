@@ -1,4 +1,4 @@
-import SpinnerLarge from "@/components/shared/SpinnerLarge";
+import SpinnerLarge from "@/components/atoms/SpinnerLarge";
 
 export default function Loading() {
 

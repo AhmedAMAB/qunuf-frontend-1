@@ -2,7 +2,7 @@ import { Control, Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { useState, KeyboardEvent, useMemo } from "react";
 import { MdClose } from "react-icons/md";
-import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
+import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 
 interface Props {
     control: Control<any>;

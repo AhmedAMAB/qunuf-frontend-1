@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { ReactElement, useEffect, useState } from 'react';
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
-const LocationMap = dynamic(() => import('../../shared/LocationMap'), {
+const LocationMap = dynamic(() => import('../../atoms/LocationMap'), {
     ssr: false,
 });
 

@@ -1,5 +1,5 @@
 import PropertiesList from "@/components/pages/properties/PropertiesList";
-import PageHeroSection from "@/components/shared/PageHeroSection";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {

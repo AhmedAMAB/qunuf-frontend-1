@@ -1,6 +1,6 @@
 'use client'
 
-import BreadcrumbsHeader from "@/components/shared/BreadcrumbsHeader";
+import BreadcrumbsHeader from "@/components/atoms/BreadcrumbsHeader";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { useRouter } from "@/i18n/navigation";
 import DashboardCard from "../../DashboardCard";
@@ -10,7 +10,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import api from "@/libs/axios";
 import { Notification } from "@/types/dashboard/notifications";
-import SelectInput, { Option } from "@/components/shared/forms/SelectInput";
+import SelectInput, { Option } from "@/components/molecules/forms/SelectInput";
 
 
 export default function Notifications() {

@@ -7,9 +7,9 @@ import { useTranslations } from "next-intl";
 import { toast } from "react-hot-toast"; // Assuming you have a toaster
 
 // UI Components (from your PropertiesForm example)
-import TextInput from "@/components/shared/forms/TextInput";
-import TextAreaInput from "@/components/shared/forms/TextAreaInput";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import TextInput from "@/components/molecules/forms/TextInput";
+import TextAreaInput from "@/components/molecules/forms/TextAreaInput";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 
 // Schema and Types
 
@@ -17,7 +17,7 @@ import { Settings } from "@/types/dashboard/settings"; // Your interface
 
 import { z } from "zod";
 import api from "@/libs/axios";
-import LocationInput from "@/components/shared/forms/LocationInput";
+import LocationInput from "@/components/molecules/forms/LocationInput";
 
 const numberFromInput = z.preprocess(
     (value) => {

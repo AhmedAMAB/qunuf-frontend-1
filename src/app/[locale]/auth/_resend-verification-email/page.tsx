@@ -8,8 +8,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import toast from 'react-hot-toast';
 
-import TextInput from '@/components/shared/forms/TextInput';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import TextInput from '@/components/molecules/forms/TextInput';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 import Link from 'next/link';
 import api from '@/libs/axios';
 

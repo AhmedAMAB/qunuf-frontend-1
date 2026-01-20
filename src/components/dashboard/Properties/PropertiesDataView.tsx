@@ -7,9 +7,9 @@ import { BiArchiveIn, BiArchiveOut, BiBuilding } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
 import { getDashboardHref } from '@/utils/dashboardPaths';
 import { PropertyColumns } from '@/constants/properties/constant';
-import DataView from "@/components/shared/DateViewTable/DataView";
-import { MenuActionItem } from "@/components/shared/DateViewTable/MenuActionList";
-import ActionPopup from "@/components/shared/ActionPopup";
+import DataView from "@/components/molecules/DateViewTable/DataView";
+import { MenuActionItem } from "@/components/molecules/DateViewTable/MenuActionList";
+import ActionPopup from "@/components/atoms/ActionPopup";
 import { FaHome } from "react-icons/fa";
 import { useProperties } from "@/hooks/properties/useProperties";
 import { useAuth } from "@/contexts/AuthContext";
@@ -21,7 +21,7 @@ import PropertyDetailsPopup from "./PropertyDetailsPopup";
 import PropertyReviewsPopup from "./PropertyReviewsPopup";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
-import Popup from "@/components/shared/Popup";
+import Popup from "@/components/atoms/Popup";
 
 
 export default function PropertiesDataView() {

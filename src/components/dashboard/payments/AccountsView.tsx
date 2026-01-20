@@ -1,7 +1,7 @@
 import { PiPlusBold } from "react-icons/pi";
 import VisaCard from "./VisaCard";
-import Popup from "@/components/shared/Popup";
-import ActionButtons from "@/components/shared/ActionButtons";
+import Popup from "@/components/atoms/Popup";
+import ActionButtons from "@/components/atoms/ActionButtons";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 

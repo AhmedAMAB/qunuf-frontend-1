@@ -1,6 +1,6 @@
 'use client'
 
-import PropertyCardPreview from "@/components/shared/properties/PropertyCardPreview";
+import PropertyCardPreview from "@/components/molecules/properties/PropertyCardPreview";
 import { useIndicatorPosition } from "@/hooks/useIndicatorPosition";
 import api from "@/libs/axios";
 import { updateUrlParams } from "@/utils/helpers";

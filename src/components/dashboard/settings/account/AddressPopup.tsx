@@ -1,12 +1,12 @@
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
-import SelectField from "@/components/shared/forms/SelectField";
-import SelectInput, { Option } from "@/components/shared/forms/SelectInput";
-import TextInput from "@/components/shared/forms/TextInput";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
+import SelectField from "@/components/molecules/forms/SelectField";
+import SelectInput, { Option } from "@/components/molecules/forms/SelectInput";
+import TextInput from "@/components/molecules/forms/TextInput";
 import { useValues } from "@/contexts/GlobalContext";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import PopupActionButtons from "./PopupActionButtons";
-import FormErrorMessage from "@/components/shared/forms/FormErrorMessage";
+import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 
 interface AddressProps {
     initialData: {

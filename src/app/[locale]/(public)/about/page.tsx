@@ -2,12 +2,12 @@
 
 import AboutDepartments from "@/components/pages/about/AboutDepartments";
 import TeamSection from "@/components/pages/about/TeamSection";
-import PageHeader from "@/components/shared/PageHeader";
+import PageHeader from "@/components/atoms/PageHeader";
 import api from "@/libs/axios";
 import { getLocale, getTranslations } from "next-intl/server";
 import { CompanySection, type Team, type Department, type CompanyInfo } from "@/types/company";
 import { resolveUrl } from "@/utils/upload";
-import PageHeroSection from "@/components/shared/PageHeroSection";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
 import AboutMainSection from "@/components/pages/about/AboutMainSection";
 
 

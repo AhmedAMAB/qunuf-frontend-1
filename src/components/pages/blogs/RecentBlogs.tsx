@@ -1,8 +1,8 @@
 'use client'
 import api from '@/libs/axios';
-import PageHeader from '@/components/shared/PageHeader';
+import PageHeader from '@/components/atoms/PageHeader';
 import { MdArticle } from 'react-icons/md';
-import { AnimatedSecondaryButton } from "@/components/shared/buttons/AnimatedSecondaryButton";
+import { AnimatedSecondaryButton } from "@/components/atoms/buttons/AnimatedSecondaryButton";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";

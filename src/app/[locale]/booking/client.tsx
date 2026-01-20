@@ -3,8 +3,8 @@
 import { JSX, useState, useEffect } from 'react';
 import { IoMdCheckmark } from 'react-icons/io';
 
-import Logo from '@/components/shared/Logo';
-import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
+import Logo from '@/components/atoms/Logo';
+import LocaleSwitcher from '@/components/atoms/LocaleSwitcher';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import api from '@/libs/axios';

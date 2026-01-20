@@ -1,5 +1,5 @@
 'use client'
-import PageHeader from "@/components/shared/PageHeader";
+import PageHeader from "@/components/atoms/PageHeader";
 import { useTranslations } from "next-intl";
 import ContactForm from "./ContactForm";
 import dynamic from "next/dynamic";
@@ -30,7 +30,7 @@ export default function ContactSection() {
 
 
 
-const LocationMap = dynamic(() => import('../../../components/shared/LocationMap'), {
+const LocationMap = dynamic(() => import('../../../components/atoms/LocationMap'), {
     ssr: false,
 });
 

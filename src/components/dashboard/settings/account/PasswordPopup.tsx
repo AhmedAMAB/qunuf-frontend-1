@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import TextInput from '@/components/shared/forms/TextInput';
+import TextInput from '@/components/molecules/forms/TextInput';
 import PopupActionButtons from './PopupActionButtons';
 import { toast } from 'react-hot-toast';
 import api from '@/libs/axios';

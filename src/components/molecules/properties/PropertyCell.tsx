@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import SmartTooltip from "../SmartTooltip";
 import { resolveUrl } from "@/utils/upload";
 import { Property, PropertyStatus } from "@/types/dashboard/properties";
+import SmartTooltip from "@/components/atoms/SmartTooltip";
 
 // تعريف واجهة صورة العقار بناءً على الـ Entity في الباك إند
 export interface PropertyImage {

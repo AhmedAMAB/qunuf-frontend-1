@@ -11,9 +11,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import api from '@/libs/axios';
 import z from 'zod';
 import { Link } from '@/i18n/navigation';
-import PasswordInput from '@/components/shared/forms/PasswordInput';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
-import TextInput from '@/components/shared/forms/TextInput';
+import PasswordInput from '@/components/molecules/forms/PasswordInput';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
+import TextInput from '@/components/molecules/forms/TextInput';
 
 
 

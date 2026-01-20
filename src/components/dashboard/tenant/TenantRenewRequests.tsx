@@ -8,9 +8,9 @@ import toast from 'react-hot-toast';
 import TenantRenewRequestCard from "./TenantRenewRequestCard";
 import { RenewRequest, RenewStatus } from "@/types/dashboard/renew-request";
 import { useRenewRequests } from "@/hooks/dashboard/renew-requests/useRenewRequests";
-import Pagination from '@/components/shared/Pagination';
-import { ErrorCard } from '@/components/shared/ErrorCard';
-import EmptyState from '@/components/shared/EmptyState';
+import Pagination from '@/components/atoms/Pagination';
+import { ErrorCard } from '@/components/atoms/ErrorCard';
+import EmptyState from '@/components/atoms/EmptyState';
 
 export default function TenantRenewRequests() {
     const t = useTranslations('dashboard.renewRequest');

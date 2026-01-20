@@ -1,17 +1,17 @@
 'use client'
 
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 import SectionHeading from "../../SectionHeading";
 import BlogContentCard from "./BlogContentCard";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import Popup from "@/components/shared/Popup";
+import Popup from "@/components/atoms/Popup";
 import BlogEditForm from "./BlogEditForm";
 import api from "@/libs/axios";
 import { Blog } from "@/types/dashboard/blog";
-import Pagination from "@/components/shared/Pagination";
-import EmptyState from "@/components/shared/EmptyState";
-import { ErrorCard } from "@/components/shared/ErrorCard";
+import Pagination from "@/components/atoms/Pagination";
+import EmptyState from "@/components/atoms/EmptyState";
+import { ErrorCard } from "@/components/atoms/ErrorCard";
 import DeleteBlogPopup from "./DeleteBlogPopup";
 
 

@@ -9,11 +9,11 @@ import Image from 'next/image';
 import api from '@/libs/axios';
 import { toast } from 'react-hot-toast';
 import { resolveUrl } from '@/utils/upload';
-import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
-import TextInput from '@/components/shared/forms/TextInput';
-import TextAreaInput from '@/components/shared/forms/TextAreaInput';
-import ActionButtons from '@/components/shared/ActionButtons';
-import Uploader from '@/components/shared/forms/Uploader';
+import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
+import TextInput from '@/components/molecules/forms/TextInput';
+import TextAreaInput from '@/components/molecules/forms/TextAreaInput';
+import ActionButtons from '@/components/atoms/ActionButtons';
+import Uploader from '@/components/molecules/forms/Uploader';
 
 export const getDepartmentSchema = (t: (key: string, params?: any) => string) =>
     z.object({

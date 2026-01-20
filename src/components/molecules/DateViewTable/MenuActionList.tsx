@@ -2,10 +2,10 @@
 
 import { Link } from "@/i18n/navigation";
 import React, { ComponentType, ReactElement, useState } from 'react';
-import Popup from '../Popup';
 import { IconType } from 'react-icons';
-import Tooltip from '../Tooltip';
 import { TableRowType } from "@/types/table";
+import Popup from "@/components/atoms/Popup";
+import Tooltip from "@/components/atoms/Tooltip";
 
 export type ActionType =
     | 'primary'

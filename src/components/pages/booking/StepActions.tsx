@@ -1,4 +1,4 @@
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 
 interface FormActionsProps {
     onConfirm?: () => void;

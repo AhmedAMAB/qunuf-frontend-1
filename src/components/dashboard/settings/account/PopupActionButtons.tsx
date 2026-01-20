@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useTranslations } from "next-intl";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 
 interface PopupActionButtonsProps {
     onCancel: () => void;

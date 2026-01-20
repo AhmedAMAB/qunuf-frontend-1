@@ -8,9 +8,9 @@ import "swiper/css/pagination";
 import { useTranslations } from "next-intl";
 import { Department } from "@/types/company";
 import { resolveUrl } from "@/utils/upload";
-import NavigationButtons from "@/components/shared/NavigationButtons";
+import NavigationButtons from "@/components/atoms/NavigationButtons";
 import Image from "next/image";
-import ImageAlt from "@/components/shared/ImageAlt";
+import ImageAlt from "@/components/atoms/ImageAlt";
 
 interface AboutDepartmentsProps {
     departments: Department[];

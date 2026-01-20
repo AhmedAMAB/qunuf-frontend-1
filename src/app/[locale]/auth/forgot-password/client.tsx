@@ -12,8 +12,8 @@ import z from 'zod';
 
 
 import Link from 'next/link';
-import TextInput from '@/components/shared/forms/TextInput';
-import SecondaryButton from '@/components/shared/buttons/SecondaryButton';
+import TextInput from '@/components/molecules/forms/TextInput';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 
 export default function ForgotPasswordClient() {
     const t = useTranslations('auth.forgotPassword');

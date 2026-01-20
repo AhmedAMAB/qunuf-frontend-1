@@ -10,7 +10,7 @@ import {
 import { useLocalizedOptionsGroups } from "../useLocalizedOptionsGroups";
 import { useValues } from "@/contexts/GlobalContext";
 import { useLocale, useTranslations } from "next-intl";
-import { Option } from "@/components/shared/forms/SelectInput";
+import { Option } from "@/components/molecules/forms/SelectInput";
 import { CommercialSubType, PropertyType, RentType, ResidentialSubType } from "@/types/dashboard/properties";
 import { useRouter } from "@/i18n/navigation";
 

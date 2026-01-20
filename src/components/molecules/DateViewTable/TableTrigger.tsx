@@ -1,5 +1,4 @@
-import { TriggerProps } from "../Dropdown";
-
+import { TriggerProps } from "@/components/atoms/Dropdown";
 
 const TableTrigger: React.FC<TriggerProps> = ({ onToggle }) => {
     return (

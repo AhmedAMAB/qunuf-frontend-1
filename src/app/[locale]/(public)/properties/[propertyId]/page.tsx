@@ -1,4 +1,4 @@
-import PageHeroSection from '@/components/shared/PageHeroSection';
+import PageHeroSection from '@/components/atoms/PageHeroSection';
 import { getLocale, getTranslations } from 'next-intl/server';
 import api from '@/libs/axios';
 import { Property, PropertyType, RentType } from '@/types/dashboard/properties';

@@ -1,5 +1,5 @@
-import LocaleSwitcher from "../shared/LocaleSwitcher";
-import Logo from "../shared/Logo";
+import LocaleSwitcher from "../atoms/LocaleSwitcher";
+import Logo from "../atoms/Logo";
 
 
 export default function AuthHeader({ className }: { className?: string }) {

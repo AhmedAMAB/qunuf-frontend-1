@@ -1,9 +1,9 @@
 import { User } from "@/types/dashboard/user";
 import { resolveUrl } from "@/utils/upload";
 import Image from "next/image";
-import SmartTooltip from "../SmartTooltip";
 import Link from 'next/link';
 import { UserRole } from "@/constants/user";
+import SmartTooltip from "@/components/atoms/SmartTooltip";
 
 interface UserCellProps {
     user?: User; // From row.tenant or row.landlord

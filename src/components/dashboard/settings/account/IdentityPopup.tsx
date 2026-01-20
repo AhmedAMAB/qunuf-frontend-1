@@ -1,14 +1,14 @@
 'use client'
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import TextInput from '@/components/shared/forms/TextInput';
-import SelectField from '@/components/shared/forms/SelectField';
+import TextInput from '@/components/molecules/forms/TextInput';
+import SelectField from '@/components/molecules/forms/SelectField';
 import { User } from '@/types/dashboard/user';
 import PopupActionButtons from './PopupActionButtons';
 import { useValues } from '@/contexts/GlobalContext';
-import { Option } from '@/components/shared/forms/SelectInput';
+import { Option } from '@/components/molecules/forms/SelectInput';
 import { IdentityType } from '@/types/global';
-import FormErrorMessage from '@/components/shared/forms/FormErrorMessage';
+import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
 
 interface IdentityProps {
     user: User;

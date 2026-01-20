@@ -3,15 +3,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
-import LocaleSwitcher from '../LocaleSwitcher';
+
 import { useTranslations } from 'next-intl';
-import Logo from '../Logo';
-import SecondaryButton from '../buttons/SecondaryButton';
 import { useAuth } from '@/contexts/AuthContext';
 import { FiBell, FiFileText, FiLogOut, FiUser } from 'react-icons/fi';
-import FallbackImage from '../FallbackImage';
 import { resolveUrl } from '@/utils/upload';
 import { UserRole } from '@/constants/user';
+import Logo from '@/components/atoms/Logo';
+import FallbackImage from '@/components/atoms/FallbackImage';
+import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
+import LocaleSwitcher from '@/components/atoms/LocaleSwitcher';
 
 
 

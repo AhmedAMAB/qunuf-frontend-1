@@ -1,5 +1,5 @@
 
-import PageHeroSection from "@/components/shared/PageHeroSection";
+import PageHeroSection from "@/components/atoms/PageHeroSection";
 import { getTranslations } from "next-intl/server";
 
 export default async function MainAboutSection() {

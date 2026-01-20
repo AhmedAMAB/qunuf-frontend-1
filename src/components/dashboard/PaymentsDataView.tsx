@@ -2,7 +2,7 @@
 
 import { usePayments } from "@/hooks/usePayments";
 import { PaymentRow } from "@/types/dashboard/payment";
-import DataView from "../shared/DateViewTable/DataView";
+import DataView from "../molecules/DateViewTable/DataView";
 import { getPaymentColumns } from "@/constants/dashboard/paymentConstants";
 import { useTranslations } from "next-intl";
 

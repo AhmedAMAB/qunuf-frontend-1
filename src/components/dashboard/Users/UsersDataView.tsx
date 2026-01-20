@@ -4,8 +4,8 @@ import { User } from "@/types/dashboard/user";
 import { useTranslations } from 'next-intl';
 import { getDashboardHref } from '@/utils/dashboardPaths';
 import { UserColumns } from '@/constants/users/constant';
-import DataView from "@/components/shared/DateViewTable/DataView";
-import { MenuActionItem } from "@/components/shared/DateViewTable/MenuActionList";
+import DataView from "@/components/molecules/DateViewTable/DataView";
+import { MenuActionItem } from "@/components/molecules/DateViewTable/MenuActionList";
 import { useUsers } from "@/hooks/users/useUsers";
 import { useAuth } from "@/contexts/AuthContext";
 import { FilterConfig } from "@/types/table";
@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from "react";
 import UserDetailsPopup from "./UserDetailsPopup";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
-import Popup from "@/components/shared/Popup";
+import Popup from "@/components/atoms/Popup";
 import { FaComments, FaUser } from "react-icons/fa";
 
 

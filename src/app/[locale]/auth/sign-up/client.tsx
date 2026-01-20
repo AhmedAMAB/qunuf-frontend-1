@@ -11,9 +11,9 @@ import { ReactNode, useState } from 'react';
 import { UserRole } from '@/constants/user';
 import api from '@/libs/axios';
 import { useSearchParams } from 'next/navigation';
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
-import PasswordInput from "@/components/shared/forms/PasswordInput";
-import TextInput from "@/components/shared/forms/TextInput";
+import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
+import PasswordInput from "@/components/molecules/forms/PasswordInput";
+import TextInput from "@/components/molecules/forms/TextInput";
 import { FaUser } from "react-icons/fa";
 import { PiHouseLine } from "react-icons/pi";
 
