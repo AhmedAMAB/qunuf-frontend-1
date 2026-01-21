@@ -58,12 +58,11 @@ export default function PropertyCardPreview({
                         {/* <RatingStars rating={property.rate} size={16} reverse /> */}
                     </div>
 
-                    <Link
-                        href={`/properties/${property.slug}`}
+                    <div
                         className="block font-medium text-lg text-black "
                     >
                         {property.title}
-                    </Link>
+                    </div>
 
                     {/* Location from prop */}
                     <p className="text-sm font-medium text-dark opacity-50">

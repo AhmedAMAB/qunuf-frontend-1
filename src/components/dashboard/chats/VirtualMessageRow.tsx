@@ -8,7 +8,6 @@ const VirtualMessageRow = memo(function VirtualMessageRow({
     style,
     messages,
     participant,
-    user,
     key,
     retryMessage
 }: any) {
@@ -40,7 +39,7 @@ const VirtualMessageRow = memo(function VirtualMessageRow({
                 </p>
             )}
 
-            <MessageRow onRetry={retryMessage} msg={{ ...msg, timeStr }} participant={participant} user={user} />
+            <MessageRow onRetry={retryMessage} msg={{ ...msg, timeStr }} participant={participant} />
         </div>
     );
 });

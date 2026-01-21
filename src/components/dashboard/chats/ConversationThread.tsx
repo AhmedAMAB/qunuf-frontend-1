@@ -60,7 +60,7 @@ const ConversationThread = memo(function ConversationThread({
 
     const scrollToBottom = (lastPrev?) => {
         if (listRef.current && messages.length > 0) {
-            listRef.current.scrollToRow(lastPrev ? lastPrev : messages.length - 1)
+            listRef.current.scrollToRow(lastPrev !== undefined ? lastPrev : messages.length - 1);
         }
     };
     const getScrollContainer = () => {
@@ -325,7 +325,6 @@ const ConversationThread = memo(function ConversationThread({
                                                             index={index}
                                                             messages={messages}
                                                             participant={participant}
-                                                            user={user}
                                                         />
                                                     </div>
                                                 )}

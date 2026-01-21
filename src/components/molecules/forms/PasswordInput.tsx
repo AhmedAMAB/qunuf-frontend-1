@@ -57,7 +57,7 @@ export default function PasswordInput({
                         "text-dark placeholder:text-placeholder",
                         "focus:outline-none focus:ring-2 focus:ring-transparent",
                         // RTL support for the eye icon padding
-                        document.dir === 'rtl' ? 'pl-12' : 'pr-12',
+                        'rtl:pl-12 ltr:pr-12',
                         error
                             ? "border-red-300 focus:border-red-400"
                             : "border-gray/20 hover:border-secondary/40 focus:border-secondary",

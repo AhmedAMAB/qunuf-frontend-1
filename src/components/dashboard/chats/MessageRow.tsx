@@ -15,7 +15,6 @@ export type ProcessedMessage = Message & {
 interface MessageRowProps {
     msg: ProcessedMessage;
     participant: User;
-    user: User;
     style?: React.CSSProperties;
     onRetry?: (msg: ProcessedMessage) => void;
 }
@@ -23,7 +22,6 @@ interface MessageRowProps {
 const MessageRow = memo(function MessageRow({
     msg,
     participant,
-    // user,
     style,
     onRetry,
 }: MessageRowProps) {

@@ -148,7 +148,7 @@ export function useChat() {
                 `/conversations?${cursorConversations ? `cursor=${cursorConversations}&` : ''}limit=50`,
                 { signal: controller.signal } // <-- pass the abort signal
             );
-
+            fetchController.current = null;
             const { conversations, nextCursor, hasMore: serverHasMore } = res.data;
             const processed: ConversationChat[] = (conversations || []).map(processConversation);
 
@@ -183,7 +183,7 @@ export function useChat() {
                 console.error(err);
             }
         } finally {
-            if (fetchController.current === controller)
+            if (!controller.signal.aborted)
                 setLoadingConversations(false);
         }
     }, [processConversation, cursorConversations, hasMoreConversations]);
@@ -224,6 +224,7 @@ export function useChat() {
             let lastLength = -1;
             const { messages, nextCursor, hasMore } = res.data;
 
+
             setMessagesData(prev => {
                 const updated = new Map(prev);
                 const existing = updated.get(conversationId);
@@ -236,15 +237,16 @@ export function useChat() {
 
                 return updated;
             });
+            console.log(lastLength)
             return lastLength;
         } catch (err: any) {
             if (err?.name === "CanceledError" || err?.message === "canceled") return;
             console.error("Pagination error", err);
         } finally {
             // 3. Cleanup: only clear loading if this was the latest request
-            if (abortControllers.current.get(conversationId) === controller) {
+            if (!controller.signal.aborted) {
                 abortControllers.current.delete(conversationId);
-                setLoadingMoreId(null);
+                setLoadingMoreId(prev => prev === conversationId ? null : prev);
             }
         }
     }, [messagesData, loadingMoreId]);
@@ -304,10 +306,9 @@ export function useChat() {
             }
             console.error(`Failed to load messages for ${conversationId}`, err);
         } finally {
-            if (abortControllers.current.get(conversationId) === controller) {
+            if (!controller.signal.aborted) {
                 abortControllers.current.delete(conversationId);
-                console.log("loadingMessageId: ", loadingMessageId, " will set null")
-                setLoadingMessageId(null);
+                setLoadingMessageId(prev => prev === conversationId ? null : prev);
             }
         }
     }, [messagesData, loadingMessageId, conversationsMap]);
