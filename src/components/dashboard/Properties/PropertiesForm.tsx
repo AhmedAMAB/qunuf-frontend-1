@@ -5,7 +5,6 @@ import Uploader from "@/components/molecules/forms/Uploader";
 import { Controller, SubmitHandler, useForm, useWatch } from "react-hook-form";
 import SelectField from "@/components/molecules/forms/SelectField";
 import TextAreaInput from "@/components/molecules/forms/TextAreaInput";
-import SecondaryButton from "@/components/atoms/buttons/SecondaryButton";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import z from "zod";
@@ -22,6 +21,11 @@ import LocationInput from "@/components/molecules/forms/LocationInput";
 import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 import { FileItem } from "@/utils/upload";
 import PropertyNameInput from "./PropertyNameInput";
+import { cn } from "@/lib/utils";
+import { FiCamera, FiGrid, FiShield, FiZap } from "react-icons/fi";
+import FormSection from "@/components/molecules/forms/FormSection";
+import DateInput from "@/components/molecules/forms/DateInput";
+import Actions from "@/components/molecules/forms/Actions";
 const today = new Date();
 const currentYear = today.getFullYear();
 
@@ -528,14 +532,34 @@ export default function PropertiesForm({ initialData }: Props) {
         }
     }, [id, isEditMode, tCommon]);
 
-    return (
-        <div className="container mx-auto pb-10">
-            <h1 className="text-2xl font-bold mb-6 text-dark">{isEditMode ? t("editTitle") : t("createTitle")}</h1>
 
-            <div className="space-y-8">
-                {/* --- Section 1: Basic Info --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                    <h3 className="text-lg font-semibold border-b pb-2">{t("basicInfo")}</h3>
+    return (
+        <div className="container mx-auto pb-10 px-4">
+            <div className="mb-8 border-s-2 border-secondary ps-8 py-2">
+                <div className="flex flex-col gap-1">
+                    {/* Title: Pure, heavy, and compressed */}
+                    <h1 className="text-4xl font-black text-dark tracking-tighter leading-none">
+                        {isEditMode ? t("editTitle") : t("createTitle")}
+                    </h1>
+
+                    {/* Description: Light, muted, and clean */}
+                    <p className="text-[15px] font-medium text-dark/40 max-w-xl leading-relaxed">
+                        {isEditMode ? t("editDescription") : t("createDescription")}
+                    </p>
+                </div>
+            </div>
+            <div className="space-y-6">
+
+                {/* Basic Info Section */}
+                <FormSection
+                    title={t("basicInfo")}
+                    subtitle={t("subtitles.basicInfo")}
+                    icon={
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    }
+                >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <Controller
                             control={control}
@@ -612,8 +636,8 @@ export default function PropertiesForm({ initialData }: Props) {
                             )}
                         />
                         <Controller control={control} name="complexName" render={({ field }) => <TextInput {...field} label={t("complexName")} placeholder={t(`placeholders.complexName`)} error={errors.complexName?.message} />} />
-                    </div>
 
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <Controller
                             control={control}
@@ -647,94 +671,19 @@ export default function PropertiesForm({ initialData }: Props) {
                         name="additionalDetails"
                         render={({ field }) => <TextAreaInput {...field} label={t("additionalDetails")} placeholder={t(`placeholders.additionalDetails`)} error={errors.additionalDetails?.message} />}
                     />
+                </FormSection>
 
-
-                </div>
-
-                {/* --- Section 2: Address & Legal --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                    <h3 className="text-lg font-semibold border-b pb-2">{t("locationAndLegal")}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <Controller
-                            control={control}
-                            name="propertyNumber"
-                            render={({ field }) => <TextInput {...field} label={t("propertyNumber")} placeholder={t(`placeholders.propertyNumber`)} error={errors.propertyNumber?.message} />}
-                        />
-                        <Controller
-                            control={control}
-                            name="nationalAddressCode"
-                            render={({ field }) => <TextInput {...field} label={t("nationalAddressCode")} placeholder={t(`placeholders.nationalAddressCode`)} error={errors.nationalAddressCode?.message} />}
-                        />
-
-                        <Controller control={control} name="insurancePolicyNumber" render={({ field }) => <TextInput {...field} label={t("insurancePolicyNumber")} placeholder={t(`placeholders.insurancePolicyNumber`)} error={errors.insurancePolicyNumber?.message} />} />
-                        <Controller
-                            control={control}
-                            name="constructionDate"
-                            render={({ field }) => <TextInput type="date" {...field} label={t("constructionDate")} placeholder={t(`placeholders.constructionDate`)} error={errors.constructionDate?.message} />}
-                        />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                        <Controller
-                            control={control}
-                            name="documentType"
-                            render={({ field }) => (
-                                <SelectField
-                                    label={t("documentType")} placeholder={t(`placeholders.documentType`)}
-                                    value={field.value ? { label: tEnums(`documentType.${field.value}`), value: field.value } : null}
-                                    options={documentTypeOptions}
-                                    onChange={(opt) => field.onChange(opt.value)}
-                                    error={errors.documentType?.message}
-                                />
-                            )}
-                        />
-                        <Controller
-                            control={control}
-                            name="documentNumber"
-                            render={({ field }) => <TextInput {...field} label={t("documentNumber")} placeholder={t(`placeholders.documentNumber`)} error={errors.documentNumber?.message} />}
-                        />
-                        <Controller
-                            control={control}
-                            name="ownerIdNumber"
-                            render={({ field }) => <TextInput {...field} label={t("ownerIdNumber")} placeholder={t(`placeholders.ownerIdNumber`)} error={errors.ownerIdNumber?.message} />}
-                        />
-                        <Controller
-                            control={control}
-                            name="documentIssueDate"
-                            render={({ field }) => <TextInput type="date" {...field} label={t("documentIssueDate")} placeholder={t(`placeholders.documentIssueDate`)} error={errors.documentIssueDate?.message} />}
-                        />
-                        <Controller
-                            control={control}
-                            name="issuedBy"
-                            render={({ field }) => <TextInput {...field} label={t("issuedBy")} placeholder={t(`placeholders.issuedBy`)} error={errors.issuedBy?.message} />}
-                        />
-                        <div className="md:col-span-2">
-                            <Uploader
-                                control={control}
-                                label={t('documentImage')}
-                                onRemoveFile={isEditMode ? (file) => handleRemoveFile(file, "document") : undefined}
-                                name="documentImage"
-                                accept="application/pdf"
-                                allowMultiple={false} // Only one deed per property
-                                maxFiles={1}
-                                maxSizeMB={30}
-                                rules={[
-                                    tCommon("uploader.rules.maxSize", { size: 30 }),
-                                    tCommon("uploader.rules.maxFiles", { count: 1 }),
-                                    tCommon("uploader.rules.onlyPDF"),
-                                ]}
-                            />
-                            <FormErrorMessage message={errors.documentImage?.message?.toString()} />
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- Section: Map Location --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                    <div className="flex flex-col gap-1 border-b pb-2">
-                        <h3 className="text-lg font-semibold">{t("locationTitle")}</h3>
-                        <p className="text-sm text-gray-500">{t("locationSubtitle")}</p>
-                    </div>
-
+                {/* Location Section */}
+                <FormSection
+                    title={t("locationTitle")}
+                    subtitle={t("subtitles.location")}
+                    icon={
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    }
+                >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* State Selection needs a proper Async Select or predefined list of States */}
                         <div className='md:col-span-2'>
@@ -764,21 +713,230 @@ export default function PropertiesForm({ initialData }: Props) {
                             <FormErrorMessage message={errors.position?.lat?.message || errors.position?.lat?.message} />
                         </div>
                     </div>
-                </div>
+                </FormSection>
 
-                {/* --- Section 3: Utilities (Meters) --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                    <h3 className="text-lg font-semibold border-b pb-2">{t("utilities")}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <Controller control={control} name="electricityMeterNumber" render={({ field }) => <TextInput {...field} label={t("electricityMeterNumber")} placeholder={t("placeholders.electricityMeterNumber")} error={errors.electricityMeterNumber?.message} />} />
-                        <Controller control={control} name="waterMeterNumber" render={({ field }) => <TextInput {...field} label={t("waterMeterNumber")} placeholder={t("placeholders.waterMeterNumber")} error={errors.waterMeterNumber?.message} />} />
-                        <Controller control={control} name="gasMeterNumber" render={({ field }) => <TextInput {...field} label={t("gasMeterNumber")} placeholder={t("placeholders.gasMeterNumber")} error={errors.gasMeterNumber?.message} />} />
+                {/* --- Address & Legal --- */}
+                <FormSection
+                    title={t("locationAndLegal")}
+                    subtitle={t("subtitles.locationAndLegal")}
+                    icon={<FiShield className="w-5 h-5" />} // Use a Shield or Map icon
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <Controller
+                            control={control}
+                            name="propertyNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("propertyNumber")}
+                                    placeholder={t("placeholders.propertyNumber")}
+                                    error={errors.propertyNumber?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="nationalAddressCode"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("nationalAddressCode")}
+                                    placeholder={t("placeholders.nationalAddressCode")}
+                                    error={errors.nationalAddressCode?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="insurancePolicyNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("insurancePolicyNumber")}
+                                    placeholder={t("placeholders.insurancePolicyNumber")}
+                                    error={errors.insurancePolicyNumber?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="constructionDate"
+                            render={({ field: { onChange, value } }) => (
+                                <DateInput
+                                    value={value}
+                                    // Flatpickr returns [Date], hook-form wants the single value
+                                    onChange={(dates) => onChange(dates[0])}
+                                    label={t("constructionDate")}
+                                    placeholder={t("placeholders.constructionDate")}
+                                    error={errors.constructionDate?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="documentType"
+                            render={({ field }) => (
+                                <SelectField
+                                    label={t("documentType")}
+                                    placeholder={t("placeholders.documentType")}
+                                    options={documentTypeOptions}
+                                    // Mapping the value to an object for the component
+                                    value={field.value ? {
+                                        label: tEnums(`documentType.${field.value}`),
+                                        value: field.value
+                                    } : null}
+                                    onChange={(opt) => field.onChange(opt.value)}
+                                    error={errors.documentType?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="documentNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("documentNumber")}
+                                    placeholder={t("placeholders.documentNumber")}
+                                    error={errors.documentNumber?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="ownerIdNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("ownerIdNumber")}
+                                    placeholder={t("placeholders.ownerIdNumber")}
+                                    error={errors.ownerIdNumber?.message}
+                                />
+                            )}
+                        />
+
+                        <Controller
+                            control={control}
+                            name="documentIssueDate"
+                            render={({ field: { onChange, value } }) => (
+                                <DateInput
+                                    label={t("documentIssueDate")}
+                                    placeholder={t("placeholders.documentIssueDate")}
+                                    error={errors.documentIssueDate?.message}
+                                    required={true}
+                                    value={value}
+                                    // Flatpickr returns an array [Date], we take the first item
+                                    onChange={(dates) => onChange(dates[0])}
+                                />
+                            )}
+                        />
+
+                        <div className="md:col-span-2">
+                            <Controller
+                                control={control}
+                                name="issuedBy"
+                                render={({ field }) => (
+                                    <TextInput
+                                        {...field}
+                                        label={t("issuedBy")}
+                                        placeholder={t("placeholders.issuedBy")}
+                                        error={errors.issuedBy?.message}
+                                    />
+                                )}
+                            />
+                        </div>
+
+                        {/* Uploader spans both columns for better visual balance */}
+                        <div className="md:col-span-2 space-y-2">
+                            <Uploader
+                                control={control}
+                                label={t('documentImage')}
+                                onRemoveFile={isEditMode ? (file) => handleRemoveFile(file, "document") : undefined}
+                                name="documentImage"
+                                accept="application/pdf"
+                                allowMultiple={false}
+                                maxFiles={1}
+                                maxSizeMB={30}
+                                rules={[
+                                    tCommon("uploader.rules.maxSize", { size: 30 }),
+                                    tCommon("uploader.rules.maxFiles", { count: 1 }),
+                                    tCommon("uploader.rules.onlyPDF"),
+                                ]}
+                            />
+                            {errors.documentImage && (
+                                <FormErrorMessage message={errors.documentImage?.message?.toString()} />
+                            )}
+                        </div>
                     </div>
-                </div>
+                </FormSection>
 
-                {/* --- Section 3: Facilities (Nested) --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                    <h3 className="text-lg font-semibold border-b pb-2">{t("facilities")}</h3>
+                {/* ---Utilities (Meters) --- */}
+                <FormSection
+                    title={t("utilities")}
+                    subtitle={t("subtitles.utilities")}
+                    icon={<FiZap className="w-5 h-5 text-secondary" />}
+                >
+                    <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {/* Electricity Meter */}
+                        <Controller
+                            control={control}
+                            name="electricityMeterNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("electricityMeterNumber")}
+                                    placeholder={t("placeholders.electricityMeterNumber")}
+                                    error={errors.electricityMeterNumber?.message?.toString()}
+                                />
+                            )}
+                        />
+
+                        {/* Water Meter */}
+                        <Controller
+                            control={control}
+                            name="waterMeterNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("waterMeterNumber")}
+                                    placeholder={t("placeholders.waterMeterNumber")}
+                                    error={errors.waterMeterNumber?.message?.toString()}
+                                />
+                            )}
+                        />
+
+                        {/* Gas Meter */}
+                        <Controller
+                            control={control}
+                            name="gasMeterNumber"
+                            render={({ field }) => (
+                                <TextInput
+                                    {...field}
+                                    label={t("gasMeterNumber")}
+                                    placeholder={t("placeholders.gasMeterNumber")}
+                                    error={errors.gasMeterNumber?.message?.toString()}
+                                />
+                            )}
+                        />
+                    </div>
+                </FormSection>
+
+                {/* Facilities Section */}
+                <FormSection
+                    title={t("facilities")}
+                    subtitle={t("subtitles.facilities")}
+                    icon={
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    }
+                >
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
                             'bedrooms', 'bathrooms', 'livingRooms', 'kitchen',
@@ -802,22 +960,18 @@ export default function PropertiesForm({ initialData }: Props) {
                             />
                         ))}
                     </div>
-                    <div className="flex flex-wrap gap-6 mt-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6">
                         {['maidRoom', 'backyard', 'centralAC', 'desertAC'].map(key => (
                             <Controller
                                 key={key}
                                 control={control}
                                 name={`facilities.${key}` as any}
                                 render={({ field }) => (
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input
-                                            type="checkbox"
-                                            checked={!!field.value}
-                                            onChange={field.onChange}
-                                            className="w-4 h-4 text-secondary rounded focus:ring-secondary"
-                                        />
-                                        <span className="text-dark font-medium">{t(key)}</span>
-                                    </label>
+                                    <CheckboxField
+                                        label={t(key)}
+                                        checked={!!field.value}
+                                        onChange={field.onChange}
+                                    />
                                 )}
                             />
                         ))}
@@ -825,72 +979,139 @@ export default function PropertiesForm({ initialData }: Props) {
                             control={control}
                             name="isFurnished"
                             render={({ field }) => (
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-4 h-4 text-secondary rounded" />
-                                    <span className="text-dark font-medium">{t("isFurnished")}</span>
-                                </label>
+                                <CheckboxField
+                                    label={t("isFurnished")}
+                                    checked={!!field.value}
+                                    onChange={field.onChange}
+                                />
                             )}
                         />
                     </div>
-                </div>
+                </FormSection>
 
-                {/* --- Section 4: Features Tags --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                    <h3 className="text-lg font-semibold border-b pb-2 mb-4">{t(`featuresAndFacilities`)}</h3>
-                    <FeaturesTagsInput
-                        control={control}
-                        label={t("features")}
-                        name="features"
-                        placeholder={t("featuresPlaceholder")}
-                        errors={errors}
-                    />
-                    {/* Education Array */}
-                    <NearbyFacilitiesSection errors={errors} control={control} name="educationInstitutions" label={t("educationInstitutions")} />
+                {/* ---Features Tags --- */}
+                <FormSection
+                    title={t("featuresAndFacilities")}
+                    subtitle={t("subtitles.featuresAndFacilities")}
+                    icon={<FiGrid className="w-5 h-5 text-secondary" />}
+                >
+                    <div className="md:col-span-2 space-y-8">
+                        {/* Tags Input - Full Width for better tag management */}
+                        <FeaturesTagsInput
+                            control={control}
+                            label={t("features")}
+                            name="features"
+                            placeholder={t("featuresPlaceholder")}
+                            errors={errors}
+                        />
 
-                    <NearbyFacilitiesSection errors={errors} control={control} name="healthMedicalFacilities" label={t("healthMedicalFacilities")} />
+                        {/* Facilities Grid - Trimmed split layout */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-dark/5">
+                            <NearbyFacilitiesSection
+                                errors={errors}
+                                control={control}
+                                name="educationInstitutions"
+                                label={t("educationInstitutions")}
+                            />
 
-                </div>
+                            <NearbyFacilitiesSection
+                                errors={errors}
+                                control={control}
+                                name="healthMedicalFacilities"
+                                label={t("healthMedicalFacilities")}
+                            />
+                        </div>
+                    </div>
+                </FormSection>
 
-                {/* --- Section 5: Images --- */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <h3 className="text-lg font-semibold border-b pb-2 mb-4">{t("gallery")}</h3>
-                    <Uploader
-                        control={control}
-                        name="images"
-                        accept="image/*"
-                        onRemoveFile={isEditMode ? (file) => handleRemoveFile(file, "image") : undefined}
-                        preventRemoveOn={1}
-                        allowMultiple
-                        maxFiles={6}
-                        maxSizeMB={5}
-                        rules={[
-                            tCommon("uploader.rules.maxSize", { size: 5 }),
-                            tCommon("uploader.rules.maxFiles", { count: 6 }),
-                        ]}
-                    />
-                    <FormErrorMessage message={errors.images?.message?.toString()} />
-                </div>
+                {/* ---  Images --- */}
+                <FormSection
+                    title={t("gallery")}
+                    subtitle={t("subtitles.gallery")}
+                    icon={<FiCamera className="w-5 h-5 text-secondary" />}
+                >
+                    <div className="md:col-span-2 space-y-2">
+                        <Uploader
+                            control={control}
+                            name="images"
+                            accept="image/*"
+                            onRemoveFile={isEditMode ? (file) => handleRemoveFile(file, "image") : undefined}
+                            preventRemoveOn={1}
+                            allowMultiple
+                            maxFiles={6}
+                            maxSizeMB={5}
+                            rules={[
+                                tCommon("uploader.rules.maxSize", { size: 5 }),
+                                tCommon("uploader.rules.maxFiles", { count: 6 }),
+                            ]}
+                        />
+                        {errors.images && (
+                            <FormErrorMessage message={errors.images?.message?.toString()} />
+                        )}
+                    </div>
+                </FormSection>
 
-                {/* Actions */}
-                <div className="flex  gap-4 pt-4">
-                    <SecondaryButton
-                        type="submit"
-                        disabled={isLoading}
-                        onClick={handleSubmit(onSubmit as any)}
-                        className="bg-secondary text-white w-40"
-                    >
-                        {isLoading ? tCommon("saving") : tCommon("save")}
-                    </SecondaryButton>
-                    {/* <SecondaryButton
-                        type="button"
-                        onClick={() => router.back()}
-                        className="bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    >
-                        {tCommon("cancel")}
-                    </SecondaryButton> */}
-                </div>
+                <Actions onSave={handleSubmit(onSubmit as any)} isLoading={isLoading} />
+
             </div>
         </div>
     );
 }
 
+
+
+function CheckboxField({
+    label,
+    checked,
+    onChange,
+    className
+}: {
+    label: string;
+    checked: boolean;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    className?: string;
+}) {
+    return (
+        <label className={cn(
+            "group relative flex items-center gap-3 cursor-pointer select-none",
+            "px-4 py-3 rounded-xl border-2 border-gray/10 bg-white transition-all duration-200",
+            "hover:border-secondary/40 hover:bg-secondary/5",
+            checked && "border-secondary bg-gradient-to-r from-secondary/10 to-primary/10",
+            className
+        )}>
+            {/* Custom checkbox */}
+            <div className="relative flex items-center justify-center">
+                <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={onChange}
+                    className="peer sr-only"
+                />
+                <div className={cn(
+                    "w-5 h-5 rounded-md border-2 transition-all duration-200",
+                    "peer-checked:bg-gradient-to-br peer-checked:from-secondary peer-checked:to-primary peer-checked:border-primary",
+                    "group-hover:border-secondary",
+                    !checked && "border-gray/30 bg-white"
+                )}>
+                    {checked && (
+                        <svg
+                            className="w-full h-full text-white p-0.5 animate-in zoom-in duration-200"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                    )}
+                </div>
+            </div>
+
+            <span className={cn(
+                "text-sm font-semibold transition-colors duration-200",
+                checked ? "text-primary" : "text-dark group-hover:text-primary"
+            )}>
+                {label}
+            </span>
+        </label>
+    );
+}

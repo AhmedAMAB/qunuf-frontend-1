@@ -1,5 +1,8 @@
+import { FiAlertCircle } from "react-icons/fi";
+import { cn } from "@/lib/utils";
+
 interface FormErrorMessageProps {
-    message?: string | null;
+    message?: string;
     className?: string;
 }
 
@@ -7,8 +10,18 @@ export default function FormErrorMessage({ message, className }: FormErrorMessag
     if (!message) return null;
 
     return (
-        <p className={`mt-1 text-sm text-red-600 flex items-center gap-1 ${className || ''}`}>
-            ⚠ {message}
-        </p>
+        <div
+            className={cn(
+                "flex items-center gap-1.5 mt-1.5",
+                "text-red-500 text-xs font-medium",
+                "animate__animated animate__shakeX", // Visual feedback on appearance
+                className
+            )}
+        >
+            {/* Architectural Icon */}
+            <FiAlertCircle className="shrink-0 w-3.5 h-3.5" />
+
+            <span>{message}</span>
+        </div>
     );
 }

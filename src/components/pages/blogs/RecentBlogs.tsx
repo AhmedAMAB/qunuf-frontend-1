@@ -8,6 +8,8 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { resolveUrl } from "@/utils/upload";
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import RichTextRenderer from '@/components/molecules/forms/editor/RichTextRenderer';
+import { cn } from '@/lib/utils';
 
 export default function RecentBlogs({ slug }: { slug?: string }) {
     const t = useTranslations('blogs');
@@ -112,58 +114,174 @@ interface BlogProps {
 }
 
 
+
 function BlogCard({ blog, list = false }: BlogProps) {
     const t = useTranslations("blogs");
-    const locale = useLocale()
+    const locale = useLocale();
     const isAr = locale === 'ar';
     const title = isAr ? blog.title_ar : blog.title_en;
     const description = isAr ? blog.description_ar : blog.description_en;
-    const formattedDate = new Date(blog.created_at).toLocaleDateString('en', {
+    const formattedDate = new Date(blog.created_at).toLocaleDateString(locale, {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
     });
 
     return (
-        <div className={`overflow-hidden relative w-full ${!list && "max-w-[400px]"} rounded-[16px] flex ${list ? "flex-col  w-full  space-y-6" : "flex-col w-fit mx-auto space-y-7"}`}>
+        <article
+            className={cn(
+                "group overflow-hidden relative w-full rounded-2xl",
+                "flex flex-col",
+                "transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10",
+                "animate__animated animate__fadeInUp",
+                list
+                    ? "space-y-6 lg:space-y-8"
+                    : "max-w-[420px] mx-auto space-y-5"
+            )}
+        >
+            {/* Image Container */}
+            <Link href={`/blogs/${blog.slug}`} className="relative block overflow-hidden rounded-2xl">
+                {/* Gradient overlay on hover */}
+                <div className={cn(
+                    "absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/20 to-transparent z-10",
+                    "opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                )} />
 
-            <Image
-                src={resolveUrl(blog.imagePath)}
-                alt={title}
-                width={400}
-                height={360}
-                loading="eager" // Forced eager
-                fetchPriority="high"
-                className={`w-full ${list ? "w-full h-[380px] sm:h-[400px] md:h-[420px] lg:h-[450px]" : "max-w-[400px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[360px]"
-                    } h-[200px] sm:h-[250px] md:h-[300px] lg:h-[360px] rounded-[16px] object-cover image-scale`}
-            />
+                {/* Date Badge (only for grid view) */}
+                {!list && (
+                    <div className={cn(
+                        "absolute top-4 ltr:left-4 rtl:right-4 z-20",
+                        "bg-dashboard-bg/95 backdrop-blur-md rounded-xl px-4 py-2",
+                        "shadow-lg border border-secondary/20",
+                        "transform transition-all duration-300",
+                        "group-hover:scale-105"
+                    )}>
+                        <time className="text-xs md:text-sm font-bold text-primary">
+                            {formattedDate}
+                        </time>
+                    </div>
+                )}
 
-            <div className={`flex-1 text-start flex flex-col gap-2 lg:gap-4 z-[1] mb-4 ${list ? "mt-5 md:mt-3" : ""}`}>
+                {/* Image */}
+                <Image
+                    src={resolveUrl(blog.imagePath)}
+                    alt={title}
+                    width={600}
+                    height={450}
+                    loading="eager"
+                    fetchPriority="high"
+                    className={cn(
+                        "w-full object-cover",
+                        "transition-all duration-700",
+                        "group-hover:scale-110 group-hover:rotate-1",
+                        list
+                            ? "h-[380px] sm:h-[420px] md:h-[460px] lg:h-[500px]"
+                            : "h-[220px] sm:h-[260px] md:h-[300px] lg:h-[360px]"
+                    )}
+                />
+            </Link>
 
-                {!list && <p className="font-medium text-placeholder text-[13px]">{formattedDate}</p>}
+            {/* Content Container */}
+            <div className={cn(
+                "flex-1 flex flex-col gap-3 lg:gap-4 px-1",
+                list && "md:px-2"
+            )}>
+                {/* Title */}
                 <Link
-                    href={`/blogs/${blog.id}`}
-                    className="block font-bold text-xl md:text-2xl text-black"
+                    href={`/blogs/${blog.slug}`}
+                    className={cn(
+                        "block font-bold text-dark leading-tight tracking-tight",
+                        "transition-all duration-300 hover:text-primary",
+                        "group-hover:translate-x-1 rtl:group-hover:-translate-x-1",
+                        list
+                            ? "text-2xl md:text-3xl lg:text-4xl"
+                            : "text-xl md:text-2xl"
+                    )}
                 >
                     {title}
                 </Link>
 
-                <p className={` font-medium text-dark ${list ? "whitespace-pre-line text-lg md:text-xl" : "text-sm md:text-base"}`}>
-                    {description}
-                </p>
+                {/* Description */}
+                <div className={cn(
+                    "text-grey-dark/80 leading-relaxed",
+                    "transition-colors duration-300 group-hover:text-grey-dark",
+                    list
+                        ? "text-base md:text-lg line-clamp-4"
+                        : "text-sm md:text-base line-clamp-3"
+                )}>
+                    <RichTextRenderer
+                        content={description}
+                        className="prose prose-sm max-w-none"
+                    />
+                </div>
 
-                {!list && <div className="mx-auto mt-auto">
-                    <Link href={`/blogs/${blog.slug}`}>
-                        <AnimatedSecondaryButton large={false} position="end" showBall={false} >
-                            {t("readMore")}
-                        </AnimatedSecondaryButton>
-                    </Link>
-                </div>}
+                {/* Date for list view */}
+                {list && (
+                    <time className="text-placeholder text-sm md:text-base font-medium">
+                        {formattedDate}
+                    </time>
+                )}
+
+                {/* Read More Button (grid view only) */}
+                {!list && (
+                    <div className="mt-auto pt-3">
+                        <Link href={`/blogs/${blog.slug}`}>
+                            <CustomReadMoreButton>
+                                {t("readMore")}
+                            </CustomReadMoreButton>
+                        </Link>
+                    </div>
+                )}
             </div>
-        </div>
+        </article>
     );
 }
 
+/* Custom Read More Button Component */
+function CustomReadMoreButton({ children }: { children: React.ReactNode }) {
+    return (
+        <button
+            className={cn(
+                "group/btn relative inline-flex items-center gap-2",
+                "px-6 py-2.5 rounded-full overflow-hidden",
+                "bg-gradient-to-r from-secondary to-primary",
+                "text-white font-semibold text-sm md:text-base",
+                "shadow-lg hover:shadow-xl hover:shadow-secondary/30",
+                "transition-all duration-300",
+                "hover:scale-105 active:scale-95",
+                "mx-auto"
+            )}
+        >
+            {/* Shine effect */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+
+            {/* Text */}
+            <span className="relative z-10">{children}</span>
+
+            {/* Arrow Icon */}
+            <svg
+                className={cn(
+                    "relative z-10 w-4 h-4",
+                    "transition-transform duration-300",
+                    "group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1"
+                )}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+            </svg>
+
+            {/* Ripple effect */}
+            <span className="absolute inset-0 rounded-full bg-white/0 group-hover/btn:bg-white/10 transition-colors duration-300" />
+        </button>
+    );
+}
 
 export function BlogCardSkeleton({ list = false }: { list?: boolean }) {
     return (

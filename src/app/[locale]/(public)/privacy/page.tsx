@@ -3,6 +3,8 @@ import { getLocale, getTranslations } from "next-intl/server";
 import api from "@/libs/axios";
 import PageHeroSection from "@/components/atoms/PageHeroSection";
 import NoData from "@/components/atoms/NoData";
+import RichTextRenderer from "@/components/molecules/forms/editor/RichTextRenderer";
+import LegalSkeleton from "@/components/atoms/LegalSkeleton";
 
 async function getPrivacyData() {
     try {
@@ -40,7 +42,13 @@ export default async function PrivacyPage() {
                     <div
                         className="prose text-lg prose-lg max-w-none text-dark whitespace-break-spaces"
                     >
-                        {privacyContent}
+                        <RichTextRenderer
+                            content={privacyContent}
+                            className="text-lg leading-loose text-dark"
+                            loader={<div>
+                                <LegalSkeleton />
+                            </div>}
+                        />
                     </div>
                 ) : (
                     <NoData

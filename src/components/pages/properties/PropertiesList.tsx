@@ -16,48 +16,62 @@ import { useLocale, useTranslations } from "next-intl";
 import { LiaCouchSolid } from "react-icons/lia";
 import Tooltip from "@/components/atoms/Tooltip";
 import FilterProperties from "./FilterProperties";
+import { FilterState } from "@/constants/properties/constant";
+import { FilterProvider, useFilter } from "@/hooks/properties/useFilterProperties";
+import { useDebounce } from "@/hooks/useDebounce";
 
 
-const mapParamsToDto = (searchParams: URLSearchParams) => {
+const mapFiltersToDto = (filters: FilterState, page: string | number) => {
     const dto: any = {
-        page: searchParams.get("page") || "1",
+        page: page.toString(),
         limit: "12",
     };
 
     // Helper to only add defined/non-empty values
-    const addIfValid = (dtoKey: string, paramKey: string, transform?: (v: string) => any) => {
-        const value = searchParams.get(paramKey);
-        if (value && value !== 'all' && value !== 'undefined') {
+
+    const addIfValid = (dtoKey: string, value: any, transform?: (v: any) => any) => {
+        // Only add if value is not 'all', not empty, and not the initial zero/max defaults if you prefer
+        if (value !== undefined && value !== null && value !== 'all' && value !== '') {
+            if (Array.isArray(value) && value.length === 0) return;
             dto[dtoKey] = transform ? transform(value) : value;
         }
     };
 
-    addIfValid("stateId", "location");
-    addIfValid("rentType", "period");
-    addIfValid("propertyType", "type");
-    addIfValid("subTypes", "subtype"); // Keeps as comma string for backend @Transform
-    addIfValid("features", "features"); // Keeps as comma string for backend @Transform
 
-    addIfValid("bathroom", "bathroom");
-    addIfValid("bedroom", "bedroom");
+    addIfValid("stateId", filters.location);
+    addIfValid("rentType", filters.period);
+    addIfValid("propertyType", filters.type);
+    addIfValid("subTypes", filters.subtype, (v) => v.join(",")); // backend expects comma string
+    addIfValid("features", filters.features, (v) => v.join(","));
 
-    // Handle Furnished logic
-    addIfValid("isFurnished", "furnished")
+    addIfValid("bathroom", filters.bathroom);
+    addIfValid("bedroom", filters.bedroom);
+    addIfValid("isFurnished", filters.furnished);
 
     // Numerical Ranges
-    addIfValid("minPrice", "priceMin", Number);
-    addIfValid("maxPrice", "priceMax", Number);
-    addIfValid("minArea", "scquarefeetMin", Number);
-    addIfValid("maxArea", "scquarefeetMax", Number);
-    addIfValid("minYear", "yearBuiltMin", Number);
-    addIfValid("maxYear", "yearBuiltMax", Number);
+    addIfValid("minPrice", filters.priceMin);
+    addIfValid("maxPrice", filters.priceMax);
+    addIfValid("minArea", filters.scquarefeetMin);
+    addIfValid("maxArea", filters.scquarefeetMax);
+    addIfValid("minYear", filters.yearBuiltMin);
+    addIfValid("maxYear", filters.yearBuiltMax)
 
     return dto;
 };
 
-export default function PropertiesList() {
+export default function PropertySearchPage() {
+    return (
+        <FilterProvider>
+            <PropertiesList />
+        </FilterProvider>
+    );
+}
+
+function PropertiesList() {
     const locale = useLocale();
     const t = useTranslations('property')
+    const { filters } = useFilter(); // Consume Context
+    const { debouncedValue: debouncedFilters } = useDebounce({ value: filters, delay: 300 });
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
@@ -74,10 +88,11 @@ export default function PropertiesList() {
 
     useEffect(() => {
         const fetchProperties = async () => {
+            console.log('loading')
             setLoading(true);
             try {
-                const dtoParams = mapParamsToDto(new URLSearchParams(searchParams.toString()));
-                const queryString = new URLSearchParams(dtoParams as any).toString();
+                const dtoParams = mapFiltersToDto(debouncedFilters, page);
+                const queryString = new URLSearchParams(dtoParams).toString();
 
                 const res = await api.get(`/properties/search?${queryString}`);
                 const { records, pagination: serverPagination } = res.data;
@@ -96,7 +111,7 @@ export default function PropertiesList() {
         };
 
         fetchProperties();
-    }, [searchParams]);
+    }, [debouncedFilters, page]);
 
 
     const handlePageChange = (page: number) => {
@@ -109,7 +124,8 @@ export default function PropertiesList() {
 
 
     return (
-        <div className="mt-28 mx-2">
+
+        <section className="mt-28 mx-2">
             <div className="container ">
                 <div className="flex flex-col gap-4 md:gap-6 mb-10 lg:grid lg:grid-cols-[335px_1fr]">
                     <div className="z-[45] relative max-sm:w-full max-sm:max-w-[416px] max-sm:mx-auto flex justify-between lg:block">
@@ -118,22 +134,27 @@ export default function PropertiesList() {
                             {t("filter.header")}
                         </h1>
                     </div>
-                    <div className="flex-2">
+                    <div className="flex-1 flex flex-col">
                         <h1 className="hidden lg:block pb-4 text-3xl md:text-4xl text-dark font-bold">
                             {t("filter.header")}
                         </h1>
                         {loading ? (
-                            <PropertyGridSkeleton />
+                            <div className="flex-1">
+
+                                <PropertyGridSkeleton />
+                            </div>
                         ) : !loading && !properties?.length ? (
                             <EmptyState title={t("grid.emptyTitle")} message={t("grid.emptyMessage")} />
                         ) :
-                            (<div className="flex flex-col gap-2">
-                                <div className="grid grid-cols-12 gap-4 xl:gap-5">
-                                    {properties.map((property) => (
-                                        <div key={property.id} className="col-span-12 sm:col-span-6 xl:col-span-4 2xl:col-span-3">
-                                            <PropertyCardGrid property={property} locale={locale} />
-                                        </div>
-                                    ))}
+                            (<div className="flex-1 flex flex-col gap-2">
+                                <div className="flex-1">
+                                    <div className="grid grid-cols-12 gap-4 xl:gap-5">
+                                        {properties.map((property) => (
+                                            <div key={property.id} className="col-span-12 sm:col-span-6 xl:col-span-4 2xl:col-span-3">
+                                                <PropertyCardGrid property={property} locale={locale} />
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                                 <div className="mx-auto">
                                     <Pagination currentPage={Number(page)} pageCount={pagination.totalPages} onPageChange={handlePageChange} />
@@ -142,7 +163,8 @@ export default function PropertiesList() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     );
 }
 

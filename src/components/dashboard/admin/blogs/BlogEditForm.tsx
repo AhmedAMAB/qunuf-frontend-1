@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useCallback, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useCallback, useRef, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import api from '@/libs/axios';
@@ -13,6 +13,8 @@ import TextAreaInput from '@/components/molecules/forms/TextAreaInput';
 import Uploader from '@/components/molecules/forms/Uploader';
 import ActionButtons from '@/components/atoms/ActionButtons';
 import FormErrorMessage from '@/components/molecules/forms/FormErrorMessage';
+import RichTextEditor from '@/components/molecules/forms/editor/RichTextEditor';
+import { EMPTY_LEXICAL_STATE } from '@/components/molecules/forms/editor/RichTextRenderer';
 
 /* ---------------------------------- */
 /* Schema */
@@ -31,15 +33,17 @@ export const getBlogSchema = (t: (key: string, params?: any) => string, isEdit?:
             .max(255, { message: t('validation.maxLength', { max: 255 }) })
             .nonempty({ message: t('validation.required') }),
 
-        description_en: z
-            .string()
-            .trim()
-            .nonempty({ message: t('validation.required') }),
+        description_en: z.any(),
+        // .refine((val) => {
 
-        description_ar: z
-            .string()
-            .trim()
-            .nonempty({ message: t('validation.required') }),
+        //     if (!val) return false;
+        // }, { message: t('validation.required') }),
+
+        description_ar: z.any(),
+        // .refine((val) => {
+
+        //     if (!val) return false;
+        // }, { message: t('validation.required') }),
 
         image: isEdit
             ? z.any().optional()
@@ -90,12 +94,13 @@ export default function BlogEditForm({
         defaultValues: initialData || {
             title_en: '',
             title_ar: '',
-            description_en: '',
-            description_ar: '',
+            description_en: initialData?.description_en || EMPTY_LEXICAL_STATE,
+            description_ar: initialData?.description_ar || EMPTY_LEXICAL_STATE,
             image: null,
         },
     });
-
+    const descriptionEnRef = useRef<any>(null);
+    const descriptionArRef = useRef<any>(null);
     /* ---------------------------------- */
     /* Submit */
     /* ---------------------------------- */
@@ -110,8 +115,17 @@ export default function BlogEditForm({
                 const formData = new FormData();
                 formData.append('title_en', data.title_en);
                 formData.append('title_ar', data.title_ar);
-                formData.append('description_en', data.description_en);
-                formData.append('description_ar', data.description_ar);
+                const descEn = descriptionEnRef.current
+                    ? descriptionEnRef.current.toJSON()
+                    : data.description_en;
+
+                const descAr = descriptionArRef.current
+                    ? descriptionArRef.current.toJSON()
+                    : data.description_ar;
+
+                // Use JSON.stringify here!
+                formData.append('description_en', JSON.stringify(descEn));
+                formData.append('description_ar', JSON.stringify(descAr));
 
                 if (data.image?.file) {
                     formData.append('image', data.image.file);
@@ -148,8 +162,9 @@ export default function BlogEditForm({
     /* ---------------------------------- */
     /* Render */
     /* ---------------------------------- */
+
     return (
-        <form className="space-y-6">
+        <form className="space-y-6 w-[90vw] max-w-4xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                 {/* Titles */}
@@ -161,33 +176,50 @@ export default function BlogEditForm({
                     onChange={(e) => setValue('title_en', e.target.value)}
                     error={errors.title_en?.message}
                 />
-
                 <TextInput
-                    type='text'
                     label={t('title_ar')}
                     {...register('title_ar')}
                     value={watch('title_ar') ?? ''}
                     onChange={(e) => setValue('title_ar', e.target.value)}
-                    error={errors.title_ar?.message}
+                    error={errors.title_ar?.message.toString()}
                 />
+
 
                 {/* Descriptions */}
-                <TextAreaInput
-                    label={t('description_en')}
-                    {...register('description_en')}
-                    value={watch('description_en') ?? ''}
-                    onChange={(e) => setValue('description_en', e.target.value)}
-                    error={errors.description_en?.message}
-                />
+                <div className="space-y-6 md:col-span-2">
+                    {/* English Description */}
+                    <Controller
+                        control={control}
+                        name="description_en"
+                        render={({ field }) => (
+                            <RichTextEditor
+                                label={t('description_en')}
+                                value={field.value}
+                                editorStateRef={descriptionEnRef} // Make sure to define this ref at the top
+                                minHeight="400px"
+                                error={errors.description_en?.message?.toString()}
+                            />
+                        )}
+                    />
+                </div>
+                {/* Arabic Description */}
+                <div className='md:col-span-2'>
+                    <Controller
+                        control={control}
+                        name="description_ar"
+                        render={({ field }) => (
+                            <RichTextEditor
+                                label={t('description_ar')}
+                                value={field.value}
+                                editorStateRef={descriptionArRef} // Make sure to define this ref at the top
+                                minHeight="400px"
+                                error={errors.description_ar?.message?.toString()}
+                            />
+                        )}
+                    />
 
-                <TextAreaInput
-                    label={t('description_ar')}
-                    {...register('description_ar')}
-                    value={watch('description_ar') ?? ''}
-                    onChange={(e) => setValue('description_ar', e.target.value)}
-                    error={errors.description_ar?.message}
-                />
 
+                </div>
                 {/* Image */}
                 <div className="md:col-span-2">
                     <Uploader

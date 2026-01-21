@@ -81,6 +81,8 @@ export type FilterState = {
     yearBuiltMax: number;
 };
 
+
+
 export const featureKeys = [
     "maidRoom",
     "backyard",

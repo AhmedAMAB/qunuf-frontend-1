@@ -6,7 +6,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useLocale, useTranslations } from "next-intl";
 import api from "@/libs/axios";
 import { toast } from "react-hot-toast";
-import AddressPopup from "./AddressPopup";
 import { IdentityPopup } from "./IdentityPopup";
 import { PhonePopupDefault } from "./PhonePopupDefault";
 import { NamePopupDefault } from "./NamePopupDefault";
@@ -22,6 +21,7 @@ import UserImageUpdater from "./UserImageUpdater";
 import ShortAddressPopup from "./ShortAddressPopup";
 import { saudiPhoneRegex } from "@/utils/helpers";
 import { isWithinAdultRange } from "@/utils/date";
+import { cn } from "@/lib/utils";
 
 // Saudi Phone Regex
 
@@ -38,12 +38,13 @@ export const userUpdateSchema = z.object({
         .regex(saudiPhoneRegex, "validation.invalidPhone")
         .optional(),
 
-    birthDate: z.date()
-        .refine((date) => {
-
-            return isWithinAdultRange(date);
-        }, "validation.invalidBirthDate")
-        .optional(),
+    birthDate: z.union([z.date(), z.undefined()])
+        .refine((val) => val !== undefined, {
+            message: "validation.required",
+        })
+        .refine((val) => isWithinAdultRange(val), {
+            message: "validation.invalidBirthDate",
+        }),
     identityType: z
         .string()
         .min(1, 'validation.required'),
@@ -155,7 +156,6 @@ export default function Account() {
         setErrors({}); // Clear previous errors
 
         const result = schema.safeParse(payload);
-
         if (!result.success) {
             const fieldErrors: Record<string, string> = {};
             result.error.issues.forEach((issue) => {
@@ -237,34 +237,8 @@ export default function Account() {
 
     }, [user, isAr, t]);
 
-
     if (loadingUser) {
-        return (
-            <div className="animate-pulse">
-                {/* DashboardCard Content Skeleton */}
-                <DashboardCard>
-                    <div className="flex flex-col items-center pb-6 border-b border-gray-100 mb-6">
-                        {/* Circular Image Skeleton */}
-                        <div className="h-24 w-24 sm:h-32 sm:w-32 rounded-full bg-gray-200 mb-4 border-4 border-gray-50" />
-
-                        {/* Name Skeleton */}
-                        <div className="h-6 bg-gray-200 rounded w-48" />
-                    </div>
-                    {Array.from({ length: 6 }).map((_, i) => (
-                        <div key={i} className="py-5 border-b border-gray-100 last:border-0">
-                            <div className="flex justify-between items-center mb-2">
-                                {/* Label Skeleton */}
-                                <div className="h-3 bg-gray-200 rounded w-24" />
-                                {/* Edit Button Link Skeleton */}
-                                <div className="h-3 bg-blue-100 rounded w-10" />
-                            </div>
-                            {/* Value Display Skeleton */}
-                            <div className="h-5 bg-gray-100 rounded w-3/4 sm:w-1/2" />
-                        </div>
-                    ))}
-                </DashboardCard>
-            </div>
-        );
+        return <AccountSkeleton />;
     }
     return (
         <>
@@ -287,46 +261,8 @@ export default function Account() {
 
                 {/* --- EMAIL SECTION (New) --- */}
                 {user?.pendingEmail ? (
-                    // PENDING EMAIL STATE
-                    <div className="py-5 border-b border-gray-100 last:border-0">
-                        <div className="flex justify-between items-center mb-2">
-                            <label className="text-gray-500 text-sm">{t('email')}</label>
-                            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
-                                {t('pendingVerification')}
-                            </span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                            <div>
-                                <p className="text-dark font-medium">{user.email}</p>
-                                <p className="text-sm text-gray-400 mt-1">
-                                    {t('verificationSentTo')}: <span className="text-secondary">{user.pendingEmail}</span>
-                                </p>
-                            </div>
-
-                            <div className="flex gap-2">
-                                <button
-                                    onClick={resendEmail}
-                                    disabled={resendLoading || cooldown > 0}
-                                    className={`text-sm px-3 py-1.5 rounded-md border transition-colors 
-                                    ${cooldown > 0
-                                            ? 'bg-gray-100 text-gray-400 border-gray-200'
-                                            : 'border-secondary text-secondary hover:bg-secondary hover:text-white'
-                                        }`}
-                                >
-                                    {resendLoading ? t('sending') : cooldown > 0 ? `${t('resend')} (${cooldown})` : t('resend')}
-                                </button>
-                                <button
-                                    onClick={cancelEmailChange}
-                                    disabled={cancelLoading}
-                                    className="text-sm px-3 py-1.5 rounded-md border border-red-200 bg-red-100 text-red-500 hover:bg-red-50 transition-colors"
-                                >
-                                    {cancelLoading ? '...' : t('cancel')}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <PendingEmailField user={user} />
                 ) : (
-                    // NORMAL EMAIL EDIT STATE
                     <EditableField
                         label={t('email')}
                         valueDisplay={user?.email}
@@ -334,14 +270,11 @@ export default function Account() {
                             <EmailPopup
                                 value={user?.email}
                                 close={close}
-                                onSuccess={() => {
-                                    startResendCooldown();
-                                }}
+                                onSuccess={() => startResendCooldown()}
                             />
                         )}
                     />
                 )}
-
                 {/* --- PASSWORD SECTION (New) --- */}
                 <EditableField
                     label={t('password')}
@@ -371,6 +304,7 @@ export default function Account() {
                 {/* BirthDate*/}
                 <EditableField
                     label={t('birthDate')}
+                    popupClassName="popup-visable"
                     valueDisplay={user?.birthDate ? new Date(user.birthDate).toLocaleDateString() : ''}
                     renderPopup={(close) => <BirthDatePopup
                         value={user?.birthDate}
@@ -385,7 +319,7 @@ export default function Account() {
                 {/*  Nationality*/}
                 <EditableField
                     label={t('nationality')}
-                    popupClassName="!overflow-visible"
+                    popupClassName="popup-visable"
                     valueDisplay={isAr ? user?.nationality?.name_ar : user?.nationality?.name}
                     renderPopup={(close) => <NationalityPopup
                         value={isAr ? user?.nationality?.name_ar : user?.nationality?.name}
@@ -398,29 +332,7 @@ export default function Account() {
                 />
 
 
-                {/* 
-                detailed address
-                <EditableField
-                    label={t('address')}
-                    popupClassName="!overflow-visible"
-                    valueDisplay={fullAddress}
-                    renderPopup={(close) => (
-                        <AddressPopup
-                            errors={errors}
-                            initialData={user?.address ?? {
-                                city: '',
-                                streetName: '',
-                                buildingNumber: '',
-                                stateId: '',
-                                postalCode: '',
-                                additionalNumber: '',
-                            }}
-                            isLoading={updating}
-                            onSave={(data) => handleUpdate({ address: data }, close, z.object({ address: userUpdateSchema.shape.address }))}
-                            close={close}
-                        />
-                    )}
-                /> */}
+
 
                 <EditableField
                     label={t('shortAddress')}
@@ -440,7 +352,7 @@ export default function Account() {
                 {/* Identity & Nationality */}
                 <EditableField
                     label={t('identityInfo')}
-                    popupClassName="!overflow-visible"
+                    popupClassName="popup-visable"
                     valueDisplay={`${identityInfo}`}
                     renderPopup={(close) => (
                         <IdentityPopup
@@ -457,7 +369,163 @@ export default function Account() {
                         />
                     )}
                 />
+
+
             </DashboardCard>
         </>
     );
-}
+
+
+
+
+    // Pending Email Field Component
+    function PendingEmailField({ user }: { user: any }) {
+        const t = useTranslations('dashboard.account');
+
+        return (
+            <div className="group relative py-5 border-b border-gray/10">
+                {/* Hover background */}
+                <div className="absolute -inset-x-4 inset-y-0 bg-gradient-to-r from-yellow-50/50 to-orange-50/50 rounded-xl opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                <div className="relative space-y-3">
+                    {/* Header */}
+                    <div className="flex items-center justify-between">
+                        <label className="text-sm font-semibold text-dark/70">
+                            {t('email')}
+                        </label>
+                        <span className="flex items-center gap-1.5 text-xs font-bold bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1.5 rounded-full shadow-sm">
+                            <svg className="w-3.5 h-3.5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                            </svg>
+                            {t('pendingVerification')}
+                        </span>
+                    </div>
+
+                    {/* Email Info */}
+                    <div className="space-y-2">
+                        <p className="text-base font-medium text-dark">{user.email}</p>
+                        <p className="text-sm text-dark/60 flex items-center gap-2">
+                            <svg className="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span>
+                                {t('verificationSentTo')}:
+                                <span className="font-semibold text-secondary ml-1">{user.pendingEmail}</span>
+                            </span>
+                        </p>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                        <button
+                            onClick={resendEmail}
+                            disabled={resendLoading || cooldown > 0}
+                            className={cn(
+                                "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200",
+                                cooldown > 0
+                                    ? "bg-gray/10 text-dark/40 cursor-not-allowed"
+                                    : "bg-secondary/10 text-secondary hover:bg-secondary hover:text-white hover:shadow-md active:scale-95"
+                            )}
+                        >
+                            {resendLoading ? (
+                                <>
+                                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                    </svg>
+                                    {t('sending')}
+                                </>
+                            ) : cooldown > 0 ? (
+                                `${t('resend')} (${cooldown}s)`
+                            ) : (
+                                <>
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                    </svg>
+                                    {t('resend')}
+                                </>
+                            )}
+                        </button>
+
+                        <button
+                            onClick={cancelEmailChange}
+                            disabled={cancelLoading}
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition-all duration-200 hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {cancelLoading ? (
+                                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                </svg>
+                            ) : (
+                                <>
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                    {t('cancel')}
+                                </>
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    function AccountSkeleton() {
+        return (
+            /* Using tailwindcss-animate classes:
+               - animate-in: triggers the entry
+               - fade-in: smooth appearance
+               - duration-1000: timing of entry
+               - animate-pulse: the looping effect
+            */
+            <DashboardCard className="mx-auto animate-pulse">
+                <div className="duration-[3000ms] ease-in-out">
+                    {/* Profile Image Skeleton */}
+                    <div className="flex flex-col items-center pb-8 mb-6 border-b border-gray/10">
+                        <div className="h-40 w-40 rounded-full bg-gradient-to-br from-gray/10 to-gray/20 mb-6 shadow-xl" />
+                        <div className="h-8 bg-gray/15 rounded-lg w-48 mb-2" />
+                        <div className="h-5 bg-gray/10 rounded-lg w-64" />
+                    </div>
+
+                    {/* Fields Skeleton */}
+                    {Array.from({ length: 7 }).map((_, i) => (
+                        <div key={i} className="py-5 border-b border-gray/10 last:border-0 space-y-3">
+                            <div className="flex justify-between items-center">
+                                <div className="h-4 bg-gray/15 rounded w-24" />
+                                <div className="h-8 bg-secondary/10 rounded-lg w-16" />
+                            </div>
+                            <div className="h-6 bg-gray/10 rounded w-3/4" />
+                        </div>
+                    ))}
+                </div>
+            </DashboardCard>
+        );
+    }
+
+} {/* 
+    detailed address
+    <EditableField
+        label={t('address')}
+        popupClassName="popup-visable"
+        valueDisplay={fullAddress}
+        renderPopup={(close) => (
+            <AddressPopup
+                errors={errors}
+                initialData={user?.address ?? {
+                    city: '',
+                    streetName: '',
+                    buildingNumber: '',
+                    stateId: '',
+                    postalCode: '',
+                    additionalNumber: '',
+                }}
+                isLoading={updating}
+                onSave={(data) => handleUpdate({ address: data }, close, z.object({ address: userUpdateSchema.shape.address }))}
+                close={close}
+            />
+        )}
+    /> */}
+
+

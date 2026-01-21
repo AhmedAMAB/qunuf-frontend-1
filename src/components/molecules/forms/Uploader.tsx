@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { set } from 'zod';
 import { MdClose } from 'react-icons/md';
+import { cn } from '@/lib/utils';
 
 type UploaderProps = {
     control: Control<any>;
@@ -132,50 +133,63 @@ export default function Uploader({
                 const isOneFile = !allowMultiple;
 
                 return (
-                    <div className="col-span-12"
+                    <div className="relative col-span-12 group/uploader"
                         onDrop={(e) => {
                             e.preventDefault();
                             const files = Array.from(e.dataTransfer.files);
-                            handleFiles({ target: { files } } as any); // 👈 reuse your handleFiles
+                            handleFiles({ target: { files } } as any);
                         }}
                         onDragOver={(e) => e.preventDefault()}>
-                        {/* Label */}
-                        {label && <label htmlFor={inputId} className="text-xl font-medium block mb-3">
-                            {label}
-                        </label>}
+
+                        {/* Architectural Label */}
+                        {label && (
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-1 h-6 bg-secondary rounded-full" />
+                                <label htmlFor={inputId} className="text-sm font-black uppercase tracking-[0.2em] text-dark/80 cursor-pointer">
+                                    {label}
+                                </label>
+                            </div>
+                        )}
 
                         {/* Dropzone */}
-                        <div className="relative overflow-hidden flex items-center justify-center border-dashed border-gray-400 rounded-[8px] w-full">
+                        <div className={cn(
+                            "relative overflow-hidden transition-all duration-500 rounded-2xl border-2 border-dashed",
+                            "bg-white border-dark/10", // Initial White Background
+                            "group-hover/uploader:border-secondary/40 group-hover/uploader:shadow-sm" // Hover transition
+                        )}>
                             <label
                                 htmlFor={inputId}
-                                className="relative  flex flex-col items-center justify-center w-full cursor-pointer  border-gray-400 rounded-[8px] border border-dashed"
+                                className="relative flex flex-col items-center justify-center w-full cursor-pointer py-12 px-6"
                             >
-                                <span className="flex flex-col items-center justify-center py-6">
-                                    <BsCloudArrowUp size={60} />
-                                    <span className="h3 clr-neutral-500 text-center mt-4 mb-3">
+                                <div className="relative mb-6">
+                                    {/* Background Decorative Circle */}
+                                    <div className="absolute inset-0 scale-150 bg-secondary/5 rounded-full blur-2xl group-hover/uploader:bg-secondary/10 transition-colors" />
+                                    <BsCloudArrowUp size={56} className="relative text-secondary group-hover/uploader:-translate-y-1 transition-transform duration-300" />
+                                </div>
+
+                                <div className="text-center space-y-1">
+                                    <span className="block text-lg font-bold text-dark tracking-tight">
                                         {t("dragLabel")}
                                     </span>
-                                    <span className="block text-center mb-6 clr-neutral-500">
-                                        {t("orLabel")}
+                                    <span className="block text-xs font-medium text-dark/40 uppercase tracking-widest">
+                                        — {t("orLabel")} —
                                     </span>
-                                    <span className="inline-block px-6 text-[#354764] mb-10">
+                                    <span className="inline-block mt-4 px-5 py-2 rounded-full bg-dark text-white text-[10px] font-black uppercase tracking-widest hover:bg-secondary transition-colors">
                                         {t("chooseFiles")}
                                     </span>
+                                </div>
 
-                                    <span className="flex items-center justify-center flex-wrap gap-5 text-sm text-gray-500">
-                                        {rules.map((rule, i) => (
-                                            <span key={i}>{rule}</span>
-                                        ))}
-                                    </span>
-                                </span>
-                                <input
-                                    id={inputId}
-                                    type="file"
-                                    multiple={allowMultiple}
-                                    accept={accept}
-                                    className="hidden"
-                                    onChange={handleFiles}
-                                />
+                                {/* Technical Rules Row */}
+                                <div className="flex items-center justify-center flex-wrap gap-x-6 gap-y-2 mt-8 border-t border-dark/5 pt-6 w-full max-w-md">
+                                    {rules.map((rule, i) => (
+                                        <div key={i} className="flex items-center gap-2">
+                                            <div className="w-1 h-1 rounded-full bg-secondary/40" />
+                                            <span className="text-[10px] font-bold text-dark/40 uppercase tracking-tight">{rule}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <input id={inputId} type="file" multiple={allowMultiple} accept={accept} className="hidden" onChange={handleFiles} />
                                 {isOneFile && currentFiles.length === 1 && (() => {
                                     const file = currentFiles[0];
                                     let src = '';

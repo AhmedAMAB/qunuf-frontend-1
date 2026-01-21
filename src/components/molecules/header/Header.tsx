@@ -13,6 +13,7 @@ import Logo from '@/components/atoms/Logo';
 import FallbackImage from '@/components/atoms/FallbackImage';
 import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
 import LocaleSwitcher from '@/components/atoms/LocaleSwitcher';
+import { cn } from '@/lib/utils';
 
 
 
@@ -129,30 +130,63 @@ export default function Header() {
               {/* User Trigger */}
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-2 p-1 rounded-lg hover:bg-slate-100 transition-colors border border-slate-200"
+                className={cn(
+                  "flex items-center gap-3 p-1.5 rounded-xl transition-all duration-200 border bg-slate-100/80",
+                  userMenuOpen
+                    ? " border-primary/20 ring-2 ring-primary/5"
+                    : " border-slate-200 hover:border-slate-300 hover:shadow-sm"
+                )}
               >
-                <FallbackImage
-                  src={user.imagePath ? resolveUrl(user.imagePath) : '/users/default-user.png'}
-                  alt={user.name}
-                  width={36}
-                  height={36}
-                  className="rounded-full object-cover w-9 h-9"
-                  defaultImage="/users/default-user.png"
-                />
-                <div className="hidden lg:flex flex-col items-start leading-tight pe-2">
-                  <span className="text-sm font-bold text-slate-900 truncate max-w-[100px]">{user.name}</span>
-                  <span className={[
-                    "text-[10px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded-md border",
-                    roleStyles[user.role] || "text-secondary bg-slate-50 border-slate-100"
-                  ].join(' ')}>
+                {/* Avatar with Ring */}
+                <div className="relative shrink-0">
+                  <FallbackImage
+                    src={user.imagePath ? resolveUrl(user.imagePath) : '/users/default-user.png'}
+                    alt={user.name}
+                    width={38}
+                    height={38}
+                    className="rounded-full object-cover border border-slate-100"
+                    defaultImage="/users/default-user.png"
+                  />
+                  {/* Optional: Online Status Dot */}
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
+                </div>
+
+                {/* User Info */}
+                <div className="hidden lg:flex flex-col items-start gap-0.5 pe-2">
+                  <span className="text-sm font-semibold text-slate-900 leading-none">
+                    {user.name}
+                  </span>
+                  <span className={cn(
+                    "text-[9px] uppercase tracking-widest font-extrabold px-1.5 py-0.5 rounded-sm border",
+                    roleStyles[user.role] || "text-slate-500 bg-slate-50 border-slate-200"
+                  )}>
                     {t(`roles.${user.role}`)}
                   </span>
                 </div>
+
+                {/* Chevron for UX hint */}
+                <svg
+                  className={cn(
+                    "hidden lg:block w-4 h-4 text-slate-400 transition-transform duration-200",
+                    userMenuOpen && "rotate-180 text-primary"
+                  )}
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
 
               {/* Dropdown Menu */}
               {userMenuOpen && (
-                <div className="absolute top-full mt-2 end-0 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-[60] animate-in fade-in zoom-in-95 duration-200">
+                <div className={cn(
+                  // Mobile: Centered | Desktop: Right-aligned
+                  "absolute top-full mt-3 z-[60]",
+                  "max-md:left-1/2 max-md:-translate-x-1/2",
+                  "md:start-auto md:end-0 md:translate-x-0",
+                  " w-56", // Full width on mobile minus margins
+                  "bg-white rounded-2xl shadow-2xl border border-slate-100 py-2",
+                  "animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-200"
+                )}>
                   <div className="px-4 py-2 border-b border-slate-50 lg:hidden">
                     <p className="font-bold text-slate-900">{user.name}</p>
                     <p className="text-xs text-secondary">{t(`roles.${user.role}`)}</p>

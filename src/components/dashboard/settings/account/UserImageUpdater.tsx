@@ -1,10 +1,12 @@
 import { useAuth } from "@/contexts/AuthContext";
+import { cn } from "@/lib/utils";
 import api from "@/libs/axios";
 import { resolveUrl } from "@/utils/upload";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { MdCameraAlt } from "react-icons/md";
 
 export default function UserImageUpdater() {
     const t = useTranslations('dashboard.account');
@@ -44,10 +46,9 @@ export default function UserImageUpdater() {
         }
     };
 
-
     return (
-        <div className="flex flex-col items-center pb-6 border-b border-gray-100 mb-6">
-            <div className="relative mb-4 group">
+        <div className="flex flex-col items-center pb-8 mb-6 border-b border-gray/10">
+            <div className="relative group/avatar mb-6">
                 {/* Hidden File Input */}
                 <input
                     type="file"
@@ -57,52 +58,94 @@ export default function UserImageUpdater() {
                     className="hidden"
                 />
 
+                {/* Outer Glow Ring - Multiple layers */}
+                <div className="absolute -inset-2 bg-gradient-to-br from-secondary/30 via-primary/30 to-secondary/30 rounded-full opacity-0 group-hover/avatar:opacity-100 blur-xl transition-opacity duration-500" />
+                <div className="absolute -inset-1 bg-gradient-to-br from-secondary/40 to-primary/40 rounded-full opacity-0 group-hover/avatar:opacity-100 blur-lg transition-opacity duration-300" />
+
                 {/* Image Container */}
-                <div className="relative h-24 w-24 sm:h-32 sm:w-32 rounded-full overflow-hidden border-4 border-gray-50">
+                <div className={cn(
+                    "relative h-32 w-32 sm:h-40 sm:w-40 rounded-full overflow-hidden",
+                    "ring-4 ring-white shadow-xl",
+                    "group-hover/avatar:ring-secondary group-hover/avatar:ring-8",
+                    "transition-all duration-300"
+                )}>
                     {user?.imagePath ? (
                         <Image
                             src={resolveUrl(user.imagePath) || "/users/default-user.png"}
                             alt={user.name}
                             fill
-                            className={`object-cover transition-opacity duration-300 ${imageUploading ? 'opacity-50' : 'opacity-100'}`}
-                            sizes="(max-width: 640px) 96px, 128px"
+                            className={cn(
+                                "object-cover transition-all duration-300",
+                                imageUploading ? 'opacity-50 scale-110 blur-sm' : 'opacity-100 scale-100 group-hover/avatar:scale-110'
+                            )}
+                            sizes="(max-width: 640px) 128px, 160px"
                             priority
                         />
                     ) : (
-                        <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400 text-4xl font-medium">
+                        <div className="h-full w-full bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center text-secondary text-5xl sm:text-6xl font-bold transition-transform duration-300 group-hover/avatar:scale-110">
                             {user?.name?.charAt(0).toUpperCase() || 'U'}
                         </div>
                     )}
+
+                    {/* Hover Overlay */}
+                    <div className={cn(
+                        "absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/20 to-transparent",
+                        "flex items-end justify-center pb-4",
+                        "opacity-0 group-hover/avatar:opacity-100 transition-all duration-300",
+                        imageUploading && "opacity-0"
+                    )}>
+                        <span className="text-white text-sm font-semibold">
+                            {t('changeImage')}
+                        </span>
+                    </div>
+
                     {/* Loading Spinner Overlay */}
                     {imageUploading && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <svg className="animate-spin h-8 w-8 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
+                        <div className="absolute inset-0 flex items-center justify-center bg-dark/40 backdrop-blur-sm">
+                            <div className="relative">
+                                {/* Outer spinning ring */}
+                                <div className="w-12 h-12 rounded-full border-4 border-white/20 border-t-white animate-spin" />
+                                {/* Inner pulsing dot */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
 
-                {/* Edit Icon Button - Triggers file input click */}
+                {/* Edit Icon Button */}
                 <button
                     type="button"
                     onClick={() => !imageUploading && fileInputRef.current?.click()}
                     disabled={imageUploading}
-                    className="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 bg-white p-2 rounded-full shadow-md border border-gray-200 text-gray-600 hover:text-secondary transition-colors z-10"
+                    className={cn(
+                        "absolute bottom-2 right-2 sm:bottom-3 sm:right-3",
+                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        "bg-gradient-to-br from-secondary to-primary text-white",
+                        "shadow-lg hover:shadow-xl transition-all duration-200",
+                        "hover:scale-110 active:scale-95",
+                        "disabled:opacity-50 disabled:cursor-not-allowed",
+                        "group/btn"
+                    )}
                     title={t('changeImage')}
                 >
-                    {/* Simple Pencil / Edit SVG Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
-                        <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
-                        <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
-                    </svg>
+                    {/* Glow effect */}
+                    <div className="absolute -inset-1 bg-gradient-to-br from-secondary/50 to-primary/50 rounded-full opacity-0 group-hover/btn:opacity-100 blur-md transition-opacity duration-200 -z-10" />
+
+                    <MdCameraAlt className="w-6 h-6 group-hover/btn:scale-110 transition-transform duration-200" />
                 </button>
             </div>
 
             {/* User Data Display */}
-            <h2 className="text-xl font-semibold text-dark">{user?.name}</h2>
-            <p className="text-gray-500">{user?.email}</p>
+            <div className="text-center space-y-2">
+                <h2 className="text-2xl sm:text-3xl font-bold text-dark bg-gradient-to-r from-dark via-dark/90 to-dark/70 bg-clip-text">
+                    {user?.name}
+                </h2>
+                <p className="text-dark/60 text-sm sm:text-base font-medium">
+                    {user?.email}
+                </p>
+            </div>
         </div>
     );
 }

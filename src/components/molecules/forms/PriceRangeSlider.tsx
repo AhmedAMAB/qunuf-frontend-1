@@ -5,6 +5,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { useDebounce } from "@/hooks/useDebounce"
 import { formatLargeNumber } from '@/utils/helpers';
+import { useLocale } from 'next-intl';
 
 
 interface PriceRangeSliderProps {
@@ -13,30 +14,13 @@ interface PriceRangeSliderProps {
     onChange: (range: { min: number; max: number }) => void;
     showCurrencySymbol?: boolean;
 }
-
 export default function PriceRangeSlider({ range, value, onChange, showCurrencySymbol = true }: PriceRangeSliderProps) {
-    const [internalValue, setInternalValue] = useState<[number, number]>(() => {
-        return value?.min !== undefined && value?.max !== undefined
-            ? [value.min, value.max]
-            : [range?.min ?? 0, range?.max ?? 10000];
-    });
+    const locale = useLocale();
+    const isRTL = locale === 'ar';
 
-    const { debouncedValue } = useDebounce({ value: internalValue });
+    // Map internalValue directly to the prop for instant control
+    const internalValue: [number, number] = [value.min, value.max];
 
-    useEffect(() => {
-        if (value.min != debouncedValue[0] || value.max != debouncedValue[1])
-            onChange({ min: debouncedValue[0], max: debouncedValue[1] });
-    }, [debouncedValue]);
-
-    useEffect(() => {
-        if (
-            value?.min !== undefined &&
-            value?.max !== undefined &&
-            (value.min !== internalValue[0] || value.max !== internalValue[1])
-        ) {
-            setInternalValue([value.min, value.max]);
-        }
-    }, [value]);
     return (
         <div className="pb-2 ">
             <div className="range-slider relative px-2">
@@ -57,10 +41,11 @@ export default function PriceRangeSlider({ range, value, onChange, showCurrencyS
                     range
                     min={range?.min}
                     max={range?.max}
+                    reverse={isRTL} // Flips progress and handle interaction for Arabic
                     value={internalValue}
                     onChange={(val: number | number[]) => {
                         if (Array.isArray(val)) {
-                            setInternalValue(val as [number, number]);
+                            onChange({ min: val[0], max: val[1] });
                         }
                     }}
                     styles={{
@@ -73,7 +58,7 @@ export default function PriceRangeSlider({ range, value, onChange, showCurrencyS
                             height: 18,
                         },
                     }}
-                    ariaLabelForHandle={['السعر الأدنى', 'السعر الأقصى']}
+                    ariaLabelForHandle={['Min', 'Max']}
                 />
             </div>
         </div>

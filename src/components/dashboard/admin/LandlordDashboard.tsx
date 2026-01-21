@@ -157,7 +157,7 @@ export default function LandlordDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <DashboardCard
                     title={tStat('rentedAnalytics')}
-                    className="flex flex-col justify-between"
+                    className="flex flex-col justify-between "
                 >
                     {loading ? (
                         <div className="flex items-center justify-center h-64">

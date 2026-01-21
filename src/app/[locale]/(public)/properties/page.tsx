@@ -1,6 +1,7 @@
 import PropertiesList from "@/components/pages/properties/PropertiesList";
 import PageHeroSection from "@/components/atoms/PageHeroSection";
 import { getTranslations } from "next-intl/server";
+import PropertySearchPage from "@/components/pages/properties/PropertiesList";
 
 export async function generateMetadata() {
     const t = await getTranslations("property.hero");
@@ -22,7 +23,7 @@ export default async function PropertyPage() {
                 description={t('description')}
                 buttonText={t('seeMore')}
             />
-            <PropertiesList />
+            <PropertySearchPage />
         </section>
     );
 }

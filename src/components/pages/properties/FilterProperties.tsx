@@ -7,13 +7,15 @@ import SelectablePillGroup from "./SelectablePillGroup";
 import SelectableCheckboxList from "./SelectableCheckboxList";
 import NumberRangeInput from "./NumberRangeInput";
 import NumberSelectRangeInput from "./NumberSelectRangeInput";
-import useFilterProperties from "@/hooks/properties/useFilterProperties";
+
 import {
     MAX_PRICE, MIN_PRICE, MAX_SCQUAREFEET, MIN_SCQUAREFEET, MAX_YEARBUILD, MIN_YEARBUILD,
+    FilterState,
 } from "@/constants/properties/constant";
 import { useTranslations } from "next-intl";
 import Sidebar from "@/components/atoms/Sidebar";
 import { useState } from "react";
+import { useFilter } from "@/hooks/properties/useFilterProperties";
 
 
 export default function FilterProperties() {
@@ -31,13 +33,14 @@ export default function FilterProperties() {
         periods,
         propertyTypes,
         furnishedTypes,
-        setFilters,
         updateFilter,
         toggleSubtype,
         toggleFeature,
         updateType,
         resetFilters
-    } = useFilterProperties();
+    } = useFilter();
+
+
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const t = useTranslations('property.filter');
@@ -131,9 +134,10 @@ export default function FilterProperties() {
                         min={filters.priceMin}
                         max={filters.priceMax}
                         range={{ min: MIN_PRICE, max: MAX_PRICE }}
-                        onChange={({ min, max }) =>
-                            setFilters(prev => ({ ...prev, priceMin: min, priceMax: max }))
-                        }
+                        onChange={({ min, max }) => updateFilter({
+                            priceMin: min,
+                            priceMax: max,
+                        })}
                     />
 
                     <NumberRangeInput
@@ -141,9 +145,11 @@ export default function FilterProperties() {
                         min={filters.scquarefeetMin}
                         max={filters.scquarefeetMax}
                         range={{ min: MIN_SCQUAREFEET, max: MAX_SCQUAREFEET }}
-                        onChange={({ min, max }) =>
-                            setFilters(prev => ({ ...prev, scquarefeetMin: min, scquarefeetMax: max }))
-                        }
+                        onChange={({ min, max }) => updateFilter({
+                            scquarefeetMin: min,
+                            scquarefeetMax: max,
+                        })}
+
                     />
 
                     <NumberSelectRangeInput
@@ -152,14 +158,10 @@ export default function FilterProperties() {
                         max={filters.yearBuiltMax}
                         range={{ min: MIN_YEARBUILD, max: MAX_YEARBUILD }}
                         options={yearOptions}
-                        onChange={({ min, max }) => {
-                            setFilters(prev => ({
-                                ...prev,
-                                yearBuiltMin: min ?? MIN_YEARBUILD,
-                                yearBuiltMax: max ?? MAX_YEARBUILD,
-                            }))
-                        }
-                        } />
+                        onChange={({ min, max }) => updateFilter({
+                            yearBuiltMin: min,
+                            yearBuiltMax: max,
+                        })} />
 
                     <PropertyFilterInputWrapper label={t('features.title')}>
                         <SelectablePillGroup

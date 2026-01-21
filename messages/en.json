@@ -24,7 +24,32 @@
       "yesterday": "Yesterday",
       "today": "Today"
     },
+    "edit": "Edit",
+    "delete": "Delete",
+    "insert": "Insert",
+    "upload": "Upload",
+    "reset_default": "Reset to Default",
+    "image_dialog": {
+      "title": "Insert Image",
+      "url_label": "Image URL",
+      "upload_text": "Click to upload image",
+      "alt_text_label": "Alt Text",
+      "width_label": "Width (px)",
+      "placeholders": {
+        "alt_text": "Description for accessibility",
+        "url": "https://example.com/image.jpg"
+      }
+    },
     "datePlaceholder": "Select Date Range",
+    "editor": {
+      "placeholder": "Start typing here...",
+      "legal_notice": "Please ensure the content matches official legal standards.",
+      "link_dialog": {
+        "url_label": "Link URL",
+        "apply": "Apply Link",
+        "unlink": "Remove Link"
+      }
+    },
     "retry": "Retry",
     "errorTitle": "Oops, something went wrong",
     "errorLoading": "Failed to load data",
@@ -34,6 +59,7 @@
     "seeLess": "See Less",
     "form": {
       "loading": "Loading...",
+      "mapInstruction": "Click on map to set location",
       "email": {
         "label": "Email Address",
         "placeholder": "Enter your email address"
@@ -1406,9 +1432,19 @@
     },
     "admin": {
       "settings": {
+        "title": "Website Control Center",
+        "description": "Configure your platform's core identity, legal policies, and social connections from one central dashboard.",
         "loading": "Loading settings...",
         "saving": "Saving...",
         "save": "Save Changes",
+        "subtitles": {
+          "basicInfo": "Essential details about your property name, type, and pricing.",
+          "descriptions": "Provide detailed descriptions in both English and Arabic to reach more clients.",
+          "contractTerms": "Define the standard rules and conditions for the rental agreement.",
+          "contactAndLocation": "Help clients find you by providing accurate contact info and map location.",
+          "legal": "Important legal documents including privacy policies and service terms.",
+          "social": "Connect your social media profiles to increase property visibility."
+        },
         "sections": {
           "defaultContractTerms": "Default Contract Terms",
           "general": "General Information",
@@ -1786,6 +1822,8 @@
         }
       },
       "form": {
+        "createDescription": "Fill in the details below to create a new property.",
+        "editDescription": "Update the information below to modify the property.",
         "documentType": "Title Deed Yype",
         "documentImage": "Title Deed Yype",
         "createTitle": "Add New Property",
@@ -1844,8 +1882,16 @@
         "distanceKm": "Distance (km)",
         "addFacility": "Add Place",
         "locationTitle": "Property Location",
-        "locationSubtitle": "Pin the exact location of the property on the map",
         "featuresAndFacilities": "Amenities & Nearby Facilities",
+        "subtitles": {
+          "basicInfo": "Core details and primary attributes of the property",
+          "location": "Precise geographical placement and neighborhood context",
+          "locationAndLegal": "Official address, registration, and ownership documentation",
+          "utilities": "Meter records for electricity, water, and gas infrastructure",
+          "facilities": "Internal amenities and architectural technical specs",
+          "featuresAndFacilities": "Proximity to educational, medical, and essential services",
+          "gallery": "High-resolution visual documentation and media"
+        },
         "messages": {
           "createSuccess": "Property created successfully",
           "updateSuccess": "Property updated successfully"

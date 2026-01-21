@@ -19,6 +19,7 @@ import FormErrorMessage from "@/components/molecules/forms/FormErrorMessage";
 import { saudiPhoneRegex } from "@/utils/helpers";
 import { isWithinAdultRange } from "@/utils/date";
 import { useRouter } from "@/i18n/navigation";
+import DateInput from "@/components/molecules/forms/DateInput";
 
 // Saudi Phone Regex
 
@@ -43,12 +44,13 @@ const bookingUserSchema = z.object({
         .uuid("validation.required")
         .min(1, "validation.required"),
 
-    birthDate: z.string()
-        .min(1, "validation.required")
-        .refine((val) => {
-            return isWithinAdultRange(val);
-        }, "validation.invalidBirthDate"),
-
+    birthDate: z.union([z.date(), z.undefined()])
+        .refine((val) => val !== undefined, {
+            message: "validation.required",
+        })
+        .refine((val) => isWithinAdultRange(val), {
+            message: "validation.invalidBirthDate",
+        }),
     shortAddress: z.string()
         .length(8, "validation.shortAddressLength")
         .regex(/^[A-Z]{4}\d{4}$|^[0-9]{8}$/, "validation.shortAddressInvalid")
@@ -99,7 +101,7 @@ export default function Step1({ nextStep }: { nextStep: () => void }) {
             identityOtherType: user?.identityOtherType || '',
             identityNumber: user?.identityNumber || '',
             identityIssueCountryId: user?.identityIssueCountryId || '',
-            birthDate: user?.birthDate ? new Date(user.birthDate).toISOString().split('T')[0] : '',
+            birthDate: user?.birthDate ? new Date(user.birthDate) : undefined,
             shortAddress: user?.shortAddress || '',
         },
     });
@@ -114,7 +116,7 @@ export default function Step1({ nextStep }: { nextStep: () => void }) {
                 identityOtherType: user.identityOtherType || '',
                 identityNumber: user.identityNumber || '',
                 identityIssueCountryId: user.identityIssueCountryId || '',
-                birthDate: user.birthDate ? new Date(user.birthDate).toISOString().split('T')[0] : '',
+                birthDate: user.birthDate ? new Date(user.birthDate) : undefined,
                 shortAddress: user.shortAddress || '',
             });
         }
@@ -318,19 +320,17 @@ export default function Step1({ nextStep }: { nextStep: () => void }) {
                         <Controller
                             control={control}
                             name="birthDate"
-                            render={({ field }) => (
-                                <div>
-                                    <TextInput
-                                        {...field}
-                                        min={minDate}
-                                        max={maxDate}
-                                        type="date"
-                                        label={tAccount('birthDate')}
-                                        placeholder={tAccount('placeholders.birthDate')}
-                                        error={errors.birthDate ? tAccount(errors.birthDate.message) : ''}
-                                        className="book-input"
-                                    />
-                                </div>
+                            render={({ field: { onChange, value } }) => (
+                                <DateInput
+                                    value={value}
+                                    minDate={minDate}
+                                    maxDate={maxDate}
+                                    onChange={(dates) => onChange(dates[0])} // Passes Date object to RHF
+                                    label={tAccount('birthDate')}
+                                    placeholder={tAccount('placeholders.birthDate')}
+                                    error={errors.birthDate ? tAccount(errors.birthDate.message) : ''}
+                                    className="book-input"
+                                />
                             )}
                         />
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PropertyFilterInputWrapper from "./PropertyFilterInputWrapper";
 import PriceRangeSlider from "@/components/molecules/forms/PriceRangeSlider";
+import { useDebounce } from "@/hooks/useDebounce";
 
 type NumberRangeInputProps = {
     min: number;
@@ -11,61 +12,63 @@ type NumberRangeInputProps = {
 
     onChange: (range: { min: number; max: number }) => void;
 };
-
 export default function NumberRangeInput({ min, max, range, onChange, showProgress = true, label }: NumberRangeInputProps) {
-    const [localMin, setLocalMin] = useState<number>(min);
-    const [localMax, setLocalMax] = useState<number>(max);
+    // 1. Unified local state for instant visual feedback
+    const [localValues, setLocalValues] = useState<[number, number]>([min, max]);
 
+    // Sync with external changes (e.g., Reset button or URL change)
     useEffect(() => {
-        setLocalMin(min);
-        setLocalMax(max);
+        setLocalValues([min, max]);
     }, [min, max]);
 
-    const rangeMin = range?.min ?? Number.MIN_SAFE_INTEGER;
-    const rangeMax = range?.max ?? Number.MAX_SAFE_INTEGER;
+    // 2. Debounce the local state
+    const { debouncedValue } = useDebounce({ value: localValues, delay: 500 });
 
-    const handleBlur = () => {
-        const validMin = Math.max(rangeMin, Math.min(localMin, localMax ?? rangeMax));
-        const validMax = Math.min(rangeMax, Math.max(localMax, localMin ?? rangeMin));
+    // 3. Only trigger the parent onChange when the debounced value settles
+    useEffect(() => {
+        const [dMin, dMax] = debouncedValue;
+        // Ensure values stay within the allowed range
+        const validMin = Math.max(range?.min ?? 0, Math.min(dMin, dMax));
+        const validMax = Math.min(range?.max ?? 1000000, Math.max(dMax, dMin));
 
-        setLocalMin(validMin)
-        setLocalMax(validMax)
+        if (validMin !== min || validMax !== max) {
+            onChange({ min: validMin, max: validMax });
+        }
+    }, [debouncedValue]);
 
-        onChange({ min: validMin, max: validMax });
-    };
-
-    const handleSliderChange = (val: { min: number; max: number }) => {
-        console.log(val)
-        setLocalMin(val.min);
-        setLocalMax(val.max);
-        onChange({ min: val.min, max: val.max });
-    };
-
+    const handleInputChange = (index: 0 | 1, val: string) => {
+        const numVal = Number(val);
+        const newValues: [number, number] = [...localValues];
+        newValues[index] = numVal;
+        setLocalValues(newValues);
+    }
     return (
         <PropertyFilterInputWrapper label={label}>
             <div className="flex gap-5 w-full">
                 <input
-                    type="number"
                     placeholder="Min"
-                    value={localMin}
-                    min={range?.min}
-                    max={max ?? range?.max}
-                    onChange={(e) => setLocalMin(Number(e.target.value))}
-                    onBlur={handleBlur}
-                    className="flex-1 rounded-md p-[10px] bg-white border border-lightGold text-[16px] text-placeholder"
+                    value={localValues[0]}
+                    onChange={(e) => handleInputChange(0, e.target.value)}
+                    className="w-1/2  rounded-md p-2.5 bg-white border border-lightGold text-[16px] text-placeholder"
                 />
                 <input
                     type="number"
                     placeholder="Max"
-                    value={localMax}
-                    min={min ?? range?.min}
-                    max={range?.max}
-                    onChange={(e) => setLocalMax(Number(e.target.value))}
-                    onBlur={handleBlur}
-                    className="flex-1 rounded-md p-[10px] bg-white border border-lightGold text-[16px] text-placeholder"
+                    value={localValues[1]}
+                    onChange={(e) => handleInputChange(1, e.target.value)}
+                    className="w-1/2  rounded-md p-2.5 bg-white border border-lightGold text-[16px] text-placeholder"
                 />
             </div>
-            {showProgress && <PriceRangeSlider onChange={handleSliderChange} range={range} value={{ min, max }} />}
+            {showProgress && (
+                <PriceRangeSlider
+                    // Pass the local "hot" state so the slider moves instantly
+                    value={{ min: localValues[0], max: localValues[1] }}
+                    range={range}
+                    // Update local state directly on slide
+                    onChange={(val) => setLocalValues([val.min, val.max])}
+                />
+            )}
         </PropertyFilterInputWrapper>
+
     );
 }

@@ -57,7 +57,9 @@ export default function useTableFilter({ filters }: { filters: FilterConfig[]; }
         }
         setAllFilters(updated);
         // ✅ Push new URL with merged params
-        router.replace(`${pathname}?${params.toString()}`);
+        router.replace(`${pathname}?${params.toString()}`, {
+            scroll: false
+        });
     };
 
     // ✅ Reset filters 

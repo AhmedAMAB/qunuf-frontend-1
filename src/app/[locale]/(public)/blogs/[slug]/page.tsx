@@ -55,6 +55,7 @@ export default async function BlogsPage({ params }: BlogsPageProps) {
         <section id="blogs" className="relative overflow-hidden">
             <PageHeroSection
                 title={locale === 'ar' ? blog.title_ar : blog.title_en || t("title")}
+                buttonText={t('seeMore')}
             />
             <RecentBlogs slug={slug} />
         </section>

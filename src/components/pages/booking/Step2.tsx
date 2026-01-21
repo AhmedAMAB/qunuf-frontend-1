@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { useValues } from "@/contexts/GlobalContext";
 import TextInput from "@/components/molecules/forms/TextInput";
 import { PropertyStatus, RentType } from "@/types/dashboard/properties";
+import DateInput from "@/components/molecules/forms/DateInput";
 
 type step2Props = {
     nextStep: () => void,
@@ -114,15 +115,18 @@ export default function Step2({ nextStep, property, setCreatedContract }: step2P
                 <div className="max-w-2xl mx-auto space-y-6">
                     {/* Start Date */}
                     <div>
-                        <TextInput
-                            type="date"
+                        <DateInput
                             label={t('fields.startDate.label')}
                             placeholder={t('fields.startDate.placeholder')}
                             value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            min={getMinStartDate()}
+                            minDate={getMinStartDate()}
                             required
                             className="book-input"
+                            // Formats Date object back to string for your local state
+                            onChange={(dates) => {
+                                const dateStr = dates[0] ? dates[0].toISOString().split('T')[0] : "";
+                                setStartDate(dateStr);
+                            }}
                         />
                     </div>
 

@@ -1,4 +1,4 @@
-
+'use client'
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -29,9 +29,30 @@ export default function PageHeroSection({
     onButtonClick,
 }: PageHeroSectionProps) {
     const t = useTranslations('hero');
+    const handleDefaultClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (onButtonClick) {
+            onButtonClick();
+            return;
+        }
+
+        // 1. Find the current Hero section
+        const heroSection = e.currentTarget.closest('section');
+
+        // 2. Find the immediate next sibling element (the next section)
+        const nextSection = heroSection?.nextElementSibling;
+
+        // 3. Smooth scroll to it
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            // Fallback: Just scroll down 1 screen height if no section is found
+            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+        }
+    };
+
     const ButtonContent = (
         <button
-            onClick={onButtonClick}
+            onClick={handleDefaultClick}
             className={cn(
                 "group relative inline-flex items-center justify-center gap-2",
                 "rounded-full px-8 py-3.5 text-base font-semibold",
@@ -111,7 +132,7 @@ export default function PageHeroSection({
 
                         {/* Main Title */}
                         <h1 className={cn(
-                            "text-4xl sm:text-5xl lg:text-6xl xl:text-7xl",
+                            "text-2xl sm:text-3xl lg:text-4xl xl:text-5xl",
                             "font-bold leading-[1.1] tracking-tight text-dark",
                             "animate__animated animate__fadeInLeft animate__delay-1s"
                         )}>

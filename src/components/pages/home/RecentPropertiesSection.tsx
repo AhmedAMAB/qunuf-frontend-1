@@ -41,7 +41,7 @@ export default function RecentPropertiesSection() {
     }, []);
 
     return (
-        <section className='rounded-[14px] sm:rounded-[40px] lg:rounded-[83px] transition-all'
+        <section className=' transition-all'
             style={{ background: 'linear-gradient(180deg, var(--light) 0%, var(--lighter) 100%)' }}>
             <div className='mt-10 py-[40px] lg:p-[60px] container'>
 

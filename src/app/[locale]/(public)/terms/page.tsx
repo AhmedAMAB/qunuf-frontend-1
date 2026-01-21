@@ -3,6 +3,8 @@ import { getLocale, getTranslations } from "next-intl/server";
 import api from "@/libs/axios";
 import PageHeroSection from "@/components/atoms/PageHeroSection";
 import NoData from "@/components/atoms/NoData";
+import RichTextRenderer from "@/components/molecules/forms/editor/RichTextRenderer";
+import LegalSkeleton from "@/components/atoms/LegalSkeleton";
 
 async function getTermsData() {
     try {
@@ -39,7 +41,11 @@ export default async function TermsPage() {
                     <div
                         className="prose text-lg prose-lg max-w-none text-dark whitespace-break-spaces"
                     >
-                        {terms}
+                        <RichTextRenderer
+                            content={terms}
+                            className="text-lg leading-loose text-dark"
+                            loader={<LegalSkeleton />}
+                        />
                     </div>
                 ) : (
                     <NoData

@@ -7,6 +7,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import { resolveUrl } from '@/utils/upload';
 import { Blog } from '@/types/dashboard/blog';
 import SecondaryButton from '@/components/atoms/buttons/SecondaryButton';
+import RichTextRenderer from '@/components/molecules/forms/editor/RichTextRenderer';
+import { cn } from '@/lib/utils';
 
 interface BlogContentCardProps {
     block: Blog
@@ -23,9 +25,8 @@ export default function BlogContentCard({ block, onEdit, onDelete }: BlogContent
     const title = isAr ? block.title_ar : block.title_en;
     const description = isAr ? block.description_ar : block.description_en;
 
-    const CHAR_LIMIT = 150;
-    const shouldShowButton = description?.length > CHAR_LIMIT;
-    const displayedText = isExpanded ? description : `${description?.slice(0, CHAR_LIMIT)}...`;
+
+    // const displayedText = isExpanded ? description : `${description?.slice(0, CHAR_LIMIT)}...`;
 
     const formattedDate = new Date(block.created_at).toLocaleDateString(locale, {
         day: 'numeric',
@@ -71,22 +72,35 @@ export default function BlogContentCard({ block, onEdit, onDelete }: BlogContent
                 </div>
 
                 <div className="mt-4 flex-1">
-                    <p className="text-base sm:text-lg text-dark/70 leading-relaxed whitespace-break-spaces">
-                        {shouldShowButton ? displayedText : description}
-                    </p>
+                    <div
+                        className={cn(
+                            "relative transition-all duration-500 ease-in-out overflow-hidden",
+                            // When not expanded, trim the height and hide overflow
+                            isExpanded ? "max-h-[10000px]" : "max-h-[300px]"
+                        )}
+                    >
+                        <RichTextRenderer
+                            content={description}
+                            className="text-base sm:text-lg text-dark/70 leading-relaxed"
+                        />
 
-                    {shouldShowButton && (
-                        <button
-                            onClick={() => setIsExpanded(!isExpanded)}
-                            className="mt-3 flex items-center gap-1 text-secondary font-bold text-sm hover:underline transition-all"
-                        >
-                            {isExpanded ? t('seeLess') : t('seeMore')}
-                            <MdKeyboardArrowDown
-                                className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                                size={20}
-                            />
-                        </button>
-                    )}
+                        {/* The Fade Gradient: Only show when collapsed to signal more content */}
+                        {!isExpanded && (
+                            <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-card-bg to-transparent" />
+                        )}
+                    </div>
+
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="mt-3 flex items-center gap-1 text-secondary font-bold text-sm hover:underline transition-all"
+                    >
+                        {isExpanded ? t('seeLess') : t('seeMore')}
+                        <MdKeyboardArrowDown
+                            className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                            size={20}
+                        />
+                    </button>
+
                 </div>
 
                 {/* Mobile Actions (Always visible) */}
