@@ -5,10 +5,10 @@ type SecondaryButtonProps = {
     children: ReactNode;
     className?: string;
     onClick?: () => void;
-    href?: string; // 👈 optional link
+    href?: string;
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
-} & React.HTMLAttributes<HTMLElement>;
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export default function SecondaryButton({
     children,
@@ -19,8 +19,10 @@ export default function SecondaryButton({
     disabled,
     ...props
 }: SecondaryButtonProps) {
+
     const baseClasses =
         "px-5 sm:px-8 py-1 sm:py-[6px] rounded-[10px] flex items-center justify-center";
+
     if (href) {
         return (
             <Link
@@ -39,7 +41,6 @@ export default function SecondaryButton({
             disabled={disabled}
             onClick={onClick}
             className={`${baseClasses} ${className}`}
-            {...props}
         >
             {children}
         </button>
