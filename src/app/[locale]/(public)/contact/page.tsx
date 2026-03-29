@@ -16,12 +16,7 @@ export default async function ContactUsPage() {
     return (
         <section
             id="contact-us"
-            className="relative overflow-hidden">
-            <PageHeroSection
-                title={t('title')}
-                description={t('description')}
-                buttonText={t('seeMore')}
-            />
+            className="relative overflow-hidden pt-10"> 
             <ContactSection />
         </section>
     );

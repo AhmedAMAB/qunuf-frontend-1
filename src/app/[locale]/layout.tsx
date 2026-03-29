@@ -38,15 +38,64 @@ const arabicFont = Cairo({
 });
 
 
-export async function generateMetadata() {
-  const t = await getTranslations("root");
+// export async function generateMetadata() {
+//   const t = await getTranslations("root");
 
+//   return {
+//     title: {
+//       default: t("siteName"),          
+//       template: `${t("siteName")} | %s`,  
+//     },
+//     description: t("description"),
+//   };
+// }
+
+export async function generateMetadata() {
   return {
     title: {
-      default: t("siteName"),          // 👈 localized default
-      template: `${t("siteName")} | %s`, // 👈 localized template
+      default: "Real Estate Platform",
+      template: "Real Estate Platform | %s",
     },
-    description: t("description"),
+    description: "Find your perfect property with our real estate platform. Browse apartments, villas, commercial spaces, and more. Rent or buy with confidence.",
+    keywords: "real estate, property, apartments, villas, commercial real estate, rent, buy, property management, Saudi Arabia real estate",
+    authors: [{ name: "Real Estate Platform" }],
+    openGraph: {
+      title: "Real Estate Platform",
+      description: "Find your perfect property with our real estate platform. Browse apartments, villas, commercial spaces, and more.",
+      type: "website",
+      locale: "en",
+      siteName: "Real Estate Platform",
+      url: "https://qunuf.com",
+      images: [
+        {
+          url: "./qunof.png",
+          width: 1200,
+          height: 630,
+          alt: "Real Estate Platform",
+        },
+      ],
+    }, 
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    verification: {
+      google: "your-google-verification-code", // Add if you have Google Search Console
+    },
+    alternates: {
+      canonical: "https://qunuf.com",
+      languages: {
+        en: "https://qunuf.com",
+        ar: "https://qunuf.com/ar",
+      },
+    },
   };
 }
 

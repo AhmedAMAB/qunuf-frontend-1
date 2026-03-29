@@ -53,7 +53,7 @@ export default function PropertyDetailsPopup({ row, onClose }: PropertyDetailsPo
                 {/* Header Card */}
                 <div className={cn(
                     "relative overflow-hidden",
-                    "bg-gradient-to-br from-lighter via-highlight to-lighter/50",
+                    "bg-gradient-to-br from-primary via-primary/90 to-secondary",
                     "rounded-2xl p-6 shadow-lg border-2 border-secondary/10"
                 )}>
                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
@@ -70,11 +70,11 @@ export default function PropertyDetailsPopup({ row, onClose }: PropertyDetailsPo
                         )}
 
                         {/* Info */}
-                        <div className="flex-1 space-y-3">
-                            <h2 className="text-3xl font-bold text-dark">{details.name}</h2>
-                            <p className="text-sm text-grey-dark leading-relaxed">{details.description}</p>
+                        <div className="flex-1 space-y-1">
+                            <h2 className="text-3xl font-bold text-white">{details.name}</h2>
+                            <p className="text-sm text-white/80 leading-relaxed">{details.description}</p>
                             {details.additionalDetails && (
-                                <p className="text-sm text-grey-dark/80 leading-relaxed italic">
+                                <p className="text-sm text-white/60 leading-relaxed  ">
                                     {details.additionalDetails}
                                 </p>
                             )}

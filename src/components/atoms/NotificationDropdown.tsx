@@ -1,7 +1,6 @@
 import { BsBell } from "react-icons/bs";
 import Dropdown, { MenuProps, TriggerProps } from "./Dropdown";
-import PingIndicator from "./PingIndicator";
-import { useTranslations } from "use-intl";
+ import { useTranslations } from "use-intl";
 import { Link } from "@/i18n/navigation";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { useNotifications } from "@/contexts/NotificationContext";

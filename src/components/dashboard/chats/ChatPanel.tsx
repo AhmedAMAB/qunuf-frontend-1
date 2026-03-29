@@ -1,12 +1,9 @@
 
 import { Message } from "@/types/dashboard/chat";
-import ConversationThread, { MessageSkeleton } from "./ConversationThread";
+import ConversationThread from "./ConversationThread";
 import EmptyChatState from "./EmptyChatState";
 import { User } from "@/types/dashboard/user";
-import { Component, memo, useMemo } from "react";
-import React, { useRef, useState, useCallback } from "react";
-import VirtualMessageRow from "./VirtualMessageRow";
-import { useAuth } from "@/contexts/AuthContext";
+import { Component, memo, useMemo } from "react"; 
 import MessagesLoading from "./MessagesLoading";
 import { MdClose } from "react-icons/md";
 
@@ -57,8 +54,8 @@ const ChatPanel = memo(function ChatPanel({
     }
 
     return (
-        <div className={`max-md:fixed max-md:inset-0 max-md:z-50 max-md:transition-transform max-md:duration-300 max-md:ease-in-out   ${isOpen ? "max-md:translate-x-0" : "max-md:translate-x-full"}
-        md:block md:col-span-6 lg:col-span-7 xl:col-span-8 bg-white  rounded-[8px] md:relative`}>
+        <div className={`bg-[var(--card-bg)] rounded-2xl overflow-hidden min-h-[500px] border border-[var(--gray)] max-md:fixed max-md:inset-0 max-md:z-50 max-md:transition-transform max-md:duration-300 max-md:ease-in-out   ${isOpen ? "max-md:translate-x-0" : "max-md:translate-x-full"}
+        md:block md:col-span-6 lg:col-span-7 xl:col-span-8 md:relative`}>
             {selectedUser ? (
                 <ConversationThread
                     isPartnerAdmin={isPartnerAdmin}

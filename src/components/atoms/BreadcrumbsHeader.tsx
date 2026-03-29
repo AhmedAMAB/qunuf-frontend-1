@@ -3,92 +3,111 @@ import { MdChevronRight } from 'react-icons/md';
 import { cn } from '@/lib/utils';
 
 interface Breadcrumb {
-    label: string;
-    href?: string;
+  label: string;
+  href?: string;
 }
 
 interface BreadcrumbsHeaderProps {
-    breadcrumbs: Breadcrumb[];
-    title: string;
-    children?: React.ReactNode;
-    className?: string;
+  breadcrumbs: Breadcrumb[];
+  title: string;
+  children?: React.ReactNode;
+  className?: string;
 }
 
 export default function BreadcrumbsHeader({
-    breadcrumbs,
-    title,
-    children,
-    className
+  breadcrumbs,
+  title,
+  children,
+  className,
 }: BreadcrumbsHeaderProps) {
-    return (
-        <div className={cn("mb-8 space-y-4", className)}>
-            {/* Breadcrumbs + Actions Row */}
-            <div className="flex justify-between items-center flex-wrap gap-3">
-                {/* Breadcrumbs */}
-                <nav
-                    className="flex items-center gap-2 text-sm font-medium flex-wrap"
-                    aria-label="Breadcrumb"
-                >
-                    {breadcrumbs.map((item, index) => {
-                        const isLast = index === breadcrumbs.length - 1;
-                        return (
-                            <div key={index} className="flex items-center gap-2">
-                                {/* Separator */}
-                                {index > 0 && (
-                                    <MdChevronRight
-                                        size={18}
-                                        className="text-dark/30 rtl:rotate-180"
-                                    />
-                                )}
+  return (
+    <div className={cn('mb-8 flex flex-col gap-3', className)}>
 
-                                {/* Breadcrumb Item */}
-                                {isLast || !item.href ? (
-                                    <span className={cn(
-                                        "px-3 py-1.5 rounded-lg font-semibold transition-all duration-200",
-                                        isLast
-                                            ? "bg-gradient-to-r from-secondary/15 to-primary/15 text-primary"
-                                            : "text-dark/60"
-                                    )}>
-                                        {item.label}
-                                    </span>
-                                ) : (
-                                    <Link
-                                        href={item.href}
-                                        className={cn(
-                                            "group px-3 py-1.5 rounded-lg font-semibold",
-                                            "text-dark/70 hover:text-primary hover:bg-secondary/10",
-                                            "transition-all duration-200 relative"
-                                        )}
-                                    >
-                                        {/* Hover underline effect */}
-                                        <span className="relative">
-                                            {item.label}
-                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-200" />
-                                        </span>
-                                    </Link>
-                                )}
-                            </div>
-                        );
-                    })}
-                </nav>
+      {/* ── Breadcrumbs + Actions ─────────────────────────────────────────── */}
+      <div className="flex items-center justify-between flex-wrap gap-3">
 
-                {/* Actions */}
-                {children && (
-                    <div className="flex items-center gap-2">
-                        {children}
-                    </div>
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center flex-wrap gap-0.5"
+        >
+          {breadcrumbs.map((item, index) => {
+            const isLast = index === breadcrumbs.length - 1;
+
+            return (
+              <div key={index} className="flex items-center gap-0.5">
+
+                {/* Separator */}
+                {index > 0 && (
+                  <MdChevronRight
+                    size={16}
+                    className="text-[var(--dark)]/25 rtl:rotate-180 shrink-0 mx-0.5"
+                    aria-hidden
+                  />
                 )}
-            </div>
 
-            {/* Page Title */}
-            <div className="relative">
-                {/* Decorative gradient line */}
-                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary via-primary to-secondary rounded-full" />
+                {/* Last / non-linked crumb */}
+                {isLast || !item.href ? (
+                  <span
+                    aria-current={isLast ? 'page' : undefined}
+                    className={cn(
+                      'px-2.5 py-1 rounded-lg text-xs font-semibold select-none',
+                      isLast
+                        ? 'bg-[var(--primary)]/10 text-[var(--primary)]'
+                        : 'text-[var(--dark)]/50'
+                    )}
+                  >
+                    {item.label}
+                  </span>
+                ) : (
+                  /* Linked crumb */
+                  <Link
+                    href={item.href}
+                    className="
+                      px-2.5 py-1 rounded-lg
+                      text-xs font-semibold
+                      text-[var(--dark)]/55
+                      hover:text-[var(--primary)]
+                      hover:bg-[var(--primary)]/8
+                      transition-colors duration-150
+                      focus-visible:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-[var(--primary)]/40
+                    "
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
+        </nav>
 
-                <h1 className="text-3xl sm:text-4xl font-bold text-dark bg-gradient-to-r from-dark via-dark/90 to-dark/70 bg-clip-text leading-tight">
-                    {title}
-                </h1>
-            </div>
-        </div>
-    );
+        {/* Actions slot */}
+        {children && (
+          <div className="flex items-center gap-2 flex-wrap">
+            {children}
+          </div>
+        )}
+      </div>
+
+      {/* ── Page Title ────────────────────────────────────────────────────── */}
+      <div className="flex items-center gap-3">
+        {/* Accent bar — logical side (start), flips automatically in RTL */}
+        <span
+          className="
+            shrink-0
+            self-stretch
+            w-[3px] rounded-full
+            bg-gradient-to-b from-[var(--secondary)] via-[var(--primary)] to-[var(--secondary)]
+          "
+          aria-hidden
+        />
+
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--dark)] leading-tight tracking-tight">
+          {title}
+        </h1>
+      </div>
+
+    </div>
+  );
 }

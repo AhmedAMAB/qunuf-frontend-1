@@ -71,7 +71,6 @@
   }
 }
 
-
 [dir='ltr'] body {
   font-family: var(--font-open-sans) !important;
 }
@@ -107,6 +106,8 @@
 
   .container {
     margin-inline: auto;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .hidden-passowrd::-ms-reveal,
@@ -156,7 +157,7 @@
     @apply scale-103;
   }
 
-  .image-wrapper>*:last-child {
+  .image-wrapper > *:last-child {
     margin-left: 0 !important;
   }
 
@@ -215,6 +216,10 @@
       height: 100%;
     }
   }
+}
+
+main {
+  @apply bg-[#f8f9fc];
 }
 
 /* Selected day (keyboard-selected, not range start) */
@@ -510,11 +515,6 @@
   }
 }
 
-
-
-
-
-
 /* Add this to your global CSS file (e.g., globals.css or app.css) */
 
 /* Enhanced scrollbar styling for sidebar navigation */
@@ -556,8 +556,6 @@
 .hover\:scrollbar-thumb-primary\/40:hover::-webkit-scrollbar-thumb {
   background: rgba(var(--primary-rgb), 0.4);
 }
-
-
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -672,7 +670,8 @@ html {
   background: var(--dashboard-bg) !important;
   border: 2px solid rgba(138, 110, 78, 0.2) !important;
   border-radius: 1rem !important;
-  box-shadow: 0 20px 25px -5px rgba(75, 61, 37, 0.1),
+  box-shadow:
+    0 20px 25px -5px rgba(75, 61, 37, 0.1),
     0 10px 10px -5px rgba(75, 61, 37, 0.04) !important;
   padding: 0.75rem !important;
   animation: fadeInDown 0.3s ease-out;
@@ -787,7 +786,6 @@ html {
   justify-content: center !important;
 }
 
-
 .flatpickr-prev-month:hover,
 .flatpickr-next-month:hover {
   background: var(--lighter) !important;
@@ -872,7 +870,8 @@ html {
   background: linear-gradient(135deg, var(--secondary), var(--primary)) !important;
   color: white !important;
   border: none !important;
-  box-shadow: 0 4px 6px -1px rgba(75, 61, 37, 0.3),
+  box-shadow:
+    0 4px 6px -1px rgba(75, 61, 37, 0.3),
     0 2px 4px -1px rgba(75, 61, 37, 0.2) !important;
   font-weight: 700 !important;
 }
@@ -989,11 +988,11 @@ html {
 }
 
 /* RTL Support */
-.flatpickr-calendar[dir="rtl"] .flatpickr-prev-month {
+.flatpickr-calendar[dir='rtl'] .flatpickr-prev-month {
   order: 2;
 }
 
-.flatpickr-calendar[dir="rtl"] .flatpickr-next-month {
+.flatpickr-calendar[dir='rtl'] .flatpickr-next-month {
   order: 1;
 }
 
@@ -1061,4 +1060,58 @@ html {
   width: 32px;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(138, 110, 78, 0.4);
+}
+
+@keyframes infinite-scroll-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes infinite-scroll-rtl {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll-ltr 25s linear infinite;
+}
+
+[dir='rtl'] .animate-infinite-scroll {
+  animation: infinite-scroll-rtl 25s linear infinite;
+}
+
+[dir='ltr'] .animate-infinite-scroll {
+  animation: infinite-scroll-ltr 25s linear infinite;
+}
+
+.flatpickr-calendar {
+  width: fit-content !important;
+}
+
+.flatpickr-next-month,
+.flatpickr-prev-month {
+  display: none !important;
+}
+
+.flatpickr-months {
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+  min-height: fit-content !important;
+}
+
+.flatpickr-current-month {
+  position: relative !important;
+  justify-content: space-between;
+  width: 100% !important;
+  margin: 0;
+  padding: 0 !important;
+  left: 0 !important ;
 }

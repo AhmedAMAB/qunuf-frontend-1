@@ -100,7 +100,7 @@ function ResendVerificationEmailForm() {
             </SecondaryButton>
 
             <div className="text-center text-sm mt-4">
-                {t('haveAccount')}{' '}
+                {t('haveAccount')}
                 <Link href="/auth/sign-in" className="text-primary font-semibold underline">
                     {t('login')}
                 </Link>

@@ -1,2120 +1,2267 @@
 {
-  "hero": {
-    "trusted": "موثوق به من قبل الآلاف",
-    "satisfaction": "رضا العملاء 100%",
-    "quality": "جودة",
-    "guaranteed": "مضمونة",
-    "eyebrow": "اكتشف أدوات ثورية"
-  },
-  "dashboard": {
-    "error": {
-      "title": "عذراً! حدث خطأ ما",
-      "defaultMessage": "واجهنا مشكلة أثناء تحميل البيانات. يرجى المحاولة مرة أخرى.",
-      "retry": "إعادة المحاولة"
-    },
-    "statistics": {
-      "increase": "زيادة بنسبة {value}٪",
-      "fromLastWeek": "من الأسبوع الماضي",
-      "newListing": "{value} إعلان جديد",
-      "inThisWeek": "في هذا الأسبوع",
-      "seeAll": "عرض الكل",
-      "rentedAnalytics": "تحليلات الإيجارات",
-      "rentedProperties": "العقارات المحجوزة",
-      "costBreakdown": "تفاصيل الإيجارات",
-      "reportSales": "تقرير المبيعات",
-      "contractsCreated": "العقود المنشأة",
-      "noChartData": "لا توجد بيانات للعرض حتى الآن",
-      "decrease": "-{value}%",
-      "noChartDataMessage": "لا توجد بيانات كافية لعرض الرسم البياني"
-    },
-    "landlord": {
-      "root": {
-        "totalProperties": "إجمالي العقارات",
-        "totalReviews": "إجمالي التقييمات",
-        "freeProperties": "العقارات المتاحة",
-        "rentedProperties": "العقارات المؤجرة",
-        "topRentedProperties": "العقود الحديثة",
-        "lastRentedProperties": "آخر العقود",
-        "noContracts": "لا توجد عقود حالياً",
-        "noContractsMessage": "لا توجد عقود حديثة للعرض."
-      },
-      "revenue": {
-        "week": "أسبوع",
-        "month": "شهر",
-        "year": "سنة",
-        "rentalIncome": "إيرادات الإيجار",
-        "totalReserved": "إجمالي العقارات المحجوزة",
-        "totalFree": "إجمالي العقارات المتاحة",
-        "topRented": "أكثر العقارات تأجيرًا",
-        "recentTransactions": "المعاملات الأخيرة"
-      }
-    },
-    "tenant": {
-      "root": {
-        "reservedProperty": "العقارات المحجوزة",
-        "totalPaymentAmount": "إجمالي الدفعات",
-        "lastRentedProperties": "آخر العقود",
-        "noContracts": "لا توجد عقود حالياً",
-        "noContractsMessage": "لا توجد عقود حديثة للعرض.",
-        "mockAmount": "ريال --",
-        "pendingRenewRequests": "طلبات التجديد المعلقة",
-        "totalEjarAmount": "إجمالي قيمة عقود إيجار"
-      }
-    },
-    "header": {
-      "greeting": "مرحبًا، {name}!",
-      "description": "استكشاف المعلومات والنشاطات"
-    },
-    "sidebar": {
-      "dashboard": "لوحة التحكم",
-      "contracts": "العقود",
-      "renewRequests": "طلبات التجديد",
-      "paymentHistory": "سجل المدفوعات",
-      "support": "الدعم الفني",
-      "settings": "إعدادات الحساب",
-      "rentalsContracts": "الإيجارات والعقود",
-      "properties": "العقارات",
-      "users": "المستخدمون",
-      "revenueSummary": "ملخص الإيرادات",
-      "departments": "الأقسام",
-      "notifications": "الإشعارات",
-      "chat": "المحادثات",
-      "contactUs": "اتصل بنا",
-      "teamMembers": "أعضاء الفريق",
-      "blogs": "المدونة",
-      "aboutUs": "من نحن",
-      "websiteSettings": "إعدادات الموقع",
-      "logout": "تسجيل الخروج",
-      "loggingOut": "جارٍ تسجيل الخروج..."
-    },
-    "notification": {
-      "title": "آخر الإشعارات",
-      "notifications": "الإشعارات",
-      "seeMore": "رؤية المزيد",
+	"hero": {
+		"trusted": "موثوق به من قبل الآلاف",
+		"satisfaction": "رضا العملاء 100%",
+		"quality": "جودة",
+		"guaranteed": "مضمونة",
+		"eyebrow": "اكتشف أدوات ثورية"
+	},
+	"dashboard": {
+		"sidebar": {
+			"dashboard": "الرئيسية",
+			"settings": "الإعدادات",
+			"contracts": "العقود",
+			"renewRequests": "طلبات التجديد",
+			"support": "الدعم الفني",
+			"properties": "العقارات",
+			"users": "المستخدمون",
+			"contactUs": "تواصل معنا",
+			"blogs": "المدونة",
+			"teamMembers": "أعضاء الفريق",
+			"aboutUs": "من نحن",
+			"departments": "الأقسام",
+			"websiteSettings": "إعدادات الموقع",
+			"logout": "تسجيل الخروج",
+			"loggingOut": "جارٍ تسجيل الخروج...",
+			"language": "اللغة",
+			"close": "إغلاق القائمة",
+			"profileSettings": "إعدادات الحساب",
+			"profileAlt": "صورة الملف الشخصي",
+			"defaultUser": "المستخدم",
+			"defaultEmail": "user@example.com"
+		},
+		"header": {
+			"greeting": "مرحباً، {name}",
+			"description": "مرحباً بك في لوحة التحكم",
+			"toggleMenu": "تبديل القائمة",
+			"openMenu": "فتح القائمة",
+			"chats": "المحادثات"
+		},
+		"error": {
+			"title": "عذراً! حدث خطأ ما",
+			"defaultMessage": "واجهنا مشكلة أثناء تحميل البيانات. يرجى المحاولة مرة أخرى.",
+			"retry": "إعادة المحاولة"
+		},
+		"statistics": {
+			"increase": "زيادة بنسبة {value}٪",
+			"fromLastWeek": "من الأسبوع الماضي",
+			"newListing": "{value} إعلان جديد",
+			"inThisWeek": "في هذا الأسبوع",
+			"seeAll": "عرض الكل",
+			"rentedAnalytics": "تحليلات الإيجارات",
+			"rentedProperties": "العقارات المحجوزة",
+			"costBreakdown": "تفاصيل الإيجارات",
+			"reportSales": "تقرير المبيعات",
+			"contractsCreated": "العقود المنشأة",
+			"noChartData": "لا توجد بيانات للعرض حتى الآن",
+			"decrease": "-{value}%",
+			"noChartDataMessage": "لا توجد بيانات كافية لعرض الرسم البياني"
+		},
+		"landlord": {
+			"root": {
+				"totalProperties": "إجمالي العقارات",
+				"totalReviews": "إجمالي التقييمات",
+				"freeProperties": "العقارات المتاحة",
+				"rentedProperties": "العقارات المؤجرة",
+				"topRentedProperties": "العقود الحديثة",
+				"lastRentedProperties": "آخر العقود",
+				"noContracts": "لا توجد عقود حالياً",
+				"noContractsMessage": "لا توجد عقود حديثة للعرض."
+			},
+			"revenue": {
+				"week": "أسبوع",
+				"month": "شهر",
+				"year": "سنة",
+				"rentalIncome": "إيرادات الإيجار",
+				"totalReserved": "إجمالي العقارات المحجوزة",
+				"totalFree": "إجمالي العقارات المتاحة",
+				"topRented": "أكثر العقارات تأجيرًا",
+				"recentTransactions": "المعاملات الأخيرة"
+			}
+		},
+		"tenant": {
+			"root": {
+				"reservedProperty": "العقارات المستأجرة",
+				"pendingRenewRequests": "طلبات التجديد المعلّقة",
+				"totalEjarAmount": "إجمالي مبلغ إيجار",
+				"lastRentedProperties": "آخر العقارات المستأجرة",
+				"noContracts": "لا توجد عقود",
+				"noContractsMessage": "لم يتم العثور على أي عقود إيجار حديثة.",
+				"totalPaymentAmount": "إجمالي الدفعات",
+				"mockAmount": "ريال --"
+			}
+		},
+		"notification": {
+			"seeAll" : "عرض الكل",
+			"unreadCount" : "الاشعارات الغير مقروءه",
+			"title": "الإشعارات",
       "accountSettings": "إعدادات الحساب",
+      "notifications": "الإشعارات",
+      "markAllAsRead": "تعليم الكل كمقروء",
+      "markAllAsReadAria": "تعليم جميع الإشعارات كمقروءة ({count} غير مقروء)",
+      "markRead": "تعليم كمقروء",
       "overview": "نظرة عامة",
-      "pushToggle": "🔔 فعّل إشعارات الدفع",
-      "markAllAsRead": "تحديد الكل كمقروء",
-      "markRead": "تحديد كمقروء",
-      "noNotifications": "ليس لديك أي تنبيهات حالياً.",
-      "failedToLoad": "فشل في تحميل التنبيهات. يرجى المحاولة مرة أخرى.",
-      "prev": "السابق",
-      "next": "التالي",
-      "pageInfo": "صفحة {current} من {total}",
-      "updating": "جاري التحديث...",
-      "selectItemsPerPage": "اختر عدد العناصر لكل صفحة",
-      "loading": "جاري التحميل..."
-    },
-    "filter": {
-      "export": {
-        "trigger": "تصدير اكسل",
-        "scope": "نطاق التصدير",
-        "currentTable": "الجدول الحالي",
-        "moreData": "بيانات إضافية",
-        "maxRows": "أقصى عدد للصفوف",
-        "export": "تصدير",
-        "exporting": "جارٍ التصدير...",
-        "cancel": "إلغاء"
-      },
-      "container": {
-        "filter": "تصفية"
-      }
-    },
-    "table": {
-      "noRows": "لا توجد بيانات لعرضها",
-      "errorTitle": "عذرًا، حدث خطأ",
-      "errorMessage": "حدث خطأ أثناء تحميل البيانات",
-      "retry": "إعادة المحاولة"
-    },
-    "pagination": {
-      "firstPage": "الصفحة الأولى",
-      "previous": "السابق",
-      "next": "التالي",
-      "of": "من",
-      "lastPage": "الصفحة الأخيرة",
-      "showingEntries": "عرض {start} إلى {end} من أصل {total} مدخل",
-      "showing": "عرض {start} إلى {end} من أصل {total}",
-      "jumpBack": "الرجوع {count} صفحات",
-      "jumpForward": "التقدم {count} صفحات"
-    },
-    "contracts": {
-      "viewContract": "عرض العقد",
-      "noContractAvailable": "لا يوجد عقد متاح",
-      "contractTitle": "العقد",
-      "contractPage": "صفحة العقد",
-      "noImagesFallback": "لا توجد صور للعقد",
-      "cancel": "إلغاء",
-      "renew": {
-        "actionText": "تجديد",
-        "title": "تجديد العقد",
-        "subtitle": "هل أنت متأكد أنك تريد تجديد العقد؟"
-      },
-      "terminate": {
-        "actionText": "إنهاء",
-        "title": "إنهاء",
-        "subtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
-        "note": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك"
-      },
-      "delete": {
-        "actionText": "مسح",
-        "title": "مسح",
-        "subtitle": "هل أنت متأكد أنك تريد مسح العقد؟"
-      },
-      "table": {
-        "columns": {
-          "property": "العقار",
-          "status": "الحالة",
-          "contractNumber": "رقم العقد",
-          "tenant": "المستأجر",
-          "landlord": "المالك",
-          "startDate": "تاريخ البدء",
-          "endDate": "تاريخ الانتهاء",
-          "totalAmount": "المبلغ الإجمالي",
-          "createdAt": "تاريخ الإنشاء",
-          "contract": "العقد"
-        },
-        "statusOptions": {
-          "all": "الكل",
-          "draft": "مسودة",
-          "pending_tenant_acceptance": "في انتظار قبول المستأجر",
-          "pending_landlord_acceptance": "في انتظار قبول المالك",
-          "pending_signature": "بانتظار التوثيق",
-          "active": "نشط",
-          "expired": "منتهي",
-          "cancelled": "ملغي",
-          "terminated": "منهي",
-          "pending_termination": "في انتظار الإنهاء"
-        },
-        "viewDetails": "عرض التفاصيل",
-        "reviseContract": "تعديل شروط العقد",
-        "acceptContract": "قبول العقد",
-        "cancelContract": "إلغاء العقد",
-        "activateContract": "تفعيل العقد",
-        "terminateContract": "إنهاء العقد",
-        "searchPlaceholder": "ابحث باسم العقار، المستأجر أو المؤجر...",
-        "filters": {
-          "status": "الحالة",
-          "maxPrice": "أقصى سعر",
-          "maxPricePlaceholder": "أدخل أقصى سعر"
-        },
-        "viewContract": "عرض العقد",
-        "addReview": "إضافة تقييم",
-        "viewReview": "عرض التقييم"
-      },
-      "reviews": {
-        "create": {
-          "title": "إضافة تقييم",
-          "subtitle": "شارك تجربتك مع هذا العقار",
-          "fields": {
-            "rating": "التقييم",
-            "reviewText": "التقييم",
-            "reviewTextPlaceholder": "اكتب تقييمك هنا..."
-          },
-          "submit": "إرسال التقييم",
-          "success": "تم إرسال التقييم بنجاح",
-          "error": "فشل إرسال التقييم"
-        },
-        "view": {
-          "title": "عرض التقييم",
-          "subtitle": "تقييمك لهذا العقد",
-          "fields": {
-            "rating": "التقييم",
-            "reviewText": "التقييم",
-            "reviewDate": "تاريخ التقييم"
-          },
-          "close": "إغلاق",
-          "noReview": "لم يتم العثور على تقييم",
-          "error": "فشل تحميل التقييم"
-        }
-      },
-      "pdfViewer": {
-        "title": "وثيقة العقد",
-        "page": "صفحة",
-        "previous": "السابق",
-        "next": "التالي",
-        "download": "تحميل PDF",
-        "loading": "جاري تحميل PDF...",
-        "loadError": "فشل تحميل وثيقة PDF",
-        "renderError": "فشل عرض صفحة PDF"
-      },
-      "details": {
-        "title": "تفاصيل العقد",
-        "error": "فشل تحميل تفاصيل العقد",
-        "errorTitle": "خطأ",
-        "close": "إغلاق",
-        "property": "معلومات العقار",
-        "propertyName": "اسم العقار",
-        "propertyType": "نوع العقار",
-        "area": "المساحة",
-        "location": "الموقع",
-        "rentalPeriod": "فترة الإيجار",
-        "startDate": "تاريخ البدء",
-        "endDate": "تاريخ الانتهاء",
-        "duration": "المدة",
-        "months": "أشهر",
-        "rentType": "نوع الإيجار",
-        "financial": "التفاصيل المالية",
-        "totalAmount": "المبلغ الإجمالي",
-        "securityDeposit": "الوديعة",
-        "platformFee": "رسوم المنصة",
-        "parties": "الأطراف",
-        "landlord": "المالك",
-        "tenant": "المستأجر",
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "phone": "الهاتف",
-        "terms": "شروط العقد",
-        "contractInfo": "معلومات العقد",
-        "createdAt": "تاريخ الإنشاء",
-        "contractDate": "تاريخ العقد",
-        "terminationDate": "تاريخ الإنهاء",
-        "nationality": "الجنسية",
-        "identityType": "نوع الهوية",
-        "identityNumber": "رقم الهوية",
-        "identityIssueCountry": "بلد إصدار الهوية",
-        "birthDate": "تاريخ الميلاد",
-        "shortAddress": "العنوان المختصر"
-      },
-      "actions": {
-        "revise": {
-          "title": "تعديل شروط العقد",
-          "subtitle": "راجع وحدّث شروط العقد. سيحتاج المستأجر إلى قبول أو رفض التغييرات.",
-          "showComparison": "عرض المقارنة (مراجعة التغييرات)",
-          "addedText": "تمت إضافته",
-          "removedText": "تم حذفه",
-          "comparisonNote": "يتم تمييز التغييرات: الأخضر للنص الجديد، والأحمر للنص المحذوف.",
-          "fields": {
-            "terms": "شروط العقد",
-            "termsPlaceholder": "أدخل شروط العقد المعدلة..."
-          },
-          "submit": "إرسال إلى المستأجر",
-          "success": "تم تحديث شروط العقد بنجاح",
-          "error": "فشل تحديث شروط العقد"
-        },
-        "accept": {
-          "title": "قبول العقد",
-          "subtitle": "يرجى مراجعة بنود العقد والشروط الافتراضية بدقة قبل القبول للمتابعة إلى المرحلة التالية.",
-          "fields": {
-            "sendRenewalNotify": "إرسال إشعار التجديد",
-            "renewalDiscountAmount": "مبلغ خصم التجديد (ريال)",
-            "requiredMonthsForIncentive": "الأشهر المطلوبة للحافز"
-          },
-          "submit": "قبول",
-          "success": "تم قبول العقد بنجاح",
-          "error": "فشل قبول العقد"
-        },
-        "cancel": {
-          "title": "إلغاء العقد",
-          "subtitle": "هل أنت متأكد من رغبتك في إلغاء هذا العقد؟ لا يمكن التراجع عن هذا الإجراء.",
-          "confirm": "إلغاء العقد",
-          "cancel": "الاحتفاظ بالعقد",
-          "submitting": "جاري الإلغاء...",
-          "success": "تم إلغاء العقد بنجاح",
-          "error": "فشل إلغاء العقد"
-        },
-        "activate": {
-          "title": "تفعيل العقد",
-          "subtitle": "قم برفع ملف PDF لعقد إيجار وأدخل رقم العقد لتفعيل هذا العقد.",
-          "fields": {
-            "contractNumber": "رقم العقد",
-            "contractNumberPlaceholder": "أدخل رقم العقد",
-            "contractPdf": "ملف PDF للعقد"
-          },
-          "submit": "تفعيل",
-          "success": "تم تفعيل العقد بنجاح",
-          "error": "فشل تفعيل العقد"
-        },
-        "terminate": {
-          "title": "إنهاء العقد",
-          "subtitle": "هل أنت متأكد من رغبتك في إنهاء هذا العقد؟",
-          "note": "ملاحظة: إنهاء المستأجر فوري. إنهاء المالك يتطلب إشعار 60 يوماً.",
-          "confirm": "إنهاء",
-          "cancel": "إلغاء",
-          "submitting": "جاري الإنهاء...",
-          "success": "تم بدء عملية إنهاء العقد بنجاح",
-          "error": "فشل إنهاء العقد"
-        }
-      }
-    },
-    "payments": {
-      "title": "المدفوعات والمستحقات",
-      "accountSettings": "إعدادات الحساب",
-      "totalEarnings": "إجمالي الأرباح",
-      "pendingPayments": "المدفوعات المعلقة",
-      "table": {
-        "transactionId": "معرّف المعاملة",
-        "property": "العقار",
-        "propertyAddress": "عنوان العقار",
-        "propertyType": "نوع العقار",
-        "apartment": "شقة",
-        "house": "منزل",
-        "price": "السعر",
-        "date": "التاريخ"
-      },
-      "paymentMethods": {
-        "title": "طرق الدفع المحفوظة",
-        "accountsTab": "حسابات الدفع",
-        "transactionsTab": "سجل المعاملات",
-        "recentAccounts": "حسابات الدفع الأخيرة",
-        "addMethod": "إضافة طريقة",
-        "addCardHolder": "إضافة حامل البطاقة",
-        "recentTransactions": "المعاملات الأخيرة",
-        "save": "حفظ التغييرات",
-        "discard": "تجاهل",
-        "card": {
-          "expires": "تنتهي في",
-          "edit": "تعديل البطاقة",
-          "delete": "حذف البطاقة",
-          "default": "افتراضي",
-          "deleteTitle": "جارٍ الحذف",
-          "deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
-          "deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
-          "cancel": "إلغاء",
-          "editTitle": "تعديل بيانات البطاقة"
-        }
-      }
-    },
-    "account": {
-      "shortAddress": "العنوان الوطني",
-      "shortAddressHint": "رمز مكون من 8 خانات من عنوانك الوطني السعودي.",
-      "accountSettings": "إعدادات الحساب",
-      "typeLabel": "النوع",
-      "idNumberLabel": "رقم الهوية",
-      "issueCountryLabel": "بلد الإصدار",
-      "title": "المعلومات الشخصية",
-      "postalCode": "الرمز البريدي",
-      "additionalNumber": "الرقم الإضافي",
-      "edit": "تعديل",
-      "update": "تحديث",
-      "updating": "جاري التحديث...",
-      "cancel": "إلغاء",
-      "settings": "إعدادات الحساب",
-      "notProvided": "غير متوفر",
-      "national_id": "الهوية الوطنية",
-      "iqama": "الإقامة",
-      "passport": "جواز السفر",
-      "identityType": "نوع الهوية",
-      "identityNumber": "رقم الهوية",
-      "nationality": "الجنسية",
-      "identityIssueCountry": "دولة إصدار الهوية",
-      "fullName": "الاسم الكامل",
-      "email": "عنوان البريد الإلكتروني",
-      "phone": "رقم الهاتف",
-      "phonePlaceholder": "أضف رقمًا ليتواصل معك الضيوف المؤكدون وAirbnb. يمكنك إضافة أرقام أخرى وتحديد كيفية استخدامها.",
-      "nationalId": "الرقم القومي",
-      "address": "العنوان",
-      "buildingNumber": "رقم المبنى",
-      "streetName": "اسم الشارع",
-      "city": "المدينة",
-      "state": "المنطقة",
-      "identityInfo": "معلومات الهوية",
-      "birthDate": "تاريخ الميلاد",
-      "selectNationality": "اختر الجنسية",
-      "selectState": "اختر المنطقة",
-      "identityOtherType": "أدخل نوع الهويه",
-      "loading": "جارٍ التحميل...",
-      "password": "كلمة المرور",
-      "oldPassword": "كلمة المرور الحالية",
-      "newPassword": "كلمة المرور الجديدة",
-      "confirmPassword": "تأكيد كلمة المرور",
-      "newEmail": "البريد الإلكتروني الجديد",
-      "pendingVerification": "في انتظار التحقق",
-      "verificationSentTo": "تم إرسال رابط التحقق إلى",
-      "resend": "إعادة إرسال",
-      "sending": "جاري الإرسال...",
-      "sendLink": "إرسال الرابط",
-      "profileImage": "الصورة الشخصية",
-      "changeImage": "تغيير الصورة الشخصية",
-      "validation": {
-        "required": "هذا الحقل مطلوب",
-        "min3": "يجب أن يكون 3 أحرف على الأقل",
-        "max100": "الحد الأقصى 100 حرفاً",
-        "max20": "الحد الأقصى 20 حرفاً",
-        "min8": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
-        "invalidPhone": "تنسيق رقم الجوال السعودي غير صحيح",
-        "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-        "under18": "يجب أن يكون عمرك 18 عاماً على الأقل",
-        "invalidBirthDate": "يجب أن يكون تاريخ الميلاد بين 100 و 18 عاماً",
-        "alphanumeric": "يسمح فقط بالأحرف والأرقام",
-        "invalidPassword": "يجب أن تحتوي كلمة المرور على حرف كبير، وحرف صغير، ورقم، ورمز خاص",
-        "shortAddressLength": "يجب أن يتكون العنوان المختصر من 8 خانات بالضبط",
-        "shortAddressInvalid": "صيغة غير صحيحة. استخدم 4 أحرف و4 أرقام (مثال: RRRD2929)"
-      },
-      "identityTypeGroup": {
-        "national_id": "هوية وطنية",
-        "residency": "هوية مقيم",
-        "premium_residency": "إقامة مميزة",
-        "gcc_id": "هوية خليجية",
-        "passport": "جواز سفر",
-        "other": "أخرى"
-      },
-      "messages": {
-        "updating": "جاري التحديث...",
-        "updateSuccess": "تم تحديث الملف الشخصي بنجاح",
-        "updateError": "فشل التحقق. يرجى التأكد من البيانات.",
-        "passwordUpdated": "تم تحديث كلمة المرور بنجاح",
-        "checkEmailForLink": "تم إرسال الرابط. يرجى التحقق من بريدك الإلكتروني.",
-        "emailResent": "تم إعادة إرسال البريد الإلكتروني بنجاح",
-        "failedToResend": "فشل إعادة الإرسال",
-        "changeCanceled": "تم إلغاء طلب تغيير البريد الإلكتروني",
-        "failedToCancel": "فشل إلغاء الطلب",
-        "uploadingImage": "جاري رفع الصورة...",
-        "imageUpdated": "تم تحديث الصورة الشخصية بنجاح",
-        "invalidFileType": "يرجى اختيار ملف صورة صالح (JPEG, PNG, WebP)"
-      },
-      "placeholders": {
-        "shortAddress": "مثال: RRRD2929",
-        "email": "أدخل بريدك الإلكتروني",
-        "pendingEmail": "أدخل البريد الإلكتروني الجديد",
-        "name": "أدخل اسمك الكامل",
-        "phoneNumber": "أدخل رقم هاتفك",
-        "birthDate": "اختر تاريخ الميلاد",
-        "nationalityId": "اختر الجنسية",
-        "identityType": "اختر نوع الهوية",
-        "identityNumber": "أدخل رقم الهوية",
-        "identityOtherType": "أدخل نوع هوية آخر",
-        "identityIssueCountryId": "اختر بلد الإصدار",
-        "address": {
-          "city": "أدخل اسم المدينة",
-          "streetName": "أدخل اسم الشارع",
-          "buildingNumber": "أدخل رقم المبنى",
-          "postalCode": "أدخل الرمز البريدي",
-          "additionalNumber": "أدخل الرقم الإضافي"
-        },
-        "password": "أدخل كلمة المرور",
-        "oldPassword": "أدخل كلمة المرور القديمة",
-        "newPassword": "أدخل كلمة المرور الجديدة",
-        "confirmPassword": "أكد كلمة المرور الجديدة"
-      }
-    },
-    "support": {
-      "senderName": "دعم قنوف",
-      "lastMessage": "أخبرنا كيف يمكننا مساعدتك.",
-      "welcomeMessage": "مرحبًا بك في دعم قنوف! كيف يمكننا مساعدتك اليوم؟"
-    },
-    "renewRequest": {
-      "reviews": "تقييم",
-      "priceDetails": "تفاصيل السعر",
-      "forOneMonth": "لشهر واحد",
-      "longStayDiscount": "خصم الإقامة الطويلة",
-      "totalUsd": "الإجمالي (دولار أمريكي)",
-      "total": "الإجمالي",
-      "currency": "ر.س",
-      "cancel": "إلغاء",
-      "accept": "قبول",
-      "reject": "رفض",
-      "accepting": "جاري القبول...",
-      "rejecting": "جاري الرفض...",
-      "acceptSuccess": "تم قبول طلب التجديد بنجاح",
-      "acceptError": "فشل قبول طلب التجديد",
-      "rejectSuccess": "تم رفض طلب التجديد بنجاح",
-      "rejectError": "فشل رفض طلب التجديد",
-      "loadError": "فشل تحميل طلبات التجديد",
-      "emptyTitle": "لا توجد طلبات تجديد",
-      "emptyMessage": "ليس لديك أي طلبات تجديد في الوقت الحالي.",
-      "renew": "تجديد",
-      "disAgree": "غير موافق",
-      "agree": "موافق",
-      "requestToRenew": "طلب تجديد",
-      "status": {
-        "pending": "قيد الانتظار",
-        "accepted": "مقبول",
-        "rejected": "مرفوض",
-        "expired": "منتهي الصلاحية"
-      }
-    },
-    "settings": {
-      "root": {
-        "account": "الحساب",
-        "personalInfo": {
-          "title": "المعلومات الشخصية",
-          "description": "أدخل بياناتك الشخصية وكيفية التواصل معك"
-        },
+      "noNotifications": "لا توجد إشعارات حتى الآن",
+      "selectItemsPerPage": "عدد العناصر",
+      "pageInfo": "الصفحة {current} من {total}",
+      "goToPage": "الانتقال إلى الصفحة {page}",
+      "statTotal": "إجمالي الإشعارات",
+      "statUnread": "غير مقروءة",
+
+			
+			"seeMore": "رؤية المزيد",
+			"pushToggle": "🔔 فعّل إشعارات الدفع",
+			"failedToLoad": "فشل في تحميل التنبيهات. يرجى المحاولة مرة أخرى.",
+			"prev": "السابق",
+			"next": "التالي",
+			"updating": "جاري التحديث...",
+			"loading": "جاري التحميل..."
+		},
+		"filter": {
+			"export": {
+				"trigger": "تصدير",
+				"scope": "نطاق التصدير",
+				"currentTable": "البيانات الحالية",
+				"moreData": "بيانات إضافية",
+				"rowLimit": "عدد الصفوف",
+				"rowLimitHint": "الحد الأقصى 1000 صف",
+				"export": "تصدير",
+				"exporting": "جارٍ التصدير…",
+				"cancel": "إلغاء",
+				"maxRows": "أقصى عدد للصفوف"
+			},
+			"container": {
+				"filter": "تصفية"
+			}
+		},
+		"table": {
+			"noRows": "لا توجد بيانات لعرضها",
+			"errorTitle": "عذرًا، حدث خطأ",
+			"errorMessage": "حدث خطأ أثناء تحميل البيانات",
+			"retry": "إعادة المحاولة"
+		},
+		"pagination": {
+			"navigation": "التنقل بين الصفحات",
+			"pageNumbers": "أرقام الصفحات",
+			"firstPage": "الصفحة الأولى",
+			"previous": "السابقة",
+			"next": "التالية",
+			"lastPage": "الصفحة الأخيرة",
+			"goToPage": "انتقل إلى الصفحة {{page}}",
+			"showing": "عرض",
+			"of": "من",
+			"showingEntries": "عرض {{start}}–{{end}} من {{total}}",
+			"jumpBack": "الرجوع {count} صفحات",
+			"jumpForward": "التقدم {count} صفحات"
+		},
+		"contracts": {
+			"viewContract": "عرض العقد",
+			"noContractAvailable": "لا يوجد عقد متاح",
+			"contractTitle": "العقد",
+			"contractPage": "صفحة العقد",
+			"noImagesFallback": "لا توجد صور للعقد",
+			"cancel": "إلغاء",
+			"renew": {
+				"actionText": "تجديد",
+				"title": "تجديد العقد",
+				"subtitle": "هل أنت متأكد أنك تريد تجديد العقد؟"
+			},
+			"terminate": {
+				"actionText": "إنهاء",
+				"title": "إنهاء",
+				"subtitle": "هل أنت متأكد أنك تريد إنهاء العقد؟",
+				"note": "ملاحظة: عند إنهاء العقد، لن تسترد أموالك"
+			},
+			"delete": {
+				"actionText": "مسح",
+				"title": "مسح",
+				"subtitle": "هل أنت متأكد أنك تريد مسح العقد؟"
+			},
+			"table": {
+				"columns": {
+					"property": "العقار",
+					"status": "الحالة",
+					"contractNumber": "رقم العقد",
+					"tenant": "المستأجر",
+					"landlord": "المالك",
+					"startDate": "تاريخ البدء",
+					"endDate": "تاريخ الانتهاء",
+					"totalAmount": "المبلغ الإجمالي",
+					"createdAt": "تاريخ الإنشاء",
+					"contract": "العقد"
+				},
+				"statusOptions": {
+					"all": "الكل",
+					"draft": "مسودة",
+					"pending_tenant_acceptance": "في انتظار قبول المستأجر",
+					"pending_landlord_acceptance": "في انتظار قبول المالك",
+					"pending_signature": "بانتظار التوثيق",
+					"active": "نشط",
+					"expired": "منتهي",
+					"cancelled": "ملغي",
+					"terminated": "منهي",
+					"pending_termination": "في انتظار الإنهاء"
+				},
+				"viewDetails": "عرض التفاصيل",
+				"reviseContract": "تعديل شروط العقد",
+				"acceptContract": "قبول العقد",
+				"cancelContract": "إلغاء العقد",
+				"activateContract": "تفعيل العقد",
+				"terminateContract": "إنهاء العقد",
+				"searchPlaceholder": "ابحث باسم العقار، المستأجر أو المؤجر...",
+				"filters": {
+					"status": "الحالة",
+					"maxPrice": "أقصى سعر",
+					"maxPricePlaceholder": "أدخل أقصى سعر"
+				},
+				"viewContract": "عرض العقد",
+				"addReview": "إضافة تقييم",
+				"viewReview": "عرض التقييم",
+				"actions": {
+					"viewDetails": "عرض التفاصيل",
+					"viewReview": "عرض التقييم",
+					"addReview": "إضافة تقييم",
+					"reviseContract": "تعديل العقد",
+					"acceptContract": "قبول العقد",
+					"cancelContract": "إلغاء العقد",
+					"activateContract": "تفعيل العقد",
+					"terminateContract": "إنهاء العقد"
+				}
+			},
+			"reviews": {
+				"create": {
+					"title": "إضافة تقييم",
+					"subtitle": "شارك تجربتك مع هذا العقار",
+					"fields": {
+						"rating": "التقييم",
+						"reviewText": "التقييم",
+						"reviewTextPlaceholder": "اكتب تقييمك هنا..."
+					},
+					"submit": "إرسال التقييم",
+					"success": "تم إرسال التقييم بنجاح",
+					"error": "فشل إرسال التقييم"
+				},
+				"view": {
+					"title": "عرض التقييم",
+					"subtitle": "تقييمك لهذا العقد",
+					"fields": {
+						"rating": "التقييم",
+						"reviewText": "التقييم",
+						"reviewDate": "تاريخ التقييم"
+					},
+					"close": "إغلاق",
+					"loading": "جارٍ التحميل...",
+					"noReview": "لم يتم العثور على تقييم",
+					"error": "فشل تحميل التقييم"
+				}
+			},
+			"pdfViewer": {
+				"title": "وثيقة العقد",
+				"page": "صفحة",
+				"previous": "السابق",
+				"next": "التالي",
+				"download": "تحميل PDF",
+				"loading": "جاري تحميل PDF...",
+				"loadError": "فشل تحميل وثيقة PDF",
+				"renderError": "فشل عرض صفحة PDF"
+			},
+			"details": {
+				"title": "تفاصيل العقد",
+				"error": "فشل تحميل تفاصيل العقد",
+				"errorTitle": "خطأ",
+				"close": "إغلاق",
+				"property": "معلومات العقار",
+				"propertyName": "اسم العقار",
+				"propertyType": "نوع العقار",
+				"area": "المساحة",
+				"location": "الموقع",
+				"rentalPeriod": "فترة الإيجار",
+				"startDate": "تاريخ البدء",
+				"endDate": "تاريخ الانتهاء",
+				"duration": "المدة",
+				"months": "أشهر",
+				"rentType": "نوع الإيجار",
+				"financial": "التفاصيل المالية",
+				"totalAmount": "المبلغ الإجمالي",
+				"securityDeposit": "الوديعة",
+				"platformFee": "رسوم المنصة",
+				"parties": "الأطراف",
+				"landlord": "المالك",
+				"tenant": "المستأجر",
+				"name": "الاسم",
+				"email": "البريد الإلكتروني",
+				"phone": "الهاتف",
+				"terms": "شروط العقد",
+				"contractInfo": "معلومات العقد",
+				"createdAt": "تاريخ الإنشاء",
+				"contractDate": "تاريخ العقد",
+				"terminationDate": "تاريخ الإنهاء",
+				"nationality": "الجنسية",
+				"identityType": "نوع الهوية",
+				"identityNumber": "رقم الهوية",
+				"identityIssueCountry": "بلد إصدار الهوية",
+				"birthDate": "تاريخ الميلاد",
+				"shortAddress": "العنوان المختصر"
+			},
+			"actions": {
+				"revise": {
+					"title": "تعديل شروط العقد",
+					"subtitle": "راجع وحدّث شروط العقد. سيحتاج المستأجر إلى قبول أو رفض التغييرات.",
+					"showComparison": "عرض المقارنة (مراجعة التغييرات)",
+					"hideComparison": "إخفاء المقارنة",
+					"addedText": "تمت إضافته",
+					"removedText": "تم حذفه",
+					"comparisonNote": "يتم تمييز التغييرات: الأخضر للنص الجديد، والأحمر للنص المحذوف.",
+					"fields": {
+						"terms": "شروط العقد",
+						"termsPlaceholder": "أدخل شروط العقد المعدلة..."
+					},
+					"submit": "إرسال إلى المستأجر",
+					"success": "تم تحديث شروط العقد بنجاح",
+					"error": "فشل تحديث شروط العقد"
+				},
+				"accept": {
+					"title": "قبول العقد",
+					"subtitle": "يرجى مراجعة بنود العقد والشروط الافتراضية بدقة قبل القبول للمتابعة إلى المرحلة التالية.",
+					"fields": {
+						"sendRenewalNotify": "إرسال إشعار التجديد",
+						"sendRenewalNotifyHint": "إرسال إشعار للمستأجر عند اقتراب موعد التجديد",
+						"renewalDiscountAmount": "مبلغ خصم التجديد (ريال)",
+						"requiredMonthsForIncentive": "الأشهر المطلوبة للحافز"
+					},
+					"submit": "قبول",
+					"success": "تم قبول العقد بنجاح",
+					"error": "فشل قبول العقد"
+				},
+				"cancel": {
+					"title": "إلغاء العقد",
+					"subtitle": "هل أنت متأكد من رغبتك في إلغاء هذا العقد؟ لا يمكن التراجع عن هذا الإجراء.",
+					"confirm": "إلغاء العقد",
+					"cancel": "الاحتفاظ بالعقد",
+					"submitting": "جاري الإلغاء...",
+					"success": "تم إلغاء العقد بنجاح",
+					"error": "فشل إلغاء العقد"
+				},
+				"activate": {
+					"title": "تفعيل العقد",
+					"subtitle": "قم برفع ملف PDF لعقد إيجار وأدخل رقم العقد لتفعيل هذا العقد.",
+					"fields": {
+						"contractNumber": "رقم العقد",
+						"contractNumberPlaceholder": "أدخل رقم العقد",
+						"contractPdf": "ملف PDF للعقد",
+						"uploadPdf": "انقر لرفع ملف PDF",
+						"changeFile": "انقر لتغيير الملف"
+					},
+					"submit": "تفعيل",
+					"success": "تم تفعيل العقد بنجاح",
+					"error": "فشل تفعيل العقد"
+				},
+				"terminate": {
+					"title": "إنهاء العقد",
+					"subtitle": "هل أنت متأكد من رغبتك في إنهاء هذا العقد؟",
+					"note": "ملاحظة: إنهاء المستأجر فوري. إنهاء المالك يتطلب إشعار 60 يوماً.",
+					"confirm": "إنهاء",
+					"cancel": "إلغاء",
+					"submitting": "جاري الإنهاء...",
+					"success": "تم بدء عملية إنهاء العقد بنجاح",
+					"error": "فشل إنهاء العقد"
+				}
+			}
+		},
+		"payments": {
+			"title": "المدفوعات والمستحقات",
+			"accountSettings": "إعدادات الحساب",
+			"totalEarnings": "إجمالي الأرباح",
+			"pendingPayments": "المدفوعات المعلقة",
+			"table": {
+				"transactionId": "معرّف المعاملة",
+				"property": "العقار",
+				"propertyAddress": "عنوان العقار",
+				"propertyType": "نوع العقار",
+				"apartment": "شقة",
+				"house": "منزل",
+				"price": "السعر",
+				"date": "التاريخ"
+			},
+			"paymentMethods": {
+				"title": "طرق الدفع المحفوظة",
+				"accountsTab": "حسابات الدفع",
+				"transactionsTab": "سجل المعاملات",
+				"recentAccounts": "حسابات الدفع الأخيرة",
+				"addMethod": "إضافة طريقة",
+				"addCardHolder": "إضافة حامل البطاقة",
+				"recentTransactions": "المعاملات الأخيرة",
+				"save": "حفظ التغييرات",
+				"discard": "تجاهل",
+				"card": {
+					"expires": "تنتهي في",
+					"edit": "تعديل البطاقة",
+					"delete": "حذف البطاقة",
+					"default": "افتراضي",
+					"deleteTitle": "جارٍ الحذف",
+					"deleteSubtitle": "هل أنت متأكد أنك تريد إزالة بطاقة Visa؟",
+					"deleteNote": "لا يمكن التراجع عن هذا الإجراء.",
+					"cancel": "إلغاء",
+					"editTitle": "تعديل بيانات البطاقة"
+				}
+			}
+		},
+		"account": {
+			 
+      "save": "حفظ",  
+			"shortAddress": "العنوان الوطني",
+			"shortAddressHint": "رمز مكون من 8 خانات من عنوانك الوطني السعودي.",
+			"accountSettings": "إعدادات الحساب",
+			"typeLabel": "النوع",
+			"idNumberLabel": "رقم الهوية",
+			"issueCountryLabel": "بلد الإصدار",
+			"title": "المعلومات الشخصية",
+			"postalCode": "الرمز البريدي",
+			"additionalNumber": "الرقم الإضافي",
+			"edit": "تعديل",
+			"update": "تحديث",
+			"updating": "جاري التحديث...",
+			"cancel": "إلغاء",
+			"settings": "إعدادات الحساب",
+			"notProvided": "غير متوفر",
+			"national_id": "الهوية الوطنية",
+			"iqama": "الإقامة",
+			"passport": "جواز السفر",
+			"identityType": "نوع الهوية",
+			"identityNumber": "رقم الهوية",
+			"nationality": "الجنسية",
+			"identityIssueCountry": "دولة إصدار الهوية",
+			"fullName": "الاسم الكامل",
+			"email": "عنوان البريد الإلكتروني",
+			"phone": "رقم الهاتف",
+			"phonePlaceholder": "أضف رقمًا ليتواصل معك الضيوف المؤكدون وAirbnb. يمكنك إضافة أرقام أخرى وتحديد كيفية استخدامها.",
+			"nationalId": "الرقم القومي",
+			"address": "العنوان",
+			"buildingNumber": "رقم المبنى",
+			"streetName": "اسم الشارع",
+			"city": "المدينة",
+			"state": "المنطقة",
+			"identityInfo": "معلومات الهوية",
+			"birthDate": "تاريخ الميلاد",
+			"selectNationality": "اختر الجنسية",
+			"selectState": "اختر المنطقة",
+			"identityOtherType": "أدخل نوع الهويه",
+			"loading": "جارٍ التحميل...",
+			"password": "كلمة المرور",
+			"oldPassword": "كلمة المرور الحالية",
+			"newPassword": "كلمة المرور الجديدة",
+			"confirmPassword": "تأكيد كلمة المرور",
+			"newEmail": "البريد الإلكتروني الجديد",
+			"pendingVerification": "في انتظار التحقق",
+			"verificationSentTo": "تم إرسال رابط التحقق إلى",
+			"resend": "إعادة إرسال",
+			"sending": "جاري الإرسال...",
+			"sendLink": "إرسال الرابط",
+			"profileImage": "الصورة الشخصية",
+			"changeImage": "تغيير الصورة الشخصية",
+			"validation": {
+				"required": "هذا الحقل مطلوب",
+				"min3": "يجب أن يكون 3 أحرف على الأقل",
+				"max100": "الحد الأقصى 100 حرفاً",
+				"max20": "الحد الأقصى 20 حرفاً",
+				"min8": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+				"invalidPhone": "تنسيق رقم الجوال السعودي غير صحيح",
+				"passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+				"under18": "يجب أن يكون عمرك 18 عاماً على الأقل",
+				"invalidBirthDate": "يجب أن يكون تاريخ الميلاد بين 100 و 18 عاماً",
+				"alphanumeric": "يسمح فقط بالأحرف والأرقام",
+				"invalidPassword": "يجب أن تحتوي كلمة المرور على حرف كبير، وحرف صغير، ورقم، ورمز خاص",
+				"shortAddressLength": "يجب أن يتكون العنوان المختصر من 8 خانات بالضبط",
+				"shortAddressInvalid": "صيغة غير صحيحة. استخدم 4 أحرف و4 أرقام (مثال: RRRD2929)"
+			},
+			"identityTypeGroup": {
+				
+				"national_id": "هوية وطنية",
+				"residency": "هوية مقيم",
+				"premium_residency": "إقامة مميزة",
+				"gcc_id": "هوية خليجية",
+				"passport": "جواز سفر",
+				"other": "أخرى"
+			},
+			"messages": {
+				"updating": "جاري التحديث...",
+				"updateSuccess": "تم تحديث الملف الشخصي بنجاح",
+				"updateError": "فشل التحقق. يرجى التأكد من البيانات.",
+				"passwordUpdated": "تم تحديث كلمة المرور بنجاح",
+				"checkEmailForLink": "تم إرسال الرابط. يرجى التحقق من بريدك الإلكتروني.",
+				"emailResent": "تم إعادة إرسال البريد الإلكتروني بنجاح",
+				"failedToResend": "فشل إعادة الإرسال",
+				"changeCanceled": "تم إلغاء طلب تغيير البريد الإلكتروني",
+				"failedToCancel": "فشل إلغاء الطلب",
+				"uploadingImage": "جاري رفع الصورة...",
+				"imageUpdated": "تم تحديث الصورة الشخصية بنجاح",
+				"invalidFileType": "يرجى اختيار ملف صورة صالح (JPEG, PNG, WebP)" 
+			},
+			"placeholders": {
+				"shortAddress": "مثال: RRRD2929",
+				"email": "أدخل بريدك الإلكتروني",
+				"pendingEmail": "أدخل البريد الإلكتروني الجديد",
+				"name": "أدخل اسمك الكامل",
+				"phoneNumber": "أدخل رقم هاتفك",
+				"birthDate": "اختر تاريخ الميلاد",
+				"nationalityId": "اختر الجنسية",
+				"identityType": "اختر نوع الهوية",
+				"identityNumber": "أدخل رقم الهوية",
+				"identityOtherType": "أدخل نوع هوية آخر",
+				"identityIssueCountryId": "اختر بلد الإصدار",
+				"address": {
+					"city": "أدخل اسم المدينة",
+					"streetName": "أدخل اسم الشارع",
+					"buildingNumber": "أدخل رقم المبنى",
+					"postalCode": "أدخل الرمز البريدي",
+					"additionalNumber": "أدخل الرقم الإضافي"
+				},
+				"password": "أدخل كلمة المرور",
+				"oldPassword": "أدخل كلمة المرور القديمة",
+				"newPassword": "أدخل كلمة المرور الجديدة",
+				"confirmPassword": "أكد كلمة المرور الجديدة"
+			}
+		},
+		"support": {
+			"senderName": "دعم قنوف",
+			"lastMessage": "أخبرنا كيف يمكننا مساعدتك.",
+			"welcomeMessage": "مرحبًا بك في دعم قنوف! كيف يمكننا مساعدتك اليوم؟"
+		},
+		"renewRequest": {
+			"reviews": "تقييم",
+			"priceDetails": "تفاصيل السعر",
+			"forOneMonth": "لشهر واحد",
+			"longStayDiscount": "خصم الإقامة الطويلة",
+			"totalUsd": "الإجمالي (دولار أمريكي)",
+			"total": "الإجمالي",
+			"currency": "ر.س",
+			"cancel": "إلغاء",
+			"accept": "قبول",
+			"reject": "رفض",
+			"accepting": "جاري القبول...",
+			"rejecting": "جاري الرفض...",
+			"acceptSuccess": "تم قبول طلب التجديد بنجاح",
+			"acceptError": "فشل قبول طلب التجديد",
+			"rejectSuccess": "تم رفض طلب التجديد بنجاح",
+			"rejectError": "فشل رفض طلب التجديد",
+			"loadError": "فشل تحميل طلبات التجديد",
+			"emptyTitle": "لا توجد طلبات تجديد",
+			"emptyMessage": "ليس لديك أي طلبات تجديد في الوقت الحالي.",
+			"renew": "تجديد",
+			"disAgree": "غير موافق",
+			"agree": "موافق",
+			"requestToRenew": "طلب تجديد",
+			"status": {
+				"pending": "قيد الانتظار",
+				"accepted": "مقبول",
+				"rejected": "مرفوض",
+				"expired": "منتهي الصلاحية"
+			}
+		},
+		"settings": { 
+			"root": {
+				"account": "الإعدادات",
+        "accountSubtitle": "إدارة حسابك وتفضيلاتك",
+        
         "notifications": {
           "title": "الإشعارات",
-          "description": "اختر تفضيلات الإشعارات وطريقة التواصل"
-        },
-        "payments": {
-          "title": "المدفوعات والمستحقات",
-          "description": "راجع المدفوعات والقسائم وبطاقات الهدايا"
-        }
-      }
-    },
-    "chats": {
-      "online": "نشط الآن",
-      "offline": "غير متصل",
-      "loadingHistory": "جاري تحميل السجل…",
-      "loadingMore": "جاري تحميل المزيد",
-      "messages": "الرسائل",
-      "noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
-      "newMessages": "رسائل جديدة",
-      "typeMessage": "اكتب رسالة",
-      "selectConversation": "اختر محادثة لبدء المراسلة",
-      "noConversationsYet": "لا توجد محادثات بعد",
-      "startMessagingToSeeChats": "عندما تبدأ محادثة جديدة، ستظهر هنا.",
-      "failedSendTitle": "فشل الإرسال. اضغط لإعادة المحاولة",
-      "failedSendText": "فشل التسليم — اضغط على الأيقونة لإعادة المحاولة"
-    },
-    "admin": {
-      "settings": {
-        "title": "مركز تحكم الموقع",
-        "description": "قم بتكوين الهوية الأساسية لمنصتك، والسياسات القانونية، والروابط الاجتماعية من لوحة تحكم مركزية واحدة.",
-        "loading": "جاري تحميل الإعدادات...",
-        "saving": "جاري الحفظ...",
-        "save": "حفظ التغييرات",
-        "subtitles": {
-          "basicInfo": "التفاصيل الأساسية حول اسم العقار ونوعه وتسعيره.",
-          "descriptions": "قدم وصفاً تفصيلياً باللغتين الإنجليزية والعربية للوصول إلى شريحة أكبر من العملاء.",
-          "contractTerms": "حدد القواعد والشروط الأساسية لاتفاقية الإيجار الخاصة بك.",
-          "contactAndLocation": "ساعد العملاء في العثور عليك من خلال توفير معلومات اتصال دقيقة وموقع الخريطة.",
-          "legal": "الوثائق القانونية الهامة بما في ذلك سياسات الخصوصية وشروط الخدمة.",
-          "social": "اربط حسابات التواصل الاجتماعي الخاصة بك لزيادة ظهور العقار."
-        },
-        "sections": {
-          "defaultContractTerms": "شروط العقد الافتراضية",
-          "general": "معلومات عامة",
-          "description": "الوصف",
-          "contactAndLocation": "بيانات الاتصال والموقع",
-          "legal": "المستندات القانونية",
-          "social": "روابط التواصل الاجتماعي"
-        },
-        "messages": {
-          "updating": "جارٍ حفظ الإعدادات...",
-          "fetchError": "فشل في تحميل الإعدادات.",
-          "updateSuccess": "تم تحديث الإعدادات بنجاح!",
-          "updateError": "حدث خطأ أثناء الحفظ."
-        },
-        "fields": {
-          "defaultContractTerms": "الشروط والأحكام",
-          "name": "اسم الموقع",
-          "platformPercent": "نسبة المنصة (%)",
-          "contactEmail": "بريد التواصل",
-          "contactPhone": "هاتف التواصل",
-          "fax": "رقم الفاكس",
-          "address": "العنوان الفعلي",
-          "latitude": "خط العرض (Latitude)",
-          "longitude": "خط الطول (Longitude)",
-          "description_en": "الوصف (إنجليزي)",
-          "description_ar": "الوصف (عربي)",
-          "privacyPolicy_en": "سياسة الخصوصية (إنجليزي)",
-          "privacyPolicy_ar": "سياسة الخصوصية (عربي)",
-          "termsOfService_en": "شروط الخدمة (إنجليزي)",
-          "termsOfService_ar": "شروط الخدمة (عربي)",
-          "facebook": "فيسبوك",
-          "twitter": "تويتر",
-          "instagram": "انستغرام",
-          "linkedin": "لينكد إن",
-          "pinterest": "بينتيريست",
-          "tiktok": "تيك توك",
-          "youtube": "يوتيوب"
-        },
-        "placeholders": {
-          "defaultContractTerms": "أدخل الشروط والأحكام الافتراضية التي سيتم تطبيقها تلقائياً على العقود الجديدة...",
-          "name": "أدخل اسم الموقع",
-          "description_en": "أدخل وصف الموقع بالإنجليزية",
-          "description_ar": "أدخل وصف الموقع بالعربية"
-        },
-        "required": "هذا الحقل مطلوب",
-        "email": {
-          "invalid": "يرجى إدخال بريد إلكتروني صحيح"
-        },
-        "url": {
-          "invalid": "يرجى إدخال رابط صحيح (مثال: https://...)"
-        },
-        "number": {
-          "invalid": "القيمة يجب أن تكون رقم"
-        },
-        "percent": {
-          "invalid": "يجب أن تكون النسبة رقمًا بين 0 و 100"
-        }
-      },
-      "root": {
-        "totalProperties": "إجمالي العقارات",
-        "freeProperties": "العقارات المتاحة",
-        "rentedProperties": "العقارات المؤجرة",
-        "lastTransactions": "آخر المعاملات",
-        "maintenanceRequests": "طلبات الصيانه",
-        "recentProperties": "أحدث العقارات",
-        "noContracts": "لا توجد عقود حالياً",
-        "noContractsMessage": "لا توجد عقود حديثة للعرض.",
-        "noProperties": "لا توجد عقارات",
-        "noPropertiesMessage": "لا توجد عقارات حديثة للعرض."
-      },
-      "maintenance": {
-        "requestId": "رقم الطلب",
-        "type": {
-          "Electrical": "كهرباء",
-          "Plumbing": "سباكة",
-          "HVAC": "تكييف"
-        }
-      },
-      "costBreakdown": {
-        "maintenance": "الصيانة",
-        "repair": "الإصلاح",
-        "taxes": "الضرائب",
-        "saving": "الادخار"
-      },
-      "contactUs": {
-        "title": "رسائل اتصل بنا",
-        "searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني أو رقم الهاتف",
-        "emptyTitle": "لا توجد رسائل",
-        "emptyMessage": "لا توجد أي رسائل تواصل لعرضها حالياً.",
-        "resetFilters": "إعادة تعيين الفلاتر"
-      },
-      "team": {
-        "title": "أعضاء الفريق",
-        "add": "إضافة عضو جديد",
-        "edit": "تعديل العضو",
-        "deleteTitle": "حذف",
-        "formText": "عرض النموذج",
-        "emptyTitle": "لم يتم العثور على أعضاء الفريق",
-        "emptyMessage": "لا يوجد أعضاء فريق حالياً. الرجاء إضافة أعضاء جدد.",
-        "resetFilters": "إعادة تعيين الفلاتر",
-        "delete": {
-          "title": "حذف عضو الفريق",
-          "subtitle": "هل أنت متأكد أنك تريد حذف هذا العضو",
-          "cancel": "إلغاء",
-          "actionText": "حذف",
-          "deleting": "جاري حذف هذا العضو...",
-          "success": "تم حذف هذا العضو بنجاح.",
-          "error": "فشل في حذف هذا العضو."
-        },
-        "form": {
-          "form": "نموذج عضو الفريق",
-          "name": "الاسم",
-          "namePlaceholder": "أدخل اسم العضو",
-          "job": "المسمى الوظيفي",
-          "jobPlaceholder": "أدخل المسمى الوظيفي",
-          "description_en": "الوصف (إنجليزي)",
-          "description_ar": "الوصف (عربي)",
-          "email": "البريد الإلكتروني",
-          "emailPlaceholder": "أدخل البريد الإلكتروني",
-          "phone": "رقم الهاتف",
-          "phonePlaceholder": "أدخل رقم الهاتف",
-          "upload": "رفع الصورة",
-          "noFile": "لا يوجد ملف",
-          "validation": {
-            "required": "هذا الحقل مطلوب",
-            "maxLength": "تجاوز الحد الأقصى للطول ({max})",
-            "email": "عنوان البريد الإلكتروني غير صالح",
-            "imageRequired": "يرجى رفع صورة",
-            "invalidPhone": "رقم الهاتف غير صالح"
-          },
-          "actions": {
-            "create": "إنشاء",
-            "update": "تحديث",
-            "cancel": "إلغاء",
-            "creating": "جارٍ إنشاء عضو الفريق...",
-            "updating": "جارٍ تحديث عضو الفريق...",
-            "createSuccess": "تم إنشاء عضو الفريق بنجاح",
-            "updateSuccess": "تم تحديث عضو الفريق بنجاح",
-            "error": "حدث خطأ. حاول مرة أخرى"
-          }
-        },
-        "cancel": "إلغاء",
-        "addAction": "إضافة عضو",
-        "editAction": "حفظ التعديلات"
-      },
-      "departments": {
-        "title": "الأقسام",
-        "add": "إضافة قسم جديد",
-        "edit": "تعديل القسم",
-        "deleteTitle": "حذف",
-        "formText": "عرض النموذج",
-        "emptyTitle": "لم يتم العثور على الأقسام",
-        "emptyMessage": "لا توجد أقسام حالياً. الرجاء إضافة أقسام جديدة.",
-        "resetFilters": "إعادة تعيين الفلاتر",
-        "delete": {
-          "title": "حذف القسم",
-          "subtitle": "هل أنت متأكد أنك تريد حذف القسم؟",
-          "cancel": "إلغاء",
-          "actionText": "حذف",
-          "deleting": "جاري حذف القسم...",
-          "success": "تم حذف القسم بنجاح.",
-          "error": "فشل في حذف القسم."
-        },
-        "form": {
-          "form": "نموذج القسم",
-          "title_en": "العنوان (إنجليزي)",
-          "title_enPlaceholder": "أدخل العنوان باللغة الإنجليزية",
-          "title_ar": "العنوان (عربي)",
-          "title_arPlaceholder": "أدخل العنوان باللغة العربية",
-          "description_en": "الوصف (إنجليزي)",
-          "description_ar": "الوصف (عربي)",
-          "upload": "رفع الصورة",
-          "noFile": "لا يوجد ملف",
-          "validation": {
-            "required": "هذا الحقل مطلوب",
-            "maxLength": "تجاوز الحد الأقصى للطول ({max})",
-            "imageRequired": "يرجى رفع صورة",
-            "invalidPhone": "رقم الهاتف غير صالح"
-          },
-          "actions": {
-            "create": "إنشاء",
-            "update": "تحديث",
-            "cancel": "إلغاء",
-            "creating": "جارٍ إنشاء القسم...",
-            "updating": "جارٍ تحديث القسم...",
-            "createSuccess": "تم إنشاء القسم بنجاح",
-            "updateSuccess": "تم تحديث القسم بنجاح",
-            "error": "حدث خطأ. حاول مرة أخرى"
-          }
-        },
-        "cancel": "إلغاء",
-        "addAction": "إضافة قسم",
-        "editAction": "حفظ التعديلات"
-      },
-      "blog": {
-        "formText": "عرض المدونة",
-        "emptyTitle": "لم يتم العثور على المدونات",
-        "emptyMessage": "لا توجد مدونات حالياً. الرجاء إضافة مدونة جديدة.",
-        "resetFilters": "إعادة تعيين الفلاتر",
-        "title": "المدونات",
-        "add": "إضافة مدونة",
-        "edit": "تعديل مدونة",
-        "deleteTitle": "حذف",
-        "delete": {
-          "title": "حذف المدونة",
-          "subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
-          "cancel": "إلغاء",
-          "actionText": "حذف",
-          "deleting": "جاري حذف المدونة...",
-          "success": "تم حذف المدونة بنجاح.",
-          "error": "فشل في حذف المدونة."
-        },
-        "form": {
-          "form": "نموذج المدونة",
-          "title_en": "العنوان (إنجليزي)",
-          "title_enPlaceholder": "أدخل عنوان المدونة باللغة الإنجليزية",
-          "title_ar": "العنوان (عربي)",
-          "title_arPlaceholder": "أدخل عنوان المدونة باللغة العربية",
-          "description_en": "الوصف (إنجليزي)",
-          "description_ar": "الوصف (عربي)",
-          "upload": "رفع صورة المدونة",
-          "noFile": "لا يوجد ملف",
-          "validation": {
-            "required": "هذا الحقل مطلوب",
-            "maxLength": "تجاوز الحد الأقصى للطول ({max})",
-            "imageRequired": "يرجى رفع صورة للمدونة"
-          },
-          "actions": {
-            "create": "إنشاء",
-            "update": "تحديث",
-            "cancel": "إلغاء",
-            "creating": "جارٍ إنشاء المدونة...",
-            "updating": "جارٍ تحديث المدونة...",
-            "createSuccess": "تم إنشاء المدونة بنجاح",
-            "updateSuccess": "تم تحديث المدونة بنجاح",
-            "error": "حدث خطأ. حاول مرة أخرى"
-          }
-        },
-        "actions": {
-          "cancel": "إلغاء",
-          "addAction": "إضافة مدونة",
-          "editAction": "حفظ التعديلات"
-        }
-      },
-      "about": {
-        "validation": {
-          "titleRequired": "العنوان مطلوب",
-          "titleMax": "يجب ألا يزيد العنوان عن 255 حرفًا",
-          "contentRequired": "المحتوى مطلوب",
-          "imageRequired": "الصورة مطلوب"
-        },
-        "title": "محتوي صفحة من نحن",
-        "vision": {
-          "title": "رؤيتنا",
-          "defaultTitle": "رؤيتنا"
-        },
-        "mission": {
-          "title": "مهمتنا",
-          "defaultTitle": "مهمتنا"
-        },
-        "goals": {
-          "title": "أهدافنا",
-          "defaultTitle": "أهدافنا"
-        },
-        "history": {
-          "title": "تاريخنا",
-          "defaultTitle": "تاريخنا"
-        },
-        "why_us": {
-          "title": "لماذا قنف",
-          "defaultTitle": "لماذا قنف"
-        },
-        "edit": "تعديل",
-        "noContent": "لا يوجد محتوى حالياً",
-        "saving": "جاري الحفظ...",
-        "saved": "تم الحفظ",
-        "errors": {
-          "failed": "فشل الحفظ"
-        },
-        "form": {
-          "title_en": "العنوان (EN)",
-          "title_ar": "العنوان (AR)",
-          "title_en_placeholder": "أدخل العنوان باللغة الإنجليزية",
-          "title_ar_placeholder": "أدخل العنوان باللغة العربية",
-          "content_en": "المحتوى (EN)",
-          "content_ar": "المحتوى (AR)",
-          "content_en_placeholder": "أدخل المحتوى باللغة الإنجليزية",
-          "content_ar_placeholder": "أدخل المحتوى باللغة العربية",
-          "cancel": "إلغاء",
-          "save": "حفظ التعديلات"
-        }
-      }
-    },
-    "properties": {
-      "updatingStatus": "جاري تحديث حالة العقار...",
-      "statusUpdated": "تم تحديث الحالة بنجاح",
-      "statusUpdateError": "فشل تحديث الحالة",
-      "statusOptions": {
-        "active": "نشط",
-        "pending": "قيد الانتظار",
-        "rejected": "مرفوض",
-        "archived": "مؤرشف"
-      },
-      "delete": {
-        "title": "حذف العقار",
-        "subtitle": "هل أنت متأكد أنك تريد حذف هذا العقار؟ لا يمكن التراجع عن هذا الإجراء.",
-        "actionText": "حذف"
-      },
-      "cancel": "إلغاء",
-      "table": {
-        "viewDetails": "عرض التفاصيل",
-        "archiveProperty": "أرشفة العقار",
-        "restoreProperty": "استعادة العقار",
-        "property": "العقار",
-        "status": "الحالة",
-        "free": "متاح",
-        "online": "معروض",
-        "offline": "غير معروض",
-        "booked": "محجوز",
-        "published": "تاريخ النشر",
-        "price": "السعر",
-        "location": "الموقع",
-        "deleteProperty": "حذف العقار",
-        "editProperty": "تعديل العقار",
-        "addProperty": "إضافة عقار",
-        "viewReviews": "عرض التقييمات",
-        "title": "إدارة العقارات",
-        "searchPlaceholder": "ابحث بالاسم...",
-        "filters": {
-          "status": "الحالة",
-          "propertyType": "نوع العقار",
-          "occupancy": "التوفر",
-          "sortBy": "ترتيب حسب"
-        },
-        "statusOptions": {
-          "all": "جميع الحالات",
-          "pending": "قيد المراجعة",
-          "active": "نشط",
-          "inactive": "غير نشط",
-          "rejected": "مرفوض",
-          "archived": "مؤرشف"
-        },
-        "typeOptions": {
-          "all": "جميع الوحدات",
-          "residential": "سكني",
-          "commercial": "تجاري"
-        },
-        "occupancyOptions": {
-          "all": "الكل",
-          "rented": "مؤجر",
-          "available": "متاح"
-        },
-        "columns": {
-          "name": "اسم العقار",
-          "status": "حالة العرض",
-          "isRented": "حالة الإشغال",
-          "type": "نوع العقار",
-          "price": "سعر الإيجار",
-          "createdAt": "تاريخ الإضافة"
-        },
-        "reviews": {
-          "title": "تقييمات العقار",
-          "reviews": "تقييم",
-          "noReviews": "لا توجد تقييمات بعد",
-          "loadError": "فشل تحميل التقييمات",
-          "loading": "جاري التحميل...",
-          "loadMore": "تحميل المزيد"
-        },
-        "validation": {
-          "required": "هذا الحقل مطلوب",
-          "minLength": "يجب أن يكون {min} أحرف على الأقل",
-          "maxLength": "لا يمكن أن يتجاوز {max} حرفاً",
-          "minNumber": "القيمة يجب أن تكون {min} أو أكثر",
-          "invalidFormat": "تنسيق غير صالح",
-          "exactLength": "يجب أن يتكون من {len} خانات بالضبط",
-          "minImages": "يجب رفع صورة واحدة على الأقل"
-        }
-      },
-      "form": {
-        "createDescription": "املأ التفاصيل أدناه لإنشاء عقار جديد.",
-        "editDescription": "قم بتحديث المعلومات أدناه لتعديل العقار.",
-        "documentType": "نوع صك الملكية",
-        "documentImage": "صك الملكية",
-        "createTitle": "إضافة عقار جديد",
-        "editTitle": "تعديل العقار",
-        "basicInfo": "المعلومات الأساسية",
-        "locationAndLegal": "الموقع والبيانات القانونية",
-        "facilities": "المرافق والخدمات",
-        "features": "المميزات",
-        "gallery": "معرض الصور",
-        "title": "اسم العقار",
-        "description": "الوصف",
-        "additionalDetails": "تفاصيل إضافية",
-        "propertyType": "نوع العقار",
-        "subType": "نوع الوحدة",
-        "rentType": "نظام الإيجار",
-        "ownershipType": "نوع الملكية",
-        "price": "سعر الإيجار",
-        "size": "المساحة",
-        "securityDeposit": "مبلغ التأمين",
-        "capacity": "السعة الاستيعابية",
-        "propertyNumber": "رقم العقار",
-        "nationalAddressCode": "رمز العنوان الوطني",
-        "stateId": "المدينة / المنطقة",
-        "documentNumber": "رقم الوثيقة",
-        "documentIssueDate": "تاريخ إصدار الوثيقة",
-        "issuedBy": "جهة الإصدار",
-        "ownerIdNumber": "رقم هوية المالك",
-        "insurancePolicyNumber": "رقم بوليصة التأمين",
-        "bedrooms": "غرف النوم",
-        "bathrooms": "دورات المياه",
-        "livingRooms": "الصالات",
-        "kitchen": "المطابخ",
-        "parking": "مواقف السيارات",
-        "elevators": "المصاعد",
-        "rooms": "الغرف",
-        "majlis": "المجلس",
-        "store": "المستودع",
-        "securityEntrances": "مداخل أمنية",
-        "maidRoom": "غرفة خادمة",
-        "backyard": "فناء خلفي (حوش)",
-        "centralAC": "تكييف مركزي",
-        "desertAC": "تكييف صحراوي",
-        "isFurnished": "مؤثثة",
-        "featuresPlaceholder": "مثال: مسبح، قريب من مسجد",
-        "featuresHint": "اكتب الميزة واضغط Enter للإضافة.",
-        "utilities": "عدادات الخدمات",
-        "surroundings": "المحيط والمميزات",
-        "complexName": "اسم المجمع",
-        "gasMeterNumber": "رقم عداد الغاز",
-        "electricityMeterNumber": "رقم عداد الكهرباء",
-        "waterMeterNumber": "رقم عداد المياه",
-        "educationInstitutions": "المؤسسات التعليمية",
-        "healthMedicalFacilities": "المرافق الصحية والطبية",
-        "facilityName": "اسم المكان",
-        "facilityType": "النوع (مثال: مدرسة، مستشفى)",
-        "distanceKm": "البعد (كم)",
-        "addFacility": "إضافة مكان",
-        "locationTitle": "موقع العقار",
-        "featuresAndFacilities": "المرافق والخدمات القريبة",
-        "constructionDate": "تاريخ الانتهاء من البناء",
-        "subtitles": {
-          "basicInfo": "التفاصيل الأساسية والخصائص الرئيسية للعقار",
-          "location": "الموقع الجغرافي الدقيق وسياق المنطقة المحيطة",
-          "locationAndLegal": "العنوان الرسمي، التسجيل، ووثائق الملكية القانونية",
-          "utilities": "سجلات العدادات لخدمات الكهرباء والمياه والغاز",
-          "facilities": "المرافق الداخلية والمواصفات الفنية المعمارية",
-          "featuresAndFacilities": "القرب من الخدمات التعليمية والطبية والحيوية",
-          "gallery": "التوثيق المرئي عالي الدقة ووسائط العرض"
-        },
-        "messages": {
-          "createSuccess": "تم إنشاء العقار بنجاح",
-          "updateSuccess": "تم تحديث العقار بنجاح"
-        },
-        "validation": {
-          "yearRange": "سنة البناء يجب أن تكون بين {min} و {max}",
-          "required": "هذا الحقل مطلوب",
-          "min": "القيمة يجب أن تكون على الأقل {min}",
-          "max": "القيمة يجب أن تكون على الأكثر {max}",
-          "maxLength": "الحد الأقصى {max} حرف",
-          "invalidFormat": "تنسيق غير صحيح",
-          "atLeastOne": "يجب إرفاق صورة واحدة على الأقل",
-          "features": {
-            "maxTags": "لا يمكنك إضافة أكثر من {max} مميزات",
-            "tagTooLong": "يجب أن يكون طول الميزة أقل من {max} حرفاً"
-          },
-          "nearby": {
-            "maxFacilities": "يمكنك إضافة حتى {max} مرافق فقط",
-            "distanceTooFar": "لا يمكن أن تتجاوز المسافة {max} كم",
-            "distanceTooShort": "يجب أن تكون المسافة {min} كم على الأقل"
-          },
-          "nameExists": "يوجد عقار بهذا الاسم بالفعل",
-          "nameAvailable": "هذا الاسم متاح",
-          "checking": "جارٍ التحقق...",
-          "checkFailed": "فشل التحقق من توفر الاسم"
-        },
-        "placeholders": {
-          "name": "مثال: شقة مودرن في حي النرجس",
-          "description": "اكتب تفاصيل العقار، المرافق القريبة، والمميزات...",
-          "additionalDetails": "أي معلومات إضافية ترغب في إضافتها للمستأجر...",
-          "propertyType": "اختر نوع العقار",
-          "subType": "اختر النوع الفرعي",
-          "rentType": "اختر دورة الدفع (شهري، سنوي...)",
-          "ownershipType": "هل أنت المالك أم مفوض؟",
-          "documentType": "اختر نوع الوثيقة (صك، عقد...)",
-          "documentNumber": "أدخل رقم الوثيقة",
-          "documentIssueDate": "تاريخ الإصدار",
-          "issuedBy": "الجهة المصدرة للوثيقة",
-          "ownerIdNumber": "رقم الهوية الوطنية أو الإقامة",
-          "insurancePolicyNumber": "رقم وثيقة التأمين (إن وجد)",
-          "propertyNumber": "رقم العقار أو الوحدة",
-          "complexName": "اسم المجمع السكني أو التجاري",
-          "nationalAddressCode": "مثال: RRRE1234",
-          "area": "المساحة بالمتر المربع",
-          "rentPrice": "سعر الإيجار",
-          "securityDeposit": "قيمة مبلغ التأمين",
-          "capacity": "عدد الأشخاص المستوعبين",
-          "constructionDate": "تاريخ الانتهاء من البناء",
-          "stateId": "اختر المنطقة/المدينة",
-          "gasMeterNumber": "رقم عداد الغاز",
-          "electricityMeterNumber": "رقم عداد الكهرباء",
-          "waterMeterNumber": "رقم عداد المياه",
-          "facilities": {
-            "livingRooms": "عدد الصالات",
-            "parking": "عدد المواقف",
-            "elevators": "عدد المصاعد",
-            "bathrooms": "عدد دورات المياه",
-            "bedrooms": "عدد غرف النوم",
-            "kitchen": "عدد المطابخ",
-            "store": "عدد المستودعات",
-            "majlis": "عدد المجالس",
-            "rooms": "إجمالي عدد الغرف",
-            "securityEntrances": "عدد المداخل الأمنية"
-          },
-          "features": "أضف ميزة (مثال: واجهة بحرية)",
-          "nearby": {
-            "institutionName": "اسم المنشأة (مثال: مدرسة المملكة)",
-            "distance": "المسافة بالكيلومتر"
-          }
-        }
-      },
-      "archive": {
-        "title": "أرشفة العقار",
-        "subtitle": "هل أنت متأكد من رغبتك في أرشفة",
-        "actionText": "أرشفة",
-        "restoreTitle": "استعادة العقار",
-        "restoreSubtitle": "هل أنت متأكد من رغبتك في استعادة",
-        "restoreAction": "استعادة",
-        "loading": "جاري التنفيذ...",
-        "success": "تم أرشفة العقار بنجاح",
-        "restoreSuccess": "تم استعادة العقار بنجاح",
-        "error": "فشلت العملية"
-      },
-      "details": {
-        "capacity": "السعة",
-        "constructionDate": "تاريخ البناء",
-        "additionalDetails": "تفاصيل إضافية",
-        "propertyNumber": "رقم العقار",
-        "complexName": "اسم المجمع",
-        "ownershipType": "نوع الملكية",
-        "documentType": "نوع المستند",
-        "documentIssueDate": "تاريخ إصدار المستند",
-        "issuedBy": "جهة الإصدار",
-        "state": "الولاية",
-        "errorTitle": "فشل في تحميل بيانات العقار",
-        "noDataFound": "لا توجد بيانات",
-        "error": "فشل في تحميل تفاصيل العقار",
-        "close": "إغلاق",
-        "price": "سعر الإيجار",
-        "area": "المساحة الإجمالية",
-        "securityDeposit": "مبلغ التأمين",
-        "isFurnished": "مفروش",
-        "isRented": "مؤجر حالياً",
-        "yes": "نعم",
-        "no": "لا",
-        "monthly": "شهري",
-        "yearly": "سنوي",
-        "facilities": "مرافق العقار",
-        "utilityMeters": "عدادات الخدمات",
-        "electricityMeter": "عداد الكهرباء",
-        "waterMeter": "عداد المياه",
-        "gasMeter": "عداد الغاز",
-        "documents": "الوثائق القانونية",
-        "documentNumber": "رقم الوثيقة",
-        "ownerId": "رقم هوية المالك",
-        "insurancePolicy": "بوليصة التأمين",
-        "nearby": "المرافق القريبة",
-        "education": "التعليم",
-        "health": "الصحة والخدمات الطبية",
-        "facilityKeys": {
-          "livingRooms": "غرف المعيشة",
-          "parking": "مواقف السيارات",
-          "elevators": "المصاعد",
-          "bathrooms": "دورات المياه",
-          "securityEntrances": "مداخل أمنية",
-          "bedrooms": "غرف النوم",
-          "maidRoom": "غرفة عاملة",
-          "kitchen": "المطابخ",
-          "store": "مستودع",
-          "backyard": "فناء خلفي",
-          "centralAC": "تكييف مركزي",
-          "desertAC": "تكييف صحراوي",
-          "majlis": "مجلس",
-          "rooms": "إجمالي الغرف"
-        }
-      }
-    },
-    "users": {
-      "updatingStatus": "جاري تحديث حالة المستخدم...",
-      "statusUpdated": "تم تحديث الحالة بنجاح",
-      "statusUpdateError": "فشل تحديث الحالة",
-      "statusOptions": {
-        "all": "جميع الحالات",
-        "active": "نشط",
-        "inactive": "غير نشط",
-        "pending_verification": "قيد التحقق",
-        "suspended": "معلق",
-        "deleted": "محذوف"
-      },
-      "roleOptions": {
-        "all": "جميع الأدوار",
-        "admin": "مدير",
-        "landlord": "مالك",
-        "tenant": "مستأجر"
-      },
-      "table": {
-        "viewDetails": "عرض التفاصيل",
-        "chat": "محادثة",
-        "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني...",
-        "filters": {
-          "status": "الحالة",
-          "role": "الدور"
-        },
-        "columns": {
-          "name": "الاسم",
-          "email": "البريد الإلكتروني",
-          "role": "الدور",
-          "status": "الحالة",
-          "lastLogin": "آخر تسجيل دخول",
-          "createdAt": "تاريخ الإنشاء",
-          "never": "أبداً"
-        }
-      },
-      "details": {
-        "email": "البريد الإلكتروني",
-        "pendingEmail": "البريد الإلكتروني المعلق",
-        "phoneNumber": "رقم الهاتف",
-        "birthDate": "تاريخ الميلاد",
-        "lastLogin": "آخر تسجيل دخول",
-        "never": "أبداً",
-        "identity": "معلومات الهوية",
-        "nationality": "الجنسية",
-        "identityType": "نوع الهوية",
-        "identityNumber": "رقم الهوية",
-        "identityIssueCountry": "دولة إصدار الهوية",
-        "identityOtherType": "نوع الهوية الآخر",
-        "address": "العنوان",
-        "shortAddress": "العنوان المختصر",
-        "accountInfo": "معلومات الحساب",
-        "createdAt": "تاريخ الإنشاء",
-        "updatedAt": "تاريخ التحديث",
-        "notificationsEnabled": "الإشعارات مفعلة",
-        "unreadNotifications": "الإشعارات غير المقروءة",
-        "yes": "نعم",
-        "no": "لا",
-        "notProvided": "غير متوفر",
-        "errorTitle": "فشل تحميل تفاصيل المستخدم",
-        "error": "فشل تحميل تفاصيل المستخدم",
-        "close": "إغلاق",
-        "identityTypes": {
-          "national_id": "هوية وطنية",
-          "residency": "هوية مقيم",
-          "premium_residency": "إقامة مميزة",
-          "gcc_id": "هوية خليجية",
-          "passport": "جواز سفر",
-          "other": "أخرى"
-        }
-      }
-    }
-  },
-  "root": {
-    "siteName": "قنوف",
-    "logo": "قنوف",
-    "description": "اكتشف وأدر العقارات مع قنوف.",
-    "lang": "English"
-  },
-  "notFound": {
-    "oopsTitle": "عذرًا، الصفحة غير موجودة!",
-    "oopsMessage": "الصفحة التي تبحث عنها غير موجودة (قد تكون نُقلت أو حُذفت أو أنها غير متوفرة). نأسف على الإزعاج.",
-    "oopsHint": "إذا كنت تعتقد أن هذا خطأ أو أن هناك مشكلة، يرجى الإبلاغ عنها.",
-    "goHome": "العودة إلى الصفحة الرئيسية"
-  },
-  "comman": {
-    "date": {
-      "yesterday": "أمس",
-      "today": "اليوم"
-    },
-    "image_dialog": {
-      "title": "إدراج صورة",
-      "url_label": "رابط الصورة",
-      "upload_text": "اضغط لرفع صورة",
-      "alt_text_label": "النص البديل",
-      "width_label": "العرض (بكسل)",
-      "placeholders": {
-        "alt_text": "وصف للصورة لسهولة الوصول",
-        "url": "https://example.com/image.jpg"
-      }
-    },
-    "editor": {
-      "placeholder": "ابدأ الكتابة هنا...",
-      "legal_notice": "يرجى التأكد من أن المحتوى يطابق المعايير القانونية الرسمية.",
-      "link_dialog": {
-        "url_label": "رابط الصفحة",
-        "apply": "تطبيق الرابط",
-        "unlink": "إزالة الرابط"
-      }
-    },
-    "edit": "تعديل",
-    "delete": "حذف",
-    "insert": "إدراج",
-    "upload": "رفع",
-    "reset_default": "إعادة التعيين للافتراضي",
-    "datePlaceholder": "حدد نطاق التاريخ",
-    "retry": "إعادة المحاولة",
-    "errorTitle": "عذرًا، حدث خطأ ما",
-    "errorLoading": "فشل في تحميل البيانات",
-    "cancel": "إلغاء",
-    "save": "حفظ",
-    "seeMore": "عرض المزيد",
-    "seeLess": "عرض أقل",
-    "form": {
-      "loading": "جاري التحميل...",
-      "mapInstruction": "انقر على الخريطة لتحديد الموقع",
-      "email": {
-        "label": "البريد الإلكتروني",
-        "placeholder": "أدخل بريدك الإلكتروني"
-      },
-      "password": {
-        "label": "كلمة المرور",
-        "placeholder": "أدخل كلمة المرور"
-      },
-      "forgotPassword": {
-        "sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط إعادة تعيين"
-      },
-      "errors": {
-        "forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين"
-      },
-      "locationInput": {
-        "fetching": "جاري جلب العنوان...",
-        "addressPrefix": "العنوان:",
-        "selectedLocation": "الموقع المحدد:",
-        "latitude": "خط العرض (Latitude)",
-        "longitude": "خط الطول (Longitude)",
-        "latitudePlaceholder": "مثال: {lat}",
-        "longitudePlaceholder": "مثال: {lng}",
-        "invalidInput": "المدخلات غير صالحة، يرجى إدخال أرقام صحيحة",
-        "latRangeError": "خط العرض يجب أن يكون بين -90 و 90",
-        "lngRangeError": "خط الطول يجب أن يكون بين -180 و 180",
-        "unknownAddress": "عنوان غير معروف",
-        "addressFetchError": "تعذر جلب العنوان"
-      },
-      "uploader": {
-        "removing": "جارٍ الإزالة...",
-        "dragLabel": "اسحب وأفلت",
-        "orLabel": "أو",
-        "chooseFiles": "اختر ملفات",
-        "primaryFile": "الملف الأساسي",
-        "setAsPrimary": "تعيين كملف أساسي",
-        "rules": {
-          "maxSize": "الحد الأقصى لحجم الملف {size}MB",
-          "maxFiles": "الحد الأقصى {count} ملفات"
-        }
-      },
-      "send": "إرسال"
-    },
-    "months": [
-      "يناير",
-      "فبراير",
-      "مارس",
-      "أبريل",
-      "مايو",
-      "يونيو",
-      "يوليو",
-      "أغسطس",
-      "سبتمبر",
-      "أكتوبر",
-      "نوفمبر",
-      "ديسمبر"
-    ],
-    "weekdays": [
-      "الاثنين",
-      "الثلاثاء",
-      "الأربعاء",
-      "الخميس",
-      "الجمعة",
-      "السبت",
-      "الأحد"
-    ],
-    "search": "إبحث...",
-    "saving": "جاري الحفظ...",
-    "submitting": "جاري الإرسال...",
-    "error": "حدث خطأ ما",
-    "uploader": {
-      "success": {
-        "removed": "تم حذف الملف بنجاح"
-      },
-      "errors": {
-        "deleteFailed": "فشل حذف الملف. يرجى المحاولة مرة أخرى"
-      },
-      "rules": {
-        "maxSize": "الحد الأقصى للحجم {size} ميجابايت",
-        "maxFiles": "الحد الأقصى للملفات {count}",
-        "onlyPDF": "مسموح فقط بملفات PDF"
-      }
-    }
-  },
-  "header": {
-    "logo": "قنوف",
-    "nav": {
-      "home": "الرئيسية",
-      "realEstate": "العقارات",
-      "blog": "المدونة",
-      "about": "من نحن",
-      "contact": "اتصل بنا",
-      "dashboard": "لوحة التحكم",
-      "login": "تسجيل الدخول",
-      "logout": "تسجيل الخروج"
-    },
-    "userMenu": {
-      "profile": "ملفي الشخصي",
-      "notifications": "التنبيهات",
-      "contracts": "العقود"
-    },
-    "roles": {
-      "admin": "مسؤول",
-      "tenant": "مستأجر",
-      "landlord": "مالك"
-    }
-  },
-  "homePage": {
-    "hero": {
-      "heading": "اختار العقار\nالمناسب لك للايجار",
-      "clients": "عملاء +{count}",
-      "badge": "ابحث عن عقارك القادم",
-      "subcopy": "تصفح العقارات الموثوقة من وكلاء معتمدين في جميع أنحاء مصر.",
-      "ratingLabel": "متوسط التقييم"
-    },
-    "filters": {
-      "aria": {
-        "search": "بحث عن العقارات",
-        "openFilters": "فتح جميع الفلاتر"
-      },
-      "helper": {
-        "noFees": "بدون رسوم إضافية",
-        "verified": "عقارات موثوقة",
-        "instant": "بحث فوري"
-      },
-      "labels": {
-        "location": "الموقع",
-        "propertyType": "نوع العقار",
-        "category": "الفئات"
-      },
-      "options": {
-        "locations": {
-          "cairo": "القاهرة",
-          "alex": "الإسكندرية",
-          "giza": "الجيزة"
-        },
-        "propertyTypes": {
-          "apartment": "شقة",
-          "villa": "فيلا",
-          "duplex": "دوبلكس"
-        },
-        "categories": {
-          "furnished": "مفروش",
-          "unfurnished": "غير مفروش"
-        }
-      },
-      "search": "بحث",
-      "adjustments": "تصفية"
-    },
-    "recentProperties": {
-      "title": "احدث العقارات",
-      "description": "لقد قمنا بإنجاز العديد من طلبات السكن والفلل والعقارات مع فريقنا المتخصص، بتكاليف تناسبك"
-    },
-    "propertyCategory": {
-      "title": "فئة العقار",
-      "description": "يمكن أن يؤدي هذا إلى تضخم أو تثبيط ما هو موجود في الجسم ويرتبط ببعضه البعض بشكل زائف. مانات بريبر.",
-      "noProperties": "لا توجد عقارات حالياً",
-      "emptyCategory": "نحن نقوم بتحديث قائمتنا باستمرار، لم يتم العثور على عقارات في هذا القسم حالياً. يرجى مراجعة التصنيفات الأخرى.",
-      "filters": {
-        "apartment": "شقق",
-        "family_housing": "سكن عائلي",
-        "villa": "فلل"
-      }
-    },
-    "basedOnLocationSection": {
-      "title": "اكتشف منزلك المستقبلي",
-      "description": "ابدأ باكتشاف منزلك المستقبلي الذي يعجبك",
-      "yearly": "سنوى",
-      "monthly": "شهرى",
-      "rent": "الايجار",
-      "bathrooms": "حمام",
-      "guests": "اشخاص",
-      "bedrooms": "غرف نوم"
-    },
-    "features": {
-      "mainTitle": "المكان المثالي لإدارة ممتلكاتك",
-      "mainDescription": "تواصل مع أكثر من 75 مليون مستأجر يبحثون عن منازل جديدة باستخدام منصة التسويق الشاملة لدينا.",
-      "card1": {
-        "title": "أعلن عن إيجارك",
-        "description": "تواصل مع أكثر من 75 مليون مستأجر يبحثون عن منازل جديدة باستخدام منصة التسويق الشاملة لدينا.",
-        "button": "أعلن عن إيجارك"
-      },
-      "card2": {
-        "title": "إيجار 100% عبر الإنترنت",
-        "description": "قم بقبول الطلبات وتوقيع عقود الإيجار الرقمية، كل ذلك على منصة واحدة.",
-        "button": "اكتشف المزيد"
-      }
-    },
-    "contactUs": {
-      "title": "اشترك في النشرة الإخبارية لدينا",
-      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-      "placeholder": "أدخل بريدك الإلكتروني",
-      "button": "اشترك معنا",
-      "loading": "جاري الإرسال...",
-      "successMessage": "تم الاشتراك بنجاح! شكراً لك.",
-      "errorMessage": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقاً."
-    }
-  },
-  "about": {
-    "noDepartmentsAvailable": "لا توجد أقسام متاحة في الوقت الحالي.",
-    "noTeamsAvailable": "لا يوجد أعضاء فريق متاحون في الوقت الحالي.",
-    "readMore": "اقرأ المزيد",
-    "readLess": "اقرأ أقل",
-    "historyOfQunuf": "تاريخ قنوف",
-    "whyQunuf": "لماذا قنوف",
-    "meetOur": "التقِ بـ",
-    "department": "القسم",
-    "yourHostsAndGuides": "مضيفوك ومرشدوك",
-    "meetYour": "التقِ بـ",
-    "facilitators": "الميسرين",
-    "hero": {
-      "title": "معلومات عنا",
-      "description": "نحن شركة رائدة في مجال العقارات، نلتزم بتقديم حلول سكنية واستثمارية مبتكرة. نجمع بين الخبرة العميقة في السوق والصدق لبناء علاقات طويلة الأمد مع عملائنا.",
-      "seeMore": "رؤية المزيد"
-    },
-    "seeMore": "رؤية المزيد",
-    "header": "معلومات عنا",
-    "mission": {
-      "title": "مهمتنا",
-      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-      "button": "رؤية المزيد"
-    },
-    "vision": {
-      "title": "رؤيتنا",
-      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-      "button": "اكتشف"
-    },
-    "goals": {
-      "title": "أهدافنا",
-      "description": "لوريم إيبسوم دولور الجلوس أميت كونسيكتور. لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.لوريم إيبسوم دولور الجلوس أميت كونسيكتور.",
-      "button": "اعرف المزيد"
-    },
-    "team": {
-      "header": "فريقنا"
-    }
-  },
-  "contact": {
-    "nolocation": "الموقع غير متاح",
-    "hero": {
-      "title": "اتصل بنا",
-      "description": "نحن هنا لمساعدتك في رحلتك العقارية. سواء كان لديك استفسار عن عقار معين أو كنت بحاجة إلى استشارة، فريقنا جاهز للرد على جميع تساؤلاتك.",
-      "seeMore": "اقرأ المزيد"
-    },
-    "information": {
-      "title": "اتصل بنا",
-      "header": "معلومات الاتصال",
-      "subtitle": "قل شيئًا لبدء محادثة مباشرة!",
-      "location": "١٣٢ شارع دارتموث، بوسطن، ماساتشوستس ٠٢١٥٦، الولايات المتحدة"
-    },
-    "form": {
-      "getIn": "تواصل",
-      "touch": "معنا",
-      "headerMessage": "نحب أن نسمع منك. الرجاء تعبئة النموذج أدناه.",
-      "name": "الاسم",
-      "email": "البريد الإلكتروني",
-      "phone": "رقم الهاتف",
-      "fax": "فاكس",
-      "noData": "غير متوفر",
-      "message": {
-        "label": "كيف عرفت عنا؟",
-        "placeholder": "اختر أحد الخيارات",
-        "options": {
-          "search_engine": "محرك بحث",
-          "social_media": "وسائل التواصل الاجتماعي",
-          "friend_referral": "إحالة صديق",
-          "other": "أخرى"
-        }
-      },
-      "send": "إرسال",
-      "sending": "جارٍ الإرسال...",
-      "success": "تم إرسال رسالتك بنجاح!",
-      "error": "فشل في إرسال الرسالة.",
-      "validation": {
-        "required": "هذا الحقل مطلوب",
-        "email": "عنوان البريد الإلكتروني غير صالح",
-        "invalidPhone": "رقم الهاتف غير صالح"
-      }
-    }
-  },
-  "blogs": {
-    "loadingMore": "جاري تحميل المزيد...",
-    "empty": {
-      "title": "لا توجد مدونات بعد",
-      "description": "لم يتم نشر أي مقالات حتى الآن. يرجى العودة لاحقًا."
-    },
-    "blog": "مدونة",
-    "hero": {
-      "title": "المدونة",
-      "description": "ابقَ على اطلاع بأحدث اتجاهات سوق العقارات، ونصائح الاستثمار، وأدلة الأحياء السكنية من خلال مقالات خبرائنا المحدثة دورياً.",
-      "seeMore": "اقرأ المزيد"
-    },
-    "blogs": "المدونة",
-    "our": "مدونتنا",
-    "recentBlogs": "الأحدث",
-    "readMore": "اقرأ المزيد"
-  },
-  "property": {
-    "hero": {
-      "title": "العقارات",
-      "description": "استكشف مجموعة واسعة من العقارات المتميزة التي تناسب احتياجاتك. من الشقق العصرية إلى الفلل الفاخرة، نحن نساعدك في العثور على المكان الذي تحلم به بكل سهولة.",
-      "seeMore": "استكشف المزيد"
-    },
-    "filter": {
-      "header": "ابعث عن عقارك",
-      "title": "الفلاتر",
-      "subtitle": "تصفية العقارات",
-      "reset": "إعادة التعيين",
-      "location": {
-        "any": "أي منطقة",
-        "title": "الموقع"
-      },
-      "subtype": {
-        "title": "النوع الفرعي",
-        "residential": {
-          "options": "{option, select, condo {شقة} multiFamily {متعدد العائلات} townhomes {تاون هاوس} singleFamily {منزل عائلي} other {غير معروف}}"
-        },
-        "commercial": {
-          "options": "{option, select, office {مكتب} retail {تجزئة} warehouse {مستودع} industrial {صناعي} other {غير معروف}}"
-        }
-      },
-      "bedrooms": {
-        "title": "غرف النوم",
-        "options": "{option, select, all {أي} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {غير معروف}}"
-      },
-      "bathrooms": {
-        "title": "الحمامات",
-        "options": "{option, select, all {أي} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {غير معروف}}"
-      },
-      "rentalPeriod": {
-        "title": "مدة الإيجار",
-        "options": "{option, select, yearly {سنوي} monthly {شهري} other {غير معروف}}"
-      },
-      "propertyType": {
-        "title": "نوع العقار",
-        "options": "{option, select, residential {سكني} commercial {تجاري} other {غير معروف}}"
-      },
-      "rentType": {
-        "title": "Rent Type",
-        "options": "{option, select, monthly {شهرياً} yearly {سنوياً} other {غير معروف}}"
-      },
-      "categories": {
-        "title": "الفئة",
-        "options": "{option, select, education {تعليمي} hospital {مستشفى} shopping {تسوق} other {أخرى}}"
-      },
-      "furnishedType": {
-        "title": "نوع التأثيث",
-        "options": "{option, select, furnished {مفروش} unfurnished {غير مفروش} other {غير معروف}}"
-      },
-      "features": {
-        "title": "المميزات",
-        "options": "{option, select, airConditioning {تكييف هواء} assistedLiving {سكن مدعوم} disabilityAccess {إمكانية وصول لذوي الإعاقة} controlledAccess {دخول مُتحكم به} cableReady {جاهز للكابل} availableNow {متاح الآن} college {جامعة} corporate {شركات} elevator {مصعد} extraStorage {مساحة تخزين إضافية} highSpeedInternet {إنترنت عالي السرعة} garage {كراج} petAllowed {مسموح بالحيوانات} other {غير معروف}}"
-      },
-      "priceRange": "نطاق السعر",
-      "squareFeet": "المساحة (قدم²)",
-      "yearBuilt": "سنة البناء"
-    },
-    "grid": {
-      "bedrooms": "غرف النوم",
-      "bathrooms": "الحمامات",
-      "totalArea": "المساحة",
-      "garages": "الكراجات",
-      "livingRooms": "غرف المعيشة",
-      "emptyTitle": "لم يتم العثور على عقارات",
-      "emptyMessage": "لم نجد أي عقارات تطابق خيارات التصفية الحالية. حاول تعديل البحث أو إزالة عوامل التصفية.",
-      "clearFilters": "إعادة تعيين الفلاتر"
-    },
-    "details": {
-      "bookingNow": "احجز الآن",
-      "description": "الوصف",
-      "additionalDetails": "تفاصيل إضافية",
-      "location": "الموقع",
-      "education": "التعليم",
-      "healthAndMedical": "الصحة والخدمات الطبية",
-      "propertyDetails": "تفاصيل العقار",
-      "propertyFeatures": "مميزات العقار",
-      "seeMore": "رؤية المزيد"
-    },
-    "enums": {
-      "propertyType": {
-        "commercial": "تجاري",
-        "residential": "سكني"
-      },
-      "subType": {
-        "residential": {
-          "apartment": "شقة",
-          "villa": "فيلا",
-          "floor": "دور",
-          "room": "غرفة",
-          "popular_house": "بيت شعبي",
-          "annex": "ملحق",
-          "labor_housing": "سكن عمال",
-          "individual_housing": "سكن أفراد",
-          "driver_room": "غرفة سائق",
-          "family_housing": "سكن عوائل",
-          "other": "أخرى"
-        },
-        "commercial": {
-          "office": "مكتب",
-          "retail_store": "محل تجاري",
-          "showroom": "معرض",
-          "warehouse": "مستودع",
-          "workshop": "ورشة",
-          "commercial_center": "مركز تجاري",
-          "commercial_building": "عمارة تجارية",
-          "commercial_labor_housing": "سكن عمال تجاري",
-          "kiosk": "كشك",
-          "land": "أرض",
-          "other": "أخرى"
-        }
-      },
-      "rentType": {
-        "monthly": "شهري",
-        "yearly": "سنوي"
-      },
-      "ownershipType": {
-        "owner": "المالك",
-        "representative": "وكيل / مفوض"
-      },
-      "documentType": {
-        "electronic_deed": "صك إلكتروني",
-        "real_estate_registration": "تسجيل عقاري",
-        "other": "أخرى"
-      }
-    }
-  },
-  "bookings": {
-    "title": "ابدأ الآن",
-    "fullDetails": {
-      "title": "أكمل ملفك الشخصي",
-      "subtitle": "يرجى تقديم تفاصيلك الكاملة للمتابعة مع الحجز",
-      "sectionTitle": "المعلومات الشخصية",
-      "confirm": "متابعة",
-      "cancel": "إلغاء"
-    },
-    "contractDetails": {
-      "title": "تفاصيل العقد",
-      "subtitle": "حدد فترة الإيجار والشروط",
-      "fields": {
-        "startDate": {
-          "label": "تاريخ البدء",
-          "placeholder": "اختر تاريخ البدء"
-        },
-        "duration": {
-          "label": "المدة (بالأشهر)",
-          "placeholder": "أدخل المدة",
-          "hint": {
-            "monthly": "اختر مدة بين {min} و {max} شهر",
-            "yearly": "المدة ثابتة عند سنة واحدة للإيجار السنوي"
-          }
-        },
-        "proposedTerms": {
-          "label": "شروط العقد المقترحة",
-          "placeholder": "أدخل شروط العقد...",
-          "hint": "يمكنك تعديل شروط العقد الافتراضية حسب الحاجة"
-        }
-      },
-      "confirm": "إنشاء العقد",
-      "cancel": "إلغاء",
-      "creating": "جاري إنشاء العقد...",
-      "created": "تم إنشاء العقد بنجاح",
-      "loading": "جاري التحميل...",
-      "errors": {
-        "noProperty": "معرف العقار مفقود",
-        "noStartDate": "يرجى اختيار تاريخ البدء",
-        "invalidDuration": "مدة غير صالحة",
-        "startDatePast": "يجب أن يكون تاريخ البدء في المستقبل",
-        "loadPropertyFailed": "فشل تحميل تفاصيل العقار",
-        "createFailed": "فشل إنشاء العقد"
-      }
-    },
-    "eligibility": {
-      "checking": "جاري التحقق من الأهلية...",
-      "errors": {
-        "noProperty": "معرف العقار مفقود",
-        "notAllowed": "أنت غير مؤهل لحجز هذا العقار",
-        "checkFailed": "فشل التحقق من الأهلية"
-      }
-    },
-    "approval": {
-      "title": "مراجعة والموافقة",
-      "subtitle": "يرجى مراجعة تفاصيل العقد قبل الموافقة",
-      "summary": {
-        "title": "ملخص العقد",
-        "property": "العقار",
-        "dates": "فترة الإيجار",
-        "terms": "الشروط المقترحة",
-        "month": "شهر",
-        "months": "أشهر",
-        "note": "بالموافقة، أنت توافق على الشروط والأحكام الخاصة بعقد الإيجار هذا."
-      },
-      "confirm": "الموافقة على العقد",
-      "cancel": "إلغاء",
-      "approving": "جاري الموافقة على العقد...",
-      "approved": "تمت الموافقة على العقد بنجاح",
-      "loading": "جاري تحميل تفاصيل العقد...",
-      "errors": {
-        "noContract": "بيانات العقد مفقودة",
-        "loadFailed": "فشل تحميل تفاصيل العقد",
-        "approveFailed": "فشلت الموافقة على العقد"
-      }
-    },
-    "step1": {
-      "title": "معلومات الحجز",
-      "subtitle": "يرجى ملء الحقول الفارغة أدناه",
-      "plans": {
-        "business": {
-          "title": "الأعمال",
-          "price": "$40.00",
-          "description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
-          "button": "اختر العرض"
-        },
-        "professional": {
-          "title": "المحترف",
-          "price": "$30.00",
-          "description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
-          "button": "اختر العرض"
-        }
-      },
-      "pickDate": "اختر التاريخ",
-      "payment": {
-        "prefix": "ستدفع "
-      },
-      "confirm": "احجز الآن",
-      "cancel": "إلغاء"
-    },
-    "step2": {
-      "title": "عقد الحجز",
-      "subtitle": "يرجى ملء المعلومات الخاصة بالعقد",
-      "sectionTitle": "معلومات المستأجر",
-      "fields": {
-        "fullName": {
-          "label": "الاسم الكامل للمستأجر",
-          "placeholder": "أدخل الاسم الكامل"
-        },
-        "phone": {
-          "label": "رقم هاتف المستأجر",
-          "placeholder": "أدخل رقم الهاتف"
-        },
-        "nationalId": {
-          "label": "الرقم القومي",
-          "placeholder": "أدخل الرقم القومي"
-        },
-        "billingAddress": {
-          "label": "عنوان الفواتير",
-          "placeholder": "أدخل عنوان الفواتير"
-        },
-        "address": {
-          "label": "العنوان",
-          "placeholder": "أدخل العنوان"
-        },
-        "email": {
-          "label": "البريد الإلكتروني",
-          "placeholder": "أدخل البريد الإلكتروني"
-        }
-      },
-      "confirm": "إنشاء العقد",
-      "cancel": "إلغاء"
-    },
-    "step3": {
-      "title": "الدفع",
-      "subtitle": "يرجى اتباع التعليمات أدناه",
-      "summary": {
-        "realEstate": "حجز العقار:",
-        "reservation": "حجز لمدة شهر واحد على خطة الأعمال",
-        "total": {
-          "prefix": "الإجمالي: ",
-          "amount": "$400 دولار أمريكي"
-        }
-      },
-      "fields": {
-        "cardNumber": {
-          "label": "رقم البطاقة",
-          "placeholder": "رقم بطاقة الدفع"
-        },
-        "bank": {
-          "label": "البنك",
-          "placeholder": "اختر البنك"
-        },
-        "expDate": {
-          "label": "تاريخ الانتهاء",
-          "placeholder": "تاريخ الصلاحية"
-        },
-        "cvv": {
-          "label": "رمز CVV",
-          "placeholder": "بجانب البطاقة"
-        }
-      },
-      "confirm": "ادفع الآن",
-      "cancel": "إلغاء"
-    },
-    "step4": {
-      "title": "تم إنشاء العقد بنجاح!",
-      "imageAlt": "تم إنشاء العقد",
-      "message": {
-        "line1": "تم إنشاء العقد بنجاح.",
-        "line2": "تم إرسال العقد إلى المالك للمراجعة.",
-        "line3": "سيقوم المالك بمراجعة الشروط التي قمت بتعديلها والرد وفقاً لذلك."
-      },
-      "viewContract": "عرض العقد"
-    },
-    "contractReview": {
-      "title": "مراجعة العقد",
-      "subtitle": "يرجى مراجعة تفاصيل العقد",
-      "noContract": "لا توجد بيانات عقد متاحة",
-      "done": "تم",
-      "sections": {
-        "property": "معلومات العقار",
-        "rentalPeriod": "فترة الإيجار",
-        "financial": "التفاصيل المالية",
-        "landlord": "معلومات المالك",
-        "terms": "شروط العقد"
-      },
-      "fields": {
-        "propertyName": "اسم العقار",
-        "propertyType": "النوع",
-        "area": "المساحة",
-        "capacity": "السعة",
-        "location": "الموقع",
-        "furnished": "مفروش",
-        "startDate": "تاريخ البدء",
-        "endDate": "تاريخ الانتهاء",
-        "duration": "المدة",
-        "rentType": "نوع الإيجار",
-        "totalAmount": "المبلغ الإجمالي",
-        "securityDeposit": "الوديعة",
-        "platformFee": "رسوم المنصة",
-        "name": "الاسم",
-        "email": "البريد الإلكتروني",
-        "phone": "الهاتف"
-      },
-      "yes": "نعم",
-      "no": "لا",
-      "monthly": "شهري",
-      "yearly": "سنوي",
-      "months": "أشهر"
-    }
-  },
-  "auth": {
-    "roleSelector": {
-      "tenant": {
-        "title": "المستأجر",
-        "description": "ابحث عن مكان وادفع الإيجار عبر الإنترنت."
-      },
-      "landlord": {
-        "title": "المالك",
-        "description": "استقبل الإيجار عبر الإنترنت وادِر الممتلكات."
-      }
-    },
-    "signIn": {
-      "emailConfirmationFailed": "فشل تأكيد البريد الإلكتروني. يرجى المحاولة مرة أخرى أو الاتصال بالدعم.",
-      "title": "مرحبًا بعودتك!",
-      "subtitle": "سجّل الدخول للوصول إلى بياناتك",
-      "email": {
-        "label": "البريد الإلكتروني",
-        "placeholder": "أدخل بريدك الإلكتروني"
-      },
-      "password": {
-        "label": "كلمة المرور",
-        "placeholder": "أدخل كلمة المرور"
-      },
-      "forgotPassword": "هل نسيت كلمة المرور؟",
-      "login": "تسجيل الدخول",
-      "noAccount": "ليس لديك حساب؟",
-      "register": "إنشاء حساب",
-      "success": {
-        "signedIn": "تم تسجيل الدخول بنجاح",
-        "verified": "تم تأكيد البريد الإلكتروني بنجاح. يمكنك تسجيل الدخول الآن."
-      },
-      "errors": {
-        "loginFailed": "فشل تسجيل الدخول",
-        "incorrectEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
-        "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
-        "requiredEmail": "البريد الإلكتروني مطلوب",
-        "requiredPassword": "كلمة المرور مطلوبة"
-      },
-      "loading": "جاري تسجيل الدخول..."
-    },
-    "signUp": {
-      "title": "مرحبًا بك في QUNUF",
-      "subtitle": "يرجى تعبئة بياناتك أدناه لإنشاء حساب",
-      "name": {
-        "label": "الاسم",
-        "placeholder": "أدخل اسمك"
-      },
-      "email": {
-        "label": "البريد الإلكتروني",
-        "placeholder": "أدخل بريدك الإلكتروني"
-      },
-      "password": {
-        "label": "كلمة المرور",
-        "placeholder": "أدخل كلمة المرور"
-      },
-      "register": "سجّل معنا",
-      "haveAccount": "لديك حساب بالفعل؟",
-      "loading": "جاري التسجيل...",
-      "didNotReceiveVerification": "هل قمت بالتسجيل مسبقًا ولم تصلك رسالة التحقق؟",
-      "resend": "إعادة إرسال التحقق",
-      "success": {
-        "emailSend": "تم إنشاء الحساب. يرجى التحقق من بريدك الإلكتروني لتفعيل الحساب."
-      },
-      "errors": {
-        "registrationFailed": "فشل التسجيل",
-        "name": {
-          "required": "الاسم مطلوب",
-          "maxLength": "يجب ألا يزيد الاسم عن 50 حرفًا"
-        },
-        "email": {
-          "invalid": "البريد الإلكتروني غير صالح",
-          "required": "البريد الإلكتروني مطلوب"
-        },
-        "password": {
-          "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-          "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
-          "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
-        }
-      },
-      "login": "تسجيل الدخول"
-    },
-    "forgotPassword": {
-      "title": "تغيير كلمة المرور",
-      "backToLogin": "العودة إلى صفحة تسجيل الدخول",
-      "form": {
-        "email": {
-          "label": "البريد الإلكتروني",
-          "placeholder": "أدخل بريدك الإلكتروني"
-        },
-        "send": "إرسال",
-        "loading": "جارٍ الإرسال...",
-        "success": {
-          "sent": "إذا كان البريد الإلكتروني مسجلاً، سيتم إرسال رابط لإعادة تعيين كلمة المرور"
-        },
-        "errors": {
-          "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
-          "forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين. حاول مرة أخرى."
-        }
-      }
-    },
-    "resetPassword": {
-      "title": "إعادة تعيين كلمة المرور",
-      "backToLogin": "العودة لتسجيل الدخول",
-      "form": {
-        "email": {
-          "label": "البريد الإلكتروني",
-          "placeholder": "أدخل بريدك الإلكتروني"
-        },
-        "code": {
-          "label": "رمز إعادة التعيين",
-          "placeholder": "أدخل رمز إعادة التعيين"
-        },
-        "password": {
-          "label": "كلمة المرور الجديدة",
-          "placeholder": "أدخل كلمة المرور الجديدة",
-          "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-          "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
-          "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
-        },
-        "reset": "إعادة تعيين كلمة المرور",
-        "loading": "جاري إعادة التعيين...",
-        "success": {
-          "sent": "تم إعادة تعيين كلمة المرور بنجاح"
-        },
-        "errors": {
-          "invalidLink": "رابط استعادة كلمة المرور غير صالح أو منتهي الصلاحية.",
-          "requestNewLink": "طلب رابط جديد",
-          "email": {
-            "invalid": "البريد الإلكتروني غير صالح",
-            "required": "البريد الإلكتروني مطلوب"
-          },
-          "password": {
-            "minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-            "maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
-            "pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
-          },
-          "confirmPassword": {
-            "mismatch": "كلمتا المرور غير متطابقتين"
-          },
-          "failed": "فشل إعادة تعيين كلمة المرور"
-        },
-        "confirmPassword": {
-          "label": "تأكيد كلمة المرور",
-          "placeholder": "أعد إدخال كلمة المرور"
-        }
-      }
-    },
-    "resendVerification": {
-      "title": "إعادة إرسال البريد الإلكتروني للتحقق",
-      "form": {
-        "email": {
-          "label": "البريد الإلكتروني",
-          "placeholder": "أدخل بريدك الإلكتروني"
-        },
-        "send": "إرسال",
-        "haveAccount": "هل لديك حساب بالفعل؟",
-        "login": "تسجيل الدخول",
-        "loading": "جارٍ الإرسال...",
-        "success": {
-          "sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط التحقق."
-        },
-        "errors": {
-          "failed": "فشل إعادة إرسال البريد الإلكتروني للتحقق",
-          "invalidEmail": "يجب أن يكون البريد الإلكتروني صحيحًا"
-        }
-      }
-    }
-  },
-  "footer": {
-    "description": "لوريم إيبسوم هو ببساطة نص شكلي (أي غير واضح) يُستخدم في صناعة الطباعة والتنضيد. ظل لوريم إيبسوم النص الشكلي القياسي لهذه الصناعة منذ القرن السادس عشر، عندما قام طابع مجهول بنسخ نسخة من الطباعة وخلطها لإنشاء كتاب نماذج طباعة.",
-    "about": {
-      "title": "معلومات عنا",
-      "menu": "القائمة",
-      "features": "السمات",
-      "blogs": "المدونات",
-      "support": "المساعدة والدعم"
-    },
-    "company": {
-      "title": "الشركة",
-      "how": "كيف نعمل",
-      "terms": "شروط الخدمة",
-      "pricing": "التسعير",
-      "faq": "التعليمات",
-      "privacy": "سياسة الخصوصية",
-      "about": "من نحن",
-      "termsDescription": "يرجى مراجعة إرشادات الاستخدام والشروط القانونية الخاصة بنا.",
-      "privacyDescription": "تعرف على كيفية تعاملنا مع بياناتك الشخصية وحمايتها.",
-      "seeMore": "شاهد المزيد",
-      "empty": {
-        "title": "لم يتم العثور على محتوى",
-        "description": "لم نتمكن من العثور على محتوى شروط الخدمة في الوقت الحالي. يرجى المحاولة مرة أخرى لاحقاً."
-      }
-    },
-    "contact": {
-      "title": "اتصل بنا",
-      "address": "أكشيا ناجار 1st Block 1st Cross، رامورثي ناجار، بنغالور 560016"
-    }
-  }
+          "description": "تحكّم في التنبيهات والإشعارات التي تتلقاها"
+        }, 
+
+ 				"personalInfo": {
+					"title": "المعلومات الشخصية",
+					"description": "أدخل بياناتك الشخصية وكيفية التواصل معك"
+				}, 
+				"payments": {
+					"title": "المدفوعات والمستحقات",
+					"description": "راجع المدفوعات والقسائم وبطاقات الهدايا"
+				}
+			}
+		},
+		"chats": {
+			"messages": "المحادثات",
+			"noConversationsYet": "لا توجد محادثات بعد",
+			"startMessagingToSeeChats": "ابدأ التواصل مع المستخدمين لتظهر محادثاتك هنا",
+			"loadingMore": "جارٍ تحميل المزيد...",
+			"online": "نشط الآن",
+			"offline": "غير متصل",
+			"loadingHistory": "جاري تحميل السجل…",
+			"noMessages": "لا توجد رسائل بعد. ابدأ المحادثة!",
+			"newMessages": "رسائل جديدة",
+			"typeMessage": "اكتب رسالة",
+			"selectConversation": "اختر محادثة لبدء المراسلة",
+			"failedSendTitle": "فشل الإرسال. اضغط لإعادة المحاولة",
+			"failedSendText": "فشل التسليم — اضغط على الأيقونة لإعادة المحاولة"
+		},
+		"admin": {
+			"settings": {
+				"title": "مركز تحكم الموقع",
+				"description": "قم بتكوين الهوية الأساسية لمنصتك، والسياسات القانونية، والروابط الاجتماعية من لوحة تحكم مركزية واحدة.",
+				"loading": "جاري تحميل الإعدادات...",
+				"saving": "جاري الحفظ...",
+				"save": "حفظ التغييرات",
+				"subtitles": {
+					"basicInfo": "التفاصيل الأساسية حول اسم العقار ونوعه وتسعيره.",
+					"descriptions": "قدم وصفاً تفصيلياً باللغتين الإنجليزية والعربية للوصول إلى شريحة أكبر من العملاء.",
+					"contractTerms": "حدد القواعد والشروط الأساسية لاتفاقية الإيجار الخاصة بك.",
+					"contactAndLocation": "ساعد العملاء في العثور عليك من خلال توفير معلومات اتصال دقيقة وموقع الخريطة.",
+					"legal": "الوثائق القانونية الهامة بما في ذلك سياسات الخصوصية وشروط الخدمة.",
+					"social": "اربط حسابات التواصل الاجتماعي الخاصة بك لزيادة ظهور العقار."
+				},
+				"sections": {
+					"defaultContractTerms": "شروط العقد الافتراضية",
+					"general": "معلومات عامة",
+					"description": "الوصف",
+					"contactAndLocation": "بيانات الاتصال والموقع",
+					"legal": "المستندات القانونية",
+					"social": "روابط التواصل الاجتماعي"
+				},
+				"messages": {
+					"updating": "جارٍ حفظ الإعدادات...",
+					"fetchError": "فشل في تحميل الإعدادات.",
+					"updateSuccess": "تم تحديث الإعدادات بنجاح!",
+					"updateError": "حدث خطأ أثناء الحفظ."
+				},
+				"fields": {
+					"defaultContractTerms": "الشروط والأحكام",
+					"name": "اسم الموقع",
+					"platformPercent": "نسبة المنصة (%)",
+					"contactEmail": "بريد التواصل",
+					"contactPhone": "هاتف التواصل",
+					"fax": "رقم الفاكس",
+					"address": "العنوان الفعلي",
+					"latitude": "خط العرض (Latitude)",
+					"longitude": "خط الطول (Longitude)",
+					"description_en": "الوصف (إنجليزي)",
+					"description_ar": "الوصف (عربي)",
+					"privacyPolicy_en": "سياسة الخصوصية (إنجليزي)",
+					"privacyPolicy_ar": "سياسة الخصوصية (عربي)",
+					"termsOfService_en": "شروط الخدمة (إنجليزي)",
+					"termsOfService_ar": "شروط الخدمة (عربي)",
+					"facebook": "فيسبوك",
+					"twitter": "تويتر",
+					"instagram": "انستغرام",
+					"linkedin": "لينكد إن",
+					"pinterest": "بينتيريست",
+					"tiktok": "تيك توك",
+					"youtube": "يوتيوب"
+				},
+				"placeholders": {
+					"defaultContractTerms": "أدخل الشروط والأحكام الافتراضية التي سيتم تطبيقها تلقائياً على العقود الجديدة...",
+					"name": "أدخل اسم الموقع",
+					"description_en": "أدخل وصف الموقع بالإنجليزية",
+					"description_ar": "أدخل وصف الموقع بالعربية"
+				},
+				"required": "هذا الحقل مطلوب",
+				"email": {
+					"invalid": "يرجى إدخال بريد إلكتروني صحيح"
+				},
+				"url": {
+					"invalid": "يرجى إدخال رابط صحيح (مثال: https://...)"
+				},
+				"number": {
+					"invalid": "القيمة يجب أن تكون رقم"
+				},
+				"percent": {
+					"invalid": "يجب أن تكون النسبة رقمًا بين 0 و 100"
+				}
+			},
+			"root": {
+				"totalProperties": "إجمالي العقارات",
+				"freeProperties": "العقارات المتاحة",
+				"rentedProperties": "العقارات المؤجرة",
+				"lastTransactions": "آخر المعاملات",
+				"maintenanceRequests": "طلبات الصيانه",
+				"recentProperties": "أحدث العقارات",
+				"noContracts": "لا توجد عقود حالياً",
+				"noContractsMessage": "لا توجد عقود حديثة للعرض.",
+				"noProperties": "لا توجد عقارات",
+				"noPropertiesMessage": "لا توجد عقارات حديثة للعرض."
+			},
+			"maintenance": {
+				"requestId": "رقم الطلب",
+				"type": {
+					"Electrical": "كهرباء",
+					"Plumbing": "سباكة",
+					"HVAC": "تكييف"
+				}
+			},
+			"costBreakdown": {
+				"maintenance": "الصيانة",
+				"repair": "الإصلاح",
+				"taxes": "الضرائب",
+				"saving": "الادخار"
+			},
+			"contactUs": {
+				"title": "رسائل اتصل بنا",
+				"searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني أو رقم الهاتف",
+				"emptyTitle": "لا توجد رسائل",
+				"emptyMessage": "لا توجد أي رسائل تواصل لعرضها حالياً.",
+				"resetFilters": "إعادة تعيين الفلاتر"
+			},
+			"team": {
+				"title": "أعضاء الفريق",
+				"add": "إضافة عضو جديد",
+				"edit": "تعديل العضو",
+				"deleteTitle": "حذف",
+				"formText": "عرض النموذج",
+				"emptyTitle": "لم يتم العثور على أعضاء الفريق",
+				"emptyMessage": "لا يوجد أعضاء فريق حالياً. الرجاء إضافة أعضاء جدد.",
+				"resetFilters": "إعادة تعيين الفلاتر",
+				"delete": {
+					"title": "حذف عضو الفريق",
+					"subtitle": "هل أنت متأكد أنك تريد حذف هذا العضو",
+					"cancel": "إلغاء",
+					"actionText": "حذف",
+					"deleting": "جاري حذف هذا العضو...",
+					"success": "تم حذف هذا العضو بنجاح.",
+					"error": "فشل في حذف هذا العضو."
+				},
+				"form": {
+					"form": "نموذج عضو الفريق",
+					"name": "الاسم",
+					"namePlaceholder": "أدخل اسم العضو",
+					"job": "المسمى الوظيفي",
+					"jobPlaceholder": "أدخل المسمى الوظيفي",
+					"description_en": "الوصف (إنجليزي)",
+					"description_ar": "الوصف (عربي)",
+					"email": "البريد الإلكتروني",
+					"emailPlaceholder": "أدخل البريد الإلكتروني",
+					"phone": "رقم الهاتف",
+					"phonePlaceholder": "أدخل رقم الهاتف",
+					"upload": "رفع الصورة",
+					"noFile": "لا يوجد ملف",
+					"validation": {
+						"required": "هذا الحقل مطلوب",
+						"maxLength": "تجاوز الحد الأقصى للطول ({max})",
+						"email": "عنوان البريد الإلكتروني غير صالح",
+						"imageRequired": "يرجى رفع صورة",
+						"invalidPhone": "رقم الهاتف غير صالح"
+					},
+					"actions": {
+						"create": "إنشاء",
+						"update": "تحديث",
+						"cancel": "إلغاء",
+						"creating": "جارٍ إنشاء عضو الفريق...",
+						"updating": "جارٍ تحديث عضو الفريق...",
+						"createSuccess": "تم إنشاء عضو الفريق بنجاح",
+						"updateSuccess": "تم تحديث عضو الفريق بنجاح",
+						"error": "حدث خطأ. حاول مرة أخرى"
+					}
+				},
+				"cancel": "إلغاء",
+				"addAction": "إضافة عضو",
+				"editAction": "حفظ التعديلات"
+			},
+			"departments": {
+				"title": "الأقسام",
+				"add": "إضافة قسم جديد",
+				"edit": "تعديل القسم",
+				"deleteTitle": "حذف",
+				"formText": "عرض النموذج",
+				"emptyTitle": "لم يتم العثور على الأقسام",
+				"emptyMessage": "لا توجد أقسام حالياً. الرجاء إضافة أقسام جديدة.",
+				"resetFilters": "إعادة تعيين الفلاتر",
+				"delete": {
+					"title": "حذف القسم",
+					"subtitle": "هل أنت متأكد أنك تريد حذف القسم؟",
+					"cancel": "إلغاء",
+					"actionText": "حذف",
+					"deleting": "جاري حذف القسم...",
+					"success": "تم حذف القسم بنجاح.",
+					"error": "فشل في حذف القسم."
+				},
+				"form": {
+					"form": "نموذج القسم",
+					"title_en": "العنوان (إنجليزي)",
+					"title_enPlaceholder": "أدخل العنوان باللغة الإنجليزية",
+					"title_ar": "العنوان (عربي)",
+					"title_arPlaceholder": "أدخل العنوان باللغة العربية",
+					"description_en": "الوصف (إنجليزي)",
+					"description_ar": "الوصف (عربي)",
+					"upload": "رفع الصورة",
+					"noFile": "لا يوجد ملف",
+					"validation": {
+						"required": "هذا الحقل مطلوب",
+						"maxLength": "تجاوز الحد الأقصى للطول ({max})",
+						"imageRequired": "يرجى رفع صورة",
+						"invalidPhone": "رقم الهاتف غير صالح"
+					},
+					"actions": {
+						"create": "إنشاء",
+						"update": "تحديث",
+						"cancel": "إلغاء",
+						"creating": "جارٍ إنشاء القسم...",
+						"updating": "جارٍ تحديث القسم...",
+						"createSuccess": "تم إنشاء القسم بنجاح",
+						"updateSuccess": "تم تحديث القسم بنجاح",
+						"error": "حدث خطأ. حاول مرة أخرى"
+					}
+				},
+				"cancel": "إلغاء",
+				"addAction": "إضافة قسم",
+				"editAction": "حفظ التعديلات"
+			},
+			"blog": {
+				"formText": "عرض المدونة",
+				"emptyTitle": "لم يتم العثور على المدونات",
+				"emptyMessage": "لا توجد مدونات حالياً. الرجاء إضافة مدونة جديدة.",
+				"resetFilters": "إعادة تعيين الفلاتر",
+				"title": "المدونات",
+				"add": "إضافة مدونة",
+				"edit": "تعديل مدونة",
+				"deleteTitle": "حذف",
+				"delete": {
+					"title": "حذف المدونة",
+					"subtitle": "هل أنت متأكد أنك تريد حذف هذه المدونة؟ لا يمكن التراجع عن هذا الإجراء.",
+					"cancel": "إلغاء",
+					"actionText": "حذف",
+					"deleting": "جاري حذف المدونة...",
+					"success": "تم حذف المدونة بنجاح.",
+					"error": "فشل في حذف المدونة."
+				},
+				"form": {
+					"form": "نموذج المدونة",
+					"title_en": "العنوان (إنجليزي)",
+					"title_enPlaceholder": "أدخل عنوان المدونة باللغة الإنجليزية",
+					"title_ar": "العنوان (عربي)",
+					"title_arPlaceholder": "أدخل عنوان المدونة باللغة العربية",
+					"description_en": "الوصف (إنجليزي)",
+					"description_ar": "الوصف (عربي)",
+					"upload": "رفع صورة المدونة",
+					"noFile": "لا يوجد ملف",
+					"validation": {
+						"required": "هذا الحقل مطلوب",
+						"maxLength": "تجاوز الحد الأقصى للطول ({max})",
+						"imageRequired": "يرجى رفع صورة للمدونة"
+					},
+					"actions": {
+						"create": "إنشاء",
+						"update": "تحديث",
+						"cancel": "إلغاء",
+						"creating": "جارٍ إنشاء المدونة...",
+						"updating": "جارٍ تحديث المدونة...",
+						"createSuccess": "تم إنشاء المدونة بنجاح",
+						"updateSuccess": "تم تحديث المدونة بنجاح",
+						"error": "حدث خطأ. حاول مرة أخرى"
+					}
+				},
+				"actions": {
+					"cancel": "إلغاء",
+					"addAction": "إضافة مدونة",
+					"editAction": "حفظ التعديلات"
+				}
+			},
+			"about": {
+				"validation": {
+					"titleRequired": "العنوان مطلوب",
+					"titleMax": "يجب ألا يزيد العنوان عن 255 حرفًا",
+					"contentRequired": "المحتوى مطلوب",
+					"imageRequired": "الصورة مطلوب"
+				},
+				"title": "محتوي صفحة من نحن",
+				"vision": {
+					"title": "رؤيتنا",
+					"defaultTitle": "رؤيتنا"
+				},
+				"mission": {
+					"title": "مهمتنا",
+					"defaultTitle": "مهمتنا"
+				},
+				"goals": {
+					"title": "أهدافنا",
+					"defaultTitle": "أهدافنا"
+				},
+				"history": {
+					"title": "تاريخنا",
+					"defaultTitle": "تاريخنا"
+				},
+				"why_us": {
+					"title": "لماذا قنوف",
+					"defaultTitle": "لماذا قنوف"
+				},
+				"edit": "تعديل",
+				"noContent": "لا يوجد محتوى حالياً",
+				"saving": "جاري الحفظ...",
+				"saved": "تم الحفظ",
+				"errors": {
+					"failed": "فشل الحفظ"
+				},
+				"form": {
+					"title_en": "العنوان (EN)",
+					"title_ar": "العنوان (AR)",
+					"title_en_placeholder": "أدخل العنوان باللغة الإنجليزية",
+					"title_ar_placeholder": "أدخل العنوان باللغة العربية",
+					"content_en": "المحتوى (EN)",
+					"content_ar": "المحتوى (AR)",
+					"content_en_placeholder": "أدخل المحتوى باللغة الإنجليزية",
+					"content_ar_placeholder": "أدخل المحتوى باللغة العربية",
+					"cancel": "إلغاء",
+					"save": "حفظ التعديلات"
+				}
+			}
+		},
+		"properties": {
+			"updatingStatus": "جاري تحديث حالة العقار...",
+			"statusUpdated": "تم تحديث الحالة بنجاح",
+			"statusUpdateError": "فشل تحديث الحالة",
+			"statusOptions": {
+				"active": "نشط",
+				"pending": "قيد الانتظار",
+				"rejected": "مرفوض",
+				"archived": "مؤرشف"
+			},
+			"delete": {
+				"title": "حذف العقار",
+				"subtitle": "هل أنت متأكد أنك تريد حذف هذا العقار؟ لا يمكن التراجع عن هذا الإجراء.",
+				"actionText": "حذف"
+			},
+			"cancel": "إلغاء",
+			"table": {
+				"viewDetails": "عرض التفاصيل",
+				"archiveProperty": "أرشفة العقار",
+				"restoreProperty": "استعادة العقار",
+				"property": "العقار",
+				"status": "الحالة",
+				"free": "متاح",
+				"online": "معروض",
+				"offline": "غير معروض",
+				"booked": "محجوز",
+				"published": "تاريخ النشر",
+				"price": "السعر",
+				"location": "الموقع",
+				"deleteProperty": "حذف العقار",
+				"editProperty": "تعديل العقار",
+				"addProperty": "إضافة عقار",
+				"viewReviews": "عرض التقييمات",
+				"title": "إدارة العقارات",
+				"searchPlaceholder": "ابحث بالاسم...",
+				"filters": {
+					"status": "الحالة",
+					"propertyType": "نوع العقار",
+					"occupancy": "التوفر",
+					"sortBy": "ترتيب حسب"
+				},
+				"statusOptions": {
+					"all": "جميع الحالات",
+					"pending": "قيد المراجعة",
+					"active": "نشط",
+					"inactive": "غير نشط",
+					"rejected": "مرفوض",
+					"archived": "مؤرشف"
+				},
+				"typeOptions": {
+					"all": "جميع الوحدات",
+					"residential": "سكني",
+					"commercial": "تجاري"
+				},
+				"occupancyOptions": {
+					"all": "الكل",
+					"rented": "مؤجر",
+					"available": "متاح"
+				},
+				"columns": {
+					"name": "اسم العقار",
+					"status": "حالة العرض",
+					"isRented": "حالة الإشغال",
+					"type": "نوع العقار",
+					"price": "سعر الإيجار",
+					"createdAt": "تاريخ الإضافة"
+				},
+				"reviews": {
+					"title": "تقييمات العقار",
+					"reviews": "تقييم",
+					"noReviews": "لا توجد تقييمات بعد",
+					"loadError": "فشل تحميل التقييمات",
+					"loading": "جاري التحميل...",
+					"loadMore": "تحميل المزيد"
+				},
+				"validation": {
+					"required": "هذا الحقل مطلوب",
+					"minLength": "يجب أن يكون {min} أحرف على الأقل",
+					"maxLength": "لا يمكن أن يتجاوز {max} حرفاً",
+					"minNumber": "القيمة يجب أن تكون {min} أو أكثر",
+					"invalidFormat": "تنسيق غير صالح",
+					"exactLength": "يجب أن يتكون من {len} خانات بالضبط",
+					"minImages": "يجب رفع صورة واحدة على الأقل"
+				}
+			},
+			"form": {
+				"createDescription": "املأ التفاصيل أدناه لإنشاء عقار جديد.",
+				"editDescription": "قم بتحديث المعلومات أدناه لتعديل العقار.",
+				"documentType": "نوع صك الملكية",
+				"documentImage": "صك الملكية",
+				"createTitle": "إضافة عقار جديد",
+				"editTitle": "تعديل العقار",
+				"basicInfo": "المعلومات الأساسية",
+				"locationAndLegal": "الموقع والبيانات القانونية",
+				"facilities": "المرافق والخدمات",
+				"features": "المميزات",
+				"gallery": "معرض الصور",
+				"title": "اسم العقار",
+				"description": "الوصف",
+				"additionalDetails": "تفاصيل إضافية",
+				"propertyType": "نوع العقار",
+				"subType": "نوع الوحدة",
+				"rentType": "نظام الإيجار",
+				"ownershipType": "نوع الملكية",
+				"price": "سعر الإيجار",
+				"size": "المساحة",
+				"securityDeposit": "مبلغ التأمين",
+				"capacity": "السعة الاستيعابية",
+				"propertyNumber": "رقم العقار",
+				"nationalAddressCode": "رمز العنوان الوطني",
+				"stateId": "المدينة / المنطقة",
+				"documentNumber": "رقم الوثيقة",
+				"documentIssueDate": "تاريخ إصدار الوثيقة",
+				"issuedBy": "جهة الإصدار",
+				"ownerIdNumber": "رقم هوية المالك",
+				"insurancePolicyNumber": "رقم بوليصة التأمين",
+				"bedrooms": "غرف النوم",
+				"bathrooms": "دورات المياه",
+				"livingRooms": "الصالات",
+				"kitchen": "المطابخ",
+				"parking": "مواقف السيارات",
+				"elevators": "المصاعد",
+				"rooms": "الغرف",
+				"majlis": "المجلس",
+				"store": "المستودع",
+				"securityEntrances": "مداخل أمنية",
+				"maidRoom": "غرفة خادمة",
+				"backyard": "فناء خلفي (حوش)",
+				"centralAC": "تكييف مركزي",
+				"desertAC": "تكييف صحراوي",
+				"isFurnished": "مؤثثة",
+				"featuresPlaceholder": "مثال: مسبح، قريب من مسجد",
+				"featuresHint": "اكتب الميزة واضغط Enter للإضافة.",
+				"utilities": "عدادات الخدمات",
+				"surroundings": "المحيط والمميزات",
+				"complexName": "اسم المجمع",
+				"gasMeterNumber": "رقم عداد الغاز",
+				"electricityMeterNumber": "رقم عداد الكهرباء",
+				"waterMeterNumber": "رقم عداد المياه",
+				"educationInstitutions": "المؤسسات التعليمية",
+				"healthMedicalFacilities": "المرافق الصحية والطبية",
+				"facilityName": "اسم المكان",
+				"facilityType": "النوع (مثال: مدرسة، مستشفى)",
+				"distanceKm": "البعد (كم)",
+				"addFacility": "إضافة مكان",
+				"locationTitle": "موقع العقار",
+				"featuresAndFacilities": "المرافق والخدمات القريبة",
+				"constructionDate": "تاريخ الانتهاء من البناء",
+				"subtitles": {
+					"basicInfo": "التفاصيل الأساسية والخصائص الرئيسية للعقار",
+					"location": "الموقع الجغرافي الدقيق وسياق المنطقة المحيطة",
+					"locationAndLegal": "العنوان الرسمي، التسجيل، ووثائق الملكية القانونية",
+					"utilities": "سجلات العدادات لخدمات الكهرباء والمياه والغاز",
+					"facilities": "المرافق الداخلية والمواصفات الفنية المعمارية",
+					"featuresAndFacilities": "القرب من الخدمات التعليمية والطبية والحيوية",
+					"gallery": "التوثيق المرئي عالي الدقة ووسائط العرض"
+				},
+				"messages": {
+					"createSuccess": "تم إنشاء العقار بنجاح",
+					"updateSuccess": "تم تحديث العقار بنجاح"
+				},
+				"validation": {
+					"yearRange": "سنة البناء يجب أن تكون بين {min} و {max}",
+					"required": "هذا الحقل مطلوب",
+					"min": "القيمة يجب أن تكون على الأقل {min}",
+					"max": "القيمة يجب أن تكون على الأكثر {max}",
+					"maxLength": "الحد الأقصى {max} حرف",
+					"invalidFormat": "تنسيق غير صحيح",
+					"atLeastOne": "يجب إرفاق صورة واحدة على الأقل",
+					"features": {
+						"maxTags": "لا يمكنك إضافة أكثر من {max} مميزات",
+						"tagTooLong": "يجب أن يكون طول الميزة أقل من {max} حرفاً"
+					},
+					"nearby": {
+						"maxFacilities": "يمكنك إضافة حتى {max} مرافق فقط",
+						"distanceTooFar": "لا يمكن أن تتجاوز المسافة {max} كم",
+						"distanceTooShort": "يجب أن تكون المسافة {min} كم على الأقل"
+					},
+					"nameExists": "يوجد عقار بهذا الاسم بالفعل",
+					"nameAvailable": "هذا الاسم متاح",
+					"checking": "جارٍ التحقق...",
+					"checkFailed": "فشل التحقق من توفر الاسم"
+				},
+				"placeholders": {
+					"name": "مثال: شقة مودرن في حي النرجس",
+					"description": "اكتب تفاصيل العقار، المرافق القريبة، والمميزات...",
+					"additionalDetails": "أي معلومات إضافية ترغب في إضافتها للمستأجر...",
+					"propertyType": "اختر نوع العقار",
+					"subType": "اختر النوع الفرعي",
+					"rentType": "اختر دورة الدفع (شهري، سنوي...)",
+					"ownershipType": "هل أنت المالك أم مفوض؟",
+					"documentType": "اختر نوع الوثيقة (صك، عقد...)",
+					"documentNumber": "أدخل رقم الوثيقة",
+					"documentIssueDate": "تاريخ الإصدار",
+					"issuedBy": "الجهة المصدرة للوثيقة",
+					"ownerIdNumber": "رقم الهوية الوطنية أو الإقامة",
+					"insurancePolicyNumber": "رقم وثيقة التأمين (إن وجد)",
+					"propertyNumber": "رقم العقار أو الوحدة",
+					"complexName": "اسم المجمع السكني أو التجاري",
+					"nationalAddressCode": "مثال: RRRE1234",
+					"area": "المساحة بالمتر المربع",
+					"rentPrice": "سعر الإيجار",
+					"securityDeposit": "قيمة مبلغ التأمين",
+					"capacity": "عدد الأشخاص المستوعبين",
+					"constructionDate": "تاريخ الانتهاء من البناء",
+					"stateId": "اختر المنطقة/المدينة",
+					"gasMeterNumber": "رقم عداد الغاز",
+					"electricityMeterNumber": "رقم عداد الكهرباء",
+					"waterMeterNumber": "رقم عداد المياه",
+					"facilities": {
+						"livingRooms": "عدد الصالات",
+						"parking": "عدد المواقف",
+						"elevators": "عدد المصاعد",
+						"bathrooms": "عدد دورات المياه",
+						"bedrooms": "عدد غرف النوم",
+						"kitchen": "عدد المطابخ",
+						"store": "عدد المستودعات",
+						"majlis": "عدد المجالس",
+						"rooms": "إجمالي عدد الغرف",
+						"securityEntrances": "عدد المداخل الأمنية"
+					},
+					"features": "أضف ميزة (مثال: واجهة بحرية)",
+					"nearby": {
+						"institutionName": "اسم المنشأة (مثال: مدرسة المملكة)",
+						"distance": "المسافة بالكيلومتر"
+					}
+				}
+			},
+			"archive": {
+				"title": "أرشفة العقار",
+				"subtitle": "هل أنت متأكد من رغبتك في أرشفة",
+				"actionText": "أرشفة",
+				"restoreTitle": "استعادة العقار",
+				"restoreSubtitle": "هل أنت متأكد من رغبتك في استعادة",
+				"restoreAction": "استعادة",
+				"loading": "جاري التنفيذ...",
+				"success": "تم أرشفة العقار بنجاح",
+				"restoreSuccess": "تم استعادة العقار بنجاح",
+				"error": "فشلت العملية"
+			},
+			"details": {
+				"financials": "المالية",
+				"capacity": "السعة",
+				"constructionDate": "تاريخ البناء",
+				"additionalDetails": "تفاصيل إضافية",
+				"propertyNumber": "رقم العقار",
+				"complexName": "اسم المجمع",
+				"ownershipType": "نوع الملكية",
+				"documentType": "نوع المستند",
+				"documentIssueDate": "تاريخ إصدار المستند",
+				"issuedBy": "جهة الإصدار",
+				"state": "الولاية",
+				"errorTitle": "فشل في تحميل بيانات العقار",
+				"noDataFound": "لا توجد بيانات",
+				"error": "فشل في تحميل تفاصيل العقار",
+				"close": "إغلاق",
+				"price": "سعر الإيجار",
+				"area": "المساحة الإجمالية",
+				"securityDeposit": "مبلغ التأمين",
+				"isFurnished": "مفروش",
+				"isRented": "مؤجر حالياً",
+				"yes": "نعم",
+				"no": "لا",
+				"monthly": "شهري",
+				"yearly": "سنوي",
+				"facilities": "مرافق العقار",
+				"utilityMeters": "عدادات الخدمات",
+				"electricityMeter": "عداد الكهرباء",
+				"waterMeter": "عداد المياه",
+				"gasMeter": "عداد الغاز",
+				"documents": "الوثائق القانونية",
+				"documentNumber": "رقم الوثيقة",
+				"ownerId": "رقم هوية المالك",
+				"insurancePolicy": "بوليصة التأمين",
+				"nearby": "المرافق القريبة",
+				"education": "التعليم",
+				"health": "الصحة والخدمات الطبية",
+				"facilityKeys": {
+					"livingRooms": "غرف المعيشة",
+					"parking": "مواقف السيارات",
+					"elevators": "المصاعد",
+					"bathrooms": "دورات المياه",
+					"securityEntrances": "مداخل أمنية",
+					"bedrooms": "غرف النوم",
+					"maidRoom": "غرفة عاملة",
+					"kitchen": "المطابخ",
+					"store": "مستودع",
+					"backyard": "فناء خلفي",
+					"centralAC": "تكييف مركزي",
+					"desertAC": "تكييف صحراوي",
+					"majlis": "مجلس",
+					"rooms": "إجمالي الغرف"
+				}
+			}
+		},
+		"users": {
+			"updatingStatus": "جاري تحديث حالة المستخدم...",
+			"statusUpdated": "تم تحديث الحالة بنجاح",
+			"statusUpdateError": "فشل تحديث الحالة",
+			"statusOptions": {
+				"all": "جميع الحالات",
+				"active": "نشط",
+				"inactive": "غير نشط",
+				"pending_verification": "قيد التحقق",
+				"suspended": "معلق",
+				"deleted": "محذوف"
+			},
+			"roleOptions": {
+				"all": "جميع الأدوار",
+				"admin": "مدير",
+				"landlord": "مالك",
+				"tenant": "مستأجر"
+			},
+			"table": {
+				"viewDetails": "عرض التفاصيل",
+				"chat": "محادثة",
+				"searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني...",
+				"filters": {
+					"status": "الحالة",
+					"role": "الدور"
+				},
+				"columns": {
+					"name": "الاسم",
+					"email": "البريد الإلكتروني",
+					"role": "الدور",
+					"status": "الحالة",
+					"lastLogin": "آخر تسجيل دخول",
+					"createdAt": "تاريخ الإنشاء",
+					"never": "أبداً"
+				}
+			},
+			"details": {
+				"basicInfo" : "المعلومات الأساسية",
+				"email": "البريد الإلكتروني",
+				"pendingEmail": "البريد الإلكتروني المعلق",
+				"phoneNumber": "رقم الهاتف",
+				"birthDate": "تاريخ الميلاد",
+				"lastLogin": "آخر تسجيل دخول",
+				"never": "أبداً",
+				"identity": "معلومات الهوية",
+				"nationality": "الجنسية",
+				"identityType": "نوع الهوية",
+				"identityNumber": "رقم الهوية",
+				"identityIssueCountry": "دولة إصدار الهوية",
+				"identityOtherType": "نوع الهوية الآخر",
+				"address": "العنوان",
+				"shortAddress": "العنوان المختصر",
+				"accountInfo": "معلومات الحساب",
+				"createdAt": "تاريخ الإنشاء",
+				"updatedAt": "تاريخ التحديث",
+				"notificationsEnabled": "الإشعارات مفعلة",
+				"unreadNotifications": "الإشعارات غير المقروءة",
+				"yes": "نعم",
+				"no": "لا",
+				"notProvided": "غير متوفر",
+				"errorTitle": "فشل تحميل تفاصيل المستخدم",
+				"error": "فشل تحميل تفاصيل المستخدم",
+				"close": "إغلاق",
+				"identityTypes": {
+					"national_id": "هوية وطنية",
+					"residency": "هوية مقيم",
+					"premium_residency": "إقامة مميزة",
+					"gcc_id": "هوية خليجية",
+					"passport": "جواز سفر",
+					"other": "أخرى"
+				}
+			}
+		}
+	},
+	"root": {
+		"siteName": "قنوف",
+		"logo": "قنوف",
+		"description": "اكتشف وأدر العقارات مع قنوف.",
+		"lang": "ar"
+	},
+	"notFound": {
+		"oopsTitle": "عذرًا، الصفحة غير موجودة!",
+		"oopsMessage": "الصفحة التي تبحث عنها غير موجودة (قد تكون نُقلت أو حُذفت أو أنها غير متوفرة). نأسف على الإزعاج.",
+		"oopsHint": "إذا كنت تعتقد أن هذا خطأ أو أن هناك مشكلة، يرجى الإبلاغ عنها.",
+		"goHome": "العودة إلى الصفحة الرئيسية"
+	},
+	"comman": {
+		"date": {
+			"yesterday": "أمس",
+			"today": "اليوم"
+		},
+		"image_dialog": {
+			"title": "إدراج صورة",
+			"url_label": "رابط الصورة",
+			"upload_text": "اضغط لرفع صورة",
+			"alt_text_label": "النص البديل",
+			"width_label": "العرض (بكسل)",
+			"placeholders": {
+				"alt_text": "وصف للصورة لسهولة الوصول",
+				"url": "https://example.com/image.jpg"
+			}
+		},
+		"editor": {
+			"placeholder": "ابدأ الكتابة هنا...",
+			"legal_notice": "يرجى التأكد من أن المحتوى يطابق المعايير القانونية الرسمية.",
+			"link_dialog": {
+				"url_label": "رابط الصفحة",
+				"apply": "تطبيق الرابط",
+				"unlink": "إزالة الرابط"
+			}
+		},
+		"edit": "تعديل",
+		"delete": "حذف",
+		"insert": "إدراج",
+		"upload": "رفع",
+		"reset_default": "إعادة التعيين للافتراضي",
+		"datePlaceholder": "حدد نطاق التاريخ",
+		"retry": "إعادة المحاولة",
+		"errorTitle": "عذرًا، حدث خطأ ما",
+		"errorLoading": "فشل في تحميل البيانات",
+		"cancel": "إلغاء",
+		"save": "حفظ",
+		"seeMore": "عرض المزيد",
+		"seeLess": "عرض أقل",
+		"form": {
+			"loading": "جاري التحميل...",
+			"mapInstruction": "انقر على الخريطة لتحديد الموقع",
+			"email": {
+				"label": "البريد الإلكتروني",
+				"placeholder": "أدخل بريدك الإلكتروني"
+			},
+			"password": {
+				"label": "كلمة المرور",
+				"placeholder": "أدخل كلمة المرور"
+			},
+			"forgotPassword": {
+				"sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط إعادة تعيين"
+			},
+			"errors": {
+				"forgotPasswordFailed": "فشل إرسال رابط إعادة التعيين"
+			},
+			"locationInput": {
+				"fetching": "جاري جلب العنوان...",
+				"addressPrefix": "العنوان:",
+				"selectedLocation": "الموقع المحدد:",
+				"latitude": "خط العرض (Latitude)",
+				"longitude": "خط الطول (Longitude)",
+				"latitudePlaceholder": "مثال: {lat}",
+				"longitudePlaceholder": "مثال: {lng}",
+				"invalidInput": "المدخلات غير صالحة، يرجى إدخال أرقام صحيحة",
+				"latRangeError": "خط العرض يجب أن يكون بين -90 و 90",
+				"lngRangeError": "خط الطول يجب أن يكون بين -180 و 180",
+				"unknownAddress": "عنوان غير معروف",
+				"addressFetchError": "تعذر جلب العنوان"
+			},
+			"uploader": {
+				"removing": "جارٍ الإزالة...",
+				"dragLabel": "اسحب وأفلت",
+				"orLabel": "أو",
+				"chooseFiles": "اختر ملفات",
+				"primaryFile": "الملف الأساسي",
+				"setAsPrimary": "تعيين كملف أساسي",
+				"rules": {
+					"maxSize": "الحد الأقصى لحجم الملف {size}MB",
+					"maxFiles": "الحد الأقصى {count} ملفات"
+				}
+			},
+			"send": "إرسال"
+		},
+		"months": [
+			"يناير",
+			"فبراير",
+			"مارس",
+			"أبريل",
+			"مايو",
+			"يونيو",
+			"يوليو",
+			"أغسطس",
+			"سبتمبر",
+			"أكتوبر",
+			"نوفمبر",
+			"ديسمبر"
+		],
+		"weekdays": [
+			"الاثنين",
+			"الثلاثاء",
+			"الأربعاء",
+			"الخميس",
+			"الجمعة",
+			"السبت",
+			"الأحد"
+		],
+		"search": "إبحث...",
+		"saving": "جاري الحفظ...",
+		"submitting": "جاري الإرسال...",
+		"error": "حدث خطأ ما",
+		"uploader": {
+			"success": {
+				"removed": "تم حذف الملف بنجاح"
+			},
+			"errors": {
+				"deleteFailed": "فشل حذف الملف. يرجى المحاولة مرة أخرى"
+			},
+			"rules": {
+				"maxSize": "الحد الأقصى للحجم {size} ميجابايت",
+				"maxFiles": "الحد الأقصى للملفات {count}",
+				"onlyPDF": "مسموح فقط بملفات PDF"
+			}
+		}
+	},
+	"header": {
+		"logo": "قنوف",
+		"nav": {
+			"ariaLabel": "التنقل الرئيسي",
+			"mobileMenuLabel": "قائمة التنقل",
+			"home": "الرئيسية",
+			"realEstate": "العقارات",
+			"blog": "المدونة",
+			"about": "من نحن",
+			"contact": "تواصل معنا",
+			"dashboard": "لوحة التحكم",
+			"login": "تسجيل الدخول",
+			"logout": "تسجيل الخروج",
+			"loggingOut": "جارٍ الخروج...",
+			"openMenu": "فتح القائمة",
+			"closeMenu": "إغلاق القائمة"
+		},
+		"roles": {
+			"admin": "مشرف",
+			"landlord": "مالك",
+			"tenant": "مستأجر"
+		},
+		"userMenu": {
+			"ariaLabel": "قائمة المستخدم",
+			"profile": "الملف الشخصي",
+			"notifications": "الإشعارات",
+			"contracts": "العقود"
+		}
+	},
+	"selectInput": {
+		"placeholder": "اختر",
+		"searchPlaceholder": "بحث…",
+		"noOptionsLabel": "لا توجد نتائج",
+		"noOptionsDescription": "جرّب كلمة بحث مختلفة."
+	},
+	"homePage": {
+		"hero": {
+			"heading": "اختار العقار\nالمناسب لك للايجار",
+			"clients": "عملاء +{count}",
+			"badge": "ابحث عن عقارك القادم",
+			"subcopy": "تصفح العقارات الموثوقة من وكلاء معتمدين في جميع أنحاء مصر.",
+			"ratingLabel": "متوسط التقييم",
+			"sectionLabel": "القسم الرئيسي",
+			"avatarAlt": "عميل سعيد {index}",
+			"avatarMore": "+50K"
+		},
+		"filters": {
+			"aria": {
+				"search": "بحث عن العقارات",
+				"openFilters": "فتح جميع الفلاتر"
+			},
+			"ariaLabel": "البحث عن عقار",
+			"helper": {
+				"noFees": "بدون رسوم إضافية",
+				"verified": "عقارات موثوقة",
+				"instant": "بحث فوري"
+			},
+			"labels": {
+				"location": "الموقع",
+				"propertyType": "نوع العقار",
+				"category": "الفئات"
+			},
+			"options": {
+				"locations": {
+					"cairo": "القاهرة",
+					"alex": "الإسكندرية",
+					"giza": "الجيزة"
+				},
+				"propertyTypes": {
+					"apartment": "شقة",
+					"villa": "فيلا",
+					"duplex": "دوبلكس"
+				},
+				"categories": {
+					"furnished": "مفروش",
+					"unfurnished": "غير مفروش"
+				}
+			},
+			"search": "بحث",
+			"adjustments": "تصفية",
+			"advancedFilters": "فلاتر متقدمة"
+		},
+		"recentProperties": {
+			"eyebrow": "إضافات جديدة",
+			"title": "أحدث العقارات",
+			"description": "اكتشف أحدث العقارات المضافة إلى منصتنا، واعثر على ما يناسب احتياجاتك.",
+			"nav": {
+				"prev": "السابق",
+				"next": "التالي"
+			},
+			"empty": {
+				"title": "لا توجد عقارات حديثة",
+				"description": "نحن نقوم بتحديث قائمتنا باستمرار، يرجى العودة قريباً."
+			},
+			"card": {
+				"viewProperty": "عرض العقار"
+			}
+		},
+		"propertyCategory": {
+			"eyebrow": "تصفح حسب النوع",
+			"title": "تصفح حسب الفئة",
+			"description": "اكتشف العقارات المصنفة حسب النوع، واختر ما يناسب احتياجاتك وميزانيتك.",
+			"filters": {
+				"label": "تصفية العقارات حسب الفئة",
+				"apartment": "شقة",
+				"family_housing": "سكن عائلي",
+				"villa": "فيلا"
+			},
+			"period": {
+				"yearly_ar": "/ سنوياً",
+				"yearly_en": "/ Yearly"
+			},
+			"noProperties": "لم يتم العثور على عقارات حالياً",
+			"emptyCategory": "لا توجد عقارات ضمن هذا التصنيف حالياً",
+			"empty": {
+				"title": "لا توجد عقارات في هذه الفئة",
+				"description": "لم نتمكن من العثور على عقارات في هذه الفئة حالياً، يرجى المحاولة لاحقاً."
+			},
+			"card": {
+				"view": "عرض العقار"
+			},
+			"nav": {
+				"prev": "السابق",
+				"next": "التالي"
+			}
+		},
+		"basedOnLocationSection": {
+			"eyebrow": "حسب الموقع",
+			"title": "العقارات حسب الموقع",
+			"description": "اكتشف أحدث العقارات حسب نوع الإيجار والموقع.",
+			"toggle": {
+				"label": "نوع الإيجار"
+			},
+			"monthly": "شهري",
+			"yearly": "سنوي",
+			"rent": "الإيجار",
+			"empty": {
+				"title": "لا توجد عقارات",
+				"description": "جرّب تغيير نوع الإيجار أو عد لاحقًا."
+			},
+			"facility": {
+				"bathrooms": "{count} {count, plural, one {حمام} other {حمامات}}",
+				"guests": "{count} {count, plural, one {مستخدم} other {مستخدمين}}",
+				"bedrooms": "{count} {count, plural, one {سرير} other {أسرة}}"
+			}
+		},
+		"features": {
+			"mainTitle": "اكتشف طريقة أسهل للإيجار",
+			"mainDescription": "نوفر لك تجربة إيجار متكاملة عبر الإنترنت، من الإعلان حتى توقيع العقد، بكل سهولة وأمان.",
+			"imageAlt": "صورة توضيحية لمنصة الإيجار",
+			"card1": {
+				"title": "أعلن عن إيجارك",
+				"description": "انشر إعلانك في دقائق وتواصل مع المستأجرين المناسبين بشكل مباشر.",
+				"button": "ابدأ الإعلان الآن"
+			},
+			"card2": {
+				"title": "إيجار 100% عبر الإنترنت",
+				"description": "أدر عقودك ومدفوعاتك بالكامل إلكترونياً دون الحاجة للحضور الشخصي.",
+				"button": "استكشف العقود"
+			}
+		},
+		"contactUs": {
+			"eyebrow": "تواصل معنا",
+			"title": "ابقَ على تواصل معنا",
+			"description": "اشترك في نشرتنا البريدية وكن أول من يعلم بأحدث العروض والمقالات والتحديثات.",
+			"placeholder": "أدخل بريدك الإلكتروني",
+			"button": "اشترك الآن",
+			"loading": "جارٍ الإرسال...",
+			"successMessage": "تم الاشتراك بنجاح! شكراً لك.",
+			"errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+			"formAriaLabel": "نموذج الاشتراك في النشرة البريدية",
+			"privacyNote": "لن نشارك بريدك الإلكتروني مع أي طرف ثالث. يمكنك إلغاء الاشتراك في أي وقت.",
+			"imageAlt": "صورة توضيحية لقسم التواصل"
+		}
+	},
+	"partners": {
+		"aria_label": "شعارات شركاء الدفع",
+		"paypal": "باي بال",
+		"greenhouse": "جرين هاوس",
+		"household": "هاوس هولد",
+		"century": "سينشري"
+	},
+	"about": {
+		"meetOur": "تعرّف على",
+		"department": "أقسامنا",
+		"noDepartmentsTitle": "لا توجد أقسام حالياً",
+		"noDepartmentsDescription": "لم يتم إضافة أي أقسام بعد. يرجى التحقق لاحقاً.",
+		"noDepartmentsAvailable": "لا توجد أقسام متاحة في الوقت الحالي.",
+		"slideNavigation": "التنقل بين الشرائح",
+		"yourHostsAndGuides": "مضيفونا ومرشدونا",
+		"meetYour": "تعرّف على",
+		"facilitators": "المُيسِّرون",
+		"noTeamsTitle": "لا يوجد أعضاء فريق حالياً",
+		"noTeamsDescription": "لم يتم إضافة أي أعضاء للفريق بعد. يرجى التحقق لاحقاً.",
+		"noTeamsAvailable": "لا يوجد أعضاء فريق متاحون في الوقت الحالي.",
+		"header": "من نحن",
+		"sectionLabel": "نبذة عنا",
+		"hero": {
+			"title": "من نحن",
+			"description": "تعرّف على قصتنا، رؤيتنا، وما يجعلنا مختلفين",
+			"seeMore": "اكتشف المزيد"
+		},
+		"readMore": "اقرأ المزيد",
+		"readLess": "اقرأ أقل",
+		"historyOfQunuf": "تاريخ قنوف",
+		"whyQunuf": "لماذا قنوف",
+		"seeMore": "عرض المزيد",
+		"mission": {
+			"title": "مهمتنا",
+			"description": "نسعى إلى تقديم قيمة حقيقية من خلال حلول مبتكرة وخدمات موثوقة تلبّي احتياجات عملائنا وتدعم تطلعاتهم المستقبلية.",
+			"button": "عرض المزيد"
+		},
+		"vision": {
+			"title": "رؤيتنا",
+			"description": "نتطلع إلى أن نكون الخيار الأول في مجالنا عبر بناء تجربة متميزة ترتكز على الجودة والابتكار والاستدامة.",
+			"button": "اكتشف المزيد"
+		},
+		"goals": {
+			"title": "أهدافنا",
+			"description": "نعمل على تحقيق نمو مستدام، وتعزيز رضا العملاء، وتطوير خدماتنا باستمرار بما يواكب التغيرات ويلبّي متطلبات السوق.",
+			"button": "اعرف المزيد"
+		},
+		"team": {
+			"header": "فريقنا"
+		},
+		"cards": {
+			"visionTag": "رؤيتنا",
+			"missionTag": "مهمتنا",
+			"goalsTag": "أهدافنا"
+		}
+	},
+	"contact": {
+		"hero": {
+			"title": "اتصل بنا",
+			"description": "نحن هنا لمساعدتك في رحلتك العقارية. سواء كان لديك استفسار عن عقار معين أو كنت بحاجة إلى استشارة، فريقنا جاهز للرد على جميع تساؤلاتك.",
+			"seeMore": "اقرأ المزيد"
+		},
+		"nolocation": "الموقع غير متوفر حالياً",
+		"map": {
+			"eyebrow": "موقعنا",
+			"title": "نحن هنا\nلخدمتكم",
+			"subtitle": "يسعدنا استقبالكم في مقرنا الرئيسي أو التواصل معنا عبر قنواتنا الرسمية."
+		},
+		"form": {
+			"eyebrow": "تواصل معنا",
+			"getIn": "تحدّث",
+			"touch": "إلينا",
+			"headerMessage": "نسعد بتواصلكم معنا في أي وقت. فريقنا جاهز للإجابة على جميع استفساراتكم.",
+			"name": "الاسم الكامل",
+			"email": "البريد الإلكتروني",
+			"phone": "رقم الجوال",
+			"fax": "الفاكس",
+			"noData": "غير متوفر",
+			"message": {
+				"label": "كيف عرفت عنّا؟",
+				"placeholder": "اختر خياراً",
+				"options": {
+					"friend_referral": "عن طريق صديق",
+					"social_media": "وسائل التواصل الاجتماعي",
+					"search_engine": "محرك البحث",
+					"other": "أخرى"
+				}
+			},
+			"send": "إرسال الرسالة",
+			"sending": "جارٍ الإرسال…",
+			"success": "تم إرسال رسالتك بنجاح",
+			"error": "حدث خطأ، يرجى المحاولة مجدداً",
+			"validation": {
+				"required": "هذا الحقل مطلوب",
+				"email": "يرجى إدخال بريد إلكتروني صحيح"
+			}
+		}
+	},
+	"blogs": {
+		"featured": "مميز",
+		"loadMore": "تحميل المزيد",
+		"blog": "مدونة",
+		"hero": {
+			"title": "المدونة",
+			"description": "ابقَ على اطلاع بأحدث اتجاهات سوق العقارات، ونصائح الاستثمار، وأدلة الأحياء السكنية من خلال مقالات خبرائنا المحدثة دورياً.",
+			"seeMore": "اقرأ المزيد"
+		},
+		"blogs": "المدونات",
+		"our": "أحدث",
+		"recentBlogs": "مقالاتنا",
+		"readMore": "اقرأ المزيد",
+		"loadingMore": "جارٍ التحميل...",
+		"readBlog": "اقرأ المقالة: {title}",
+		"empty": {
+			"title": "لا توجد مقالات بعد",
+			"description": "لم يتم نشر أي مقالات حتى الآن. تابعنا قريبًا للاطلاع على أحدث المحتويات."
+		}
+	},
+	"property": {
+		"hero": {
+			"title": "العقارات",
+			"description": "استكشف مجموعة واسعة من العقارات المتميزة التي تناسب احتياجاتك. من الشقق العصرية إلى الفلل الفاخرة، نحن نساعدك في العثور على المكان الذي تحلم به بكل سهولة.",
+			"seeMore": "استكشف المزيد"
+		},
+		"filter": {
+			"title": "التصفية",
+			"subtitle": "اختر الفلاتر المناسبة للبحث",
+			"reset": "إعادة تعيين",
+			"header": "العقارات المتاحة",
+			"resultsCount": "{count} عقار متاح",
+			"min": "الأدنى",
+			"max": "الأقصى",
+			"priceMin": "السعر الأدنى",
+			"priceMax": "السعر الأقصى",
+			"areaMin": "المساحة الأدنى",
+			"areaMax": "المساحة القصوى",
+			"priceRange": "نطاق السعر",
+			"squareFeet": "المساحة بالقدم المربع",
+			"yearBuilt": "سنة البناء",
+			"location": {
+				"any": "أي منطقة",
+				"title": "الموقع"
+			},
+			"subtype": {
+				"title": "النوع الفرعي",
+				"residential": {
+					"options": "{option, select, condo {شقة} multiFamily {متعدد العائلات} townhomes {تاون هاوس} singleFamily {منزل عائلي} other {غير معروف}}"
+				},
+				"commercial": {
+					"options": "{option, select, office {مكتب} retail {تجزئة} warehouse {مستودع} industrial {صناعي} other {غير معروف}}"
+				}
+			},
+			"bedrooms": {
+				"title": "عدد غرف النوم",
+				"options": "{option, select, all {أي} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {غير معروف}}"
+			},
+			"bathrooms": {
+				"title": "عدد الحمامات",
+				"options": "{option, select, all {أي} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {غير معروف}}"
+			},
+			"rentalPeriod": {
+				"title": "فترة الإيجار",
+				"options": "{option, select, yearly {سنوي} monthly {شهري} other {غير معروف}}"
+			},
+			"propertyType": {
+				"title": "نوع العقار",
+				"options": "{option, select, residential {سكني} commercial {تجاري} other {غير معروف}}"
+			},
+			"rentType": {
+				"title": "Rent Type",
+				"options": "{option, select, monthly {شهرياً} yearly {سنوياً} other {غير معروف}}"
+			},
+			"categories": {
+				"title": "الفئة",
+				"options": "{option, select, education {تعليمي} hospital {مستشفى} shopping {تسوق} other {أخرى}}"
+			},
+			"furnishedType": {
+				"title": "حالة الأثاث",
+				"options": "{option, select, furnished {مفروش} unfurnished {غير مفروش} other {غير معروف}}"
+			},
+			"features": {
+				"title": "المميزات",
+				"options": "{option, select, airConditioning {تكييف هواء} assistedLiving {سكن مدعوم} disabilityAccess {إمكانية وصول لذوي الإعاقة} controlledAccess {دخول مُتحكم به} cableReady {جاهز للكابل} availableNow {متاح الآن} college {جامعة} corporate {شركات} elevator {مصعد} extraStorage {مساحة تخزين إضافية} highSpeedInternet {إنترنت عالي السرعة} garage {كراج} petAllowed {مسموح بالحيوانات} other {غير معروف}}"
+			}
+		},
+		"grid": {
+			"bedrooms": "غرف النوم",
+			"bathrooms": "الحمامات",
+			"totalArea": "المساحة",
+			"garages": "الكراجات",
+			"livingRooms": "غرف المعيشة",
+			"emptyTitle": "لم يتم العثور على عقارات",
+			"emptyMessage": "لم نجد أي عقارات تطابق خيارات التصفية الحالية. حاول تعديل البحث أو إزالة عوامل التصفية.",
+			"clearFilters": "إعادة تعيين الفلاتر"
+		},
+		"details": {
+			"bookingNow": "احجز الآن",
+			"description": "الوصف",
+			"additionalDetails": "تفاصيل إضافية",
+			"location": "الموقع",
+			"education": "التعليم",
+			"healthAndMedical": "الصحة والخدمات الطبية",
+			"propertyDetails": "تفاصيل العقار",
+			"propertyFeatures": "مميزات العقار",
+			"seeMore": "رؤية المزيد"
+		},
+		"enums": {
+			"propertyType": {
+				"commercial": "تجاري",
+				"residential": "سكني"
+			},
+			"subType": {
+				"residential": {
+					"apartment": "شقة",
+					"villa": "فيلا",
+					"floor": "دور",
+					"room": "غرفة",
+					"popular_house": "بيت شعبي",
+					"annex": "ملحق",
+					"labor_housing": "سكن عمال",
+					"individual_housing": "سكن أفراد",
+					"driver_room": "غرفة سائق",
+					"family_housing": "سكن عوائل",
+					"other": "أخرى"
+				},
+				"commercial": {
+					"office": "مكتب",
+					"retail_store": "محل تجاري",
+					"showroom": "معرض",
+					"warehouse": "مستودع",
+					"workshop": "ورشة",
+					"commercial_center": "مركز تجاري",
+					"commercial_building": "عمارة تجارية",
+					"commercial_labor_housing": "سكن عمال تجاري",
+					"kiosk": "كشك",
+					"land": "أرض",
+					"other": "أخرى"
+				}
+			},
+			"rentType": {
+				"monthly": "شهري",
+				"yearly": "سنوي"
+			},
+			"ownershipType": {
+				"owner": "المالك",
+				"representative": "وكيل / مفوض"
+			},
+			"documentType": {
+				"electronic_deed": "صك إلكتروني",
+				"real_estate_registration": "تسجيل عقاري",
+				"other": "أخرى"
+			}
+		},
+		"card": {
+			"bedrooms": "غرف نوم",
+			"bathrooms": "حمامات",
+			"area": "المساحة",
+			"livingRooms": "غرف معيشة"
+		},
+		"dashboard": {
+			"account": {
+				"loading": "جاري التحميل...",
+				"selectState": "اختر المنطقة"
+			}
+		},
+		"common": {
+			"select": "اختر"
+		}
+	},
+	"bookings": {
+		"title": "ابدأ الآن",
+		"fullDetails": {
+			"title": "أكمل ملفك الشخصي",
+			"subtitle": "يرجى تقديم تفاصيلك الكاملة للمتابعة مع الحجز",
+			"sectionTitle": "المعلومات الشخصية",
+			"confirm": "متابعة",
+			"cancel": "إلغاء"
+		},
+		"contractDetails": {
+			"title": "تفاصيل العقد",
+			"subtitle": "حدد فترة الإيجار والشروط",
+			"fields": {
+				"startDate": {
+					"label": "تاريخ البدء",
+					"placeholder": "اختر تاريخ البدء"
+				},
+				"duration": {
+					"label": "المدة (بالأشهر)",
+					"placeholder": "أدخل المدة",
+					"hint": {
+						"monthly": "اختر مدة بين {min} و {max} شهر",
+						"yearly": "المدة ثابتة عند سنة واحدة للإيجار السنوي"
+					}
+				},
+				"proposedTerms": {
+					"label": "شروط العقد المقترحة",
+					"placeholder": "أدخل شروط العقد...",
+					"hint": "يمكنك تعديل شروط العقد الافتراضية حسب الحاجة"
+				}
+			},
+			"confirm": "إنشاء العقد",
+			"cancel": "إلغاء",
+			"creating": "جاري إنشاء العقد...",
+			"created": "تم إنشاء العقد بنجاح",
+			"loading": "جاري التحميل...",
+			"errors": {
+				"noProperty": "معرف العقار مفقود",
+				"noStartDate": "يرجى اختيار تاريخ البدء",
+				"invalidDuration": "مدة غير صالحة",
+				"startDatePast": "يجب أن يكون تاريخ البدء في المستقبل",
+				"loadPropertyFailed": "فشل تحميل تفاصيل العقار",
+				"createFailed": "فشل إنشاء العقد"
+			}
+		},
+		"eligibility": {
+			"checking": "جاري التحقق من الأهلية...",
+			"errors": {
+				"noProperty": "معرف العقار مفقود",
+				"notAllowed": "أنت غير مؤهل لحجز هذا العقار",
+				"checkFailed": "فشل التحقق من الأهلية"
+			}
+		},
+		"approval": {
+			"title": "مراجعة والموافقة",
+			"subtitle": "يرجى مراجعة تفاصيل العقد قبل الموافقة",
+			"summary": {
+				"title": "ملخص العقد",
+				"property": "العقار",
+				"dates": "فترة الإيجار",
+				"terms": "الشروط المقترحة",
+				"month": "شهر",
+				"months": "أشهر",
+				"note": "بالموافقة، أنت توافق على الشروط والأحكام الخاصة بعقد الإيجار هذا."
+			},
+			"confirm": "الموافقة على العقد",
+			"cancel": "إلغاء",
+			"approving": "جاري الموافقة على العقد...",
+			"approved": "تمت الموافقة على العقد بنجاح",
+			"loading": "جاري تحميل تفاصيل العقد...",
+			"errors": {
+				"noContract": "بيانات العقد مفقودة",
+				"loadFailed": "فشل تحميل تفاصيل العقد",
+				"approveFailed": "فشلت الموافقة على العقد"
+			}
+		},
+		"step1": {
+			"title": "معلومات الحجز",
+			"subtitle": "يرجى ملء الحقول الفارغة أدناه",
+			"plans": {
+				"business": {
+					"title": "الأعمال",
+					"price": "$40.00",
+					"description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
+					"button": "اختر العرض"
+				},
+				"professional": {
+					"title": "المحترف",
+					"price": "$30.00",
+					"description": "يشمل هذا العرض فواتير الكهرباء والماء والغاز والإنترنت، ويتم دفعها مسبقًا لضمان تغطية جميع الخدمات الأساسية.",
+					"button": "اختر العرض"
+				}
+			},
+			"pickDate": "اختر التاريخ",
+			"payment": {
+				"prefix": "ستدفع "
+			},
+			"confirm": "احجز الآن",
+			"cancel": "إلغاء"
+		},
+		"step2": {
+			"title": "عقد الحجز",
+			"subtitle": "يرجى ملء المعلومات الخاصة بالعقد",
+			"sectionTitle": "معلومات المستأجر",
+			"fields": {
+				"fullName": {
+					"label": "الاسم الكامل للمستأجر",
+					"placeholder": "أدخل الاسم الكامل"
+				},
+				"phone": {
+					"label": "رقم هاتف المستأجر",
+					"placeholder": "أدخل رقم الهاتف"
+				},
+				"nationalId": {
+					"label": "الرقم القومي",
+					"placeholder": "أدخل الرقم القومي"
+				},
+				"billingAddress": {
+					"label": "عنوان الفواتير",
+					"placeholder": "أدخل عنوان الفواتير"
+				},
+				"address": {
+					"label": "العنوان",
+					"placeholder": "أدخل العنوان"
+				},
+				"email": {
+					"label": "البريد الإلكتروني",
+					"placeholder": "أدخل البريد الإلكتروني"
+				}
+			},
+			"confirm": "إنشاء العقد",
+			"cancel": "إلغاء"
+		},
+		"step3": {
+			"title": "الدفع",
+			"subtitle": "يرجى اتباع التعليمات أدناه",
+			"summary": {
+				"realEstate": "حجز العقار:",
+				"reservation": "حجز لمدة شهر واحد على خطة الأعمال",
+				"total": {
+					"prefix": "الإجمالي: ",
+					"amount": "$400 دولار أمريكي"
+				}
+			},
+			"fields": {
+				"cardNumber": {
+					"label": "رقم البطاقة",
+					"placeholder": "رقم بطاقة الدفع"
+				},
+				"bank": {
+					"label": "البنك",
+					"placeholder": "اختر البنك"
+				},
+				"expDate": {
+					"label": "تاريخ الانتهاء",
+					"placeholder": "تاريخ الصلاحية"
+				},
+				"cvv": {
+					"label": "رمز CVV",
+					"placeholder": "بجانب البطاقة"
+				}
+			},
+			"confirm": "ادفع الآن",
+			"cancel": "إلغاء"
+		},
+		"step4": {
+			"title": "تم إنشاء العقد بنجاح!",
+			"imageAlt": "تم إنشاء العقد",
+			"message": {
+				"line1": "تم إنشاء العقد بنجاح.",
+				"line2": "تم إرسال العقد إلى المالك للمراجعة.",
+				"line3": "سيقوم المالك بمراجعة الشروط التي قمت بتعديلها والرد وفقاً لذلك."
+			},
+			"viewContract": "عرض العقد"
+		},
+		"contractReview": {
+			"title": "مراجعة العقد",
+			"subtitle": "يرجى مراجعة تفاصيل العقد",
+			"noContract": "لا توجد بيانات عقد متاحة",
+			"done": "تم",
+			"sections": {
+				"property": "معلومات العقار",
+				"rentalPeriod": "فترة الإيجار",
+				"financial": "التفاصيل المالية",
+				"landlord": "معلومات المالك",
+				"terms": "شروط العقد"
+			},
+			"fields": {
+				"propertyName": "اسم العقار",
+				"propertyType": "النوع",
+				"area": "المساحة",
+				"capacity": "السعة",
+				"location": "الموقع",
+				"furnished": "مفروش",
+				"startDate": "تاريخ البدء",
+				"endDate": "تاريخ الانتهاء",
+				"duration": "المدة",
+				"rentType": "نوع الإيجار",
+				"totalAmount": "المبلغ الإجمالي",
+				"securityDeposit": "الوديعة",
+				"platformFee": "رسوم المنصة",
+				"name": "الاسم",
+				"email": "البريد الإلكتروني",
+				"phone": "الهاتف"
+			},
+			"yes": "نعم",
+			"no": "لا",
+			"monthly": "شهري",
+			"yearly": "سنوي",
+			"months": "أشهر"
+		}
+	},
+	"auth": {
+		"signIn": {
+			"emailConfirmationFailed": "فشل تأكيد البريد الإلكتروني. يرجى المحاولة مرة أخرى أو الاتصال بالدعم.",
+			"title": "مرحبًا بعودتك!",
+			"subtitle": "سجّل الدخول للوصول إلى بياناتك",
+			"email": {
+				"label": "البريد الإلكتروني",
+				"placeholder": "أدخل بريدك الإلكتروني"
+			},
+			"password": {
+				"label": "كلمة المرور",
+				"placeholder": "أدخل كلمة المرور"
+			},
+			"forgotPassword": "هل نسيت كلمة المرور؟",
+			"login": "تسجيل الدخول",
+			"noAccount": "ليس لديك حساب؟",
+			"register": "إنشاء حساب",
+			"success": {
+				"signedIn": "تم تسجيل الدخول بنجاح",
+				"verified": "تم تأكيد البريد الإلكتروني بنجاح. يمكنك تسجيل الدخول الآن."
+			},
+			"errors": {
+				"loginFailed": "فشل تسجيل الدخول",
+				"incorrectEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+				"invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
+				"requiredEmail": "البريد الإلكتروني مطلوب",
+				"requiredPassword": "كلمة المرور مطلوبة"
+			},
+			"loading": "جاري تسجيل الدخول..."
+		},
+		"signUp": {
+			"title": "إنشاء حساب جديد",
+			"subtitle": "انضم إلينا اليوم وابدأ رحلتك معنا",
+			"name": {
+				"label": "الاسم الكامل",
+				"placeholder": "أدخل اسمك الكامل"
+			},
+			"email": {
+				"label": "البريد الإلكتروني",
+				"placeholder": "أدخل بريدك الإلكتروني"
+			},
+			"password": {
+				"label": "كلمة المرور",
+				"placeholder": "أدخل كلمة المرور"
+			},
+			"register": "إنشاء الحساب",
+			"loading": "جارٍ التسجيل...",
+			"haveAccount": "لديك حساب بالفعل؟ ",
+			"login": "تسجيل الدخول",
+			"success": {
+				"emailSend": "تم إرسال رابط التحقق إلى بريدك الإلكتروني"
+			},
+			"errors": {
+				"registrationFailed": "فشل التسجيل، يرجى المحاولة مرة أخرى",
+				"name": {
+					"required": "الاسم مطلوب",
+					"maxLength": "الاسم يجب ألا يتجاوز 50 حرفًا"
+				},
+				"email": {
+					"required": "البريد الإلكتروني مطلوب",
+					"invalid": "البريد الإلكتروني غير صالح"
+				},
+				"password": {
+					"minLength": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+					"maxLength": "كلمة المرور يجب ألا تتجاوز 20 حرفًا",
+					"pattern": "يجب أن تحتوي كلمة المرور على حرف كبير وصغير ورقم ورمز خاص"
+				}
+			}
+		},
+		"roleSelector": {
+			"label": "نوع الحساب",
+			"tenant": {
+				"title": "مستأجر",
+				"description": "أبحث عن وحدة سكنية للإيجار"
+			},
+			"landlord": {
+				"title": "مالك عقار",
+				"description": "أرغب في تأجير وحدتي السكنية"
+			}
+		},
+		"forgotPassword": {
+			"title": "استعادة كلمة المرور",
+			"subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور الخاصة بك.",
+			"backToLogin": "العودة لتسجيل الدخول",
+			"form": {
+				"email": {
+					"label": "البريد الإلكتروني",
+					"placeholder": "example@domain.com"
+				},
+				"send": "إرسال الرابط",
+				"loading": "جاري الإرسال...",
+				"success": {
+					"sent": "تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني بنجاح."
+				},
+				"errors": {
+					"required": "البريد الإلكتروني مطلوب",
+					"invalidEmail": "صيغة البريد الإلكتروني غير صحيحة",
+					"forgotPasswordFailed": "حدث خطأ أثناء محاولة إرسال البريد الإلكتروني. يرجى المحاولة مرة أخرى."
+				}
+			}
+		},
+		"resetPassword": {
+			"title": "إعادة تعيين كلمة المرور",
+			"backToLogin": "العودة لتسجيل الدخول",
+			"form": {
+				"email": {
+					"label": "البريد الإلكتروني",
+					"placeholder": "أدخل بريدك الإلكتروني"
+				},
+				"code": {
+					"label": "رمز إعادة التعيين",
+					"placeholder": "أدخل رمز إعادة التعيين"
+				},
+				"password": {
+					"label": "كلمة المرور الجديدة",
+					"placeholder": "أدخل كلمة المرور الجديدة",
+					"minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+					"maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+					"pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
+				},
+				"reset": "إعادة تعيين كلمة المرور",
+				"loading": "جاري إعادة التعيين...",
+				"success": {
+					"sent": "تم إعادة تعيين كلمة المرور بنجاح"
+				},
+				"errors": {
+					"invalidLink": "رابط استعادة كلمة المرور غير صالح أو منتهي الصلاحية.",
+					"requestNewLink": "طلب رابط جديد",
+					"email": {
+						"invalid": "البريد الإلكتروني غير صالح",
+						"required": "البريد الإلكتروني مطلوب"
+					},
+					"password": {
+						"minLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+						"maxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+						"pattern": "يجب أن تحتوي كلمة المرور على حرف كبير، صغير، رقم ورمز خاص"
+					},
+					"confirmPassword": {
+						"mismatch": "كلمتا المرور غير متطابقتين"
+					},
+					"failed": "فشل إعادة تعيين كلمة المرور"
+				},
+				"confirmPassword": {
+					"label": "تأكيد كلمة المرور",
+					"placeholder": "أعد إدخال كلمة المرور"
+				}
+			}
+		},
+		"resendVerification": {
+			"title": "إعادة إرسال البريد الإلكتروني للتحقق",
+			"form": {
+				"email": {
+					"label": "البريد الإلكتروني",
+					"placeholder": "أدخل بريدك الإلكتروني"
+				},
+				"send": "إرسال",
+				"haveAccount": "هل لديك حساب بالفعل؟",
+				"login": "تسجيل الدخول",
+				"loading": "جارٍ الإرسال...",
+				"success": {
+					"sent": "إذا كان البريد مسجلاً، سيتم إرسال رابط التحقق."
+				},
+				"errors": {
+					"failed": "فشل إعادة إرسال البريد الإلكتروني للتحقق",
+					"invalidEmail": "يجب أن يكون البريد الإلكتروني صحيحًا"
+				}
+			}
+		}
+	},
+	"footer": {
+		"ariaLabel": "تذييل الصفحة",
+		"copyright": "© {year} جميع الحقوق محفوظة.",
+		"about": {
+			"title": "عن الموقع",
+			"menu": "الرئيسية",
+			"features": "المميزات",
+			"blogs": "المدونة",
+			"support": "الدعم"
+		},
+		"company": {
+			"title": "الشركة",
+			"about": "من نحن",
+			"terms": "الشروط والأحكام",
+			"privacy": "سياسة الخصوصية"
+		},
+		"contact": {
+			"title": "تواصل معنا"
+		}
+	},
+	"dashboardCard": {
+		"viewAll": "عرض الكل",
+		"loading": "جارٍ التحميل…"
+	},
+	"emptyState": {
+		"defaultTitle": "لا توجد بيانات",
+		"defaultMessage": "لم نتمكن من العثور على أي نتائج. حاول تعديل البحث أو العودة لاحقاً.",
+		"defaultActionLabel": "حاول مجدداً"
+	},
+	"rentedPropertyCard": {
+		"imageAlt": "{{address}}",
+		"currency": "ر.س"
+	}
 }

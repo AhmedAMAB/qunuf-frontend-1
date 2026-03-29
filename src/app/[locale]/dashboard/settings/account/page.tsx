@@ -5,7 +5,7 @@ import BreadcrumbsHeader from "@/components/atoms/BreadcrumbsHeader";
 import { useDashboardHref } from "@/hooks/dashboard/useDashboardHref";
 import { useTranslations } from "next-intl";
 
-
+ 
 export default function AccountPage() {
     const t = useTranslations('dashboard.account');
     const { getHref } = useDashboardHref();

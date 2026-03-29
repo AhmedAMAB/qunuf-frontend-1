@@ -1,6 +1,4 @@
-import { ConversationChat } from "@/hooks/dashboard/useChat";
-import { Message } from "@/types/dashboard/chat";
-import { User } from "@/types/dashboard/user";
+import { ConversationChat } from "@/hooks/dashboard/useChat"; 
 import { formatLastMessageTime } from "@/utils/date";
 import { resolveUrl } from "@/utils/upload";
 import { useTranslations } from "next-intl";

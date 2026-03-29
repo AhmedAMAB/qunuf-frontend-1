@@ -52,7 +52,7 @@ export default function UserDetailsPopup({ row, onClose }: UserDetailsPopupProps
                 {/* Header Card */}
                 <div className={cn(
                     "relative overflow-hidden",
-                    "bg-gradient-to-br from-lighter via-highlight to-lighter/50",
+                    "bg-gradient-to-br from-primary via-primary/90 to-secondary",
                     "rounded-2xl p-6 shadow-lg border-2 border-secondary/10"
                 )}>
                     {/* Decorative blob */}
@@ -75,7 +75,7 @@ export default function UserDetailsPopup({ row, onClose }: UserDetailsPopupProps
                                 href={getDashboardHref('chats', { user: details.id })}
                                 className="group inline-block"
                             >
-                                <h2 className="text-3xl font-bold text-dark group-hover:text-primary transition-colors duration-300 flex items-center gap-2">
+                                <h2 className="text-3xl font-bold text-white group-hover:text-primary transition-colors duration-300 flex items-center gap-2">
                                     {details.name}
                                     <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

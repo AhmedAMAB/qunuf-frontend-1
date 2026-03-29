@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
-import { resolveUrl } from '@/utils/upload';
+import { resolveUrl } from '@/utils/upload'; 
 
 type Property = {
   id: string;

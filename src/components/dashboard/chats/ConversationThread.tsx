@@ -1,6 +1,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { Message } from "@/types/dashboard/chat";
-import { User } from "@/types/dashboard/user";
+import { User } from "@/types/dashboard/user"; 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";

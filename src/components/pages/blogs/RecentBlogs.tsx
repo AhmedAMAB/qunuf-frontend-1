@@ -1,102 +1,41 @@
-'use client'
+'use client';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RecentBlogs.tsx — Single unified file
+// Components: RecentBlogs · BlogCard (hero + grid) · BlogCardSkeleton
+//             FetchMoreBlogs · PageHeader · AnimatedSecondaryButton · AnimatedBall
+// ─────────────────────────────────────────────────────────────────────────────
+
 import api from '@/libs/axios';
-import PageHeader from '@/components/atoms/PageHeader';
 import { MdArticle } from 'react-icons/md';
-import { AnimatedSecondaryButton } from "@/components/atoms/buttons/AnimatedSecondaryButton";
-import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { resolveUrl } from "@/utils/upload";
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
+import { resolveUrl } from '@/utils/upload';
+import { useCallback, useEffect, useMemo, useRef, useState, ReactNode } from 'react';
 import RichTextRenderer from '@/components/molecules/forms/editor/RichTextRenderer';
 import { cn } from '@/lib/utils';
+import React from 'react';
 
-export default function RecentBlogs({ slug }: { slug?: string }) {
-    const t = useTranslations('blogs');
-    // State
-    const [recentBlog, setRecentBlog] = useState<ViewBlog | null>(null);
-    const [blogs, setBlogs] = useState<ViewBlog[]>([]);
-    const [cursor, setCursor] = useState<string>('');
-    const [hasMore, setHasMore] = useState<boolean>(false);
+// ─────────────────────────────────────────────────────────────────────────────
+// Design tokens — single source of truth, change here → updates everywhere
+// ─────────────────────────────────────────────────────────────────────────────
 
-    // Loading States
-    const [initialLoading, setInitialLoading] = useState<boolean>(true);
+// Softer radius that matches the rest of the page (not sharp, not pill)
+const R      = 'rounded-[14px]';
+// Hairline border — barely visible, never harsh
+const BORDER = 'border border-gray-200/60 dark:border-white/[0.06]';
+// Card surface
+const BG     = 'bg-white dark:bg-zinc-900';
+// Resting shadow — just barely lifts the card
+const SHADE  = 'shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)]';
+// Hover — smooth lift, no abrupt jump
+const HOVER  = 'hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)] hover:-translate-y-[2px]';
+const TRANS  = 'transition-all duration-400 ease-out';
 
-    // 1. Fetch Initial Data
-    useEffect(() => {
-        const fetchInitialData = async () => {
-            setInitialLoading(true);
-            try {
-                const [recentRes, blogsRes] = await Promise.all([
-                    slug ? api.get(`/blogs/${slug}`) : api.get('/blogs/recent'),
-                    api.get('/blogs?limit=9'),
-                ]);
-
-                setRecentBlog(recentRes.data);
-                setBlogs(blogsRes.data.items || []);
-                setCursor(blogsRes.data.nextCursor || '');
-                setHasMore(blogsRes.data.hasMore || false);
-            } catch (err) {
-                console.error('Error fetching blogs:', err);
-            } finally {
-                setInitialLoading(false);
-            }
-        };
-
-        fetchInitialData();
-    }, [slug]);
-
-
-    if (initialLoading) {
-        return (
-            <div className="bg-highlight pb-20 sm:pb-32 px-4">
-                <div className="container max-w-7xl mx-auto">
-                    <PageHeader title={t('blogs')} className="bg-highlight mb-10" />
-                    <BlogCardSkeleton list />
-                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                        {Array.from({ length: 3 }).map((_, i) => (
-                            <BlogCardSkeleton key={i} />
-                        ))}
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-
-    if (!recentBlog && blogs.length === 0) {
-        return (
-            <div className="flex flex-col items-center justify-center text-center py-20 px-4">
-                <div className="mb-6 rounded-full bg-gray-100 p-6">
-                    <MdArticle size={48} className="text-gray-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-700 mb-2">{t('empty.title')}</h3>
-                <p className="text-sm text-gray-500 max-w-md">{t('empty.description')}</p>
-            </div>
-        );
-    }
-
-    return (
-        <div className="bg-highlight pb-20 sm:pb-26 lg:pb-32 px-2">
-            <div className="container">
-                <PageHeader title={t('blogs')} className="bg-highlight" />
-
-                {/* Most recent blogs carousel/grid */}
-
-                <BlogCard key={recentBlog.id} blog={recentBlog} list />
-
-                <h1 className="font-bold text-3xl md:text-4xl lg:text-[50px] mb-3 text-secondary">
-                    {t('our')} <span className="text-black">{t('recentBlogs')}</span>
-                </h1>
-
-                <FetchMoreBlogs InitailBlogs={blogs} initialCursor={cursor} initialHasMore={hasMore} recentId={recentBlog.id} />
-            </div>
-        </div>
-    );
-}
-
-
-
+// ─────────────────────────────────────────────────────────────────────────────
+// Types
+// ─────────────────────────────────────────────────────────────────────────────
 
 export interface ViewBlog {
     id: string;
@@ -107,232 +46,480 @@ export interface ViewBlog {
     description_ar?: string;
     description_en?: string;
     created_at: string | Date;
-};
-interface BlogProps {
-    blog: ViewBlog
+}
+
+interface BlogCardProps {
+    blog: ViewBlog;
     list?: boolean;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PageHeader
+// ─────────────────────────────────────────────────────────────────────────────
 
+export function PageHeader({ title, className }: { title: string; className?: string }) {
+    return (
+        <div className={cn('flex flex-col items-center gap-2.5 py-10 md:py-14', className)}>
+            <div className="flex items-center gap-4">
+                <span className="block h-px w-7 rounded-full bg-gray-300/70" aria-hidden="true" />
+                <h1 className="select-none text-2xl font-semibold tracking-wide text-[#616161] md:text-3xl lg:text-4xl">
+                    {title}
+                </h1>
+                <span className="block h-px w-7 rounded-full bg-gray-300/70" aria-hidden="true" />
+            </div>
+            {/* Brand accent */}
+            <span
+                className="block h-[2px] w-10 rounded-full bg-gradient-to-r from-secondary/50 via-primary to-secondary/50"
+                aria-hidden="true"
+            />
+        </div>
+    );
+}
 
-function BlogCard({ blog, list = false }: BlogProps) {
-    const t = useTranslations("blogs");
+// ─────────────────────────────────────────────────────────────────────────────
+// AnimatedBall
+// ─────────────────────────────────────────────────────────────────────────────
+
+type AnimatedBallProps = {
+    position: 'start' | 'end';
+    large?: boolean;
+    variant?: 'white' | 'highlight';
+    offset?: number;
+};
+
+export function AnimatedBall({ position, large = true, variant = 'white', offset = 0 }: AnimatedBallProps) {
+    const size = large
+        ? 'w-[60px] sm:w-[70px] 2xl:w-[75px] h-[60px] sm:h-[70px] 2xl:h-[75px]'
+        : 'w-[55px] xl:w-[65px] h-[55px] xl:h-[65px]';
+
+    const color = variant === 'white' ? 'bg-white/90' : 'bg-highlight';
+
+    const style: React.CSSProperties = {
+        position: 'absolute',
+        bottom: `${-40 + offset}px`,
+        [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: `${-20 + offset}px`,
+    };
+
+    const hoverCls =
+        position === 'start'
+            ? 'group-hover:-translate-y-1.5 ltr:group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5'
+            : 'group-hover:-translate-y-1.5 ltr:group-hover:-translate-x-1.5 rtl:group-hover:translate-x-1.5';
+
+    return (
+        <div
+            className={cn(color, size, 'rounded-full transition-all duration-300 ease-out group-hover:scale-105', hoverCls)}
+            style={style}
+            aria-hidden="true"
+        />
+    );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AnimatedSecondaryButton
+// ─────────────────────────────────────────────────────────────────────────────
+
+type AnimatedSecondaryButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    children: ReactNode;
+    className?: string;
+    position?: 'start' | 'end';
+    primary?: boolean;
+    large?: boolean;
+    showBall?: boolean;
+    loading?: boolean;
+};
+
+export function AnimatedSecondaryButton({
+    children,
+    className = '',
+    position = 'start',
+    primary = false,
+    large = true,
+    showBall = true,
+    loading = false,
+    disabled,
+    ...props
+}: AnimatedSecondaryButtonProps) {
+    return (
+        <button
+            {...props}
+            disabled={loading || disabled}
+            aria-busy={loading}
+            className={cn(
+                'group relative overflow-hidden rounded-xl font-medium text-white',
+                'transition-all duration-300 ease-out',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+                primary
+                    ? 'bg-primary hover:bg-primary-hover focus-visible:ring-primary'
+                    : 'bg-secondary hover:bg-secondary-hover focus-visible:ring-secondary',
+                large
+                    ? 'h-[48px] w-[160px] text-sm sm:h-[52px] sm:w-[200px] sm:text-base 2xl:w-[242px]'
+                    : 'h-[42px] w-[130px] text-sm lg:w-[160px]',
+                loading || disabled ? 'cursor-not-allowed opacity-60' : 'active:scale-[0.98]',
+                className
+            )}
+            style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.10)' }}
+        >
+            <span className="relative z-10 select-none">{children}</span>
+            {showBall && (
+                <>
+                    <AnimatedBall position={position} large={large} variant="white" offset={5} />
+                    <AnimatedBall position={position} large={large} variant="highlight" offset={0} />
+                </>
+            )}
+        </button>
+    );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ArrowIcon — RTL-aware via rtl:rotate-180
+// ─────────────────────────────────────────────────────────────────────────────
+
+function ArrowIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={cn('rtl:rotate-180', className)}
+            aria-hidden="true"
+        >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+    );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BlogCardSkeleton
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function BlogCardSkeleton({ list = false }: { list?: boolean }) {
+    if (list) {
+        return (
+            <div
+                className={cn('grid animate-pulse grid-cols-1 overflow-hidden md:grid-cols-2', R, BORDER, BG)}
+                aria-hidden="true"
+            >
+                <div className="min-h-[260px] bg-gray-100 dark:bg-zinc-800 md:min-h-[400px]" />
+                <div className="flex flex-col gap-5 p-7 md:p-10">
+                    <div className="flex items-center gap-2">
+                        <div className="h-1.5 w-1.5 rounded-full bg-gray-200 dark:bg-zinc-700" />
+                        <div className="h-3 w-28 rounded-full bg-gray-200 dark:bg-zinc-700" />
+                    </div>
+                    <div className="space-y-2.5">
+                        <div className="h-6 w-4/5 rounded-lg bg-gray-200 dark:bg-zinc-700" />
+                        <div className="h-6 w-3/5 rounded-lg bg-gray-200 dark:bg-zinc-700" />
+                    </div>
+                    <div className="space-y-2">
+                        <div className="h-4 w-full rounded bg-gray-100 dark:bg-zinc-800" />
+                        <div className="h-4 w-5/6 rounded bg-gray-100 dark:bg-zinc-800" />
+                        <div className="h-4 w-4/6 rounded bg-gray-100 dark:bg-zinc-800" />
+                        <div className="h-4 w-3/6 rounded bg-gray-100 dark:bg-zinc-800" />
+                    </div>
+                    <div className="mt-auto border-t border-gray-100 pt-5 dark:border-zinc-800">
+                        <div className="h-7 w-28 rounded-full bg-gray-200 dark:bg-zinc-700" />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className={cn('animate-pulse overflow-hidden', R, BORDER, BG)} aria-hidden="true">
+            <div className="h-[195px] bg-gray-100 dark:bg-zinc-800 sm:h-[210px]" />
+            <div className="flex flex-col gap-3 p-5">
+                <div className="h-5 w-4/5 rounded-lg bg-gray-200 dark:bg-zinc-700" />
+                <div className="space-y-2 pt-0.5">
+                    <div className="h-3.5 w-full rounded bg-gray-100 dark:bg-zinc-800" />
+                    <div className="h-3.5 w-5/6 rounded bg-gray-100 dark:bg-zinc-800" />
+                    <div className="h-3.5 w-4/6 rounded bg-gray-100 dark:bg-zinc-800" />
+                </div>
+                <div className="mt-2 border-t border-gray-100 pt-4 dark:border-zinc-800">
+                    <div className="h-7 w-24 rounded-full bg-gray-200 dark:bg-zinc-700" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HeroBlogCard — list = true
+// ─────────────────────────────────────────────────────────────────────────────
+
+function HeroBlogCard({ blog }: { blog: ViewBlog }) {
+    const t = useTranslations('blogs');
     const locale = useLocale();
     const isAr = locale === 'ar';
+
     const title = isAr ? blog.title_ar : blog.title_en;
     const description = isAr ? blog.description_ar : blog.description_en;
+
     const formattedDate = new Date(blog.created_at).toLocaleDateString(locale, {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
+        day: 'numeric', month: 'long', year: 'numeric',
     });
 
     return (
-        <article
-            className={cn(
-                "group overflow-hidden relative w-full rounded-2xl",
-                "flex flex-col",
-                "transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10",
-                "animate__animated animate__fadeInUp",
-                list
-                    ? "space-y-6 lg:space-y-8"
-                    : "max-w-[420px] mx-auto space-y-5"
-            )}
-        >
-            {/* Image Container */}
-            <Link href={`/blogs/${blog.slug}`} className="relative block overflow-hidden rounded-2xl">
-                {/* Gradient overlay on hover */}
-                <div className={cn(
-                    "absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/20 to-transparent z-10",
-                    "opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                )} />
+        <article className={cn(
+            'group relative grid grid-cols-1 overflow-hidden md:grid-cols-2',
+            R, BORDER, BG, SHADE, TRANS, HOVER
+        )}>
+            {/* ── Image (left half on md+) ── */}
+            <Link
+                href={`/blogs/${blog.slug}`}
+                className="relative block min-h-[260px] overflow-hidden md:min-h-[400px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+                aria-label={t('readBlog', { title })}
+            >
+                {/* Very soft top-left veil — editorial feel without blocking image */}
+                <div
+                    className="absolute inset-0 z-10 bg-gradient-to-br from-black/18 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-40"
+                    aria-hidden="true"
+                />
 
-                {/* Date Badge (only for grid view) */}
-                {!list && (
-                    <div className={cn(
-                        "absolute top-4 ltr:left-4 rtl:right-4 z-20",
-                        "bg-dashboard-bg/95 backdrop-blur-md rounded-xl px-4 py-2",
-                        "shadow-lg border border-secondary/20",
-                        "transform transition-all duration-300",
-                        "group-hover:scale-105"
-                    )}>
-                        <time className="text-xs md:text-sm font-bold text-primary">
-                            {formattedDate}
-                        </time>
-                    </div>
-                )}
+                {/* Frosted "Featured" tag */}
+                <span className={cn(
+                    'absolute top-3.5 z-20 ltr:left-3.5 rtl:right-3.5',
+                    'rounded-[8px] border border-white/20 bg-white/10 px-2.5 py-1',
+                    'text-[10.5px] font-medium tracking-wider text-white backdrop-blur-[8px]'
+                )}>
+                    {t('featured')}
+                </span>
 
-                {/* Image */}
                 <Image
                     src={resolveUrl(blog.imagePath)}
                     alt={title}
-                    width={600}
-                    height={450}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     loading="eager"
                     fetchPriority="high"
-                    className={cn(
-                        "w-full object-cover",
-                        "transition-all duration-700",
-                        "group-hover:scale-110 group-hover:rotate-1",
-                        list
-                            ? "h-[380px] sm:h-[420px] md:h-[460px] lg:h-[500px]"
-                            : "h-[220px] sm:h-[260px] md:h-[300px] lg:h-[360px]"
-                    )}
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
             </Link>
 
-            {/* Content Container */}
-            <div className={cn(
-                "flex-1 flex flex-col gap-3 lg:gap-4 px-1",
-                list && "md:px-2"
-            )}>
+            {/* ── Content (right half on md+) ── */}
+            <div className="flex flex-col justify-center gap-5 px-7 py-8 md:px-9 md:py-10 lg:px-11">
+
+                {/* Eyebrow */}
+                <div className="flex items-center gap-2">
+                    <span className="h-[5px] w-[5px] flex-shrink-0 rounded-full bg-secondary opacity-75" aria-hidden="true" />
+                    <time
+                        dateTime={new Date(blog.created_at).toISOString()}
+                        className="text-[11px] font-medium uppercase tracking-[0.09em] text-gray-400"
+                    >
+                        {formattedDate}
+                    </time>
+                </div>
+
                 {/* Title */}
                 <Link
                     href={`/blogs/${blog.slug}`}
                     className={cn(
-                        "block font-bold text-dark leading-tight tracking-tight",
-                        "transition-all duration-300 hover:text-primary",
-                        "group-hover:translate-x-1 rtl:group-hover:-translate-x-1",
-                        list
-                            ? "text-2xl md:text-3xl lg:text-4xl"
-                            : "text-xl md:text-2xl"
+                        'font-serif text-2xl font-bold leading-[1.25] tracking-tight text-dark',
+                        'transition-colors duration-300 hover:text-secondary',
+                        'focus-visible:outline-none focus-visible:underline',
+                        'md:text-[1.85rem] lg:text-[2rem]'
                     )}
                 >
                     {title}
                 </Link>
 
                 {/* Description */}
-                <div className={cn(
-                    "text-grey-dark/80 leading-relaxed",
-                    "transition-colors duration-300 group-hover:text-grey-dark",
-                    list
-                        ? "text-base md:text-lg line-clamp-4"
-                        : "text-sm md:text-base line-clamp-3"
-                )}>
-                    <RichTextRenderer
-                        content={description}
-                        className="prose prose-sm max-w-none"
-                    />
+                <div className="line-clamp-4 text-[0.875rem] leading-[1.75] text-gray-500 dark:text-gray-400 md:text-[0.9375rem]">
+                    <RichTextRenderer content={description} className="prose prose-sm max-w-none" />
                 </div>
 
-                {/* Date for list view */}
-                {list && (
-                    <time className="text-placeholder text-sm md:text-base font-medium">
-                        {formattedDate}
-                    </time>
-                )}
-
-                {/* Read More Button (grid view only) */}
-                {!list && (
-                    <div className="mt-auto pt-3">
-                        <Link href={`/blogs/${blog.slug}`}>
-                            <CustomReadMoreButton>
-                                {t("readMore")}
-                            </CustomReadMoreButton>
-                        </Link>
-                    </div>
-                )}
+                {/* Footer CTA */}
+                <div className="mt-1 flex items-center border-t border-gray-100 pt-5 dark:border-white/[0.05]">
+                    <Link
+                        href={`/blogs/${blog.slug}`}
+                        className={cn(
+                            'group/cta inline-flex items-center gap-2.5',
+                            'text-sm font-medium text-secondary',
+                            'transition-all duration-300',
+                            'focus-visible:outline-none focus-visible:underline'
+                        )}
+                        aria-label={t('readMore')}
+                    >
+                        {t('readMore')}
+                        {/* Circle arrow — rotates 45° on hover */}
+                        <span className={cn(
+                            'flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full',
+                            'border border-secondary/35',
+                            'transition-all duration-300',
+                            'group-hover/cta:border-secondary group-hover/cta:bg-secondary group-hover/cta:text-white group-hover/cta:-rotate-45'
+                        )}>
+                            <ArrowIcon className="h-3 w-3" />
+                        </span>
+                    </Link>
+                </div>
             </div>
         </article>
     );
 }
 
-/* Custom Read More Button Component */
-function CustomReadMoreButton({ children }: { children: React.ReactNode }) {
+// ─────────────────────────────────────────────────────────────────────────────
+// GridBlogCard — list = false
+// ─────────────────────────────────────────────────────────────────────────────
+
+function GridBlogCard({ blog }: { blog: ViewBlog }) {
+    const t = useTranslations('blogs');
+    const locale = useLocale();
+    const isAr = locale === 'ar';
+
+    const title = isAr ? blog.title_ar : blog.title_en;
+    const description = isAr ? blog.description_ar : blog.description_en;
+
+    const formattedDate = new Date(blog.created_at).toLocaleDateString(locale, {
+        day: 'numeric', month: 'long', year: 'numeric',
+    });
+
     return (
-        <button
-            className={cn(
-                "group/btn relative inline-flex items-center gap-2",
-                "px-6 py-2.5 rounded-full overflow-hidden",
-                "bg-gradient-to-r from-secondary to-primary",
-                "text-white font-semibold text-sm md:text-base",
-                "shadow-lg hover:shadow-xl hover:shadow-secondary/30",
-                "transition-all duration-300",
-                "hover:scale-105 active:scale-95",
-                "mx-auto"
-            )}
-        >
-            {/* Shine effect */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
-
-            {/* Text */}
-            <span className="relative z-10">{children}</span>
-
-            {/* Arrow Icon */}
-            <svg
-                className={cn(
-                    "relative z-10 w-4 h-4",
-                    "transition-transform duration-300",
-                    "group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1"
-                )}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+        <article className={cn(
+            'group flex w-full flex-col overflow-hidden',
+            R, BORDER, BG, SHADE, TRANS, HOVER,
+            'focus-within:ring-2 focus-within:ring-secondary focus-within:ring-offset-2'
+        )}>
+            {/* ── Image ── */}
+            <Link
+                href={`/blogs/${blog.slug}`}
+                className="relative block h-[195px] flex-shrink-0 overflow-hidden focus-visible:outline-none sm:h-[210px]"
+                aria-label={t('readBlog', { title })}
             >
-                <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-            </svg>
+                {/* Date badge — same border language as card: hairline, soft radius */}
+                <div className={cn(
+                    'absolute top-3 z-10 ltr:left-3 rtl:right-3',
+                    'rounded-[8px] border border-white/25 bg-white/82 px-2.5 py-[5px] backdrop-blur-[5px]',
+                    'transition-colors duration-300 group-hover:bg-white/94',
+                    'dark:bg-black/40 dark:border-white/10'
+                )}>
+                    <time
+                        dateTime={new Date(blog.created_at).toISOString()}
+                        className="text-[10.5px] font-semibold leading-none tracking-wide text-secondary"
+                    >
+                        {formattedDate}
+                    </time>
+                </div>
 
-            {/* Ripple effect */}
-            <span className="absolute inset-0 rounded-full bg-white/0 group-hover/btn:bg-white/10 transition-colors duration-300" />
-        </button>
+                {/* Subtle bottom scrim — only appears on hover */}
+                <div
+                    className="absolute inset-0 z-[1] bg-gradient-to-t from-black/18 to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"
+                    aria-hidden="true"
+                />
+
+                <Image
+                    src={resolveUrl(blog.imagePath)}
+                    alt={title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                />
+            </Link>
+
+            {/* ── Body ── */}
+            <div className="flex flex-1 flex-col gap-2.5 p-4 sm:p-5">
+
+                {/* Title */}
+                <Link
+                    href={`/blogs/${blog.slug}`}
+                    className={cn(
+                        'line-clamp-2 font-serif text-[1.0625rem] font-bold leading-snug text-dark',
+                        'transition-colors duration-300 hover:text-secondary',
+                        'focus-visible:outline-none focus-visible:underline'
+                    )}
+                >
+                    {title}
+                </Link>
+
+                {/* Description */}
+                <div className="line-clamp-3 text-[0.8125rem] leading-relaxed text-gray-500 dark:text-gray-400">
+                    <RichTextRenderer content={description} className="prose prose-sm max-w-none" />
+                </div>
+
+                {/* Footer */}
+                <div className="mt-auto flex items-center border-t border-gray-100 pt-3.5 dark:border-white/[0.05]">
+                    <Link
+                        href={`/blogs/${blog.slug}`}
+                        className={cn(
+                            'inline-flex items-center gap-1.5 rounded-full',
+                            'border border-secondary/15 bg-secondary/[0.06] px-3.5 py-1.5',
+                            'text-[11.5px] font-medium text-secondary',
+                            'transition-all duration-250 hover:bg-secondary/[0.12] group-hover:gap-2.5',
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-1'
+                        )}
+                        aria-label={t('readMore')}
+                    >
+                        {t('readMore')}
+                        <ArrowIcon className="h-[11px] w-[11px] flex-shrink-0 transition-transform duration-250 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+                    </Link>
+                </div>
+            </div>
+        </article>
     );
 }
 
-export function BlogCardSkeleton({ list = false }: { list?: boolean }) {
+// ─────────────────────────────────────────────────────────────────────────────
+// BlogCard — public dispatcher
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function BlogCard({ blog, list = false }: BlogCardProps) {
+    if (list) return <HeroBlogCard blog={blog} />;
+    return <GridBlogCard blog={blog} />;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EmptyState
+// ─────────────────────────────────────────────────────────────────────────────
+
+function EmptyState() {
+    const t = useTranslations('blogs');
     return (
-        <div className={`overflow-hidden w-full  relative ${!list && "max-w-[400px]"} rounded-[16px] flex ${list ? "flex-col w-full space-y-6" : "flex-col w-fit mx-auto space-y-7"} animate-pulse`}>
-            <div className={`w-full ${list ? "h-[380px] sm:h-[400px] md:h-[420px] lg:h-[450px]" : "max-w-[400px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[360px]"} bg-gray-200 rounded-[16px]`}></div>
-            <div className={`flex-1 flex flex-col gap-2 lg:gap-4 z-[1] mb-4 ${list ? "mt-5 md:mt-3" : ""}`}>
-                {!list && <div className="h-4 w-1/3 bg-gray-300 rounded"></div>}
-                <div className="h-6 w-3/4 bg-gray-300 rounded"></div>
-                <div className={`h-4 ${list ? "w-full" : "w-5/6"} bg-gray-300 rounded mt-2`}></div>
-                {!list && <div className="mx-auto h-10 w-32 bg-gray-300 rounded"></div>}
+        <div className="flex flex-col items-center justify-center px-6 py-24 text-center" role="status" aria-live="polite">
+            <div className="mb-5 rounded-full bg-gray-100 p-5 dark:bg-zinc-800">
+                <MdArticle size={40} className="text-gray-400" aria-hidden="true" />
             </div>
+            <h2 className="mb-1.5 text-lg font-semibold text-gray-700 dark:text-gray-300">
+                {t('empty.title')}
+            </h2>
+            <p className="max-w-sm text-sm leading-relaxed text-gray-400">
+                {t('empty.description')}
+            </p>
         </div>
     );
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// FetchMoreBlogs
+// ─────────────────────────────────────────────────────────────────────────────
 
-
-interface props {
-    recentId: string,
-    InitailBlogs: ViewBlog[],
-    initialCursor: string,
-    initialHasMore: boolean
+interface FetchMoreBlogsProps {
+    recentId: string;
+    InitailBlogs: ViewBlog[];
+    initialCursor: string;
+    initialHasMore: boolean;
 }
-function FetchMoreBlogs({ recentId, InitailBlogs, initialCursor, initialHasMore }: props) {
+
+function FetchMoreBlogs({ recentId, InitailBlogs, initialCursor, initialHasMore }: FetchMoreBlogsProps) {
     const t = useTranslations('blogs');
 
-    const [blogs, setBlogs] = useState<ViewBlog[]>(InitailBlogs || []);
-    const [cursor, setCursor] = useState<string>(initialCursor);
+    const [blogs, setBlogs]     = useState<ViewBlog[]>(InitailBlogs || []);
+    const [cursor, setCursor]   = useState<string>(initialCursor);
     const [hasMore, setHasMore] = useState(initialHasMore);
     const [loading, setLoading] = useState(false);
 
     const controllerRef = useRef<AbortController | null>(null);
 
-    // ----------------------------------------
-    // Fetch blogs with cursor
-    // ----------------------------------------
     const fetchBlogs = useCallback(async () => {
         if (!hasMore) return;
-
-        controllerRef.current?.abort(); // cancel previous request
+        controllerRef.current?.abort();
         controllerRef.current = new AbortController();
-
         setLoading(true);
         try {
             const res = await api.get(
                 `/blogs?${cursor ? `cursor=${cursor}&` : ''}limit=9`,
                 { signal: controllerRef.current.signal }
             );
-
             const { items: fetchedBlogs, nextCursor, hasMore: serverHasMore } = res.data;
-
             setBlogs(prev => [...prev, ...fetchedBlogs]);
             setCursor(nextCursor || null);
             setHasMore(serverHasMore);
@@ -342,38 +529,117 @@ function FetchMoreBlogs({ recentId, InitailBlogs, initialCursor, initialHasMore 
         } finally {
             setLoading(false);
         }
-    }, [cursor, hasMore, loading]);
+    }, [cursor, hasMore]);
 
-
-    // inside your component
-    const filteredBlogs = useMemo(() => {
-        if (!blogs || blogs.length === 0) return [];
-        return blogs.filter(blog => blog.id !== recentId);
-    }, [blogs, recentId]);
-
+    const filteredBlogs = useMemo(
+        () => blogs.filter(blog => blog.id !== recentId),
+        [blogs, recentId]
+    );
 
     return (
-        <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4 mt-6 justify-center mx-4">
-                {loading && blogs.length === 0 ? (
-                    Array.from({ length: 4 }).map((_, i) => <BlogCardSkeleton key={i} />)
-                ) : (
-                    filteredBlogs.map(blog => <BlogCard key={blog.id} blog={blog} />)
-                )}
+        <section aria-label={t('recentBlogs')}>
+            <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:gap-6">
+                {loading && blogs.length === 0
+                    ? Array.from({ length: 4 }).map((_, i) => <BlogCardSkeleton key={i} />)
+                    : filteredBlogs.map(blog => <BlogCard key={blog.id} blog={blog} />)
+                }
             </div>
+
             {hasMore && (
-                <div className="flex justify-center mt-8">
+                <div className="mt-10 flex justify-center">
                     <AnimatedSecondaryButton
-                        large={true}
+                        large
                         position="end"
                         loading={loading}
                         showBall={false}
-                        onClick={fetchBlogs}    // fetch next page
+                        onClick={fetchBlogs}
+                        aria-label={loading ? t('loadingMore') : t('loadMore')}
                     >
-                        {loading ? t('loadingMore') : t('readMore')}
+                        {loading ? t('loadingMore') : t('loadMore')}
                     </AnimatedSecondaryButton>
                 </div>
             )}
-        </div>
+        </section>
+    );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RecentBlogs — page root
+// ─────────────────────────────────────────────────────────────────────────────
+
+export default function RecentBlogs({ slug }: { slug?: string }) {
+    const t = useTranslations('blogs');
+
+    const [recentBlog, setRecentBlog]         = useState<ViewBlog | null>(null);
+    const [blogs, setBlogs]                   = useState<ViewBlog[]>([]);
+    const [cursor, setCursor]                 = useState<string>('');
+    const [hasMore, setHasMore]               = useState<boolean>(false);
+    const [initialLoading, setInitialLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const fetchInitialData = async () => {
+            setInitialLoading(true);
+            try {
+                const [recentRes, blogsRes] = await Promise.all([
+                    slug ? api.get(`/blogs/${slug}`) : api.get('/blogs/recent'),
+                    api.get('/blogs?limit=9'),
+                ]);
+                setRecentBlog(recentRes.data);
+                setBlogs(blogsRes.data.items || []);
+                setCursor(blogsRes.data.nextCursor || '');
+                setHasMore(blogsRes.data.hasMore || false);
+            } catch (err) {
+                console.error('Error fetching blogs:', err);
+            } finally {
+                setInitialLoading(false);
+            }
+        };
+        fetchInitialData();
+    }, [slug]);
+
+    // ── Loading ──
+    if (initialLoading) {
+        return (
+            <div className="px-4 pb-20 sm:pb-28 lg:pb-36">
+                <div className="container mx-auto max-w-7xl">
+                    <PageHeader title={t('blogs')} />
+                    <BlogCardSkeleton list />
+                    <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:gap-6">
+                        {Array.from({ length: 4 }).map((_, i) => <BlogCardSkeleton key={i} />)}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // ── Empty ──
+    if (!recentBlog && blogs.length === 0) {
+        return <EmptyState />;
+    }
+
+    return (
+        <main className="px-3 pb-20 sm:pb-28 lg:pb-36">
+            <div className="container pt-20 mx-auto">
+
+                {/* <PageHeader title={t('blogs')} /> */}
+
+                {recentBlog && <BlogCard blog={recentBlog} list />}
+
+                <h2 className="mb-6 mt-12 text-3xl font-bold leading-tight text-secondary md:text-4xl lg:mt-16 lg:text-[2.6rem]">
+                    {t('our')}{' '}
+                    <span className="text-dark">{t('recentBlogs')}</span>
+                </h2>
+
+                {recentBlog && (
+                    <FetchMoreBlogs
+                        InitailBlogs={blogs}
+                        initialCursor={cursor}
+                        initialHasMore={hasMore}
+                        recentId={recentBlog.id}
+                    />
+                )}
+
+            </div>
+        </main>
     );
 }

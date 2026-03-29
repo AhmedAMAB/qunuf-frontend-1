@@ -1,43 +1,119 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
-export default function PaymentsCompanyRow() {
-    return (
-        <div className="bg-secondary">
-            <div className="px-4 py-4 lg:py-6 sm:px-6 lg:px-8 xl:px-10 container overflow-x-auto">
-                <div className="flex items-center gap-6 sm:gap-8 md:gap-12 min-w-max justify-center">
-                    <ResponsiveIcon src="/payments/paypal.svg" alt="paypal" />
-                    <Balls />
-                    <ResponsiveIcon src="/payments/GreenHouse.svg" alt="GreenHouse" />
-                    <Balls />
-                    <ResponsiveIcon src="/payments/houseHold.svg" alt="houseHold" />
-                    <Balls />
-                    <ResponsiveIcon src="/payments/Century.svg" alt="Century" />
-                </div>
-            </div>
+const t: Record<string, string> = {
+  "partners.section_label": "Payment and partner logos",
+  "partners.paypal": "PayPal",
+  "partners.greenhouse": "GreenHouse",
+  "partners.household": "HouseHold",
+  "partners.century": "Century",
+};
+
+const PARTNERS = [
+  { src: "/payments/paypal.svg", altKey: "partners.paypal" },
+  { src: "/payments/GreenHouse.svg", altKey: "partners.greenhouse" },
+  { src: "/payments/houseHold.svg", altKey: "partners.household" },
+  { src: "/payments/Century.svg", altKey: "partners.century" },
+];
+
+type PaymentsCompanyRowProps = {
+  dir?: "rtl" | "ltr";
+};
+
+export default function PaymentsCompanyRow({
+  dir = "ltr",
+}: PaymentsCompanyRowProps) {
+  const listRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    const ul = listRef.current;
+    if (!ul || !ul.parentElement) return;
+
+    const clone = ul.cloneNode(true) as HTMLUListElement;
+    clone.setAttribute("aria-hidden", "true");
+    ul.parentElement.appendChild(clone);
+
+    return () => {
+      clone.remove();
+    };
+  }, []);
+
+  return (
+    <section
+      dir={dir}
+      className="w-full bg-secondary"
+      aria-label={t["partners.section_label"]}
+    >
+      <div
+        className="
+          w-full overflow-hidden py-6 sm:py-8 lg:py-10
+          [mask-image:linear-gradient(to_right,transparent_0,black_100px,black_calc(100%-100px),transparent_100%)]
+          [-webkit-mask-image:linear-gradient(to_right,transparent_0,black_100px,black_calc(100%-100px),transparent_100%)]
+        "
+      >
+        <div className="inline-flex w-full flex-nowrap">
+          <ul
+            ref={listRef}
+            className="
+              flex min-w-max shrink-0 items-center
+              [&_li]:mx-6 sm:[&_li]:mx-10 md:[&_li]:mx-14
+              animate-infinite-scroll
+            "
+          >
+            {PARTNERS.map((partner, idx) => (
+              <li
+                key={`${partner.src}-${idx}`}
+                className="flex shrink-0 items-center"
+              >
+                <LogoItem src={partner.src} alt={t[partner.altKey]} />
+                <ConnectorBalls />
+              </li>
+            ))}
+          </ul>
         </div>
-    );
+      </div>
+    </section>
+  );
 }
 
-function ResponsiveIcon({ src, alt }: { src: string; alt: string }) {
-    return (
-        <div className="w-[120px] sm:w-[160px] xl:w-[200px] h-auto shrink-0">
-            <Image
-                src={src}
-                alt={alt}
-                width={0}
-                height={0}
-                className="w-full h-auto"
-                sizes="(max-width: 768px) 120px, (max-width: 1280px) 160px, 200px"
-            />
-        </div>
-    );
+function LogoItem({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="h-auto w-[110px] shrink-0 sm:w-[150px] xl:w-[190px]">
+      <Image
+        src={src}
+        alt={alt}
+        width={190}
+        height={80}
+        className="h-auto w-full object-contain"
+        sizes="(max-width: 640px) 110px, (max-width: 1280px) 150px, 190px"
+      />
+    </div>
+  );
 }
 
-function Balls() {
-    return (
-        <div className="flex items-center justify-center shrink-0">
-            <div className="me-[-24px] sm:me-[-32px] md:me-[-40px] bg-[#E1E1E1] rounded-full w-[40px] sm:w-[55px] md:w-[67px] h-[40px] sm:h-[55px] md:h-[67px] z-[2]"></div>
-            <div className="bg-white rounded-full w-[40px] sm:w-[55px] md:w-[67px] h-[40px] sm:h-[55px] md:h-[67px]"></div>
-        </div>
-    );
+function ConnectorBalls() {
+  return (
+    <div className="ms-6 flex shrink-0 items-center justify-center sm:ms-10 md:ms-14">
+      <div
+        className="
+          -me-[20px] z-[2]
+          h-[40px] w-[40px]
+          rounded-full bg-[#E1E1E1]
+          sm:-me-[28px] sm:h-[55px] sm:w-[55px]
+          md:-me-[34px] md:h-[67px] md:w-[67px]
+        "
+      />
+      <div
+        className="
+          z-[3]
+          h-[40px] w-[40px]
+          rounded-full bg-white
+          sm:h-[55px] sm:w-[55px]
+          md:h-[67px] md:w-[67px]
+        "
+      />
+    </div>
+  );
 }

@@ -9,6 +9,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+			keyframes: {
+        "infinite-scroll": {
+          from: { transform: "translateX(0)" },
+          to:   { transform: "translateX(-100%)" },
+        },
+      },
+      animation: {
+        "infinite-scroll": "infinite-scroll 25s linear infinite",
+      },
       colors: {
         primary: 'var(--primary)',
         'primary-hover': 'var(--primary-hover)',

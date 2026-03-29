@@ -84,8 +84,7 @@ export default function FilterContainer({
                         />
                     </div>
                 )}
-
-                {/* Filter Inputs */}
+ 
                 {filters.map((filter) => {
                     const current = allFilters[filter.key];
                     const handleChange = (value: string | undefined) => {
@@ -104,7 +103,7 @@ export default function FilterContainer({
                     if (filter.type === "select" && filter.options) {
                         return (
                             <div key={filter.key} className="w-fit">
-                                <SelectDropdown
+                                <SelectDropdown 
                                     label={filter.label}
                                     options={filter.options}
                                     value={current}

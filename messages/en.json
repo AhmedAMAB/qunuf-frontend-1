@@ -1,2106 +1,2261 @@
 {
-  "root": {
-    "siteName": "Qunuf",
-    "logo": "QUNUF",
-    "description": "Discover, list, and manage properties with qunuf.",
-    "lang": "عربي"
-  },
-  "hero": {
-    "ratingLabel": "Average rating",
-    "trusted": "Trusted by thousands",
-    "satisfaction": "100% Satisfaction",
-    "quality": "Quality",
-    "guaranteed": "Guaranteed",
-    "eyebrow": "Discover Revolutionary Tools"
-  },
-  "notFound": {
-    "oopsTitle": "Oops, Page not found!",
-    "oopsMessage": "The page you're looking for is not found (it may have been moved, deleted, or doesn’t exist). Sorry for the inconvenience.",
-    "oopsHint": "If you think this is an error or something is broken, click report.",
-    "goHome": "Go to home"
-  },
-  "comman": {
-    "date": {
-      "yesterday": "Yesterday",
-      "today": "Today"
-    },
-    "edit": "Edit",
-    "delete": "Delete",
-    "insert": "Insert",
-    "upload": "Upload",
-    "reset_default": "Reset to Default",
-    "image_dialog": {
-      "title": "Insert Image",
-      "url_label": "Image URL",
-      "upload_text": "Click to upload image",
-      "alt_text_label": "Alt Text",
-      "width_label": "Width (px)",
-      "placeholders": {
-        "alt_text": "Description for accessibility",
-        "url": "https://example.com/image.jpg"
-      }
-    },
-    "datePlaceholder": "Select Date Range",
-    "editor": {
-      "placeholder": "Start typing here...",
-      "legal_notice": "Please ensure the content matches official legal standards.",
-      "link_dialog": {
-        "url_label": "Link URL",
-        "apply": "Apply Link",
-        "unlink": "Remove Link"
-      }
-    },
-    "retry": "Retry",
-    "errorTitle": "Oops, something went wrong",
-    "errorLoading": "Failed to load data",
-    "cancel": "Cancel",
-    "save": "Save",
-    "seeMore": "See More",
-    "seeLess": "See Less",
-    "form": {
-      "loading": "Loading...",
-      "mapInstruction": "Click on map to set location",
-      "email": {
-        "label": "Email Address",
-        "placeholder": "Enter your email address"
-      },
-      "password": {
-        "label": "Password",
-        "placeholder": "Enter your password"
-      },
-      "forgotPassword": {
-        "sent": "If the email is registered, a reset link will be sent"
-      },
-      "errors": {
-        "forgotPasswordFailed": "Failed to send reset email"
-      },
-      "locationInput": {
-        "fetching": "Fetching address...",
-        "addressPrefix": "Address:",
-        "selectedLocation": "Selected location:",
-        "latitude": "Latitude",
-        "longitude": "Longitude",
-        "latitudePlaceholder": "e.g. {lat}",
-        "longitudePlaceholder": "e.g. {lng}",
-        "invalidInput": "Invalid input. Please enter valid numbers.",
-        "latRangeError": "Latitude must be between -90 and 90.",
-        "lngRangeError": "Longitude must be between -180 and 180.",
-        "unknownAddress": "Unknown address",
-        "addressFetchError": "Failed to fetch address"
-      },
-      "uploader": {
-        "removing": "Removing...",
-        "dragLabel": "Drag and drop",
-        "orLabel": "or",
-        "chooseFiles": "Choose files",
-        "primaryFile": "Primary file",
-        "setAsPrimary": "Set as primary",
-        "rules": {
-          "maxSize": "Max file size {size}MB",
-          "maxFiles": "Max {count} files"
-        }
-      },
-      "send": "Send"
-    },
-    "months": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
-    "weekdays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "search": "Search...",
-    "saving": "Saving...",
-    "submitting": "Submitting...",
-    "error": "An error occurred",
-    "uploader": {
-      "success": {
-        "removed": "File deleted successfully"
-      },
-      "errors": {
-        "deleteFailed": "Failed to delete file. Please try again"
-      },
-      "rules": {
-        "maxSize": "Max file size is {size}MB",
-        "maxFiles": "Max {count} files allowed",
-        "onlyPDF": "Only PDF files are allowed"
-      }
-    }
-  },
-  "header": {
-    "logo": "QUNUF",
-    "nav": {
-      "home": "Home",
-      "realEstate": "Properties",
-      "blog": "Blog",
-      "about": "About",
-      "contact": "Contact",
-      "dashboard": "Dashboard",
-      "login": "Login",
-      "logout": "Logout"
-    },
-    "userMenu": {
-      "profile": "My Profile",
-      "notifications": "Notifications",
-      "contracts": "The Contracts"
-    },
-    "roles": {
-      "admin": "Administrator",
-      "tenant": "Tenant",
-      "landlord": "Landlord"
-    }
-  },
-  "homePage": {
-    "hero": {
-      "heading": "Designing Your\nNext Chapter",
-      "clients": "{count}+ Happy Clients",
-      "badge": "Find your next property",
-      "subcopy": "Browse verified listings from trusted agents across Egypt."
-    },
-    "filters": {
-      "aria": {
-        "search": "Property search",
-        "openFilters": "Open all filters"
-      },
-      "helper": {
-        "noFees": "No extra fees",
-        "verified": "Verified listings",
-        "instant": "Instant search"
-      },
-      "labels": {
-        "location": "Location",
-        "propertyType": "Property Type",
-        "category": "Category"
-      },
-      "options": {
-        "locations": {
-          "cairo": "Cairo",
-          "alex": "Alexandria",
-          "giza": "Giza"
-        },
-        "propertyTypes": {
-          "apartment": "Apartment",
-          "villa": "Villa",
-          "duplex": "Duplex"
-        },
-        "categories": {
-          "furnished": "Furnished",
-          "unfurnished": "Unfurnished"
-        }
-      },
-      "search": "Search",
-      "adjustments": "Filters"
-    },
-    "recentProperties": {
-      "title": "Lates property",
-      "description": "We have completed several housing, villa and property orders with our professional team, at costs that suit you"
-    },
-    "propertyCategory": {
-      "title": "Property Category",
-      "description": "Lörem ipsum päde hypertropi eller mitin antir evis ofäns i jonin som pseudonäning. Manat preber. Pös vil gigana: nisöbel på igt. ",
-      "noProperties": "No Properties Found",
-      "emptyCategory": "We are constantly updating our listings. Currently, there are no properties in this category. Please check other sections.",
-      "filters": {
-        "apartment": "Apartments",
-        "family_housing": "Family Housing",
-        "villa": "Villas"
-      }
-    },
-    "basedOnLocationSection": {
-      "title": "Discover your future home",
-      "description": "Start discover your liking future home",
-      "yearly": "Yearly",
-      "monthly": "Monthly",
-      "rent": "Rent",
-      "bathrooms": "Bathrooms",
-      "guests": "Guests",
-      "bedrooms": "Bedrooms"
-    },
-    "features": {
-      "mainTitle": "The Perfect Place to Manage Your Property",
-      "mainDescription": "Work with the best suite of property management tools on the market.",
-      "card1": {
-        "title": "Advertise Your Rental",
-        "description": "Connect with more than 75 million renters looking for new homes using our comprehensive marketing platform.",
-        "button": "List Your Property"
-      },
-      "card2": {
-        "title": "Lease 100% Online",
-        "description": "Accept applications, and sign digital leases all powered on a single platform.",
-        "button": "Find Out More"
-      }
-    },
-    "contactUs": {
-      "title": "Subscribe Our Newsletter",
-      "description": "Lorem ipsum dolor sit amet consectetur. Feugiat ut aliquet sit pellentesque sollicitudin. Egestas faucibus lacus diam in senectus consectetur. Mattis elit adipiscing quisque tellus scelerisque vehicula ante nunc.",
-      "placeholder": "Enter your email",
-      "button": "Get a Quote",
-      "loading": "Sending...",
-      "successMessage": "Subscribed successfully! Thank you.",
-      "errorMessage": "Something went wrong. Please try again later."
-    }
-  },
-  "about": {
-    "noDepartmentsAvailable": "No departments available at the moment.",
-    "noTeamsAvailable": "No team members available at the moment.",
-    "readMore": "Read More",
-    "readLess": "Read Less",
-    "historyOfQunuf": "History of Qunuf",
-    "whyQunuf": "Why Qunuf",
-    "meetOur": "Meet our",
-    "department": "Department",
-    "yourHostsAndGuides": "Your Hosts & Guides",
-    "meetYour": "Meet Your",
-    "facilitators": "Facilitators",
-    "hero": {
-      "title": "About Us",
-      "description": "A leading real estate firm committed to providing innovative housing and investment solutions. We combine deep market expertise with integrity to build long-term relationships with our clients.",
-      "seeMore": "See More"
-    },
-    "header": "About Us",
-    "mission": {
-      "title": "Our Mission",
-      "description": "At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors.At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors. ",
-      "button": "View More"
-    },
-    "vision": {
-      "title": "Our Vision",
-      "description": "At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors.At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors. ",
-      "button": "Discover"
-    },
-    "goals": {
-      "title": "Our Goals",
-      "description": "At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors.At the core of our mission is the optimization of your time, physical vitality, and mental energy, enabling you to concentrate more effectively on your objectives and excel in your professional endeavors. ",
-      "button": "Learn More"
-    },
-    "team": {
-      "header": "Our Team"
-    }
-  },
-  "contact": {
-    "nolocation": "Location not available",
-    "hero": {
-      "title": "Contatc Us",
-      "description": "We are here to help with your real estate journey. Whether you have a question about a specific property or need a consultation, our team is ready to assist.",
-      "seeMore": "See More"
-    },
-    "information": {
-      "title": "Contatc Us",
-      "header": "Contact Information",
-      "subtitle": "Say something to start a live chat!",
-      "location": "132 Dartmouth Street Boston, Massachusetts 02156 United States"
-    },
-    "form": {
-      "getIn": "Get in",
-      "touch": "Touch",
-      "headerMessage": "We'd love to hear from you. Please fill out the form below.",
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "fax": "Fax",
-      "noData": "Not available",
-      "message": {
-        "label": "How did you find us?",
-        "placeholder": "Select an option",
-        "options": {
-          "search_engine": "Search Engine",
-          "social_media": "Social Media",
-          "friend_referral": "Friend Referral",
-          "other": "Other"
-        }
-      },
-      "send": "Send",
-      "sending": "Sending...",
-      "success": "Your message has been sent successfully!",
-      "error": "Failed to send message.",
-      "validation": {
-        "required": "This field is required",
-        "email": "Invalid email address",
-        "invalidPhone": "Invalid phone number"
-      }
-    }
-  },
-  "blogs": {
-    "loadingMore": "Loading more...",
-    "empty": {
-      "title": "No blogs yet",
-      "description": "We haven’t published any blog posts yet. Please check back later."
-    },
-    "blog": "Blog",
-    "hero": {
-      "title": "Blogs",
-      "description": "Stay informed with the latest real estate market trends, investment tips, and neighborhood guides through our regularly updated expert articles.",
-      "seeMore": "Read More"
-    },
-    "blogs": "Blogs",
-    "our": "Our",
-    "recentBlogs": "Recent Blogs",
-    "readMore": "Read More"
-  },
-  "property": {
-    "hero": {
-      "title": "Properties",
-      "description": "Explore a wide range of premium properties tailored to your needs. From modern apartments to luxury villas, we help you find your dream home with ease.",
-      "seeMore": "See More"
-    },
-    "filter": {
-      "header": "Filtered Properties",
-      "title": "Filters",
-      "subtitle": "Property Filter",
-      "reset": "Reset all",
-      "location": {
-        "title": "Location",
-        "any": "Any area"
-      },
-      "subtype": {
-        "title": "Subtype",
-        "residential": {
-          "options": "{option, select, condo {Condo} multiFamily {Multi-family} townhomes {Townhomes} singleFamily {Single-Family} other {Unknown}}"
-        },
-        "commercial": {
-          "options": "{option, select, office {Office} retail {Retail} warehouse {Warehouse} industrial {Industrial} other {Unknown}}"
-        }
-      },
-      "bedrooms": {
-        "title": "Bedrooms",
-        "options": "{option, select, all {Any} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {Unknown}}"
-      },
-      "bathrooms": {
-        "title": "Bathrooms",
-        "options": "{option, select, all {Any} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {Unknown}}"
-      },
-      "rentalPeriod": {
-        "title": "Rental Period",
-        "options": "{option, select, yearly {Yearly} monthly {Monthly} other {Unknown}}"
-      },
-      "categories": {
-        "title": "Category",
-        "options": "{option, select, education {Education} hospital {Hospital} shopping {Shopping} other {Other}}"
-      },
-      "propertyType": {
-        "title": "Property Type",
-        "options": "{option, select, residential {Residential} commercial {Commercial} other {Unknown}}"
-      },
-      "rentType": {
-        "title": "Rent Type",
-        "options": "{option, select, monthly {Monthly} yearly {Yearly} other {Other}}"
-      },
-      "furnishedType": {
-        "title": "Furnished Type",
-        "options": "{option, select, furnished {Furnished} unfurnished {Unfurnished} other {Unknown}}"
-      },
-      "features": {
-        "title": "Features",
-        "options": "{option, select, airConditioning {Air conditioning} assistedLiving {Assisted living} disabilityAccess {Disability Access} controlledAccess {Controlled access} cableReady {Cable Ready} availableNow {Available now} college {College} corporate {Corporate} elevator {Elevator} extraStorage {Extra Storage} highSpeedInternet {High speed internet} garage {Garage} petAllowed {Pet allowed} other {Unknown}}"
-      },
-      "priceRange": "Price range",
-      "squareFeet": "Square feet",
-      "yearBuilt": "Year Built"
-    },
-    "grid": {
-      "bedrooms": "Bedrooms",
-      "bathrooms": "Bathrooms",
-      "totalArea": "Total area",
-      "livingRooms": "Living Rooms",
-      "emptyTitle": "No Properties Found",
-      "emptyMessage": "We couldn't find any properties matching your current filters. Try adjusting your search or clearing the filters.",
-      "clearFilters": "Clear all filters"
-    },
-    "details": {
-      "bookingNow": "Booking Now",
-      "description": "Description",
-      "additionalDetails": "Additional Details",
-      "location": "Location",
-      "education": "Education",
-      "healthAndMedical": "Health & Medical",
-      "propertyDetails": "Property Details",
-      "propertyFeatures": "Property Features",
-      "seeMore": "See More"
-    },
-    "enums": {
-      "propertyType": {
-        "commercial": "Commercial",
-        "residential": "Residential"
-      },
-      "subType": {
-        "residential": {
-          "apartment": "Apartment",
-          "villa": "Villa",
-          "floor": "Floor",
-          "room": "Room",
-          "popular_house": "Popular House",
-          "annex": "Annex",
-          "labor_housing": "Labor Housing",
-          "individual_housing": "Individual Housing",
-          "driver_room": "Driver Room",
-          "family_housing": "Family Housing",
-          "other": "Other"
-        },
-        "commercial": {
-          "office": "Office",
-          "retail_store": "Retail Store",
-          "showroom": "Showroom",
-          "warehouse": "Warehouse",
-          "workshop": "Workshop",
-          "commercial_center": "Commercial Center",
-          "commercial_building": "Commercial Building",
-          "commercial_labor_housing": "Commercial Labor Housing",
-          "kiosk": "Kiosk",
-          "land": "Land",
-          "other": "Other"
-        }
-      },
-      "rentType": {
-        "monthly": "Monthly",
-        "yearly": "Yearly"
-      },
-      "ownershipType": {
-        "owner": "Owner",
-        "representative": "Representative"
-      },
-      "documentType": {
-        "electronic_deed": "Electronic Deed",
-        "real_estate_registration": "Real Estate Registration",
-        "other": "Other"
-      }
-    }
-  },
-  "bookings": {
-    "title": "Getting Started",
-    "fullDetails": {
-      "title": "Complete Your Profile",
-      "subtitle": "Please provide your full details to proceed with booking",
-      "sectionTitle": "Personal Information",
-      "confirm": "Continue",
-      "cancel": "Cancel"
-    },
-    "contractDetails": {
-      "title": "Contract Details",
-      "subtitle": "Set your rental period and terms",
-      "fields": {
-        "startDate": {
-          "label": "Start Date",
-          "placeholder": "Select start date"
-        },
-        "duration": {
-          "label": "Duration (Months)",
-          "placeholder": "Enter duration",
-          "hint": {
-            "monthly": "Select duration between {min} and {max} months",
-            "yearly": "Duration is fixed at 1 year for yearly rentals"
-          }
-        },
-        "proposedTerms": {
-          "label": "Proposed Contract Terms",
-          "placeholder": "Enter contract terms...",
-          "hint": "You can edit the default contract terms as needed"
-        }
-      },
-      "confirm": "Create Contract",
-      "cancel": "Cancel",
-      "creating": "Creating contract...",
-      "created": "Contract created successfully",
-      "loading": "Loading...",
-      "errors": {
-        "noProperty": "Property ID is missing",
-        "noStartDate": "Please select a start date",
-        "invalidDuration": "Invalid duration selected",
-        "startDatePast": "Start date must be in the future",
-        "loadPropertyFailed": "Failed to load property details",
-        "createFailed": "Failed to create contract"
-      }
-    },
-    "eligibility": {
-      "checking": "Checking eligibility...",
-      "errors": {
-        "noProperty": "Property ID is missing",
-        "notAllowed": "You are not eligible to book this property",
-        "checkFailed": "Failed to check eligibility"
-      }
-    },
-    "approval": {
-      "title": "Review & Approve",
-      "subtitle": "Please review the contract details before approving",
-      "summary": {
-        "title": "Contract Summary",
-        "property": "Property",
-        "dates": "Rental Period",
-        "terms": "Proposed Terms",
-        "month": "month",
-        "months": "months",
-        "note": "By approving, you agree to the terms and conditions of this rental contract."
-      },
-      "confirm": "Approve Contract",
-      "cancel": "Cancel",
-      "approving": "Approving contract...",
-      "approved": "Contract approved successfully",
-      "loading": "Loading contract details...",
-      "errors": {
-        "noContract": "Contract data is missing",
-        "loadFailed": "Failed to load contract details",
-        "approveFailed": "Failed to approve contract"
-      }
-    },
-    "step1": {
-      "title": "Booking Contract",
-      "subtitle": "Please fill up the Info For Contract",
-      "plans": {
-        "business": {
-          "title": "Business",
-          "price": "$40.00",
-          "description": "Electricity, water, gas, and internet bills are included in this plan and are prepaid, ensuring that all essential utilities are covered.",
-          "button": "Choose Plan"
-        },
-        "professional": {
-          "title": "Professional",
-          "price": "$30.00",
-          "description": "Electricity, water, gas, and internet bills are included in this plan and are prepaid, ensuring that all essential utilities are covered.",
-          "button": "Choose Plan"
-        }
-      },
-      "pickDate": "Pick a Date",
-      "payment": {
-        "prefix": "You will pay "
-      },
-      "confirm": "Book Now",
-      "cancel": "Cancel"
-    },
-    "step2": {
-      "title": "Booking Contract",
-      "subtitle": "Please fill up the Info For Contract",
-      "sectionTitle": "Tenant Information",
-      "fields": {
-        "fullName": {
-          "label": "Tenant Full Name",
-          "placeholder": "Enter full name"
-        },
-        "phone": {
-          "label": "Tenant Phone Number",
-          "placeholder": "Enter phone number"
-        },
-        "nationalId": {
-          "label": "National ID",
-          "placeholder": "Enter national ID"
-        },
-        "billingAddress": {
-          "label": "Billing Address",
-          "placeholder": "Enter billing address"
-        },
-        "address": {
-          "label": "Address",
-          "placeholder": "Enter address"
-        },
-        "email": {
-          "label": "Email",
-          "placeholder": "Enter email"
-        }
-      },
-      "confirm": "Generate Contract",
-      "cancel": "Cancel"
-    },
-    "step3": {
-      "title": "Payment",
-      "subtitle": "Kindly follow the instructions below",
-      "summary": {
-        "realEstate": "Booking Real Estate:",
-        "reservation": "Reservation for 1 month on Business Plan",
-        "total": {
-          "prefix": "Total: ",
-          "amount": "$400 USD"
-        }
-      },
-      "fields": {
-        "cardNumber": {
-          "label": "Card Number",
-          "placeholder": "Payment card number"
-        },
-        "bank": {
-          "label": "Bank",
-          "placeholder": "Select Bank"
-        },
-        "expDate": {
-          "label": "Exp Date",
-          "placeholder": "Validation date"
-        },
-        "cvv": {
-          "label": "CVV",
-          "placeholder": "Beside the card"
-        }
-      },
-      "confirm": "Pay Now",
-      "cancel": "Cancel"
-    },
-    "step4": {
-      "title": "Contract Created Successfully!",
-      "imageAlt": "Contract Created",
-      "message": {
-        "line1": "Your contract has been created successfully.",
-        "line2": "The contract has been sent to the landlord for review.",
-        "line3": "The landlord will review the terms you edited and respond accordingly."
-      },
-      "viewContract": "View Contract",
-      "addReview": "Add Review",
-      "viewReview": "View Review"
-    },
-    "contractReview": {
-      "title": "Contract Review",
-      "subtitle": "Please review contract details",
-      "noContract": "No contract data available",
-      "done": "Done",
-      "sections": {
-        "property": "Property Information",
-        "rentalPeriod": "Rental Period",
-        "financial": "Financial Details",
-        "landlord": "Landlord Information",
-        "terms": "Contract Terms"
-      },
-      "fields": {
-        "propertyName": "Property Name",
-        "propertyType": "Type",
-        "area": "Area",
-        "capacity": "Capacity",
-        "location": "Location",
-        "furnished": "Furnished",
-        "startDate": "Start Date",
-        "endDate": "End Date",
-        "duration": "Duration",
-        "rentType": "Rent Type",
-        "totalAmount": "Total Amount",
-        "securityDeposit": "Security Deposit",
-        "platformFee": "Platform Fee",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone"
-      },
-      "yes": "Yes",
-      "no": "No",
-      "monthly": "Monthly",
-      "yearly": "Yearly",
-      "months": "months"
-    }
-  },
-  "auth": {
-    "roleSelector": {
-      "tenant": {
-        "title": "Tenant",
-        "description": "Find a place & pay rent online."
-      },
-      "landlord": {
-        "title": "Landlord",
-        "description": "Accept rent online & manage rental."
-      }
-    },
-    "signIn": {
-      "emailConfirmationFailed": "Email confirmation failed. Please try again or contact support.",
-      "title": "Welcome back!",
-      "subtitle": "Login to access all your data",
-      "email": {
-        "label": "Email Address",
-        "placeholder": "Enter your email address"
-      },
-      "password": {
-        "label": "Password",
-        "placeholder": "Enter your password"
-      },
-      "forgotPassword": "Forgot your password?",
-      "login": "Login",
-      "noAccount": "Don’t have an account?",
-      "register": "Register",
-      "success": {
-        "signedIn": "Signed in successfully",
-        "verified": "Email confirmed successfully. You can now log in."
-      },
-      "errors": {
-        "loginFailed": "Login failed",
-        "incorrectEmailOrPassword": "Incorrect email or password",
-        "invalidEmail": "Please enter a valid email address",
-        "requiredEmail": "Email is required",
-        "requiredPassword": "Password is required"
-      },
-      "loading": "Signing in..."
-    },
-    "signUp": {
-      "title": "Welcome to QUNUF",
-      "subtitle": "Kindly fill in your details below to create an account",
-      "name": {
-        "label": "Name",
-        "placeholder": "Enter your name"
-      },
-      "email": {
-        "label": "Email Address",
-        "placeholder": "Enter your email address"
-      },
-      "password": {
-        "label": "Password",
-        "placeholder": "Enter your password"
-      },
-      "register": "Register with us",
-      "loading": "Registering...",
-      "success": {
-        "emailSend": "Account created. Please check your email to verify your account."
-      },
-      "errors": {
-        "registrationFailed": "Registration failed",
-        "name": {
-          "required": "Name is required",
-          "maxLength": "Name must be at most 50 characters long"
-        },
-        "email": {
-          "invalid": "Email must be a valid email address",
-          "required": "Email is required"
-        },
-        "password": {
-          "minLength": "Password must be at least 8 characters long",
-          "maxLength": "Password must not exceed 20 characters",
-          "pattern": "Password must contain uppercase, lowercase, number, and special character"
-        }
-      },
-      "haveAccount": "Already have an account?",
-      "login": "Login",
-      "didNotReceiveVerification": "Already signed up and didn’t receive the verification email?",
-      "resend": "Resend verification"
-    },
-    "forgotPassword": {
-      "title": "Reset your password",
-      "backToLogin": "Back to login page",
-      "form": {
-        "email": {
-          "label": "Email",
-          "placeholder": "Enter your email"
-        },
-        "send": "Send",
-        "loading": "Sending...",
-        "success": {
-          "sent": "If the email is registered, a reset link will be sent"
-        },
-        "errors": {
-          "invalidEmail": "Please enter a valid email address",
-          "forgotPasswordFailed": "Failed to send reset email. Please try again."
-        }
-      }
-    },
-    "resetPassword": {
-      "title": "Reset Password",
-      "backToLogin": "Back to login",
-      "form": {
-        "email": {
-          "label": "Email",
-          "placeholder": "Enter your email"
-        },
-        "code": {
-          "label": "Reset Code",
-          "placeholder": "Enter the reset code"
-        },
-        "password": {
-          "label": "New Password",
-          "placeholder": "Enter your new password",
-          "minLength": "Password must be at least 8 characters long",
-          "maxLength": "Password must not exceed 20 characters",
-          "pattern": "Password must contain uppercase, lowercase, number, and special character"
-        },
-        "reset": "Reset Password",
-        "loading": "Resetting...",
-        "success": {
-          "sent": "Password reset successfully"
-        },
-        "errors": {
-          "invalidLink": "The reset link is invalid or expired.",
-          "requestNewLink": "Request a new reset link",
-          "email": {
-            "invalid": "Email must be valid",
-            "required": "Email is required"
-          },
-          "password": {
-            "minLength": "Password must be at least 8 characters long",
-            "maxLength": "Password must not exceed 20 characters",
-            "pattern": "Password must contain uppercase, lowercase, number, and special character"
-          },
-          "confirmPassword": {
-            "mismatch": "Passwords do not match"
-          },
-          "failed": "Failed to reset password"
-        },
-        "confirmPassword": {
-          "label": "Confirm Password",
-          "placeholder": "Re-enter your password"
-        }
-      }
-    },
-    "resendVerification": {
-      "title": "Resend Verification Email",
-      "form": {
-        "email": {
-          "label": "Email",
-          "placeholder": "Enter your email"
-        },
-        "send": "Send",
-        "haveAccount": "Already have an account?",
-        "login": "Log in",
-        "loading": "Sending...",
-        "success": {
-          "sent": "If the email is registered, a verification link will be sent."
-        },
-        "errors": {
-          "failed": "Failed to resend verification email",
-          "invalidEmail": "Please enter a valid email address"
-        }
-      }
-    }
-  },
-  "footer": {
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    "about": {
-      "title": "About",
-      "menu": "Menu",
-      "features": "Features",
-      "blogs": "News & Blogs",
-      "support": "Help & Support"
-    },
-    "company": {
-      "title": "Company",
-      "how": "How We Work",
-      "terms": "Terms of Service",
-      "pricing": "Pricing",
-      "faq": "FAQ",
-      "privacy": "Privacy Policy",
-      "about": "About Us",
-      "termsDescription": "Please review our usage guidelines and legal terms.",
-      "privacyDescription": "Learn how we handle and protect your personal data.",
-      "seeMore": "See More",
-      "empty": {
-        "title": "No Content Found",
-        "description": "We couldn't find the terms of service content at the moment. Please check back later."
-      }
-    },
-    "contact": {
-      "title": "Contact Us",
-      "address": "Akshaya Nagar 1st Block 1st Cross, Ramurthy Nagar, Bangalore 560016"
-    }
-  },
-  "dashboard": {
-    "error": {
-      "title": "Oops! Something went wrong",
-      "defaultMessage": "We encountered an error while loading the data. Please try again.",
-      "retry": "Try Again"
-    },
-    "statistics": {
-      "increase": "{value}% Increase",
-      "fromLastWeek": "from last week",
-      "newListing": "{value} new listing",
-      "inThisWeek": "in this week",
-      "seeAll": "See All",
-      "rentedAnalytics": "Rented Analytics",
-      "rentedProperties": "Rented Properties",
-      "costBreakdown": "Contracts Breakdown",
-      "reportSales": "Report Sales",
-      "contractsCreated": "Contracts Created",
-      "noChartData": "No data to display yet"
-    },
-    "landlord": {
-      "root": {
-        "totalProperties": "Total Properties",
-        "totalReviews": "Total Reviews",
-        "freeProperties": "Free Properties",
-        "rentedProperties": "Rented Properties",
-        "topRentedProperties": "Recent Contracts",
-        "lastRentedProperties": "Last Rented Properties",
-        "noContracts": "No contracts yet",
-        "noContractsMessage": "You have no recent contracts to display."
-      },
-      "revenue": {
-        "week": "Week",
-        "month": "Month",
-        "year": "Year",
-        "rentalIncome": "Rental Income",
-        "totalReserved": "Total Reserved Property",
-        "totalFree": "Total Free Properties",
-        "topRented": "Top Rented Properties",
-        "recentTransactions": "Recent Transactions"
-      }
-    },
-    "tenant": {
-      "root": {
-        "reservedProperty": "Reserved Properties",
-        "totalPaymentAmount": "Total Payments",
-        "lastRentedProperties": "Last Rented Properties",
-        "noContracts": "No contracts yet",
-        "noContractsMessage": "You have no recent contracts to display.",
-        "mockAmount": "SAR --",
-        "pendingRenewRequests": "Pending renew requests",
-        "totalEjarAmount": "Total Ejar contracts amount"
-      }
-    },
-    "header": {
-      "greeting": "Hello, {name}!",
-      "description": "Explore information and activity"
-    },
-    "sidebar": {
-      "dashboard": "Dashboard",
-      "contracts": "Contracts",
-      "renewRequests": "Renew Requests",
-      "settings": "Account Setting",
-      "paymentHistory": "Payment History",
-      "support": "Customer Support",
-      "rentalsContracts": "Rentals & Contracts",
-      "properties": "Properties",
-      "users": "Users",
-      "revenueSummary": "Revenue Summary",
-      "notifications": "Notifications",
-      "chat": "Chats",
-      "contactUs": "Contact Us",
-      "blogs": "Blogs",
-      "teamMembers": "Team Members",
-      "aboutUs": "About Us",
-      "departments": "Departments",
-      "websiteSettings": "Website Settings",
-      "logout": "Logout",
-      "loggingOut": "Logging out..."
-    },
-    "filter": {
-      "export": {
-        "trigger": "Export Excel",
-        "scope": "Export Scope",
-        "currentTable": "Current Table",
-        "moreData": "More Data",
-        "maxRows": "Max Rows",
-        "export": "Export",
-        "exporting": "Exporting...",
-        "cancel": "Cancel"
-      },
-      "container": {
-        "filter": "Filter"
-      }
-    },
-    "table": {
-      "noRows": "No data available",
-      "errorTitle": "Oops, something went wrong",
-      "errorMessage": "An error occurred while loading the data",
-      "retry": "Retry"
-    },
-    "pagination": {
-      "firstPage": "First Page",
-      "previous": "Previous",
-      "next": "Next",
-      "lastPage": "Last Page",
-      "of": "of",
-      "showingEntries": "Showing {start} to {end} of {total} entries",
-      "showing": "Showing {start} to {end} of {total}",
-      "jumpBack": "Jump back {{count}} pages",
-      "jumpForward": "Jump forward {{count}} pages"
-    },
-    "notification": {
-      "title": "Last Notifications",
-      "notifications": "Notifications",
-      "seeMore": "See More",
-      "accountSettings": "Account Settings",
-      "overview": "Overview",
-      "pushToggle": "Turn on push notifications",
-      "markAllAsRead": "Mark all as read",
-      "markRead": "Mark as read",
-      "noNotifications": "You have no notifications at the moment.",
-      "failedToLoad": "Failed to load notifications. Please try again.",
-      "prev": "Previous",
-      "next": "Next",
-      "pageInfo": "Page {current} of {total}",
-      "updating": "Updating...",
-      "selectItemsPerPage": "Select items per page",
-      "loading": "Loading..."
-    },
-    "contracts": {
-      "viewContract": "View Contract",
-      "noContractAvailable": "No Contract Available",
-      "contractTitle": "Contract",
-      "contractPage": "Contract page",
-      "noImagesFallback": "No contract images available",
-      "renew": {
-        "actionText": "renew",
-        "title": "Renew Contract",
-        "subtitle": "You sure that you want to renew the contract"
-      },
-      "terminate": {
-        "actionText": "Terminate",
-        "title": "Terminate",
-        "subtitle": "You sure that you want to terminate the contract",
-        "note": "Note: When you terminate the contract, you will not restore your money"
-      },
-      "delete": {
-        "actionText": "Delete",
-        "title": "Delete",
-        "subtitle": "You sure that you want to delete the contract"
-      },
-      "cancel": "Cancel",
-      "table": {
-        "columns": {
-          "property": "Property",
-          "status": "Status",
-          "contractNumber": "Contract Number",
-          "tenant": "Tenant",
-          "landlord": "Landlord",
-          "startDate": "Start Date",
-          "endDate": "End Date",
-          "totalAmount": "Total Amount",
-          "createdAt": "Created At",
-          "contract": "Contract"
-        },
-        "statusOptions": {
-          "all": "All",
-          "draft": "Draft",
-          "pending_tenant_acceptance": "Pending Tenant Acceptance",
-          "pending_landlord_acceptance": "Pending Landlord Acceptance",
-          "pending_signature": "Awaiting Attestation",
-          "active": "Active",
-          "expired": "Expired",
-          "cancelled": "Cancelled",
-          "terminated": "Terminated",
-          "pending_termination": "Pending Termination"
-        },
-        "viewDetails": "View Details",
-        "reviseContract": "Revise Contract",
-        "acceptContract": "Accept Contract",
-        "cancelContract": "Cancel Contract",
-        "activateContract": "Activate Contract",
-        "terminateContract": "Terminate Contract",
-        "searchPlaceholder": "Search by property, tenant or landlord name...",
-        "filters": {
-          "status": "Status",
-          "maxPrice": "Max Price",
-          "maxPricePlaceholder": "Enter max price"
-        },
-        "viewContract": "View Contract",
-        "addReview": "Add Review",
-        "viewReview": "View Review"
-      },
-      "reviews": {
-        "create": {
-          "title": "Add Review",
-          "subtitle": "Share your experience with this property",
-          "fields": {
-            "rating": "Rating",
-            "reviewText": "Review",
-            "reviewTextPlaceholder": "Write your review here..."
-          },
-          "submit": "Submit Review",
-          "success": "Review submitted successfully",
-          "error": "Failed to submit review"
-        },
-        "view": {
-          "title": "View Review",
-          "subtitle": "Your review for this contract",
-          "fields": {
-            "rating": "Rating",
-            "reviewText": "Review",
-            "reviewDate": "Review Date"
-          },
-          "close": "Close",
-          "noReview": "No review found",
-          "error": "Failed to load review"
-        }
-      },
-      "details": {
-        "title": "Contract Details",
-        "error": "Failed to load contract details",
-        "errorTitle": "Error",
-        "close": "Close",
-        "property": "Property Information",
-        "propertyName": "Property Name",
-        "propertyType": "Property Type",
-        "area": "Area",
-        "location": "Location",
-        "rentalPeriod": "Rental Period",
-        "startDate": "Start Date",
-        "endDate": "End Date",
-        "duration": "Duration",
-        "months": "months",
-        "rentType": "Rent Type",
-        "financial": "Financial Details",
-        "totalAmount": "Total Amount",
-        "securityDeposit": "Security Deposit",
-        "platformFee": "Platform Fee",
-        "parties": "Parties",
-        "landlord": "Landlord",
-        "tenant": "Tenant",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone",
-        "terms": "Contract Terms",
-        "contractInfo": "Contract Information",
-        "createdAt": "Created At",
-        "contractDate": "Contract Date",
-        "terminationDate": "Termination Date",
-        "nationality": "Nationality",
-        "identityType": "Identity Type",
-        "identityNumber": "Identity Number",
-        "identityIssueCountry": "Issue Country",
-        "birthDate": "Birth Date",
-        "shortAddress": "Short Address"
-      },
-      "actions": {
-        "revise": {
-          "title": "Revise Contract Terms",
-          "subtitle": "Review and update the contract terms. The tenant will need to accept or reject your changes.",
-          "fields": {
-            "terms": "Contract Terms",
-            "termsPlaceholder": "Enter the revised contract terms..."
-          },
-          "submit": "Send to Tenant",
-          "success": "Contract terms updated successfully",
-          "error": "Failed to update contract terms",
-          "showComparison": "Show comparison (Review Changes)",
-          "addedText": "Added",
-          "removedText": "Removed",
-          "comparisonNote": "Changes are highlighted: Green for new text, Red for deleted text."
-        },
-        "accept": {
-          "title": "Accept Contract",
-          "subtitle": "Please carefully review the contract terms and default conditions before accepting to proceed to the next stage.",
-          "fields": {
-            "sendRenewalNotify": "Send Renewal Notification",
-            "renewalDiscountAmount": "Renewal Discount Amount (SAR)",
-            "requiredMonthsForIncentive": "Required Months for Incentive"
-          },
-          "submit": "Accept",
-          "success": "Contract accepted successfully",
-          "error": "Failed to accept contract"
-        },
-        "cancel": {
-          "title": "Cancel Contract",
-          "subtitle": "Are you sure you want to cancel this contract? This action cannot be undone.",
-          "confirm": "Cancel Contract",
-          "cancel": "Keep Contract",
-          "submitting": "Cancelling...",
-          "success": "Contract cancelled successfully",
-          "error": "Failed to cancel contract"
-        },
-        "activate": {
-          "title": "Activate Contract",
-          "subtitle": "Upload the Ejar contract PDF and enter the contract number to activate this contract.",
-          "fields": {
-            "contractNumber": "Contract Number",
-            "contractNumberPlaceholder": "Enter contract number",
-            "contractPdf": "Contract PDF"
-          },
-          "submit": "Activate",
-          "success": "Contract activated successfully",
-          "error": "Failed to activate contract"
-        },
-        "terminate": {
-          "title": "Terminate Contract",
-          "subtitle": "Are you sure you want to terminate this contract?",
-          "note": "Note: Tenant termination is immediate. Landlord termination requires 60 days notice.",
-          "confirm": "Terminate",
-          "cancel": "Cancel",
-          "submitting": "Terminating...",
-          "success": "Contract termination initiated successfully",
-          "error": "Failed to terminate contract"
-        }
-      }
-    },
-    "payments": {
-      "title": "Payments & Payouts",
-      "accountSettings": "Account Settings",
-      "totalEarnings": "Total Earnings",
-      "pendingPayments": "Pending Payments",
-      "table": {
-        "transactionId": "Transaction ID",
-        "property": "Property",
-        "propertyAddress": "Property Address",
-        "propertyType": "Property Type",
-        "apartment": "Apartment",
-        "house": "House",
-        "price": "Price",
-        "date": "Date"
-      },
-      "paymentMethods": {
-        "title": "Saved Payment Methods",
-        "accountsTab": "Payment Accounts",
-        "transactionsTab": "Transaction History",
-        "recentAccounts": "Recent Payment Accounts",
-        "addMethod": "Add Method",
-        "addCardHolder": "Add Card Holder",
-        "recentTransactions": "Recent Transactions",
-        "save": "Save Changes",
-        "discard": "Discard",
-        "card": {
-          "expires": "Expires",
-          "edit": "Edit card",
-          "delete": "Delete card",
-          "default": "Default",
-          "deleteTitle": "Deleting",
-          "deleteSubtitle": "Are you sure you want to remove this Visa card?",
-          "deleteNote": "This action cannot be undone.",
-          "cancel": "Cancel",
-          "editTitle": "Edit Card Information"
-        }
-      }
-    },
-    "account": {
-      "shortAddress": "National Address",
-      "shortAddressHint": "The 8-character code from your Saudi National Address.",
-      "accountSettings": "Account Settings",
-      "typeLabel": "Type",
-      "idNumberLabel": "ID Number",
-      "issueCountryLabel": "Country",
-      "postalCode": "Postal Code",
-      "additionalNumber": "Add. Number",
-      "title": "Personal info",
-      "settings": "Account Settings",
-      "email": "Email address",
-      "phone": "Phone Number",
-      "phonePlaceholder": "Add a number so confirmed guests and Airbnb can get in touch. You can add other numbers and choose how they’re used.",
-      "nationalId": "National ID",
-      "edit": "Edit",
-      "update": "Update",
-      "updating": "Updating...",
-      "cancel": "Cancel",
-      "notProvided": "Not Provided",
-      "national_id": "National ID",
-      "iqama": "Iqama",
-      "passport": "Passport",
-      "identityType": "Identity Type",
-      "identityNumber": "Identity Number",
-      "nationality": "Nationality",
-      "identityIssueCountry": "Country of Identity Issue",
-      "birthDate": "Birth date",
-      "selectNationality": "Select nationality",
-      "selectState": "Select state",
-      "identityOtherType": "Enter Identity Type",
-      "loading": "Loading...",
-      "password": "Password",
-      "oldPassword": "Old Password",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "newEmail": "New Email",
-      "pendingVerification": "Pending Verification",
-      "verificationSentTo": "Verification link sent to",
-      "resend": "Resend",
-      "sending": "Sending...",
-      "sendLink": "Send Link",
-      "profileImage": "Profile Image",
-      "changeImage": "Change profile image",
-      "validation": {
-        "required": "This field is required",
-        "min3": "Must be at least 3 characters",
-        "max100": "Maximum 100 characters allowed",
-        "max20": "Maximum 20 characters allowed",
-        "invalidPhone": "Invalid Saudi phone format",
-        "passwordsDoNotMatch": "Passwords do not match",
-        "min8": "Password must be at least 8 characters",
-        "under18": "You must be at least 18 years old",
-        "invalidBirthDate": "Date of birth must be between 100 and 18 years ago",
-        "alphanumeric": "Only letters and numbers allowed",
-        "invalidPassword": "Password must contain uppercase, lowercase, number, and special character",
-        "shortAddressLength": "Short Address must be exactly 8 characters",
-        "shortAddressInvalid": "Invalid format. Use 4 letters and 4 numbers (e.g. RRRD2929)"
-      },
-      "identityTypeGroup": {
-        "national_id": "National ID",
-        "residency": "Residency",
-        "premium_residency": "Premium Residency",
-        "gcc_id": "GCC ID",
-        "passport": "Passport",
-        "other": "Other"
-      },
-      "fullName": "Full Name",
-      "address": "Address",
-      "buildingNumber": "Building Number",
-      "streetName": "Street Name",
-      "city": "City",
-      "state": "State / Region",
-      "identityInfo": "Identity Information",
-      "messages": {
-        "updating": "Updating...",
-        "updateSuccess": "Profile updated successfully",
-        "updateError": "Verification failed. Please check your information.",
-        "passwordUpdated": "Password updated successfully",
-        "checkEmailForLink": "Verification link sent. Please check your email.",
-        "emailResent": "Verification email resent successfully",
-        "failedToResend": "Failed to resend email",
-        "changeCanceled": "Email change request canceled",
-        "failedToCancel": "Failed to cancel request",
-        "uploadingImage": "Uploading image...",
-        "imageUpdated": "Profile image updated successfully",
-        "invalidFileType": "Please select a valid image file (JPEG, PNG, WebP)"
-      },
-      "placeholders": {
-        "shortAddress": "مثال: RRRD2929",
-        "email": "Enter your email address",
-        "pendingEmail": "Enter new email address",
-        "name": "Enter your full name",
-        "phoneNumber": "Enter your phone number",
-        "birthDate": "Select your birth date",
-        "nationalityId": "Select your nationality",
-        "identityType": "Choose identity type",
-        "identityNumber": "Enter identity number",
-        "identityOtherType": "Enter other identity type",
-        "identityIssueCountryId": "Select issue country",
-        "address": {
-          "city": "Enter city name",
-          "streetName": "Enter street name",
-          "buildingNumber": "Enter building number",
-          "postalCode": "Enter postal code",
-          "additionalNumber": "Enter additional number"
-        },
-        "password": "Enter your password",
-        "oldPassword": "Enter your old password",
-        "newPassword": "Enter a new password",
-        "confirmPassword": "Confirm your new password"
-      }
-    },
-    "support": {
-      "senderName": "Qunuf Support",
-      "lastMessage": "Let us know how we can assist you.",
-      "welcomeMessage": "Welcome to Qunuf Support! How can we help you today?"
-    },
-    "renewRequest": {
-      "reviews": "reviews",
-      "priceDetails": "Price details",
-      "forOneMonth": "For one Month",
-      "longStayDiscount": "Long stay discount",
-      "totalUsd": "Total (USD)",
-      "total": "Total",
-      "currency": "SAR",
-      "cancel": "Cancel",
-      "renew": "Renew",
-      "accept": "Accept",
-      "reject": "Reject",
-      "accepting": "Accepting...",
-      "rejecting": "Rejecting...",
-      "acceptSuccess": "Renewal request accepted successfully",
-      "acceptError": "Failed to accept renewal request",
-      "rejectSuccess": "Renewal request rejected successfully",
-      "rejectError": "Failed to reject renewal request",
-      "loadError": "Failed to load renewal requests",
-      "emptyTitle": "No renewal requests",
-      "emptyMessage": "You don't have any renewal requests at the moment.",
-      "disAgree": "DisAgree",
-      "agree": "Agree",
-      "requestToRenew": "Request to Renew",
-      "status": {
-        "pending": "Pending",
-        "accepted": "Accepted",
-        "rejected": "Rejected",
-        "expired": "Expired"
-      }
-    },
-    "settings": {
-      "root": {
-        "account": "Account",
-        "personalInfo": {
-          "title": "Personal Info",
-          "description": "Provide personal details and how we can reach you"
-        },
-        "notifications": {
-          "title": "Notifications",
-          "description": "Choose notification preferences and how you want to be contacted"
-        },
-        "payments": {
-          "title": "Payments & payouts",
-          "description": "Review payments, payouts, coupons, and gift cards"
-        }
-      }
-    },
-    "chats": {
-      "online": "Active now",
-      "offline": "Offline",
-      "loadingHistory": "Loading history…",
-      "loadingMore": "Loading more",
-      "messages": "Messages",
-      "noMessages": "No messages yet. Start the conversation!",
-      "typeMessage": "Type a message",
-      "newMessages": "New messages",
-      "selectConversation": "Select a conversation to start messaging",
-      "noConversationsYet": "No conversations yet",
-      "startMessagingToSeeChats": "When you start a new chat, it will appear here.",
-      "failedSendTitle": "Failed to send. Click to retry",
-      "failedSendText": "Delivery Failed — Tap icon to retry"
-    },
-    "admin": {
-      "settings": {
-        "title": "Website Control Center",
-        "description": "Configure your platform's core identity, legal policies, and social connections from one central dashboard.",
-        "loading": "Loading settings...",
-        "saving": "Saving...",
-        "save": "Save Changes",
-        "subtitles": {
-          "basicInfo": "Essential details about your property name, type, and pricing.",
-          "descriptions": "Provide detailed descriptions in both English and Arabic to reach more clients.",
-          "contractTerms": "Define the standard rules and conditions for the rental agreement.",
-          "contactAndLocation": "Help clients find you by providing accurate contact info and map location.",
-          "legal": "Important legal documents including privacy policies and service terms.",
-          "social": "Connect your social media profiles to increase property visibility."
-        },
-        "sections": {
-          "defaultContractTerms": "Default Contract Terms",
-          "general": "General Information",
-          "description": "Descriptions",
-          "contactAndLocation": "Contact & Location",
-          "legal": "Legal Documents",
-          "social": "Social Media Links"
-        },
-        "messages": {
-          "updating": "Saving settings...",
-          "fetchError": "Failed to load settings.",
-          "updateSuccess": "Settings updated successfully!",
-          "updateError": "An error occurred while saving."
-        },
-        "fields": {
-          "defaultContractTerms": "Terms & Conditions",
-          "name": "Website Name",
-          "platformPercent": "Platform Commission (%)",
-          "contactEmail": "Contact Email",
-          "contactPhone": "Contact Phone",
-          "fax": "Fax Number",
-          "address": "Physical Address",
-          "latitude": "Latitude",
-          "longitude": "Longitude",
-          "description_en": "Description (English)",
-          "description_ar": "Description (Arabic)",
-          "privacyPolicy_en": "Privacy Policy (English)",
-          "privacyPolicy_ar": "Privacy Policy (Arabic)",
-          "termsOfService_en": "Terms of Service (English)",
-          "termsOfService_ar": "Terms of Service (Arabic)",
-          "facebook": "Facebook",
-          "twitter": "Twitter",
-          "instagram": "Instagram",
-          "linkedin": "LinkedIn",
-          "pinterest": "Pinterest",
-          "tiktok": "TikTok",
-          "youtube": "YouTube"
-        },
-        "placeholders": {
-          "defaultContractTerms": "Enter the default terms and conditions that will be automatically applied to new contracts...",
-          "name": "Enter website name",
-          "description_en": "Enter website description in English",
-          "description_ar": "Enter website description in Arabic"
-        },
-        "required": "This field is required",
-        "email": {
-          "invalid": "Please enter a valid email address"
-        },
-        "url": {
-          "invalid": "Please enter a valid URL (e.g., https://...)"
-        },
-        "number": {
-          "invalid": "Value must be a number"
-        },
-        "percent": {
-          "invalid": "Percentage must be a number between 0 and 100"
-        }
-      },
-      "root": {
-        "totalProperties": "Total Properties",
-        "freeProperties": "Free Properties",
-        "rentedProperties": "Rented Properties",
-        "lastTransactions": "Last Transactions",
-        "maintenanceRequests": "Maintenance Requests",
-        "recentProperties": "Recent Properties",
-        "noContracts": "No contracts yet",
-        "noContractsMessage": "There are no recent contracts to show.",
-        "noProperties": "No properties yet",
-        "noPropertiesMessage": "There are no recent properties to show."
-      },
-      "maintenance": {
-        "requestId": "Request ID",
-        "type": {
-          "Electrical": "Electrical",
-          "Plumbing": "Plumbing",
-          "HVAC": "HVAC"
-        }
-      },
-      "costBreakdown": {
-        "maintenance": "Maintenance",
-        "repair": "Repair",
-        "taxes": "Taxes",
-        "saving": "Saving"
-      },
-      "contactUs": {
-        "title": "Contact Us Messages",
-        "searchPlaceholder": "Search by name, email, or phone",
-        "emptyTitle": "No Messages Found",
-        "emptyMessage": "There are no contact messages to display at the moment.",
-        "resetFilters": "Reset Filters"
-      },
-      "team": {
-        "title": "Team Members",
-        "add": "Add Team Member",
-        "edit": "Edit Team Member",
-        "deleteTitle": "Delete",
-        "formText": "Show Form",
-        "emptyTitle": "No team members found",
-        "resetFilters": "Reset Filters",
-        "emptyMessage": "There are currently no team members. Please add new members.",
-        "delete": {
-          "title": "Delete Team Member",
-          "subtitle": "Are you sure you want to delete team Member?",
-          "cancel": "Cancel",
-          "actionText": "Delete",
-          "deleting": "Deleting team Member...",
-          "success": "Team Member has been deleted successfully.",
-          "error": "Failed to delete team Member."
-        },
-        "form": {
-          "form": "Team Member Form",
-          "name": "Name",
-          "namePlaceholder": "Enter member name",
-          "job": "Job Title",
-          "jobPlaceholder": "Enter job title",
-          "description_en": "Description (English)",
-          "description_ar": "Description (Arabic)",
-          "email": "Email",
-          "emailPlaceholder": "Enter email",
-          "phone": "Phone",
-          "phonePlaceholder": "Enter phone number",
-          "upload": "Upload Image",
-          "noFile": "No file selected",
-          "validation": {
-            "required": "This field is required",
-            "maxLength": "Exceeds maximum length ({max})",
-            "email": "Invalid email address",
-            "imageRequired": "Please upload an image",
-            "invalidPhone": "Invalid phone number"
-          },
-          "actions": {
-            "create": "Create",
-            "update": "Update",
-            "cancel": "Cancel",
-            "creating": "Creating team member...",
-            "updating": "Updating team member...",
-            "createSuccess": "Team member created successfully",
-            "updateSuccess": "Team member updated successfully",
-            "error": "An error occurred. Please try again"
-          }
-        },
-        "cancel": "Cancel",
-        "addAction": "Add Member",
-        "editAction": "Save Changes"
-      },
-      "departments": {
-        "title": "Departments",
-        "add": "Add Department",
-        "edit": "Edit Department",
-        "deleteTitle": "Delete",
-        "formText": "Show Form",
-        "emptyTitle": "No departments found",
-        "emptyMessage": "There are currently no departments. Please add new ones.",
-        "resetFilters": "Reset Filters",
-        "delete": {
-          "title": "Delete Department",
-          "subtitle": "Are you sure you want to delete department?",
-          "cancel": "Cancel",
-          "actionText": "Delete",
-          "deleting": "Deleting department...",
-          "success": "Department has been deleted successfully.",
-          "error": "Failed to delete department."
-        },
-        "form": {
-          "form": "Department Form",
-          "title_en": "Title (English)",
-          "title_enPlaceholder": "Enter title in English",
-          "title_ar": "Title (Arabic)",
-          "title_arPlaceholder": "Enter title in Arabic",
-          "description_en": "Description (English)",
-          "description_ar": "Description (Arabic)",
-          "upload": "Upload Image",
-          "noFile": "No file selected",
-          "validation": {
-            "required": "This field is required",
-            "maxLength": "Exceeds maximum length ({max})",
-            "imageRequired": "Please upload an image"
-          },
-          "actions": {
-            "create": "Create",
-            "update": "Update",
-            "cancel": "Cancel",
-            "creating": "Creating department...",
-            "updating": "Updating department...",
-            "createSuccess": "Department created successfully",
-            "updateSuccess": "Department updated successfully",
-            "error": "An error occurred. Please try again"
-          }
-        },
-        "cancel": "Cancel",
-        "addAction": "Add Department",
-        "editAction": "Save Changes"
-      },
-      "blog": {
-        "title": " Blogs",
-        "add": "Add blog",
-        "edit": "Edt blog",
-        "emptyTitle": "No blogs found",
-        "emptyMessage": "There are currently no blogs. Please add new ones.",
-        "resetFilters": "Reset Filters",
-        "deleteTitle": "Delete",
-        "delete": {
-          "title": "Delete Blog",
-          "subtitle": "Are you sure you want to delete this blog post? This action cannot be undone.",
-          "cancel": "Cancel",
-          "actionText": "Delete",
-          "deleting": "Deleting blog...",
-          "success": "Blog has been deleted successfully.",
-          "error": "Failed to delete blog."
-        },
-        "form": {
-          "form": "Blog Form",
-          "title_en": "Title (English)",
-          "title_enPlaceholder": "Enter blog title in English",
-          "title_ar": "Title (Arabic)",
-          "title_arPlaceholder": "Enter blog title in Arabic",
-          "description_en": "Description (English)",
-          "description_ar": "Description (Arabic)",
-          "upload": "Upload Blog Image",
-          "noFile": "No file selected",
-          "validation": {
-            "required": "This field is required",
-            "maxLength": "Exceeds maximum length ({max})",
-            "imageRequired": "Please upload a blog image"
-          },
-          "actions": {
-            "create": "Create",
-            "update": "Update",
-            "cancel": "Cancel",
-            "creating": "Creating blog...",
-            "updating": "Updating blog...",
-            "createSuccess": "Blog created successfully",
-            "updateSuccess": "Blog updated successfully",
-            "error": "An error occurred. Please try again"
-          }
-        },
-        "actions": {
-          "cancel": "Cancel",
-          "addAction": "Add Blog",
-          "editAction": "Save Changes"
-        }
-      },
-      "about": {
-        "validation": {
-          "titleRequired": "Title is required",
-          "titleMax": "Title must not exceed 255 characters",
-          "contentRequired": "Content is required",
-          "imageRequired": "Image is required"
-        },
-        "title": "About Us Content",
-        "vision": {
-          "title": "Our Vision",
-          "defaultTitle": "Our Vision"
-        },
-        "mission": {
-          "title": "Our Mission",
-          "defaultTitle": "Our Mission"
-        },
-        "goals": {
-          "title": "Our Goals",
-          "defaultTitle": "Our Goals"
-        },
-        "history": {
-          "title": "History",
-          "defaultTitle": "History"
-        },
-        "why_us": {
-          "title": "Why Qunuf",
-          "defaultTitle": "Why Qunuf"
-        },
-        "edit": "Edit",
-        "noContent": "No content available",
-        "saving": "Saving...",
-        "saved": "Saved",
-        "errors": {
-          "failed": "Failed to save"
-        },
-        "form": {
-          "title_en": "Title (EN)",
-          "title_ar": "Title (AR)",
-          "title_en_placeholder": "Enter title in English",
-          "title_ar_placeholder": "Enter title in Arabic",
-          "content_en": "Content (EN)",
-          "content_ar": "Content (AR)",
-          "content_en_placeholder": "Enter content in English",
-          "content_ar_placeholder": "Enter content in Arabic",
-          "cancel": "Cancel",
-          "save": "Save Changes"
-        }
-      }
-    },
-    "properties": {
-      "updatingStatus": "Updating property status...",
-      "statusUpdated": "Status updated successfully",
-      "statusUpdateError": "Failed to update status",
-      "statusOptions": {
-        "active": "Active",
-        "pending": "Pending",
-        "rejected": "Rejected",
-        "archived": "Archived"
-      },
-      "delete": {
-        "title": "Delete Property",
-        "subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
-        "actionText": "Delete"
-      },
-      "cancel": "Cancel",
-      "table": {
-        "viewDetails": "View Details",
-        "archiveProperty": "Archive Property",
-        "restoreProperty": "Restore Property",
-        "property": "Property",
-        "status": "Status",
-        "free": "Free",
-        "online": "Online",
-        "offline": "Offline",
-        "booked": "Booked",
-        "published": "Published",
-        "price": "Price",
-        "location": "Location",
-        "deleteProperty": "Delete Property",
-        "editProperty": "Edit Property",
-        "addProperty": "Add Property",
-        "viewReviews": "View Reviews",
-        "title": "Properties Management",
-        "searchPlaceholder": "Search by name...",
-        "filters": {
-          "status": "Status",
-          "propertyType": "Property Type",
-          "occupancy": "Availability",
-          "sortBy": "Sort By"
-        },
-        "statusOptions": {
-          "all": "All Statuses",
-          "pending": "Pending Review",
-          "active": "Active",
-          "inactive": "Inactive",
-          "rejected": "Rejected",
-          "archived": "Archived"
-        },
-        "typeOptions": {
-          "all": "All Units",
-          "residential": "Residential",
-          "commercial": "Commercial"
-        },
-        "occupancyOptions": {
-          "all": "All Units",
-          "rented": "Rented",
-          "available": "Available"
-        },
-        "columns": {
-          "name": "Property Name",
-          "status": "Listing Status",
-          "isRented": "Occupancy",
-          "type": "Property Type",
-          "price": "Rent Price",
-          "createdAt": "Added Date"
-        },
-        "reviews": {
-          "title": "Property Reviews",
-          "reviews": "reviews",
-          "noReviews": "No reviews yet",
-          "loadError": "Failed to load reviews",
-          "loading": "Loading...",
-          "loadMore": "Load More"
-        },
-        "validation": {
-          "required": "This field is required",
-          "minLength": "Must be at least {min} characters",
-          "maxLength": "Cannot exceed {max} characters",
-          "minNumber": "Value must be {min} or greater",
-          "invalidFormat": "Invalid format",
-          "exactLength": "Must be exactly {len} characters",
-          "minImages": "At least one image must be uploaded"
-        }
-      },
-      "form": {
-        "createDescription": "Fill in the details below to create a new property.",
-        "editDescription": "Update the information below to modify the property.",
-        "documentType": "Title Deed Yype",
-        "documentImage": "Title Deed Yype",
-        "createTitle": "Add New Property",
-        "editTitle": "Edit Property",
-        "basicInfo": "Basic Information",
-        "locationAndLegal": "Location & Legal Details",
-        "facilities": "Facilities & Amenities",
-        "features": "Features",
-        "gallery": "Image Gallery",
-        "title": "Property Name",
-        "description": "Description",
-        "additionalDetails": "Additional Details",
-        "propertyType": "Property Type",
-        "subType": "Property Sub-Type",
-        "rentType": "Rent Frequency",
-        "ownershipType": "Ownership Type",
-        "price": "Rent Price",
-        "size": "Area",
-        "securityDeposit": "Security Deposit",
-        "capacity": "Capacity",
-        "propertyNumber": "Property Number",
-        "nationalAddressCode": "National Address Code",
-        "stateId": "City / State",
-        "documentNumber": "Document Number",
-        "documentIssueDate": "Document Issue Date",
-        "issuedBy": "Issued By",
-        "ownerIdNumber": "Owner ID Number",
-        "insurancePolicyNumber": "Insurance Policy Number",
-        "bedrooms": "Bedrooms",
-        "bathrooms": "Bathrooms",
-        "livingRooms": "Living Rooms",
-        "kitchen": "Kitchens",
-        "parking": "Parking Spaces",
-        "elevators": "Elevators",
-        "rooms": "Rooms",
-        "majlis": "Majlis",
-        "store": "Storage",
-        "securityEntrances": "Security Entrances",
-        "maidRoom": "Maid Room",
-        "backyard": "Backyard",
-        "centralAC": "Central A/C",
-        "desertAC": "Desert A/C",
-        "isFurnished": "Furnished",
-        "featuresPlaceholder": "e.g. Near Park, Gym Access",
-        "featuresHint": "Type a feature and press Enter to add it.",
-        "utilities": "Utility Meters",
-        "surroundings": "Surroundings & Features",
-        "complexName": "Complex Name",
-        "gasMeterNumber": "Gas Meter No.",
-        "electricityMeterNumber": "Electricity Meter No.",
-        "waterMeterNumber": "Water Meter No.",
-        "educationInstitutions": "Education Institutions",
-        "healthMedicalFacilities": "Health & Medical Facilities",
-        "facilityName": "Place Name",
-        "facilityType": "Type (e.g. School, Hospital)",
-        "distanceKm": "Distance (km)",
-        "addFacility": "Add Place",
-        "locationTitle": "Property Location",
-        "featuresAndFacilities": "Amenities & Nearby Facilities",
-        "subtitles": {
-          "basicInfo": "Core details and primary attributes of the property",
-          "location": "Precise geographical placement and neighborhood context",
-          "locationAndLegal": "Official address, registration, and ownership documentation",
-          "utilities": "Meter records for electricity, water, and gas infrastructure",
-          "facilities": "Internal amenities and architectural technical specs",
-          "featuresAndFacilities": "Proximity to educational, medical, and essential services",
-          "gallery": "High-resolution visual documentation and media"
-        },
-        "messages": {
-          "createSuccess": "Property created successfully",
-          "updateSuccess": "Property updated successfully"
-        },
-        "validation": {
-          "yearRange": "Construction year must be between {min} and {max}",
-          "required": "This field is required",
-          "min": "Value must be at least {min}",
-          "max": "Value must be at most {max}",
-          "maxLength": "Max length is {max} characters",
-          "invalidFormat": "Invalid format",
-          "atLeastOne": "At least one image is required",
-          "features": {
-            "maxTags": "You cannot add more than {max} features",
-            "tagTooLong": "Each feature must be less than {max} characters"
-          },
-          "nearby": {
-            "maxFacilities": "You can add up to {max} facilities only",
-            "distanceTooFar": "Distance cannot exceed {max} km",
-            "distanceTooShort": "Distance must be at least {min} km"
-          },
-          "nameExists": "A property with this name already exists",
-          "nameAvailable": "This name is available",
-          "checking": "Checking...",
-          "checkFailed": "Failed to verify name availability"
-        },
-        "constructionDate": "Construction completion date",
-        "placeholders": {
-          "name": "e.g., Modern Apartment in Al-Narjis",
-          "description": "Describe property details, nearby facilities, and features...",
-          "additionalDetails": "Any extra information for the tenant...",
-          "propertyType": "Select property type",
-          "subType": "Select sub-type",
-          "rentType": "Select payment cycle",
-          "ownershipType": "Are you the owner or representative?",
-          "documentType": "Select document type",
-          "documentNumber": "Enter document number",
-          "documentIssueDate": "Issue date",
-          "issuedBy": "Issuing authority",
-          "ownerIdNumber": "National ID or Iqama number",
-          "insurancePolicyNumber": "Insurance policy number (if any)",
-          "propertyNumber": "Property or unit number",
-          "complexName": "Building or complex name",
-          "nationalAddressCode": "e.g., RRRE1234",
-          "area": "Area in square meters",
-          "rentPrice": "Rental price",
-          "securityDeposit": "Security deposit amount",
-          "capacity": "Occupancy capacity",
-          "constructionDate": "Construction completion date",
-          "stateId": "Select region/city",
-          "gasMeterNumber": "Gas meter number",
-          "electricityMeterNumber": "Electricity meter number",
-          "waterMeterNumber": "Water meter number",
-          "facilities": {
-            "livingRooms": "Number of living rooms",
-            "parking": "Number of parking spots",
-            "elevators": "Number of elevators",
-            "bathrooms": "Number of bathrooms",
-            "bedrooms": "Number of bedrooms",
-            "kitchen": "Number of kitchens",
-            "store": "Number of storerooms",
-            "majlis": "Number of majlis",
-            "rooms": "Total number of rooms",
-            "securityEntrances": "Number of security entrances"
-          },
-          "features": "Add a feature (e.g., Sea view)",
-          "nearby": {
-            "institutionName": "Facility name (e.g., King's School)",
-            "distance": "Distance in km"
-          }
-        }
-      },
-      "archive": {
-        "title": "Archive Property",
-        "subtitle": "Are you sure you want to archive",
-        "actionText": "Archive",
-        "restoreTitle": "Restore Property",
-        "restoreSubtitle": "Are you sure you want to restore",
-        "restoreAction": "Restore",
-        "loading": "Processing...",
-        "success": "Property archived successfully",
-        "restoreSuccess": "Property restored successfully",
-        "error": "Operation failed"
-      },
-      "details": {
-        "capacity": "Capacity",
-        "constructionDate": "Construction Date",
-        "additionalDetails": "Additional Details",
-        "propertyNumber": "Property Number",
-        "complexName": "Complex Name",
-        "ownershipType": "Ownership Type",
-        "documentType": "Document Type",
-        "documentIssueDate": "Document Issue Date",
-        "issuedBy": "Issued By",
-        "state": "State",
-        "errorTitle": "Failed to load property details",
-        "noDataFound": "No data found",
-        "error": "Failed to load property details",
-        "close": "Close",
-        "price": "Rent Price",
-        "area": "Total Area",
-        "securityDeposit": "Deposit",
-        "isFurnished": "Furnished",
-        "isRented": "Currently Rented",
-        "yes": "Yes",
-        "no": "No",
-        "monthly": "Monthly",
-        "yearly": "Yearly",
-        "facilities": "Property Facilities",
-        "utilityMeters": "Utility Meters",
-        "electricityMeter": "Electricity Meter",
-        "waterMeter": "Water Meter",
-        "gasMeter": "Gas Meter",
-        "documents": "Legal Documents",
-        "documentNumber": "Document #",
-        "ownerId": "Owner ID",
-        "insurancePolicy": "Insurance Policy",
-        "nearby": "Nearby Amenities",
-        "education": "Education",
-        "health": "Health & Medical",
-        "facilityKeys": {
-          "livingRooms": "Living Rooms",
-          "parking": "Parking Slots",
-          "elevators": "Elevators",
-          "bathrooms": "Bathrooms",
-          "securityEntrances": "Security Entrances",
-          "bedrooms": "Bedrooms",
-          "maidRoom": "Maid Room",
-          "kitchen": "Kitchens",
-          "store": "Storage Room",
-          "backyard": "Backyard",
-          "centralAC": "Central AC",
-          "desertAC": "Desert AC",
-          "majlis": "Majlis",
-          "rooms": "Total Rooms"
-        }
-      }
-    },
-    "users": {
-      "updatingStatus": "Updating user status...",
-      "statusUpdated": "Status updated successfully",
-      "statusUpdateError": "Failed to update status",
-      "statusOptions": {
-        "all": "All Statuses",
-        "active": "Active",
-        "inactive": "Inactive",
-        "pending_verification": "Pending Verification",
-        "suspended": "Suspended",
-        "deleted": "Deleted"
-      },
-      "roleOptions": {
-        "all": "All Roles",
-        "admin": "Admin",
-        "landlord": "Landlord",
-        "tenant": "Tenant"
-      },
-      "table": {
-        "viewDetails": "View Details",
-        "chat": "Chat",
-        "searchPlaceholder": "Search by name or email...",
-        "filters": {
-          "status": "Status",
-          "role": "Role"
-        },
-        "columns": {
-          "name": "Name",
-          "email": "Email",
-          "role": "Role",
-          "status": "Status",
-          "lastLogin": "Last Login",
-          "createdAt": "Created At",
-          "never": "Never"
-        }
-      },
-      "details": {
-        "email": "Email",
-        "pendingEmail": "Pending Email",
-        "phoneNumber": "Phone Number",
-        "birthDate": "Birth Date",
-        "lastLogin": "Last Login",
-        "never": "Never",
-        "identity": "Identity Information",
-        "nationality": "Nationality",
-        "identityType": "Identity Type",
-        "identityNumber": "Identity Number",
-        "identityIssueCountry": "Identity Issue Country",
-        "identityOtherType": "Other Identity Type",
-        "address": "Address",
-        "shortAddress": "Short Address",
-        "accountInfo": "Account Information",
-        "createdAt": "Created At",
-        "updatedAt": "Updated At",
-        "notificationsEnabled": "Notifications Enabled",
-        "unreadNotifications": "Unread Notifications",
-        "yes": "Yes",
-        "no": "No",
-        "notProvided": "Not Provided",
-        "errorTitle": "Failed to load user details",
-        "error": "Failed to load user details",
-        "close": "Close",
-        "identityTypes": {
-          "national_id": "National ID",
-          "residency": "Residency",
-          "premium_residency": "Premium Residency",
-          "gcc_id": "GCC ID",
-          "passport": "Passport",
-          "other": "Other"
-        }
-      }
-    }
-  }
+	"hero": {
+		"trusted": "Trusted by thousands",
+		"satisfaction": "100% customer satisfaction",
+		"quality": "Quality",
+		"guaranteed": "guaranteed",
+		"eyebrow": "Discover revolutionary tools"
+	},
+	"dashboard": {
+		"sidebar": {
+			"dashboard": "Dashboard",
+			"settings": "Settings",
+			"contracts": "Contracts",
+			"renewRequests": "Renewal Requests",
+			"support": "Support",
+			"properties": "Properties",
+			"users": "Users",
+			"contactUs": "Contact Us",
+			"blogs": "Blog",
+			"teamMembers": "Team Members",
+			"aboutUs": "About Us",
+			"departments": "Departments",
+			"websiteSettings": "Website Settings",
+			"logout": "Logout",
+			"loggingOut": "Logging out...",
+			"language": "Language",
+			"close": "Close menu",
+			"profileSettings": "Profile Settings",
+			"profileAlt": "Profile picture",
+			"defaultUser": "User",
+			"defaultEmail": "user@example.com"
+		},
+		"header": {
+			"greeting": "Hello, {name}",
+			"description": "Welcome to your dashboard",
+			"toggleMenu": "Toggle menu",
+			"openMenu": "Open menu",
+			"chats": "Chats"
+		},
+		"error": {
+			"title": "Sorry! Something went wrong",
+			"defaultMessage": "We encountered a problem while loading data. Please try again.",
+			"retry": "Retry"
+		},
+		"statistics": {
+			"increase": "Increase by {value}%",
+			"fromLastWeek": "from last week",
+			"newListing": "{value} new listing",
+			"inThisWeek": "this week",
+			"seeAll": "See all",
+			"rentedAnalytics": "Rental Analytics",
+			"rentedProperties": "Rented Properties",
+			"costBreakdown": "Rental Details",
+			"reportSales": "Sales Report",
+			"contractsCreated": "Contracts Created",
+			"noChartData": "No data to display yet",
+			"decrease": "-{value}%",
+			"noChartDataMessage": "Insufficient data to display chart"
+		},
+		"landlord": {
+			"root": {
+				"totalProperties": "Total Properties",
+				"totalReviews": "Total Reviews",
+				"freeProperties": "Available Properties",
+				"rentedProperties": "Rented Properties",
+				"topRentedProperties": "Recent Contracts",
+				"lastRentedProperties": "Latest Contracts",
+				"noContracts": "No contracts currently",
+				"noContractsMessage": "No recent contracts to display."
+			},
+			"revenue": {
+				"week": "Week",
+				"month": "Month",
+				"year": "Year",
+				"rentalIncome": "Rental Income",
+				"totalReserved": "Total Reserved Properties",
+				"totalFree": "Total Available Properties",
+				"topRented": "Most Rented Properties",
+				"recentTransactions": "Recent Transactions"
+			}
+		},
+		"tenant": {
+			"root": {
+				"reservedProperty": "Rented Properties",
+				"pendingRenewRequests": "Pending Renewal Requests",
+				"totalEjarAmount": "Total Rent Amount",
+				"lastRentedProperties": "Latest Rented Properties",
+				"noContracts": "No contracts",
+				"noContractsMessage": "No recent rental contracts found.",
+				"totalPaymentAmount": "Total Payments",
+				"mockAmount": "SAR --"
+			}
+		},
+		"notification": {
+			"seeAll": "See all",
+			"unreadCount": "Unread notifications",
+			"title": "Notifications",
+			"accountSettings": "Account Settings",
+			"notifications": "Notifications",
+			"markAllAsRead": "Mark all as read",
+			"markAllAsReadAria": "Mark all notifications as read ({count} unread)",
+			"markRead": "Mark as read",
+			"overview": "Overview",
+			"noNotifications": "No notifications yet",
+			"selectItemsPerPage": "Items per page",
+			"pageInfo": "Page {current} of {total}",
+			"goToPage": "Go to page {page}",
+			"statTotal": "Total Notifications",
+			"statUnread": "Unread",
+			"seeMore": "See more",
+			"pushToggle": "🔔 Enable push notifications",
+			"failedToLoad": "Failed to load notifications. Please try again.",
+			"prev": "Previous",
+			"next": "Next",
+			"updating": "Updating...",
+			"loading": "Loading..."
+		},
+		"filter": {
+			"export": {
+				"trigger": "Export",
+				"scope": "Export Scope",
+				"currentTable": "Current data",
+				"moreData": "Additional data",
+				"rowLimit": "Row limit",
+				"rowLimitHint": "Maximum 1000 rows",
+				"export": "Export",
+				"exporting": "Exporting…",
+				"cancel": "Cancel",
+				"maxRows": "Maximum rows"
+			},
+			"container": {
+				"filter": "Filter"
+			}
+		},
+		"table": {
+			"noRows": "No data to display",
+			"errorTitle": "Sorry, an error occurred",
+			"errorMessage": "An error occurred while loading data",
+			"retry": "Retry"
+		},
+		"pagination": {
+			"navigation": "Page navigation",
+			"pageNumbers": "Page numbers",
+			"firstPage": "First page",
+			"previous": "Previous",
+			"next": "Next",
+			"lastPage": "Last page",
+			"goToPage": "Go to page {{page}}",
+			"showing": "Showing",
+			"of": "of",
+			"showingEntries": "Showing {{start}}–{{end}} of {{total}}",
+			"jumpBack": "Jump back {count} pages",
+			"jumpForward": "Jump forward {count} pages"
+		},
+		"contracts": {
+			"viewContract": "View Contract",
+			"noContractAvailable": "No contract available",
+			"contractTitle": "Contract",
+			"contractPage": "Contract Page",
+			"noImagesFallback": "No contract images",
+			"cancel": "Cancel",
+			"renew": {
+				"actionText": "Renew",
+				"title": "Renew Contract",
+				"subtitle": "Are you sure you want to renew the contract?"
+			},
+			"terminate": {
+				"actionText": "Terminate",
+				"title": "Terminate",
+				"subtitle": "Are you sure you want to terminate the contract?",
+				"note": "Note: When terminating the contract, you will not receive a refund"
+			},
+			"delete": {
+				"actionText": "Delete",
+				"title": "Delete",
+				"subtitle": "Are you sure you want to delete the contract?"
+			},
+			"table": {
+				"columns": {
+					"property": "Property",
+					"status": "Status",
+					"contractNumber": "Contract Number",
+					"tenant": "Tenant",
+					"landlord": "Landlord",
+					"startDate": "Start Date",
+					"endDate": "End Date",
+					"totalAmount": "Total Amount",
+					"createdAt": "Created At",
+					"contract": "Contract"
+				},
+				"statusOptions": {
+					"all": "All",
+					"draft": "Draft",
+					"pending_tenant_acceptance": "Pending tenant acceptance",
+					"pending_landlord_acceptance": "Pending landlord acceptance",
+					"pending_signature": "Pending signature",
+					"active": "Active",
+					"expired": "Expired",
+					"cancelled": "Cancelled",
+					"terminated": "Terminated",
+					"pending_termination": "Pending termination"
+				},
+				"viewDetails": "View details",
+				"reviseContract": "Revise contract terms",
+				"acceptContract": "Accept contract",
+				"cancelContract": "Cancel contract",
+				"activateContract": "Activate contract",
+				"terminateContract": "Terminate contract",
+				"searchPlaceholder": "Search by property name, tenant or landlord...",
+				"filters": {
+					"status": "Status",
+					"maxPrice": "Max Price",
+					"maxPricePlaceholder": "Enter max price"
+				},
+				"viewContract": "View contract",
+				"addReview": "Add review",
+				"viewReview": "View review",
+				"actions": {
+					"viewDetails": "View details",
+					"viewReview": "View review",
+					"addReview": "Add review",
+					"reviseContract": "Revise contract",
+					"acceptContract": "Accept contract",
+					"cancelContract": "Cancel contract",
+					"activateContract": "Activate contract",
+					"terminateContract": "Terminate contract"
+				}
+			},
+			"reviews": {
+				"create": {
+					"title": "Add Review",
+					"subtitle": "Share your experience with this property",
+					"fields": {
+						"rating": "Rating",
+						"reviewText": "Review",
+						"reviewTextPlaceholder": "Write your review here..."
+					},
+					"submit": "Submit Review",
+					"success": "Review submitted successfully",
+					"error": "Failed to submit review"
+				},
+				"view": {
+					"title": "View Review",
+					"subtitle": "Your review for this contract",
+					"fields": {
+						"rating": "Rating",
+						"reviewText": "Review",
+						"reviewDate": "Review Date"
+					},
+					"close": "Close",
+					"loading": "Loading...",
+					"noReview": "No review found",
+					"error": "Failed to load review"
+				}
+			},
+			"pdfViewer": {
+				"title": "Contract Document",
+				"page": "Page",
+				"previous": "Previous",
+				"next": "Next",
+				"download": "Download PDF",
+				"loading": "Loading PDF...",
+				"loadError": "Failed to load PDF document",
+				"renderError": "Failed to render PDF page"
+			},
+			"details": {
+				"title": "Contract Details",
+				"error": "Failed to load contract details",
+				"errorTitle": "Error",
+				"close": "Close",
+				"property": "Property Information",
+				"propertyName": "Property Name",
+				"propertyType": "Property Type",
+				"area": "Area",
+				"location": "Location",
+				"rentalPeriod": "Rental Period",
+				"startDate": "Start Date",
+				"endDate": "End Date",
+				"duration": "Duration",
+				"months": "months",
+				"rentType": "Rent Type",
+				"financial": "Financial Details",
+				"totalAmount": "Total Amount",
+				"securityDeposit": "Security Deposit",
+				"platformFee": "Platform Fee",
+				"parties": "Parties",
+				"landlord": "Landlord",
+				"tenant": "Tenant",
+				"name": "Name",
+				"email": "Email",
+				"phone": "Phone",
+				"terms": "Contract Terms",
+				"contractInfo": "Contract Information",
+				"createdAt": "Created At",
+				"contractDate": "Contract Date",
+				"terminationDate": "Termination Date",
+				"nationality": "Nationality",
+				"identityType": "Identity Type",
+				"identityNumber": "Identity Number",
+				"identityIssueCountry": "Identity Issue Country",
+				"birthDate": "Date of Birth",
+				"shortAddress": "Short Address"
+			},
+			"actions": {
+				"revise": {
+					"title": "Revise Contract Terms",
+					"subtitle": "Review and update contract terms. The tenant will need to accept or reject the changes.",
+					"showComparison": "Show comparison (review changes)",
+					"hideComparison": "Hide comparison",
+					"addedText": "Added",
+					"removedText": "Removed",
+					"comparisonNote": "Changes are highlighted: green for new text, red for removed text.",
+					"fields": {
+						"terms": "Contract Terms",
+						"termsPlaceholder": "Enter revised contract terms..."
+					},
+					"submit": "Submit to tenant",
+					"success": "Contract terms updated successfully",
+					"error": "Failed to update contract terms"
+				},
+				"accept": {
+					"title": "Accept Contract",
+					"subtitle": "Please carefully review the contract terms and default conditions before accepting to proceed to the next stage.",
+					"fields": {
+						"sendRenewalNotify": "Send renewal notification",
+						"sendRenewalNotifyHint": "Notify the tenant when renewal is approaching",
+						"renewalDiscountAmount": "Renewal discount amount (SAR)",
+						"requiredMonthsForIncentive": "Months required for incentive"
+					},
+					"submit": "Accept",
+					"success": "Contract accepted successfully",
+					"error": "Failed to accept contract"
+				},
+				"cancel": {
+					"title": "Cancel Contract",
+					"subtitle": "Are you sure you want to cancel this contract? This action cannot be undone.",
+					"confirm": "Cancel contract",
+					"cancel": "Keep contract",
+					"submitting": "Cancelling...",
+					"success": "Contract cancelled successfully",
+					"error": "Failed to cancel contract"
+				},
+				"activate": {
+					"title": "Activate Contract",
+					"subtitle": "Upload a rental contract PDF file and enter the contract number to activate this contract.",
+					"fields": {
+						"contractNumber": "Contract Number",
+						"contractNumberPlaceholder": "Enter contract number",
+						"contractPdf": "Contract PDF File",
+						"uploadPdf": "Click to upload PDF",
+						"changeFile": "Click to change file"
+					},
+					"submit": "Activate",
+					"success": "Contract activated successfully",
+					"error": "Failed to activate contract"
+				},
+				"terminate": {
+					"title": "Terminate Contract",
+					"subtitle": "Are you sure you want to terminate this contract?",
+					"note": "Note: Tenant termination is immediate. Landlord termination requires 60 days notice.",
+					"confirm": "Terminate",
+					"cancel": "Cancel",
+					"submitting": "Terminating...",
+					"success": "Contract termination process started successfully",
+					"error": "Failed to terminate contract"
+				}
+			}
+		},
+		"payments": {
+			"title": "Payments & Receivables",
+			"accountSettings": "Account Settings",
+			"totalEarnings": "Total Earnings",
+			"pendingPayments": "Pending Payments",
+			"table": {
+				"transactionId": "Transaction ID",
+				"property": "Property",
+				"propertyAddress": "Property Address",
+				"propertyType": "Property Type",
+				"apartment": "Apartment",
+				"house": "House",
+				"price": "Price",
+				"date": "Date"
+			},
+			"paymentMethods": {
+				"title": "Saved Payment Methods",
+				"accountsTab": "Payment Accounts",
+				"transactionsTab": "Transaction History",
+				"recentAccounts": "Recent Payment Accounts",
+				"addMethod": "Add Method",
+				"addCardHolder": "Add Cardholder",
+				"recentTransactions": "Recent Transactions",
+				"save": "Save Changes",
+				"discard": "Discard",
+				"card": {
+					"expires": "Expires",
+					"edit": "Edit Card",
+					"delete": "Delete Card",
+					"default": "Default",
+					"deleteTitle": "Deleting",
+					"deleteSubtitle": "Are you sure you want to remove Visa card?",
+					"deleteNote": "This action cannot be undone.",
+					"cancel": "Cancel",
+					"editTitle": "Edit Card Details"
+				}
+			}
+		},
+		"account": {
+			"save": "Save",
+			"shortAddress": "National Address",
+			"shortAddressHint": "An 8-digit code from your Saudi National Address.",
+			"accountSettings": "Account Settings",
+			"typeLabel": "Type",
+			"idNumberLabel": "ID Number",
+			"issueCountryLabel": "Issuing Country",
+			"title": "Personal Information",
+			"postalCode": "Postal Code",
+			"additionalNumber": "Additional Number",
+			"edit": "Edit",
+			"update": "Update",
+			"updating": "Updating...",
+			"cancel": "Cancel",
+			"settings": "Account Settings",
+			"notProvided": "Not provided",
+			"national_id": "National ID",
+			"iqama": "Iqama",
+			"passport": "Passport",
+			"identityType": "Identity Type",
+			"identityNumber": "Identity Number",
+			"nationality": "Nationality",
+			"identityIssueCountry": "Identity Issuing Country",
+			"fullName": "Full Name",
+			"email": "Email Address",
+			"phone": "Phone Number",
+			"phonePlaceholder": "Add a number for confirmed guests and Airbnb to contact you. You can add other numbers and specify how they are used.",
+			"nationalId": "National ID",
+			"address": "Address",
+			"buildingNumber": "Building Number",
+			"streetName": "Street Name",
+			"city": "City",
+			"state": "State/Region",
+			"identityInfo": "Identity Information",
+			"birthDate": "Date of Birth",
+			"selectNationality": "Select nationality",
+			"selectState": "Select region",
+			"identityOtherType": "Enter identity type",
+			"loading": "Loading...",
+			"password": "Password",
+			"oldPassword": "Current Password",
+			"newPassword": "New Password",
+			"confirmPassword": "Confirm Password",
+			"newEmail": "New Email",
+			"pendingVerification": "Pending verification",
+			"verificationSentTo": "Verification link sent to",
+			"resend": "Resend",
+			"sending": "Sending...",
+			"sendLink": "Send link",
+			"profileImage": "Profile Picture",
+			"changeImage": "Change profile picture",
+			"validation": {
+				"required": "This field is required",
+				"min3": "Must be at least 3 characters",
+				"max100": "Maximum 100 characters",
+				"max20": "Maximum 20 characters",
+				"min8": "Password must be at least 8 characters",
+				"invalidPhone": "Invalid Saudi mobile number format",
+				"passwordsDoNotMatch": "Passwords do not match",
+				"under18": "You must be at least 18 years old",
+				"invalidBirthDate": "Birth date must be between 100 and 18 years ago",
+				"alphanumeric": "Only letters and numbers allowed",
+				"invalidPassword": "Password must contain uppercase, lowercase, number, and special character",
+				"shortAddressLength": "Short address must be exactly 8 characters",
+				"shortAddressInvalid": "Invalid format. Use 4 letters and 4 digits (e.g., RRRD2929)"
+			},
+			"identityTypeGroup": {
+				"national_id": "National ID",
+				"residency": "Residency ID",
+				"premium_residency": "Premium Residency",
+				"gcc_id": "GCC ID",
+				"passport": "Passport",
+				"other": "Other"
+			},
+			"messages": {
+				"updating": "Updating...",
+				"updateSuccess": "Profile updated successfully",
+				"updateError": "Validation failed. Please verify the data.",
+				"passwordUpdated": "Password updated successfully",
+				"checkEmailForLink": "Link sent. Please check your email.",
+				"emailResent": "Email resent successfully",
+				"failedToResend": "Failed to resend",
+				"changeCanceled": "Email change request cancelled",
+				"failedToCancel": "Failed to cancel request",
+				"uploadingImage": "Uploading image...",
+				"imageUpdated": "Profile picture updated successfully",
+				"invalidFileType": "Please select a valid image file (JPEG, PNG, WebP)"
+			},
+			"placeholders": {
+				"shortAddress": "e.g., RRRD2929",
+				"email": "Enter your email",
+				"pendingEmail": "Enter new email",
+				"name": "Enter your full name",
+				"phoneNumber": "Enter your phone number",
+				"birthDate": "Select date of birth",
+				"nationalityId": "Select nationality",
+				"identityType": "Select identity type",
+				"identityNumber": "Enter identity number",
+				"identityOtherType": "Enter other identity type",
+				"identityIssueCountryId": "Select issuing country",
+				"address": {
+					"city": "Enter city name",
+					"streetName": "Enter street name",
+					"buildingNumber": "Enter building number",
+					"postalCode": "Enter postal code",
+					"additionalNumber": "Enter additional number"
+				},
+				"password": "Enter password",
+				"oldPassword": "Enter old password",
+				"newPassword": "Enter new password",
+				"confirmPassword": "Confirm new password"
+			}
+		},
+		"support": {
+			"senderName": "Qunuf Support",
+			"lastMessage": "Tell us how we can help you.",
+			"welcomeMessage": "Welcome to Qunuf Support! How can we assist you today?"
+		},
+		"renewRequest": {
+			"reviews": "Review",
+			"priceDetails": "Price Details",
+			"forOneMonth": "For one month",
+			"longStayDiscount": "Long stay discount",
+			"totalUsd": "Total (USD)",
+			"total": "Total",
+			"currency": "SAR",
+			"cancel": "Cancel",
+			"accept": "Accept",
+			"reject": "Reject",
+			"accepting": "Accepting...",
+			"rejecting": "Rejecting...",
+			"acceptSuccess": "Renewal request accepted successfully",
+			"acceptError": "Failed to accept renewal request",
+			"rejectSuccess": "Renewal request rejected successfully",
+			"rejectError": "Failed to reject renewal request",
+			"loadError": "Failed to load renewal requests",
+			"emptyTitle": "No renewal requests",
+			"emptyMessage": "You have no renewal requests at the moment.",
+			"renew": "Renew",
+			"disAgree": "Disagree",
+			"agree": "Agree",
+			"requestToRenew": "Renewal Request",
+			"status": {
+				"pending": "Pending",
+				"accepted": "Accepted",
+				"rejected": "Rejected",
+				"expired": "Expired"
+			}
+		},
+		"settings": {
+			"root": {
+				"account": "Settings",
+				"accountSubtitle": "Manage your account and preferences",
+				"notifications": {
+					"title": "Notifications",
+					"description": "Control alerts and notifications you receive"
+				},
+				"personalInfo": {
+					"title": "Personal Information",
+					"description": "Enter your personal details and how to contact you"
+				},
+				"payments": {
+					"title": "Payments & Receivables",
+					"description": "Review payments, invoices, and gift cards"
+				}
+			}
+		},
+		"chats": {
+			"messages": "Chats",
+			"noConversationsYet": "No conversations yet",
+			"startMessagingToSeeChats": "Start communicating with users to see your chats here",
+			"loadingMore": "Loading more...",
+			"online": "Active now",
+			"offline": "Offline",
+			"loadingHistory": "Loading history…",
+			"noMessages": "No messages yet. Start the conversation!",
+			"newMessages": "New messages",
+			"typeMessage": "Type a message",
+			"selectConversation": "Select a conversation to start messaging",
+			"failedSendTitle": "Failed to send. Tap to retry",
+			"failedSendText": "Failed to deliver — tap icon to retry"
+		},
+		"admin": {
+			"settings": {
+				"title": "Site Control Center",
+				"description": "Configure your platform's core identity, legal policies, and social links from a single centralized dashboard.",
+				"loading": "Loading settings...",
+				"saving": "Saving...",
+				"save": "Save Changes",
+				"subtitles": {
+					"basicInfo": "Basic details about property name, type, and pricing.",
+					"descriptions": "Provide detailed descriptions in English and Arabic to reach a wider customer base.",
+					"contractTerms": "Define the core rules and conditions for your rental agreement.",
+					"contactAndLocation": "Help customers find you by providing accurate contact information and map location.",
+					"legal": "Important legal documents including privacy policies and terms of service.",
+					"social": "Link your social media accounts to increase property visibility."
+				},
+				"sections": {
+					"defaultContractTerms": "Default Contract Terms",
+					"general": "General Information",
+					"description": "Description",
+					"contactAndLocation": "Contact & Location Information",
+					"legal": "Legal Documents",
+					"social": "Social Media Links"
+				},
+				"messages": {
+					"updating": "Saving settings...",
+					"fetchError": "Failed to load settings.",
+					"updateSuccess": "Settings updated successfully!",
+					"updateError": "An error occurred while saving."
+				},
+				"fields": {
+					"defaultContractTerms": "Terms and Conditions",
+					"name": "Site Name",
+					"platformPercent": "Platform Percentage (%)",
+					"contactEmail": "Contact Email",
+					"contactPhone": "Contact Phone",
+					"fax": "Fax Number",
+					"address": "Physical Address",
+					"latitude": "Latitude",
+					"longitude": "Longitude",
+					"description_en": "Description (English)",
+					"description_ar": "Description (Arabic)",
+					"privacyPolicy_en": "Privacy Policy (English)",
+					"privacyPolicy_ar": "Privacy Policy (Arabic)",
+					"termsOfService_en": "Terms of Service (English)",
+					"termsOfService_ar": "Terms of Service (Arabic)",
+					"facebook": "Facebook",
+					"twitter": "Twitter",
+					"instagram": "Instagram",
+					"linkedin": "LinkedIn",
+					"pinterest": "Pinterest",
+					"tiktok": "TikTok",
+					"youtube": "YouTube"
+				},
+				"placeholders": {
+					"defaultContractTerms": "Enter default terms and conditions to be automatically applied to new contracts...",
+					"name": "Enter site name",
+					"description_en": "Enter site description in English",
+					"description_ar": "Enter site description in Arabic"
+				},
+				"required": "This field is required",
+				"email": {
+					"invalid": "Please enter a valid email address"
+				},
+				"url": {
+					"invalid": "Please enter a valid URL (e.g., https://...)"
+				},
+				"number": {
+					"invalid": "Value must be a number"
+				},
+				"percent": {
+					"invalid": "Percentage must be a number between 0 and 100"
+				}
+			},
+			"root": {
+				"totalProperties": "Total Properties",
+				"freeProperties": "Available Properties",
+				"rentedProperties": "Rented Properties",
+				"lastTransactions": "Last Transactions",
+				"maintenanceRequests": "Maintenance Requests",
+				"recentProperties": "Recent Properties",
+				"noContracts": "No contracts currently",
+				"noContractsMessage": "No recent contracts to display.",
+				"noProperties": "No properties",
+				"noPropertiesMessage": "No recent properties to display."
+			},
+			"maintenance": {
+				"requestId": "Request ID",
+				"type": {
+					"Electrical": "Electrical",
+					"Plumbing": "Plumbing",
+					"HVAC": "HVAC"
+				}
+			},
+			"costBreakdown": {
+				"maintenance": "Maintenance",
+				"repair": "Repair",
+				"taxes": "Taxes",
+				"saving": "Savings"
+			},
+			"contactUs": {
+				"title": "Contact Us Messages",
+				"searchPlaceholder": "Search by name, email, or phone number",
+				"emptyTitle": "No messages",
+				"emptyMessage": "No contact messages to display at the moment.",
+				"resetFilters": "Reset filters"
+			},
+			"team": {
+				"title": "Team Members",
+				"add": "Add New Member",
+				"edit": "Edit Member",
+				"deleteTitle": "Delete",
+				"formText": "Show Form",
+				"emptyTitle": "No team members found",
+				"emptyMessage": "No team members currently. Please add new members.",
+				"resetFilters": "Reset filters",
+				"delete": {
+					"title": "Delete Team Member",
+					"subtitle": "Are you sure you want to delete this member",
+					"cancel": "Cancel",
+					"actionText": "Delete",
+					"deleting": "Deleting this member...",
+					"success": "This member was deleted successfully.",
+					"error": "Failed to delete this member."
+				},
+				"form": {
+					"form": "Team Member Form",
+					"name": "Name",
+					"namePlaceholder": "Enter member name",
+					"job": "Job Title",
+					"jobPlaceholder": "Enter job title",
+					"description_en": "Description (English)",
+					"description_ar": "Description (Arabic)",
+					"email": "Email",
+					"emailPlaceholder": "Enter email",
+					"phone": "Phone Number",
+					"phonePlaceholder": "Enter phone number",
+					"upload": "Upload Image",
+					"noFile": "No file",
+					"validation": {
+						"required": "This field is required",
+						"maxLength": "Maximum length exceeded ({max})",
+						"email": "Invalid email address",
+						"imageRequired": "Please upload an image",
+						"invalidPhone": "Invalid phone number"
+					},
+					"actions": {
+						"create": "Create",
+						"update": "Update",
+						"cancel": "Cancel",
+						"creating": "Creating team member...",
+						"updating": "Updating team member...",
+						"createSuccess": "Team member created successfully",
+						"updateSuccess": "Team member updated successfully",
+						"error": "An error occurred. Try again"
+					}
+				},
+				"cancel": "Cancel",
+				"addAction": "Add Member",
+				"editAction": "Save Changes"
+			},
+			"departments": {
+				"title": "Departments",
+				"add": "Add New Department",
+				"edit": "Edit Department",
+				"deleteTitle": "Delete",
+				"formText": "Show Form",
+				"emptyTitle": "No departments found",
+				"emptyMessage": "No departments currently. Please add new departments.",
+				"resetFilters": "Reset filters",
+				"delete": {
+					"title": "Delete Department",
+					"subtitle": "Are you sure you want to delete the department?",
+					"cancel": "Cancel",
+					"actionText": "Delete",
+					"deleting": "Deleting department...",
+					"success": "Department deleted successfully.",
+					"error": "Failed to delete department."
+				},
+				"form": {
+					"form": "Department Form",
+					"title_en": "Title (English)",
+					"title_enPlaceholder": "Enter title in English",
+					"title_ar": "Title (Arabic)",
+					"title_arPlaceholder": "Enter title in Arabic",
+					"description_en": "Description (English)",
+					"description_ar": "Description (Arabic)",
+					"upload": "Upload Image",
+					"noFile": "No file",
+					"validation": {
+						"required": "This field is required",
+						"maxLength": "Maximum length exceeded ({max})",
+						"imageRequired": "Please upload an image",
+						"invalidPhone": "Invalid phone number"
+					},
+					"actions": {
+						"create": "Create",
+						"update": "Update",
+						"cancel": "Cancel",
+						"creating": "Creating department...",
+						"updating": "Updating department...",
+						"createSuccess": "Department created successfully",
+						"updateSuccess": "Department updated successfully",
+						"error": "An error occurred. Try again"
+					}
+				},
+				"cancel": "Cancel",
+				"addAction": "Add Department",
+				"editAction": "Save Changes"
+			},
+			"blog": {
+				"formText": "Show Blog",
+				"emptyTitle": "No blogs found",
+				"emptyMessage": "No blogs currently. Please add a new blog.",
+				"resetFilters": "Reset filters",
+				"title": "Blogs",
+				"add": "Add Blog",
+				"edit": "Edit Blog",
+				"deleteTitle": "Delete",
+				"delete": {
+					"title": "Delete Blog",
+					"subtitle": "Are you sure you want to delete this blog? This action cannot be undone.",
+					"cancel": "Cancel",
+					"actionText": "Delete",
+					"deleting": "Deleting blog...",
+					"success": "Blog deleted successfully.",
+					"error": "Failed to delete blog."
+				},
+				"form": {
+					"form": "Blog Form",
+					"title_en": "Title (English)",
+					"title_enPlaceholder": "Enter blog title in English",
+					"title_ar": "Title (Arabic)",
+					"title_arPlaceholder": "Enter blog title in Arabic",
+					"description_en": "Description (English)",
+					"description_ar": "Description (Arabic)",
+					"upload": "Upload Blog Image",
+					"noFile": "No file",
+					"validation": {
+						"required": "This field is required",
+						"maxLength": "Maximum length exceeded ({max})",
+						"imageRequired": "Please upload an image for the blog"
+					},
+					"actions": {
+						"create": "Create",
+						"update": "Update",
+						"cancel": "Cancel",
+						"creating": "Creating blog...",
+						"updating": "Updating blog...",
+						"createSuccess": "Blog created successfully",
+						"updateSuccess": "Blog updated successfully",
+						"error": "An error occurred. Try again"
+					}
+				},
+				"actions": {
+					"cancel": "Cancel",
+					"addAction": "Add Blog",
+					"editAction": "Save Changes"
+				}
+			},
+			"about": {
+				"validation": {
+					"titleRequired": "Title is required",
+					"titleMax": "Title cannot exceed 255 characters",
+					"contentRequired": "Content is required",
+					"imageRequired": "Image is required"
+				},
+				"title": "About Us Page Content",
+				"vision": {
+					"title": "Our Vision",
+					"defaultTitle": "Our Vision"
+				},
+				"mission": {
+					"title": "Our Mission",
+					"defaultTitle": "Our Mission"
+				},
+				"goals": {
+					"title": "Our Goals",
+					"defaultTitle": "Our Goals"
+				},
+				"history": {
+					"title": "Our History",
+					"defaultTitle": "Our History"
+				},
+				"why_us": {
+					"title": "Why Qunuf",
+					"defaultTitle": "Why Qunuf"
+				},
+				"edit": "Edit",
+				"noContent": "No content currently",
+				"saving": "Saving...",
+				"saved": "Saved",
+				"errors": {
+					"failed": "Save failed"
+				},
+				"form": {
+					"title_en": "Title (EN)",
+					"title_ar": "Title (AR)",
+					"title_en_placeholder": "Enter title in English",
+					"title_ar_placeholder": "Enter title in Arabic",
+					"content_en": "Content (EN)",
+					"content_ar": "Content (AR)",
+					"content_en_placeholder": "Enter content in English",
+					"content_ar_placeholder": "Enter content in Arabic",
+					"cancel": "Cancel",
+					"save": "Save Changes"
+				}
+			}
+		},
+		"properties": {
+			"updatingStatus": "Updating property status...",
+			"statusUpdated": "Status updated successfully",
+			"statusUpdateError": "Failed to update status",
+			"statusOptions": {
+				"active": "Active",
+				"pending": "Pending",
+				"rejected": "Rejected",
+				"archived": "Archived"
+			},
+			"delete": {
+				"title": "Delete Property",
+				"subtitle": "Are you sure you want to delete this property? This action cannot be undone.",
+				"actionText": "Delete"
+			},
+			"cancel": "Cancel",
+			"table": {
+				"viewDetails": "View details",
+				"archiveProperty": "Archive property",
+				"restoreProperty": "Restore property",
+				"property": "Property",
+				"status": "Status",
+				"free": "Available",
+				"online": "Listed",
+				"offline": "Unlisted",
+				"booked": "Booked",
+				"published": "Published Date",
+				"price": "Price",
+				"location": "Location",
+				"deleteProperty": "Delete property",
+				"editProperty": "Edit property",
+				"addProperty": "Add property",
+				"viewReviews": "View reviews",
+				"title": "Property Management",
+				"searchPlaceholder": "Search by name...",
+				"filters": {
+					"status": "Status",
+					"propertyType": "Property Type",
+					"occupancy": "Availability",
+					"sortBy": "Sort by"
+				},
+				"statusOptions": {
+					"all": "All statuses",
+					"pending": "Under review",
+					"active": "Active",
+					"inactive": "Inactive",
+					"rejected": "Rejected",
+					"archived": "Archived"
+				},
+				"typeOptions": {
+					"all": "All units",
+					"residential": "Residential",
+					"commercial": "Commercial"
+				},
+				"occupancyOptions": {
+					"all": "All",
+					"rented": "Rented",
+					"available": "Available"
+				},
+				"columns": {
+					"name": "Property Name",
+					"status": "Listing Status",
+					"isRented": "Occupancy Status",
+					"type": "Property Type",
+					"price": "Rent Price",
+					"createdAt": "Date Added"
+				},
+				"reviews": {
+					"title": "Property Reviews",
+					"reviews": "Review",
+					"noReviews": "No reviews yet",
+					"loadError": "Failed to load reviews",
+					"loading": "Loading...",
+					"loadMore": "Load more"
+				},
+				"validation": {
+					"required": "This field is required",
+					"minLength": "Must be at least {min} characters",
+					"maxLength": "Cannot exceed {max} characters",
+					"minNumber": "Value must be {min} or more",
+					"invalidFormat": "Invalid format",
+					"exactLength": "Must be exactly {len} characters",
+					"minImages": "At least one image must be uploaded"
+				}
+			},
+			"form": {
+				"createDescription": "Fill in the details below to create a new property.",
+				"editDescription": "Update the information below to edit the property.",
+				"documentType": "Ownership Deed Type",
+				"documentImage": "Ownership Deed",
+				"createTitle": "Add New Property",
+				"editTitle": "Edit Property",
+				"basicInfo": "Basic Information",
+				"locationAndLegal": "Location & Legal Information",
+				"facilities": "Facilities & Services",
+				"features": "Features",
+				"gallery": "Image Gallery",
+				"title": "Property Name",
+				"description": "Description",
+				"additionalDetails": "Additional Details",
+				"propertyType": "Property Type",
+				"subType": "Unit Type",
+				"rentType": "Rental System",
+				"ownershipType": "Ownership Type",
+				"price": "Rent Price",
+				"size": "Area",
+				"securityDeposit": "Security Deposit Amount",
+				"capacity": "Capacity",
+				"propertyNumber": "Property Number",
+				"nationalAddressCode": "National Address Code",
+				"stateId": "City / Region",
+				"documentNumber": "Document Number",
+				"documentIssueDate": "Document Issue Date",
+				"issuedBy": "Issuing Authority",
+				"ownerIdNumber": "Owner ID Number",
+				"insurancePolicyNumber": "Insurance Policy Number",
+				"bedrooms": "Bedrooms",
+				"bathrooms": "Bathrooms",
+				"livingRooms": "Living Rooms",
+				"kitchen": "Kitchens",
+				"parking": "Parking Spaces",
+				"elevators": "Elevators",
+				"rooms": "Rooms",
+				"majlis": "Majlis",
+				"store": "Storage",
+				"securityEntrances": "Security Entrances",
+				"maidRoom": "Maid's Room",
+				"backyard": "Backyard",
+				"centralAC": "Central AC",
+				"desertAC": "Swamp Cooler",
+				"isFurnished": "Furnished",
+				"featuresPlaceholder": "e.g., Pool, Near mosque",
+				"featuresHint": "Type a feature and press Enter to add.",
+				"utilities": "Utility Meters",
+				"surroundings": "Surroundings & Features",
+				"complexName": "Complex Name",
+				"gasMeterNumber": "Gas Meter Number",
+				"electricityMeterNumber": "Electricity Meter Number",
+				"waterMeterNumber": "Water Meter Number",
+				"educationInstitutions": "Educational Institutions",
+				"healthMedicalFacilities": "Health & Medical Facilities",
+				"facilityName": "Place Name",
+				"facilityType": "Type (e.g., School, Hospital)",
+				"distanceKm": "Distance (km)",
+				"addFacility": "Add Place",
+				"locationTitle": "Property Location",
+				"featuresAndFacilities": "Nearby Facilities & Services",
+				"constructionDate": "Construction Completion Date",
+				"subtitles": {
+					"basicInfo": "Basic details and key property characteristics",
+					"location": "Exact geographic location and surrounding area context",
+					"locationAndLegal": "Official address, registration, and legal ownership documents",
+					"utilities": "Meter records for electricity, water, and gas services",
+					"facilities": "Internal facilities and architectural technical specifications",
+					"featuresAndFacilities": "Proximity to educational, medical, and essential services",
+					"gallery": "High-definition visual documentation and media"
+				},
+				"messages": {
+					"createSuccess": "Property created successfully",
+					"updateSuccess": "Property updated successfully"
+				},
+				"validation": {
+					"yearRange": "Construction year must be between {min} and {max}",
+					"required": "This field is required",
+					"min": "Value must be at least {min}",
+					"max": "Value must be at most {max}",
+					"maxLength": "Maximum {max} characters",
+					"invalidFormat": "Invalid format",
+					"atLeastOne": "At least one image must be attached",
+					"features": {
+						"maxTags": "You cannot add more than {max} features",
+						"tagTooLong": "Feature length must be less than {max} characters"
+					},
+					"nearby": {
+						"maxFacilities": "You can only add up to {max} facilities",
+						"distanceTooFar": "Distance cannot exceed {max} km",
+						"distanceTooShort": "Distance must be at least {min} km"
+					},
+					"nameExists": "A property with this name already exists",
+					"nameAvailable": "This name is available",
+					"checking": "Checking...",
+					"checkFailed": "Failed to check name availability"
+				},
+				"placeholders": {
+					"name": "e.g., Modern apartment in Al Narjis district",
+					"description": "Write property details, nearby facilities, and features...",
+					"additionalDetails": "Any additional information you wish to add for the tenant...",
+					"propertyType": "Select property type",
+					"subType": "Select sub-type",
+					"rentType": "Select payment cycle (Monthly, Yearly...)",
+					"ownershipType": "Are you the owner or authorized representative?",
+					"documentType": "Select document type (Deed, Contract...)",
+					"documentNumber": "Enter document number",
+					"documentIssueDate": "Issue date",
+					"issuedBy": "Authority issuing the document",
+					"ownerIdNumber": "National ID or Iqama number",
+					"insurancePolicyNumber": "Insurance policy number (if applicable)",
+					"propertyNumber": "Property or unit number",
+					"complexName": "Residential or commercial complex name",
+					"nationalAddressCode": "e.g., RRRE1234",
+					"area": "Area in square meters",
+					"rentPrice": "Rent price",
+					"securityDeposit": "Security deposit amount",
+					"capacity": "Number of occupants accommodated",
+					"constructionDate": "Construction completion date",
+					"stateId": "Select region/city",
+					"gasMeterNumber": "Gas meter number",
+					"electricityMeterNumber": "Electricity meter number",
+					"waterMeterNumber": "Water meter number",
+					"facilities": {
+						"livingRooms": "Number of living rooms",
+						"parking": "Number of parking spaces",
+						"elevators": "Number of elevators",
+						"bathrooms": "Number of bathrooms",
+						"bedrooms": "Number of bedrooms",
+						"kitchen": "Number of kitchens",
+						"store": "Number of storage rooms",
+						"majlis": "Number of majlis",
+						"rooms": "Total number of rooms",
+						"securityEntrances": "Number of security entrances"
+					},
+					"features": "Add a feature (e.g., Seafront)",
+					"nearby": {
+						"institutionName": "Institution name (e.g., Kingdom School)",
+						"distance": "Distance in kilometers"
+					}
+				}
+			},
+			"archive": {
+				"title": "Archive Property",
+				"subtitle": "Are you sure you want to archive",
+				"actionText": "Archive",
+				"restoreTitle": "Restore Property",
+				"restoreSubtitle": "Are you sure you want to restore",
+				"restoreAction": "Restore",
+				"loading": "Processing...",
+				"success": "Property archived successfully",
+				"restoreSuccess": "Property restored successfully",
+				"error": "Operation failed"
+			},
+			"details": {
+				"financials": "Financials",
+				"capacity": "Capacity",
+				"constructionDate": "Construction Date",
+				"additionalDetails": "Additional Details",
+				"propertyNumber": "Property Number",
+				"complexName": "Complex Name",
+				"ownershipType": "Ownership Type",
+				"documentType": "Document Type",
+				"documentIssueDate": "Document Issue Date",
+				"issuedBy": "Issuing Authority",
+				"state": "State",
+				"errorTitle": "Failed to load property data",
+				"noDataFound": "No data found",
+				"error": "Failed to load property details",
+				"close": "Close",
+				"price": "Rent Price",
+				"area": "Total Area",
+				"securityDeposit": "Security Deposit Amount",
+				"isFurnished": "Furnished",
+				"isRented": "Currently Rented",
+				"yes": "Yes",
+				"no": "No",
+				"monthly": "Monthly",
+				"yearly": "Yearly",
+				"facilities": "Property Facilities",
+				"utilityMeters": "Utility Meters",
+				"electricityMeter": "Electricity Meter",
+				"waterMeter": "Water Meter",
+				"gasMeter": "Gas Meter",
+				"documents": "Legal Documents",
+				"documentNumber": "Document Number",
+				"ownerId": "Owner ID Number",
+				"insurancePolicy": "Insurance Policy",
+				"nearby": "Nearby Facilities",
+				"education": "Education",
+				"health": "Health & Medical Services",
+				"facilityKeys": {
+					"livingRooms": "Living Rooms",
+					"parking": "Parking Spaces",
+					"elevators": "Elevators",
+					"bathrooms": "Bathrooms",
+					"securityEntrances": "Security Entrances",
+					"bedrooms": "Bedrooms",
+					"maidRoom": "Maid's Room",
+					"kitchen": "Kitchens",
+					"store": "Storage",
+					"backyard": "Backyard",
+					"centralAC": "Central AC",
+					"desertAC": "Swamp Cooler",
+					"majlis": "Majlis",
+					"rooms": "Total Rooms"
+				}
+			}
+		},
+		"users": {
+			"updatingStatus": "Updating user status...",
+			"statusUpdated": "Status updated successfully",
+			"statusUpdateError": "Failed to update status",
+			"statusOptions": {
+				"all": "All statuses",
+				"active": "Active",
+				"inactive": "Inactive",
+				"pending_verification": "Pending verification",
+				"suspended": "Suspended",
+				"deleted": "Deleted"
+			},
+			"roleOptions": {
+				"all": "All roles",
+				"admin": "Admin",
+				"landlord": "Landlord",
+				"tenant": "Tenant"
+			},
+			"table": {
+				"viewDetails": "View details",
+				"chat": "Chat",
+				"searchPlaceholder": "Search by name or email...",
+				"filters": {
+					"status": "Status",
+					"role": "Role"
+				},
+				"columns": {
+					"name": "Name",
+					"email": "Email",
+					"role": "Role",
+					"status": "Status",
+					"lastLogin": "Last Login",
+					"createdAt": "Created At",
+					"never": "Never"
+				}
+			},
+			"details": {
+				"basicInfo": "Basic Information",
+				"email": "Email",
+				"pendingEmail": "Pending Email",
+				"phoneNumber": "Phone Number",
+				"birthDate": "Date of Birth",
+				"lastLogin": "Last Login",
+				"never": "Never",
+				"identity": "Identity Information",
+				"nationality": "Nationality",
+				"identityType": "Identity Type",
+				"identityNumber": "Identity Number",
+				"identityIssueCountry": "Identity Issue Country",
+				"identityOtherType": "Other Identity Type",
+				"address": "Address",
+				"shortAddress": "Short Address",
+				"accountInfo": "Account Information",
+				"createdAt": "Created At",
+				"updatedAt": "Updated At",
+				"notificationsEnabled": "Notifications Enabled",
+				"unreadNotifications": "Unread Notifications",
+				"yes": "Yes",
+				"no": "No",
+				"notProvided": "Not provided",
+				"errorTitle": "Failed to load user details",
+				"error": "Failed to load user details",
+				"close": "Close",
+				"identityTypes": {
+					"national_id": "National ID",
+					"residency": "Residency ID",
+					"premium_residency": "Premium Residency",
+					"gcc_id": "GCC ID",
+					"passport": "Passport",
+					"other": "Other"
+				}
+			}
+		}
+	},
+	"root": {
+		"siteName": "Qunuf",
+		"logo": "Qunuf",
+		"description": "Discover and manage properties with Qunuf.",
+		"lang": "en"
+	},
+	"notFound": {
+		"oopsTitle": "Oops, page not found!",
+		"oopsMessage": "The page you are looking for does not exist (it may have been moved, deleted, or is unavailable). Sorry for the inconvenience.",
+		"oopsHint": "If you believe this is a mistake or there is an issue, please report it.",
+		"goHome": "Return to Homepage"
+	},
+	"comman": {
+		"date": {
+			"yesterday": "Yesterday",
+			"today": "Today"
+		},
+		"image_dialog": {
+			"title": "Insert Image",
+			"url_label": "Image URL",
+			"upload_text": "Click to upload image",
+			"alt_text_label": "Alt Text",
+			"width_label": "Width (px)",
+			"placeholders": {
+				"alt_text": "Description of the image for accessibility",
+				"url": "https://example.com/image.jpg"
+			}
+		},
+		"editor": {
+			"placeholder": "Start typing here...",
+			"legal_notice": "Please ensure content adheres to official legal standards.",
+			"link_dialog": {
+				"url_label": "Page URL",
+				"apply": "Apply link",
+				"unlink": "Remove link"
+			}
+		},
+		"edit": "Edit",
+		"delete": "Delete",
+		"insert": "Insert",
+		"upload": "Upload",
+		"reset_default": "Reset to default",
+		"datePlaceholder": "Select date range",
+		"retry": "Retry",
+		"errorTitle": "Sorry, something went wrong",
+		"errorLoading": "Failed to load data",
+		"cancel": "Cancel",
+		"save": "Save",
+		"seeMore": "See more",
+		"seeLess": "See less",
+		"form": {
+			"loading": "Loading...",
+			"mapInstruction": "Click on the map to select location",
+			"email": {
+				"label": "Email",
+				"placeholder": "Enter your email"
+			},
+			"password": {
+				"label": "Password",
+				"placeholder": "Enter password"
+			},
+			"forgotPassword": {
+				"sent": "If the email is registered, a reset link will be sent"
+			},
+			"errors": {
+				"forgotPasswordFailed": "Failed to send reset link"
+			},
+			"locationInput": {
+				"fetching": "Fetching address...",
+				"addressPrefix": "Address:",
+				"selectedLocation": "Selected location:",
+				"latitude": "Latitude",
+				"longitude": "Longitude",
+				"latitudePlaceholder": "e.g., {lat}",
+				"longitudePlaceholder": "e.g., {lng}",
+				"invalidInput": "Invalid input, please enter valid numbers",
+				"latRangeError": "Latitude must be between -90 and 90",
+				"lngRangeError": "Longitude must be between -180 and 180",
+				"unknownAddress": "Unknown address",
+				"addressFetchError": "Could not fetch address"
+			},
+			"uploader": {
+				"removing": "Removing...",
+				"dragLabel": "Drag and drop",
+				"orLabel": "or",
+				"chooseFiles": "Choose files",
+				"primaryFile": "Primary file",
+				"setAsPrimary": "Set as primary",
+				"rules": {
+					"maxSize": "Maximum file size {size}MB",
+					"maxFiles": "Maximum {count} files"
+				}
+			},
+			"send": "Send"
+		},
+		"months": [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"
+		],
+		"weekdays": [
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+			"Sunday"
+		],
+		"search": "Search...",
+		"saving": "Saving...",
+		"submitting": "Submitting...",
+		"error": "Something went wrong",
+		"uploader": {
+			"success": {
+				"removed": "File deleted successfully"
+			},
+			"errors": {
+				"deleteFailed": "Failed to delete file. Please try again"
+			},
+			"rules": {
+				"maxSize": "Maximum size {size} MB",
+				"maxFiles": "Maximum files {count}",
+				"onlyPDF": "Only PDF files are allowed"
+			}
+		}
+	},
+	"header": {
+		"logo": "Qunuf",
+		"nav": {
+			"ariaLabel": "Main navigation",
+			"mobileMenuLabel": "Navigation menu",
+			"home": "Home",
+			"realEstate": "Properties",
+			"blog": "Blog",
+			"about": "About",
+			"contact": "Contact",
+			"dashboard": "Dashboard",
+			"login": "Login",
+			"logout": "Logout",
+			"loggingOut": "Logging out...",
+			"openMenu": "Open menu",
+			"closeMenu": "Close menu"
+		},
+		"roles": {
+			"admin": "Admin",
+			"landlord": "Landlord",
+			"tenant": "Tenant"
+		},
+		"userMenu": {
+			"ariaLabel": "User menu",
+			"profile": "Profile",
+			"notifications": "Notifications",
+			"contracts": "Contracts"
+		}
+	},
+	"selectInput": {
+		"placeholder": "Select",
+		"searchPlaceholder": "Search…",
+		"noOptionsLabel": "No results",
+		"noOptionsDescription": "Try a different search term."
+	},
+	"homePage": {
+		"hero": {
+			"heading": "Choose the right\nproperty to rent",
+			"clients": "Clients +{count}",
+			"badge": "Find your next property",
+			"subcopy": "Browse trusted properties from verified agents across Egypt.",
+			"ratingLabel": "Average rating",
+			"sectionLabel": "Hero section",
+			"avatarAlt": "Happy client {index}",
+			"avatarMore": "+50K"
+		},
+		"filters": {
+			"aria": {
+				"search": "Search properties",
+				"openFilters": "Open all filters"
+			},
+			"ariaLabel": "Search for property",
+			"helper": {
+				"noFees": "No additional fees",
+				"verified": "Trusted properties",
+				"instant": "Instant search"
+			},
+			"labels": {
+				"location": "Location",
+				"propertyType": "Property Type",
+				"category": "Categories"
+			},
+			"options": {
+				"locations": {
+					"cairo": "Cairo",
+					"alex": "Alexandria",
+					"giza": "Giza"
+				},
+				"propertyTypes": {
+					"apartment": "Apartment",
+					"villa": "Villa",
+					"duplex": "Duplex"
+				},
+				"categories": {
+					"furnished": "Furnished",
+					"unfurnished": "Unfurnished"
+				}
+			},
+			"search": "Search",
+			"adjustments": "Filter",
+			"advancedFilters": "Advanced filters"
+		},
+		"recentProperties": {
+			"eyebrow": "New listings",
+			"title": "Latest Properties",
+			"description": "Discover the newest properties added to our platform and find what suits your needs.",
+			"nav": {
+				"prev": "Previous",
+				"next": "Next"
+			},
+			"empty": {
+				"title": "No recent properties",
+				"description": "We are constantly updating our listings, please check back soon."
+			},
+			"card": {
+				"viewProperty": "View property"
+			}
+		},
+		"propertyCategory": {
+			"eyebrow": "Browse by type",
+			"title": "Browse by Category",
+			"description": "Discover properties categorized by type, and choose what suits your needs and budget.",
+			"filters": {
+				"label": "Filter properties by category",
+				"apartment": "Apartment",
+				"family_housing": "Family Housing",
+				"villa": "Villa"
+			},
+			"period": {
+				"yearly_ar": "/ Yearly",
+				"yearly_en": "/ Yearly"
+			},
+			"noProperties": "No properties found at the moment",
+			"emptyCategory": "No properties currently available in this category",
+			"empty": {
+				"title": "No properties in this category",
+				"description": "We couldn't find properties in this category at the moment, please try later."
+			},
+			"card": {
+				"view": "View property"
+			},
+			"nav": {
+				"prev": "Previous",
+				"next": "Next"
+			}
+		},
+		"basedOnLocationSection": {
+			"eyebrow": "By location",
+			"title": "Properties by Location",
+			"description": "Discover the latest properties based on rental type and location.",
+			"toggle": {
+				"label": "Rental type"
+			},
+			"monthly": "Monthly",
+			"yearly": "Yearly",
+			"rent": "Rent",
+			"empty": {
+				"title": "No properties",
+				"description": "Try changing the rental type or come back later."
+			},
+			"facility": {
+				"bathrooms": "{count} {count, plural, one {bathroom} other {bathrooms}}",
+				"guests": "{count} {count, plural, one {guest} other {guests}}",
+				"bedrooms": "{count} {count, plural, one {bed} other {beds}}"
+			}
+		},
+		"features": {
+			"mainTitle": "Discover an easier way to rent",
+			"mainDescription": "We provide a complete online rental experience, from listing to contract signing, easily and securely.",
+			"imageAlt": "Illustrative image of the rental platform",
+			"card1": {
+				"title": "List your rental",
+				"description": "Post your listing in minutes and connect directly with suitable tenants.",
+				"button": "Start listing now"
+			},
+			"card2": {
+				"title": "100% online rental",
+				"description": "Manage your contracts and payments fully online without the need for physical presence.",
+				"button": "Explore contracts"
+			}
+		},
+		"contactUs": {
+			"eyebrow": "Contact us",
+			"title": "Stay in touch with us",
+			"description": "Subscribe to our newsletter and be the first to know about the latest offers, articles, and updates.",
+			"placeholder": "Enter your email",
+			"button": "Subscribe now",
+			"loading": "Sending...",
+			"successMessage": "Subscribed successfully! Thank you.",
+			"errorMessage": "Something went wrong. Please try again.",
+			"formAriaLabel": "Newsletter subscription form",
+			"privacyNote": "We will not share your email with any third party. You can unsubscribe at any time.",
+			"imageAlt": "Illustrative image for contact section"
+		}
+	},
+	"partners": {
+		"aria_label": "Payment partner logos",
+		"paypal": "PayPal",
+		"greenhouse": "Greenhouse",
+		"household": "Household",
+		"century": "Century"
+	},
+	"about": {
+		"meetOur": "Meet our",
+		"department": "Departments",
+		"noDepartmentsTitle": "No departments currently",
+		"noDepartmentsDescription": "No departments have been added yet. Please check back later.",
+		"noDepartmentsAvailable": "No departments available at the moment.",
+		"slideNavigation": "Slide navigation",
+		"yourHostsAndGuides": "Your hosts and guides",
+		"meetYour": "Meet your",
+		"facilitators": "Facilitators",
+		"noTeamsTitle": "No team members currently",
+		"noTeamsDescription": "No team members have been added yet. Please check back later.",
+		"noTeamsAvailable": "No team members available at the moment.",
+		"header": "About Us",
+		"sectionLabel": "About us",
+		"hero": {
+			"title": "About Us",
+			"description": "Learn about our story, vision, and what makes us different",
+			"seeMore": "Discover more"
+		},
+		"readMore": "Read more",
+		"readLess": "Read less",
+		"historyOfQunuf": "History of Qunuf",
+		"whyQunuf": "Why Qunuf",
+		"seeMore": "See more",
+		"mission": {
+			"title": "Our Mission",
+			"description": "We strive to deliver real value through innovative solutions and reliable services that meet our customers' needs and support their future aspirations.",
+			"button": "View more"
+		},
+		"vision": {
+			"title": "Our Vision",
+			"description": "We aspire to be the first choice in our field by building a distinctive experience based on quality, innovation, and sustainability.",
+			"button": "Discover more"
+		},
+		"goals": {
+			"title": "Our Goals",
+			"description": "We work towards sustainable growth, enhancing customer satisfaction, and continuously developing our services to keep pace with changes and meet market demands.",
+			"button": "Learn more"
+		},
+		"team": {
+			"header": "Our Team"
+		},
+		"cards": {
+			"visionTag": "Our Vision",
+			"missionTag": "Our Mission",
+			"goalsTag": "Our Goals"
+		}
+	},
+	"contact": {
+		"hero": {
+			"title": "Contact Us",
+			"description": "We are here to help you in your real estate journey. Whether you have a question about a specific property or need a consultation, our team is ready to answer all your inquiries.",
+			"seeMore": "Read more"
+		},
+		"nolocation": "Location not available at the moment",
+		"map": {
+			"eyebrow": "Our location",
+			"title": "We are here\nto serve you",
+			"subtitle": "We are happy to welcome you at our headquarters or contact us through our official channels."
+		},
+		"form": {
+			"eyebrow": "Contact us",
+			"getIn": "Get in",
+			"touch": "touch",
+			"headerMessage": "We are happy to hear from you anytime. Our team is ready to answer all your inquiries.",
+			"name": "Full Name",
+			"email": "Email",
+			"phone": "Mobile Number",
+			"fax": "Fax",
+			"noData": "Not available",
+			"message": {
+				"label": "How did you hear about us?",
+				"placeholder": "Select an option",
+				"options": {
+					"friend_referral": "From a friend",
+					"social_media": "Social media",
+					"search_engine": "Search engine",
+					"other": "Other"
+				}
+			},
+			"send": "Send Message",
+			"sending": "Sending…",
+			"success": "Your message has been sent successfully",
+			"error": "An error occurred, please try again",
+			"validation": {
+				"required": "This field is required",
+				"email": "Please enter a valid email address"
+			}
+		}
+	},
+	"blogs": {
+		"featured": "Featured",
+		"loadMore": "Load more",
+		"blog": "Blog",
+		"hero": {
+			"title": "Blog",
+			"description": "Stay updated with the latest real estate market trends, investment tips, and neighborhood guides through our regularly updated expert articles.",
+			"seeMore": "Read more"
+		},
+		"blogs": "Blogs",
+		"our": "Our",
+		"recentBlogs": "Latest Articles",
+		"readMore": "Read more",
+		"loadingMore": "Loading...",
+		"readBlog": "Read article: {title}",
+		"empty": {
+			"title": "No articles yet",
+			"description": "No articles have been published yet. Follow us soon to see the latest content."
+		}
+	},
+	"property": {
+		"hero": {
+			"title": "Properties",
+			"description": "Explore a wide range of exceptional properties that suit your needs. From modern apartments to luxurious villas, we help you find your dream place with ease.",
+			"seeMore": "Explore more"
+		},
+		"filter": {
+			"title": "Filter",
+			"subtitle": "Choose the appropriate filters for search",
+			"reset": "Reset",
+			"header": "Available Properties",
+			"resultsCount": "{count} property available",
+			"min": "Min",
+			"max": "Max",
+			"priceMin": "Min Price",
+			"priceMax": "Max Price",
+			"areaMin": "Min Area",
+			"areaMax": "Max Area",
+			"priceRange": "Price Range",
+			"squareFeet": "Area (sq ft)",
+			"yearBuilt": "Year Built",
+			"location": {
+				"any": "Any area",
+				"title": "Location"
+			},
+			"subtype": {
+				"title": "Subtype",
+				"residential": {
+					"options": "{option, select, condo {Condo} multiFamily {Multi-Family} townhomes {Townhomes} singleFamily {Single Family} other {Unknown}}"
+				},
+				"commercial": {
+					"options": "{option, select, office {Office} retail {Retail} warehouse {Warehouse} industrial {Industrial} other {Unknown}}"
+				}
+			},
+			"bedrooms": {
+				"title": "Bedrooms",
+				"options": "{option, select, all {Any} 1 {1} 2 {2} 3 {3} 4 {4} fiveAndMore {5+} other {Unknown}}"
+			},
+			"bathrooms": {
+				"title": "Bathrooms",
+				"options": "{option, select, all {Any} 1_0 {1.0} 1_5 {1.5} 2_0 {2.0} 2_5 {2.5} threeAndMore {3+} other {Unknown}}"
+			},
+			"rentalPeriod": {
+				"title": "Rental Period",
+				"options": "{option, select, yearly {Yearly} monthly {Monthly} other {Unknown}}"
+			},
+			"propertyType": {
+				"title": "Property Type",
+				"options": "{option, select, residential {Residential} commercial {Commercial} other {Unknown}}"
+			},
+			"rentType": {
+				"title": "Rent Type",
+				"options": "{option, select, monthly {Monthly} yearly {Yearly} other {Unknown}}"
+			},
+			"categories": {
+				"title": "Category",
+				"options": "{option, select, education {Educational} hospital {Hospital} shopping {Shopping} other {Other}}"
+			},
+			"furnishedType": {
+				"title": "Furnishing Status",
+				"options": "{option, select, furnished {Furnished} unfurnished {Unfurnished} other {Unknown}}"
+			},
+			"features": {
+				"title": "Features",
+				"options": "{option, select, airConditioning {Air Conditioning} assistedLiving {Assisted Living} disabilityAccess {Disability Access} controlledAccess {Controlled Access} cableReady {Cable Ready} availableNow {Available Now} college {College} corporate {Corporate} elevator {Elevator} extraStorage {Extra Storage} highSpeedInternet {High Speed Internet} garage {Garage} petAllowed {Pets Allowed} other {Unknown}}"
+			}
+		},
+		"grid": {
+			"bedrooms": "Bedrooms",
+			"bathrooms": "Bathrooms",
+			"totalArea": "Area",
+			"garages": "Garages",
+			"livingRooms": "Living Rooms",
+			"emptyTitle": "No properties found",
+			"emptyMessage": "We couldn't find any properties matching your current filter options. Try adjusting your search or clearing filters.",
+			"clearFilters": "Reset filters"
+		},
+		"details": {
+			"bookingNow": "Book now",
+			"description": "Description",
+			"additionalDetails": "Additional Details",
+			"location": "Location",
+			"education": "Education",
+			"healthAndMedical": "Health & Medical Services",
+			"propertyDetails": "Property Details",
+			"propertyFeatures": "Property Features",
+			"seeMore": "See more"
+		},
+		"enums": {
+			"propertyType": {
+				"commercial": "Commercial",
+				"residential": "Residential"
+			},
+			"subType": {
+				"residential": {
+					"apartment": "Apartment",
+					"villa": "Villa",
+					"floor": "Floor",
+					"room": "Room",
+					"popular_house": "Traditional House",
+					"annex": "Annex",
+					"labor_housing": "Labor Housing",
+					"individual_housing": "Individual Housing",
+					"driver_room": "Driver's Room",
+					"family_housing": "Family Housing",
+					"other": "Other"
+				},
+				"commercial": {
+					"office": "Office",
+					"retail_store": "Retail Store",
+					"showroom": "Showroom",
+					"warehouse": "Warehouse",
+					"workshop": "Workshop",
+					"commercial_center": "Commercial Center",
+					"commercial_building": "Commercial Building",
+					"commercial_labor_housing": "Commercial Labor Housing",
+					"kiosk": "Kiosk",
+					"land": "Land",
+					"other": "Other"
+				}
+			},
+			"rentType": {
+				"monthly": "Monthly",
+				"yearly": "Yearly"
+			},
+			"ownershipType": {
+				"owner": "Owner",
+				"representative": "Agent / Representative"
+			},
+			"documentType": {
+				"electronic_deed": "Electronic Deed",
+				"real_estate_registration": "Real Estate Registration",
+				"other": "Other"
+			}
+		},
+		"card": {
+			"bedrooms": "Bedrooms",
+			"bathrooms": "Bathrooms",
+			"area": "Area",
+			"livingRooms": "Living Rooms"
+		},
+		"dashboard": {
+			"account": {
+				"loading": "Loading...",
+				"selectState": "Select region"
+			}
+		},
+		"common": {
+			"select": "Select"
+		}
+	},
+	"bookings": {
+		"title": "Start now",
+		"fullDetails": {
+			"title": "Complete your profile",
+			"subtitle": "Please provide your full details to proceed with the booking",
+			"sectionTitle": "Personal Information",
+			"confirm": "Continue",
+			"cancel": "Cancel"
+		},
+		"contractDetails": {
+			"title": "Contract Details",
+			"subtitle": "Specify the rental period and terms",
+			"fields": {
+				"startDate": {
+					"label": "Start Date",
+					"placeholder": "Select start date"
+				},
+				"duration": {
+					"label": "Duration (months)",
+					"placeholder": "Enter duration",
+					"hint": {
+						"monthly": "Choose a duration between {min} and {max} months",
+						"yearly": "Duration is fixed at one year for yearly rental"
+					}
+				},
+				"proposedTerms": {
+					"label": "Proposed Contract Terms",
+					"placeholder": "Enter contract terms...",
+					"hint": "You can modify the default contract terms as needed"
+				}
+			},
+			"confirm": "Create Contract",
+			"cancel": "Cancel",
+			"creating": "Creating contract...",
+			"created": "Contract created successfully",
+			"loading": "Loading...",
+			"errors": {
+				"noProperty": "Property ID missing",
+				"noStartDate": "Please select a start date",
+				"invalidDuration": "Invalid duration",
+				"startDatePast": "Start date must be in the future",
+				"loadPropertyFailed": "Failed to load property details",
+				"createFailed": "Failed to create contract"
+			}
+		},
+		"eligibility": {
+			"checking": "Checking eligibility...",
+			"errors": {
+				"noProperty": "Property ID missing",
+				"notAllowed": "You are not eligible to book this property",
+				"checkFailed": "Failed to check eligibility"
+			}
+		},
+		"approval": {
+			"title": "Review & Approve",
+			"subtitle": "Please review the contract details before approval",
+			"summary": {
+				"title": "Contract Summary",
+				"property": "Property",
+				"dates": "Rental Period",
+				"terms": "Proposed Terms",
+				"month": "Month",
+				"months": "Months",
+				"note": "By approving, you agree to the terms and conditions of this rental contract."
+			},
+			"confirm": "Approve Contract",
+			"cancel": "Cancel",
+			"approving": "Approving contract...",
+			"approved": "Contract approved successfully",
+			"loading": "Loading contract details...",
+			"errors": {
+				"noContract": "Contract data missing",
+				"loadFailed": "Failed to load contract details",
+				"approveFailed": "Failed to approve contract"
+			}
+		},
+		"step1": {
+			"title": "Booking Information",
+			"subtitle": "Please fill in the blanks below",
+			"plans": {
+				"business": {
+					"title": "Business",
+					"price": "$40.00",
+					"description": "This offer includes electricity, water, gas, and internet bills, paid in advance to ensure coverage of all essential services.",
+					"button": "Select Plan"
+				},
+				"professional": {
+					"title": "Professional",
+					"price": "$30.00",
+					"description": "This offer includes electricity, water, gas, and internet bills, paid in advance to ensure coverage of all essential services.",
+					"button": "Select Plan"
+				}
+			},
+			"pickDate": "Pick date",
+			"payment": {
+				"prefix": "You will pay "
+			},
+			"confirm": "Book Now",
+			"cancel": "Cancel"
+		},
+		"step2": {
+			"title": "Booking Contract",
+			"subtitle": "Please fill in the contract information",
+			"sectionTitle": "Tenant Information",
+			"fields": {
+				"fullName": {
+					"label": "Tenant's Full Name",
+					"placeholder": "Enter full name"
+				},
+				"phone": {
+					"label": "Tenant's Phone Number",
+					"placeholder": "Enter phone number"
+				},
+				"nationalId": {
+					"label": "National ID",
+					"placeholder": "Enter national ID"
+				},
+				"billingAddress": {
+					"label": "Billing Address",
+					"placeholder": "Enter billing address"
+				},
+				"address": {
+					"label": "Address",
+					"placeholder": "Enter address"
+				},
+				"email": {
+					"label": "Email",
+					"placeholder": "Enter email"
+				}
+			},
+			"confirm": "Create Contract",
+			"cancel": "Cancel"
+		},
+		"step3": {
+			"title": "Payment",
+			"subtitle": "Please follow the instructions below",
+			"summary": {
+				"realEstate": "Property Booking:",
+				"reservation": "Booking for one month on the Business Plan",
+				"total": {
+					"prefix": "Total: ",
+					"amount": "$400 USD"
+				}
+			},
+			"fields": {
+				"cardNumber": {
+					"label": "Card Number",
+					"placeholder": "Payment card number"
+				},
+				"bank": {
+					"label": "Bank",
+					"placeholder": "Select bank"
+				},
+				"expDate": {
+					"label": "Expiry Date",
+					"placeholder": "Expiry date"
+				},
+				"cvv": {
+					"label": "CVV Code",
+					"placeholder": "On the back of card"
+				}
+			},
+			"confirm": "Pay Now",
+			"cancel": "Cancel"
+		},
+		"step4": {
+			"title": "Contract Created Successfully!",
+			"imageAlt": "Contract created",
+			"message": {
+				"line1": "Contract created successfully.",
+				"line2": "The contract has been sent to the landlord for review.",
+				"line3": "The landlord will review the terms you have modified and respond accordingly."
+			},
+			"viewContract": "View Contract"
+		},
+		"contractReview": {
+			"title": "Contract Review",
+			"subtitle": "Please review the contract details",
+			"noContract": "No contract data available",
+			"done": "Done",
+			"sections": {
+				"property": "Property Information",
+				"rentalPeriod": "Rental Period",
+				"financial": "Financial Details",
+				"landlord": "Landlord Information",
+				"terms": "Contract Terms"
+			},
+			"fields": {
+				"propertyName": "Property Name",
+				"propertyType": "Type",
+				"area": "Area",
+				"capacity": "Capacity",
+				"location": "Location",
+				"furnished": "Furnished",
+				"startDate": "Start Date",
+				"endDate": "End Date",
+				"duration": "Duration",
+				"rentType": "Rent Type",
+				"totalAmount": "Total Amount",
+				"securityDeposit": "Security Deposit",
+				"platformFee": "Platform Fee",
+				"name": "Name",
+				"email": "Email",
+				"phone": "Phone"
+			},
+			"yes": "Yes",
+			"no": "No",
+			"monthly": "Monthly",
+			"yearly": "Yearly",
+			"months": "months"
+		}
+	},
+	"auth": {
+		"signIn": {
+			"emailConfirmationFailed": "Email confirmation failed. Please try again or contact support.",
+			"title": "Welcome back!",
+			"subtitle": "Log in to access your data",
+			"email": {
+				"label": "Email",
+				"placeholder": "Enter your email"
+			},
+			"password": {
+				"label": "Password",
+				"placeholder": "Enter your password"
+			},
+			"forgotPassword": "Forgot password?",
+			"login": "Login",
+			"noAccount": "Don't have an account?",
+			"register": "Create account",
+			"success": {
+				"signedIn": "Logged in successfully",
+				"verified": "Email confirmed successfully. You can now log in."
+			},
+			"errors": {
+				"loginFailed": "Login failed",
+				"incorrectEmailOrPassword": "Incorrect email or password",
+				"invalidEmail": "Please enter a valid email address",
+				"requiredEmail": "Email is required",
+				"requiredPassword": "Password is required"
+			},
+			"loading": "Logging in..."
+		},
+		"signUp": {
+			"title": "Create New Account",
+			"subtitle": "Join us today and start your journey with us",
+			"name": {
+				"label": "Full Name",
+				"placeholder": "Enter your full name"
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "Enter your email"
+			},
+			"password": {
+				"label": "Password",
+				"placeholder": "Enter your password"
+			},
+			"register": "Create Account",
+			"loading": "Registering...",
+			"haveAccount": "Already have an account? ",
+			"login": "Login",
+			"success": {
+				"emailSend": "Verification link sent to your email"
+			},
+			"errors": {
+				"registrationFailed": "Registration failed, please try again",
+				"name": {
+					"required": "Name is required",
+					"maxLength": "Name cannot exceed 50 characters"
+				},
+				"email": {
+					"required": "Email is required",
+					"invalid": "Invalid email address"
+				},
+				"password": {
+					"minLength": "Password must be at least 8 characters",
+					"maxLength": "Password cannot exceed 20 characters",
+					"pattern": "Password must contain uppercase, lowercase, number, and special character"
+				}
+			}
+		},
+		"roleSelector": {
+			"label": "Account Type",
+			"tenant": {
+				"title": "Tenant",
+				"description": "I am looking for a property to rent"
+			},
+			"landlord": {
+				"title": "Landlord",
+				"description": "I want to rent out my property"
+			}
+		},
+		"forgotPassword": {
+			"title": "Reset Password",
+			"subtitle": "Enter your email and we will send you a link to reset your password.",
+			"backToLogin": "Back to login",
+			"form": {
+				"email": {
+					"label": "Email",
+					"placeholder": "example@domain.com"
+				},
+				"send": "Send link",
+				"loading": "Sending...",
+				"success": {
+					"sent": "Password reset link has been sent to your email successfully."
+				},
+				"errors": {
+					"required": "Email is required",
+					"invalidEmail": "Invalid email format",
+					"forgotPasswordFailed": "An error occurred while trying to send the email. Please try again."
+				}
+			}
+		},
+		"resetPassword": {
+			"title": "Reset Password",
+			"backToLogin": "Back to login",
+			"form": {
+				"email": {
+					"label": "Email",
+					"placeholder": "Enter your email"
+				},
+				"code": {
+					"label": "Reset Code",
+					"placeholder": "Enter reset code"
+				},
+				"password": {
+					"label": "New Password",
+					"placeholder": "Enter new password",
+					"minLength": "Password must be at least 8 characters",
+					"maxLength": "Password cannot exceed 20 characters",
+					"pattern": "Password must contain uppercase, lowercase, number and special character"
+				},
+				"reset": "Reset Password",
+				"loading": "Resetting...",
+				"success": {
+					"sent": "Password reset successfully"
+				},
+				"errors": {
+					"invalidLink": "Password reset link is invalid or expired.",
+					"requestNewLink": "Request new link",
+					"email": {
+						"invalid": "Invalid email",
+						"required": "Email is required"
+					},
+					"password": {
+						"minLength": "Password must be at least 8 characters",
+						"maxLength": "Password cannot exceed 20 characters",
+						"pattern": "Password must contain uppercase, lowercase, number and special character"
+					},
+					"confirmPassword": {
+						"mismatch": "Passwords do not match"
+					},
+					"failed": "Password reset failed"
+				},
+				"confirmPassword": {
+					"label": "Confirm Password",
+					"placeholder": "Re-enter password"
+				}
+			}
+		},
+		"resendVerification": {
+			"title": "Resend Verification Email",
+			"form": {
+				"email": {
+					"label": "Email",
+					"placeholder": "Enter your email"
+				},
+				"send": "Send",
+				"haveAccount": "Already have an account?",
+				"login": "Login",
+				"loading": "Sending...",
+				"success": {
+					"sent": "If the email is registered, a verification link will be sent."
+				},
+				"errors": {
+					"failed": "Failed to resend verification email",
+					"invalidEmail": "Email must be valid"
+				}
+			}
+		}
+	},
+	"footer": {
+		"ariaLabel": "Page footer",
+		"copyright": "© {year} All rights reserved.",
+		"about": {
+			"title": "About Site",
+			"menu": "Home",
+			"features": "Features",
+			"blogs": "Blog",
+			"support": "Support"
+		},
+		"company": {
+			"title": "Company",
+			"about": "About Us",
+			"terms": "Terms & Conditions",
+			"privacy": "Privacy Policy"
+		},
+		"contact": {
+			"title": "Contact Us"
+		}
+	},
+	"dashboardCard": {
+		"viewAll": "View all",
+		"loading": "Loading…"
+	},
+	"emptyState": {
+		"defaultTitle": "No data",
+		"defaultMessage": "We couldn't find any results. Try adjusting your search or come back later.",
+		"defaultActionLabel": "Try again"
+	},
+	"rentedPropertyCard": {
+		"imageAlt": "{{address}}",
+		"currency": "SAR"
+	}
 }

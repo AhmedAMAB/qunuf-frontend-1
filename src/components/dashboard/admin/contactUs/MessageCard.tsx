@@ -2,79 +2,81 @@
 
 import { getInitials } from '@/utils/helpers';
 import { FaPhone, FaEnvelope } from 'react-icons/fa';
-import { MdAttachEmail } from 'react-icons/md';
 
 interface MessageCardProps {
-    name: string;
-    phone: string;
-    email: string;
-    message: string;
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
 }
 
 export function MessageCard({ name, phone, email, message }: MessageCardProps) {
+  return (
+    <div className="group relative bg-gradient-to-br from-primary via-primary/90 to-secondary rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.20)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col overflow-hidden w-full">
 
+      {/* Subtle decorative circle */}
+      <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-white/5 pointer-events-none" aria-hidden="true" />
+      <div className="absolute -bottom-8 -left-6 w-24 h-24 rounded-full bg-black/10 pointer-events-none" aria-hidden="true" />
 
-    return (
-        <div className="relative bg-card-bg rounded-[14px] p-4 w-full max-w-sm mx-auto flex flex-col items-center gap-4">
-            <div className="flex-center absolute top-2 end-2 bg-light w-[44px] h-[44px] rounded-[12px]">
-                <MdAttachEmail size={24} className="text-dark" />
-            </div>
+      {/* Card body */}
+      <div className="relative p-5 flex flex-col gap-4 flex-1">
 
-            {/* Initials */}
-            <div className="bg-secondary rounded-[12px] w-[111px] h-[105px] flex items-center justify-center text-lighter text-4xl font-bold">
-                {getInitials(name)}
-            </div>
-            <h3 className="text-dark font-semibold text-base text-center">{name}</h3>
-
-            <div className="w-full space-y-3">
-                {/* Clickable Phone */}
-                <a
-                    href={`tel:${phone}`}
-                    className="group/contact flex items-center gap-3 w-full cursor-pointer transition-all duration-200 hover:translate-x-1"
-                >
-                    <div className="relative shrink-0">
-                        {/* Hover Glow */}
-                        <div className="absolute inset-0 bg-secondary/40 rounded-[12px] blur-md opacity-0 group-hover/contact:opacity-100 transition-opacity duration-300" />
-                        <div className="relative bg-secondary rounded-[12px] w-9 h-9 flex items-center justify-center text-white shadow-sm group-hover/contact:shadow-secondary/20 transition-all duration-300">
-                            <FaPhone size={14} className="group-hover/contact:scale-110 transition-transform" />
-                        </div>
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                        <span className="text-dark font-medium group-hover/contact:text-secondary transition-colors duration-200 truncate" dir="ltr">
-                            {phone}
-                        </span>
-                        <span className="text-[10px] text-dark/40 opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200">
-                            Click to call
-                        </span>
-                    </div>
-                </a>
-
-                {/* Clickable Email */}
-                <a
-                    href={`mailto:${email}`}
-                    className="group/contact flex items-center gap-3 w-full cursor-pointer transition-all duration-200 hover:translate-x-1"
-                >
-                    <div className="relative shrink-0">
-                        {/* Hover Glow */}
-                        <div className="absolute inset-0 bg-secondary/40 rounded-[12px] blur-md opacity-0 group-hover/contact:opacity-100 transition-opacity duration-300" />
-                        <div className="relative bg-secondary rounded-[12px] w-9 h-9 flex items-center justify-center text-white shadow-sm group-hover/contact:shadow-secondary/20 transition-all duration-300">
-                            <FaEnvelope size={14} className="group-hover/contact:scale-110 transition-transform" />
-                        </div>
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                        <span className="text-dark font-medium group-hover/contact:text-secondary transition-colors duration-200 truncate">
-                            {email}
-                        </span>
-                        <span className="text-[10px] text-dark/40 opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200">
-                            Click to send email
-                        </span>
-                    </div>
-                </a>
-            </div>
-
-            <p className="text-gray-400 text-center text-[14px] leading-[20px] px-2">
-                {message}
-            </p>
+        {/* Identity row */}
+        <div className="flex items-center gap-4">
+          {/* Avatar */}
+          <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-base font-bold shrink-0 tracking-wide">
+            {getInitials(name)}
+          </div>
+          {/* Name */}
+          <div className="min-w-0">
+            <h3 className="text-sm font-semibold text-white truncate leading-snug">{name}</h3>
+            <p className="text-[10px] font-medium uppercase tracking-widest text-white/50 mt-0.5">Contact</p>
+          </div>
         </div>
-    );
+
+        {/* Divider */}
+        <div className="h-px bg-white/15" />
+
+        {/* Contact links */}
+        <div className="space-y-1.5">
+          {/* Phone */}
+          
+          <a  href={`tel:${phone}`}
+            className="flex items-center gap-3 group/row rounded-xl px-3 py-2.5 hover:bg-white/10 transition-colors duration-150"
+          >
+            <div className="w-8 h-8 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0 group-hover/row:bg-white transition-colors duration-200">
+              <FaPhone size={12} className="text-white group-hover/row:text-primary transition-colors duration-200" />
+            </div>
+            <span className="text-sm font-medium text-white/80 group-hover/row:text-white transition-colors duration-150 truncate" dir="ltr">
+              {phone}
+            </span>
+          </a>
+
+          {/* Email */}
+          
+          <a  href={`mailto:${email}`}
+            className="flex items-center gap-3 group/row rounded-xl px-3 py-2.5 hover:bg-white/10 transition-colors duration-150"
+          >
+            <div className="w-8 h-8 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0 group-hover/row:bg-white transition-colors duration-200">
+              <FaEnvelope size={12} className="text-white group-hover/row:text-primary transition-colors duration-200" />
+            </div>
+            <span className="text-sm font-medium text-white/80 group-hover/row:text-white transition-colors duration-150 truncate">
+              {email}
+            </span>
+          </a>
+        </div>
+
+        {/* Message */}
+        {message && (
+          <>
+            <div className="h-px bg-white/15" />
+            <div className="rounded-xl bg-black/15 border border-white/10 px-4 py-3">
+              <p className="text-xs text-white/70 leading-relaxed line-clamp-4">{message}</p>
+            </div>
+          </>
+        )}
+
+      </div>
+    </div>
+  );
 }

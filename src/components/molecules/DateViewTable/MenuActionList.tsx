@@ -1,33 +1,27 @@
 'use client';
 
 import { Link } from "@/i18n/navigation";
-import React, { ComponentType, ReactElement, useState } from 'react';
+import React, { ComponentType, useState } from 'react';
 import { IconType } from 'react-icons';
 import { TableRowType } from "@/types/table";
 import Popup from "@/components/atoms/Popup";
 import Tooltip from "@/components/atoms/Tooltip";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type ActionType =
     | 'primary'
     | 'secondary'
     | 'edit'
     | 'delete'
-    | 'normal';
+    | 'normal'
+    | 'warning';
 
-const getColorClass = (type?: ActionType) => {
-    switch (type) {
-        case 'primary':
-            return 'text-[var(--primary)] hover:text-[var(--primary-hover)]';
-        case 'secondary':
-            return 'text-[var(--secondary)] hover:text-[var(--secondary-hover)]';
-        case 'edit':
-            return 'text-[var(--light)] hover:text-[var(--primary)]';
-        case 'delete':
-            return 'text-red-600 hover:text-red-800';
-        case 'normal':
-        default:
-            return 'text-[var(--dark)] hover:text-[var(--primary)]';
-    }
+export type ChildTypeProps = {
+    row: any;
+    onClose: () => void;
+    setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>;
+    fetchRows?: (signal?: AbortSignal) => Promise<void>;
 };
 
 export type MenuActionItem = {
@@ -35,152 +29,204 @@ export type MenuActionItem = {
     Icon?: IconType;
     type?: ActionType;
     link?: string;
-    Child?: ComponentType<{ row, onClose: () => void }>;
+    Child?: ComponentType<ChildTypeProps>;
     onClick?: () => void;
-    show?: boolean
+    show?: boolean;
 };
 
 type Props = {
     items?: MenuActionItem[];
     onClose?: () => void;
-    row?: any
-    setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>,
+    row?: any;
+    setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>;
     fetchRows?: (signal?: AbortSignal) => Promise<void>;
-    onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: any) => void
+    onOpenPopup?: (Child: ComponentType<ChildTypeProps>, row: any) => void;
 };
 
-//for drop dwon action version 
+// ─── Color map ────────────────────────────────────────────────────────────────
+
+const getColorClass = (type?: ActionType): string => {
+    switch (type) {
+        case 'primary':
+            return 'text-[var(--primary)] hover:text-[var(--primary-hover)]';
+        case 'secondary':
+            return 'text-[var(--secondary)] hover:text-[var(--secondary-hover)]';
+        case 'edit':
+            return 'text-[var(--secondary)] hover:text-[var(--primary)]';
+        case 'delete':
+            return 'text-red-500 hover:text-red-700';
+        case 'warning':
+            return 'text-orange-500 hover:text-orange-700';
+        case 'normal':
+        default:
+            return 'text-[var(--secondary)] hover:text-[var(--primary)]';
+    }
+};
+
+// ─── Icon color for bg bubble ─────────────────────────────────────────────────
+
+const getBubbleClass = (type?: ActionType): string => {
+    switch (type) {
+        case 'primary':
+            return 'bg-[var(--lighter)] hover:bg-[var(--light)]/30';
+        case 'secondary':
+            return 'bg-[var(--lighter)] hover:bg-[var(--light)]/30';
+        case 'edit':
+            return 'bg-[var(--lighter)] hover:bg-[var(--light)]/30';
+        case 'delete':
+            return 'bg-red-50 hover:bg-red-100';
+        case 'warning':
+            return 'bg-orange-50 hover:bg-orange-100';
+        case 'normal':
+        default:
+            return 'bg-[var(--lighter)] hover:bg-[var(--light)]/30';
+    }
+};
+
+// ─── Dropdown menu version ────────────────────────────────────────────────────
+
 export default function MenuActionList({ items, onClose }: Props) {
-    const [activeChild, setActiveChild] = useState<{ Child: ComponentType<{ onClose: () => void }> | undefined }>({ Child: undefined });
+    const [activeChild, setActiveChild] = useState<ComponentType<{ onClose: () => void }> | undefined>(undefined);
     const [menuOpen, setMenuOpen] = useState(false);
 
-
-    function handleOnClose() {
+    const handleOnClose = () => {
         setMenuOpen(false);
-    }
+        setActiveChild(undefined);
+    };
 
-    if (items?.length == 0) return null;
+    const visibleItems = items?.filter(item => item.show === undefined || item.show);
+    if (!visibleItems?.length) return null;
 
     return (
-        <div className="flex flex-col gap-2 bg-white p-2">
-            {items?.map((item, index) => {
-                const Icon = item.Icon;
-                const content = (
-                    <>
-                        {Icon && <Icon size={16} />}
+        <>
+            <div className="flex flex-col gap-0.5 bg-white rounded-xl p-1.5 min-w-[170px]">
+                {visibleItems.map((item, index) => {
+                    const Icon = item.Icon;
 
-                        <span>{item.label}</span>
-                    </>
-                );
-
-                if (item.link) {
-                    return (
-                        <Link
-                            key={index}
-                            href={item.link}
-                            onClick={onClose}
-                            className={`flex items-center gap-2 text-sm ${getColorClass(item.type)} disabled:opacity-50`}
-                        >
-                            {content}
-                        </Link>
+                    const inner = (
+                        <span className={`
+                            flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium
+                            transition-colors duration-150 w-full text-start
+                            ${getColorClass(item.type)}
+                            hover:bg-[var(--lighter)]
+                        `}>
+                            {Icon && (
+                                <span className="shrink-0 opacity-80">
+                                    <Icon size={15} />
+                                </span>
+                            )}
+                            {item.label}
+                        </span>
                     );
-                }
 
-                return (
-                    <button
-                        key={index}
-                        onClick={() => {
-                            setActiveChild({ Child: item.Child });
-                            setMenuOpen(true);
-                        }}
-                        className={`flex items-center gap-2 text-sm ${getColorClass(item.type)}`}
-                    >
-                        {content}
-                    </button>
-                );
-            })}
+                    if (item.link) {
+                        return (
+                            <Link key={index} href={item.link} onClick={onClose}>
+                                {inner}
+                            </Link>
+                        );
+                    }
 
-            {/* Render child if active */}
-            {activeChild?.Child && (
+                    if (item.onClick) {
+                        return (
+                            <button key={index} onClick={() => { item.onClick?.(); onClose?.(); }}>
+                                {inner}
+                            </button>
+                        );
+                    }
+
+                    return (
+                        <button
+                            key={index}
+                            onClick={() => {
+                                setActiveChild(() => item.Child as ComponentType<{ onClose: () => void }>);
+                                setMenuOpen(true);
+                            }}
+                        >
+                            {inner}
+                        </button>
+                    );
+                })}
+            </div>
+
+            {activeChild && (
                 <Popup onClose={handleOnClose} show={menuOpen}>
-                    <activeChild.Child onClose={handleOnClose} />
+                    {React.createElement(activeChild, { onClose: handleOnClose })}
                 </Popup>
             )}
-
-        </div>
+        </>
     );
 }
 
-export type ChildTypeProps = { row, onClose: () => void, setRows?: React.Dispatch<React.SetStateAction<TableRowType<any>[] | null>>, fetchRows?: (signal?: AbortSignal) => Promise<void>; }
-// for icon version
+// ─── Icon row version (used in tables) ───────────────────────────────────────
+
 export function ActionList({ items, row, setRows, fetchRows, onOpenPopup }: Props) {
-    // const [activeChild, setActiveChild] = useState<{ Child: ComponentType<ChildTypeProps> | undefined }>({ Child: undefined });
-    // const [menuOpen, setMenuOpen] = useState(false);
+    const visibleItems = items?.filter(item => item.show === undefined || item.show);
+    if (!visibleItems?.length) return null;
 
+    const handleClick = (item: MenuActionItem) => {
+        // 1. Direct onClick handler (e.g. viewDetails)
+        if (item.onClick) {
+            item.onClick();
+            return;
+        }
 
-    // function handleOnClose() {
-    //     setMenuOpen(false);
-    // }
+        // 2. Child popup via parent's onOpenPopup
+        if (item.Child && onOpenPopup) {
+            // Inject fetchRows + setRows into the child transparently
+            const ChildWithExtras = (props: ChildTypeProps) =>
+                React.createElement(item.Child!, { ...props, fetchRows, setRows });
 
-    if (items?.length == 0) return null;
+            onOpenPopup(ChildWithExtras as ComponentType<ChildTypeProps>, row);
+        }
+    };
 
     return (
-        <div className="flex flex-row justify-end gap-4 p-2">
-            {items?.map((item, index) => {
-                if (item.show != undefined && !item.show) return;
+        <div className="flex flex-row items-center justify-end gap-1 px-1">
+            {visibleItems.map((item, index) => {
                 const Icon = item.Icon;
-                const content = (
-                    <>
-                        <Tooltip content={item.label}>
-                            {Icon && <Icon size={20} className={`${getColorClass(item.type)}`} />}
-                        </Tooltip>
-                    </>
+                if (!Icon) return null;
+
+                const button = (
+                    <button
+                        key={index}
+                        onClick={() => handleClick(item)}
+                        className={`
+                            inline-flex items-center justify-center
+                            w-8 h-8 rounded-lg
+                            transition-all duration-150
+                            ${getBubbleClass(item.type)}
+                            ${getColorClass(item.type)}
+                            focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--secondary)]/40
+                        `}
+                        aria-label={item.label}
+                    >
+                        <Icon size={16} />
+                    </button>
                 );
 
                 if (item.link) {
                     return (
-                        <Link
-                            key={index}
-                            href={item.link}
-                            className={`flex items-center gap-2 text-sm  disabled:opacity-50`}
-                        >
-                            {content}
+                        <Link key={index} href={item.link} aria-label={item.label}>
+                            <span className={`
+                                inline-flex items-center justify-center
+                                w-8 h-8 rounded-lg
+                                transition-all duration-150
+                                ${getBubbleClass(item.type)}
+                                ${getColorClass(item.type)}
+                            `}>
+                                <Icon size={16} />
+                            </span>
                         </Link>
                     );
                 }
 
                 return (
-                    <button
-                        key={index}
-                        // onClick={() => {
-                        //     setActiveChild({ Child: item.Child });
-                        //     setMenuOpen(true);
-                        // }}
-                        onClick={() => {
-                            if (item?.onClick)
-                                item?.onClick?.()
-                            else if (item.Child && onOpenPopup) {
-                                // Store fetchRows in a closure for the Child component
-                                const ChildWithFetchRows = (props: any) => {
-                                    return <item.Child {...props} fetchRows={fetchRows} />;
-                                };
-                                onOpenPopup(ChildWithFetchRows as ComponentType<ChildTypeProps>, row);
-                            }
-                        }}
-                        className={`flex items-center gap-2 text-sm `}
-                    >
-                        {content}
-                    </button>
+                    <Tooltip key={index} content={item.label} position="top">
+                        {button}
+                    </Tooltip>
                 );
             })}
-
-            {/* Render child if active */}
-            {/* {activeChild?.Child && (
-                <Popup onClose={handleOnClose} show={menuOpen}>
-                    <activeChild.Child row={row} setRows={setRows} onClose={handleOnClose} />
-                </Popup>
-            )} */}
-
         </div>
     );
 }

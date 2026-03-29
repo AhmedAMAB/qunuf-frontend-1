@@ -178,8 +178,7 @@ export default function ContractDataView() {
                 pageSize={10}
                 filters={contractFilters}
             />
-
-            {/* Contract Details Popup */}
+ 
             {selectedContract && (
                 <Popup show={true} onClose={() => handleSetSelected(null)}>
                     <ContractDetailsPopup
